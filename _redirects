@@ -1,3 +1,8 @@
-/academy    /academy.html   200
-/dashboard  /academy        301
-/dashboard.html  /academy    301
+# Pretty URLs & redirects
+/academy            /academy.html    200
+/ebook              /landing.html    200
+
+# Legacy paths
+/dashboard          /academy         301
+/dashboard.html     /academy         301
+/landing            /ebook           301

@@ -12,12 +12,21 @@
       "source": "/dashboard.html",
       "destination": "/academy",
       "permanent": true
+    },
+    {
+      "source": "/landing",
+      "destination": "/ebook",
+      "permanent": true
     }
   ],
   "rewrites": [
     {
       "source": "/academy",
       "destination": "/academy.html"
+    },
+    {
+      "source": "/ebook",
+      "destination": "/landing.html"
     }
   ]
 }
