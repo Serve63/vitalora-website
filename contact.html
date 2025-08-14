@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact - Vitalora</title>
+	<link rel="stylesheet" href="styles.css">
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="main-header">
+		<div class="container">
+			<div class="header-content">
+				<div class="logo" onclick="window.location.href='index.html'">
+					<span class="logo-icon">🌿</span>
+					<span class="logo-text">Vitalora</span>
+				</div>
+				<nav class="header-nav">
+					<a class="nav-link" href="index.html">Home</a>
+				</nav>
+			</div>
+		</div>
+	</header>
+
+	<main class="main-content">
+		<div class="container">
+			<section style="max-width:820px;margin:40px auto 80px;background:#ffffff;border:1px solid #e5e7eb;border-radius:16px;padding:32px 28px;box-shadow:0 8px 24px rgba(0,0,0,0.06)">
+				<h1 style="font-size:32px;margin-bottom:8px;color:#1e3a8a">Contact</h1>
+				<p style="color:#6b7280;margin-bottom:24px">Vragen of hulp nodig? Laat een bericht achter. We reageren zo snel mogelijk.</p>
+
+				<form id="contact-form" novalidate>
+					<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px">
+						<div>
+							<label for="name" style="display:block;font-weight:600;color:#1e3a8a;margin-bottom:6px">Naam</label>
+							<input id="name" name="name" type="text" required placeholder="Jouw naam" style="width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit" />
+						</div>
+						<div>
+							<label for="email" style="display:block;font-weight:600;color:#1e3a8a;margin-bottom:6px">E‑mail</label>
+							<input id="email" name="email" type="email" required placeholder="jij@voorbeeld.nl" style="width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit" />
+						</div>
+					</div>
+					<div style="margin-bottom:16px">
+						<label for="message" style="display:block;font-weight:600;color:#1e3a8a;margin-bottom:6px">Bericht</label>
+						<textarea id="message" name="message" rows="6" required placeholder="Schrijf hier je bericht..." style="width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit"></textarea>
+					</div>
+					<button type="submit" class="cta-button" style="margin:0">Versturen</button>
+					<p id="contact-feedback" style="color:#10b981;font-weight:600;margin-top:12px;display:none">Bedankt! Je bericht is verzonden. We nemen spoedig contact op.</p>
+				</form>
+			</section>
+		</div>
+	</main>
+
+	<script>
+	(function(){
+		const form = document.getElementById('contact-form');
+		const feedback = document.getElementById('contact-feedback');
+		form.addEventListener('submit', function(e){
+			e.preventDefault();
+			if(!form.checkValidity()){
+				form.reportValidity();
+				return;
+			}
+			// Simuleer succesvol verzenden
+			feedback.style.display = 'block';
+			form.reset();
+		});
+	})();
+	</script>
+</body>
+</html>
