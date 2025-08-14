@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Reset Cursus - Checkout</title>
+    <link rel="stylesheet" href="checkout-styles.css">
+    <link rel="stylesheet" href="icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <span class="logo-icon">🌿</span>
+                    <span class="logo-text">Vitalora</span>
+                </div>
+                <nav class="header-nav">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="#support" class="nav-link">Support</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Countdown Header -->
+    <header class="countdown-header">
+        <div class="container">
+            <div class="countdown-text">Eenmalig aanbod - Verdwijnt over <span id="timer">04:57</span></div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="two-column-layout">
+                <!-- Left Column -->
+                <div class="left-column">
+                    <!-- Hero Image and Text -->
+                    <div class="hero-section">
+                        <div class="hero-image">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Vrouw met blonde haren in spijkerbroek shirt">
+                        </div>
+                        <div class="hero-text">
+                            <p class="success-message">Yes het is gelukt 🎉 De methode om Microplastics uit je lichaam te Detoxen is naar je onderweg.</p>
+                            <p class="question">Maar even eerlijk... Kan jij je nog herinneren hoe jij je vroeger voelde?</p>
+                            <p class="benefit">Meer energie, een helder brein, minder vage klachten?</p>
+                        </div>
+                    </div>
+
+                    <!-- PFAS Statistics -->
+                    <div class="pfas-section">
+                        <h2>In 2010 werd PFAS aangetroffen bij 2% van de bevolking, inmiddels is dat opgelopen tot 98%!</h2>
+                        <p>Ik voelde me ook altijd wazig, moe en allesbehalve helder. Ik besloot deze kankerverwekkende stoffen uit m'n lijf te halen, en dit is wat ik ervaarde 👇</p>
+                    </div>
+
+                    <!-- Benefits List -->
+                    <div class="benefits-section">
+                        <div class="benefits-grid">
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Meer energie en mentale scherpte</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Diepe, herstellende slaap</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Heldere focus en rust in m'n hoofd</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Geen opgeblazen gevoel meer</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Minder stemmingswisselingen</span>
+                            </div>
+                            <div class="benefit-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Sterkere weerstand</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Blue Callout Box -->
+                    <div class="callout-box">
+                        <div class="callout-icon icon-heart"></div>
+                        <p>Geloof me, je bent vergeten hoe goed het voelt om écht opgeklaard te leven.</p>
+                    </div>
+
+                    <!-- Toxins List -->
+                    <div class="toxins-section">
+                        <h3>Mijn Detox werkt voor deze gifstoffen:</h3>
+                        <div class="toxins-grid">
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Parabenen</span>
+                            </div>
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>PFAS</span>
+                            </div>
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>BPA</span>
+                            </div>
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Microplastics</span>
+                            </div>
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Ftalaten</span>
+                            </div>
+                            <div class="toxin-item">
+                                <span class="checkmark icon-checkmark"></span>
+                                <span>Pesticiden</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column - Order Form -->
+                <div class="right-column">
+                    <div class="order-form">
+                        <h1>Wil je ook <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Pesticiden</span> uit je lichaam detoxen?</h1>
+
+                        <!-- Personal Details -->
+                        <div class="form-section">
+                            <h3>Jouw gegevens</h3>
+                            <div class="form-group">
+                                <input type="text" placeholder="Voornaam" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Achternaam" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="E-mailadres" required>
+                            </div>
+                            <div class="form-group">
+                                <select>
+                                    <option>Nederland</option>
+                                    <option>België</option>
+                                    <option>Duitsland</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Payment Methods -->
+                        <div class="form-section">
+                            <h3>Hoe wil je betalen?</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method selected">
+                                    <div class="payment-icon icon-credit-card"></div>
+                                    <span>iDEAL</span>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-icon icon-credit-card"></div>
+                                    <span>Creditcard</span>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-icon">K</div>
+                                    <span>Klarna</span>
+                                </div>
+                                <div class="payment-method">
+                                    <div class="payment-icon icon-credit-card"></div>
+                                    <span>Bancontact</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Order Summary -->
+                        <div class="order-summary">
+                            <div class="summary-item">
+                                <span>Clean Reset Cursus</span>
+                            </div>
+                            <div class="total">
+                                <div class="total-label">Totaal</div>
+                                <div class="total-subtitle">inclusief btw</div>
+                                <div class="total-price">€ 1,00</div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Button -->
+                        <button class="checkout-button">Afrekenen €1,00 <span class="icon-arrow-right"></span></button>
+
+                        <!-- Legal and Trust -->
+                        <div class="legal-section">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">Ik ga akkoord met de <a href="#">algemene voorwaarden</a>.</label>
+                            </div>
+                            <div class="trust-icons">
+                                <div class="trust-item">
+                                    <span class="trust-icon icon-lock"></span>
+                                    <span>Veilige betaling</span>
+                                </div>
+                                <div class="trust-item">
+                                    <span class="trust-icon icon-refresh"></span>
+                                    <span>Niet goed? Geld terug!</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Bottom Testimonial -->
+                        <div class="bottom-testimonial">
+                            <div class="stars">
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                                <span class="icon-star"></span>
+                            </div>
+                            <p>"Na jaren van vermoeidheid en brainfog eindelijk weer energie! De detox methode is praktisch en goed uitgelegd. Ik voel me weer mezelf en kan eindelijk weer genieten van het leven."</p>
+                            <div class="testimonial-author">
+                                <div class="author-pic"></div>
+                                <span>Mark van der Berg</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="checkout-script.js"></script>
+</body>
+</html>

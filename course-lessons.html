@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clean Reset - Lessen</title>
+    <link rel="stylesheet" href="course-lessons-styles.css">
+    <link rel="stylesheet" href="icons.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo" onclick="window.location.href='index.html'">
+                    <span class="logo-icon">🌿</span>
+                    <span class="logo-text">Vitalora</span>
+                </div>
+                <nav class="header-nav">
+                    <a href="dashboard.html" class="nav-link">Dashboard</a>
+                    <a href="#support" class="nav-link">Support</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Course Header -->
+    <header class="course-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="back-button" onclick="window.location.href='dashboard.html'">
+                    <span class="icon-arrow-left"></span>
+                    Terug naar Dashboard
+                </div>
+                <div class="course-info">
+                    <h1 id="course-title">Clean Reset</h1>
+                    <p id="course-subtitle">Detox en gifstoffen</p>
+                    <div class="course-meta">
+                        <span class="course-level">Intensief</span>
+                        <span class="course-duration">21 dagen</span>
+                        <span class="lessons-count">20 lessen</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="lessons-section">
+                <div class="lessons-header">
+                    <h2>Jouw Lessen</h2>
+                    <p>Volg de lessen in volgorde voor het beste resultaat</p>
+                </div>
+                
+                <div class="lessons-list" id="lessons-list">
+                    <!-- Lessons will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text">
+            <span id="completed-lessons">0</span> van <span id="total-lessons">20</span> lessen voltooid
+        </div>
+    </div>
+
+    <script src="course-lessons-script.js"></script>
+</body>
+</html>
