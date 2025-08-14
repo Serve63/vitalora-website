@@ -24,9 +24,9 @@ vitalora-website/
 ├── checkout.html              # Checkout page
 ├── checkout-styles.css        # Checkout page styling
 ├── checkout-script.js         # Checkout page JavaScript
-├── dashboard.html             # Dashboard
-├── dashboard-styles.css       # Dashboard styling
-├── dashboard-script.js        # Dashboard JavaScript
+├── academy.html               # Academy (Dashboard)
+├── dashboard-styles.css       # Academy styling
+├── dashboard-script.js        # Academy JavaScript
 ├── course-lessons.html        # Course lessons overview
 ├── course-lessons-styles.css  # Course lessons styling
 ├── course-lessons-script.js   # Course lessons JavaScript
