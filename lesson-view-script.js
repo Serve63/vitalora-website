@@ -8,6 +8,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Update page title and breadcrumb
     updateLessonInfo(courseId, lessonNumber);
 
+    // Render content conditionally: only Clean Reset - Lesson 1 has full content
+    renderLessonContent(courseId, Number(lessonNumber));
+
     // Add scroll animations
     addScrollAnimations();
 
@@ -142,6 +145,31 @@ function updateReadingProgress(current, total) {
     
     // You could add a progress indicator here
     // For now, we'll just log it
+}
+
+// Render dynamic lesson content (only full for Clean Reset - Les 1)
+function renderLessonContent(courseId, lessonNumber) {
+    const wrapper = document.getElementById('lesson-dynamic');
+    if (!wrapper) return;
+
+    const isFirstCleanReset = courseId === 'clean-reset' && lessonNumber === 1;
+    if (isFirstCleanReset) {
+        // leave the existing rich content on the page
+        return;
+    }
+
+    // Replace with placeholder/empty state for other lessons/courses
+    wrapper.innerHTML = `
+        <section class="lesson-section">
+            <div class="section-intro">
+                <p class="intro-text">De inhoud van deze les wordt binnenkort toegevoegd.</p>
+            </div>
+        </section>
+        <section class="lesson-section">
+            <h2>Vooruitblik</h2>
+            <p>Deze les is nog in voorbereiding. Binnenkort vind je hier de volledige uitleg, opdrachten en materialen.</p>
+        </section>
+    `;
 }
 
 // Complete lesson function
