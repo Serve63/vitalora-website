@@ -188,50 +188,82 @@ header {
 }
 
 .toxin-card {
-    background-color: #f8fafc;
-    padding: 30px 20px;
-    border-radius: 12px;
+    position: relative;
+    background: radial-gradient(120% 120% at 50% 0%, #ffffff 0%, #f7fafc 60%, #eef2f7 100%);
+    padding: 32px 24px;
+    border-radius: 16px;
     text-align: center;
-    border: 1px solid #e2e8f0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #e6edf5;
+    box-shadow: 0 6px 18px rgba(16, 24, 40, 0.06), inset 0 1px 0 rgba(255,255,255,0.6);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    will-change: transform, box-shadow;
 }
 
 .toxin-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    transform: translateY(-6px);
+    box-shadow: 0 18px 40px -10px rgba(16, 24, 40, 0.18);
+    border-color: #d7e4f2;
 }
 
 .toxin-icon {
-    font-size: 32px;
-    margin-bottom: 16px;
+    width: 44px;
+    height: 44px;
+    margin: 0 auto 16px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    color: #0f172a;
+    background: linear-gradient(180deg, #eef6ff 0%, #e2f0ff 100%);
+    box-shadow: 0 6px 14px rgba(59, 130, 246, 0.15), inset 0 1px 0 rgba(255,255,255,0.7);
 }
 
 .toxin-percentage {
-    font-size: 24px;
-    font-weight: 700;
-    color: #1e3a8a;
-    margin-bottom: 4px;
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -0.01em;
+    color: #0f2167;
+    margin-bottom: 6px;
 }
 
 .toxin-label {
-    font-size: 12px;
+    display: inline-block;
+    font-size: 11px;
     color: #6b7280;
-    margin-bottom: 16px;
+    margin-bottom: 18px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.6px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: #eef2f7;
+    border: 1px solid #e6edf5;
 }
 
 .toxin-card h3 {
     font-size: 18px;
-    font-weight: 600;
-    color: #1e3a8a;
-    margin-bottom: 12px;
+    font-weight: 700;
+    color: #102a63;
+    margin-bottom: 10px;
 }
 
 .toxin-card p {
     font-size: 14px;
-    color: #6b7280;
-    line-height: 1.5;
+    color: #667085;
+    line-height: 1.6;
+}
+
+/* subtle shine on hover */
+.toxin-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 16px;
+    background: linear-gradient(120deg, rgba(255,255,255,0.0) 30%, rgba(255,255,255,0.25) 45%, rgba(255,255,255,0.0) 60%);
+    transform: translateX(-120%);
+    transition: transform 0.6s ease;
+    pointer-events: none;
+}
+.toxin-card:hover::after {
+    transform: translateX(120%);
 }
 
 /* Why Section */
