@@ -17,6 +17,11 @@
       "source": "/landing",
       "destination": "/ebook",
       "permanent": true
+    },
+    {
+      "source": "/checkout",
+      "destination": "/wacht-even",
+      "permanent": true
     }
   ],
   "rewrites": [
@@ -27,6 +32,10 @@
     {
       "source": "/ebook",
       "destination": "/landing.html"
+    },
+    {
+      "source": "/wacht-even",
+      "destination": "/checkout.html"
     }
   ]
 }
