@@ -9,6 +9,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Access Gate Overlay -->
+    <div id="access-gate" class="access-gate" aria-hidden="true">
+        <div class="access-card" role="dialog" aria-labelledby="access-title" aria-describedby="access-subtitle">
+            <div class="access-brand">
+                <span class="logo-icon">🌿</span>
+                <span class="logo-text">Vitalora Academy</span>
+            </div>
+            <h2 id="access-title">Voer je toegangscode in</h2>
+            <p id="access-subtitle" class="access-subtitle">Vul de 6-cijferige code in om toegang te krijgen</p>
+
+            <form id="access-form" class="code-form" autocomplete="off">
+                <div class="code-inputs" aria-label="6-cijferige code">
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 1" />
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 2" />
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 3" />
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 4" />
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 5" />
+                    <input inputmode="numeric" pattern="[0-9]*" maxlength="1" class="code-digit" aria-label="cijfer 6" />
+                </div>
+                <button type="submit" class="access-btn" disabled>Ontgrendel</button>
+                <p class="access-hint">Tip: voor demo is de code 000000</p>
+                <p id="access-error" class="access-error" role="alert" aria-live="assertive"></p>
+            </form>
+        </div>
+    </div>
     <!-- Main Header -->
     <header class="main-header">
         <div class="container">
@@ -213,5 +238,6 @@
     </footer>
 
     <script src="dashboard-script.js"></script>
+    <script src="academy-login.js"></script>
 </body>
 </html>
