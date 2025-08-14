@@ -3,39 +3,17 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/dashboard",
-      "destination": "/academy",
-      "permanent": true
-    },
-    {
-      "source": "/dashboard.html",
-      "destination": "/academy",
-      "permanent": true
-    },
-    {
-      "source": "/landing",
-      "destination": "/ebook",
-      "permanent": true
-    },
-    {
-      "source": "/checkout",
-      "destination": "/wacht-even",
-      "permanent": true
-    }
+    { "source": "/dashboard", "destination": "/academy", "permanent": true },
+    { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
+    { "source": "/landing", "destination": "/ebook", "permanent": true },
+    { "source": "/checkout", "destination": "/wacht-even", "permanent": true },
+    { "source": "/artikelen", "destination": "/blog", "permanent": true }
   ],
   "rewrites": [
-    {
-      "source": "/academy",
-      "destination": "/academy.html"
-    },
-    {
-      "source": "/ebook",
-      "destination": "/landing.html"
-    },
-    {
-      "source": "/wacht-even",
-      "destination": "/checkout.html"
-    }
+    { "source": "/academy", "destination": "/academy.html" },
+    { "source": "/ebook", "destination": "/landing.html" },
+    { "source": "/wacht-even", "destination": "/checkout.html" },
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/blog", "destination": "/blog.html" }
   ]
 }
