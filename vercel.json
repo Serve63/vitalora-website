@@ -1,0 +1,31 @@
+{
+  "version": 2,
+  "routes": [
+    {
+      "src": "/academy",
+      "dest": "/academy.html"
+    },
+    {
+      "src": "/dashboard",
+      "dest": "/academy.html"
+    },
+    {
+      "src": "/dashboard.html",
+      "dest": "/academy.html"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/academy",
+      "destination": "/academy.html"
+    },
+    {
+      "source": "/dashboard",
+      "destination": "/academy.html"
+    },
+    {
+      "source": "/dashboard.html",
+      "destination": "/academy.html"
+    }
+  ]
+}
