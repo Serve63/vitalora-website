@@ -10,6 +10,8 @@ body {
     line-height: 1.6;
     color: #1e3a8a;
     background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Access Gate */
