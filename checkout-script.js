@@ -67,11 +67,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 const body = {
-                    amount: '1.00',
+                    amount: '0.10',
                     description: 'Clean Reset Cursus',
                     name: firstName + ' ' + lastName,
                     email,
-                    method: document.querySelector('.payment-method.selected span')?.textContent?.toLowerCase() || undefined
+                    method: (function(){
+                        const m = document.querySelector('.payment-method.selected span')?.textContent?.toLowerCase();
+                        if (!m) return undefined;
+                        if (m.includes('ideal')) return 'ideal';
+                        if (m.includes('bancontact')) return 'bancontact';
+                        if (m.includes('credit')) return 'creditcard';
+                        if (m.includes('klarna')) return 'klarna';
+                        return undefined;
+                    })()
                 };
 
                 const resp = await fetch('/api/create-payment', {

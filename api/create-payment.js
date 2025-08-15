@@ -5,7 +5,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { amount = '1.00', description = 'Clean Reset Cursus', name, email, method } = req.body || {};
+    const { amount = '0.10', description = 'Clean Reset Cursus', name, email, method } = req.body || {};
 
     const payload = {
       amount: { currency: 'EUR', value: String(Number(amount).toFixed(2)) },
