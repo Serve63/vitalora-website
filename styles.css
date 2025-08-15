@@ -582,7 +582,8 @@ footer {
     }
     
     .toxins-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
     }
     
     .process-grid {
@@ -618,6 +619,25 @@ footer {
     .hero-text h1 {
         font-size: 28px;
     }
+    
+    /* Mobile-first tap targets */
+    button, .cta-button, .cta-button-large, .nav-link.login {
+        min-height: 44px;
+    }
+    
+    /* Toxin tiles mobile tuning */
+    .toxins-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+    .toxin-card {
+        padding: 18px 12px;
+        border-radius: 12px;
+    }
+    .toxin-icon { width: 36px; height: 36px; }
+    .toxin-percentage { font-size: 20px; }
+    .toxin-card h3 { font-size: 16px; }
+    .toxin-card p { font-size: 13px; }
     
     .toxins h2,
     .why-text h2,
