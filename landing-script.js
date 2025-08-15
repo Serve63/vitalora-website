@@ -14,14 +14,8 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtn && closeBtn.addEventListener('click', closeModal);
     modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
 
-    form && form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        const name = form.querySelector('#lead-name');
-        const email = form.querySelector('#lead-email');
-        if (!name.value.trim() || !email.checkValidity()) { form.reportValidity(); return; }
-        // Direct door naar checkout
-        window.location.href = 'wacht-even';
-    });
+    // Laat standaard HTML submissie naar MailBlue; geen JS-intercept
+    // (bewust geen form.addEventListener('submit', ...) zodat POST direct naar ActiveCampaign gaat.)
 
     // Add click handler for direct access button
     const directAccessButton = document.querySelector('.direct-access');
