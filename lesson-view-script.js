@@ -863,6 +863,158 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 8: Dagelijkse gewoontes voor een sterk immuunsysteem
+    const isEighthPowerfoods = courseId === 'powerfoods' && lessonNumber === 8;
+    if (isEighthPowerfoods) {
+        wrapper.innerHTML = `
+            <section class=\"lesson-section\">
+                <div class=\"section-intro\">
+                    <h1>Dagelijkse gewoontes voor een sterk immuunsysteem</h1>
+                    <p>Kleine, consistente gewoontes hebben meer impact dan af en toe een \"supergezonde\" maaltijd. Je afweer draait op herhaling: goede slaap, bewuste voeding, beweging en ontspanning, elke dag weer.</p>
+                    <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-shield\" style=\"width:18px; height:18px; display:inline-block; flex:0 0 18px;\"></span>
+                        <div>In deze les: ochtendrituelen, bewegen, eetmomenten, slaap, stressreductie, opdrachten en tips.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Wat is een immuunvriendelijke levensstijl?</h2>
+                <p>Een sterk immuunsysteem is als een goed getraind team: paraat, doelgericht en veerkrachtig. Dat vraagt om regelmatige \"training\": slaap, voeding, beweging en ontspanning.</p>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Hoe je je dag start en wat je eerst eet</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Hoeveel en hoe je beweegt</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Je slaapkwaliteit</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Je ademhaling en stressniveau</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Ochtendgewoontes die je afweer activeren</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px;\">
+                        <span class=\"icon-mindfulness\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div>Begin met rustige ademhaling of een korte meditatie om je zenuwstelsel te kalmeren.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px;\">
+                        <span class=\"icon-refresh-large\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div>Drink lauwwarm water met citroen om te hydrateren en je spijsvertering te activeren.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px;\">
+                        <span class=\"icon-nutrition\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div>Voeg camu camu of moringa toe aan een smoothie of je ontbijt.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px;\">
+                        <span class=\"icon-calendar\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div>Korte wandeling in daglicht (10 min) om je biologische klok te ondersteunen.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Bewegen = circulatie voor immuuncellen</h2>
+                <p>Regelmatige, matige beweging activeert je lymfesysteem – de snelweg voor immuuncellen.</p>
+                <ul>
+                    <li>Wandelen in de natuur</li>
+                    <li>Yoga of tai chi</li>
+                    <li>Dansen in de woonkamer</li>
+                </ul>
+                <div class=\"info-card\" style=\"margin-top:8px; padding:12px; border:1px solid #e5e7eb; border-radius:12px;\">Al 20 minuten matige beweging per dag kan ontstekingen verlagen en je afweer versterken.</div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Eetmomenten als mini-vitamineshots</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Combineer bij elke maaltijd 1 vitamine C-bron met 1 gezonde vetbron (bijv. avocado of noten).</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Vermijd sterk bewerkte snacks die je bloedsuiker laten schommelen.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Voeg rauwe groente of gefermenteerde producten toe voor je darmflora.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Slapen = herstellen</h2>
+                <ul>
+                    <li>Ga dagelijks rond hetzelfde tijdstip naar bed.</li>
+                    <li>Avondritueel zonder schermen; kies voor rustgevende thee.</li>
+                    <li>Eet de laatste 2 uur voor het slapengaan niets zwaars.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Ontstressen is ontstekingen verminderen</h2>
+                <ul>
+                    <li>5 minuten bewuste ademhaling (4 tellen in, 6 tellen uit).</li>
+                    <li>Lach en zoek ontspanning op gedurende de dag.</li>
+                    <li>Schrijf 3 dingen op waar je dankbaar voor bent.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Praktische opdracht: jouw immuunroutine journal</h2>
+                <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <ul>
+                        <li>Noteer 3 dagen lang: ochtendstart, voeding (superfoods/specerijen), beweging en ontspanning.</li>
+                        <li>Reflecteer: met welke kleine aanpassing kun je direct winst behalen?</li>
+                    </ul>
+                    <p style=\"margin-top:8px; color:#475569;\">Tip: gebruik je voedingsdagboek ook om je superfood-inname bij te houden (komt terug bij \"Voedingsschema’s en Meal Prepping\").</p>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Challenge: 7 dagen Immuun-Up</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Kies 3 gewoontes (bijv. ochtendwandeling, ademhaling, vitamine C-smoothie) en voer ze 7 dagen uit.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Noteer elke avond kort hoe je je voelde en evalueer na een week.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Thuisonderzoek</h2>
+                <ul>
+                    <li>Hoeveel uur slaap je? Beweeg je 20 minuten per dag?</li>
+                    <li>Hoe vaak eet je gefermenteerde voeding of superfoods?</li>
+                    <li>Wat is je ochtendritueel en hoe ga je om met stress?</li>
+                    <li>Wat kun je als eerste eenvoudig verbeteren?</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Tips</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Start met water met citroen in de ochtend.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Doe een ademhalingsoefening na de lunch.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Plan dagelijks een korte wandeling in.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Eet iets groens en iets gefermenteerds bij elke maaltijd.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Hanteer een vaste bedtijd.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Begrippenlijst</h2>
+                <div class=\"glossary-item\"><strong>Lymfesysteem</strong> – Netwerk dat immuuncellen en afvalstoffen transporteert.</div>
+                <div class=\"glossary-item\"><strong>Cortisol</strong> – Primair stresshormoon; teveel onderdrukt je afweer.</div>
+                <div class=\"glossary-item\"><strong>Fermentatie</strong> – Vormt probiotica via goede bacteriën; ondersteunt darmen.</div>
+                <div class=\"glossary-item\"><strong>Circadiaans ritme</strong> – Biologische klok die slaap, eetlust en hormonen reguleert.</div>
+                <div class=\"glossary-item\"><strong>Vitamine C</strong> – Antioxidant die weerstand en herstel ondersteunt.</div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Tot slot</h2>
+                <p>Je bouwt een krachtig immuunsysteem met herhaling van kleine, haalbare gewoontes. Elke wandeling, ademhalingsoefening en superfood-maaltijd is een stap richting meer veerkracht.</p>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <strong>Wat heb je geleerd in dit hoofdstuk?</strong>
+                    <ul style=\"margin-top:8px;\">
+                        <li>Welke superfoods je afweer ondersteunen</li>
+                        <li>Hoe je krachtige smoothies en sappen samenstelt</li>
+                        <li>Waarom routines het verschil maken</li>
+                    </ul>
+                    <p style=\"margin-top:8px; color:#475569;\">Bonus: in de volgende les vind je een handig overzicht van superfoods voor sterke weerstand (te downloaden).</p>
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
