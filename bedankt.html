@@ -3,82 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gefeliciteerd! - Vitalora</title>
-  <link rel="stylesheet" href="success-styles.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <title>Bedankt – Vitalora</title>
+  <link rel="stylesheet" href="thanks-styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo" onclick="window.location.href='index.html'">
-          <span class="logo-icon">🌿</span>
-          <span class="logo-text">Vitalora</span>
+  <div class="container">
+    <section class="hero">
+      <div class="photo">
+        <img src="https://images.unsplash.com/photo-1519710884006-88f3d130e8bf?q=80&w=1600&auto=format&fit=crop" alt="Danielle loopt buiten" />
+      </div>
+      <div class="text">
+        <div class="pill">Heel veel succes!</div>
+        <h1 class="title">Je hebt de juiste keuze gemaakt.</h1>
+        <div class="copy">
+          <p>Je lichaam gaat weer doen wat het hoort te doen: energie geven, helder denken, beter herstellen.</p>
+          <p>Blijf erbij. Geef aandacht aan je proces. Wat je nu in gang hebt gezet, ga je voelen – en terugzien.</p>
+          <p>Ik wens je heel veel succes en plezier in dit nieuwe avontuur.</p>
+          <p class="signature">Liefs, Daniëlle</p>
         </div>
       </div>
-    </div>
-  </header>
+    </section>
 
-  <main>
-    <div class="container">
-      <div class="badge">Toegang Bevestigd</div>
-      <h1 class="title">Gefeliciteerd!</h1>
-      <p class="subtitle">Goed bezig — je hebt zojuist toegang gekregen tot de methode<br>‘Clean Reset Detox & Gifstoffen’</p>
-
-      <div class="success-grid">
-        <div class="visual">
-          <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1600&auto=format&fit=crop" alt="Programma devices" />
+    <h2 class="section-title">Wat nu?</h2>
+    <section class="steps">
+      <div>
+        <div class="step">
+          <div class="bullet">1</div>
+          <div>
+            <h4>Check je e‑mail</h4>
+            <p>Binnen enkele minuten ontvang je een bevestigingsmail met je toegangsgegevens en verdere instructies.</p>
+          </div>
         </div>
-        <div class="content">
-          <div class="discount-badge">70% korting</div>
-          <h2 class="selling-title"><span class="accent">1.200+ </span>mensen voegden deze <a class="accent-link" href="#">bundel</a> toe aan hun detoxtraject!</h2>
-          <p class="section-label">Je krijgt direct toegang tot:</p>
-          <ul class="tick-list">
-            <li><span class="icon"></span>PowerFoods: Superfood & Specerij</li>
-            <li><span class="icon"></span>De Juiste Balans: Energie & Hormonen</li>
-            <li><span class="icon"></span>Mindful Energy: Innerlijke Rust</li>
-            <li><span class="icon"></span>Everyday Nutrition: Praktisch en Gezond</li>
-          </ul>
-          <p class="section-label">Inclusief:</p>
-          <ul class="dash-list">
-            <li>Video- en audiomateriaal</li>
-            <li>Cheatsheets & praktische overzichten</li>
-          </ul>
+        <div class="step">
+          <div class="bullet">2</div>
+          <div>
+            <h4>Maak je account aan</h4>
+            <p>Volg de link in je e‑mail om je persoonlijke account te activeren en je profiel in te stellen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="bullet">3</div>
+          <div>
+            <h4>Start je reis</h4>
+            <p>Begin met je gepersonaliseerde programma en ontdek alle tools en begeleiding die voor je klaarstaan.</p>
+          </div>
         </div>
       </div>
-
-      <p class="symbolic">Symbolisch bedrag: <strong>€1,-</strong></p>
-
-      <div class="cta-row upsell">
-        <button id="upsell-buy" class="cta">Voeg bundel toe voor €1,-</button>
-        <button id="skip-upsell" class="link-btn" onclick="window.location.href='academy'">Nee bedankt, ga naar de Academy</button>
+      <div class="help">
+        <h4>Hulp nodig?</h4>
+        <p><strong>E‑mail niet ontvangen?</strong><br>Check je spam/ongewenste e‑mail map of neem contact met ons op.</p>
+        <p><strong>Technische problemen?</strong><br>Stuur een e‑mail naar <a href="mailto:support@vitalora.nl">support@vitalora.nl</a>.</p>
+        <p><strong>Vragen over het programma?</strong><br>Bekijk onze veelgestelde vragen of plan een gesprek in.</p>
+        <button class="contact" onclick="window.location.href='contact'">Contact opnemen</button>
       </div>
-    </div>
-  </main>
-  <script>
-  (function(){
-    const upsellBtn = document.getElementById('upsell-buy');
-    if(!upsellBtn) return;
-    upsellBtn.addEventListener('click', async function(){
-      upsellBtn.textContent = 'Bezig...';
-      upsellBtn.disabled = true;
-      try{
-        const params = new URLSearchParams(location.search);
-        const cid = params.get('cid');
-        const resp = await fetch('/api/create-payment', {
-          method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy', recurring:true, customerId: cid })
-        });
-        const data = await resp.json();
-        if(!resp.ok || !data.checkoutUrl) throw new Error('geen checkoutUrl');
-        window.location.href = data.checkoutUrl;
-      }catch(e){
-        alert('Kon upsell niet starten. Probeer opnieuw.');
-        upsellBtn.textContent = 'Voeg bundel toe voor €1,-';
-        upsellBtn.disabled = false;
-      }
-    });
-  })();
-  </script>
+    </section>
+  </div>
 </body>
 </html>

@@ -10,7 +10,7 @@ export default async function handler(req, res) {
     const payload = {
       amount: { currency: 'EUR', value: String(Number(amount).toFixed(2)) },
       description,
-      redirectUrl: redirectUrl || 'https://www.vitalora.nl/gefeliciteerd',
+      redirectUrl: redirectUrl || 'https://www.vitalora.nl/bedankt.html',
       metadata: { name, email },
     };
 
