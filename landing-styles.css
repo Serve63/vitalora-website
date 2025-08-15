@@ -84,18 +84,17 @@ body {
 }
 
 .direct-access {
-    position: absolute;
-    top: 30px;
-    left: 20px;
     background-color: #1e3a8a;
     color: white;
     border: none;
     padding: 8px 16px;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    display: inline-block;
+    margin-bottom: 12px;
 }
 
 .direct-access:hover {
@@ -144,14 +143,15 @@ body {
     color: #374151;
 }
 
-.checkmark {
-    color: #1e3a8a;
-    font-weight: 700;
-    font-size: 18px;
-}
-
 .checkmark.icon-checkmark {
-    color: #10b981;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    border-radius: 4px;
+    background: #10b981;
+    -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E");
+    -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center;
 }
 
 .cta-button {
@@ -174,11 +174,9 @@ body {
 }
 
 /* Book Stack */
-.hero-image {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+.hero-image { display:flex; justify-content:center; align-items:flex-start }
+
+.ebook-cover { max-width: 360px; width:100%; height:auto; margin-top:-20px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
 
 .book-stack {
     position: relative;
