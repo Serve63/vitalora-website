@@ -331,6 +331,23 @@ body {
     opacity: 0.9;
 }
 
+/* Modal */
+.modal.hidden { display: none; }
+.modal { position: fixed; inset:0; z-index: 2000; }
+.modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.65); backdrop-filter: blur(2px); }
+.modal-card {
+    position: relative; z-index:1; max-width: 520px; margin: 8vh auto; background: #fff; border-radius: 16px;
+    border: 1px solid #e5e7eb; box-shadow: 0 25px 60px rgba(2,6,23,0.35);
+    padding: 24px 24px 28px;
+}
+.modal-close { position:absolute; right: 12px; top: 8px; border:0; background: transparent; font-size: 28px; line-height: 1; cursor: pointer; color:#6b7280 }
+.modal-header h3 { font-size: 22px; color:#1e3a8a; margin-bottom:6px }
+.modal-header p { color:#6b7280; margin-bottom: 16px }
+.modal-form { display:flex; flex-direction: column; gap: 12px }
+.modal-form label span { display:block; font-weight:600; color:#1e3a8a; margin-bottom: 6px }
+.modal-form input { width:100%; padding: 12px 14px; border:1px solid #e5e7eb; border-radius: 10px; font:inherit }
+.modal-feedback { display:none; color:#10b981; font-weight:600; margin-top:8px }
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content {

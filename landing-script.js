@@ -1,22 +1,26 @@
 // Landing page interactions
 document.addEventListener('DOMContentLoaded', function() {
-    // Add click handlers for all CTA buttons
-    const ctaButtons = document.querySelectorAll('.cta-button');
-    
-    ctaButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            // Add click animation
-            this.style.transform = 'scale(0.95)';
-            setTimeout(() => {
-                this.style.transform = 'scale(1)';
-            }, 150);
-            
-            // Here you could add actual functionality like opening a form or redirecting
-            console.log('CTA button clicked!');
-            
-            // For demo purposes, show an alert
-            alert('Bedankt voor je interesse! Je wordt doorgestuurd naar de microplastics detox methode.');
-        });
+    // Lead capture modal
+    const modal = document.getElementById('ebook-modal');
+    const openers = [document.getElementById('ebook-claim'), document.getElementById('ebook-claim-bottom')].filter(Boolean);
+    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
+    const form = modal ? modal.querySelector('#ebook-form') : null;
+    const feedback = modal ? modal.querySelector('#ebook-feedback') : null;
+
+    function openModal() { if (!modal) return; modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); (modal.querySelector('input')||{}).focus?.(); }
+    function closeModal() { if (!modal) return; modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); }
+
+    openers.forEach(btn => btn && btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
+    closeBtn && closeBtn.addEventListener('click', closeModal);
+    modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
+
+    form && form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = form.querySelector('#lead-name');
+        const email = form.querySelector('#lead-email');
+        if (!name.value.trim() || !email.checkValidity()) { form.reportValidity(); return; }
+        feedback.style.display = 'block';
+        setTimeout(() => { closeModal(); name.value = ''; email.value = ''; feedback.style.display = 'none'; window.location.href = 'wacht-even'; }, 900);
     });
 
     // Add click handler for direct access button
