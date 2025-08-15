@@ -63,9 +63,11 @@
       upsellBtn.textContent = 'Bezig...';
       upsellBtn.disabled = true;
       try{
+        const params = new URLSearchParams(location.search);
+        const cid = params.get('cid');
         const resp = await fetch('/api/create-payment', {
           method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy' })
+          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy', recurring: true, customerId: cid })
         });
         const data = await resp.json();
         if(!resp.ok || !data.checkoutUrl) throw new Error('geen checkoutUrl');

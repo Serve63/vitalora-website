@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const resp = await fetch('/api/create-payment', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(body)
+                    body: JSON.stringify({ ...body, enableRecurring: true })
                 });
                 const data = await resp.json();
                 if (!resp.ok || !data.checkoutUrl) throw new Error('Kon betaalpagina niet openen');
