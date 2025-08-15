@@ -345,6 +345,89 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 3: Natuurlijke versus bewerkte voeding
+    const isThirdPowerfoods = courseId === 'powerfoods' && lessonNumber === 3;
+    if (isThirdPowerfoods) {
+        wrapper.innerHTML = `
+            <section class=\"lesson-section\">
+                <div class=\"section-intro\">
+                    <h1>Natuurlijke versus bewerkte voeding</h1>
+                    <p>Voeding is de bouwsteen van je lichaam. Elke hap wordt afgebroken tot voedingsstoffen die je cellen gebruiken voor energie, herstel en bescherming. De kwaliteit van die bouwstenen maakt het verschil: haal je ze uit pure, natuurlijke bronnen of vooral uit sterk bewerkte producten?</p>
+                    <p>In deze les ontdek je waarom natuurlijke voeding bijdraagt aan vitaliteit en hoe bewerkte voeding juist kan tegenwerken.</p>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Wat is natuurlijke voeding?</h2>
+                <p>Natuurlijke voeding is voeding in zo puur mogelijke vorm: minimaal bewerkt en zonder onnodige toevoegingen.</p>
+                <h3 style=\"margin-top:12px;\">Kenmerken</h3>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Onbewerkt of minimaal bewerkt</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Geen kunstmatige toevoegingen</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Hoog in vitamines, mineralen en vezels</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Rijk aan natuurlijke enzymen en antioxidanten</li>
+                </ul>
+                <p>Voorbeelden: verse groenten en fruit, noten, zaden, volkoren granen, eieren, vis en (bij voorkeur) biologisch vlees.</p>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <strong>Vuistregel:</strong> hoe korter de ingrediëntenlijst, hoe natuurlijker het product.
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Wat is bewerkte voeding?</h2>
+                <p>Bewerkte voeding is voeding die afwijkt van de oorspronkelijke staat. Dat varieert van licht bewerkt (bijv. gepelde noten) tot sterk bewerkt (bijv. frisdrank, chips, kant-en-klaar).</p>
+                <div class=\"problem-card\" style=\"padding:16px; border:1px dashed #e5e7eb; border-radius:12px;\">
+                    <h3>Kenmerken van sterk bewerkt</h3>
+                    <ul>
+                        <li>Rijk aan toegevoegde suikers, zout en ongezonde vetten</li>
+                        <li>Kunstmatige kleur-, geur- en smaakstoffen</li>
+                        <li>Minder voedingsstoffen door verhitting/chemie</li>
+                        <li>Langere houdbaarheid door conserveringsmiddelen</li>
+                    </ul>
+                </div>
+                <p>Voorbeelden: frisdrank, snoep, koek, fastfood, diepvriespizza’s en pakjes/zakjes met sauzen of soepen.</p>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <strong>Tip:</strong> staan er namen op de verpakking die je niet herkent of amper kunt uitspreken? Grote kans dat het sterk bewerkt is.
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Waarom is natuurlijke voeding beter?</h2>
+                <h3 style=\"margin-top:12px;\">1) Meer voedingsstoffen, minder toevoegingen</h3>
+                <p>Natuurlijke voeding levert vitamines, mineralen, antioxidanten en vezels. Sterk bewerkt levert vaak vooral \"lege calorieën\" met weinig micronutriënten.</p>
+                <h3 style=\"margin-top:12px;\">2) Betere spijsvertering en darmgezondheid</h3>
+                <p>Vezels en enzymen ondersteunen je spijsvertering en microbioom. Sterk bewerkt (suikers, ongezonde vetten) kan je darmflora juist verstoren.</p>
+                <h3 style=\"margin-top:12px;\">3) Stabielere energie</h3>
+                <p>Volwaardige producten helpen je bloedsuikerspiegel stabiel te houden. Sterk bewerkt veroorzaakt juist pieken en dips.</p>
+                <h3 style=\"margin-top:12px;\">4) Hormonen en immuunsysteem</h3>
+                <p>Veel pure producten ondersteunen hormonale balans en immuniteit. Overmatige suikers en transvetten werken ontstekingsbevorderend.</p>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Praktisch toepassen</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Kies vaker voor onbewerkte producten (groenten, fruit, volkoren, noten, peulvruchten)</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Check de ingrediëntenlijst: hoe korter, hoe beter</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Vermijd geraffineerde suikers en kunstmatige toevoegingen</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Kook vaker zelf en beperk kant-en-klaar</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Samenvatting</h2>
+                <ul>
+                    <li>Natuurlijke voeding levert hoogwaardige bouwstenen voor je lichaam.</li>
+                    <li>Sterk bewerkte producten bevatten vaak veel toevoegingen en weinig micronutriënten.</li>
+                    <li>Door kleine, bewuste keuzes voel je je energieker en vitaler.</li>
+                </ul>
+                <div class=\"info-card\" style=\"margin-top:16px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <strong>Volgende les:</strong> Hoe start je met superfoods?
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
