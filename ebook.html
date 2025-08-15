@@ -60,7 +60,7 @@
                         </div>
                     </div>
                     
-                    <button class="cta-button" onclick="window.location.href='wacht-even'">Claim Jouw Exemplaar →</button>
+                    <button class="cta-button" id="ebook-claim">Claim Jouw Exemplaar →</button>
                 </div>
                 
                 <div class="hero-image">
@@ -76,6 +76,30 @@
             </div>
         </div>
     </section>
+
+    <!-- Lead Capture Modal -->
+    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-card">
+            <button class="modal-close" aria-label="Sluiten">×</button>
+            <div class="modal-header">
+                <h3 id="modal-title">Claim jouw gratis exemplaar</h3>
+                <p>Vul je naam en e‑mail in. Je ontvangt direct de downloadlink.</p>
+            </div>
+            <form id="ebook-form" class="modal-form" novalidate>
+                <label>
+                    <span>Naam</span>
+                    <input type="text" id="lead-name" name="name" placeholder="Jouw naam" required />
+                </label>
+                <label>
+                    <span>E‑mail</span>
+                    <input type="email" id="lead-email" name="email" placeholder="jij@voorbeeld.nl" required />
+                </label>
+                <button type="submit" class="cta-button" style="margin:0">Ontvang het e‑book</button>
+                <p id="ebook-feedback" class="modal-feedback">Bedankt! Check je e‑mail voor de downloadlink.</p>
+            </form>
+        </div>
+    </div>
 
     <!-- Testimonials Section -->
     <section class="testimonials">
@@ -199,7 +223,7 @@
         <div class="container">
             <h2>Klaar om de controle terug te nemen?</h2>
             <p>Je bent één klik verwijderd van de kennis die je nodig hebt om je lichaam te bevrijden van microplastics.</p>
-            <button class="cta-button" onclick="window.location.href='wacht-even'">Claim Jouw Exemplaar →</button>
+            <button class="cta-button" id="ebook-claim-bottom">Claim Jouw Exemplaar →</button>
         </div>
     </section>
 
