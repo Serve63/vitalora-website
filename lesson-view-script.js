@@ -428,6 +428,68 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 4: Hoe start je met superfoods?
+    const isFourthPowerfoods = courseId === 'powerfoods' && lessonNumber === 4;
+    if (isFourthPowerfoods) {
+        wrapper.innerHTML = `
+            <section class="lesson-section">
+                <div class="section-intro">
+                    <h1>Hoe start je met superfoods?</h1>
+                    <p>Superfoods kunnen je energie ondersteunen, je immuunsysteem versterken en bijdragen aan een gezonde huid. Niet elk superfood werkt voor iedereen hetzelfde. Het begint bij luisteren naar je lichaam en stap voor stap ontdekken wat bij jou past.</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Stap 1: Wat heeft jouw lichaam nodig?</h2>
+                <p>Let op signalen van je lichaam en koppel ze aan mogelijke behoeften.</p>
+                <ul class="benefits-list">
+                    <li><span class="checkmark icon-checkmark"></span> Vaak moe of middagdip → behoefte aan langdurige, stabiele energie</li>
+                    <li><span class="checkmark icon-checkmark"></span> Snel verkouden/zwakke weerstand → extra immuunondersteuning</li>
+                    <li><span class="checkmark icon-checkmark"></span> Stemmingswisselingen/prikkelbaarheid → hormoonbalans ondersteunen</li>
+                    <li><span class="checkmark icon-checkmark"></span> Doffe/droge huid of acne → meer voedende micronutriënten</li>
+                    <li><span class="checkmark icon-checkmark"></span> Trage spijsvertering/opgeblazen gevoel → darmondersteuning</li>
+                </ul>
+                <div class="info-card" style="margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; align-items:flex-start; gap:10px;">
+                    <span class="icon-calendar" style="width:18px; height:18px; display:inline-block; flex:0 0 18px;"></span>
+                    <div>
+                        <strong>Tip:</strong> houd een voedingsdagboek bij. Noteer een week lang wat je eet en hoe je je voelt. Zo herken je patronen.
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Stap 2: Koppel behoeften aan superfoods</h2>
+                <p>Gebruik je observaties om gericht te kiezen. In de rest van deze cursus duiken we dieper in welke superfoods passen bij specifieke doelen en hoe je ze toepast.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Stap 3: Testen en observeren</h2>
+                <div class="info-card" style="padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                    <ul>
+                        <li>Kies <strong>één</strong> superfood tegelijk en gebruik het dagelijks gedurende twee weken.</li>
+                        <li>Let op veranderingen in energie, huid, spijsvertering en stemming.</li>
+                        <li>Noteer je bevindingen in je voedingsdagboek.</li>
+                    </ul>
+                </div>
+                <p style="margin-top:12px;">Werkt een superfood merkbaar voor jou? Blijf het dan gebruiken. Merk je weinig verschil? Test vervolgens een alternatief.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Samenvatting</h2>
+                <ul>
+                    <li>Luister naar de signalen van je lichaam en bepaal je behoeften.</li>
+                    <li>Koppel gericht superfoods aan die behoeften in plaats van alles tegelijk te proberen.</li>
+                    <li>Test per keer één superfood en evalueer na twee weken.</li>
+                </ul>
+                <div class="info-card" style="margin-top:16px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; align-items:center; gap:10px;">
+                    <span class="icon-nutrition" style="width:18px; height:18px; display:inline-block;"></span>
+                    <div><strong>Volgende les:</strong> welke superfoods passen bij verschillende doelen en hoe verwerk je ze praktisch in je voeding.</div>
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
