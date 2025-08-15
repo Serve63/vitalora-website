@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gefeliciteerd! - Vitalora</title>
+  <link rel="stylesheet" href="success-styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo" onclick="window.location.href='index.html'">
+          <span class="logo-icon">🌿</span>
+          <span class="logo-text">Vitalora</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <div class="badge">Toegang Bevestigd</div>
+      <h1 class="title">Gefeliciteerd!</h1>
+      <p class="subtitle">Goed bezig — je hebt zojuist toegang gekregen tot de methode<br>‘Clean Reset Detox & Gifstoffen’</p>
+
+      <div class="success-grid">
+        <div class="visual">
+          <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754?q=80&w=1600&auto=format&fit=crop" alt="Programma devices" />
+        </div>
+        <div class="content">
+          <div class="discount-badge">70% korting</div>
+          <h2 class="selling-title"><span class="accent">1.200+ </span>mensen voegden deze <a class="accent-link" href="#">bundel</a> toe aan hun detoxtraject!</h2>
+          <p class="section-label">Je krijgt direct toegang tot:</p>
+          <ul class="tick-list">
+            <li><span class="icon"></span>PowerFoods: Superfood & Specerij</li>
+            <li><span class="icon"></span>De Juiste Balans: Energie & Hormonen</li>
+            <li><span class="icon"></span>Mindful Energy: Innerlijke Rust</li>
+            <li><span class="icon"></span>Everyday Nutrition: Praktisch en Gezond</li>
+          </ul>
+          <p class="section-label">Inclusief:</p>
+          <ul class="dash-list">
+            <li>Video- en audiomateriaal</li>
+            <li>Cheatsheets & praktische overzichten</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="symbolic">Symbolisch bedrag: <strong>€1,-</strong></p>
+
+      <div class="cta-row upsell">
+        <button id="upsell-buy" class="cta">Voeg bundel toe voor €1,-</button>
+        <button id="skip-upsell" class="link-btn" onclick="window.location.href='academy'">Nee bedankt, ga naar de Academy</button>
+      </div>
+    </div>
+  </main>
+  <script>
+  (function(){
+    const upsellBtn = document.getElementById('upsell-buy');
+    if(!upsellBtn) return;
+    upsellBtn.addEventListener('click', async function(){
+      upsellBtn.textContent = 'Bezig...';
+      upsellBtn.disabled = true;
+      try{
+        const resp = await fetch('/api/create-payment', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy' })
+        });
+        const data = await resp.json();
+        if(!resp.ok || !data.checkoutUrl) throw new Error('geen checkoutUrl');
+        window.location.href = data.checkoutUrl;
+      }catch(e){
+        alert('Kon upsell niet starten. Probeer opnieuw.');
+        upsellBtn.textContent = 'Voeg bundel toe voor €1,-';
+        upsellBtn.disabled = false;
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

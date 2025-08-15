@@ -15,6 +15,6 @@
     { "source": "/wacht-even", "destination": "/checkout.html" },
     { "source": "/contact", "destination": "/contact.html" },
     { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/gefeliciteerd", "destination": "/bedankt.html" }
+    { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" }
   ]
 }
