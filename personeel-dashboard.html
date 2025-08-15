@@ -6,52 +6,89 @@
   <title>Personeel Dashboard</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .dash{padding:40px 20px}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
-    .card{background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 10px 24px rgba(15,23,42,.06);padding:18px}
-    .card h3{margin-bottom:8px;color:#333}
-    .kpi{font-size:28px;font-weight:800;color:#0f172a}
-    .toolbar{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
-    .toolbar a{color:#3A9AEA;text-decoration:none;font-weight:700}
-    .muted{color:#64748b;font-size:14px}
+    :root{--brand:#3A9AEA;--ink:#0f172a;--muted:#64748b}
+    body{background:#f3f6fb}
+    .app{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 64px)}
+    .topbar{background:linear-gradient(90deg,var(--brand),#7ec3f5);color:#fff}
+    .topbar .container{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+    .topbar .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
+    .topbar a{color:#fff;text-decoration:none;font-weight:700;opacity:.9}
+    .topbar a:hover{opacity:1}
+
+    .sidenav{background:#ffffff;border-right:1px solid #e5e7eb;padding:22px 16px}
+    .sidenav h4{font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
+    .navlist{display:flex;flex-direction:column;gap:6px}
+    .navlist a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:#334155;text-decoration:none;font-weight:600}
+    .navlist a.active,.navlist a:hover{background:#eef7fe;color:#1d4ed8}
+
+    .content{padding:26px}
+    .heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .heading h1{margin:0;color:#333}
+    .muted{color:var(--muted);font-size:14px}
+
+    .kpi-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0 24px}
+    .kpi{grid-column:span 3;background:linear-gradient(180deg,#ffffff, #f6f9fe);border:1px solid #e6edf7;border-radius:16px;box-shadow:0 10px 26px rgba(15,23,42,.06), inset 0 1px 0 #fff;padding:18px}
+    .kpi h3{margin:0 0 8px;color:#334155;font-weight:700}
+    .kpi .val{font-size:30px;font-weight:800;color:var(--ink)}
+    .kpi .sub{font-size:12px;color:#94a3b8;margin-top:4px}
+
+    .card{background:#fff;border:1px solid #e6edf7;border-radius:16px;box-shadow:0 10px 24px rgba(15,23,42,.06), inset 0 1px 0 #fff;padding:20px}
+    .card h3{margin:0 0 10px;color:#333}
     table{width:100%;border-collapse:collapse}
-    th,td{padding:10px;border-bottom:1px solid #eef2f7;text-align:left;font-size:14px}
+    th,td{padding:12px 10px;border-bottom:1px solid #eef2f7;text-align:left;font-size:14px}
+    th{color:#64748b;font-weight:700}
+
+    @media(max-width:1024px){.kpi{grid-column:span 6}}
+    @media(max-width:768px){.app{grid-template-columns:1fr}.sidenav{display:none}.kpi{grid-column:span 12}}
   </style>
 </head>
 <body>
-  <header class="main-header">
+  <div class="topbar">
     <div class="container">
-      <div class="header-content">
-        <div class="logo" onclick="window.location.href='index.html'"><span class="logo-icon">🌿</span><span class="logo-text">Vitalora</span></div>
-        <nav class="header-nav"><a class="nav-link" href="/">Home</a></nav>
+      <div class="brand"><span class="logo-icon">🌿</span><span class="logo-text" style="color:#fff">Vitalora</span></div>
+      <div style="display:flex;align-items:center;gap:14px">
+        <a href="/" class="nav-link" style="color:#fff">Naar website</a>
+        <a href="#" id="logout" class="nav-link" style="color:#fff">Uitloggen</a>
       </div>
     </div>
-  </header>
+  </div>
 
-  <main class="container dash">
-    <div class="toolbar">
-      <h1 style="color:#333;margin:0">Personeel Dashboard</h1>
-      <a href="#" id="logout">Uitloggen</a>
-    </div>
-    <p class="muted">Demo weergave (statisch). Koppel later aan echte data.</p>
-    <div class="grid" style="margin:16px 0 24px">
-      <div class="card"><h3>Omzet vandaag</h3><div class="kpi">€ 124,80</div></div>
-      <div class="card"><h3>Omzet deze maand</h3><div class="kpi">€ 3.942,10</div></div>
-      <div class="card"><h3>Nieuwe klanten</h3><div class="kpi">27</div></div>
-      <div class="card"><h3>Openstaande betalingen</h3><div class="kpi">5</div></div>
-    </div>
+  <div class="app">
+    <aside class="sidenav">
+      <h4>Menu</h4>
+      <nav class="navlist">
+        <a class="active" href="#">Overzicht</a>
+        <a href="#">Omzet</a>
+        <a href="#">Klanten</a>
+        <a href="#blogs">Blogs</a>
+      </nav>
+    </aside>
 
-    <div class="card" style="margin-top:8px">
-      <h3>Blogbeheer (statisch)</h3>
-      <p class="muted">Klik op een post om het bronbestand te openen. Volledige CMS-koppeling kunnen we later toevoegen.</p>
-      <table>
-        <thead><tr><th>Titel</th><th>Bestand</th></tr></thead>
-        <tbody>
-          <tr><td>Artikelen overzicht</td><td><a href="/blog.html" target="_blank">blog.html</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </main>
+    <main class="content">
+      <div class="heading">
+        <h1>Personeel Dashboard</h1>
+        <span class="muted">Demo weergave — koppelbaar aan echte data</span>
+      </div>
+
+      <section class="kpi-grid">
+        <div class="kpi"><h3>Omzet vandaag</h3><div class="val">€ 124,80</div><div class="sub">+12% vs. gisteren</div></div>
+        <div class="kpi"><h3>Omzet deze maand</h3><div class="val">€ 3.942,10</div><div class="sub">+7% vs. vorige maand</div></div>
+        <div class="kpi"><h3>Nieuwe klanten</h3><div class="val">27</div><div class="sub">+3 vandaag</div></div>
+        <div class="kpi"><h3>Openstaande betalingen</h3><div class="val">5</div><div class="sub">totaal € 241,30</div></div>
+      </section>
+
+      <section id="blogs" class="card">
+        <h3>Blogbeheer</h3>
+        <p class="muted">Klik op een item om het bronbestand te openen. CMS-koppeling kan later toegevoegd worden.</p>
+        <table>
+          <thead><tr><th>Titel</th><th>Bestand</th></tr></thead>
+          <tbody>
+            <tr><td>Artikelen overzicht</td><td><a href="/blog.html" target="_blank">blog.html</a></td></tr>
+          </tbody>
+        </table>
+      </section>
+    </main>
+  </div>
 
   <script>
     (function(){
