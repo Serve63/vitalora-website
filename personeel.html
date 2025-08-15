@@ -40,12 +40,12 @@
     (function(){
       const key = 'staff_access_ok';
       const saved = localStorage.getItem(key);
-      if(saved === '1') { window.location.href = '/academy'; return; }
+      if(saved === '1') { window.location.href = '/personeel-dashboard'; return; }
       document.getElementById('enter').addEventListener('click', function(){
         const v = (document.getElementById('staff-code').value || '').trim();
         if(v === '246810') { // placeholder gate
           localStorage.setItem(key,'1');
-          window.location.href = '/academy';
+          window.location.href = '/personeel-dashboard';
         } else {
           document.getElementById('err').textContent = 'Ongeldige code.';
         }

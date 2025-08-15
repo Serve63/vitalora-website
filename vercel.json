@@ -18,5 +18,6 @@
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
     { "source": "/bedankt", "destination": "/bedankt.html" }
     ,{ "source": "/personeel", "destination": "/personeel.html" }
+    ,{ "source": "/personeel-dashboard", "destination": "/personeel-dashboard.html" }
   ]
 }
