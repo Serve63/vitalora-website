@@ -7,7 +7,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .header-content{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
 .logo{display:flex;align-items:center;gap:8px;cursor:pointer}
 .logo-icon{font-size:20px}
-.logo-text{font-weight:700;color:#1e3a8a}
+.logo-text{font-weight:700;color:#3A9AEA}
 
 .badge{display:inline-block;margin:20px auto 10px;background:#D1FAE5;color:#065F46;border-radius:999px;padding:6px 12px;font-weight:700}
 .title{font-size:44px;line-height:1.1;text-align:center;margin-top:6px}

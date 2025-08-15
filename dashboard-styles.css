@@ -10,7 +10,7 @@
 body {
     font-family: 'Blender','Rubik','Barlow',sans-serif;
     line-height: 1.6;
-    color: #1e3a8a;
+    color: #3A9AEA;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -115,7 +115,7 @@ body {
 .logo-text {
     font-size: 24px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
 }
 
 .header-nav {
@@ -137,7 +137,7 @@ body {
 
 /* Dashboard Header Section */
 .dashboard-header {
-    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #60a5fa 100%);
+    background: linear-gradient(135deg, #3A9AEA 0%, #3b82f6 50%, #60a5fa 100%);
     color: white;
     padding: 60px 0 80px;
     text-align: center;
@@ -224,7 +224,7 @@ body {
 .courses-section h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
     margin-bottom: 16px;
 }
 

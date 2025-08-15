@@ -58,7 +58,7 @@
 .logo-text {
     font-size: 24px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
 }
 
 .header-nav {
@@ -75,11 +75,11 @@
 }
 
 .nav-link:hover {
-    color: #1e3a8a;
+    color: #3A9AEA;
 }
 
 .nav-link.login {
-    background-color: #1e3a8a;
+    background-color: #3A9AEA;
     color: white;
     padding: 8px 16px;
     border-radius: 6px;
@@ -87,14 +87,14 @@
 }
 
 .nav-link.login:hover {
-    background-color: #1e40af;
+    background-color: #3A9AEA;
     color: white;
 }
 
 body {
     font-family: var(--font-body);
     line-height: 1.6;
-    color: #1e3a8a;
+    color: #3A9AEA;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -131,7 +131,7 @@ header {
 .logo {
     font-size: 24px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
 }
 
 /* Hero Section */
@@ -150,7 +150,7 @@ header {
 .hero-text h1 {
     font-size: 48px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
     margin-bottom: 24px;
     line-height: 1.2;
 }
@@ -185,7 +185,7 @@ header {
 }
 
 .login-link a {
-    color: #1e3a8a;
+    color: #3A9AEA;
     text-decoration: none;
     font-weight: 500;
 }
@@ -278,7 +278,7 @@ header {
 .toxin-card h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #102a63;
+    color: #3A9AEA;
     margin-bottom: 10px;
 }
 
@@ -327,7 +327,7 @@ header {
 .why-text h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
     margin-bottom: 40px;
 }
 
@@ -344,7 +344,7 @@ header {
 }
 
 .benefit-number {
-    background-color: #1e3a8a;
+    background-color: #3A9AEA;
     color: white;
     width: 40px;
     height: 40px;
@@ -360,7 +360,7 @@ header {
 .benefit-content h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #1e3a8a;
+    color: #3A9AEA;
     margin-bottom: 8px;
 }
 
@@ -379,7 +379,7 @@ header {
 .how h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -403,7 +403,7 @@ header {
 .process-card h3 {
     font-size: 24px;
     font-weight: 600;
-    color: #1e3a8a;
+    color: #3A9AEA;
     margin-bottom: 16px;
 }
 
@@ -422,7 +422,7 @@ header {
 .results h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #3A9AEA;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -488,7 +488,7 @@ header {
 
 .progress-fill {
     height: 100%;
-    background-color: #1e3a8a;
+    background-color: #3A9AEA;
     border-radius: 4px;
     transition: width 0.3s ease;
 }
@@ -496,7 +496,7 @@ header {
 /* CTA Section */
 .cta-section {
     padding: 80px 0;
-    background-color: #1e3a8a;
+    background-color: #3A9AEA;
     color: white;
     text-align: center;
 }
