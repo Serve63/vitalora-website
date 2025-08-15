@@ -80,32 +80,35 @@
     <!-- Lead Capture Modal -->
     <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
         <div class="modal-backdrop"></div>
-        <div class="modal-card">
+        <div class="modal-card modal-ebook">
             <button class="modal-close" aria-label="Sluiten">×</button>
-            <div class="modal-header">
-                <h3 id="modal-title">Claim jouw gratis exemplaar</h3>
-                <p>Vul je naam en e‑mail in. Je ontvangt direct de downloadlink.</p>
+            <div class="modal-hero">
+                <h2 id="modal-title">Gratis download</h2>
+                <p class="modal-subtitle">Winstgevende Website Formule</p>
             </div>
-            <form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
-                <input type="hidden" name="u"   value="3">
-                <input type="hidden" name="f"   value="3">
-                <input type="hidden" name="s"   value="">
-                <input type="hidden" name="c"   value="0">
-                <input type="hidden" name="m"   value="0">
-                <input type="hidden" name="act" value="sub">
-                <input type="hidden" name="v"   value="2">
-                <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
+            <div class="modal-body two-col">
+                <div class="modal-illustration" aria-hidden="true">
+                    <img src="https://images.unsplash.com/photo-1544717305-996b815c338c?q=80&w=800&auto=format&fit=crop" alt="E‑book cover" />
+                </div>
+                <div class="modal-copy">
+                    <p class="modal-lead">Hét stappenplan om razendsnel meer omzet uit je website te halen!</p>
+                    <form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
+                        <input type="hidden" name="u"   value="3">
+                        <input type="hidden" name="f"   value="3">
+                        <input type="hidden" name="s"   value="">
+                        <input type="hidden" name="c"   value="0">
+                        <input type="hidden" name="m"   value="0">
+                        <input type="hidden" name="act" value="sub">
+                        <input type="hidden" name="v"   value="2">
+                        <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
 
-                <label>
-                    <span>Naam</span>
-                    <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
-                </label>
-                <label>
-                    <span>E‑mail</span>
-                    <input type="email" id="lead-email" name="email" placeholder="E‑mail" required />
-                </label>
-                <button type="submit" class="cta-button" style="margin:0">Ontvang het e‑book</button>
-            </form>
+                        <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
+                        <input type="email" id="lead-email" name="email" placeholder="Email" required />
+                        <button type="submit" class="cta-button modal-cta">Download PDF</button>
+                        <p class="modal-trust"><span class="icon-checkmark" style="margin-right:8px"></span>Je gegevens zijn 100% veilig</p>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
