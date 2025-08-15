@@ -60,8 +60,10 @@
     color: #1e3a8a;
 }
 
+@font-face { font-family:'Blender'; src: local('Blender'), url('assets/fonts/Blender-Regular.woff2') format('woff2'); font-display: swap }
+@font-face { font-family:'Blender Strong'; src: local('Blender Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2'); font-display: swap }
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Blender','Rubik','Barlow',sans-serif;
     line-height: 1.6;
     color: #374151;
     background-color: #ffffff;
@@ -271,7 +273,8 @@ body {
 
 .order-form h1 {
     font-size: 28px;
-    font-weight: 700;
+    font-family: 'Blender Strong','Blender','Rubik','Barlow',sans-serif;
+    letter-spacing: .03em;
     color: #1f2937;
     margin-bottom: 40px;
     line-height: 1.3;

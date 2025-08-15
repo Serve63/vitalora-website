@@ -1,4 +1,22 @@
 /* Reset and Base Styles */
+@font-face {
+    font-family: 'Blender';
+    src: local('Blender'), local('Blender Regular'), url('assets/fonts/Blender-Regular.woff2') format('woff2');
+    font-weight: 100 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Blender Strong';
+    src: local('Blender Strong'), local('Blender-Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2');
+    font-weight: 700 900;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --font-heading: 'Blender Strong', 'Blender', 'Rubik', 'Barlow', sans-serif;
+    --font-body: 'Blender', 'Rubik', 'Barlow', sans-serif;
+}
 * {
     margin: 0;
     padding: 0;
@@ -74,12 +92,23 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-body);
     line-height: 1.6;
     color: #1e3a8a;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2 {
+    font-family: var(--font-heading);
+    letter-spacing: 0.03em;
+}
+h3, h4, h5, h6,
+.subtitle, .section-subtitle, .courses-subtitle, .header-description {
+    font-family: var(--font-body);
+    letter-spacing: 0.14em;
+    font-weight: 400;
 }
 
 .container {

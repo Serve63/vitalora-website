@@ -5,8 +5,10 @@
     box-sizing: border-box;
 }
 
+@font-face { font-family:'Blender'; src: local('Blender'), url('assets/fonts/Blender-Regular.woff2') format('woff2'); font-display: swap }
+@font-face { font-family:'Blender Strong'; src: local('Blender Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2'); font-display: swap }
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Blender','Rubik','Barlow',sans-serif;
     line-height: 1.6;
     color: #1e3a8a;
     background-color: #ffffff;
@@ -175,7 +177,8 @@ body {
 
 .dashboard-header h1 {
     font-size: 48px;
-    font-weight: 700;
+    font-family: 'Blender Strong','Blender','Rubik','Barlow',sans-serif;
+    letter-spacing: .03em;
     margin-bottom: 20px;
     line-height: 1.2;
 }
