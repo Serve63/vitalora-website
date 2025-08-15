@@ -215,6 +215,136 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 2: De impact van voeding op je gezondheid
+    const isSecondPowerfoods = courseId === 'powerfoods' && lessonNumber === 2;
+    if (isSecondPowerfoods) {
+        wrapper.innerHTML = `
+            <section class="lesson-section">
+                <div class="section-intro">
+                    <h1>De impact van voeding op je gezondheid</h1>
+                    <p>Voeding is meer dan een manier om honger te stillen. Het beïnvloedt je energieniveau, mentale scherpte, immuunsysteem en zelfs je slaap. Wat je dagelijks eet, bepaalt hoe je je voelt, hoe goed je lichaam functioneert en hoe lang je gezond blijft.</p>
+                    <h3 style="margin-top:16px;">In deze les ontdek je:</h3>
+                    <ul class="benefits-list">
+                        <li><span class="checkmark icon-checkmark"></span> Hoe voeding je lichaam op celniveau beïnvloedt</li>
+                        <li><span class="checkmark icon-checkmark"></span> Waarom niet alle calorieën gelijk zijn</li>
+                        <li><span class="checkmark icon-checkmark"></span> Hoe voeding je mentale gezondheid en stemming beïnvloedt</li>
+                        <li><span class="checkmark icon-checkmark"></span> De invloed van voeding op je slaapkwaliteit</li>
+                        <li><span class="checkmark icon-checkmark"></span> Praktische aanpassingen die je direct kunt toepassen</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Voeding op celniveau: de bouwstenen van je lichaam</h2>
+                <p>Je lichaam vernieuwt zichzelf continu. Oude cellen maken plaats voor nieuwe. De kwaliteit van die cellen hangt direct af van wat je eet. Met de juiste voedingsstoffen functioneert je lichaam beter, herstel je sneller en voel je je energieker.</p>
+                <h3 style="margin-top:12px;">Bouwstoffen en celherstel</h3>
+                <ul class="benefits-list">
+                    <li><strong>Eiwitten</strong>: nodig voor spieropbouw, enzymen en herstel. Bronnen: peulvruchten, noten, vis, vlees.</li>
+                    <li><strong>Vetzuren (omega-3)</strong>: cruciaal voor celmembranen en hersenfunctie. Bronnen: vette vis, lijnzaad, walnoten.</li>
+                    <li><strong>Mineralen en vitamines</strong>: essentieel voor energieproductie en herstel. Denk aan ijzer, magnesium en vitamine C.</li>
+                </ul>
+                <h3 style="margin-top:12px;">Bescherming tegen schade</h3>
+                <p>Dagelijks worden cellen blootgesteld aan vrije radicalen. Antioxidanten uit onder meer bessen, groene thee en cacao helpen beschermen tegen deze schade.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Niet alle calorieën zijn gelijk</h2>
+                <p>De herkomst van calorieën doet ertoe. Je lichaam verwerkt 500 kcal uit bewerkte voeding anders dan 500 kcal uit volwaardige voeding.</p>
+                <div class="info-card" style="margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                    <h3>Voorbeeld: frisdrank vs. noten</h3>
+                    <ul>
+                        <li><strong>Frisdrank</strong>: snelle suikers veroorzaken pieken en dalen in je bloedsuikerspiegel, met vermoeidheid en honger tot gevolg.</li>
+                        <li><strong>Handje noten</strong>: gezonde vetten en eiwitten zorgen voor verzadiging en stabiele energie.</li>
+                    </ul>
+                    <h3 style="margin-top:12px;">Geraffineerd vs. volkoren</h3>
+                    <ul>
+                        <li><strong>Witte rijst/brood/pasta</strong>: snelle afbraak tot glucose, korte piek, snelle dip.</li>
+                        <li><strong>Volkoren varianten</strong>: vezels vertragen afgifte van glucose, langer stabiele energie.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Voeding en mentale gezondheid</h2>
+                <p>Je darmen en hersenen communiceren intensief. Een groot deel van de serotonineproductie vindt in de darmen plaats. Wat je eet beïnvloedt dus je stemming, stress en focus.</p>
+                <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+                    <div class="info-card" style="padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                        <h3>Voeding die helpt</h3>
+                        <ul>
+                            <li><strong>Omega-3</strong> (vette vis, noten, lijnzaad): ondersteunt stemming en concentratie.</li>
+                            <li><strong>Magnesium</strong> (bananen, cacao, spinazie): bevordert ontspanning.</li>
+                            <li><strong>Probiotica</strong> (zuurkool, kefir, yoghurt): ondersteunt een gezonde darmflora.</li>
+                        </ul>
+                    </div>
+                    <div class="problem-card" style="padding:16px; border:1px dashed #e5e7eb; border-radius:12px;">
+                        <h3>Wat je beter beperkt</h3>
+                        <ul>
+                            <li><strong>Suiker en bewerkte koolhydraten</strong>: bevorderen schommelingen in stemming en energie.</li>
+                            <li><strong>Transvetten</strong> (gefrituurd, bepaalde margarines): kunnen ontstekingen in de hersenen aanjagen.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Voeding en slaap</h2>
+                <p>Je eetpatroon heeft invloed op de nachtrust. Sommige stoffen verbeteren ontspanning en slaap, andere werken juist verstorend.</p>
+                <div class="grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;">
+                    <div class="problem-card" style="padding:16px; border:1px dashed #e5e7eb; border-radius:12px;">
+                        <h3>Vermijden in de avond</h3>
+                        <ul>
+                            <li><strong>Cafeïne</strong> (koffie, energie-/cola): werkt uren door en verstoort slaap.</li>
+                            <li><strong>Snelle suikers</strong>: veroorzaken schommelingen en onrust in de nacht.</li>
+                            <li><strong>Zware, vette maaltijden</strong>: belasten de spijsvertering.</li>
+                        </ul>
+                    </div>
+                    <div class="info-card" style="padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                        <h3>Wat helpt</h3>
+                        <ul>
+                            <li><strong>Tryptofaanrijk</strong> (bananen, kalkoen, melk): ondersteunt melatonine-aanmaak.</li>
+                            <li><strong>Magnesiumrijk</strong> (amandelen, spinazie, cacao): bevordert ontspanning.</li>
+                            <li><strong>Kruidenthee</strong> (kamille, valeriaan, lavendel): kalmeert het zenuwstelsel.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Hoe pas je dit toe in je dagelijks leven?</h2>
+                <ul class="benefits-list">
+                    <li><span class="checkmark icon-checkmark"></span> Kies vaker voor volwaardige voeding: groenten, fruit, noten, volkoren.</li>
+                    <li><span class="checkmark icon-checkmark"></span> Beperk snelle suikers en sterk bewerkte producten.</li>
+                    <li><span class="checkmark icon-checkmark"></span> Ondersteun je brein met omega-3, magnesium en probiotica.</li>
+                    <li><span class="checkmark icon-checkmark"></span> Let op timing: regelmatige maaltijden helpen stabiele energie.</li>
+                    <li><span class="checkmark icon-checkmark"></span> Voor betere slaap: vermijd cafeïne en zware maaltijden in de avond.</li>
+                </ul>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Begrippenlijst</h2>
+                <div class="glossary-item"><strong>Antioxidanten</strong> – Stoffen die cellen beschermen tegen schade door vrije radicalen.</div>
+                <div class="glossary-item"><strong>Metabolisme</strong> – Het proces waarmee voeding wordt omgezet in energie.</div>
+                <div class="glossary-item"><strong>Omega-3 vetzuren</strong> – Essentiële vetten voor hersenfunctie en ontstekingsremming.</div>
+                <div class="glossary-item"><strong>Darmmicrobioom</strong> – Miljarden bacteriën in de darmen die spijsvertering en immuunsysteem ondersteunen.</div>
+                <div class="glossary-item"><strong>Bloedsuikerspiegel</strong> – De hoeveelheid glucose in het bloed; beïnvloedt energie en stemming.</div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Samenvatting</h2>
+                <ul>
+                    <li>Voeding beïnvloedt energie, hersenen, slaap en herstel.</li>
+                    <li>Kwaliteit van calorieën is belangrijker dan kwantiteit.</li>
+                    <li>Gezonde voeding kan stemmingswisselingen verminderen.</li>
+                    <li>Je eetpatroon heeft directe invloed op je nachtrust.</li>
+                </ul>
+                <div class="info-card" style="margin-top:16px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                    <strong>Volgende les:</strong> Natuurlijke versus bewerkte voeding – wat is écht gezond?
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
