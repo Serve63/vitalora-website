@@ -11,6 +11,7 @@ export default async function handler(req, res) {
       amount: { currency: 'EUR', value: String(Number(amount).toFixed(2)) },
       description,
       redirectUrl: redirectUrl || 'https://www.vitalora.nl/bedankt.html',
+      webhookUrl: 'https://www.vitalora.nl/api/mollie-webhook',
       metadata: { name, email },
     };
 
