@@ -49,10 +49,34 @@
 
       <p class="symbolic">Symbolisch bedrag: <strong>€1,-</strong></p>
 
-      <div class="cta-row">
-        <button class="cta" onclick="window.location.href='academy'">Naar de Academy</button>
+      <div class="cta-row upsell">
+        <button id="upsell-buy" class="cta">Voeg bundel toe voor €1,-</button>
+        <button id="skip-upsell" class="link-btn" onclick="window.location.href='academy'">Nee bedankt, ga naar de Academy</button>
       </div>
     </div>
   </main>
+  <script>
+  (function(){
+    const upsellBtn = document.getElementById('upsell-buy');
+    if(!upsellBtn) return;
+    upsellBtn.addEventListener('click', async function(){
+      upsellBtn.textContent = 'Bezig...';
+      upsellBtn.disabled = true;
+      try{
+        const resp = await fetch('/api/create-payment', {
+          method:'POST', headers:{'Content-Type':'application/json'},
+          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy' })
+        });
+        const data = await resp.json();
+        if(!resp.ok || !data.checkoutUrl) throw new Error('geen checkoutUrl');
+        window.location.href = data.checkoutUrl;
+      }catch(e){
+        alert('Kon upsell niet starten. Probeer opnieuw.');
+        upsellBtn.textContent = 'Voeg bundel toe voor €1,-';
+        upsellBtn.disabled = false;
+      }
+    });
+  })();
+  </script>
 </body>
 </html>
