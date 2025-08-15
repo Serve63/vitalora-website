@@ -158,6 +158,63 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 1: volledige content
+    const isFirstPowerfoods = courseId === 'powerfoods' && lessonNumber === 1;
+    if (isFirstPowerfoods) {
+        wrapper.innerHTML = `
+            <section class="lesson-section">
+                <div class="section-intro">
+                    <h1>Wat zijn superfoods en specerijen?</h1>
+                    <p>Superfoods en specerijen – je hoort deze termen steeds vaker. Ze klinken hip, gezond en misschien zelfs een beetje mysterieus. Maar wat betekenen ze nu eigenlijk? Zijn superfoods écht zo bijzonder, of is het vooral een slimme marketingterm? En hoe kunnen kruiden en specerijen meer doen dan alleen je eten op smaak brengen?</p>
+                    <p>Laten we samen een duik nemen in de wereld van krachtige voedingsmiddelen, zonder te verdwalen in ingewikkelde termen of gezondheidsclaims. Eén ding is zeker: voeding speelt een enorme rol in hoe jij je elke dag voelt.</p>
+                </div>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Superfoods: meer dan een hype?</h2>
+                <p>Superfoods zijn voedingsmiddelen die van nature veel vitamines, mineralen, antioxidanten of andere waardevolle voedingsstoffen bevatten. Denk aan bessen, zaden, algen en bepaalde groenten. De term ‘superfood’ is geen officiële wetenschappelijke benaming, maar veel van deze ingrediënten worden al eeuwenlang gebruikt vanwege hun voedzame eigenschappen.</p>
+                <p>Superfoods kunnen helpen bij:</p>
+                <ul class="benefits-list">
+                    <li><span class="checkmark icon-checkmark"></span> Het ondersteunen van je energie en vitaliteit</li>
+                    <li><span class="checkmark icon-checkmark"></span> Het versterken van je immuunsysteem</li>
+                    <li><span class="checkmark icon-checkmark"></span> Het bevorderen van een gezonde spijsvertering</li>
+                    <li><span class="checkmark icon-checkmark"></span> Het beschermen tegen oxidatieve stress</li>
+                </ul>
+                <p>Je hoeft daarbij niet alleen te denken aan exotische bessen of dure poeders: ook alledaagse producten zoals broccoli, noten en havermout kunnen echte superfoods zijn.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Specerijen: klein maar krachtig</h2>
+                <p>Nóg een krachtige categorie zijn specerijen. Deze smaakmakers zijn niet alleen lekker, ze hebben vaak ook bijzondere eigenschappen. Kurkuma, kaneel, gember en zwarte peper worden in veel culturen al lang ingezet ter ondersteuning van de gezondheid.</p>
+                <ul class="benefits-list">
+                    <li><span class="icon-digestion" style="margin-right:8px; width:14px; height:14px; display:inline-block;"></span> Ondersteunen van je spijsvertering</li>
+                    <li><span class="icon-refresh" style="margin-right:8px; width:14px; height:14px; display:inline-block;"></span> Werken vaak ontstekingsremmend</li>
+                    <li><span class="icon-brain" style="margin-right:8px; width:14px; height:14px; display:inline-block;"></span> Kunnen mentale helderheid ondersteunen</li>
+                    <li><span class="icon-shield" style="margin-right:8px; width:14px; height:14px; display:inline-block;"></span> Versterken je immuunsysteem</li>
+                </ul>
+                <p>Met kleine toevoegingen – bijvoorbeeld kaneel in je havermout of een beetje kurkuma in je thee – verrijk je je voeding zonder grote veranderingen.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Waarom zijn superfoods en specerijen interessant?</h2>
+                <p>Ze geven je voeding net dat beetje extra. Door vaker te kiezen voor ingrediënten met een hoge voedingswaarde help je je lichaam optimaal functioneren. Geen zorgen: je hoeft je keukenkastjes niet in één keer om te gooien. In deze cursus ontdek je stap voor stap hoe je superfoods en specerijen eenvoudig en effectief integreert in je dagelijkse leven.</p>
+            </section>
+
+            <section class="lesson-section">
+                <h2>Wat kun je verwachten?</h2>
+                <p>In de komende lessen gaan we dieper in op voordelen, toepassingen en verrassende effecten van superfoods en specerijen. Je leert welke het beste bij jouw behoeften passen, hoe je ze slim combineert en hoe je ze verwerkt in lekkere, praktische maaltijden.</p>
+                <div class="info-card" style="margin-top:16px; padding:16px; border:1px solid #e5e7eb; border-radius:12px;">
+                    <div style="display:flex; align-items:center; gap:10px;">
+                        <span class="icon-nutrition" style="width:18px; height:18px; display:inline-block;"></span>
+                        <strong>Klaar om te starten?</strong>
+                    </div>
+                    <p style="margin:8px 0 0 28px; color:#475569;">Ga door naar de volgende les om direct praktisch aan de slag te gaan.</p>
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
