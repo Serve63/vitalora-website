@@ -151,7 +151,7 @@ header {
 .hero-text h1 {
     font-size: 48px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: #333333;
     margin-bottom: 24px;
     line-height: 1.2;
 }
@@ -214,7 +214,7 @@ header {
 .toxins h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #1e3a8a;
+    color: #333333;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -328,7 +328,7 @@ header {
 .why-text h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: #333333;
     margin-bottom: 40px;
 }
 
@@ -380,7 +380,7 @@ header {
 .how h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: #333333;
     text-align: center;
     margin-bottom: 60px;
 }
@@ -423,7 +423,7 @@ header {
 .results h2 {
     font-size: 36px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: #333333;
     text-align: center;
     margin-bottom: 20px;
 }
