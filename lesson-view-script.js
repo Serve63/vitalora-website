@@ -490,6 +490,100 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 5: De rol van voeding in je afweer
+    const isFifthPowerfoods = courseId === 'powerfoods' && lessonNumber === 5;
+    if (isFifthPowerfoods) {
+        wrapper.innerHTML = `
+            <section class=\"lesson-section\">
+                <div class=\"section-intro\">
+                    <h1>De rol van voeding in je afweer</h1>
+                    <p>Je immuunsysteem is je persoonlijke verdedigingslinie tegen virussen, bacteriën en andere indringers. Voeding heeft een grote invloed op hoe sterk en effectief die verdediging is. Een goed gevoed immuunsysteem helpt je beschermen; tekorten maken je juist kwetsbaarder.</p>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Hoe werkt je immuunsysteem?</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <div style=\"display:flex; align-items:center; gap:10px;\">
+                            <span class=\"icon-shield\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                            <h3 style=\"margin:0;\">Aangeboren immuunsysteem</h3>
+                        </div>
+                        <p style=\"margin-top:8px;\">Je eerste, snelle verdedigingslinie (o.a. huid, slijmvliezen en witte bloedcellen) die direct reageert op indringers.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <div style=\"display:flex; align-items:center; gap:10px;\">
+                            <span class=\"icon-success\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                            <h3 style=\"margin:0;\">Verworven immuunsysteem</h3>
+                        </div>
+                        <p style=\"margin-top:8px;\">Leert en onthoudt. Herkent specifieke ziekteverwekkers en bouwt gerichte antistoffen op voor snellere, effectievere reacties.</p>
+                    </div>
+                </div>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; align-items:flex-start; gap:10px;\">
+                    <span class=\"icon-nutrition\" style=\"width:18px; height:18px; display:inline-block; flex:0 0 18px;\"></span>
+                    <div>Beide systemen hebben de juiste voedingsstoffen nodig om optimaal te functioneren.</div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Voeding en je immuunsysteem</h2>
+                <p>Vitamines, mineralen, antioxidanten en andere nutriënten ondersteunen de werking en communicatie van immuuncellen. Een gevarieerd, volwaardig voedingspatroon is de basis voor een krachtig afweersysteem.</p>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Voeding die je immuunsysteem verzwakt</h2>
+                <div class=\"problem-card\" style=\"padding:16px; border:1px dashed #e5e7eb; border-radius:12px;\">
+                    <ul>
+                        <li><strong>Toegevoegde suikers</strong>: kunnen activiteit van immuuncellen verminderen en ontstekingen bevorderen.</li>
+                        <li><strong>Sterk bewerkte voeding</strong>: weinig micronutriënten, vaak transvetten en additieven die je afweer ondermijnen.</li>
+                        <li><strong>Overmatig alcohol</strong>: remt de werking van immuuncellen.</li>
+                        <li><strong>Te veel cafeïne</strong>: kan stresshormonen verhogen en zo je afweer belasten.</li>
+                    </ul>
+                </div>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; align-items:center; gap:10px;\">
+                    <span class=\"icon-balance\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                    <div>Kies zoveel mogelijk voor natuurlijk en onbewerkt.</div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Praktische tips om je immuunsysteem te versterken</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-nutrition\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div><strong>Eet gevarieerd</strong> – combineer groenten, fruit, volkorens, noten, zaden en eiwitten.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-refresh-large\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div><strong>Hydrateer</strong> – water ondersteunt transport en afvoer van afvalstoffen.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-sleep\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div><strong>Slaap voldoende</strong> – tijdens slaap herstelt en kalibreert je afweer.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-heart-rate\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div><strong>Beweeg regelmatig</strong> – matige beweging stimuleert circulatie van immuuncellen.</div>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:14px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-mindfulness\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                        <div><strong>Minimaliseer stress</strong> – chronische stress verhoogt ontstekingen en verzwakt je afweer.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Conclusie</h2>
+                <p>Je immuunsysteem is afhankelijk van wat je eet. Voedingsmiddelen rijk aan vitamines, mineralen en antioxidanten helpen je lichaam weerstand te bieden tegen infecties. Bewerkte voeding en te veel suiker werken dit tegen. Met bewuste keuzes bouw je aan een robuust, veerkrachtig immuunsysteem.</p>
+                <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; align-items:center; gap:10px;\">
+                    <span class=\"icon-arrow-right\" style=\"width:18px; height:18px; display:inline-block;\"></span>
+                    <div><strong>Volgende stap:</strong> pas vandaag één tip toe (bijv. extra groente, waterfles bij de hand, 20 min wandelen) en observeer het effect.</div>
+                </div>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
