@@ -180,7 +180,9 @@ body {
 /* Book Stack */
 .hero-image { display:flex; justify-content:center; align-items:flex-start }
 
-.ebook-cover { max-width: 360px; width:100%; height:auto; margin-top:-20px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
+.ebook-cover { max-width: 540px; width:100%; height:auto; margin-top:-12px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
+@media (max-width: 1024px){ .ebook-cover{ max-width: 460px; } }
+@media (max-width: 768px){ .ebook-cover{ max-width: 420px; margin-top:0 } }
 
 .book-stack {
     position: relative;
