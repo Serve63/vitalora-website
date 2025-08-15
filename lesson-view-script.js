@@ -734,6 +734,135 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 7: Vitamine C-Krachtpatsers
+    const isSeventhPowerfoods = courseId === 'powerfoods' && lessonNumber === 7;
+    if (isSeventhPowerfoods) {
+        wrapper.innerHTML = `
+            <section class=\"lesson-section\">
+                <div class=\"section-intro\">
+                    <h1>Vitamine C-Krachtpatsers: Zo versterk je je weerstand van binnenuit</h1>
+                    <p>Voel je je vaak moe of net niet fit? Vitamine C ondersteunt je weerstand, verkort herstel en helpt beschermen tegen oxidatieve stress. Omdat vitamine C wateroplosbaar is en niet wordt opgeslagen, is dagelijkse inname belangrijk.</p>
+                    <div class=\"info-card\" style=\"margin-top:12px; padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                        <span class=\"icon-shield\" style=\"width:18px; height:18px; display:inline-block; flex:0 0 18px;\"></span>
+                        <div><strong>In deze les:</strong> Waarom vitamine C essentieel is, welke superfoods uitblinken (o.a. Camu Camu, Moringa) en hoe je slim combineert.</div>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Wat doet vitamine C precies?</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>1) Activeert witte bloedcellen</h3>
+                        <p>Ondersteunt productie en activiteit van lymfocyten en fagocyten; helpt ziekteverwekkers sneller uitschakelen.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>2) Versterkt huid- en slijmvliesbarrière</h3>
+                        <p>Ondersteunt barrièrefunctie en herstel via collageenopbouw; eerste verdedigingslinie blijft sterker.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>3) Krachtige antioxidant</h3>
+                        <p>Neutraliseert vrije radicalen en regenereert andere antioxidanten (zoals vitamine E).</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>4) Verbetert ijzeropname</h3>
+                        <p>Vergroot opname van non-heemijzer uit plantaardige bronnen (bijv. linzen met citroen).</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>5) Essentieel voor collageen</h3>
+                        <p>Nodig voor opbouw van huid, botten, bloedvaten, kraakbeen en tandvlees.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Superfoods boordevol vitamine C</h2>
+                <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <strong>Let op:</strong> rauw/vers bevat meer vitamine C dan gekookt; vitamine C is gevoelig voor hitte en licht.
+                </div>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px; margin-top:12px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Camu Camu</h3>
+                        <ul>
+                            <li>Zeer hoge vitamine C-dichtheid (veel hoger dan citrus).</li>
+                            <li>Bevat flavonoïden en anthocyanen; ondersteunt afweer.</li>
+                            <li>Gebruik: 1 theelepel poeder per dag in smoothie/sap.</li>
+                            <li>Niet op lege maag; max. 1–2 tl p/dag.</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Moringa</h3>
+                        <ul>
+                            <li>Rijk aan chlorofyl; ondersteunt detox en energie.</li>
+                            <li>Bevat ijzer + vitamine C; kan vermoeidheid helpen verminderen.</li>
+                            <li>Gebruik: start met 1/2 theelepel poeder; opbouwen naar smaak.</li>
+                            <li>Toepassing: smoothie, soep, pesto, hummus of capsule.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Slimme combinaties voor betere opname</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Vitamine C + ijzerrijk (linzen/spinazie) → betere ijzeropname</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Camu Camu + gezonde vetten (avocado/noten) → langere opname</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Moringa + citrus → dubbele immuunboost</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Praktische opdracht</h2>
+                <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <h3>Maak je eigen C-Boost recept</h3>
+                    <p>Stel een vitamine C-bom samen met minstens drie superfoods. Voorbeeld:</p>
+                    <ul>
+                        <li>1/2 banaan, 1/2 kiwi</li>
+                        <li>1 tl camu camu, 1/2 tl moringa</li>
+                        <li>Sap van 1/2 sinaasappel</li>
+                        <li>Handje verse spinazie</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Challenge: 3-dagen C-kracht</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Neem 3 dagen lang elke dag 3 vitamine C-bronnen.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Varieer (smoothie, salade, soep) en noteer energie/focus/weerstand.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Thuisonderzoek</h2>
+                <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                    <ul>
+                        <li>Zoek 5 producten in je keuken met natuurlijk vitamine C.</li>
+                        <li>Check gehalte (etiket of online) en noteer verrassingen.</li>
+                        <li>Bedenk wat je vaker wilt gebruiken en wat je kunt vervangen.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Tips</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Rauw = krachtiger; kook groente kort om verlies te beperken.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Bewaar koel en donker; vitamine C breekt af door licht/warmte.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Drink voldoende water; ondersteunt afvoer.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Combineer met ijzer voor energie en minder kans op tekorten.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Bouw supplement/poeder langzaam op om maag te laten wennen.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Slot</h2>
+                <p>Met slimme inzet van vitamine C-rijke superfoods zoals Camu Camu en Moringa versterk je je afweer, versnel je herstel en ondersteun je energie. Start vandaag met een C-boost en ervaar het verschil.</p>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
