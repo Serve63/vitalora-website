@@ -19,8 +19,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const name = form.querySelector('#lead-name');
         const email = form.querySelector('#lead-email');
         if (!name.value.trim() || !email.checkValidity()) { form.reportValidity(); return; }
-        feedback.style.display = 'block';
-        setTimeout(() => { closeModal(); name.value = ''; email.value = ''; feedback.style.display = 'none'; window.location.href = 'wacht-even'; }, 900);
+        // Direct door naar checkout
+        window.location.href = 'wacht-even';
     });
 
     // Add click handler for direct access button
