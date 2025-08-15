@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const checkoutButton = document.querySelector('.checkout-button');
     
     if (checkoutButton) {
-        checkoutButton.addEventListener('click', function(e) {
+        checkoutButton.addEventListener('click', async function(e) {
             e.preventDefault();
             
             // Get form inputs
@@ -64,13 +64,29 @@ document.addEventListener('DOMContentLoaded', function() {
             // Add loading state
             this.textContent = 'Bezig met afrekenen...';
             this.disabled = true;
-            
-            // Simulate payment processing
-            setTimeout(() => {
-                alert('Bedankt voor je bestelling! Je ontvangt binnenkort een bevestiging per e-mail.');
+
+            try {
+                const body = {
+                    amount: '1.00',
+                    description: 'Clean Reset Cursus',
+                    name: firstName + ' ' + lastName,
+                    email,
+                    method: document.querySelector('.payment-method.selected span')?.textContent?.toLowerCase() || undefined
+                };
+
+                const resp = await fetch('/api/create-payment', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(body)
+                });
+                const data = await resp.json();
+                if (!resp.ok || !data.checkoutUrl) throw new Error('Kon betaalpagina niet openen');
+                window.location.href = data.checkoutUrl;
+            } catch (err) {
+                alert('Er ging iets mis met starten van de betaling. Probeer opnieuw.');
                 this.textContent = 'Afrekenen €1,00 →';
                 this.disabled = false;
-            }, 2000);
+            }
         });
     }
 
