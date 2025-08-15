@@ -584,6 +584,156 @@ function renderLessonContent(courseId, lessonNumber) {
         return;
     }
 
+    // Superfoods & Specerijen (PowerFoods) – Les 6: Weerstand Boost: Smoothies & Sappen
+    const isSixthPowerfoods = courseId === 'powerfoods' && lessonNumber === 6;
+    if (isSixthPowerfoods) {
+        wrapper.innerHTML = `
+            <section class=\"lesson-section\">
+                <div class=\"section-intro\">
+                    <h1>Weerstand Boost: Krachtige Smoothies & Sappen</h1>
+                    <p>Last van een onzuivere huid, vermoeidheid of terugkerende aften? Dat zijn signalen dat je afweer extra ondersteuning kan gebruiken. In deze les focussen we op voedende smoothies en powerdranken met superfoods die je immuunsysteem helpen en je energie ondersteunen.</p>
+                    <p>We richten ons niet op \"detox\" of vasten, maar op het voeden van je lichaam met hoogwaardige ingrediënten.</p>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Wat zijn powerdranken en waarom zijn ze effectief?</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Antioxidanten</h3>
+                        <p>Superfoods zoals bessen en kurkuma bevatten antioxidanten die je cellen helpen beschermen en je huid ondersteunen.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Immuunondersteuning</h3>
+                        <p>Gember, kurkuma en bladgroenten leveren vitaminen en mineralen die je afweer helpen.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Gezonde darmflora</h3>
+                        <p>Kefir of plantaardige yoghurt met levende culturen ondersteunen je microbioom, de basis van sterke weerstand.</p>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Natuurlijke energie</h3>
+                        <p>Powerdranken geven langdurige energie zonder de suikerdip van bewerkte drankjes.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Superfoods voor smoothies en powerdranken</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Baobab</strong> – rijk aan vitamine C, ondersteunt afweer en huid.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Vliesbessen</strong> – krachtige antioxidanten ter ondersteuning bij verkoudheid.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Spirulina</strong> – chlorofyl, mineralen en eiwitten voor energie.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Kurkuma</strong> – ondersteunt bij ontstekingsprocessen.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Gember</strong> – antibacterieel en spijsverteringsondersteunend.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Bladgroenten</strong> (boerenkool, spinazie) – ijzer en vitamine K.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> <strong>Kefir / plantaardige yoghurt</strong> – probiotica voor je darmen.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Vier weerstand-booster smoothies</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Vitamine-C Glow</h3>
+                        <ul>
+                            <li>1 sinaasappel + 1/2 mango</li>
+                            <li>1 theelepel baobab-poeder</li>
+                            <li>1 klein stukje gember</li>
+                            <li>100 ml water</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Bessen Power</h3>
+                        <ul>
+                            <li>150 g (vlies) bessen (bijv. blauwe of vlier)</li>
+                            <li>1 eetlepel plantaardige yoghurt of kefir</li>
+                            <li>1 theelepel lijnzaad</li>
+                            <li>100 ml water of ongezoete amandelmelk</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Groene Immuun Boost</h3>
+                        <ul>
+                            <li>Handvol spinazie of boerenkool</li>
+                            <li>1/2 avocado</li>
+                            <li>1 theelepel spirulina</li>
+                            <li>1/2 citroen (sap) + 150 ml water</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Golden Smoothie</h3>
+                        <ul>
+                            <li>1 banaan</li>
+                            <li>1 theelepel kurkuma + snufje zwarte peper</li>
+                            <li>100 ml ongezoete plantaardige melk</li>
+                            <li>1 theelepel honing (optioneel)</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style=\"margin-top:8px; color:#475569;\">Bereiding: blend alle ingrediënten tot een romige smoothie. Voeg water toe tot gewenste dikte.</p>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Drie krachtige weerstandsdranken</h2>
+                <div class=\"grid\" style=\"display:grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap:16px;\">
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Gember-Kurkuma Shot</h3>
+                        <ul>
+                            <li>2 cm gember + 1 cm kurkuma (geperst of fijn geraspt)</li>
+                            <li>Sap van 1/2 citroen</li>
+                            <li>Snuf zwarte peper</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Bessensap Booster</h3>
+                        <ul>
+                            <li>100 ml (vlies/vlier) bessensap (ongezoet)</li>
+                            <li>100 ml water</li>
+                            <li>1 theelepel citroensap</li>
+                        </ul>
+                    </div>
+                    <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px;\">
+                        <h3>Groene Juice</h3>
+                        <ul>
+                            <li>Komkommer + handvol spinazie</li>
+                            <li>1 groene appel</li>
+                            <li>1 klein stukje gember</li>
+                        </ul>
+                    </div>
+                </div>
+                <p style=\"margin-top:8px; color:#475569;\">Bereiding: slowjuicer of blender + fijn zeven. Drink langzaam.</p>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Challenge: maak je eigen superfood smoothie</h2>
+                <div class=\"info-card\" style=\"padding:16px; border:1px solid #e5e7eb; border-radius:12px; display:flex; gap:10px; align-items:flex-start;\">
+                    <span class=\"icon-nutrition\" style=\"width:18px; height:18px; display:inline-block; flex:0 0 18px;\"></span>
+                    <div>
+                        Maak een smoothie met minstens <strong>drie</strong> superfoods uit deze les. Noteer hoe je je voelt na het drinken en welke effecten je opmerkt.
+                    </div>
+                </div>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Tips voor de perfecte powerdrank</h2>
+                <ul class=\"benefits-list\">
+                    <li><span class=\"checkmark icon-checkmark\"></span> Gebruik verse ingrediënten voor maximale voedingsstoffen.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Voeg gezonde vetten toe (avocado, lijnzaad) voor betere opname.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Drink langzaam zodat je lichaam optimaal opneemt.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Vermijd toegevoegde suikers – superfoods zijn van zichzelf al voldoende.</li>
+                    <li><span class=\"checkmark icon-checkmark\"></span> Wissel af en experimenteer met combinaties.</li>
+                </ul>
+            </section>
+
+            <section class=\"lesson-section\">
+                <h2>Conclusie</h2>
+                <p>Met de juiste smoothies en powerdranken voed je je lichaam en ondersteun je je weerstand. Superfoods zijn een praktisch hulpmiddel om je energie, huid en immuunsysteem te versterken. Tijd om de blender aan het werk te zetten.</p>
+            </section>
+        `;
+        return;
+    }
+
     // Replace with placeholder/empty state for other lessons/courses
     wrapper.innerHTML = `
         <section class="lesson-section">
