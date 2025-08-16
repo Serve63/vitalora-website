@@ -449,7 +449,8 @@ header {
 .section-arrow {
     height: 0; /* geen eigen strook meer */
     overflow: visible;
-    display: block;
+    display: flex;
+    justify-content: center;
     pointer-events: none;
     background: transparent;
     position: relative;
