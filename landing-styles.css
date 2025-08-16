@@ -5,10 +5,13 @@
     box-sizing: border-box;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Barlow:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 html { scroll-behavior: smooth; }
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family:'Barlow',sans-serif }
-h1,h2{ font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:.03em }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; font-size:16px; line-height:1.6 }
+h1,h2{ font-family:'Cormorant Garamond',Georgia,serif; font-weight:700; line-height:1.1; letter-spacing:.01em }
+h3,h4{ font-family:'Inter',system-ui,sans-serif; font-weight:600; line-height:1.2; letter-spacing:.02em }
+p,li,small{ font-weight:400; letter-spacing:0 }
+button,.cta-button{ font-family:'Inter',sans-serif; font-weight:600; letter-spacing:.04em }
 .hero-description,.testimonials p,.final-cta p{ letter-spacing:0 }
 
 /* Main Header */

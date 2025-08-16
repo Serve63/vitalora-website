@@ -1,8 +1,9 @@
 /* Reset and Base Styles */
-@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Barlow:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 :root {
-    --font-heading: 'Rajdhani', sans-serif;
-    --font-body: 'Barlow', sans-serif;
+    --font-heading: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+    --body-size: 16px; --lh: 1.6;
 }
 * {
     margin: 0;
@@ -78,11 +79,11 @@
     color: white;
 }
 
-body {
+html, body {
     font-family: var(--font-body);
-    font-size: 16px;
-    letter-spacing: 0;
-    line-height: 1.6;
+    font-size: var(--body-size);
+    letter-spacing: 0em;
+    line-height: var(--lh);
     color: #3A9AEA;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
@@ -91,13 +92,12 @@ body {
 
 h1, h2 {
     font-family: var(--font-heading);
-    font-weight: 700;
-    letter-spacing: 0.03em;
+    font-weight: 700; line-height: 1.1; letter-spacing: 0.01em;
     color: #333333;
 }
-h3 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.14em; color: #333333; }
-h4, h5, h6,
-.subtitle, .section-subtitle, .courses-subtitle, .header-description { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.14em; }
+h3, h4 { font-family: var(--font-body); font-weight: 600; line-height: 1.2; letter-spacing: 0.02em; color: #333333; }
+p, li, small { font-weight: 400; letter-spacing: 0em; }
+button, .cta { font-family: var(--font-body); font-weight: 600; letter-spacing: 0.04em; }
 
 .container {
     max-width: 1200px;
