@@ -447,21 +447,20 @@ header {
 
 /* Funnel arrows between sections */
 .section-arrow {
-    height: 160px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 0; /* geen eigen strook meer */
+    overflow: visible;
+    display: block;
     pointer-events: none;
     background: transparent;
     position: relative;
     z-index: 2;
-    /* pull into de aangrenzende secties zodat er geen wit vak ontstaat */
-    margin-top: -48px;
-    margin-bottom: -48px;
+    margin: 0;
 }
 .section-arrow svg {
     width: 140px;
     height: 160px;
+    position: relative;
+    top: -40px; /* laat de pijl over de sectiegrens vallen */
 }
 .section-arrow .arrow-path {
     stroke: #3A9AEA;
