@@ -5,11 +5,10 @@
     box-sizing: border-box;
 }
 
-@font-face { font-family:'Blender'; src: local('Blender'), url('assets/fonts/Blender-Regular.woff2') format('woff2'); font-display: swap }
-@font-face { font-family:'Blender Strong'; src: local('Blender Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2'); font-display: swap }
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Barlow:wght@400&display=swap');
 html { scroll-behavior: smooth; }
-body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family:'Blender','Rubik','Barlow',sans-serif }
-h1,h2{ font-family:'Blender Strong','Blender','Rubik','Barlow',sans-serif; letter-spacing:.03em }
+body { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; font-family:'Barlow',sans-serif }
+h1,h2{ font-family:'Rajdhani',sans-serif; font-weight:700; letter-spacing:.03em }
 .hero-description,.testimonials p,.final-cta p{ letter-spacing:0 }
 
 /* Main Header */

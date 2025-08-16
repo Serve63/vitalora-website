@@ -1,21 +1,8 @@
 /* Reset and Base Styles */
-@font-face {
-    font-family: 'Blender';
-    src: local('Blender'), local('Blender Regular'), url('assets/fonts/Blender-Regular.woff2') format('woff2');
-    font-weight: 100 700;
-    font-style: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Blender Strong';
-    src: local('Blender Strong'), local('Blender-Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2');
-    font-weight: 700 900;
-    font-style: normal;
-    font-display: swap;
-}
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;700&family=Barlow:wght@400&display=swap');
 :root {
-    --font-heading: 'Blender Strong', 'Blender', 'Rubik', 'Barlow', sans-serif;
-    --font-body: 'Blender', 'Rubik', 'Barlow', sans-serif;
+    --font-heading: 'Rajdhani', sans-serif;
+    --font-body: 'Barlow', sans-serif;
 }
 * {
     margin: 0;
@@ -93,6 +80,8 @@
 
 body {
     font-family: var(--font-body);
+    font-size: 16px;
+    letter-spacing: 0;
     line-height: 1.6;
     color: #3A9AEA;
     background-color: #ffffff;
@@ -102,17 +91,13 @@ body {
 
 h1, h2 {
     font-family: var(--font-heading);
-    letter-spacing: 0.03em;
-    color: #333333;
-}
-h3,
-h4, h5, h6,
-.subtitle, .section-subtitle, .courses-subtitle, .header-description {
-    font-family: var(--font-heading);
-    letter-spacing: 0.03em;
     font-weight: 700;
+    letter-spacing: 0.03em;
     color: #333333;
 }
+h3 { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.14em; color: #333333; }
+h4, h5, h6,
+.subtitle, .section-subtitle, .courses-subtitle, .header-description { font-family: var(--font-heading); font-weight: 400; letter-spacing: 0.14em; }
 
 .container {
     max-width: 1200px;
