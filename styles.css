@@ -105,11 +105,13 @@ h1, h2 {
     letter-spacing: 0.03em;
     color: #333333;
 }
-h3, h4, h5, h6,
+h3,
+h4, h5, h6,
 .subtitle, .section-subtitle, .courses-subtitle, .header-description {
-    font-family: var(--font-body);
-    letter-spacing: 0.14em;
-    font-weight: 400;
+    font-family: var(--font-heading);
+    letter-spacing: 0.03em;
+    font-weight: 700;
+    color: #333333;
 }
 
 .container {
