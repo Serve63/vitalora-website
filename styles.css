@@ -447,38 +447,28 @@ header {
 
 /* Funnel arrows between sections */
 .section-arrow {
-    height: 96px;
+    height: 88px;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
 }
 .section-arrow svg {
-    width: 100%;
-    height: 96px;
+    width: min(640px, 92vw);
+    height: 88px;
 }
 .section-arrow .arrow-path {
     stroke: #3A9AEA;
-    stroke-width: 5;
+    stroke-width: 4.5;
     fill: none;
     stroke-linecap: round;
     stroke-linejoin: round;
-    stroke-dasharray: 10 14;
-    animation: arrow-dash 18s linear infinite;
-}
-.section-arrow .arrow-glow {
-    stroke: rgba(58,154,234,0.18);
-    stroke-width: 16;
-    fill: none;
-    filter: blur(8px);
-}
-@keyframes arrow-dash {
-    to { stroke-dashoffset: -160; }
+    stroke-dasharray: 10 12;
 }
 
 @media (max-width: 768px) {
-    .section-arrow { height: 72px; }
-    .section-arrow svg { height: 72px; }
+    .section-arrow { height: 64px; }
+    .section-arrow svg { height: 64px; }
 }
 
 .result-item {
