@@ -150,7 +150,10 @@ header {
 
 .hero-text h1 {
     font-size: 48px;
-    font-weight: 700;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    font-family: var(--font-heading);
     color: #333333;
     margin-bottom: 24px;
     line-height: 1.2;
