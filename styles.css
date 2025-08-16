@@ -447,15 +447,15 @@ header {
 
 /* Funnel arrows between sections */
 .section-arrow {
-    height: 88px;
+    height: 160px;
     display: flex;
     align-items: center;
     justify-content: center;
     pointer-events: none;
 }
 .section-arrow svg {
-    width: min(640px, 92vw);
-    height: 88px;
+    width: 140px;
+    height: 160px;
 }
 .section-arrow .arrow-path {
     stroke: #3A9AEA;
@@ -467,8 +467,8 @@ header {
 }
 
 @media (max-width: 768px) {
-    .section-arrow { height: 64px; }
-    .section-arrow svg { height: 64px; }
+    .section-arrow { height: 120px; }
+    .section-arrow svg { width: 110px; height: 120px; }
 }
 
 .result-item {
