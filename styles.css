@@ -190,6 +190,10 @@ header {
     text-decoration: underline;
 }
 
+@media (min-width: 769px) {
+    .login-link { display: none; }
+}
+
 .hero-image img {
     width: 100%;
     height: 400px;
