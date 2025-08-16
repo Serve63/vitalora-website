@@ -452,6 +452,12 @@ header {
     align-items: center;
     justify-content: center;
     pointer-events: none;
+    background: transparent;
+    position: relative;
+    z-index: 2;
+    /* pull into de aangrenzende secties zodat er geen wit vak ontstaat */
+    margin-top: -48px;
+    margin-bottom: -48px;
 }
 .section-arrow svg {
     width: 140px;
