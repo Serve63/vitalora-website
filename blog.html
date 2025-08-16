@@ -153,11 +153,41 @@
 		];
 
 		const posts = document.getElementById('posts');
+		const topicsToImage = [
+			{k:'aardbei', src:'https://images.unsplash.com/photo-1464965911861-746a04b4bca6?q=80&w=1200&auto=format&fit=crop'},
+			{k:'appel', src:'https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?q=80&w=1200&auto=format&fit=crop'},
+			{k:'kaneel', src:'https://images.unsplash.com/photo-1517677208171-0bc6725a3e60?q=80&w=1200&auto=format&fit=crop'},
+			{k:'granaatappel', src:'https://images.unsplash.com/photo-1604908176997-4318c0bdfb36?q=80&w=1200&auto=format&fit=crop'},
+			{k:'vijg', src:'https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1200&auto=format&fit=crop'},
+			{k:'ananas', src:'https://images.unsplash.com/photo-1502741338009-cac2772e18bc?q=80&w=1200&auto=format&fit=crop'},
+			{k:'chia', src:'https://images.unsplash.com/photo-1604908554027-3c58eea8b4a5?q=80&w=1200&auto=format&fit=crop'},
+			{k:'parabenen', src:'https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=1200&auto=format&fit=crop'},
+			{k:'asbest', src:'https://images.unsplash.com/photo-1504215680853-026ed2a45def?q=80&w=1200&auto=format&fit=crop'},
+			{k:'pfas', src:'https://images.unsplash.com/photo-1505575972945-290bfc2edeb1?q=80&w=1200&auto=format&fit=crop'},
+			{k:'kinkhoest', src:'https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop'},
+			{k:'blauw licht', src:'https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1200&auto=format&fit=crop'},
+			{k:'bpa', src:'https://images.unsplash.com/photo-1556228453-efd1f1db2e9f?q=80&w=1200&auto=format&fit=crop'},
+			{k:'tandpasta', src:'https://images.unsplash.com/photo-1609840134318-1d6c3f2c5592?q=80&w=1200&auto=format&fit=crop'},
+			{k:'dioxine', src:'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?q=80&w=1200&auto=format&fit=crop'},
+			{k:'aspartaam', src:'https://images.unsplash.com/photo-1506806732259-39c2d0268443?q=80&w=1200&auto=format&fit=crop'},
+			{k:'pesticiden', src:'https://images.unsplash.com/photo-1464226184884-fa280b87c399?q=80&w=1200&auto=format&fit=crop'},
+			{k:'fijnstof', src:'https://images.unsplash.com/photo-1529257414772-1960c06c8604?q=80&w=1200&auto=format&fit=crop'},
+			{k:'schimmel', src:'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?q=80&w=1200&auto=format&fit=crop'},
+			{k:'waterkefir', src:'https://images.unsplash.com/photo-1541976076758-347942db1979?q=80&w=1200&auto=format&fit=crop'},
+			{k:'forel', src:'https://images.unsplash.com/photo-1498522271744-cdd435c13ef6?q=80&w=1200&auto=format&fit=crop'},
+			{k:'paprika', src:'https://images.unsplash.com/photo-1546549039-49b69a4f5d30?q=80&w=1200&auto=format&fit=crop'}
+		];
+		function pickImage(title){
+			const lower = title.toLowerCase();
+			for (const map of topicsToImage){ if (lower.includes(map.k)) return map.src; }
+			return 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?q=80&w=1200&auto=format&fit=crop';
+		}
 		if (!posts) return;
 		titles.forEach(function(t){
 			var card = document.createElement('div');
 			card.className = 'post-card';
-			card.innerHTML = '<div class="post-cover"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="#" class="post-link">Lees meer →</a></div>';
+			var img = pickImage(t);
+			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="#" class="post-link">Lees meer →</a></div>';
 			posts.appendChild(card);
 		});
 	})();
