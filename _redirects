@@ -1,6 +1,9 @@
+# Blog post redirects
+/aardbeien-gezond    /post.html?slug=aardbeien-gezond   200
 /peren-gezond    /post.html?slug=peren-gezond   200
 /mango-gezond    /post.html?slug=mango-gezond   200
-/aardbeien-gezond    /post.html?slug=aardbeien-gezond   200
+
+# Catch-all for blog posts
 /*    /post.html?slug=:s   200
 # Pretty URLs & redirects
 /academy            /academy.html    200
