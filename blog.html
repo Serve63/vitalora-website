@@ -196,11 +196,91 @@
 			posts.appendChild(card);
 		});
 		if (!posts) return;
+		// Map titles to SEO slugs
+		const slugRules = [
+			['peren-gezond',['peren']],
+			['mango-gezond',['mango']],
+			['aardbeien-gezond',['aardbeien','aardbei']],
+			['appelazijn-afvallen',['appelazijn']],
+			['kaneel-gezond',['kaneel']],
+			['granaatappel-gezond',['granaatappel']],
+			['vijgen-gezond',['vijgen','vijg']],
+			['ananas-gezond',['ananas']],
+			['zijn-chiazaden-gezond',['chia','chiazaden']],
+			['waarom-heb-ik-steeds-ontstekingen',['ontstekingen','steeds']],
+			['tecfidera-gewichtstoename',['tecfidera']],
+			['natuurlijke-luchtwegverwijders',['luchtweg','luchtwegverwijders']],
+			['oorzaak-schildklierproblemen',['schildklier']],
+			['forel-gezond',['forel']],
+			['bloeddruk-verhogende-voeding',['bloeddruk','verhogende']],
+			['lymfklierstelsel',['lymfklier','lymf']],
+			['bijenpollen-tegen-hooikoorts',['bijenpollen','hooikoorts']],
+			['slechte-adem-door-stress',['slechte adem','stress']],
+			['voeding-lage-bloeddruk',['lage bloeddruk','bloeddruk']],
+			['wat-is-asbest',['asbest']],
+			['schimmel-in-huis-vermoeidheid',['schimmel in huis','vermoeidheid','schimmel']],
+			['waterkefir-gevaarlijk',['waterkefir']],
+			['botontkalking-omkeerbaar',['botontkalking']],
+			['antioxidant-fruit',['antioxidant','fruit']],
+			['wat-voel-je-bij-vetverbranding',['vetverbranding']],
+			['rauwe-paprika-gezond',['paprika']],
+			['wat-is-fijnstof',['fijnstof']],
+			['wat-zijn-parabenen-en-sulfaten',['parabenen','sulfaten']],
+			['wat-zijn-dioxines',['dioxines']],
+			['wat-is-aspartaam',['aspartaam']],
+			['wat-zijn-pesticiden',['pesticiden']],
+			['wat-is-bpa',['bpa']],
+			['wat-is-pfas',['pfas']],
+			['wat-zijn-ftalaten',['ftalaten']],
+			['xeno-oestrogenen',['xeno','oestrogenen']],
+			['kinkhoest-besmettelijk',['kinkhoest']],
+			['endometriose-en-voeding',['endometriose']],
+			['candida-dieet',['candida']],
+			['perilla-olie',['perilla']],
+			['tandpasta-zonder-microplastic',['tandpasta','microplastic']],
+			['microplastics-een-diepgaande-uitleg',['microplastics','diepgaande']],
+			['lever-en-afvallen',['lever en afvallen','lever']],
+			['is-vis-gezond',['is vis gezond','vis gezond','is vis']],
+			['waar-zit-omega-3-in-behalve-vis',['omega-3','behalve vis']],
+			['kruisbloemige-groenten',['kruisbloemige groenten','kruisbloemige']],
+			['vlierbessensap-gezond',['vlierbessensap']],
+			['tuinkers-gezond',['tuinkers']],
+			['chlorella-en-spirulina',['chlorella','spirulina']],
+			['broccolikiemen',['broccolikiemen']],
+			['spierpijn-griep-magnesium',['spierpijn','griep','magnesium']],
+			['voorjaarsgroenten',['voorjaarsgroenten']],
+			['meibomklierdysfunctie-voeding',['meibomklierdysfunctie','meibom']],
+			['energetische-geneeskunde',['energetische geneeskunde','energieheling']],
+			['brandnetel-geneeskracht',['brandnetel']],
+			['kaas-verslavend',['kaas','verslavend']],
+			['wat-is-blauw-licht',['blauw licht']],
+			['warme-tomaat-gezond',['warme tomaat','tomaat']],
+			['waarom-eet-ik-zoveel',['waarom eet ik zoveel','zoveel']],
+			['zilverkaars-en-de-overgang',['zilverkaars','overgang']],
+			['lichaam-ontzuren-onzin',['lichaam ontzuren','ontzuren']],
+			['edelgistvlokken-en-darmen',['edelgistvlokken','darmen']],
+			['nachtschade-groenten-darmen',['nachtschade','groenten','darmen']],
+			['teunisbloemolie-bij-pms',['teunisbloemolie','pms']],
+			['vacramal-ervaring',['vacramal']],
+			['griekse-yoghurt-en-artrose',['griekse yoghurt','artrose']],
+			['hennepzaad-eiwitten',['hennepzaad','eiwitten']]
+		];
+		function toSlug(title){
+			const t = title.toLowerCase();
+			for (const [slug, keys] of slugRules){
+				let ok = true;
+				for (const k of keys){ if (!t.includes(k)) { ok = false; break; } }
+				if (ok) return slug;
+			}
+			return null;
+		}
 		titles.forEach(function(t){
 			var card = document.createElement('div');
 			card.className = 'post-card';
 			var img = pickImage(t);
-			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="#" class="post-link">Lees meer →</a></div>';
+			var slug = toSlug(t);
+			var href = slug ? ('/'+slug) : '#';
+			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="'+href+'" class="post-link">Lees meer →</a></div>';
 			posts.appendChild(card);
 		});
 	})();
