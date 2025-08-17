@@ -273,7 +273,8 @@
 		titles.forEach(function(t){
 			var card = document.createElement('div');
 			card.className = 'post-card';
-			var img = pickImage(t);
+			var q2 = encodeURIComponent(buildQuery(t));
+			var img = 'https://source.unsplash.com/800x450/?'+ q2;
 			var slug = toSlug(t) || slugifyTitle(t);
 			var href = '/'+slug;
 			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="'+href+'" class="post-link">Lees meer →</a></div>';
