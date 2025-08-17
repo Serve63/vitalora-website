@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog – Vitalora</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .post-shell{padding:80px 0}
+    .post-container{max-width:860px;margin:0 auto;padding:0 20px}
+    .post-title{font-size:36px;font-weight:800;color:#333;margin-bottom:16px}
+    .post-meta{color:#6b7280;margin-bottom:24px}
+    .post-body{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:24px}
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <div class="container">
+      <div class="header-content">
+        <div class="logo" onclick="window.location.href='/'"><span class="logo-text">Vitalora.nl</span></div>
+        <nav class="header-nav"><a class="nav-link" href="/blog">Artikelen</a></nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="post-shell">
+    <div class="post-container">
+      <h1 id="post-title" class="post-title">Nog invullen</h1>
+      <div id="post-meta" class="post-meta"></div>
+      <div class="post-body">
+        <p>Nog invullen.</p>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (function(){
+      const params = new URLSearchParams(location.search);
+      const slug = params.get('slug') || '';
+      document.getElementById('post-title').textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+      document.getElementById('post-meta').textContent = '/'+slug;
+    })();
+  </script>
+</body>
+</html>
+
