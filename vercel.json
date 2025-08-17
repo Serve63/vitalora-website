@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "cleanUrls": true,
+  "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
     { "source": "/dashboard", "destination": "/academy", "permanent": true },
@@ -21,7 +21,7 @@
     ,{ "source": "/personeel-dashboard", "destination": "/personeel-dashboard.html" }
     ,{ "source": "/peren-gezond", "destination": "/post.html?slug=peren-gezond" }
     ,{ "source": "/mango-gezond", "destination": "/post.html?slug=mango-gezond" }
-    { "source": "/aardbeien-gezond", "destination": "/aardbeien-gezond.html" }
+    ,{ "source": "/aardbeien-gezond", "destination": "/aardbeien-gezond.html" }
     ,{ "source": "/appelazijn-afvallen", "destination": "/post.html?slug=appelazijn-afvallen" }
     ,{ "source": "/kaneel-gezond", "destination": "/post.html?slug=kaneel-gezond" }
     ,{ "source": "/granaatappel-gezond", "destination": "/post.html?slug=granaatappel-gezond" }
@@ -85,6 +85,6 @@
     ,{ "source": "/vacramal-ervaring", "destination": "/post.html?slug=vacramal-ervaring" }
     ,{ "source": "/griekse-yoghurt-en-artrose", "destination": "/post.html?slug=griekse-yoghurt-en-artrose" }
     ,{ "source": "/hennepzaad-eiwitten", "destination": "/post.html?slug=hennepzaad-eiwitten" }
-    { "source": "/:slug", "destination": "/post.html?slug=:slug" }
+    ,{ "source": "/:slug", "destination": "/post.html?slug=:slug" }
   ]
 }
