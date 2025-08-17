@@ -1,3 +1,7 @@
+/peren-gezond    /post.html?slug=peren-gezond   200
+/mango-gezond    /post.html?slug=mango-gezond   200
+/aardbeien-gezond    /post.html?slug=aardbeien-gezond   200
+/*    /post.html?slug=:s   200
 # Pretty URLs & redirects
 /academy            /academy.html    200
 /ebook              /landing.html    200

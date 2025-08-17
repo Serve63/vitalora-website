@@ -187,15 +187,6 @@
 			return base || 'health wellness';
 		}
 		if (!posts) return;
-		titles.forEach(function(t){
-			var card = document.createElement('div');
-			card.className = 'post-card';
-			var q = encodeURIComponent(buildQuery(t));
-			var img = 'https://source.unsplash.com/800x450/?'+ q;
-			var tempSlug = t.split('—')[0].toLowerCase().split(':')[0].trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="/'+tempSlug+'" class="post-link">Lees meer →</a></div>';
-			posts.appendChild(card);
-		});
 		if (!posts) return;
 		// Map titles to SEO slugs
 		const slugRules = [
