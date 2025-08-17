@@ -21,7 +21,7 @@
     ,{ "source": "/personeel-dashboard", "destination": "/personeel-dashboard.html" }
     ,{ "source": "/peren-gezond", "destination": "/post.html?slug=peren-gezond" }
     ,{ "source": "/mango-gezond", "destination": "/post.html?slug=mango-gezond" }
-    ,{ "source": "/aardbeien-gezond", "destination": "/post.html?slug=aardbeien-gezond" }
+    { "source": "/aardbeien-gezond", "destination": "/aardbeien-gezond.html" }
     ,{ "source": "/appelazijn-afvallen", "destination": "/post.html?slug=appelazijn-afvallen" }
     ,{ "source": "/kaneel-gezond", "destination": "/post.html?slug=kaneel-gezond" }
     ,{ "source": "/granaatappel-gezond", "destination": "/post.html?slug=granaatappel-gezond" }
