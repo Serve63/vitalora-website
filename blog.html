@@ -192,7 +192,8 @@
 			card.className = 'post-card';
 			var q = encodeURIComponent(buildQuery(t));
 			var img = 'https://source.unsplash.com/800x450/?'+ q;
-			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="#" class="post-link">Lees meer →</a></div>';
+			var tempSlug = t.split('—')[0].toLowerCase().split(':')[0].trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="/'+tempSlug+'" class="post-link">Lees meer →</a></div>';
 			posts.appendChild(card);
 		});
 		if (!posts) return;
@@ -272,12 +273,18 @@
 			}
 			return null;
 		}
+		function slugifyTitle(title){
+			let base = title.split('—')[0];
+			base = base.replace(/[:]/g,'');
+			base = base.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+			return base.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+		}
 		titles.forEach(function(t){
 			var card = document.createElement('div');
 			card.className = 'post-card';
 			var img = pickImage(t);
-			var slug = toSlug(t);
-			var href = slug ? ('/'+slug) : '#';
+			var slug = toSlug(t) || slugifyTitle(t);
+			var href = '/'+slug;
 			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="'+href+'" class="post-link">Lees meer →</a></div>';
 			posts.appendChild(card);
 		});
