@@ -88,5 +88,3 @@
     { "source": "/:slug", "destination": "/post.html?slug=:slug" }
   ]
 }
-  ]
-}
