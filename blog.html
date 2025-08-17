@@ -268,9 +268,7 @@
 		function toSlug(title){
 			const t = title.toLowerCase();
 			for (const [slug, keys] of slugRules){
-				let ok = true;
-				for (const k of keys){ if (!t.includes(k)) { ok = false; break; } }
-				if (ok) return slug;
+				if (keys.some(k => t.includes(k))) return slug; // any keyword match
 			}
 			return null;
 		}
