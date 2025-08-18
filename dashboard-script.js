@@ -220,6 +220,55 @@ document.addEventListener('DOMContentLoaded',()=>{
   if(h){fitOneLine(h); window.addEventListener('resize',debounce(()=>fitOneLine(h),250));}
 });
 
+// === SCOPE: academy-js ===
+// Make whole card clickable to lessons overview (same href as "Start cursus")
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.course-card').forEach(card => {
+    // Prefer explicit data-href; else reuse existing "Start cursus" link
+    const dataHref = card.getAttribute('data-href');
+    const startLink = card.querySelector('a.start-course, a[href*="academy"], a[href*="lesson"], a[href]');
+    const href = dataHref || (startLink ? startLink.href : null);
+    if (!href) return;
+
+    card.setAttribute('role', 'link');
+    card.setAttribute('tabindex', '0');
+    card.style.cursor = 'pointer';
+
+    // Click anywhere except native interactive elements
+    card.addEventListener('click', (e) => {
+      const interactive = e.target.closest('a, button, input, select, textarea, label');
+      if (interactive) return;
+      window.location.href = href;
+    });
+
+    // Keyboard accessibility
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        window.location.href = href;
+      }
+    });
+  });
+
+  // Ensure hero fits one line on resize (grow/shrink)
+  const hero = document.querySelector('.hero-title');
+  const debounce = (fn, ms) => { let t; return (...a)=>{clearTimeout(t); t=setTimeout(()=>fn(...a),ms);} };
+  function fitOneLine(el, minPx=18, maxPx=78){
+    if(!el) return;
+    el.style.fontSize = ''; // reset to CSS clamp
+    let fs = parseFloat(getComputedStyle(el).fontSize);
+    while (el.scrollWidth <= el.clientWidth && fs < maxPx) {
+      const next = fs + 1; el.style.fontSize = next + 'px';
+      if (el.scrollWidth > el.clientWidth) { el.style.fontSize = fs + 'px'; break; }
+      fs = next;
+    }
+    while (el.scrollWidth > el.clientWidth && fs > minPx) {
+      fs -= 1; el.style.fontSize = fs + 'px';
+    }
+  }
+  if (hero){ fitOneLine(hero); window.addEventListener('resize', debounce(()=>fitOneLine(hero),250)); }
+});
+
 // Helper function to get course ID from title
 function getCourseId(courseTitle) {
     const courseMap = {

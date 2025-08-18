@@ -258,6 +258,47 @@ body {
 /* === SCOPE: academy-features === */
 .feature .icon,.feature .icon svg{color:#FDB541;fill:#FDB541}
 
+/* === SCOPE: academy-css === */
+/* Hide global site header ONLY on /academy */
+.page-academy header.site-header,
+.page-academy .site-header,
+.page-academy .global-header,
+.page-academy header[role="banner"] {
+  display: none !important;
+}
+.page-academy .hero,
+.page-academy main { padding-top: 0 !important; margin-top: 0 !important; }
+
+/* Hero: white, one-line, Quicksand */
+/* Using Google Fonts CDN (already loaded in HTML) with local fallback */
+.hero-title {
+  font-family: "Quicksand", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  color: #fff !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: clamp(22px, 5.8vw, 78px);
+  line-height: 1.05;
+}
+
+/* Kill any leftover bars/badges on cards */
+.course-card .course-header,
+.course-card .topbar,
+.course-card .label-bar,
+.course-card .course-badge,
+.course-card .course-duration,
+.course-card .badge-right,
+.course-card .badge {
+  display: none !important;
+}
+
+/* Stars gold (works for text star or inline SVG) */
+.feature .icon,
+.feature .icon svg {
+  color: #FDB541;
+  fill: #FDB541;
+}
+
 /* Course Cards */
 .course-card {
     background-color: #ffffff;

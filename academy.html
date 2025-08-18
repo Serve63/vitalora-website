@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
     <link rel="stylesheet" href="/assets/css/footer.css?v=1">
 </head>
-<body>
+<body class="page-academy">
+    <!-- BEGIN SCOPE: academy-html -->
     <!-- Access Gate Overlay -->
     <div id="access-gate" class="access-gate" aria-hidden="true">
         <div class="access-card" role="dialog" aria-labelledby="access-title" aria-describedby="access-subtitle">
@@ -79,17 +80,15 @@
     <main class="main-content">
         <div class="container">
             <div class="courses-section">
-                <h2>Jouw Cursussen</h2>
-                <p class="courses-subtitle">Toegang tot jouw gepersonaliseerde wellness programma's</p>
+                <!-- removed per request -->
                 
                 <!-- BEGIN SCOPE: academy-cards -->
                 <div class="courses-grid">
                     <!-- Course 1: Clean Reset -->
-                    <div class="course-card" data-course="clean-reset" data-image="/assets/images/clean-reset.jpg">
+                    <div class="course-card" data-course="clean-reset" data-image="/assets/images/clean-reset.jpg" data-href="course-view.html?course=clean-reset">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge intensive">Intensief</div>
-                            <div class="course-duration">21 dagen</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>Clean Reset</h3>
@@ -107,11 +106,10 @@
                     </div>
 
                     <!-- Course 2: PowerFoods -->
-                    <div class="course-card" data-course="powerfoods-superfood-specerij" data-image="/assets/images/powerfoods.jpg">
+                    <div class="course-card" data-course="powerfoods-superfood-specerij" data-image="/assets/images/powerfoods.jpg" data-href="course-view.html?course=powerfoods-superfood-specerij">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge fundamental">Fundamenteel</div>
-                            <div class="course-duration">Basis</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>PowerFoods</h3>
@@ -129,11 +127,10 @@
                     </div>
 
                     <!-- Course 3: De Juiste Balans -->
-                    <div class="course-card" data-course="de-juiste-balans" data-image="/assets/images/hormonal-balance.jpg">
+                    <div class="course-card" data-course="de-juiste-balans" data-image="/assets/images/hormonal-balance.jpg" data-href="course-view.html?course=de-juiste-balans">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge advanced">Geavanceerd</div>
-                            <div class="course-duration">Masterclass</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>De Juiste Balans</h3>
@@ -151,11 +148,10 @@
                     </div>
 
                     <!-- Course 4: 30 Dagen Challenge -->
-                    <div class="course-card" data-course="30-dagen-challenge" data-image="/assets/images/30-day-challenge.jpg">
+                    <div class="course-card" data-course="30-dagen-challenge" data-image="/assets/images/30-day-challenge.jpg" data-href="course-view.html?course=30-dagen-challenge">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge accessible">Toegankelijk</div>
-                            <div class="course-duration">Challenge</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>30 Dagen Challenge</h3>
@@ -173,11 +169,10 @@
                     </div>
 
                     <!-- Course 5: Everyday Nutrition -->
-                    <div class="course-card" data-course="everyday-nutrition-praktisch-gezond" data-image="/assets/images/everyday-nutrition.jpg">
+                    <div class="course-card" data-course="everyday-nutrition-praktisch-gezond" data-image="/assets/images/everyday-nutrition.jpg" data-href="course-view.html?course=everyday-nutrition-praktisch-gezond">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge holistic">Holistisch</div>
-                            <div class="course-duration">Praktisch</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>Everyday Nutrition</h3>
@@ -195,11 +190,10 @@
                     </div>
 
                     <!-- Course 6: Mindful Energy -->
-                    <div class="course-card" data-course="mindful-energy-innerlijke-rust" data-image="/assets/images/mindful-energy.jpg">
+                    <div class="course-card" data-course="mindful-energy-innerlijke-rust" data-image="/assets/images/mindful-energy.jpg" data-href="course-view.html?course=mindful-energy-innerlijke-rust">
                         <div class="card-media">
-                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" />
-                            <div class="course-badge intensive">Intensief</div>
-                            <div class="course-duration">Mindfulness</div>
+                            <img src="/assets/images/course-placeholder.svg" alt="Cursus afbeelding" loading="lazy" />
+                            <!-- header bar removed -->
                         </div>
                         <div class="course-content">
                             <h3>Mindful Energy</h3>
@@ -280,5 +274,6 @@
       }
     })();
     </script>
+    <!-- END SCOPE: academy-html -->
 </body>
 </html>
