@@ -1,120 +1,45 @@
-:root { --header-h: 56px; }
+:root{
+  --header-h: 64px;                  /* iets hoger dan nu */
+  --header-logo: #333333;            /* exact jouw kleur (#333333; 6 digits) */
+}
 
+/* Header bar */
 .site-header{
   height: var(--header-h);
-  padding: 8px 16px;
-  display: flex; align-items: center;
-  box-shadow: 0 1px 0 rgba(0,0,0,.06);
-  text-align: left;                 /* forceer geen center */
+  background:#fff;
+  border-bottom:1px solid rgba(15,23,42,.06);
+  position: sticky; top:0; z-index:100;
 }
 
+/* Inhoud */
 .header-inner{
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex; align-items: center; gap: 16px;
-  justify-content: space-between;   /* logo links, nav rechts */
+  max-width:1200px; margin:0 auto; padding:0 20px;
+  height:100%;
+  display:flex; align-items:center; gap:16px; justify-content:space-between;
 }
 
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.logo:hover {
-    opacity: 0.8;
-}
-
-.logo-icon {
-    font-size: 24px;
-}
-
+/* LOGO: forceer kleur en bold, nooit blauw/onderlijnd */
 .site-header .logo{
-  margin-right: auto;
-  font-size: 20px;
-  font-weight: 700;                 /* was te dun → bold */
-  line-height: 1;
-  letter-spacing: .2px;
+  color: var(--header-logo) !important;
+  font: 700 22px/1 "Quicksand", ui-sans-serif, system-ui;
+  letter-spacing:.2px;
+  text-decoration: none !important;
 }
 
-.header-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
+/* Navigatie */
+.main-nav a{
+  color:#0f172a; text-decoration:none; font-weight:600;
+  padding:8px 10px; border-radius:10px;
+}
+.main-nav a:hover{ background:#f1f5f9; }
+
+/* Login badge (gebruik brand kleur) */
+.btn.login-badge{
+  display:inline-flex; align-items:center; gap:8px;
+  padding:8px 12px; border-radius:12px; border:none;
+  background: var(--brand,#2563eb); color:#fff; font-weight:700; text-decoration:none;
 }
 
-.site-header nav a{ padding: 6px 8px; }
-
-/* Login-badge alleen op homepage (laat je bestaande .is-home JS staan) */
+/* Alleen tonen op homepage */
 [data-home-only]{ display:none; }
 .is-home [data-home-only]{ display:inline-flex; }
-
-/* Forceer logo-stijl, ongeacht globale <a>-regels */
-.site-header .logo{
-  color:#0f172a !important;
-  text-decoration:none !important;
-  font-weight:700;            /* bold zoals bedoeld */
-}
-.site-header .logo:hover,
-.site-header .logo:focus{
-  text-decoration:none !important;
-}
-
-.nav-link:hover {
-    color: #3A9AEA;
-}
-
-.nav-link.login {
-    background-color: #3A9AEA;
-    color: white;
-    padding: 6px 8px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.nav-link.login:hover {
-    background-color: #3A9AEA;
-    color: white;
-}
-
-/* Container for header */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-@media (min-width: 1400px) {
-    .container { 
-        max-width: 1280px; 
-    }
-}
-
-/* Responsive header */
-@media (max-width: 768px) {
-    .main-header {
-        padding: 12px 0;
-    }
-    
-    .logo-text {
-        font-size: 20px;
-    }
-    
-    .nav-link.login {
-        padding: 6px 12px;
-        font-size: 14px;
-    }
-}
-
-/* Login-badge standaard verbergen */
-[data-home-only] { 
-    display: none; 
-}
-
-/* Op homepage tonen (inline-flex matcht badge-styling) */
-.is-home [data-home-only] { 
-    display: inline-flex; 
-}
