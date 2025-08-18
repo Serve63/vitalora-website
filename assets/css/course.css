@@ -18,6 +18,21 @@
   color:#fff;
   overflow: hidden;
 }
+
+/* Full-bleed gradient, ongeacht wrappers */
+.course-hero, .lesson-hero {
+  width: 100vw;
+  max-width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
+  color: #fff;
+  border-radius: 0;          /* geen afgeronde hoeken */
+  overflow: visible;         /* niet afsnijden */
+}
 .course-hero::before, .lesson-hero::before{
   content: "";
   position: absolute;
@@ -195,3 +210,6 @@
 
 /* Zorg dat er geen horizontale scrollbar komt door 100vw */
 html, body { overflow-x: clip; }
+
+/* Als er nog een parent met overflow:hidden of border-radius om de hero staat */
+.hero-wrap, .page-hero, .section-hero { overflow: visible; border-radius: 0; }

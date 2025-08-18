@@ -54,3 +54,14 @@ a, .prose a {
   box-shadow: none !important;
   -webkit-box-decoration-break: slice;
 }
+
+/* Reset witte randen door default body-margin (8px) */
+html, body { margin: 0; padding: 0; overflow-x: clip; }
+
+/* Normale links overal (geen gekke markers) */
+a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+.prose a, .course-hero a, .lesson-hero a {
+  background: none !important;
+  box-shadow: none !important;
+}
