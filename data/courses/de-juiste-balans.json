@@ -3,6 +3,7 @@
   "title": "Hormonaal in Balans",
   "subtitle": "Rust, energie en helderheid vanuit je hormonen",
   "level": "Theorie + Praktijk",
+  "theme": { "grad_a": "#0ea5e9", "grad_b": "#1d4ed8", "brand": "#2563eb" },
   "duration_days": 0,
   "lessons": [
     {

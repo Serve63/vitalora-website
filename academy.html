@@ -76,7 +76,7 @@
                 
                 <div class="courses-grid">
                     <!-- Course 1: Clean Reset -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="clean-reset">
                         <div class="course-header">
                             <div class="course-icon icon-detox"></div>
                             <div class="course-badge intensive">Intensief</div>
@@ -98,7 +98,7 @@
                     </div>
 
                     <!-- Course 2: PowerFoods -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="powerfoods">
                         <div class="course-header">
                             <div class="course-icon icon-energy"></div>
                             <div class="course-badge fundamental">Fundamenteel</div>
@@ -120,7 +120,7 @@
                     </div>
 
                     <!-- Course 3: De Juiste Balans -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="de-juiste-balans">
                         <div class="course-header">
                             <div class="course-icon icon-balance"></div>
                             <div class="course-badge advanced">Geavanceerd</div>
@@ -142,7 +142,7 @@
                     </div>
 
                     <!-- Course 4: 30-Daagse Reset Journey -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="30-daagse-reset-journey">
                         <div class="course-header">
                             <div class="course-icon icon-calendar"></div>
                             <div class="course-badge accessible">Toegankelijk</div>
@@ -164,7 +164,7 @@
                     </div>
 
                     <!-- Course 5: Everyday Nutrition -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="everyday-nutrition">
                         <div class="course-header">
                             <div class="course-icon icon-nutrition"></div>
                             <div class="course-badge holistic">Holistisch</div>
@@ -186,7 +186,7 @@
                     </div>
 
                     <!-- Course 6: Mindful Energy -->
-                    <div class="course-card">
+                    <div class="course-card" data-course="mindful-energy">
                         <div class="course-header">
                             <div class="course-icon icon-mindfulness"></div>
                             <div class="course-badge intensive">Intensief</div>
@@ -227,5 +227,24 @@
 
     <script src="dashboard-script.js"></script>
     <script src="academy-login.js"></script>
+    
+    <!-- Theme script voor per-cursus kleuren -->
+    <script>
+    document.addEventListener('DOMContentLoaded', ()=>{
+      document.querySelectorAll('.course-card[data-course]').forEach(async card=>{
+        const slug = card.dataset.course;
+        try{
+          const res = await fetch(`/data/courses/${slug}.json?v=1`);
+          if(!res.ok) return;
+          const { theme } = await res.json();
+          if(theme?.brand){
+            card.querySelectorAll('.start-course,.btn-start').forEach(btn=>{
+              btn.style.background = theme.brand;
+            });
+          }
+        }catch(e){}
+      });
+    });
+    </script>
 </body>
 </html>

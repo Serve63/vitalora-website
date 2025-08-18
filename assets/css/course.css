@@ -1,7 +1,13 @@
+/* Defaults (vallen terug als een cursus geen theme heeft) */
+:root{
+  --grad-a:#0ea5e9;      /* hero kleur A  */
+  --grad-b:#1d4ed8;      /* hero kleur B  */
+  --brand:#2563eb;       /* primaire knop */
+}
+
 /* Hero (slank, consistent) */
 .course-hero, .lesson-hero{
-  --grad-a:#0ea5e9; --grad-b:#1d4ed8;
-  background: linear-gradient(135deg,var(--grad-a),var(--grad-b));
+  background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
   color:#fff;
 }
 .hero--slim{ padding:28px 0 36px; }
@@ -43,7 +49,7 @@
 .btn-start{
   display:inline-flex; align-items:center; gap:8px;
   padding:10px 14px; border-radius:12px; border:none; cursor:pointer;
-  background:#2563eb; color:#fff; font-weight:700; text-decoration:none;
+  background: var(--brand); color:#fff; font-weight:700; text-decoration:none;
 }
 .btn-start:hover{ filter:brightness(1.05); }
 .icon-play{ width:18px; height:18px; border:2px solid #fff; border-left-color:transparent; border-radius:50%; position:relative; }

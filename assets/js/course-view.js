@@ -29,11 +29,23 @@
     // Render lessen
     const live = (course.lessons || []).filter(l => !l.draft);
     el.list.innerHTML = live.map(l => cardTpl(course, l)).join('');
+
+    // Apply theme colors (per pagina, geen globale side-effects)
+    applyTheme(course.theme, document.getElementById('courseHero'));
   }).catch(err=>{
     console.error(err);
     el.title.textContent = 'Cursus niet gevonden';
     el.sub.textContent   = 'Controleer de URL of probeer later opnieuw.';
   });
+
+  function applyTheme(theme, heroEl){
+    if(!theme) return;
+    // hero gradient per cursus
+    if(heroEl && theme.grad_a) heroEl.style.setProperty('--grad-a', theme.grad_a);
+    if(heroEl && theme.grad_b) heroEl.style.setProperty('--grad-b', theme.grad_b);
+    // primaire merk-kleur (knoppen e.d.)
+    if(theme.brand) document.body.style.setProperty('--brand', theme.brand);
+  }
 
   function cardTpl(course, l){
     const url = `/lesson-view.html?course=${course.slug}&lesson=${l.index}`;

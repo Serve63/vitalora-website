@@ -47,11 +47,21 @@
     if(localStorage.getItem(doneKey)==='true' && doneMsg){ doneMsg.textContent='Les voltooid ✓'; }
     doneBtn?.addEventListener('click', ()=>{ localStorage.setItem(doneKey,'true'); if(doneMsg) doneMsg.textContent='Les voltooid ✓'; });
 
+    // Apply theme colors
+    applyTheme(course.theme, document.getElementById('lessonHero'));
+
     function setText(sel,v){ const e=document.querySelector(sel); if(e) e.textContent=v; }
     function setHTML(sel,v){ const e=document.querySelector(sel); if(e) e.innerHTML=v; }
     function setHref(sel,v){ const e=document.querySelector(sel); if(e&&v) e.setAttribute('href',v); }
     function setBadge(sel,v){ const e=document.querySelector(sel); if(e){ e.textContent=v; e.classList.remove('hidden'); } }
   }).catch(()=> showError('Les kon niet geladen worden.'));
+
+  function applyTheme(theme, heroEl){
+    if(!theme) return;
+    if(heroEl && theme.grad_a) heroEl.style.setProperty('--grad-a', theme.grad_a);
+    if(heroEl && theme.grad_b) heroEl.style.setProperty('--grad-b', theme.grad_b);
+    if(theme.brand) document.body.style.setProperty('--brand', theme.brand);
+  }
 
   function showError(msg){
     const t=document.getElementById('lessonTitle'); if(t) t.textContent='Fout bij laden';
