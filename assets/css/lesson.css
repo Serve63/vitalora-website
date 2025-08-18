@@ -42,3 +42,44 @@
 /* accessibility helper */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Course view styling */
+.course-hero h1{font-size:2.5rem;margin:0 0 12px}
+.course-content{margin-top:32px}
+.lessons-grid{display:grid;gap:16px;margin-top:16px}
+.lesson-card{
+  background:var(--card-bg);
+  border-radius:var(--card-br);
+  box-shadow:var(--card-shadow);
+  padding:20px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:16px
+}
+.lesson-info h3{margin:0 0 8px;font-size:1.1rem}
+.lesson-meta{display:flex;gap:8px}
+.badge{
+  background:#f3f4f6;
+  color:#374151;
+  padding:4px 8px;
+  border-radius:6px;
+  font-size:.85rem;
+  font-weight:500
+}
+.badge.duration{background:#dbeafe;color:#1e40af}
+.badge.type{background:#fef3c7;color:#92400e}
+.start-lesson{
+  background:#3A9AEA;
+  color:white;
+  padding:8px 16px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:500;
+  white-space:nowrap
+}
+.start-lesson:hover{background:#2563eb}
+
+/* Lesson badges */
+.lesson-badges{display:flex;gap:8px;margin-top:8px}
+.lesson-navigation{display:flex;gap:12px}

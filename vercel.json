@@ -19,7 +19,9 @@
     { "source": "/bedankt", "destination": "/bedankt.html" },
     { "source": "/personeel", "destination": "/personeel.html" },
     { "source": "/cursus/hormonaal-in-balans/les-1", "destination": "/pages/cursus/hormonaal-in-balans/les-1/index.html" },
-    { "source": "/cursus/hormonaal-in-balans/les-2", "destination": "/pages/cursus/hormonaal-in-balans/les-2/index.html" }
+    { "source": "/cursus/hormonaal-in-balans/les-2", "destination": "/pages/cursus/hormonaal-in-balans/les-2/index.html" },
+    { "source": "/lesson-view", "destination": "/lesson-view.html" },
+    { "source": "/course-view", "destination": "/course-view.html" }
     ,{ "source": "/personeel-dashboard", "destination": "/personeel-dashboard.html" }
     ,{ "source": "/peren-gezond", "destination": "/post.html?slug=peren-gezond" }
     ,{ "source": "/mango-gezond", "destination": "/post.html?slug=mango-gezond" }
