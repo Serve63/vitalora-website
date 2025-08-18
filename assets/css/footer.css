@@ -1,0 +1,36 @@
+/* Footer Fixes */
+
+/* Zorg dat footerlinks niet onnodig bold worden */
+.site-footer a,
+.footer-links a,
+footer a {
+  font-weight: 500;
+}
+
+/* Forceer 1 regel voor Algemene Voorwaarden */
+.nowrap {
+  white-space: nowrap;
+}
+
+/* Als er een 'active' style bold maakt in de footer, kleur i.p.v. bold */
+.site-footer a.active,
+footer a.active {
+  font-weight: inherit;
+  color: #3A9AEA;
+}
+
+/* Safety: als ergens 'strong' op Personeel stond */
+.site-footer a.no-bold,
+footer a.no-bold,
+.site-footer a.no-bold strong,
+footer a.no-bold strong,
+.site-footer a.no-bold b,
+footer a.no-bold b {
+  font-weight: 500 !important;
+}
+
+/* Override inline styles die Personeel bold maken */
+footer a[style*="font-weight:700"],
+footer a[style*="font-weight: 700"] {
+  font-weight: 500 !important;
+}
