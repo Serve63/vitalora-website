@@ -46,3 +46,8 @@
 
 /* Verberg header wanneer het een les-overzicht is */
 .course-overview .site-header { display: none !important; }
+
+/* Login-knop standaard verbergen */
+[data-home-only] { display: none !important; }
+/* Alleen tonen als de pagina als 'home' is gedetecteerd */
+.is-home [data-home-only] { display: inline-flex !important; }
