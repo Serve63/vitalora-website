@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personeel Login</title>
   <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=1">
   <style>
     .staff-gate{min-height:60vh;display:grid;place-items:center;padding:60px 20px}
     .staff-card{max-width:420px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 18px 40px rgba(15,23,42,.08);padding:24px}
@@ -16,14 +17,8 @@
   </style>
 </head>
 <body>
-  <header class="main-header">
-    <div class="container">
-      <div class="header-content">
-        <div class="logo" onclick="window.location.href='index.html'"><span class="logo-text">Vitalora.nl</span></div>
-        <nav class="header-nav"><a class="nav-link login" href="academy">Log In</a></nav>
-      </div>
-    </div>
-  </header>
+  <div data-include="site-header"></div>
+  <script defer src="/assets/js/header.js"></script>
 
   <main class="staff-gate">
     <div class="staff-card">

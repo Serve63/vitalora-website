@@ -9,23 +9,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css?v=qs1">
     <link rel="stylesheet" href="icons.css">
+    <link rel="stylesheet" href="/assets/css/header.css?v=1">
     <meta name="theme-color" content="#1e3a8a">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
-    <header class="main-header">
-        <div class="container">
-            <div class="header-content">
-                <div class="logo" onclick="window.location.href='index.html'">
-                    <span class="logo-text">Vitalora.nl</span>
-                </div>
-                <nav class="header-nav">
-                    <a href="dashboard.html" class="nav-link login">Log In</a>
-                </nav>
-            </div>
-        </div>
-    </header>
+    <div data-include="site-header"></div>
+    <script defer src="/assets/js/header.js"></script>
 
     <!-- Hero Section -->
     <section class="hero">

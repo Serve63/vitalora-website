@@ -11,73 +11,7 @@
     box-sizing: border-box;
 }
 
-/* Main Header */
-.main-header {
-    background-color: #ffffff;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    padding: 16px 0;
-}
-
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    cursor: pointer;
-    transition: opacity 0.3s ease;
-}
-
-.logo:hover {
-    opacity: 0.8;
-}
-
-.logo-icon {
-    font-size: 24px;
-}
-
-.logo-text {
-    font-size: 24px;
-    font-weight: 700;
-    color: #333333;
-}
-
-.header-nav {
-    display: flex;
-    align-items: center;
-    gap: 32px;
-}
-
-.nav-link {
-    text-decoration: none;
-    color: #374151;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
-
-.nav-link:hover {
-    color: #3A9AEA;
-}
-
-.nav-link.login {
-    background-color: #3A9AEA;
-    color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    transition: background-color 0.3s ease;
-}
-
-.nav-link.login:hover {
-    background-color: #3A9AEA;
-    color: white;
-}
+/* Header CSS moved to /assets/css/header.css */
 
 html, body {
     font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
