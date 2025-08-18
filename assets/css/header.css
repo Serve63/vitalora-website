@@ -94,3 +94,13 @@
         font-size: 14px;
     }
 }
+
+/* Login-badge standaard verbergen */
+[data-home-only] { 
+    display: none; 
+}
+
+/* Op homepage tonen (inline-flex matcht badge-styling) */
+.is-home [data-home-only] { 
+    display: inline-flex; 
+}
