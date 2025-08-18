@@ -40,18 +40,34 @@
   background: var(--brand,#2563eb); color:#fff; font-weight:700; text-decoration:none;
 }
 
-/* Alleen tonen op homepage */
-[data-home-only]{ display:none; }
-.is-home [data-home-only]{ display:inline-flex; }
-
 /* Verberg header wanneer het een les-overzicht is */
 .course-overview .site-header { display: none !important; }
 
-/* Standaard verbergen */
-[data-home-only]{ display:none !important; }
+/* Login badge styling en positie */
+.btn.login-badge {
+  background: #3A9AEA;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  margin-left: auto;
+}
+
+.btn.login-badge:hover {
+  background: #2B8AD6;
+}
+
+/* Login badge alleen op homepage tonen */
+[data-home-only] { 
+  display: none !important; 
+}
 
 /* Tonen als de pagina homepage is (beide varianten gedekt) */
 .route-home [data-home-only],
-.is-home    [data-home-only]{
-  display:inline-flex !important;
+.is-home [data-home-only] {
+  display: inline-flex !important;
+  align-items: center;
 }
