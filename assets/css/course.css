@@ -213,3 +213,43 @@ html, body { overflow-x: clip; }
 
 /* Als er nog een parent met overflow:hidden of border-radius om de hero staat */
 .hero-wrap, .page-hero, .section-hero { overflow: visible; border-radius: 0; }
+
+/* === Brand-accenten voor leslijsten (meeschakelen met theme.brand) === */
+
+/* Bovenlijn van elke leskaart in de cursus-kleur */
+.lesson-list .lesson-card { position: relative; }
+.lesson-list .lesson-card::before{
+  content:"";
+  position:absolute; left:0; right:0; top:-2px; height:4px;
+  background: var(--brand, #2563eb);
+  border-radius: 999px;
+  opacity:.95;
+}
+
+/* Ronde index-badge in de cursus-kleur (dekt meerdere class-namen) */
+.lesson-list .lesson-card .idx,
+.lesson-list .lesson-card .index,
+.lesson-list .lesson-card .lesson-index,
+.lesson-item .index,
+.lesson-item .index-badge{
+  width:44px; height:44px; border-radius:999px;
+  display:grid; place-items:center;
+  background: var(--brand, #2563eb);
+  color:#fff; font-weight:700;
+  border: 6px solid color-mix(in srgb, var(--brand, #2563eb), white 85%);
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+}
+
+/* Fallback als color-mix niet beschikbaar is */
+@supports not (color: color-mix(in srgb, black, white)) {
+  .lesson-list .lesson-card .idx,
+  .lesson-list .lesson-card .index,
+  .lesson-list .lesson-card .lesson-index,
+  .lesson-item .index,
+  .lesson-item .index-badge{
+    border: 6px solid rgba(0,0,0,.06);
+  }
+}
+
+.lesson-list .lesson-card:hover::before,
+.lesson-list .lesson-card.is-active::before{ opacity:1; }
