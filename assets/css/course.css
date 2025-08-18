@@ -5,6 +5,13 @@
   --brand:#2563eb;       /* primaire knop */
 }
 
+/* Full-bleed voor hero-secties, ongeacht pagina-padding */
+.course-hero, .lesson-hero {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+}
+
 /* Hero (premium, modern) */
 .course-hero, .lesson-hero{
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
@@ -186,3 +193,6 @@
   font-size:.85rem; text-transform:uppercase; letter-spacing:.1em; 
   opacity:.8; margin-bottom:8px; font-weight: 600;
 }
+
+/* Zorg dat er geen horizontale scrollbar komt door 100vw */
+html, body { overflow-x: clip; }

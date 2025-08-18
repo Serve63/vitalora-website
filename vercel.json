@@ -26,7 +26,8 @@
     { "source": "/energie-hormonen-balans", "destination": "/course-view.html?course=energie-hormonen-balans" },
     { "source": "/mindful-energy-innerlijke-rust", "destination": "/course-view.html?course=mindful-energy-innerlijke-rust" },
     { "source": "/everyday-nutrition-praktisch-gezond", "destination": "/course-view.html?course=everyday-nutrition-praktisch-gezond" },
-    { "source": "/powerfoods-superfood-specerij", "destination": "/course-view.html?course=powerfoods-superfood-specerij" }
+    { "source": "/powerfoods-superfood-specerij", "destination": "/course-view.html?course=powerfoods-superfood-specerij" },
+    { "source": "/30-dagen-challenge", "destination": "/course-view.html?course=30-dagen-challenge" }
     ,{ "source": "/personeel-dashboard", "destination": "/personeel-dashboard.html" }
     ,{ "source": "/peren-gezond", "destination": "/post.html?slug=peren-gezond" }
     ,{ "source": "/mango-gezond", "destination": "/post.html?slug=mango-gezond" }

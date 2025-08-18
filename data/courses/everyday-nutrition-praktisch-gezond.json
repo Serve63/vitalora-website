@@ -4,7 +4,7 @@
   "subtitle": "Eenvoudige voeding die werkt — elke dag",
   "level": "Theorie + Praktijk",
   "duration_days": 0,
-  "theme": { "grad_a": "#34d399", "grad_b": "#059669", "brand": "#10b981" },
+  "theme": { "grad_a": "#fde047", "grad_b": "#f59e0b", "brand": "#f59e0b" },
   "lessons": [
     { "id": "les-1",  "index": 1,  "title": "Les 1: (nog te vullen)",  "type": "Theorie",  "duration_min": 15, "draft": true, "content_html": "" },
     { "id": "les-2",  "index": 2,  "title": "Les 2: (nog te vullen)",  "type": "Praktijk", "duration_min": 16, "draft": true, "content_html": "" },

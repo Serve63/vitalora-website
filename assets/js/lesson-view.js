@@ -60,7 +60,7 @@
     if(!theme) return;
     if(heroEl && theme.grad_a) heroEl.style.setProperty('--grad-a', theme.grad_a);
     if(heroEl && theme.grad_b) heroEl.style.setProperty('--grad-b', theme.grad_b);
-    if(theme.brand) document.body.style.setProperty('--brand', theme.brand);
+    if(theme.brand) document.documentElement.style.setProperty('--brand', theme.brand);
   }
 
   function showError(msg){
