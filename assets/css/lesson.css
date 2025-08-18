@@ -83,3 +83,23 @@
 /* Lesson badges */
 .lesson-badges{display:flex;gap:8px;margin-top:8px}
 .lesson-navigation{display:flex;gap:12px}
+
+/* Tabel voor hormonenkaartje */
+.table-wrap { overflow-x:auto; }
+.hormoon-table { width:100%; border-collapse: collapse; }
+.hormoon-table th, .hormoon-table td {
+  border-bottom:1px solid #e5e7eb; padding:10px 12px; vertical-align:top;
+}
+.hormoon-table th { text-align:left; font-weight:700; }
+.hormoon-table td.yn label { margin-right:12px; display:inline-flex; align-items:center; gap:6px; }
+.hormoon-table textarea {
+  width:100%; min-height:80px; padding:10px; border:1px solid #e5e7eb; border-radius:10px; font:inherit;
+}
+
+/* Mobile stack */
+@media (max-width: 720px) {
+  .hormoon-table thead { display:none; }
+  .hormoon-table tr { display:block; margin:12px 0; padding:12px; background:#f9fafb; border-radius:12px; }
+  .hormoon-table td { display:block; border:none; padding:6px 0; }
+  .hormoon-table td.yn { margin:6px 0; }
+}

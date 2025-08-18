@@ -15,7 +15,7 @@
 <body>
   <div data-include="site-header"></div>
 
-  <main class="lesson container">
+  <main class="lesson container" data-lesson-id="hib_l1">
     <nav class="breadcrumb">
       <a href="/">Home</a> ·
       <a href="/cursus/hormonaal-in-balans/">Hormonaal in Balans</a> ·
@@ -56,12 +56,8 @@
       </ol>
 
       <label for="intentie" class="sr-only">Jouw intentie</label>
-      <textarea id="intentie" placeholder="Voorbeeld: 'Ik wil weer stabiele energie en helderheid in m'n hoofd, en mijn cravings onder controle.'"></textarea>
+      <textarea id="intentie" data-store placeholder="Voorbeeld: 'Ik wil weer stabiele energie en helderheid in m'n hoofd, en mijn cravings onder controle. Check-in: elke zondagavond.'"></textarea>
 
-      <div class="actions">
-        <button id="saveIntentie" class="btn">Intentie opslaan</button>
-        <span id="saveStatus" class="muted" aria-live="polite"></span>
-      </div>
     </section>
 
     <section class="card reflect">
@@ -83,6 +79,6 @@
   <div data-include="site-footer"></div>
 
   <script defer src="/assets/js/header.js?v=2"></script>
-  <script defer src="/assets/js/lesson.js?v=1"></script>
+  <script defer src="/assets/js/lesson.js?v=3"></script>
 </body>
 </html>
