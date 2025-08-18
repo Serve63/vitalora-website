@@ -43,3 +43,6 @@
 /* Alleen tonen op homepage */
 [data-home-only]{ display:none; }
 .is-home [data-home-only]{ display:inline-flex; }
+
+/* Verberg header wanneer het een les-overzicht is */
+.course-overview .site-header { display: none !important; }

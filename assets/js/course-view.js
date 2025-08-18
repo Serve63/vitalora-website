@@ -1,4 +1,7 @@
 (function(){
+  // Deze pagina is een cursus-overzicht
+  document.documentElement.classList.add('course-overview');
+  
   const qs = (k) => new URLSearchParams(location.search).get(k);
   const slug = qs('course');
   if(!slug){ console.error('Geen course'); return; }
