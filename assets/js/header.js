@@ -3,16 +3,16 @@ document.addEventListener('DOMContentLoaded', async () => {
   if (!mount) return;
   
   try {
-    const res = await fetch('/partials/header.html?v=2');
+    const res = await fetch('/partials/header.html?v=3');
     if (!res.ok) {
       console.error('Failed to load header:', res.status);
       return;
     }
     mount.innerHTML = await res.text();
 
-    // Markeer of we op de homepage zitten
-    const path = location.pathname.toLowerCase().replace(/\/index\.html$/, '/');
-    const isHome = path === '/';
+    // ✅ Robuuste homepage-detectie
+    const p = location.pathname.toLowerCase().replace(/\/index\.html$/, '/');
+    const isHome = (p === '/' || p === '' || p === '/home' || p === '/home/');
     document.documentElement.classList.toggle('is-home', isHome);
 
     // Active link highlight (optioneel)

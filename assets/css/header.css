@@ -52,6 +52,17 @@
 [data-home-only]{ display:none; }
 .is-home [data-home-only]{ display:inline-flex; }
 
+/* Forceer logo-stijl, ongeacht globale <a>-regels */
+.site-header .logo{
+  color:#0f172a !important;
+  text-decoration:none !important;
+  font-weight:700;            /* bold zoals bedoeld */
+}
+.site-header .logo:hover,
+.site-header .logo:focus{
+  text-decoration:none !important;
+}
+
 .nav-link:hover {
     color: #3A9AEA;
 }
