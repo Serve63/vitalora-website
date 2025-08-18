@@ -35,3 +35,22 @@ button, input, select, textarea {
 .icon, .material-icons, i[class*="icon"], [class*="icon-"] {
   font-family: inherit !important;
 }
+
+/* Basis linkstijl overal */
+a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
+a:hover { text-decoration-thickness: 2px; }
+
+/* Breadcrumbs op hero: wit, geen rare markers */
+.course-hero .crumbs a,
+.lesson-hero .crumbs a {
+  color: rgba(255,255,255,.92);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,.7);
+}
+
+/* Veiligheidsnet: haal eventuele highlight-effecten weg */
+a, .prose a {
+  background: none !important;
+  box-shadow: none !important;
+  -webkit-box-decoration-break: slice;
+}

@@ -1,25 +1,19 @@
-:root { --header-h: 56px; }  /* was te hoog */
+:root { --header-h: 56px; }
 
-/* Main Header */
-.main-header {
-    background-color: #ffffff;
-    box-shadow: 0 1px 0 rgba(0,0,0,.06);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    height: var(--header-h);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 0;
+.site-header{
+  height: var(--header-h);
+  padding: 8px 16px;
+  display:flex; align-items:center;
+  box-shadow: 0 1px 0 rgba(0,0,0,.06);
 }
 
-.header-content {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 16px;
+.header-inner{
+  width:100%;
+  max-width: 1200px;
+  margin:0 auto;
+  display:flex; align-items:center; gap:16px;
+  justify-content: space-between;      /* logo links, nav/rechts rechts */
+  text-align: left;                    /* forceer geen center */
 }
 
 .logo {
@@ -38,12 +32,7 @@
     font-size: 24px;
 }
 
-.logo-text {
-    font-size: 20px;
-    font-weight: 700;
-    color: #333333;
-    line-height: 1;
-}
+.logo{ font-size:20px; line-height:1; margin-right:auto; } /* links */
 
 .header-nav {
     display: flex;
@@ -51,12 +40,7 @@
     gap: 32px;
 }
 
-.nav-link {
-    text-decoration: none;
-    color: #374151;
-    font-weight: 500;
-    transition: color 0.3s ease;
-}
+nav a{ padding:6px 8px; }
 
 .nav-link:hover {
     color: #3A9AEA;
