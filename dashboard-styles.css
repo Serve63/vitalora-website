@@ -242,6 +242,22 @@ body {
     margin-top: 40px;
 }
 
+/* === SCOPE: academy-hero === */
+.hero-title{color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:clamp(22px,5.8vw,78px);line-height:1.05;}
+.dashboard-header .hero-title{color:#fff !important}
+
+/* === SCOPE: academy-cards === */
+.course-card .card-media{position:relative;width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden;background:#eaf1ff;}
+.course-card .card-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .3s ease;}
+.course-card:hover .card-media img{transform:scale(1.03);}
+.course-card .course-badge{position:absolute;top:10px;left:10px;z-index:2}
+.course-card .badge-right{right:10px;left:auto}
+/* Hide old round icon containers if present */
+.course-card .card-icon,.course-card .icon-wrap{display:none !important}
+
+/* === SCOPE: academy-features === */
+.feature .icon,.feature .icon svg{color:#FDB541;fill:#FDB541}
+
 /* Course Cards */
 .course-card {
     background-color: #ffffff;
@@ -312,14 +328,15 @@ body {
 
 .course-duration {
     position: absolute;
-    bottom: 16px;
-    left: 16px;
+    top: 10px;
+    right: 10px;
     padding: 4px 12px;
     border-radius: 12px;
     font-size: 12px;
     font-weight: 500;
     background-color: rgba(59, 130, 246, 0.1);
     color: #3b82f6;
+    z-index: 2;
 }
 
 .course-content {

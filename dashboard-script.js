@@ -188,6 +188,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // simulateCourseLoading();
 });
 
+// === SCOPE: academy-cards ===
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.course-card').forEach(card=>{
+    const img=card.querySelector('.card-media img');
+    const src=card.getAttribute('data-image');
+    if(img){
+      if(src) img.src=src;
+      img.addEventListener('error',()=>{img.src='/assets/images/course-placeholder.svg'},{once:true});
+    }
+  });
+});
+
+// === SCOPE: academy-hero ===
+function fitOneLine(el,minPx=18,maxPx=78){
+  if(!el) return;
+  el.style.fontSize=''; // reset to CSS clamp
+  let fs=parseFloat(getComputedStyle(el).fontSize);
+  while(el.scrollWidth<=el.clientWidth && fs<maxPx){
+    const next=fs+1; el.style.fontSize=next+'px';
+    if(el.scrollWidth>el.clientWidth){el.style.fontSize=fs+'px';break;}
+    fs=next;
+  }
+  while(el.scrollWidth>el.clientWidth && fs>minPx){
+    fs-=1; el.style.fontSize=fs+'px';
+  }
+}
+const debounce=(fn,ms)=>{let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}}
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hero-title');
+  if(h){fitOneLine(h); window.addEventListener('resize',debounce(()=>fitOneLine(h),250));}
+});
+
 // Helper function to get course ID from title
 function getCourseId(courseTitle) {
     const courseMap = {
