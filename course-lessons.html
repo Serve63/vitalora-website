@@ -13,6 +13,22 @@
 	<link rel="stylesheet" href="/assets/css/fonts.css?v=1">
 	<link rel="stylesheet" href="/assets/css/footer.css?v=1"></head>
 <body>
+    <!-- Redirect script voor oude routes -->
+    <script>
+    (function(){
+      const p = new URLSearchParams(location.search);
+      const course = p.get('course');
+      const lesson = p.get('lesson');
+      if(location.pathname.includes('course-lessons')) {
+        location.replace(`/course-view.html?course=${course||''}`);
+      }
+      if(location.pathname.includes('lesson') && !location.pathname.includes('lesson-view')) {
+        const q = `?course=${course||''}${lesson?`&lesson=${lesson}`:''}`;
+        location.replace(`/lesson-view.html${q}`);
+      }
+    })();
+    </script>
+    
     <div data-include="site-header"></div>
     <script defer src="/assets/js/header.js?v=2"></script>
 

@@ -98,7 +98,7 @@
                     </div>
 
                     <!-- Course 2: PowerFoods -->
-                    <div class="course-card" data-course="powerfoods">
+                    <div class="course-card" data-course="powerfoods-superfood-specerij">
                         <div class="course-header">
                             <div class="course-icon icon-energy"></div>
                             <div class="course-badge fundamental">Fundamenteel</div>
@@ -114,7 +114,7 @@
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                 </div>
-                                <a href="course-lessons.html?course=powerfoods" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
+                                <a href="course-view.html?course=powerfoods-superfood-specerij" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -158,13 +158,13 @@
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                 </div>
-                                <a href="course-lessons.html?course=30-daagse-reset-journey" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
+                                <a href="course-view.html?course=30-daagse-reset-journey" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 5: Everyday Nutrition -->
-                    <div class="course-card" data-course="everyday-nutrition">
+                    <div class="course-card" data-course="everyday-nutrition-praktisch-gezond">
                         <div class="course-header">
                             <div class="course-icon icon-nutrition"></div>
                             <div class="course-badge holistic">Holistisch</div>
@@ -180,13 +180,13 @@
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                 </div>
-                                <a href="course-lessons.html?course=everyday-nutrition" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
+                                <a href="course-view.html?course=everyday-nutrition-praktisch-gezond" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
                             </div>
                         </div>
                     </div>
 
                     <!-- Course 6: Mindful Energy -->
-                    <div class="course-card" data-course="mindful-energy">
+                    <div class="course-card" data-course="mindful-energy-innerlijke-rust">
                         <div class="course-header">
                             <div class="course-icon icon-mindfulness"></div>
                             <div class="course-badge intensive">Intensief</div>
@@ -202,7 +202,7 @@
                                     <span class="dot"></span>
                                     <span class="dot"></span>
                                 </div>
-                                <a href="course-lessons.html?course=mindful-energy" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
+                                <a href="course-view.html?course=mindful-energy-innerlijke-rust" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
                             </div>
                         </div>
                     </div>
@@ -245,6 +245,26 @@
         }catch(e){}
       });
     });
+    </script>
+
+    <!-- Health-check script -->
+    <script>
+    (async ()=>{
+      const slugs = [
+        "clean-reset",
+        "de-juiste-balans",
+        "energie-hormonen-balans",
+        "mindful-energy-innerlijke-rust",
+        "everyday-nutrition-praktisch-gezond",
+        "powerfoods-superfood-specerij"
+      ];
+      for(const s of slugs){
+        try{
+          const r = await fetch(`/data/courses/${s}.json?v=1`);
+          console.log(s, r.ok ? "OK" : "MIST");
+        }catch(e){ console.log(s, "ERROR"); }
+      }
+    })();
     </script>
 </body>
 </html>
