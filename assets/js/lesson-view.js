@@ -35,11 +35,21 @@ function qs(name, d=window.location.search) {
   // 3) Vul UI
   setText("#courseTitle", course.title);
   setText("#lessonTitle", lesson.title);
-  setHTML("#lessonContent", lesson.content_html);
+  
+  // Fallback voor lege content
+  const placeholder = `
+    <div class="card">
+      <p>De inhoud van deze les wordt binnenkort toegevoegd.</p>
+      <p class="muted">Tip: klik op "Les Voltooien" pas wanneer de inhoud live staat.</p>
+    </div>
+  `;
+  
+  const html = (lesson.content_html || "").trim();
+  setHTML("#lessonContent", html ? html : placeholder);
 
   // badges
   setText("#badgeDuration", `${lesson.duration_min || 10} minuten`);
-  setText("#badgeType", course.level || "Theorie");
+  setText("#badgeType", lesson.type || course.level || "Theorie");
 
   // 4) Links
   setHref("#backToLessons", `/course-view.html?course=${course.slug}`);

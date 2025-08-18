@@ -20,6 +20,9 @@ function qs(name, d=window.location.search) {
   setText("#courseTitle", course.title);
   setText("#courseSubtitle", course.subtitle);
   setText("#courseLevel", course.level || "Theorie");
+  
+  // Badge met totaal aantal lessen
+  setText("#badgeLessons", `${course.lessons.length} lessen`);
 
   // Render lessen (verberg conceptlessen)
   const lessons = (course.lessons || []).filter(l => !l.draft);
