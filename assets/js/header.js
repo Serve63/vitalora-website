@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', async () => {
-  // Als je de header op bepaalde routes verbergt, laat deze guard staan:
-  if (document.documentElement.classList.contains('course-overview')) return;
+  if (document.documentElement.classList.contains('route-courses')) return;
 
   const mount = document.querySelector('[data-include="site-header"]');
   if (!mount) return;
@@ -8,12 +7,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   const res = await fetch('/partials/header.html?v=4');
   mount.innerHTML = await res.text();
 
-  // ✅ Home = alleen root of index.html
-  const path = new URL(window.location.href).pathname.toLowerCase();
-  const normalized = path
-    .replace(/\/index\.html$/, '/')   // …/index.html -> /
-    .replace(/\/home\/?$/, '/');      // optioneel: …/home -> /
-
-  const isHome = (normalized === '/' || normalized === '');
+  // Belt & suspenders: naast .route-home zetten we ook .is-home
+  const path = location.pathname.toLowerCase().replace(/\/index\.html$/, '/');
+  const isHome = (path === '/' || path === '');
   document.documentElement.classList.toggle('is-home', isHome);
 });
