@@ -1,0 +1,37 @@
+/* Centralized Font System - Quicksand */
+:root {
+  --font-sans: "Quicksand", system-ui, -apple-system, "Segoe UI", Roboto,
+               "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif;
+}
+
+/* Zet basis */
+html { 
+  font-family: var(--font-sans); 
+}
+
+body { 
+  font-family: inherit; 
+  text-rendering: optimizeLegibility; 
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+/* Zorg dat koppen en formulieren meedoen */
+h1, h2, h3, h4, h5, h6 { 
+  font-family: inherit; 
+  font-weight: 700; 
+}
+
+button, input, select, textarea { 
+  font-family: inherit; 
+}
+
+/* Override alle andere font-declaraties */
+:where(body, .site, .container, .section, .hero, .navbar, .footer, .card, .btn, .text, .title, .subtitle, .lead, .paragraph, .list, .modal, .form, .main-header, .header-content, .logo, .nav-link, .cta-button, .hero-text, .hero-description, .feature-item, .testimonial, .course-card, .lesson-content, .blog-post, .contact-form) {
+  font-family: var(--font-sans) !important;
+}
+
+/* Behoud icon fonts - raak deze niet aan */
+.icon, .material-icons, i[class*="icon"], [class*="icon-"] {
+  font-family: inherit !important;
+}

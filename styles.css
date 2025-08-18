@@ -14,24 +14,21 @@
 /* Header CSS moved to /assets/css/header.css */
 
 html, body {
-    font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
     font-size: var(--body-size);
     letter-spacing: 0em;
     line-height: var(--lh);
     color: #3A9AEA;
     background-color: #ffffff;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 h1, h2 {
-    font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    font-weight: 700; letter-spacing: 0.02em;
+    font-weight: 700; 
+    letter-spacing: 0.02em;
     color: #333333;
 }
-h3, h4 { font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-weight: 500; letter-spacing: 0.01em; color: #333333; }
-p, li, small { font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-weight: 400; letter-spacing: 0em; }
-button, .cta { font-family: 'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif; font-weight: 600; letter-spacing: 0.04em; }
+h3, h4 { font-weight: 500; letter-spacing: 0.01em; color: #333333; }
+p, li, small { font-weight: 400; letter-spacing: 0em; }
+button, .cta { font-weight: 600; letter-spacing: 0.04em; }
 
 .container {
     max-width: 1200px;
