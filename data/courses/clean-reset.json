@@ -1,0 +1,36 @@
+{
+  "slug": "clean-reset",
+  "title": "Clean Reset",
+  "subtitle": "Detox en gifstoffen",
+  "level": "Intensief",
+  "duration_days": 21,
+  "lessons": [
+    {
+      "id": "les-1-microplastics",
+      "index": 1,
+      "title": "Les 1: Wat zijn Microplastics?",
+      "type": "Theorie",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p>Stel je voor: je neemt een slok water, eet een stukje vis of ademt gewoon in, en zonder dat je het doorhebt, krijg je kleine stukjes plastic binnen. Klinkt bizar, toch? Deze piepkleine deeltjes, beter bekend als microplastics, zijn tegenwoordig overal te vinden.</p><p>Microplastics zijn kleine plastic deeltjes die kleiner zijn dan 5 millimeter. Dat is ongeveer zo groot als een sesamzaadje. Er zijn twee hoofdtypen:</p><h3>Primaire microplastics</h3><p>Dit zijn plastic deeltjes die al klein worden gemaakt, zoals:</p><ul><li>Microkorrels in cosmetica (denk aan scrubs of tandpasta)</li><li>Microvezels van synthetische kleding, zoals polyester</li><li>Industriële pellets, die worden gebruikt bij het maken van plastic producten</li></ul><h3>Secundaire microplastics</h3><p>Deze ontstaan door het afbreken van grotere stukken plastic, zoals:</p><ul><li>Plastic zakken die in de natuur belanden</li><li>Flessen of andere plastic verpakkingen die door zonlicht en wind in kleinere stukjes uiteenvallen</li><li>Visnetten die in de oceaan blijven ronddrijven</li></ul>"
+    },
+    {
+      "id": "les-2-omgeving",
+      "index": 2,
+      "title": "Les 2: Microplastics in de omgeving",
+      "type": "Theorie",
+      "duration_min": 12,
+      "draft": false,
+      "content_html": "<p>Microplastics komen op verschillende manieren in ons milieu terecht. Elke keer dat we plastic weggooien, kan het in de natuur terechtkomen. Een plastic fles die op straat ligt, breekt langzaam af in kleinere stukjes en wordt uiteindelijk microplastic.</p><p>Wanneer je synthetische kleding wast, komen er duizenden plastic microvezels los. Deze vezels zijn zo klein dat waterzuiveringsinstallaties ze vaak niet kunnen filteren. Ze belanden in rivieren, oceanen en uiteindelijk in de voedselketen.</p><p>Veel scrubs en tandpasta's bevatten microkorrels, kleine plastic bolletjes die worden gebruikt voor een schurende werking. Na gebruik spoelen ze via het riool direct door naar de zee.</p>"
+    },
+    {
+      "id": "les-3-problemen",
+      "index": 3,
+      "title": "Les 3: Waarom zijn microplastics een probleem?",
+      "type": "Theorie",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p>Microplastics drijven niet alleen rond in oceanen en rivieren, maar worden ook door zeedieren gegeten. Dit kan leiden tot fysieke schade (deeltjes verstoppen de darmen van dieren) en chemische schade (plastic bevat vaak giftige stoffen die zich ophopen in de dieren en uiteindelijk in ons voedsel terechtkomen).</p><p>Ja, je leest het goed: we ademen microplastics in! Ze zitten in huisstof, in de lucht boven steden en zelfs in afgelegen natuurgebieden. Wat dat precies met onze longen doet? Wetenschappers zijn nog volop bezig dit te onderzoeken.</p><p>Wist je dat wetenschappers microplastics hebben gevonden in Antarctica? Zelfs op het koudste, meest afgelegen continent kunnen we niet ontsnappen aan deze kleine deeltjes.</p>"
+    }
+  ]
+}

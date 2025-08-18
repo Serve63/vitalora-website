@@ -10,27 +10,25 @@
   <link rel="stylesheet" href="/assets/css/header.css?v=2">
   <link rel="stylesheet" href="/assets/css/footer.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
-  <link rel="stylesheet" href="/assets/css/lesson.css?v=1">
+  <link rel="stylesheet" href="/assets/css/course.css?v=3">
 </head>
 <body>
   <div data-include="site-header"></div>
 
-  <main class="lesson container">
-    <nav class="breadcrumb">
-      <a href="/">Home</a> ·
-      <a id="backToLessons" href="#">Terug naar Lessen</a> ·
-      <span id="lessonTitle">Les laden...</span>
-    </nav>
-
-    <header class="lesson-hero">
-      <h1><span id="courseTitle">Cursus</span></h1>
-      <h2 id="lessonTitle">Les laden...</h2>
-      <div class="lesson-badges">
-        <span id="badgeDuration" class="badge">10 minuten</span>
-        <span id="badgeType" class="badge">Theorie</span>
+  <section id="lessonHero" class="lesson-hero hero--slim">
+    <div class="course-hero__inner">
+      <a id="backToLessons" href="#" class="crumbs">← Terug naar Lessen</a>
+      <div class="overline" id="lessonCourseName">Cursus</div>
+      <h1 id="lessonTitle">Les laden…</h1>
+      <div class="badges">
+        <span id="badgeIndex" class="badge hidden"></span>
+        <span id="badgeDuration" class="badge hidden"></span>
+        <span id="badgeType" class="badge hidden"></span>
       </div>
-    </header>
+    </div>
+  </section>
 
+  <main class="lesson container">
     <article class="card">
       <div id="lessonContent" class="prose">
         <p>Les wordt geladen...</p>
@@ -50,6 +48,6 @@
   <div data-include="site-footer"></div>
 
   <script defer src="/assets/js/header.js?v=2"></script>
-  <script defer src="/assets/js/lesson-view.js?v=1"></script>
+  <script defer src="/assets/js/lesson-view.js?v=3"></script>
 </body>
 </html>

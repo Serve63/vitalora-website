@@ -1,56 +1,61 @@
-// Helper
-function qs(name, d=window.location.search) {
-  const m = new URLSearchParams(d).get(name);
-  return m && decodeURIComponent(m);
-}
+(function(){
+  const qs = (k) => new URLSearchParams(location.search).get(k);
+  const slug = qs('course');
+  if(!slug){ console.error('Geen course'); return; }
 
-(async function initCourse(){
-  const courseSlug = qs("course");
-  if (!courseSlug) {
-    console.error("Geen course meegegeven.");
-    return renderError("Cursus niet gevonden.");
-  }
+  const el = {
+    title:  document.getElementById('courseTitle'),
+    sub:    document.getElementById('courseSubtitle'),
+    level:  document.getElementById('badgeLevel'),
+    days:   document.getElementById('badgeDays'),
+    count:  document.getElementById('badgeLessons'),
+    list:   document.getElementById('lessonList'),
+    crumb:  document.getElementById('courseCrumb'),
+    hero:   document.getElementById('courseHero')
+  };
 
-  // Laad precies deze cursus (geen fallback!)
-  const res = await fetch(`/data/courses/${courseSlug}.json?v=1`);
-  if (!res.ok) return renderError("Cursus niet gevonden.");
-  const course = await res.json();
+  fetch(`/data/courses/${slug}.json?v=1`).then(r=>{
+    if(!r.ok) throw new Error('404');
+    return r.json();
+  }).then(course=>{
+    // Titel/subtitle/badges
+    el.title.textContent = course.title || 'Cursus';
+    el.sub.textContent   = course.subtitle || '';
+    el.crumb && (el.crumb.textContent = course.title || '');
+    el.level.textContent = course.level || 'Theorie';
+    if(course.duration_days){ el.days.textContent = `${course.duration_days} dagen`; el.days.classList.remove('hidden'); }
+    if(Array.isArray(course.lessons)){ el.count.textContent = `${course.lessons.length} lessen`; el.count.classList.remove('hidden'); }
 
-  // Vul UI
-  setText("#courseTitle", course.title);
-  setText("#courseSubtitle", course.subtitle);
-  setText("#courseLevel", course.level || "Theorie");
-  
-  // Badge met totaal aantal lessen
-  setText("#badgeLessons", `${course.lessons.length} lessen`);
+    // Render lessen
+    const live = (course.lessons || []).filter(l => !l.draft);
+    el.list.innerHTML = live.map(l => cardTpl(course, l)).join('');
+  }).catch(err=>{
+    console.error(err);
+    el.title.textContent = 'Cursus niet gevonden';
+    el.sub.textContent   = 'Controleer de URL of probeer later opnieuw.';
+  });
 
-  // Render lessen (verberg conceptlessen)
-  const lessons = (course.lessons || []).filter(l => !l.draft);
-  const lessonsContainer = document.querySelector("#lessonsList");
-  
-  if (lessonsContainer && lessons.length) {
-    lessonsContainer.innerHTML = lessons.map(lesson => `
-      <div class="lesson-card">
-        <div class="lesson-info">
-          <h3>${lesson.title}</h3>
-          <div class="lesson-meta">
-            <span class="badge duration">${lesson.duration_min || 10} min</span>
-            <span class="badge type">${course.level || "Theorie"}</span>
+  function cardTpl(course, l){
+    const url = `/lesson-view.html?course=${course.slug}&lesson=${l.index}`;
+    return `
+      <article class="lesson-card">
+        <div class="meta">
+          <div class="idx chip">${l.index}</div>
+          <div>
+            <div class="title">${escapeHTML(l.title)}</div>
+            <div class="chips">
+              <span class="chip">${(l.duration_min||10)} min</span>
+              <span class="chip">${escapeHTML(l.type || course.level || 'Theorie')}</span>
+            </div>
           </div>
         </div>
-        <a href="/lesson-view.html?course=${course.slug}&lesson=${lesson.index}" class="btn start-lesson">
-          Start les
+        <a class="btn-start" href="${url}">
+          Start les <span class="icon-play" aria-hidden="true"></span>
         </a>
-      </div>
-    `).join('');
-  } else {
-    lessonsContainer.innerHTML = '<p>Er zijn nog geen gepubliceerde lessen beschikbaar.</p>';
+      </article>`;
   }
 
-  // helpers
-  function setText(sel, v){ const el=document.querySelector(sel); if(el&&v) el.textContent=v; }
-  function renderError(msg){ 
-    const container = document.querySelector("#courseContent") || document.querySelector("main");
-    if(container) container.innerHTML = `<div class='card'><p>${msg}</p></div>`; 
+  function escapeHTML(s){
+    return String(s||'').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
   }
 })();

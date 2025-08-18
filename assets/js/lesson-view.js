@@ -1,74 +1,60 @@
-// Helper
-function qs(name, d=window.location.search) {
-  const m = new URLSearchParams(d).get(name);
-  return m && decodeURIComponent(m);
-}
+// Fetch course + lesson en vul hero + content, zonder cross-course fallback
+(function(){
+  const qs = (k) => new URLSearchParams(location.search).get(k);
+  const slug = qs('course');
+  let lessonParam = qs('lesson');
+  if(!slug){ return showError('Cursus niet gevonden.'); }
 
-(async function initLesson(){
-  const courseSlug = qs("course");   // bv. "de-juiste-balans"
-  let lessonParam  = qs("lesson");   // bv. "1" of "les-1-welkom"
-  if (!courseSlug) {
-    console.error("Geen course meegegeven.");
-    return renderError("Cursus niet gevonden.");
+  fetch(`/data/courses/${slug}.json?v=1`).then(r=>{
+    if(!r.ok) throw new Error('404');
+    return r.json();
+  }).then(course=>{
+    const lessons = (course.lessons||[]).filter(l => !l.draft);
+    if(!lessons.length) return showError('Er zijn nog geen gepubliceerde lessen.');
+
+    let lesson;
+    if(lessonParam && /^\d+$/.test(lessonParam)){
+      lesson = lessons.find(l => l.index === parseInt(lessonParam,10));
+    }else if(lessonParam){
+      lesson = lessons.find(l => l.id === lessonParam);
+    }else{
+      lesson = lessons[0];
+    }
+    if(!lesson) return showError('Les niet gevonden.');
+
+    // Hero
+    setText('#lessonCourseName', course.title || '');
+    setText('#lessonTitle', lesson.title || '');
+    setBadge('#badgeIndex', `Les ${lesson.index} van ${course.lessons.length}`);
+    setBadge('#badgeDuration', `${lesson.duration_min || 10} min`);
+    setBadge('#badgeType', lesson.type || course.level || 'Theorie');
+
+    // Back link
+    setHref('#backToLessons', `/course-view.html?course=${course.slug}`);
+
+    // Content
+    const placeholder = `
+      <div class="card">
+        <p>De inhoud van deze les wordt binnenkort toegevoegd.</p>
+        <p class="muted">Tip: klik op "Les Voltooien" pas wanneer de inhoud live staat.</p>
+      </div>`;
+    setHTML('#lessonContent', (lesson.content_html||'').trim() || placeholder);
+
+    // Progress namespace
+    const doneKey = `progress:${course.slug}:${lesson.id}:done`;
+    const doneBtn = document.querySelector('#markComplete');
+    const doneMsg = document.querySelector('#completeStatus');
+    if(localStorage.getItem(doneKey)==='true' && doneMsg){ doneMsg.textContent='Les voltooid ✓'; }
+    doneBtn?.addEventListener('click', ()=>{ localStorage.setItem(doneKey,'true'); if(doneMsg) doneMsg.textContent='Les voltooid ✓'; });
+
+    function setText(sel,v){ const e=document.querySelector(sel); if(e) e.textContent=v; }
+    function setHTML(sel,v){ const e=document.querySelector(sel); if(e) e.innerHTML=v; }
+    function setHref(sel,v){ const e=document.querySelector(sel); if(e&&v) e.setAttribute('href',v); }
+    function setBadge(sel,v){ const e=document.querySelector(sel); if(e){ e.textContent=v; e.classList.remove('hidden'); } }
+  }).catch(()=> showError('Les kon niet geladen worden.'));
+
+  function showError(msg){
+    const t=document.getElementById('lessonTitle'); if(t) t.textContent='Fout bij laden';
+    const c=document.getElementById('lessonContent'); if(c) c.innerHTML = `<div class="card"><p>${msg}</p></div>`;
   }
-
-  // 1) Laad precies deze cursus (geen fallback!)
-  const res = await fetch(`/data/courses/${courseSlug}.json?v=1`);
-  if (!res.ok) return renderError("Cursus niet gevonden.");
-  const course = await res.json();
-
-  // 2) Vind de juiste les op index of id
-  const lessons = (course.lessons || []).filter(l => !l.draft);
-  if (!lessons.length) return renderError("Er zijn nog geen gepubliceerde lessen.");
-
-  let lesson;
-  if (lessonParam && /^\d+$/.test(lessonParam)) {
-    const idx = parseInt(lessonParam, 10);
-    lesson = lessons.find(l => l.index === idx);
-  } else if (lessonParam) {
-    lesson = lessons.find(l => l.id === lessonParam);
-  } else {
-    lesson = lessons[0]; // default naar eerste gepubliceerde les
-  }
-  if (!lesson) return renderError("Les niet gevonden.");
-
-  // 3) Vul UI
-  setText("#courseTitle", course.title);
-  setText("#lessonTitle", lesson.title);
-  
-  // Fallback voor lege content
-  const placeholder = `
-    <div class="card">
-      <p>De inhoud van deze les wordt binnenkort toegevoegd.</p>
-      <p class="muted">Tip: klik op "Les Voltooien" pas wanneer de inhoud live staat.</p>
-    </div>
-  `;
-  
-  const html = (lesson.content_html || "").trim();
-  setHTML("#lessonContent", html ? html : placeholder);
-
-  // badges
-  setText("#badgeDuration", `${lesson.duration_min || 10} minuten`);
-  setText("#badgeType", lesson.type || course.level || "Theorie");
-
-  // 4) Links
-  setHref("#backToLessons", `/course-view.html?course=${course.slug}`);
-  setHref("#prevLesson", lesson.index > 1 ? `/lesson-view.html?course=${course.slug}&lesson=${lesson.index-1}` : null);
-  setHref("#nextLesson", `/lesson-view.html?course=${course.slug}&lesson=${lesson.index+1}`);
-
-  // 5) LocalStorage progress namespacing (voorkomt mixen met Clean Reset)
-  const doneKey = `progress:${course.slug}:${lesson.id}:done`;
-  const doneBtn = document.querySelector("#markComplete");
-  const doneNote = document.querySelector("#completeStatus");
-  if (localStorage.getItem(doneKey) === "true") doneNote && (doneNote.textContent = "Les voltooid ✓");
-  doneBtn && doneBtn.addEventListener("click", () => {
-    localStorage.setItem(doneKey, "true");
-    doneNote && (doneNote.textContent = "Les voltooid ✓");
-  });
-
-  // helpers
-  function setText(sel, v){ const el=document.querySelector(sel); if(el&&v) el.textContent=v; }
-  function setHTML(sel, v){ const el=document.querySelector(sel); if(el&&v) el.innerHTML=v; }
-  function setHref(sel, v){ const el=document.querySelector(sel); if(!el) return; if(v) el.setAttribute("href", v); else el.remove(); }
-  function renderError(msg){ setHTML("#lessonContent", `<div class='card'><p>${msg}</p></div>`); }
 })();
