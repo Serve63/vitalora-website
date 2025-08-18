@@ -52,8 +52,8 @@
     return `
       <article class="lesson-card">
         <div class="meta">
-          <div class="idx chip">${l.index}</div>
-          <div>
+          <div class="idx">${l.index}</div>
+          <div class="content">
             <div class="title">${escapeHTML(l.title)}</div>
             <div class="chips">
               <span class="chip">${(l.duration_min||10)} min</span>
