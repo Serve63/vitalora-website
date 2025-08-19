@@ -50,6 +50,7 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+    background-color: rgba(41, 84, 179, 0.1); /* Test: light blue background */
 }
 
 .wireframe-bg::before {
@@ -60,27 +61,10 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 30%, #2954B3 1px, transparent 1px),
-        radial-gradient(circle at 80% 70%, #2954B3 1px, transparent 1px),
-        radial-gradient(circle at 40% 80%, #2954B3 1px, transparent 1px),
-        radial-gradient(circle at 90% 20%, #2954B3 1px, transparent 1px),
-        radial-gradient(circle at 10% 90%, #2954B3 1px, transparent 1px),
-        radial-gradient(circle at 70% 10%, #2954B3 1px, transparent 1px);
-    background-size: 
-        300px 300px,
-        250px 250px,
-        400px 400px,
-        350px 350px,
-        200px 200px,
-        450px 450px;
-    background-position: 
-        0 0,
-        50px 50px,
-        100px 100px,
-        150px 150px,
-        200px 200px,
-        250px 250px;
-    opacity: 0.15;
+        linear-gradient(45deg, #2954B3 1px, transparent 1px),
+        linear-gradient(-45deg, #2954B3 1px, transparent 1px);
+    background-size: 50px 50px;
+    opacity: 0.3;
     animation: none; /* Static version */
 }
 
@@ -113,21 +97,10 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     width: 100%;
     height: 100%;
     background-image: 
-        linear-gradient(45deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
-        linear-gradient(-45deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
-        linear-gradient(135deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
-        linear-gradient(-135deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%);
-    background-size: 
-        200px 200px,
-        150px 150px,
-        300px 300px,
-        250px 250px;
-    background-position: 
-        0 0,
-        100px 100px,
-        200px 200px,
-        300px 300px;
-    opacity: 0.08;
+        radial-gradient(circle at 25% 25%, #2954B3 2px, transparent 2px),
+        radial-gradient(circle at 75% 75%, #2954B3 2px, transparent 2px);
+    background-size: 100px 100px;
+    opacity: 0.2;
     animation: none; /* Static version */
 }
 
