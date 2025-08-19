@@ -18,7 +18,7 @@ html, body {
     letter-spacing: 0em;
     line-height: var(--lh);
     color: #3A9AEA;
-    background-color: #EDF6FD !important;
+    background-color: #EDF7FD !important;
 }
 
 h1, h2 {
@@ -51,7 +51,7 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     z-index: -1;
     overflow: hidden;
     /* Force background color site-wide to avoid overrides */
-    background-color: #EDF6FD !important;
+    background-color: #EDF7FD !important;
 }
 
 .circle {
@@ -160,7 +160,7 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
 
 /* Header */
 header {
-    background-color: #EDF6FD;
+    background-color: transparent; /* let body show through */
     padding: 20px 0;
     border-bottom: 1px solid #e5e7eb;
 }
@@ -174,7 +174,7 @@ header {
 /* Hero Section */
 .hero {
     padding: 80px 0;
-    background: #EDF6FD;
+    background: transparent;
 }
 
 .hero-content {
@@ -256,7 +256,7 @@ header {
 /* Toxins Section */
 .toxins {
     padding: 80px 0;
-    background-color: #EDF6FD;
+    background-color: transparent;
 }
 
 .toxins h2 {
@@ -344,7 +344,7 @@ header {
 /* Why Section */
 .why {
     padding: 80px 0;
-    background-color: #EDF6FD;
+    background-color: transparent;
 }
 
 .why-content {
@@ -411,7 +411,7 @@ header {
 /* How Section */
 .how {
     padding: 80px 0;
-    background-color: #EDF6FD;
+    background-color: transparent;
 }
 
 .how h2 {
@@ -454,7 +454,7 @@ header {
 /* Results Section */
 .results {
     padding: 80px 0;
-    background-color: #EDF6FD;
+    background-color: transparent;
 }
 
 .results h2 {
