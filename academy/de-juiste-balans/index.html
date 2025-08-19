@@ -13,56 +13,96 @@
     <div data-include="site-header"></div>
     <script defer src="/assets/js/header.js?v=7"></script>
 
+    <!-- BEGIN SCOPE: lesson-overview -->
+    <!-- removed custom capsule hero -->
+
     <main class="course-overview" data-course="de-juiste-balans">
-        <div class="container">
-            <nav class="breadcrumb">
-                <a href="/academy">Academy</a> · 
-                <span id="crumbTitle">Hormonaal in Balans</span>
-            </nav>
+        <!-- PATCH_ID:djb-overview-fix -->
+        <h1 class="course-title">Hormonaal in Balans</h1>
+        <p class="course-subtitle">Rust, energie en helderheid vanuit je hormonen</p>
 
-            <header class="course-hero">
-                <h1>Hormonaal in Balans</h1>
-                <p class="course-subtitle">Rust, energie en helderheid vanuit je hormonen</p>
-            </header>
-
-            <section class="lessons-section">
-                <h2>Lessen</h2>
-                <ul id="lessonsList" class="lessons-list">
-                    <!-- Lessons will be loaded here by JavaScript -->
-                </ul>
-            </section>
-        </div>
+        <section class="lessons-list" id="lessonsList"><!-- JS will inject --></section>
     </main>
+    <!-- END SCOPE: lesson-overview -->
 
     <div data-include="site-footer"></div>
 
     <script src="/dashboard-script.js"></script>
     <script>
-        // Load lessons for this course
-        document.addEventListener('DOMContentLoaded', async () => {
-            try {
-                const response = await fetch('lessons.json');
-                const lessons = await response.json();
-                
-                const lessonsList = document.getElementById('lessonsList');
-                if (lessonsList && lessons.length > 0) {
-                    lessonsList.innerHTML = lessons.map((lesson, index) => `
-                        <li class="lesson-item">
-                            <a href="lesson.html?l=${lesson.slug}" class="lesson-link">
-                                <span class="lesson-number">${index + 1}</span>
-                                <div class="lesson-info">
-                                    <h3 class="lesson-title">${lesson.title}</h3>
-                                    <p class="lesson-desc">${lesson.desc}</p>
-                                </div>
-                                <span class="lesson-arrow">→</span>
-                            </a>
-                        </li>
-                    `).join('');
-                }
-            } catch (error) {
-                console.error('Error loading lessons:', error);
+        /* === SCOPE: djb-lesson-loader === */
+        (function(){
+          const $ = (s,r=document)=>r.querySelector(s);
+          const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+          const once = (fn)=>{ let ran=false; return (...a)=>{ if(ran) return; ran=true; fn(...a);} };
+
+          function courseBase(){ // e.g. /academy/de-juiste-balans/
+            return location.pathname.replace(/[^/]+$/, '');
+          }
+          async function loadJSON(rel){
+            const url = courseBase() + rel; const r = await fetch(url, {cache:'no-cache'});
+            if(!r.ok) throw new Error(url); return r.json();
+          }
+          async function loadHTML(rel){
+            const url = courseBase() + rel; const r = await fetch(url, {cache:'no-cache'});
+            if(!r.ok) throw new Error(url); return r.text();
+          }
+          function storageKey(course){ return `academy:${course}:done`; }
+
+          document.addEventListener('DOMContentLoaded', async () => {
+            // OVERVIEW
+            const ov = $('.course-overview');
+            if (ov){
+              const course = ov.getAttribute('data-course') || 'de-juiste-balans';
+              try{
+                const lessons = await loadJSON('lessons.json');
+                const done = new Set(JSON.parse(localStorage.getItem(storageKey(course)) || '[]'));
+                const list = $('#lessonsList');
+                list.innerHTML = lessons.map((l,i)=>`
+                  <a class="lesson-item" href="lesson.html?l=${encodeURIComponent(l.slug)}">
+                    <strong>${i+1}. ${l.title}</strong>
+                    ${done.has(l.slug) ? '<span class="badge-done">Voltooid</span>' : ''}
+                    <div class="meta">${l.desc||''}</div>
+                  </a>
+                `).join('');
+              }catch(e){ console.error('Lessons JSON load failed', e); }
+              return;
             }
-        });
+
+            // LESSON PAGE
+            const lp = $('.lesson-page');
+            if (lp){
+              const course = lp.getAttribute('data-course') || 'de-juiste-balans';
+              const url = new URL(location.href);
+              const slug = url.searchParams.get('l');
+              if(!slug){ location.href = './'; return; }
+
+              try{
+                const lessons = await loadJSON('lessons.json');
+                const idx = lessons.findIndex(x=>x.slug===slug);
+                if(idx===-1){ location.href = './'; return; }
+
+                const lesson = lessons[idx];
+                $('#lessonTitle').textContent = lesson.title;
+                $('#crumbTitle').textContent = lesson.title;
+                $('#lessonBody').innerHTML = await loadHTML(lesson.file);
+
+                const prev = $('#prevLesson'), next = $('#nextLesson');
+                if(idx>0){ prev.href = `lesson.html?l=${encodeURIComponent(lessons[idx-1].slug)}`; prev.removeAttribute('aria-disabled'); }
+                if(idx<lessons.length-1){ next.href = `lesson.html?l=${encodeURIComponent(lessons[idx+1].slug)}`; next.removeAttribute('aria-disabled'); }
+
+                const key = storageKey(course);
+                const done = new Set(JSON.parse(localStorage.getItem(key) || '[]'));
+                const btn = $('#markDoneBtn');
+                function render(){ btn.textContent = done.has(slug) ? 'Voltooid ✔' : 'Markeer als voltooid'; }
+                btn.addEventListener('click', ()=>{
+                  if(done.has(slug)) done.delete(slug); else done.add(slug);
+                  localStorage.setItem(key, JSON.stringify([...done])); render();
+                });
+                render();
+              }catch(e){ console.error('Lesson render failed', e); }
+            }
+          });
+        })();
     </script>
 </body>
 </html>
