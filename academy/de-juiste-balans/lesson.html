@@ -13,109 +13,85 @@
     <div data-include="site-header"></div>
     <script defer src="/assets/js/header.js?v=7"></script>
 
+    <!-- BEGIN SCOPE: djb-lesson -->
     <main class="lesson-page" data-course="de-juiste-balans">
-        <div class="container">
-            <nav class="breadcrumb">
-                <a href="/academy">Academy</a> · 
-                <a href="index.html" id="crumbTitle">Hormonaal in Balans</a> · 
-                <span id="lessonTitle">Les</span>
-            </nav>
-
-            <article class="lesson-content">
-                <header class="lesson-header">
-                    <h1 id="lessonTitle">Les</h1>
-                </header>
-
-                <div id="lessonBody" class="lesson-body">
-                    <!-- Lesson content will be loaded here -->
-                </div>
-
-                <footer class="lesson-footer">
-                    <div class="lesson-navigation">
-                        <a id="prevLesson" href="#" class="nav-btn prev-btn" style="display: none;">← Vorige les</a>
-                        <button id="markDoneBtn" class="mark-done-btn">Markeer als voltooid</button>
-                        <a id="nextLesson" href="#" class="nav-btn next-btn" style="display: none;">Volgende les →</a>
-                    </div>
-                </footer>
-            </article>
+      <nav class="breadcrumb">
+        <a href="/academy/">Academy</a> · 
+        <a href="./">Hormonaal in Balans</a> · 
+        <span id="crumbTitle"></span>
+      </nav>
+      <article class="lesson-content">
+        <h1 id="lessonTitle"></h1>
+        <div id="lessonBody"></div>
+      </article>
+      <footer class="lesson-footer">
+        <button id="markDoneBtn" class="btn">Markeer als voltooid</button>
+        <div class="nav-controls">
+          <a id="prevLesson" class="btn secondary" href="#" aria-disabled="true">← Vorige</a>
+          <a id="nextLesson" class="btn primary" href="#" aria-disabled="true">Volgende →</a>
         </div>
+      </footer>
     </main>
+    <!-- END SCOPE: djb-lesson -->
 
     <div data-include="site-footer"></div>
 
     <script src="/dashboard-script.js"></script>
     <script>
-        /* === SCOPE: djb-lesson-loader === */
+        // === SCOPE: djb-lesson-loader ===
         (function(){
-          const $ = (s,r=document)=>r.querySelector(s);
-          const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
-          const once = (fn)=>{ let ran=false; return (...a)=>{ if(ran) return; ran=true; fn(...a);} };
+          const $=(s,r=document)=>r.querySelector(s);
+          function base(){ return location.pathname.endsWith('/') ? location.pathname : location.pathname.replace(/[^/]+$/, ''); }
+          async function getJSON(rel){ const u=base()+rel; const r=await fetch(u,{cache:'no-cache'}); if(!r.ok) throw new Error(u); return r.json(); }
+          async function getHTML(rel){ const u=base()+rel; const r=await fetch(u,{cache:'no-cache'}); if(!r.ok) throw new Error(u); return r.text(); }
+          function key(course){ return `academy:${course}:done`; }
 
-          function courseBase(){ // e.g. /academy/de-juiste-balans/
-            return location.pathname.replace(/[^/]+$/, '');
-          }
-          async function loadJSON(rel){
-            const url = courseBase() + rel; const r = await fetch(url, {cache:'no-cache'});
-            if(!r.ok) throw new Error(url); return r.json();
-          }
-          async function loadHTML(rel){
-            const url = courseBase() + rel; const r = await fetch(url, {cache:'no-cache'});
-            if(!r.ok) throw new Error(url); return r.text();
-          }
-          function storageKey(course){ return `academy:${course}:done`; }
-
-          document.addEventListener('DOMContentLoaded', async () => {
+          document.addEventListener('DOMContentLoaded', async ()=>{
             // OVERVIEW
             const ov = $('.course-overview');
-            if (ov){
+            if(ov){
               const course = ov.getAttribute('data-course') || 'de-juiste-balans';
               try{
-                const lessons = await loadJSON('lessons.json');
-                const done = new Set(JSON.parse(localStorage.getItem(storageKey(course)) || '[]'));
-                const list = $('#lessonsList');
+                const lessons = await getJSON('lessons.json');
+                const done = new Set(JSON.parse(localStorage.getItem(key(course))||'[]'));
+                const list = document.getElementById('lessonsList');
                 list.innerHTML = lessons.map((l,i)=>`
                   <a class="lesson-item" href="lesson.html?l=${encodeURIComponent(l.slug)}">
-                    <strong>${i+1}. ${l.title}</strong>
-                    ${done.has(l.slug) ? '<span class="badge-done">Voltooid</span>' : ''}
+                    <strong>${i+1}. ${l.title}</strong>${done.has(l.slug)?' <span class="badge-done">Voltooid</span>':''}
                     <div class="meta">${l.desc||''}</div>
                   </a>
                 `).join('');
-              }catch(e){ console.error('Lessons JSON load failed', e); }
+              }catch(e){ console.error('Overview load error', e); }
               return;
             }
 
-            // LESSON PAGE
-            const lp = $('.lesson-page');
-            if (lp){
+            // LESSON
+            const lp = document.querySelector('.lesson-page');
+            if(lp){
               const course = lp.getAttribute('data-course') || 'de-juiste-balans';
-              const url = new URL(location.href);
-              const slug = url.searchParams.get('l');
-              if(!slug){ location.href = './'; return; }
-
+              const params = new URL(location.href).searchParams;
+              const slug = params.get('l'); if(!slug){ location.href='./'; return; }
               try{
-                const lessons = await loadJSON('lessons.json');
+                const lessons = await getJSON('lessons.json');
                 const idx = lessons.findIndex(x=>x.slug===slug);
-                if(idx===-1){ location.href = './'; return; }
+                if(idx===-1){ location.href='./'; return; }
+                const l = lessons[idx];
+                document.getElementById('lessonTitle').textContent = l.title;
+                document.getElementById('crumbTitle').textContent = l.title;
+                document.getElementById('lessonBody').innerHTML = await getHTML(l.file);
 
-                const lesson = lessons[idx];
-                $('#lessonTitle').textContent = lesson.title;
-                $('#crumbTitle').textContent = lesson.title;
-                $('#lessonBody').innerHTML = await loadHTML(lesson.file);
+                const prev = document.getElementById('prevLesson');
+                const next = document.getElementById('nextLesson');
+                if(idx>0){ prev.href=`lesson.html?l=${encodeURIComponent(lessons[idx-1].slug)}`; prev.removeAttribute('aria-disabled'); }
+                if(idx<lessons.length-1){ next.href=`lesson.html?l=${encodeURIComponent(lessons[idx+1].slug)}`; next.removeAttribute('aria-disabled'); }
 
-                const prev = $('#prevLesson'), next = $('#nextLesson');
-                if(idx>0){ prev.href = `lesson.html?l=${encodeURIComponent(lessons[idx-1].slug)}`; prev.removeAttribute('aria-disabled'); }
-                if(idx<lessons.length-1){ next.href = `lesson.html?l=${encodeURIComponent(lessons[idx+1].slug)}`; next.removeAttribute('aria-disabled'); }
-
-                const key = storageKey(course);
-                const done = new Set(JSON.parse(localStorage.getItem(key) || '[]'));
-                const btn = $('#markDoneBtn');
-                function render(){ btn.textContent = done.has(slug) ? 'Voltooid ✔' : 'Markeer als voltooid'; }
-                btn.addEventListener('click', ()=>{
-                  if(done.has(slug)) done.delete(slug); else done.add(slug);
-                  localStorage.setItem(key, JSON.stringify([...done])); render();
-                });
+                const k = key(course);
+                const done = new Set(JSON.parse(localStorage.getItem(k)||'[]'));
+                const btn = document.getElementById('markDoneBtn');
+                function render(){ btn.textContent = done.has(slug)?'Voltooid ✔':'Markeer als voltooid'; }
+                btn.addEventListener('click', ()=>{ if(done.has(slug)) done.delete(slug); else done.add(slug); localStorage.setItem(k, JSON.stringify([...done])); render(); });
                 render();
-              }catch(e){ console.error('Lesson render failed', e); }
+              }catch(e){ console.error('Lesson load error', e); }
             }
           });
         })();
