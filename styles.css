@@ -56,7 +56,7 @@ header {
 /* Hero Section */
 .hero {
     padding: 80px 0;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+    background: #ffffff;
 }
 
 .hero-content {
@@ -138,7 +138,7 @@ header {
 /* Toxins Section */
 .toxins {
     padding: 80px 0;
-    background-color: #f6faff; /* light tint to increase contrast with white cards */
+    background-color: #ffffff;
 }
 
 .toxins h2 {
@@ -226,7 +226,7 @@ header {
 /* Why Section */
 .why {
     padding: 80px 0;
-    background-color: #f8fafc;
+    background-color: #ffffff;
 }
 
 .why-content {
@@ -336,7 +336,7 @@ header {
 /* Results Section */
 .results {
     padding: 80px 0;
-    background-color: #f8fafc;
+    background-color: #ffffff;
 }
 
 .results h2 {
