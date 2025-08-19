@@ -6,7 +6,7 @@
 /* Header bar */
 .site-header{
   height: var(--header-h);
-  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+  background: #2954B4;
   border-bottom:1px solid rgba(15,23,42,.06);
   position: sticky; top:0; z-index:100;
 }
