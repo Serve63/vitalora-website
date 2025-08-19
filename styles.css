@@ -448,10 +448,10 @@ header {
 .process-card:not(:last-child)::after {
     content: '';
     position: absolute;
-    top: 60px; /* Positie van de iconen */
-    right: -20px;
-    width: 40px;
-    height: 2px;
+    top: 64px; /* Aangepast voor betere verticale uitlijning met iconen */
+    right: -30px; /* Aangepast om de lijnen in de kaarten te laten overlappen */
+    width: 100px; /* Aangepast om de lijnen langer te maken */
+    height: 4px; /* Aangepast voor betere zichtbaarheid */
     background: repeating-linear-gradient(
         to right,
         #2954B4 0,
