@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hormonaal in Balans - Cursus Overzicht</title>
+    <link rel="stylesheet" href="/dashboard-styles.css">
+    <link rel="stylesheet" href="/assets/css/header.css?v=12">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=1">
+</head>
+<body>
+    <div data-include="site-header"></div>
+    <script defer src="/assets/js/header.js?v=7"></script>
+
+    <main class="course-overview" data-course="de-juiste-balans">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="/academy">Academy</a> · 
+                <span id="crumbTitle">Hormonaal in Balans</span>
+            </nav>
+
+            <header class="course-hero">
+                <h1>Hormonaal in Balans</h1>
+                <p class="course-subtitle">Rust, energie en helderheid vanuit je hormonen</p>
+            </header>
+
+            <section class="lessons-section">
+                <h2>Lessen</h2>
+                <ul id="lessonsList" class="lessons-list">
+                    <!-- Lessons will be loaded here by JavaScript -->
+                </ul>
+            </section>
+        </div>
+    </main>
+
+    <div data-include="site-footer"></div>
+
+    <script src="/dashboard-script.js"></script>
+    <script>
+        // Load lessons for this course
+        document.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('lessons.json');
+                const lessons = await response.json();
+                
+                const lessonsList = document.getElementById('lessonsList');
+                if (lessonsList && lessons.length > 0) {
+                    lessonsList.innerHTML = lessons.map((lesson, index) => `
+                        <li class="lesson-item">
+                            <a href="lesson.html?l=${lesson.slug}" class="lesson-link">
+                                <span class="lesson-number">${index + 1}</span>
+                                <div class="lesson-info">
+                                    <h3 class="lesson-title">${lesson.title}</h3>
+                                    <p class="lesson-desc">${lesson.desc}</p>
+                                </div>
+                                <span class="lesson-arrow">→</span>
+                            </a>
+                        </li>
+                    `).join('');
+                }
+            } catch (error) {
+                console.error('Error loading lessons:', error);
+            }
+        });
+    </script>
+</body>
+</html>

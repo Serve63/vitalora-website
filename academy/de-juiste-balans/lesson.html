@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hormonaal in Balans - Les</title>
+    <link rel="stylesheet" href="/dashboard-styles.css">
+    <link rel="stylesheet" href="/assets/css/header.css?v=12">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=1">
+</head>
+<body>
+    <div data-include="site-header"></div>
+    <script defer src="/assets/js/header.js?v=7"></script>
+
+    <main class="lesson-page" data-course="de-juiste-balans">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="/academy">Academy</a> · 
+                <a href="index.html" id="crumbTitle">Hormonaal in Balans</a> · 
+                <span id="lessonTitle">Les</span>
+            </nav>
+
+            <article class="lesson-content">
+                <header class="lesson-header">
+                    <h1 id="lessonTitle">Les</h1>
+                </header>
+
+                <div id="lessonBody" class="lesson-body">
+                    <!-- Lesson content will be loaded here -->
+                </div>
+
+                <footer class="lesson-footer">
+                    <div class="lesson-navigation">
+                        <a id="prevLesson" href="#" class="nav-btn prev-btn" style="display: none;">← Vorige les</a>
+                        <button id="markDoneBtn" class="mark-done-btn">Markeer als voltooid</button>
+                        <a id="nextLesson" href="#" class="nav-btn next-btn" style="display: none;">Volgende les →</a>
+                    </div>
+                </footer>
+            </article>
+        </div>
+    </main>
+
+    <div data-include="site-footer"></div>
+
+    <script src="/dashboard-script.js"></script>
+    <script>
+        // Load and render lesson content
+        document.addEventListener('DOMContentLoaded', async () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const lessonSlug = urlParams.get('l');
+            
+            if (!lessonSlug) {
+                window.location.href = 'index.html';
+                return;
+            }
+
+            try {
+                // Load lessons data
+                const lessonsResponse = await fetch('lessons.json');
+                const lessons = await lessonsResponse.json();
+                
+                // Find current lesson
+                const currentLesson = lessons.find(lesson => lesson.slug === lessonSlug);
+                if (!currentLesson) {
+                    window.location.href = 'index.html';
+                    return;
+                }
+
+                // Load lesson content
+                const contentResponse = await fetch(currentLesson.file);
+                const content = await contentResponse.text();
+
+                // Update page content
+                document.getElementById('lessonTitle').textContent = currentLesson.title;
+                document.getElementById('lessonBody').innerHTML = content;
+
+                // Update navigation
+                const currentIndex = lessons.findIndex(lesson => lesson.slug === lessonSlug);
+                
+                if (currentIndex > 0) {
+                    const prevLesson = lessons[currentIndex - 1];
+                    const prevBtn = document.getElementById('prevLesson');
+                    prevBtn.href = `lesson.html?l=${prevLesson.slug}`;
+                    prevBtn.style.display = 'inline-block';
+                }
+
+                if (currentIndex < lessons.length - 1) {
+                    const nextLesson = lessons[currentIndex + 1];
+                    const nextBtn = document.getElementById('nextLesson');
+                    nextBtn.href = `lesson.html?l=${nextLesson.slug}`;
+                    nextBtn.style.display = 'inline-block';
+                }
+
+                // Mark as done functionality
+                const markDoneBtn = document.getElementById('markDoneBtn');
+                markDoneBtn.addEventListener('click', () => {
+                    const doneKey = `lesson-done-${lessonSlug}`;
+                    localStorage.setItem(doneKey, 'true');
+                    markDoneBtn.textContent = 'Voltooid ✓';
+                    markDoneBtn.disabled = true;
+                });
+
+                // Check if already done
+                const doneKey = `lesson-done-${lessonSlug}`;
+                if (localStorage.getItem(doneKey) === 'true') {
+                    markDoneBtn.textContent = 'Voltooid ✓';
+                    markDoneBtn.disabled = true;
+                }
+
+            } catch (error) {
+                console.error('Error loading lesson:', error);
+                document.getElementById('lessonBody').innerHTML = '<p>Er is een fout opgetreden bij het laden van de les.</p>';
+            }
+        });
+    </script>
+</body>
+</html>
