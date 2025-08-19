@@ -41,6 +41,9 @@
 
     // Apply theme colors (per pagina, geen globale side-effects)
     applyTheme(course.theme, document.getElementById('courseHero'));
+    
+    // Apply animated circle colors based on course theme
+    applyCircleColors(course.theme);
   }).catch(err=>{
     console.error(err);
     el.title.textContent = 'Cursus niet gevonden';
@@ -52,6 +55,35 @@
     if(heroEl && theme.grad_a) heroEl.style.setProperty('--grad-a', theme.grad_a);
     if(heroEl && theme.grad_b) heroEl.style.setProperty('--grad-b', theme.grad_b);
     if(theme.brand) document.documentElement.style.setProperty('--brand', theme.brand);
+  }
+
+  function applyCircleColors(theme){
+    if(!theme) return;
+    
+    // Get the main brand color for circles
+    const brandColor = theme.brand || theme.grad_a || '#3b82f6';
+    
+    // Convert hex to RGB for opacity variations
+    const hex = brandColor.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    
+    // Apply different opacity levels to each circle
+    const circles = [
+      { element: '.floating-circle-1', opacity: 0.06 },
+      { element: '.floating-circle-2', opacity: 0.05 },
+      { element: '.floating-circle-3', opacity: 0.04 },
+      { element: '.floating-circle-4', opacity: 0.03 },
+      { element: '.floating-circle-5', opacity: 0.05 }
+    ];
+    
+    circles.forEach(circle => {
+      const elements = document.querySelectorAll(circle.element);
+      elements.forEach(el => {
+        el.style.background = `rgba(${r}, ${g}, ${b}, ${circle.opacity})`;
+      });
+    });
   }
 
   function cardTpl(course, l){
