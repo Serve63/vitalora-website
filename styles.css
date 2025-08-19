@@ -733,7 +733,7 @@ footer {
 }
 
 /* === BG FIX START === */
-:root { --site-bg: #6B46C1; }            /* purple */
+:root { --site-bg: #EDF7FD; }            /* light blue */
 html, body {
   margin: 0;
   background: var(--site-bg);

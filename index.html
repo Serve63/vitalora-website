@@ -285,12 +285,12 @@
 
 <script id="bg-hotfix">
   (function () {
-    var PURPLE = '#6B46C1';
+    var LIGHTBLUE = '#EDF7FD';
     document.addEventListener('DOMContentLoaded', function () {
       document.body.classList.add('home');
-      // make the page purple with highest priority
-      document.body.style.setProperty('background', PURPLE, 'important');
-      document.body.style.setProperty('background-color', PURPLE, 'important');
+      // make the page light blue with highest priority
+      document.body.style.setProperty('background', LIGHTBLUE, 'important');
+      document.body.style.setProperty('background-color', LIGHTBLUE, 'important');
       // disable the overlay if present
       var ov = document.querySelector('.animated-bg');
       if (ov) ov.style.setProperty('display', 'none', 'important');
