@@ -40,6 +40,113 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     .container { max-width: 1280px; }
 }
 
+/* Subtle Wireframe Background Pattern */
+.wireframe-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+    overflow: hidden;
+}
+
+.wireframe-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(circle at 20% 30%, #2954B3 0.5px, transparent 0.5px),
+        radial-gradient(circle at 80% 70%, #2954B3 0.5px, transparent 0.5px),
+        radial-gradient(circle at 40% 80%, #2954B3 0.5px, transparent 0.5px),
+        radial-gradient(circle at 90% 20%, #2954B3 0.5px, transparent 0.5px),
+        radial-gradient(circle at 10% 90%, #2954B3 0.5px, transparent 0.5px),
+        radial-gradient(circle at 70% 10%, #2954B3 0.5px, transparent 0.5px);
+    background-size: 
+        300px 300px,
+        250px 250px,
+        400px 400px,
+        350px 350px,
+        200px 200px,
+        450px 450px;
+    background-position: 
+        0 0,
+        50px 50px,
+        100px 100px,
+        150px 150px,
+        200px 200px,
+        250px 250px;
+    opacity: 0.06;
+    animation: none; /* Static version */
+}
+
+/* Animated version - uncomment to use */
+.wireframe-bg.animated::before {
+    animation: wireframe-float 20s ease-in-out infinite;
+}
+
+@keyframes wireframe-float {
+    0%, 100% {
+        transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+        transform: translate(-10px, -5px) rotate(0.5deg);
+    }
+    50% {
+        transform: translate(5px, -10px) rotate(-0.5deg);
+    }
+    75% {
+        transform: translate(-5px, 5px) rotate(0.3deg);
+    }
+}
+
+/* Additional curved lines */
+.wireframe-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(45deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
+        linear-gradient(-45deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
+        linear-gradient(135deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%),
+        linear-gradient(-135deg, transparent 40%, #2954B3 40%, #2954B3 41%, transparent 41%);
+    background-size: 
+        200px 200px,
+        150px 150px,
+        300px 300px,
+        250px 250px;
+    background-position: 
+        0 0,
+        100px 100px,
+        200px 200px,
+        300px 300px;
+    opacity: 0.03;
+    animation: none; /* Static version */
+}
+
+.wireframe-bg.animated::after {
+    animation: wireframe-curve 25s ease-in-out infinite;
+}
+
+@keyframes wireframe-curve {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(-15px, -8px) scale(1.02);
+    }
+    66% {
+        transform: translate(8px, -15px) scale(0.98);
+    }
+}
+
 /* Header */
 header {
     background-color: #ffffff;
