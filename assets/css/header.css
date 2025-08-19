@@ -5,9 +5,8 @@
 
 /* Header bar */
 .site-header{
-  display: none !important;
   height: var(--header-h);
-  background:#fff;
+  background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
   border-bottom:1px solid rgba(15,23,42,.06);
   position: sticky; top:0; z-index:100;
 }
@@ -16,29 +15,68 @@
 .header-inner{
   max-width:1200px; margin:0 auto; padding:0 20px;
   height:100%;
-  display:flex; align-items:center; gap:16px; justify-content:space-between;
+  display:flex; align-items:center; gap:32px; justify-content:space-between;
 }
 
-/* LOGO: forceer kleur en bold, nooit blauw/onderlijnd */
+/* LOGO */
 .site-header .logo{
-  color: var(--header-logo) !important;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: white !important;
   font: 700 22px/1 "Quicksand", ui-sans-serif, system-ui;
   letter-spacing:.2px;
   text-decoration: none !important;
 }
 
-/* Navigatie */
-.main-nav a{
-  color:#0f172a; text-decoration:none; font-weight:600;
-  padding:8px 10px; border-radius:10px;
+.logo-icon {
+  font-size: 24px;
 }
-.main-nav a:hover{ background:#f1f5f9; }
 
-/* Login badge (gebruik brand kleur) */
-.btn.login-badge{
-  display:inline-flex; align-items:center; gap:8px;
-  padding:8px 12px; border-radius:12px; border:none;
-  background: var(--brand,#2563eb); color:#fff; font-weight:700; text-decoration:none;
+.logo-text {
+  color: white;
+}
+
+/* Navigatie */
+.main-nav{
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.main-nav a{
+  color: white; 
+  text-decoration: none; 
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 12px; 
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+.main-nav a:hover{ 
+  background: rgba(255,255,255,0.1); 
+  color: white;
+}
+
+/* Contact button */
+.btn.contact-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  border: none;
+  background: white;
+  color: #1e3a8a;
+  font-weight: 600;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn.contact-btn:hover{
+  background: #f8fafc;
+  transform: translateY(-1px);
 }
 
 /* Verberg header wanneer het een les-overzicht is */
