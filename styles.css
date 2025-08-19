@@ -157,11 +157,11 @@ header {
 
 .toxin-card {
     position: relative;
-    background: #E8F2FF;
+    background: #2954B3;
     padding: 32px 24px;
     border-radius: 20px;
     text-align: center;
-    border: 1px solid rgba(58,154,234,0.22);
+    border: 1px solid #2954B3;
     box-shadow: none;
     transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
     will-change: transform, box-shadow;
@@ -170,7 +170,7 @@ header {
 .toxin-card:hover {
     transform: translateY(-6px);
     box-shadow: none;
-    border-color: rgba(58,154,234,0.4);
+    border-color: #1e3a8a;
 }
 
 .toxin-icon {
@@ -189,33 +189,33 @@ header {
     font-size: 28px;
     font-weight: 800;
     letter-spacing: -0.01em;
-    color: #0f2167;
+    color: white;
     margin-bottom: 6px;
 }
 
 .toxin-label {
     display: inline-block;
     font-size: 11px;
-    color: #0f2167;
+    color: #2954B3;
     margin-bottom: 18px;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     padding: 4px 10px;
     border-radius: 999px;
-    background: #e6f2ff;
-    border: 1px solid rgba(58,154,234,0.35);
+    background: white;
+    border: 1px solid white;
 }
 
 .toxin-card h3 {
     font-size: 18px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: white;
     margin-bottom: 10px;
 }
 
 .toxin-card p {
     font-size: 14px;
-    color: #667085;
+    color: rgba(255,255,255,0.9);
     line-height: 1.6;
 }
 
