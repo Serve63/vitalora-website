@@ -17,10 +17,15 @@
     hero:   document.getElementById('courseHero')
   };
 
-  fetch(`/data/courses/${slug}.json?v=1`).then(r=>{
+  fetch(`/data/courses/${slug}.json?v=2`).then(r=>{
     if(!r.ok) throw new Error('404');
     return r.json();
   }).then(course=>{
+    console.log('Course loaded:', course);
+    console.log('Total lessons:', course.lessons?.length);
+    console.log('Draft lessons:', course.lessons?.filter(l => l.draft).length);
+    console.log('Live lessons:', course.lessons?.filter(l => !l.draft).length);
+    
     // Titel/subtitle/badges
     el.title.textContent = course.title || 'Cursus';
     el.sub.textContent   = course.subtitle || '';
@@ -31,6 +36,7 @@
 
     // Render lessen
     const live = (course.lessons || []).filter(l => !l.draft);
+    console.log('Rendering lessons:', live.length);
     el.list.innerHTML = live.map(l => cardTpl(course, l)).join('');
 
     // Apply theme colors (per pagina, geen globale side-effects)
