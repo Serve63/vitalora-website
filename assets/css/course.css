@@ -31,7 +31,89 @@
   background: linear-gradient(135deg, var(--grad-a), var(--grad-b));
   color: #fff;
   border-radius: 0;          /* geen afgeronde hoeken */
-  overflow: visible;         /* niet afsnijden */
+  overflow: hidden;          /* cirkels binnen houden */
+}
+
+/* Animated background circles */
+.course-hero::after, .lesson-hero::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Floating circles animation */
+@keyframes float1 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  33% { transform: translate(30px, -20px) rotate(120deg); }
+  66% { transform: translate(-20px, 10px) rotate(240deg); }
+}
+
+@keyframes float2 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  50% { transform: translate(-25px, -15px) rotate(180deg); }
+}
+
+@keyframes float3 {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  25% { transform: translate(15px, 25px) rotate(90deg); }
+  75% { transform: translate(-30px, -10px) rotate(270deg); }
+}
+
+/* Circle elements */
+.course-hero::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  top: 20%;
+  right: 15%;
+  animation: float1 20s ease-in-out infinite;
+  z-index: 0;
+}
+
+.course-hero::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.06);
+  bottom: 30%;
+  left: 10%;
+  animation: float2 25s ease-in-out infinite;
+  z-index: 0;
+}
+
+/* Additional circles with pseudo-elements */
+.course-hero .floating-circle-1 {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  top: 60%;
+  right: 25%;
+  animation: float3 30s ease-in-out infinite;
+  z-index: 0;
+}
+
+.course-hero .floating-circle-2 {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  top: 15%;
+  left: 20%;
+  animation: float1 35s ease-in-out infinite reverse;
+  z-index: 0;
 }
 .course-hero::before, .lesson-hero::before{
   content: "";
