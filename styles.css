@@ -174,15 +174,17 @@ header {
 }
 
 .toxin-icon {
-    width: 52px;
-    height: 52px;
+    width: 80px;
+    height: 80px;
     margin: 0 auto 16px;
-    border-radius: 14px;
-    display: grid;
-    place-items: center;
-    color: #0f172a;
-    background: radial-gradient(120% 120% at 50% 0%, #e9f5ff 0%, #d7ecff 70%, #cfe7ff 100%);
-    box-shadow: 0 10px 18px rgba(58, 154, 234, 0.25), inset 0 1px 0 rgba(255,255,255,0.8);
+    border-radius: 12px;
+    background: rgba(255,255,255,0.2);
+    border: 2px solid rgba(255,255,255,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    font-size: 24px;
 }
 
 .toxin-percentage {
@@ -219,20 +221,7 @@ header {
     line-height: 1.6;
 }
 
-/* subtle shine on hover */
-.toxin-card::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    border-radius: 16px;
-    background: linear-gradient(120deg, rgba(255,255,255,0.0) 30%, rgba(255,255,255,0.25) 45%, rgba(255,255,255,0.0) 60%);
-    transform: translateX(-120%);
-    transition: transform 0.6s ease;
-    pointer-events: none;
-}
-.toxin-card:hover::after {
-    transform: translateX(120%);
-}
+/* Glans effect weggehaald */
 
 /* Why Section */
 .why {
