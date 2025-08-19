@@ -7,39 +7,14 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css?v=qs17">
+    <link rel="stylesheet" href="styles.css?v=bgfix2">
     <link rel="stylesheet" href="icons.css">
     <link rel="stylesheet" href="/assets/css/header.css?v=15">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
     <link rel="stylesheet" href="/assets/css/footer.css?v=1">
     <meta name="theme-color" content="#1e3a8a">
 
-<style>
-/* FORCE PURPLE BACKGROUND - OVERRIDE EVERYTHING */
-:root { --site-bg: #6B46C1 !important; }
-html, body { 
-    background: #6B46C1 !important; 
-    background-color: #6B46C1 !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}
 
-/* KILL ALL WHITE BACKGROUNDS ON HOMEPAGE */
-body.home * {
-    background: transparent !important;
-}
-
-/* KILL ANIMATED BACKGROUND */
-body.home .animated-bg {
-    display: none !important;
-}
-
-/* FORCE BODY PURPLE */
-body.home {
-    background: #6B46C1 !important;
-    background-color: #6B46C1 !important;
-}
-</style>
 
 </head>
 <body class="home">
@@ -308,62 +283,19 @@ body.home {
 
     <script src="script.js"></script>
 
-<script>
-// DEFINITIVE PURPLE BACKGROUND ENFORCER
-(function() {
-    // Force purple background immediately
-    document.documentElement.style.setProperty('background', '#6B46C1', 'important');
-    document.body.style.setProperty('background', '#6B46C1', 'important');
-    document.body.style.setProperty('background-color', '#6B46C1', 'important');
-    
-    // Kill animated background
-    const animatedBg = document.querySelector('.animated-bg');
-    if (animatedBg) {
-        animatedBg.style.setProperty('display', 'none', 'important');
-    }
-    
-    // Monitor for any changes and re-apply
-    const observer = new MutationObserver(function(mutations) {
-        mutations.forEach(function(mutation) {
-            if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
-                // Re-apply purple background if style changes
-                document.body.style.setProperty('background', '#6B46C1', 'important');
-                document.body.style.setProperty('background-color', '#6B46C1', 'important');
-            }
-        });
+<script id="bg-hotfix">
+  (function () {
+    var PURPLE = '#6B46C1';
+    document.addEventListener('DOMContentLoaded', function () {
+      document.body.classList.add('home');
+      // make the page purple with highest priority
+      document.body.style.setProperty('background', PURPLE, 'important');
+      document.body.style.setProperty('background-color', PURPLE, 'important');
+      // disable the overlay if present
+      var ov = document.querySelector('.animated-bg');
+      if (ov) ov.style.setProperty('display', 'none', 'important');
     });
-    
-    // Observe body for style changes
-    observer.observe(document.body, {
-        attributes: true,
-        attributeFilter: ['style']
-    });
-    
-    // Also apply after DOM is fully loaded
-    document.addEventListener('DOMContentLoaded', function() {
-        document.documentElement.style.setProperty('background', '#6B46C1', 'important');
-        document.body.style.setProperty('background', '#6B46C1', 'important');
-        document.body.style.setProperty('background-color', '#6B46C1', 'important');
-        
-        // Kill any white backgrounds
-        document.querySelectorAll('*').forEach(function(el) {
-            if (el !== document.body && el !== document.documentElement) {
-                el.style.setProperty('background', 'transparent', 'important');
-            }
-        });
-    });
-    
-    // Apply every 100ms for the first 5 seconds
-    let attempts = 0;
-    const interval = setInterval(function() {
-        document.body.style.setProperty('background', '#6B46C1', 'important');
-        document.body.style.setProperty('background-color', '#6B46C1', 'important');
-        attempts++;
-        if (attempts >= 50) clearInterval(interval);
-    }, 100);
-    
-    console.log('PURPLE BACKGROUND ENFORCER ACTIVE');
-})();
+  })();
 </script>
 
 </body>
