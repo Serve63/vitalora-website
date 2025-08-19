@@ -5,6 +5,7 @@
 
 /* Header bar */
 .site-header{
+  display: none !important;
   height: var(--header-h);
   background:#fff;
   border-bottom:1px solid rgba(15,23,42,.06);
