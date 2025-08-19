@@ -22,15 +22,10 @@
 .site-header .logo{
   display: flex;
   align-items: center;
-  gap: 8px;
   color: white !important;
   font: 700 22px/1 "Quicksand", ui-sans-serif, system-ui;
   letter-spacing:.2px;
   text-decoration: none !important;
-}
-
-.logo-icon {
-  font-size: 24px;
 }
 
 .logo-text {
@@ -56,6 +51,34 @@
 .main-nav a:hover{ 
   background: rgba(255,255,255,0.1); 
   color: white;
+}
+
+/* Header buttons container */
+.header-buttons {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Login button */
+.btn.login-btn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.btn.login-btn:hover{
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(255,255,255,0.5);
 }
 
 /* Contact button */
