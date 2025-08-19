@@ -60,12 +60,12 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     width: 100%;
     height: 100%;
     background-image: 
-        radial-gradient(circle at 20% 30%, #2954B3 0.5px, transparent 0.5px),
-        radial-gradient(circle at 80% 70%, #2954B3 0.5px, transparent 0.5px),
-        radial-gradient(circle at 40% 80%, #2954B3 0.5px, transparent 0.5px),
-        radial-gradient(circle at 90% 20%, #2954B3 0.5px, transparent 0.5px),
-        radial-gradient(circle at 10% 90%, #2954B3 0.5px, transparent 0.5px),
-        radial-gradient(circle at 70% 10%, #2954B3 0.5px, transparent 0.5px);
+        radial-gradient(circle at 20% 30%, #2954B3 1px, transparent 1px),
+        radial-gradient(circle at 80% 70%, #2954B3 1px, transparent 1px),
+        radial-gradient(circle at 40% 80%, #2954B3 1px, transparent 1px),
+        radial-gradient(circle at 90% 20%, #2954B3 1px, transparent 1px),
+        radial-gradient(circle at 10% 90%, #2954B3 1px, transparent 1px),
+        radial-gradient(circle at 70% 10%, #2954B3 1px, transparent 1px);
     background-size: 
         300px 300px,
         250px 250px,
@@ -80,7 +80,7 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
         150px 150px,
         200px 200px,
         250px 250px;
-    opacity: 0.06;
+    opacity: 0.15;
     animation: none; /* Static version */
 }
 
@@ -127,7 +127,7 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
         100px 100px,
         200px 200px,
         300px 300px;
-    opacity: 0.03;
+    opacity: 0.08;
     animation: none; /* Static version */
 }
 
