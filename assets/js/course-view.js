@@ -89,7 +89,7 @@
   function cardTpl(course, l){
     const url = `/lesson-view.html?course=${course.slug}&lesson=${l.index}`;
     return `
-      <article class="lesson-card">
+      <article class="lesson-card" onclick="window.location.href='${url}'" style="cursor: pointer;">
         <div class="meta">
           <div class="idx">${l.index}</div>
           <div class="content">
@@ -100,7 +100,7 @@
             </div>
           </div>
         </div>
-        <a class="btn-start" href="${url}">
+        <a class="btn-start" href="${url}" onclick="event.stopPropagation()">
           Start les <span class="icon-play" aria-hidden="true"></span>
         </a>
       </article>`;
