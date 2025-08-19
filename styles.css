@@ -50,6 +50,8 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     pointer-events: none;
     z-index: -1;
     overflow: hidden;
+    /* Force background color site-wide to avoid overrides */
+    background-color: #EDF6FD !important;
 }
 
 .circle {
