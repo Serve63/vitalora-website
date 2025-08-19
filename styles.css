@@ -67,8 +67,8 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     position: absolute;
     border-radius: 50%;
     background: #2954B3;
-    opacity: 0.08;
-    animation-duration: 20s;
+    opacity: 0.06;
+    animation-duration: 30s;
     animation-timing-function: ease-in-out;
     animation-iteration-count: infinite;
     animation-direction: alternate;
@@ -129,32 +129,32 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
 
 @keyframes float-1 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(30px, -20px) scale(1.05); }
+    50% { transform: translate(15px, -10px) scale(1.02); }
 }
 
 @keyframes float-2 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-25px, 15px) scale(0.95); }
+    50% { transform: translate(-12px, 8px) scale(0.98); }
 }
 
 @keyframes float-3 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(20px, 25px) scale(1.1); }
+    50% { transform: translate(10px, 12px) scale(1.03); }
 }
 
 @keyframes float-4 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-15px, -30px) scale(0.9); }
+    50% { transform: translate(-8px, -15px) scale(0.97); }
 }
 
 @keyframes float-5 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(35px, -10px) scale(1.15); }
+    50% { transform: translate(18px, -5px) scale(1.04); }
 }
 
 @keyframes float-6 {
     0%, 100% { transform: translate(0, 0) scale(1); }
-    50% { transform: translate(-20px, 20px) scale(0.85); }
+    50% { transform: translate(-10px, 10px) scale(0.96); }
 }
 
 /* Responsive adjustments */
