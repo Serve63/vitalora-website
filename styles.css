@@ -435,11 +435,38 @@ header {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 40px;
+    position: relative;
 }
 
 .process-card {
     text-align: center;
     padding: 40px 20px;
+    position: relative;
+}
+
+/* Stippellijnen tussen de iconen */
+.process-card:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: 60px; /* Positie van de iconen */
+    right: -20px;
+    width: 40px;
+    height: 2px;
+    background: repeating-linear-gradient(
+        to right,
+        #2954B4 0,
+        #2954B4 4px,
+        transparent 4px,
+        transparent 8px
+    );
+    z-index: 1;
+}
+
+/* Verberg stippellijnen op mobiel */
+@media (max-width: 768px) {
+    .process-card::after {
+        display: none;
+    }
 }
 
 .process-icon {
