@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   const mount = document.querySelector('[data-include="site-header"]');
   if (!mount) return;
 
-  const res = await fetch('/partials/header.html?v=4');
+  const res = await fetch('/partials/header.html?v=5');
   mount.innerHTML = await res.text();
 
   // Belt & suspenders: naast .route-home zetten we ook .is-home
