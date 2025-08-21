@@ -325,7 +325,7 @@ body {
     box-shadow: 0 25px 60px rgba(2,6,23,0.35);
     padding: 24px 24px 28px;
 }
-.modal-ebook { max-width: 700px; max-height: 500px; padding:0; overflow:hidden }
+.modal-ebook { max-width: 650px; max-height: 500px; padding:0; overflow:hidden }
 .modal-hero { background:#0f2642; color:#fff; padding:26px 34px; text-align:center }
 .modal-hero h2 { font-size:36px; margin:0 0 6px }
 .modal-subtitle { font-size:26px; opacity:.95 }
