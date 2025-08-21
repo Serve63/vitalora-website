@@ -242,6 +242,11 @@ body {
     color: #FDB542 !important;
 }
 
+/* Force all stars to be yellow */
+.testimonial-card .icon-star {
+    color: #FDB542 !important;
+}
+
 .quote {
     font-size: 16px;
     color: #374151;
