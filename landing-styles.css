@@ -321,12 +321,12 @@ body {
 .modal { position: fixed; inset:0; z-index: 2000; }
 .modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.65); backdrop-filter: blur(2px); }
 .modal-card {
-    position: relative; z-index:1; max-width: 520px; margin: 8vh auto; background: #fff;
+    position: relative; z-index:1; max-width: 520px; margin: 8vh auto; background: #EFF5FF;
     box-shadow: 0 25px 60px rgba(2,6,23,0.35);
     padding: 24px 24px 28px;
 }
 .modal-ebook { max-width: 650px; max-height: 500px; padding:0; overflow:hidden }
-.modal-hero { background:#0f2642; color:#fff; padding:26px 34px; text-align:center }
+.modal-hero { background:#08192B; color:#fff; padding:26px 34px; text-align:center }
 .modal-hero h2 { font-size:36px; margin:0 0 6px }
 .modal-subtitle { font-size:26px; opacity:.95 }
 .two-col { display:grid; grid-template-columns: 200px 1fr; gap:0 }
@@ -343,7 +343,7 @@ body {
   .two-col { grid-template-columns: 1fr }
   .modal-illustration { display:none }
 }
-.modal-close { position:absolute; right: -8px; top: -8px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; line-height: 1; cursor: pointer; color: #1A9588; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.modal-close { position:absolute; right: -8px; top: -8px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; line-height: 1; cursor: pointer; color: #08192B; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .modal-header h3 { font-size: 22px; color:#3A9AEA; margin-bottom:6px }
 .modal-header p { color:#6b7280; margin-bottom: 16px }
 .modal-form { display:flex; flex-direction: column; gap: 12px }
