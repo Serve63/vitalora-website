@@ -247,6 +247,14 @@ body {
     color: #FDB542 !important;
 }
 
+/* Even stronger rule to override any other CSS */
+.testimonials .stars .icon-star,
+.testimonial-card .stars .icon-star,
+.stars .icon-star {
+    color: #FDB542 !important;
+    fill: #FDB542 !important;
+}
+
 .quote {
     font-size: 16px;
     color: #374151;
