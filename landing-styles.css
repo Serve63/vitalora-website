@@ -107,8 +107,8 @@ body {
 }
 
 .cta-button {
-    background-color: white;
-    color: #20B981;
+    background-color: #10b981;
+    color: white;
     border: none;
     padding: 18px 36px;
     font-size: 18px;
@@ -122,6 +122,16 @@ body {
 }
 
 .cta-button:hover {
+    background-color: #059669;
+}
+
+/* Specific styling for CTA button in green section */
+.final-cta .cta-button {
+    background-color: white;
+    color: #20B981;
+}
+
+.final-cta .cta-button:hover {
     background-color: #f3f4f6;
 }
 
@@ -219,7 +229,7 @@ body {
 }
 
 .stars .icon-star {
-    color: #FDB542;
+    color: #FDB542 !important;
 }
 
 .quote {
