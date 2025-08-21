@@ -233,7 +233,7 @@ body {
 }
 
 .highlight {
-    color: #2954B3;
+    color: #333333;
 }
 
 /* Form Sections */
@@ -244,7 +244,7 @@ body {
 .form-section h3 {
     font-size: 18px;
     font-weight: 600;
-    color: #3A9AEA;
+    color: #333333;
     margin-bottom: 16px;
 }
 
@@ -355,7 +355,7 @@ body {
 .total-price {
     font-size: 32px;
     font-weight: 700;
-    color: #3A9AEA;
+    color: #333333;
 }
 
 /* Checkout Button */
@@ -402,7 +402,7 @@ body {
 }
 
 .checkbox-group a {
-    color: #3A9AEA;
+    color: #333333;
     text-decoration: none;
 }
 
