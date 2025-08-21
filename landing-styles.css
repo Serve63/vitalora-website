@@ -336,7 +336,7 @@ body {
 .modal-lead { color:#374151; font-size:18px; margin:0 0 18px }
 .modal-form input { padding:14px 14px; border:1px solid #dbe3ec; border-radius:10px }
 .modal-form input + input { margin-top:12px }
-.modal-cta { width:auto; margin-top:18px; font-size:16px; padding:12px 24px; display:inline-block; }
+.modal-cta { width:fit-content; margin-top:18px; font-size:16px; padding:12px 20px; display:inline-block; }
 .modal-trust { display:flex; align-items:center; gap:6px; color:#6b7280; font-size:14px; margin-top:10px }
 
 @media (max-width: 768px) {
