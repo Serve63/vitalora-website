@@ -64,10 +64,6 @@ body {
     display: flex;
     flex-direction: column;
     gap: 40px;
-    background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 }
 
 /* Hero Section */
