@@ -343,7 +343,7 @@ body {
   .two-col { grid-template-columns: 1fr }
   .modal-illustration { display:none }
 }
-.modal-close { position:absolute; right: 12px; top: 8px; border:0; background: white; width: 32px; height: 32px; font-size: 18px; line-height: 1; cursor: pointer; color: #0f2642; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+.modal-close { position:absolute; right: -16px; top: -16px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; line-height: 1; cursor: pointer; color: #1A9588; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .modal-header h3 { font-size: 22px; color:#3A9AEA; margin-bottom:6px }
 .modal-header p { color:#6b7280; margin-bottom: 16px }
 .modal-form { display:flex; flex-direction: column; gap: 12px }
