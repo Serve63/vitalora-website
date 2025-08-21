@@ -449,8 +449,8 @@ header {
     content: '';
     position: absolute;
     top: 64px; /* Aangepast voor betere verticale uitlijning met iconen */
-    right: -80px; /* Aangepast om de lijnen veel verder in de kaarten te laten overlappen */
-    width: 200px; /* Aangepast om de lijnen veel langer te maken zodat ze door de hele ruimte lopen */
+    right: -120px; /* Aangepast om de lijnen nog veel verder in de kaarten te laten overlappen */
+    width: 280px; /* Aangepast om de lijnen veel langer te maken zodat ze door de hele ruimte lopen */
     height: 4px; /* Aangepast voor betere zichtbaarheid */
     background: repeating-linear-gradient(
         to right,
