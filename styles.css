@@ -449,7 +449,7 @@ header {
     content: '';
     position: absolute;
     top: 64px; /* Aangepast voor betere verticale uitlijning met iconen */
-    right: -120px; /* Aangepast om de lijnen nog veel verder in de kaarten te laten overlappen */
+    right: -140px; /* Aangepast om de lijnen gecentreerd te maken tussen de kaarten */
     width: 280px; /* Aangepast om de lijnen veel langer te maken zodat ze door de hele ruimte lopen */
     height: 4px; /* Aangepast voor betere zichtbaarheid */
     background: repeating-linear-gradient(
