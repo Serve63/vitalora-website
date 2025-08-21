@@ -317,6 +317,13 @@ body {
     margin-bottom: 24px;
 }
 
+.summary-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333333;
+    margin-bottom: 16px;
+}
+
 .summary-item {
     font-size: 16px;
     color: #374151;
@@ -335,11 +342,7 @@ body {
     margin-bottom: 4px;
 }
 
-.total-subtitle {
-    font-size: 12px;
-    color: #333333;
-    margin-bottom: 8px;
-}
+
 
 .total-price {
     font-size: 32px;
