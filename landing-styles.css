@@ -107,8 +107,8 @@ body {
 }
 
 .cta-button {
-    background-color: #10b981;
-    color: white;
+    background-color: white;
+    color: #20B981;
     border: none;
     padding: 18px 36px;
     font-size: 18px;
@@ -122,7 +122,7 @@ body {
 }
 
 .cta-button:hover {
-    background-color: #059669;
+    background-color: #f3f4f6;
 }
 
 /* Book Stack */
