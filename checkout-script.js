@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = data.checkoutUrl;
             } catch (err) {
                 alert('Er ging iets mis met starten van de betaling. Probeer opnieuw.');
-                this.textContent = 'Afrekenen €1,00 →';
+                this.textContent = 'Afrekenen →';
                 this.disabled = false;
             }
         });
