@@ -240,7 +240,7 @@ body {
 .form-group select {
     width: 100%;
     padding: 14px 16px;
-    border: 2px solid #10b981;
+    border: 2px solid #e5e7eb;
     border-radius: 8px;
     font-size: 16px;
 
@@ -251,6 +251,11 @@ body {
 .form-group select:focus {
     outline: none;
     border-color: #3A9AEA;
+}
+
+/* Groene rand alleen voor het land dropdown */
+.form-group select {
+    border: 2px solid #10b981;
 }
 
 /* Payment Methods */
