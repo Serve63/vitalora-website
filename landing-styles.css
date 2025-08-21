@@ -135,6 +135,16 @@ body {
     background-color: #f3f4f6;
 }
 
+/* Ensure the main ebook CTA button stays green */
+#ebook-claim {
+    background-color: #10b981 !important;
+    color: white !important;
+}
+
+#ebook-claim:hover {
+    background-color: #059669 !important;
+}
+
 /* Book Stack */
 .hero-image { display:flex; justify-content:center; align-items:flex-start }
 
