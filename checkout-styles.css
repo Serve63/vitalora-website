@@ -7,6 +7,11 @@
 
 /* Header CSS moved to /assets/css/header.css */
 
+/* Hide header on wacht-even page */
+.site-header {
+    display: none !important;
+}
+
 @font-face { font-family:'Blender'; src: local('Blender'), url('assets/fonts/Blender-Regular.woff2') format('woff2'); font-display: swap }
 @font-face { font-family:'Blender Strong'; src: local('Blender Strong'), url('assets/fonts/Blender-Strong.woff2') format('woff2'); font-display: swap }
 body {
