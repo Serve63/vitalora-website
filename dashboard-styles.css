@@ -16,13 +16,128 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+/* Preview Background - Shows what's behind the access gate */
+.preview-background {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    overflow-y: auto;
+    z-index: 1;
+}
+
+.preview-header {
+    text-align: center;
+    padding: 80px 0 60px;
+    background: linear-gradient(135deg, #2954B4 0%, #1e40af 100%);
+    color: white;
+    margin-bottom: 40px;
+}
+
+.preview-title {
+    font-size: 48px;
+    font-family: 'Blender Strong','Blender','Rubik','Barlow',sans-serif;
+    letter-spacing: .03em;
+    margin-bottom: 20px;
+    color: white;
+    line-height: 1.2;
+}
+
+.preview-description {
+    font-size: 20px;
+    margin-bottom: 40px;
+    opacity: 0.9;
+    line-height: 1.5;
+    color: white;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.preview-features {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.preview-feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    opacity: 0.9;
+}
+
+.preview-feature .icon {
+    color: #fbbf24;
+    font-size: 16px;
+}
+
+.preview-courses {
+    padding: 0 20px 60px;
+}
+
+.preview-courses-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.preview-course-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0.7;
+    transform: scale(0.95);
+}
+
+.preview-course-card:hover {
+    transform: scale(1);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+.preview-card-media {
+    height: 160px;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.preview-card-media img {
+    width: 60px;
+    height: 60px;
+    opacity: 0.6;
+}
+
+.preview-course-content {
+    padding: 20px;
+}
+
+.preview-course-content h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1e293b;
+    margin-bottom: 4px;
+}
+
+.preview-course-subtitle {
+    font-size: 14px;
+    color: #64748b;
+    font-weight: 500;
+}
+
 /* Access Gate */
 .access-gate {
     position: fixed;
     inset: 0;
-    background: radial-gradient(120% 120% at 50% -10%, rgba(30,58,138,0.9) 0%, rgba(30,58,138,0.96) 35%, rgba(17,24,39,0.98) 100%);
-    backdrop-filter: blur(6px);
-    display: none; /* default hidden; script shows it when nodig */
+    background: rgba(30, 58, 138, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex;
     align-items: center;
     justify-content: center;
     z-index: 2000;
@@ -34,45 +149,46 @@ body {
 .access-card {
     width: 100%;
     max-width: 520px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
-    border: 1px solid rgba(255,255,255,0.18);
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 20px;
     padding: 32px;
-    color: #FFFFFF;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    color: #1e293b;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.25);
     text-align: center;
+    backdrop-filter: blur(10px);
 }
 
 .access-brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
 .access-brand .logo-icon { font-size: 20px; }
-.access-brand .logo-text { font-weight: 700; letter-spacing: .4px; }
+.access-brand .logo-text { font-weight: 700; letter-spacing: .4px; color: #2954B4; }
 
-.access-card h2 { font-size: 22px; margin: 8px 0 6px; }
-.access-subtitle { opacity: .85; margin-bottom: 18px; }
+.access-card h2 { font-size: 22px; margin: 8px 0 6px; color: #1e293b; }
+.access-subtitle { opacity: .7; margin-bottom: 18px; color: #64748b; }
 
 .code-form { display:flex; flex-direction:column; align-items:center; gap: 16px; }
 .code-inputs { display:flex; gap: 10px; }
 .code-digit {
     width: 48px; height: 56px;
     text-align: center; font-size: 22px; font-weight: 700; color:#0f172a;
-    background: #ffffff; border: 2px solid transparent; border-radius: 12px;
-    box-shadow: 0 8px 18px rgba(2,6,23,0.25);
+    background: #ffffff; border: 2px solid #e2e8f0; border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     outline: none;
     transition: border-color .2s ease, transform .08s ease;
 }
-.code-digit:focus { border-color:#60a5fa; transform: translateY(-1px); }
+.code-digit:focus { border-color:#2954B4; transform: translateY(-1px); }
 
 .access-btn {
-    background: linear-gradient(90deg,#10b981,#22c55e);
+    background: linear-gradient(90deg,#2954B4,#3A9AEA);
     color:#fff; font-weight:700; border:0; border-radius: 12px;
     padding: 12px 18px; cursor:pointer; transition: opacity .2s ease, transform .1s ease;
-    width: 100%; max-width: 220px; box-shadow: 0 10px 22px rgba(16,185,129,0.35);
+    width: 100%; max-width: 220px; box-shadow: 0 10px 22px rgba(41,84,180,0.35);
 }
 .access-btn[disabled] { opacity:.55; cursor:not-allowed; box-shadow:none; }
 .access-btn:hover:not([disabled]) { transform: translateY(-1px); }
 
-.access-hint { font-size:12px; opacity:.7; }
-.access-error { color:#fecaca; font-weight:600; min-height: 18px; }
+.access-hint { font-size:12px; opacity:.6; color: #64748b; }
+.access-error { color:#ef4444; font-weight:600; min-height: 18px; }
 
 .container {
     max-width: 1200px;

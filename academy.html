@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard-styles.css?v=2">
+    <link rel="stylesheet" href="dashboard-styles.css?v=3">
     <link rel="stylesheet" href="icons.css">
     <link rel="stylesheet" href="/assets/css/header.css?v=15">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
@@ -15,8 +15,99 @@
 </head>
 <body class="page-academy">
     <!-- BEGIN SCOPE: academy-html -->
+    
+    <!-- Preview Background - Shows what's behind the access gate -->
+    <div class="preview-background">
+        <div class="container">
+            <div class="preview-header">
+                <h1 class="preview-title">Jouw Persoonlijke Wellness Journey</h1>
+                <p class="preview-description">Welkom in jouw gepersonaliseerde leeromgeving voor optimale gezondheid en welzijn</p>
+                
+                <div class="preview-features">
+                    <div class="preview-feature">
+                        <span class="icon" aria-hidden="true">★</span>
+                        <span>Expertcontent</span>
+                    </div>
+                    <div class="preview-feature">
+                        <span class="icon" aria-hidden="true">★</span>
+                        <span>Persoonlijke Begeleiding</span>
+                    </div>
+                    <div class="preview-feature">
+                        <span class="icon" aria-hidden="true">★</span>
+                        <span>Community Support</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="preview-courses">
+                <div class="preview-courses-grid">
+                    <!-- Preview Course Cards -->
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="Clean Reset cursus" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>Clean Reset</h3>
+                            <p class="preview-course-subtitle">Detox en gifstoffen</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="PowerFoods cursus" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>PowerFoods</h3>
+                            <p class="preview-course-subtitle">Superfood & Specerij</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="De Juiste Balans cursus" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>De Juiste Balans</h3>
+                            <p class="preview-course-subtitle">Energie & Hormonen</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="30 Dagen Challenge" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>30 Dagen Challenge</h3>
+                            <p class="preview-course-subtitle">Dagelijkse mini-steps</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="Everyday Nutrition cursus" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>Everyday Nutrition</h3>
+                            <p class="preview-course-subtitle">Praktisch en Gezond</p>
+                        </div>
+                    </div>
+
+                    <div class="preview-course-card">
+                        <div class="preview-card-media">
+                            <img src="/assets/images/course-placeholder.svg" alt="Mindful Energy cursus" loading="lazy" />
+                        </div>
+                        <div class="preview-course-content">
+                            <h3>Mindful Energy</h3>
+                            <p class="preview-course-subtitle">Innerlijke Rust</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Access Gate Overlay -->
-    <div id="access-gate" class="access-gate" aria-hidden="true">
+    <div id="access-gate" class="access-gate visible" aria-hidden="true">
         <div class="access-card" role="dialog" aria-labelledby="access-title" aria-describedby="access-subtitle">
             <div class="access-brand">
                 <span class="logo-icon">🌿</span>
