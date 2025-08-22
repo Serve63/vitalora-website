@@ -1,6 +1,6 @@
 (function() {
   const ACCESS_KEY = 'vitalora_academy_access';
-  const VALID_CODE = '22500';
+  const VALID_CODE = '225000';
 
   function qs(sel) { return document.querySelector(sel); }
 
