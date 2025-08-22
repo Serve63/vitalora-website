@@ -1,8 +1,8 @@
 /* Defaults (vallen terug als een cursus geen theme heeft) */
 :root{
-  --grad-a:#0ea5e9;      /* hero kleur A  */
-  --grad-b:#1d4ed8;      /* hero kleur B  */
-  --brand:#2563eb;       /* primaire knop */
+  --grad-a:#6b7280;      /* hero kleur A - neutraal grijs */
+  --grad-b:#4b5563;      /* hero kleur B - neutraal grijs */
+  --brand:#6b7280;       /* primaire knop - neutraal grijs */
 }
 
 /* Full-bleed hero: geen witte randen */
@@ -70,7 +70,7 @@ body {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.06); /* Default blue, will be overridden by JS */
+  background: rgba(107, 114, 128, 0.06); /* Neutraal grijs, will be overridden by JS */
   top: 15%;
   right: 10%;
   animation: float1 25s ease-in-out infinite;
@@ -83,7 +83,7 @@ body {
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.05); /* Default blue, will be overridden by JS */
+  background: rgba(107, 114, 128, 0.05); /* Neutraal grijs, will be overridden by JS */
   bottom: 25%;
   left: 8%;
   animation: float2 30s ease-in-out infinite;
@@ -96,7 +96,7 @@ body {
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: rgba(59, 130, 246, 0.04); /* Default blue, will be overridden by JS */
+  background: rgba(107, 114, 128, 0.04); /* Neutraal grijs, will be overridden by JS */
   top: 60%;
   right: 20%;
   animation: float3 35s ease-in-out infinite;
