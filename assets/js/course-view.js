@@ -49,7 +49,9 @@
     // Show content with fade-in effect AFTER colors are applied
     setTimeout(() => {
       el.hero.style.opacity = '1';
+      el.hero.style.visibility = 'visible';
       document.querySelector('.course.container').style.opacity = '1';
+      document.querySelector('.course.container').style.visibility = 'visible';
     }, 100);
   }).catch(err=>{
     console.error(err);
@@ -58,7 +60,9 @@
     
     // Show error state
     el.hero.style.opacity = '1';
+    el.hero.style.visibility = 'visible';
     document.querySelector('.course.container').style.opacity = '1';
+    document.querySelector('.course.container').style.visibility = 'visible';
   });
 
   function applyDefaultTheme(slug) {
