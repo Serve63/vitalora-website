@@ -137,7 +137,7 @@ body {
 
 /* Dashboard Header Section */
 .dashboard-header {
-    background: linear-gradient(135deg, #3A9AEA 0%, #3b82f6 50%, #60a5fa 100%);
+    background: #2954B4;
     color: white;
     padding: 60px 0 80px;
     text-align: center;
