@@ -287,6 +287,11 @@ span.checkmark,
     color: #2954B4;
 }
 
+.experience-title {
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
 /* Form Sections */
 .form-section {
     margin-bottom: 32px;
