@@ -151,14 +151,14 @@ body {
 .access-card {
     width: 100%;
     max-width: 520px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.12), rgba(255,255,255,0.08));
-    border: 1px solid rgba(255,255,255,0.25);
+    background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
+    border: 1px solid rgba(255,255,255,0.3);
     border-radius: 20px;
     padding: 32px;
     color: #FFFFFF;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
     text-align: center;
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
 }
 
 .access-brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
