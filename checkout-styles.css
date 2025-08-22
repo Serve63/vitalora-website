@@ -97,11 +97,13 @@ body {
     font-size: 16px;
     font-weight: normal;
     color: #333333;
+    margin-bottom: 0;
 }
 
 .benefit {
     font-size: 16px;
     color: #333333;
+    margin-top: 0;
 }
 
 /* PFAS Section */
