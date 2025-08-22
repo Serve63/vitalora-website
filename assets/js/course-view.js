@@ -17,6 +17,9 @@
     hero:   document.getElementById('courseHero')
   };
 
+  // Apply default colors based on course slug immediately
+  applyDefaultTheme(slug);
+
   fetch(`/data/courses/${slug}.json?v=2`).then(r=>{
     if(!r.ok) throw new Error('404');
     return r.json();
@@ -26,7 +29,7 @@
     console.log('Draft lessons:', course.lessons?.filter(l => l.draft).length);
     console.log('Live lessons:', course.lessons?.filter(l => !l.draft).length);
     
-    // Apply theme colors FIRST (before showing content)
+    // Apply actual theme colors from JSON
     applyTheme(course.theme, document.getElementById('courseHero'));
     applyCircleColors(course.theme);
     
@@ -57,6 +60,25 @@
     el.hero.style.opacity = '1';
     document.querySelector('.course.container').style.opacity = '1';
   });
+
+  function applyDefaultTheme(slug) {
+    // Default theme colors based on course slug
+    const defaultThemes = {
+      'powerfoods-superfood-specerij': { grad_a: '#22c55e', grad_b: '#16a34a', brand: '#22c55e' },
+      'clean-reset': { grad_a: '#10b981', grad_b: '#059669', brand: '#10b981' },
+      'de-juiste-balans': { grad_a: '#8b5cf6', grad_b: '#7c3aed', brand: '#8b5cf6' },
+      '30-dagen-challenge': { grad_a: '#f59e0b', grad_b: '#d97706', brand: '#f59e0b' },
+      'everyday-nutrition-praktisch-gezond': { grad_a: '#06b6d4', grad_b: '#0891b2', brand: '#06b6d4' },
+      'mindful-energy-innerlijke-rust': { grad_a: '#ec4899', grad_b: '#db2777', brand: '#ec4899' },
+      'energie-hormonen-balans': { grad_a: '#84cc16', grad_b: '#65a30d', brand: '#84cc16' }
+    };
+    
+    const theme = defaultThemes[slug];
+    if (theme) {
+      applyTheme(theme, document.getElementById('courseHero'));
+      applyCircleColors(theme);
+    }
+  }
 
   function applyTheme(theme, heroEl){
     if(!theme) return;
