@@ -600,20 +600,20 @@ body {
 .course-content h3 {
     font-size: 20px;
     font-weight: 600;
-    color: #1e3a8a;
+    color: #333333 !important;
     margin-bottom: 8px;
 }
 
 .course-subtitle {
     font-size: 14px;
-    color: #3b82f6;
+    color: #333333 !important;
     font-weight: 500;
     margin-bottom: 12px;
 }
 
 .course-description {
     font-size: 14px;
-    color: #6b7280;
+    color: #333333 !important;
     line-height: 1.5;
     margin-bottom: 20px;
 }
@@ -643,7 +643,7 @@ body {
 }
 
 .start-course {
-    color: #3b82f6;
+    color: #333333 !important;
     text-decoration: none;
     font-size: 14px;
     font-weight: 500;
@@ -654,7 +654,7 @@ body {
 }
 
 .start-course:hover {
-    color: #1e3a8a;
+    color: #333333 !important;
 }
 
 .start-course .icon-arrow-right {
