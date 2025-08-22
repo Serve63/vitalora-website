@@ -84,7 +84,7 @@ body {
 .hero-text {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 }
 
 .success-message {
