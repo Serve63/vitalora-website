@@ -4,13 +4,28 @@
   <meta charset="utf-8">
   <title>Cursus - Vitalora</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script>
+    (function(){
+      var params=new URLSearchParams(location.search);var slug=params.get('course');
+      var themes={
+        'powerfoods-superfood-specerij':{a:'#22c55e',b:'#16a34a',brand:'#22c55e'},
+        'clean-reset':{a:'#10b981',b:'#059669',brand:'#10b981'},
+        'de-juiste-balans':{a:'#8b5cf6',b:'#7c3aed',brand:'#8b5cf6'},
+        '30-dagen-challenge':{a:'#f59e0b',b:'#d97706',brand:'#f59e0b'},
+        'everyday-nutrition-praktisch-gezond':{a:'#06b6d4',b:'#0891b2',brand:'#06b6d4'},
+        'mindful-energy-innerlijke-rust':{a:'#ec4899',b:'#db2777',brand:'#ec4899'},
+        'energie-hormonen-balans':{a:'#84cc16',b:'#65a30d',brand:'#84cc16'}
+      };
+      var t=themes[slug]; if(t){ var r=document.documentElement.style; r.setProperty('--grad-a',t.a); r.setProperty('--grad-b',t.b); r.setProperty('--brand',t.brand); }
+    })();
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/header.css?v=11">
-  <link rel="stylesheet" href="/assets/css/footer.css?v=1">
-  <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
-  <link rel="stylesheet" href="/assets/css/course.css?v=59">
+  <link rel="stylesheet" href="/assets/css/header.css?v=12">
+  <link rel="stylesheet" href="/assets/css/footer.css?v=2">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=4">
+  <link rel="stylesheet" href="/assets/css/course.css?v=60">
 </head>
 <body>
   <!-- Global floating circles for full page animation -->
