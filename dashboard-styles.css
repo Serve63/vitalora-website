@@ -20,7 +20,7 @@ body {
 .access-gate {
     position: fixed;
     inset: 0;
-    background: rgba(30, 58, 138, 0.85);
+    background: rgba(41, 84, 180, 0.85);
     backdrop-filter: blur(4px);
     display: none;
     align-items: center;
