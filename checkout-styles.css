@@ -237,7 +237,7 @@ span.checkmark,
 .toxins-section {
     background-color: transparent;
     padding: 10px 0;
-    margin-bottom: 10px;
+    margin-bottom: 0;
 }
 
 .toxins-section h3 {
