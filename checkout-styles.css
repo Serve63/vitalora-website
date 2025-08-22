@@ -189,28 +189,39 @@ span.checkmark,
 
 /* Callout Box */
 .callout-box {
-    background-color: #f8fafc;
-    padding: 24px;
-    margin: 20px 0;
-    border-radius: 12px;
-    border-left: 4px solid #2954B4;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 28px;
+    margin: 24px 0;
+    border-radius: 16px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    position: relative;
+}
+
+.callout-box::before {
+    content: '"';
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    font-size: 48px;
+    color: #2954B4;
+    font-family: serif;
+    font-weight: bold;
+    opacity: 0.3;
 }
 
 .callout-icon {
-    font-size: 20px;
-    color: #2954B4;
-    margin-bottom: 12px;
-    display: block;
+    display: none;
 }
 
 .callout-box p {
-    font-size: 16px;
+    font-size: 17px;
     font-weight: 500;
-    color: #333333;
-    line-height: 1.5;
+    color: #1e293b;
+    line-height: 1.6;
     margin: 0;
     font-style: italic;
+    padding-left: 20px;
 }
 
 /* Toxins Section */
