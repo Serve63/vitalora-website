@@ -81,9 +81,14 @@
 
   // Init
   document.addEventListener('DOMContentLoaded', () => {
-    if (!isAuthorized()) {
-      showGate();
-      setupInputs();
-    }
+    // Always show gate for testing - remove this line later
+    showGate();
+    setupInputs();
+    
+    // Original code (commented out for testing):
+    // if (!isAuthorized()) {
+    //   showGate();
+    //   setupInputs();
+    // }
   });
 })();
