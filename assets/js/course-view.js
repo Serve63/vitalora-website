@@ -44,10 +44,20 @@
     
     // Apply animated circle colors based on course theme
     applyCircleColors(course.theme);
+    
+    // Show content with fade-in effect
+    setTimeout(() => {
+      el.hero.style.opacity = '1';
+      document.querySelector('.course.container').style.opacity = '1';
+    }, 100);
   }).catch(err=>{
     console.error(err);
     el.title.textContent = 'Cursus niet gevonden';
     el.sub.textContent   = 'Controleer de URL of probeer later opnieuw.';
+    
+    // Show error state
+    el.hero.style.opacity = '1';
+    document.querySelector('.course.container').style.opacity = '1';
   });
 
   function applyTheme(theme, heroEl){
