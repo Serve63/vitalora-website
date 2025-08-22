@@ -545,8 +545,8 @@ span.checkmark,
     content: '';
     position: absolute;
     left: 0;
-    top: 0;
-    height: calc(100% - 20px);
+    top: 20px;
+    height: calc(100% - 40px);
     width: 2px;
     background: repeating-linear-gradient(
         to bottom,
