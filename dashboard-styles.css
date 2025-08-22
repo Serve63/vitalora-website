@@ -10,7 +10,7 @@
 body {
     font-family: 'Blender','Rubik','Barlow',sans-serif;
     line-height: 1.6;
-    color: #3A9AEA;
+    color: #333333;
     background-color: #ffffff;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -180,7 +180,7 @@ body {
     font-family: 'Blender Strong','Blender','Rubik','Barlow',sans-serif;
     letter-spacing: .03em;
     margin-bottom: 20px;
-    color: #333333;
+    color: white;
     line-height: 1.2;
 }
 
@@ -189,6 +189,7 @@ body {
     margin-bottom: 40px;
     opacity: 0.9;
     line-height: 1.5;
+    color: white;
 }
 
 .header-features {
@@ -204,6 +205,7 @@ body {
     gap: 8px;
     font-size: 16px;
     font-weight: 500;
+    color: white;
 }
 
 .feature .icon-star {
