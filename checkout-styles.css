@@ -133,7 +133,7 @@ body {
 .benefits-section {
     background-color: transparent;
     padding: 0;
-    margin-bottom: 40px;
+    margin-bottom: 0;
 }
 
 .benefits-grid {
