@@ -546,7 +546,7 @@ span.checkmark,
     position: absolute;
     left: 0;
     top: 0;
-    bottom: 0;
+    height: 100%;
     width: 2px;
     background: repeating-linear-gradient(
         to bottom,
@@ -555,6 +555,12 @@ span.checkmark,
         transparent 4px,
         transparent 8px
     );
+    z-index: 1;
+}
+
+.connected-section > * {
+    position: relative;
+    z-index: 2;
 }
 
 /* Responsive Design */
