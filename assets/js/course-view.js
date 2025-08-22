@@ -26,6 +26,10 @@
     console.log('Draft lessons:', course.lessons?.filter(l => l.draft).length);
     console.log('Live lessons:', course.lessons?.filter(l => !l.draft).length);
     
+    // Apply theme colors FIRST (before showing content)
+    applyTheme(course.theme, document.getElementById('courseHero'));
+    applyCircleColors(course.theme);
+    
     // Titel/subtitle/badges
     el.title.textContent = course.title || 'Cursus';
     el.sub.textContent   = course.subtitle || '';
@@ -39,13 +43,7 @@
     console.log('Rendering lessons:', live.length);
     el.list.innerHTML = live.map(l => cardTpl(course, l)).join('');
 
-    // Apply theme colors (per pagina, geen globale side-effects)
-    applyTheme(course.theme, document.getElementById('courseHero'));
-    
-    // Apply animated circle colors based on course theme
-    applyCircleColors(course.theme);
-    
-    // Show content with fade-in effect
+    // Show content with fade-in effect AFTER colors are applied
     setTimeout(() => {
       el.hero.style.opacity = '1';
       document.querySelector('.course.container').style.opacity = '1';
