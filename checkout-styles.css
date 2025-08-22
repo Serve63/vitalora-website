@@ -142,7 +142,8 @@ body {
 }
 
 .benefit-item {
-    display: block;
+    display: flex;
+    align-items: flex-start;
     font-size: 16px;
     color: #333333;
     margin-bottom: 10px;
@@ -153,6 +154,9 @@ body {
     color: #10b981;
     font-weight: 700;
     font-size: 18px;
+    margin-right: 8px;
+    display: inline-block;
+    vertical-align: top;
 }
 
 .checkmark.icon-checkmark {
