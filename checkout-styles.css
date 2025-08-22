@@ -180,6 +180,14 @@ body {
     fill: #10b981 !important;
 }
 
+/* Additional specificity for green checkmarks */
+span.checkmark,
+.checkmark,
+.benefit-item .checkmark,
+.toxin-item .checkmark {
+    color: #10b981 !important;
+}
+
 /* Callout Box */
 .callout-box {
     background-color: transparent;
