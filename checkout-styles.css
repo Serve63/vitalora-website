@@ -63,7 +63,7 @@ body {
 .left-column {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 20px;
 }
 
 /* Hero Section */
@@ -84,7 +84,7 @@ body {
 .hero-text {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 8px;
 }
 
 .success-message {
@@ -107,8 +107,8 @@ body {
 /* PFAS Section */
 .pfas-section {
     background-color: transparent;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .pfas-section h2 {
@@ -128,8 +128,8 @@ body {
 /* Benefits Section */
 .benefits-section {
     background-color: transparent;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .benefits-grid {
@@ -156,8 +156,8 @@ body {
 /* Callout Box */
 .callout-box {
     background-color: transparent;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .callout-icon {
@@ -175,8 +175,8 @@ body {
 /* Toxins Section */
 .toxins-section {
     background-color: transparent;
-    padding: 20px 0;
-    margin-bottom: 20px;
+    padding: 10px 0;
+    margin-bottom: 10px;
 }
 
 .toxins-section h3 {
