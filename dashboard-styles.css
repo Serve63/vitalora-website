@@ -16,129 +16,12 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* Preview Background - Shows what's behind the access gate */
-.preview-background {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    overflow-y: auto;
-    z-index: 1;
-    min-height: 100vh;
-}
-
-.preview-header {
-    text-align: center;
-    padding: 80px 0 60px;
-    background: linear-gradient(135deg, #2954B4 0%, #1e40af 100%);
-    color: white;
-    margin-bottom: 40px;
-}
-
-.preview-title {
-    font-size: 48px;
-    font-family: 'Blender Strong','Blender','Rubik','Barlow',sans-serif;
-    letter-spacing: .03em;
-    margin-bottom: 20px;
-    color: white;
-    line-height: 1.2;
-}
-
-.preview-description {
-    font-size: 20px;
-    margin-bottom: 40px;
-    opacity: 0.9;
-    line-height: 1.5;
-    color: white;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.preview-features {
-    display: flex;
-    justify-content: center;
-    gap: 40px;
-    flex-wrap: wrap;
-}
-
-.preview-feature {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-weight: 500;
-    opacity: 0.9;
-}
-
-.preview-feature .icon {
-    color: #fbbf24;
-    font-size: 16px;
-}
-
-.preview-courses {
-    padding: 0 20px 60px;
-}
-
-.preview-courses-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 24px;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.preview-course-card {
-    background: white;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    opacity: 0.85;
-    transform: scale(0.98);
-}
-
-.preview-course-card:hover {
-    transform: scale(1);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-    opacity: 1;
-}
-
-.preview-card-media {
-    height: 160px;
-    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.preview-card-media img {
-    width: 60px;
-    height: 60px;
-    opacity: 0.6;
-}
-
-.preview-course-content {
-    padding: 20px;
-}
-
-.preview-course-content h3 {
-    font-size: 18px;
-    font-weight: 600;
-    color: #1e293b;
-    margin-bottom: 4px;
-}
-
-.preview-course-subtitle {
-    font-size: 14px;
-    color: #64748b;
-    font-weight: 500;
-}
-
 /* Access Gate */
 .access-gate {
     position: fixed;
     inset: 0;
-    background: rgba(30, 58, 138, 0.95);
-    backdrop-filter: blur(4px);
+    background: radial-gradient(120% 120% at 50% -10%, rgba(30,58,138,0.9) 0%, rgba(30,58,138,0.96) 35%, rgba(17,24,39,0.98) 100%);
+    backdrop-filter: blur(6px);
     display: none;
     align-items: center;
     justify-content: center;
@@ -151,22 +34,21 @@ body {
 .access-card {
     width: 100%;
     max-width: 520px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.15));
-    border: 1px solid rgba(255,255,255,0.4);
+    background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.04));
+    border: 1px solid rgba(255,255,255,0.18);
     border-radius: 20px;
     padding: 32px;
     color: #FFFFFF;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
     text-align: center;
-    backdrop-filter: blur(15px);
 }
 
 .access-brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
 .access-brand .logo-icon { font-size: 20px; }
-.access-brand .logo-text { font-weight: 700; letter-spacing: .4px; color: #FFFFFF; }
+.access-brand .logo-text { font-weight: 700; letter-spacing: .4px; }
 
-.access-card h2 { font-size: 22px; margin: 8px 0 6px; color: #FFFFFF; }
-.access-subtitle { opacity: .85; margin-bottom: 18px; color: #FFFFFF; }
+.access-card h2 { font-size: 22px; margin: 8px 0 6px; }
+.access-subtitle { opacity: .85; margin-bottom: 18px; }
 
 .code-form { display:flex; flex-direction:column; align-items:center; gap: 16px; }
 .code-inputs { display:flex; gap: 10px; }
@@ -189,7 +71,7 @@ body {
 .access-btn[disabled] { opacity:.55; cursor:not-allowed; box-shadow:none; }
 .access-btn:hover:not([disabled]) { transform: translateY(-1px); }
 
-.access-hint { font-size:12px; opacity:.7; color: #FFFFFF; }
+.access-hint { font-size:12px; opacity:.7; }
 .access-error { color:#fecaca; font-weight:600; min-height: 18px; }
 
 .container {
