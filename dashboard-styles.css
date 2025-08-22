@@ -137,7 +137,7 @@ body {
 .access-gate {
     position: fixed;
     inset: 0;
-    background: rgba(30, 58, 138, 0.75);
+    background: rgba(30, 58, 138, 0.95);
     backdrop-filter: blur(4px);
     display: none;
     align-items: center;
@@ -151,14 +151,14 @@ body {
 .access-card {
     width: 100%;
     max-width: 520px;
-    background: linear-gradient(180deg, rgba(255,255,255,0.15), rgba(255,255,255,0.1));
-    border: 1px solid rgba(255,255,255,0.3);
+    background: linear-gradient(180deg, rgba(255,255,255,0.2), rgba(255,255,255,0.15));
+    border: 1px solid rgba(255,255,255,0.4);
     border-radius: 20px;
     padding: 32px;
     color: #FFFFFF;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.5);
     text-align: center;
-    backdrop-filter: blur(12px);
+    backdrop-filter: blur(15px);
 }
 
 .access-brand { display:flex; align-items:center; justify-content:center; gap:10px; margin-bottom:8px; }
