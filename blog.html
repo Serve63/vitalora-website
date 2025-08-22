@@ -97,8 +97,24 @@
 			gap: 6px;
 		}
 		.post-date::before {
-			content: '📅';
+			content: '';
 			font-size: 12px;
+		}
+		.post-meta {
+			display: flex;
+			align-items: center;
+			gap: 16px;
+			margin-bottom: 16px;
+			flex-wrap: wrap;
+		}
+		.post-date, .post-read-time {
+			color: #6b7280;
+			font-size: 14px;
+			font-weight: 500;
+		}
+		.post-read-time::before {
+			content: '⏱️';
+			margin-right: 4px;
 		}
 		.post-link { 
 			display: inline-flex;
@@ -432,12 +448,21 @@
 			var date = dateMatch ? dateMatch[1].trim() : '';
 			var titleWithoutDate = t.replace(/\s*—\s*.+$/, '');
 			
+			// Calculate estimated read time (based on title length)
+			var wordCount = titleWithoutDate.split(' ').length;
+			var readTime = Math.max(3, Math.ceil(wordCount / 3)); // Minimum 3 min, roughly 3 words per minute
+			
 			card.innerHTML = `
 				<div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
 				<div class="post-body">
 					<div>
 						<div class="post-title">${titleWithoutDate}</div>
-						${date ? `<div class="post-date">${date}</div>` : ''}
+						${date ? `
+							<div class="post-meta">
+								<div class="post-date">${date}</div>
+								<div class="post-read-time">${readTime} min leestijd</div>
+							</div>
+						` : ''}
 					</div>
 					<a href="${href}" class="post-link">Lees meer</a>
 				</div>
