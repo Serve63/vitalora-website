@@ -12,17 +12,135 @@
 	<link rel="stylesheet" href="/assets/css/fonts.css?v=7">
 	<link rel="stylesheet" href="/assets/css/footer.css?v=7">
 	<style>
-		.blog-hero { padding: 60px 0; background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); text-align:center }
-		.blog-hero h1 { font-size: 36px; color:#1e3a8a; margin-bottom: 10px }
-		.blog-hero p { color:#6b7280 }
-		.blog-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:24px; padding:60px 0 }
-		.post-card { background:#fff; border:1px solid #e5e7eb; border-radius:16px; overflow:hidden; box-shadow:0 8px 18px rgba(0,0,0,.06) }
-		.post-cover { aspect-ratio: 16/9; background:#e5e7eb }
-		.post-body { padding:18px }
-		.post-title { font-size:18px; font-weight:700; color:#1e3a8a; margin-bottom:8px }
-		.post-excerpt { color:#6b7280; font-size:14px }
-		.post-link { display:inline-block; margin-top:12px; color:#1e3a8a; font-weight:600; text-decoration:none }
-		.post-link:hover { text-decoration: underline }
+		.blog-hero { 
+			padding: 80px 0; 
+			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); 
+			text-align: center;
+			margin-bottom: 0;
+		}
+		.blog-hero h1 { 
+			font-size: 42px; 
+			color: #1e3a8a; 
+			margin-bottom: 16px;
+			font-weight: 700;
+		}
+		.blog-hero p { 
+			color: #6b7280;
+			font-size: 18px;
+			margin: 0;
+		}
+		.blog-grid { 
+			display: grid; 
+			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+			gap: 32px; 
+			padding: 80px 0;
+			max-width: 1400px;
+			margin: 0 auto;
+		}
+		.post-card { 
+			background: #fff; 
+			border: none;
+			border-radius: 20px; 
+			overflow: hidden; 
+			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+			transition: all 0.3s ease;
+			position: relative;
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+		.post-card:hover {
+			transform: translateY(-8px);
+			box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+		}
+		.post-cover { 
+			aspect-ratio: 16/9; 
+			background: #e5e7eb;
+			position: relative;
+			overflow: hidden;
+		}
+		.post-cover::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			background: linear-gradient(45deg, rgba(41, 84, 180, 0.1), rgba(58, 154, 234, 0.1));
+			z-index: 1;
+		}
+		.post-body { 
+			padding: 24px;
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+		}
+		.post-title { 
+			font-size: 18px; 
+			font-weight: 600; 
+			color: #1e3a8a; 
+			margin-bottom: 12px;
+			line-height: 1.4;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			overflow: hidden;
+		}
+		.post-date {
+			color: #6b7280;
+			font-size: 14px;
+			font-weight: 500;
+			margin-bottom: 16px;
+			display: flex;
+			align-items: center;
+			gap: 6px;
+		}
+		.post-date::before {
+			content: '📅';
+			font-size: 12px;
+		}
+		.post-link { 
+			display: inline-flex;
+			align-items: center;
+			gap: 8px;
+			margin-top: auto;
+			color: #2954B4; 
+			font-weight: 600; 
+			text-decoration: none;
+			font-size: 15px;
+			transition: all 0.2s ease;
+			padding: 8px 0;
+		}
+		.post-link:hover { 
+			color: #3A9AEA;
+			transform: translateX(4px);
+		}
+		.post-link::after {
+			content: '→';
+			font-size: 18px;
+			transition: transform 0.2s ease;
+		}
+		.post-link:hover::after {
+			transform: translateX(4px);
+		}
+		
+		@media (max-width: 768px) {
+			.blog-grid {
+				grid-template-columns: 1fr;
+				gap: 24px;
+				padding: 40px 20px;
+			}
+			.blog-hero {
+				padding: 60px 20px;
+			}
+			.blog-hero h1 {
+				font-size: 32px;
+			}
+			.post-body {
+				padding: 20px;
+			}
+		}
 	</style>
 </head>
 <body>
@@ -309,7 +427,22 @@
 			var q2 = encodeURIComponent(buildQuery(t));
 			var img = 'https://source.unsplash.com/800x450/?'+ q2;
 			var href = urlMapping[t] || '/' + slugifyTitle(t);
-			card.innerHTML = '<div class="post-cover" style="background:url('+img+') center/cover no-repeat"></div><div class="post-body"><div class="post-title">'+ t +'</div><a href="'+href+'" class="post-link">Lees meer →</a></div>';
+			
+			// Extract date from title
+			var dateMatch = t.match(/—\s*(.+)$/);
+			var date = dateMatch ? dateMatch[1].trim() : '';
+			var titleWithoutDate = t.replace(/\s*—\s*.+$/, '');
+			
+			card.innerHTML = `
+				<div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+				<div class="post-body">
+					<div>
+						<div class="post-title">${titleWithoutDate}</div>
+						${date ? `<div class="post-date">${date}</div>` : ''}
+					</div>
+					<a href="${href}" class="post-link">Lees meer</a>
+				</div>
+			`;
 			posts.appendChild(card);
 		});
 	})();
