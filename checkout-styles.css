@@ -493,10 +493,7 @@ span.checkmark,
 
 /* Bottom Testimonial */
 .bottom-testimonial {
-    background-color: #f8fafc;
-    padding: 24px;
-    border-radius: 12px;
-    border: 1px solid #e5e7eb;
+    padding: 24px 0;
 }
 
 .stars {
