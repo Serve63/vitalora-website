@@ -380,7 +380,7 @@ body {
 /* Legal Section */
 .legal-section {
     margin-bottom: 32px;
-    margin-top: 16px;
+    margin-top: 24px;
 }
 
 .checkbox-group {
@@ -415,7 +415,7 @@ body {
     display: flex;
     gap: 24px;
     justify-content: center;
-    margin-top: 4px;
+    margin-top: 2px;
 }
 
 .trust-item {
