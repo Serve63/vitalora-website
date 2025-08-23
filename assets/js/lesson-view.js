@@ -47,6 +47,9 @@
     if(localStorage.getItem(doneKey)==='true' && doneMsg){ doneMsg.textContent='Les voltooid ✓'; }
     doneBtn?.addEventListener('click', ()=>{ localStorage.setItem(doneKey,'true'); if(doneMsg) doneMsg.textContent='Les voltooid ✓'; });
 
+    // Setup navigation
+    setupNavigation(course, lessons, lesson);
+
     // Apply theme colors
     applyTheme(course.theme, document.getElementById('lessonHero'));
     
@@ -63,6 +66,30 @@
     function setHref(sel,v){ const e=document.querySelector(sel); if(e&&v) e.setAttribute('href',v); }
     function setBadge(sel,v){ const e=document.querySelector(sel); if(e){ e.textContent=v; e.classList.remove('hidden'); } }
   }).catch(()=> showError('Les kon niet geladen worden.'));
+
+  function setupNavigation(course, lessons, currentLesson) {
+    const currentIndex = lessons.findIndex(l => l.id === currentLesson.id);
+    const prevLesson = currentIndex > 0 ? lessons[currentIndex - 1] : null;
+    const nextLesson = currentIndex < lessons.length - 1 ? lessons[currentIndex + 1] : null;
+
+    // Previous lesson button
+    const prevBtn = document.querySelector('#prevLesson');
+    if (prevBtn && prevLesson) {
+      prevBtn.href = `/lesson-view.html?course=${course.slug}&lesson=${prevLesson.id}`;
+      prevBtn.style.display = 'inline-flex';
+    } else if (prevBtn) {
+      prevBtn.style.display = 'none';
+    }
+
+    // Next lesson button
+    const nextBtn = document.querySelector('#nextLesson');
+    if (nextBtn && nextLesson) {
+      nextBtn.href = `/lesson-view.html?course=${course.slug}&lesson=${nextLesson.id}`;
+      nextBtn.style.display = 'inline-flex';
+    } else if (nextBtn) {
+      nextBtn.style.display = 'none';
+    }
+  }
 
   function applyTheme(theme, heroEl){
     if(!theme) return;

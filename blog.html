@@ -9,8 +9,8 @@
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="styles.css">
 	<link rel="stylesheet" href="/assets/css/header.css">
-	<link rel="stylesheet" href="/assets/css/fonts.css?v=8">
-	<link rel="stylesheet" href="/assets/css/footer.css?v=8">
+	<link rel="stylesheet" href="/assets/css/fonts.css?v=9">
+	<link rel="stylesheet" href="/assets/css/footer.css?v=9">
 	<style>
 		.blog-hero { 
 			padding: 80px 0; 
@@ -149,6 +149,14 @@
 			transform: translateX(4px);
 		}
 		
+		.page-title {
+			font-size: 36px;
+			color: #333333;
+			text-align: center;
+			margin: 60px 0 40px 0;
+			font-weight: 700;
+		}
+		
 		@media (max-width: 768px) {
 			.blog-grid {
 				grid-template-columns: 1fr;
@@ -183,6 +191,7 @@
 
 	<main class="main-content">
 		<div class="container">
+			<h1 class="page-title">Lees hier alle artikelen</h1>
 			<div class="blog-grid" id="posts"></div>
 		</div>
 	</main>
