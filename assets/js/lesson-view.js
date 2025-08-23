@@ -49,6 +49,14 @@
 
     // Apply theme colors
     applyTheme(course.theme, document.getElementById('lessonHero'));
+    
+    // Show content with fade-in effect
+    setTimeout(() => {
+      document.getElementById('lessonHero').style.opacity = '1';
+      document.getElementById('lessonHero').style.visibility = 'visible';
+      document.querySelector('.lesson.container').style.opacity = '1';
+      document.querySelector('.lesson.container').style.visibility = 'visible';
+    }, 100);
 
     function setText(sel,v){ const e=document.querySelector(sel); if(e) e.textContent=v; }
     function setHTML(sel,v){ const e=document.querySelector(sel); if(e) e.innerHTML=v; }
@@ -66,5 +74,13 @@
   function showError(msg){
     const t=document.getElementById('lessonTitle'); if(t) t.textContent='Fout bij laden';
     const c=document.getElementById('lessonContent'); if(c) c.innerHTML = `<div class="card"><p>${msg}</p></div>`;
+    
+    // Show content even on error
+    setTimeout(() => {
+      document.getElementById('lessonHero').style.opacity = '1';
+      document.getElementById('lessonHero').style.visibility = 'visible';
+      document.querySelector('.lesson.container').style.opacity = '1';
+      document.querySelector('.lesson.container').style.visibility = 'visible';
+    }, 100);
   }
 })();
