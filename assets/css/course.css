@@ -300,10 +300,18 @@ body {
 .prose li{ margin:8px 0; color: #374151; }
 
 .lesson-footer{
-  display:flex; align-items:center; gap:20px; justify-content:space-between; flex-wrap:wrap;
-  margin-top:32px; padding-top:24px; border-top: 1px solid #e5e7eb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 32px 0;
+  margin-top: 32px;
+  border-top: 1px solid #f3f4f6;
 }
-.lesson-navigation{ display:flex; gap:16px; }
+.lesson-navigation{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:12px 20px; border-radius:12px; border:none; cursor:pointer;
