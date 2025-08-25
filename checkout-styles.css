@@ -195,10 +195,12 @@ span.checkmark,
 
 /* Callout Box */
 .callout-box {
-    background-color: transparent;
-    padding: 0;
+    background-color: rgba(58, 154, 234, 0.05);
+    padding: 20px;
     margin: 24px 0;
     position: relative;
+    border: 2px dashed #3A9AEA;
+    border-radius: 12px;
 }
 
 .callout-box::before {
@@ -207,7 +209,7 @@ span.checkmark,
     top: -8px;
     left: -8px;
     font-size: 48px;
-    color: #2954B4;
+    color: #3A9AEA;
     font-family: serif;
     font-weight: bold;
 }
@@ -218,7 +220,7 @@ span.checkmark,
     bottom: -8px;
     right: -8px;
     font-size: 48px;
-    color: #2954B4;
+    color: #3A9AEA;
     font-family: serif;
     font-weight: bold;
 }
@@ -235,13 +237,14 @@ span.checkmark,
     margin: 0;
     font-style: italic;
     padding: 0 40px;
+    text-align: center;
 }
 
 /* Toxins Section */
 .toxins-section {
     background-color: transparent;
     padding: 0;
-    margin-bottom: 0;
+    margin-bottom: 20px;
 }
 
 .toxins-section h3 {
@@ -504,12 +507,12 @@ span.checkmark,
 
 /* Bottom Testimonial */
 .bottom-testimonial {
-    padding: 24px 0;
+    padding: 16px 0;
     margin-top: 0;
 }
 
 .stars {
-    color: #fbbf24;
+    color: #FBB542;
     font-size: 18px;
     margin-bottom: 12px;
     display: flex;
@@ -517,7 +520,7 @@ span.checkmark,
 }
 
 .stars .icon-star {
-    color: #FDB542 !important;
+    color: #FBB542 !important;
 }
 
 .bottom-testimonial p {
