@@ -37,8 +37,6 @@
 
   <script>
     (function(){
-      const key = 'staff_access_ok';
-      
       // Add enter key handler
       document.getElementById('staff-code').addEventListener('keydown', function(e){ 
         if(e.key==='Enter'){ 
@@ -49,20 +47,12 @@
       document.getElementById('enter').addEventListener('click', function(){
         const v = (document.getElementById('staff-code').value || '').trim();
         if(v === '000000') {
-          localStorage.setItem(key,'1');
+          localStorage.setItem('staff_access_ok','1');
           window.location.href = '/personeel-dashboard';
         } else {
           document.getElementById('err').textContent = 'Ongeldige code.';
         }
       });
-      
-      // Check for existing session after page loads
-      setTimeout(function() {
-        const saved = localStorage.getItem(key);
-        if(saved === '1') { 
-          window.location.href = '/personeel-dashboard'; 
-        }
-      }, 100);
     })();
   </script>
 </body>
