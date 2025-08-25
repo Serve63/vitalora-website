@@ -54,7 +54,7 @@ body {
 
 .two-column-layout {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 60% 40%;
     gap: 60px;
     align-items: start;
 }
@@ -323,7 +323,7 @@ span.checkmark,
 /* Payment Methods */
 .payment-methods {
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: 60% 40%;
     gap: 12px;
 }
 
@@ -541,7 +541,7 @@ span.checkmark,
 
 
 /* Responsive Design */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     .two-column-layout {
         grid-template-columns: 1fr;
         gap: 40px;
