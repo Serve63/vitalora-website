@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personeel Login</title>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2" />
   <link rel="stylesheet" href="/assets/css/header.css?v=1">
   <style>
     .staff-gate{min-height:60vh;display:grid;place-items:center;padding:60px 20px}
@@ -15,7 +15,11 @@
     .staff-card button{width:100%;background:#3A9AEA;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
     .staff-error{color:#ef4444;min-height:18px;margin-bottom:8px}
   </style>
-</head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
+  </head>
 <body>
   <div data-include="site-header"></div>
   <script defer src="/assets/js/header.js?v=2"></script>
@@ -37,8 +41,10 @@
       const saved = localStorage.getItem(key);
       if(saved === '1') { window.location.href = '/personeel-dashboard'; return; }
       document.getElementById('enter').addEventListener('click', function(){
+          // Enter key submits as well
+          document.getElementById('staff-code').addEventListener('keydown', function(e){ if(e.key==='Enter'){ document.getElementById('enter').click(); }});
         const v = (document.getElementById('staff-code').value || '').trim();
-        if(v === '246810') { // placeholder gate
+        if(v === '000000') { // placeholder gate
           localStorage.setItem(key,'1');
           window.location.href = '/personeel-dashboard';
         } else {
