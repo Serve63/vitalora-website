@@ -206,9 +206,9 @@ span.checkmark,
 .callout-box::before {
     content: '"';
     position: absolute;
-    top: -8px;
-    left: -8px;
-    font-size: 48px;
+    top: 0;
+    left: 0;
+    font-size: 32px;
     color: #3A9AEA;
     font-family: serif;
     font-weight: bold;
@@ -217,9 +217,9 @@ span.checkmark,
 .callout-box::after {
     content: '"';
     position: absolute;
-    bottom: -8px;
-    right: -8px;
-    font-size: 48px;
+    bottom: 0;
+    right: 0;
+    font-size: 32px;
     color: #3A9AEA;
     font-family: serif;
     font-weight: bold;
@@ -236,7 +236,7 @@ span.checkmark,
     line-height: 1.5;
     margin: 0;
     font-style: italic;
-    padding: 0 40px;
+    padding: 0 30px;
     text-align: center;
 }
 
@@ -244,7 +244,7 @@ span.checkmark,
 .toxins-section {
     background-color: transparent;
     padding: 0;
-    margin-bottom: 20px;
+    margin-bottom: 0;
 }
 
 .toxins-section h3 {
@@ -507,7 +507,7 @@ span.checkmark,
 
 /* Bottom Testimonial */
 .bottom-testimonial {
-    padding: 16px 0;
+    padding: 8px 0;
     margin-top: 0;
 }
 
