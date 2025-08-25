@@ -38,13 +38,6 @@
   <script>
     (function(){
       const key = 'staff_access_ok';
-      const saved = localStorage.getItem(key);
-      
-      // Only redirect if there's a valid session
-      if(saved === '1') { 
-        window.location.href = '/personeel-dashboard'; 
-        return; 
-      }
       
       // Add enter key handler
       document.getElementById('staff-code').addEventListener('keydown', function(e){ 
@@ -62,6 +55,14 @@
           document.getElementById('err').textContent = 'Ongeldige code.';
         }
       });
+      
+      // Check for existing session after page loads
+      setTimeout(function() {
+        const saved = localStorage.getItem(key);
+        if(saved === '1') { 
+          window.location.href = '/personeel-dashboard'; 
+        }
+      }, 100);
     })();
   </script>
 </body>
