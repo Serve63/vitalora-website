@@ -63,7 +63,7 @@ body {
 .left-column {
     display: flex;
     flex-direction: column;
-    gap: 0;
+    gap: 40px;
 }
 
 /* Hero Section */
