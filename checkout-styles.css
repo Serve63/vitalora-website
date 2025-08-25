@@ -204,25 +204,11 @@ span.checkmark,
 }
 
 .callout-box::before {
-    content: '"';
-    position: absolute;
-    top: 0;
-    left: 0;
-    font-size: 32px;
-    color: #3A9AEA;
-    font-family: serif;
-    font-weight: bold;
+    display: none;
 }
 
 .callout-box::after {
-    content: '"';
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    font-size: 32px;
-    color: #3A9AEA;
-    font-family: serif;
-    font-weight: bold;
+    display: none;
 }
 
 .callout-icon {
@@ -236,7 +222,7 @@ span.checkmark,
     line-height: 1.5;
     margin: 0;
     font-style: italic;
-    padding: 0 30px;
+    padding: 0;
     text-align: center;
 }
 
@@ -511,8 +497,13 @@ span.checkmark,
     margin-top: 0;
 }
 
+/* First testimonial gets more space above */
+.bottom-testimonial:first-of-type {
+    margin-top: 20px;
+}
+
 .stars {
-    color: #FBB542;
+    color: #FBB542 !important;
     font-size: 18px;
     margin-bottom: 12px;
     display: flex;
@@ -521,6 +512,7 @@ span.checkmark,
 
 .stars .icon-star {
     color: #FBB542 !important;
+    fill: #FBB542 !important;
 }
 
 .bottom-testimonial p {
