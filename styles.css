@@ -1703,3 +1703,28 @@ html, body {
   .how { padding-bottom: 12px !important; }
   .results { padding-top: 12px !important; }
 }
+/* Desktop safety overrides: ensure desktop stays unchanged */
+@media (min-width: 769px) {
+  /* Section paddings */
+  .hero, .toxins, .why, .how, .results { padding: 80px 0 !important; }
+
+  /* Headings back to desktop scale */
+  .toxins h2, .why-text h2, .how h2, .results h2, .cta-section h2 { font-size: 36px !important; margin-bottom: 40px !important; text-align: center; }
+
+  /* Hero layout desktop */
+  .hero-content { grid-template-columns: 1fr 1fr !important; gap: 60px !important; }
+  .hero-text { display: block !important; }
+  .hero-text h1 { font-size: 48px !important; text-align: left !important; line-height: 1.2 !important; }
+  .hero-text p { display: block !important; }
+  .hero-text .cta-button { width: auto !important; justify-self: start !important; }
+  .hero-text .login-link { display: inline-block !important; }
+
+  /* Toxins grid desktop */
+  .toxins-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important; gap: 30px !important; }
+
+  /* Process grid desktop */
+  .process-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; gap: 40px !important; }
+
+  /* Results spacing desktop */
+  .results-list { gap: 30px !important; }
+}
