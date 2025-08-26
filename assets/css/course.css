@@ -485,3 +485,12 @@ html, body { overflow-x: clip; }
 .course-hero h1{ display:inline; margin:8px 8px 12px 0; }
 .course-hero .subtitle{ display:inline; font-size: clamp(2rem, 4vw, 3rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; margin:8px 0 12px; }
 @media (max-width:768px){ .course-hero h1, .course-hero .subtitle{ display:block; margin:8px 0 12px; } }
+/* Lesson card heading sizing (scoped to overview list) */
+.lesson-list .lesson-card h1,
+.lesson-list .lesson-card h2,
+.lesson-list .lesson-card h3 {
+  font-size: clamp(1.25rem, 2.2vw, 1.6rem);
+  line-height: 1.3;
+  font-weight: 800;
+  margin: 0 0 8px;
+}
