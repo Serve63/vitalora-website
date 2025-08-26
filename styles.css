@@ -1564,3 +1564,71 @@ html, body {
 @media (max-width:768px){.mobile-break{display:block}}
 
 @media (min-width:769px){.mobile-only{display:none}}
+
+/* Final mobile safety overrides: scope all mobile rules correctly */
+@media (max-width: 768px) {
+  /* Hero: order + sizing */
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    row-gap: 12px;
+  }
+  .hero-text { display: contents; }
+  .hero-text h1 {
+    grid-row: 1;
+    font-size: 2.1rem !important;
+    text-align: center !important;
+    line-height: 1.3 !important;
+  }
+  .hero-text p:not(.login-link) { grid-row: 2; display: none !important; }
+  .hero-image { grid-row: 3; }
+  .hero-text .cta-button {
+    grid-row: 4;
+    justify-self: center;
+    width: 100% !important;
+    max-width: none !important;
+    margin-top: 8px !important;
+    margin-bottom: 8px !important;
+  }
+  .hero-text .login-link { grid-row: 5; justify-self: center; display: none !important; }
+  .hero { padding-bottom: 24px !important; }
+  .toxins { padding-top: 12px !important; }
+
+  /* Helpers */
+  .mobile-break { display: block; }
+  .mobile-only { display: block; }
+
+  /* Why section */
+  .why-text h2 { font-size: 28px !important; margin-bottom: 24px !important; }
+  .benefits-list { gap: 16px !important; }
+  .benefit-item { gap: 12px !important; }
+  .benefit-number { width: 32px !important; height: 32px !important; font-size: 14px !important; }
+  .benefit-content h3 { font-size: 16px !important; margin-bottom: 4px !important; }
+  .benefit-content p { font-size: 14px !important; line-height: 1.5 !important; }
+
+  /* How section */
+  .how h2 { font-size: 28px !important; margin-bottom: 32px !important; }
+  .process-grid { grid-template-columns: 1fr !important; gap: 24px !important; }
+  .process-card { padding: 24px 16px !important; position: relative !important; }
+  .process-icon { font-size: 36px !important; margin-bottom: 16px !important; }
+  .process-card h3 { font-size: 18px !important; margin-bottom: 8px !important; }
+  .process-card p { font-size: 14px !important; line-height: 1.5 !important; }
+  .process-card::after { display: none !important; }
+
+  /* Results section (compact) */
+  .results h2 { font-size: 28px !important; margin-bottom: 16px !important; }
+  .results-intro { font-size: 16px !important; margin-bottom: 32px !important; }
+  .results-list { gap: 24px !important; }
+  .result-item { padding: 20px !important; gap: 12px !important; }
+  .result-icon { font-size: 22px !important; }
+  .result-content h3 { font-size: 16px !important; }
+  .result-content p { font-size: 13px !important; }
+  .result-percentage { font-size: 16px !important; }
+  .progress-bar { width: 90px !important; height: 6px !important; }
+}
+
+@media (min-width: 769px) {
+  .mobile-break { display: inline; }
+  .mobile-only { display: none; }
+}
