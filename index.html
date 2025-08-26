@@ -79,7 +79,21 @@
           <div class=\"toxin-label\">Aanwezig<\/div>
           <h3>Ftalaten<\/h3>
           <p>Weekmakers in plastic die hormonen verstoren en vruchtbaarheid beïnvloeden.<\/p>";
-        grid.appendChild(card);
+        
+        var after = null;
+        var hs = grid.querySelectorAll('.toxin-card h3');
+        for (var i = 0; i < hs.length; i++) {
+          if ((hs[i].textContent || '').trim().toLowerCase() === 'parabenen') {
+            after = hs[i].parentElement;
+            break;
+          }
+        }
+        if (after) {
+          after.insertAdjacentElement('afterend', card);
+        } else {
+          grid.appendChild(card);
+        }
+    
       }
       addFtalatenCard();
       window.addEventListener("resize", function(){ if(window.innerWidth<=768) addFtalatenCard(); });
@@ -335,7 +349,21 @@
           <div class="toxin-label">Aanwezig</div>\
           <h3>Ftalaten</h3>\
           <p>Weekmakers in plastic die hormonen verstoren en vruchtbaarheid beïnvloeden.</p>';
-        grid.appendChild(card);
+        
+        var after = null;
+        var hs = grid.querySelectorAll('.toxin-card h3');
+        for (var i = 0; i < hs.length; i++) {
+          if ((hs[i].textContent || '').trim().toLowerCase() === 'parabenen') {
+            after = hs[i].parentElement;
+            break;
+          }
+        }
+        if (after) {
+          after.insertAdjacentElement('afterend', card);
+        } else {
+          grid.appendChild(card);
+        }
+    
       }
       document.addEventListener('DOMContentLoaded', inject, { once: true });
       window.addEventListener('resize', function(){ if (window.innerWidth <= 768) inject(); });
