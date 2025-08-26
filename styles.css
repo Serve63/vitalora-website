@@ -185,7 +185,8 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -530,7 +531,8 @@ header {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -786,7 +788,8 @@ footer {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -934,73 +937,6 @@ html, body {
         order: 3;
         margin-top: 20px;
         align-self: center;
-    }
-    
-    .hero-text .login-link {
-        order: 4;
-        text-align: center;
-        margin-top: 10px;
-    }
-}
-    
-    .hero-image {
-        order: 2;
-    }
-    
-    .hero-content .cta-button {
-        order: 3;
-        margin: 20px auto;
-        display: block;
-        width: fit-content;
-    }
-    
-    .hero-text .login-link {
-        order: 4;
-        text-align: center;
-        margin-top: 10px;
-    }
-}
-
-    
-    .hero-content .cta-button:hover {
-        background-color: #059669 !important;
-    }
-}
-    
-    .hero-text .cta-button {
-        display: none;
-    }
-    
-    .hero-image {
-        order: 2;
-    }
-    
-    .hero-content::after {
-        content: '';
-        order: 3;
-        display: block;
-        width: 100%;
-        height: 0;
-    }
-    
-    .hero-content::after {
-        content: '';
-        display: none;
-    }
-    
-    .hero-text .login-link {
-        order: 4;
-        text-align: center;
-        margin-top: 10px;
-    }
-}
-
-    
-    .hero-content .cta-button:hover {
-        background-color: #059669 !important;
-    }
-}
-    
     .hero-image {
         order: 2;
     }
@@ -1073,7 +1009,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1141,7 +1078,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1205,7 +1143,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1258,7 +1197,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1311,7 +1251,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1365,7 +1306,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1422,7 +1364,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
@@ -1476,7 +1419,8 @@ html, body {
   }
   .why-text h2 {
     font-size: 28px !important;
-    margin-bottom: 24px !important;
+    margin-bottom: 24px !important;}
+
   .benefits-list {
     gap: 16px !important;
   }
