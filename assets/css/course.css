@@ -494,3 +494,15 @@ html, body { overflow-x: clip; }
   font-weight: 500;
   margin: 0 0 8px;
 }
+
+/* Override lesson card titles to be much smaller */
+.lesson-list .lesson-card h1,
+.lesson-list .lesson-card h2,
+.lesson-list .lesson-card h3,
+.lesson-list .lesson-card .title {
+  font-size: 0.9rem !important;
+  font-weight: 500 !important;
+  line-height: 1.3 !important;
+  margin: 0 0 6px !important;
+  color: #374151 !important;
+}
