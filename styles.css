@@ -183,23 +183,6 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -553,23 +536,6 @@ header {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -828,23 +794,6 @@ footer {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1155,23 +1104,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1242,23 +1174,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1325,23 +1240,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1397,23 +1295,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1469,23 +1350,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1542,23 +1406,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1618,23 +1465,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
@@ -1691,23 +1521,6 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  /* Mobiele stippellijnen tussen stappen */
-  .process-card:not(:last-child)::after {
-    content: "" !important;
-    position: absolute !important;
-    bottom: -24px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    width: 2px !important;
-    height: 32px !important;
-    background: repeating-linear-gradient(
-      to bottom,
-      #2954B4 0,
-      #2954B4 4px,
-      transparent 4px,
-      transparent 8px
-    ) !important;
-    display: block !important;
   }
   .why-text h2 {
     font-size: 28px !important;
