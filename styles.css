@@ -956,14 +956,6 @@ html, body {
     }
 }
 
-/* Mobile: place photo above CTA by flattening hero-text into grid */
-@media (max-width: 768px) {
-  .hero-content {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-auto-rows: auto;
-    row-gap: 24px;
-  }
   /* Make hero-text children participate as direct grid items */
   .hero-text { display: contents; }
 
@@ -1021,4 +1013,22 @@ html, body {
     width: 100% !important;
     max-width: none !important;
   }
+}
+
+/* Mobile: place photo above CTA by flattening hero-text into grid */
+@media (max-width: 768px) {
+  .hero-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    row-gap: 24px;
+  }
+  /* Make hero-text children participate as direct grid items */
+  .hero-text { display: contents; }
+
+  .hero-text h1 { grid-row: 1; }
+  .hero-text p:not(.login-link) { grid-row: 2; }
+  .hero-image { grid-row: 3; }
+  .hero-text .cta-button { grid-row: 4; justify-self: center; }
+  .hero-text .login-link { grid-row: 5; justify-self: center; }
 }
