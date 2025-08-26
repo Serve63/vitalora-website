@@ -937,11 +937,6 @@ html, body {
 @media (min-width: 1024px) {
   .login-link { display: none !important; }
 }
-
-    
-    .hero-text {
-        order: 1;
-    }
     
     .hero-image {
         order: 2;
@@ -959,11 +954,6 @@ html, body {
         margin-top: 10px;
     }
 }
-
-    
-    .hero-text {
-        order: 1;
-    }
     
     .hero-image {
         order: 2;
@@ -988,11 +978,6 @@ html, body {
         background-color: #059669 !important;
     }
 }
-
-    
-    .hero-text {
-        order: 1;
-    }
     
     .hero-text .cta-button {
         display: none;
@@ -1027,11 +1012,6 @@ html, body {
         background-color: #059669 !important;
     }
 }
-
-    
-    .hero-text {
-        order: 1;
-    }
     
     .hero-image {
         order: 2;
