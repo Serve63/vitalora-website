@@ -366,17 +366,6 @@
 			'dopamine':'dopamine,brain', 'olijven':'olives', 'eiwitpoeder':'protein powder', 'microplastics':'microplastic,plastic ocean',
 			'broccolikiemen':'broccoli sprouts', 'kruisbloemige':'cruciferous vegetables', 'baking soda':'baking soda', 'vlierbessensap':'elderberry juice'
 		};
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025': '/microplastics-een-diepgaande-uitleg.html',
-                        'Vlierbessensap Gezond — 03 januari 2025': '/vlierbessensap-gezond.html',
-                        'Kruisbloemige Groenten — 04 januari 2025': '/kruisbloemige-groenten.html',
-                        'Zuiveringszout Baking Soda — 05 januari 2025': '/zuiveringszout-baking-soda.html',
-                        'Broccolikiemen — 06 januari 2025': '/broccolikiemen.html',
-                        'Eiwitpoeders — 07 januari 2025': '/eiwitpoeders.html',
-                        'Olijven met Knoflook — 08 januari 2025': '/olijven-met-knoflook.html',
-                        'Dopamine Voeding — 09 januari 2025': '/dopamine-voeding.html',
-                        'Suiker — 10 januari 2025': '/suiker.html',
-                        'Oligofructose — 11 januari 2025': '/oligofructose.html',
-                        'Waterkers — 12 januari 2025': '/waterkers.html',
 		function normalize(s){ return s.toLowerCase(); }
 		function buildQuery(title){
 			const t = normalize(title);
@@ -490,30 +479,8 @@
 			'Kruisbloemige Groenten — 04 januari 2025': '/kruisbloemige-groenten.html',
 			'Zuiveringszout (Baking Soda) — 03 januari 2025': '/zuiveringszout-baking-soda.html',
 			'Is Vlierbessensap Gezond? — 03 januari 2025': '/vlierbessensap-gezond.html'
-		};
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025': '/microplastics-een-diepgaande-uitleg.html',
-                        'Vlierbessensap Gezond — 03 januari 2025': '/vlierbessensap-gezond.html',
-                        'Kruisbloemige Groenten — 04 januari 2025': '/kruisbloemige-groenten.html',
-                        'Zuiveringszout Baking Soda — 05 januari 2025': '/zuiveringszout-baking-soda.html',
-                        'Broccolikiemen — 06 januari 2025': '/broccolikiemen.html',
-                        'Eiwitpoeders — 07 januari 2025': '/eiwitpoeders.html',
-                        'Olijven met Knoflook — 08 januari 2025': '/olijven-met-knoflook.html',
-                        'Dopamine Voeding — 09 januari 2025': '/dopamine-voeding.html',
-                        'Suiker — 10 januari 2025': '/suiker.html',
-                        'Oligofructose — 11 januari 2025': '/oligofructose.html',
-                        'Waterkers — 12 januari 2025': '/waterkers.html',
-		function slugifyTitle(title){
-			let base = title.split('—')[0];
-			base = base.replace(/[:]/g,'');
-			base = base.normalize('NFD').replace(/[\u0300-\u036f]/g,'');
-			return base.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-		}
-		titles.forEach(function(t){
-                        console.log("Processing title:", t);
-			var card = document.createElement('div');
-			card.className = 'post-card';
-			var q2 = encodeURIComponent(buildQuery(t));
-			var img = 'https://source.unsplash.com/800x450/?'+ q2;
+                };
+                        var img = 'https://source.unsplash.com/800x450/?'+ q2;
 			var href = urlMapping[t] || '/' + slugifyTitle(t);
 			
 			// Extract date from title
