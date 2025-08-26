@@ -995,3 +995,14 @@ html, body {
     padding-top: 20px !important;
   }
 }
+
+/* Mobile: larger centered hero title */
+@media (max-width: 768px) {
+  .hero-text h1 {
+    font-size: 2.1rem !important;
+    line-height: 1.15 !important;
+    text-align: center !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+}
