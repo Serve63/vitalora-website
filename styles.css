@@ -1006,3 +1006,11 @@ html, body {
     margin-right: auto !important;
   }
 }
+
+/* Mobile: tighten spacing between CTA and next section */
+@media (max-width: 768px) {
+  .hero { padding-bottom: 24px !important; }
+  .hero-content { row-gap: 12px !important; }
+  .hero-text .cta-button { margin-top: 8px !important; margin-bottom: 8px !important; }
+  .toxins { padding-top: 12px !important; }
+}
