@@ -1698,3 +1698,8 @@ html, body {
 @media (max-width: 768px) {
   .results { padding-top: 24px !important; }
 }
+/* Mobile spacing tweak: strongly reduce gap between How and Results */
+@media (max-width: 768px) {
+  .how { padding-bottom: 12px !important; }
+  .results { padding-top: 12px !important; }
+}
