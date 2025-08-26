@@ -7,11 +7,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    	<link rel="stylesheet" href="styles.css?v=2">
-	<link rel="stylesheet" href="icons.css">
-	<link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=3">
+    	<link rel="stylesheet" href="styles.css?v=4">
+	<link rel="stylesheet" href="icons.css?v=2">
+	<link rel="stylesheet" href="/assets/css/header.css?v=2">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=4">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=4">
     <meta name="theme-color" content="#2954B3">
 
 
@@ -43,7 +43,7 @@
       </div>
     </header>
     
-    <script defer src="/assets/js/route-scope.js?v=2"></script>
+    <script defer src="/assets/js/route-scope.js?v=3"></script>
 
 
     <!-- Hero Section -->
@@ -74,29 +74,10 @@
         var card=document.createElement("div");
         card.className="toxin-card";
         card.setAttribute("data-tile","ftalaten");
-        card.innerHTML="<div class=\"toxin-icon\">📷</div>
-          <div class=\"toxin-percentage\">72%<\/div>
-          <div class=\"toxin-label\">Aanwezig<\/div>
-          <h3>Ftalaten<\/h3>
-          <p>Weekmakers in plastic die hormonen verstoren en vruchtbaarheid beïnvloeden.<\/p>";
-        
-        var after = null;
-        var hs = grid.querySelectorAll('.toxin-card h3');
-        for (var i = 0; i < hs.length; i++) {
-          if ((hs[i].textContent || '').trim().toLowerCase() === 'parabenen') {
-            after = hs[i].parentElement;
-            break;
-          }
-        }
-        if (after) {
-          after.insertAdjacentElement('afterend', card);
-        } else {
-          grid.appendChild(card);
-        }
-    
+        card.innerHTML="<div class=\"toxin-icon\">📷</div>\n          <div class=\"toxin-percentage\">72%<\/div>\n          <div class=\"toxin-label\">Aanwezig<\/div>\n          <h3>Ftalaten<\/h3>";
+        grid.appendChild(card);
       }
-      addFtalatenCard();
-      window.addEventListener("resize", function(){ if(window.innerWidth<=768) addFtalatenCard(); });
+      document.addEventListener("DOMContentLoaded",addFtalatenCard);
     })();
     </script>
 
@@ -109,35 +90,35 @@
             <h2>Welke <span class="highlight">gifstoffen</span> willen <span class="mobile-break">we detoxen?</span></h2>
             <div class="toxins-grid">
                 <div class="toxin-card">
-                    <div class="toxin-icon">📷</div>
+                    <div class="toxin-icon">🔬</div>
                     <div class="toxin-percentage">99%</div>
                     <div class="toxin-label">Aanwezig</div>
                     <h3>Microplastics</h3>
                     <p>Kleine plastic deeltjes die zich ophopen in je lichaam en organen.</p>
                 </div>
                 <div class="toxin-card">
-                    <div class="toxin-icon">📷</div>
+                    <div class="toxin-icon">🔄</div>
                     <div class="toxin-percentage">97%</div>
                     <div class="toxin-label">Aanwezig</div>
                     <h3>PFAS</h3>
                     <p>"Forever chemicals" die niet afbreken en zich ophopen in je lichaam.</p>
                 </div>
                 <div class="toxin-card">
-                    <div class="toxin-icon">📷</div>
+                    <div class="toxin-icon">⚡</div>
                     <div class="toxin-percentage">93%</div>
                     <div class="toxin-label">Aanwezig</div>
                     <h3>BPA</h3>
                     <p>Hormoonverstorende stof uit plastic producten.</p>
                 </div>
                 <div class="toxin-card">
-                    <div class="toxin-icon">📷</div>
+                    <div class="toxin-icon">🌿</div>
                     <div class="toxin-percentage">85%</div>
                     <div class="toxin-label">Aanwezig</div>
                     <h3>Pesticiden</h3>
                     <p>Chemische bestrijdingsmiddelen in voeding en omgeving.</p>
                 </div>
                 <div class="toxin-card">
-                    <div class="toxin-icon">📷</div>
+                    <div class="toxin-icon">⭐</div>
                     <div class="toxin-percentage">78%</div>
                     <div class="toxin-label">Aanwezig</div>
                     <h3>Parabenen</h3>
@@ -184,7 +165,7 @@
                             <div class="benefit-number">4</div>
                             <div class="benefit-content">
                                 <h3>Mentale Helderheid</h3>
-                                <p>Verbetert cognitieve functie en mentale scherpte door verminderde neurotoxische belasting.</p>
+                                <p>Verbeterde cognitieve functies en mentale scherpte door verminderde neurotoxische belasting.</p>
                             </div>
                         </div>
                     </div>
@@ -224,7 +205,7 @@
     <!-- Results Section -->
     <section class="results">
         <div class="container">
-            <h2>Welke <span class="highlight">resultaten</span> kun je verwachten?</h2>
+            <h2>Welke resultaten kun je verwachten?</h2>
             <p class="results-intro">Dit zijn wat je kunt verwachten na onze detox. Elke persoon is uniek, daarom kunnen de resultaten variëren.</p>
             <div class="results-list">
                 <div class="result-item">
@@ -302,7 +283,7 @@
         <div class="container">
             <h2>Klaar Om Je Transformatie Te Beginnen?</h2>
             <p>Start vandaag nog met je microplastic-detox, reset je lichaam en voel je energie terugkomen. Zonder verplichtingen, maar wel met resultaten.</p>
-            <button class="cta-button-large" onclick="window.location.href='ebook'">Start Gratis Detox →</button>
+            <button class="cta-button-large" onclick="window.location.href='landing.html'">Start Gratis Detox →</button>
         </div>
     </section>
 
@@ -316,23 +297,22 @@
                 </div>
                 <div class="footer-links">
                     <div class="footer-column">
-                        <a href="contact.html">Contact</a>
-                        <a href="privacy.html">Privacy Policy</a>
-                        <a href="personeel" class="no-bold">Personeel</a>
+                        <a href="#">Contact</a>
+                        <a href="#">Privacy Policy</a>
                     </div>
                     <div class="footer-column">
-                        <a href="blog.html">Blogs</a>
-                        <a href="voorwaarden.html" class="nowrap">Algemene&nbsp;Voorwaarden</a>
+                        <a href="#">Artikelen</a>
+                        <a href="#">Algemene Voorwaarden</a>
                     </div>
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>© 2025 Vitalora. All rights reserved.</p>
+                <p>© 2024 Vitalora. All rights reserved.</p>
             </div>
         </div>
     </footer>
 
-    <script src="script.js?v=live2" defer></script>
+    <script src="script.js"></script>
 
   <script id="ftalaten-mobile-inject">
     (function () {
