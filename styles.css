@@ -980,3 +980,10 @@ html, body {
     display: none !important;
   }
 }
+
+/* Hide intro paragraph on mobile */
+@media (max-width: 768px) {
+  .hero-text p:not(.login-link) {
+    display: none !important;
+  }
+}
