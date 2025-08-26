@@ -1728,3 +1728,11 @@ html, body {
   /* Results spacing desktop */
   .results-list { gap: 30px !important; }
 }
+/* Desktop parity: per-section heading margins restored to originals */
+@media (min-width: 769px) {
+  .toxins h2 { margin-bottom: 60px !important; }
+  .why-text h2 { margin-bottom: 40px !important; }
+  .how h2 { margin-bottom: 60px !important; }
+  .results h2 { margin-bottom: 20px !important; }
+  .cta-section h2 { margin-bottom: 20px !important; }
+}
