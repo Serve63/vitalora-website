@@ -211,7 +211,7 @@ body {
   display:inline-flex; align-items:center; padding:8px 16px; border-radius:50px;
   background: rgba(255,255,255,.15); backdrop-filter: blur(12px);
   border:1px solid rgba(255,255,255,.2); color:#fff; 
-  font-weight:600; font-size:.9rem; letter-spacing: 0.01em;
+  font-weight: 700; font-size:.9rem; letter-spacing: 0.01em;
   transition: all 0.2s ease;
 }
 .badge:hover{ 
@@ -336,7 +336,7 @@ body {
 .btn{
   display:inline-flex; align-items:center; gap:10px;
   padding:12px 20px; border-radius:12px; border:none; cursor:pointer;
-  background: var(--brand); color:#fff; font-weight:600; text-decoration:none;
+  background: var(--brand); color:#fff; font-weight: 700; text-decoration:none;
   font-size: .95rem; transition: all 0.2s ease;
   box-shadow: 0 4px 6px -1px rgba(0,0,0,.1);
 }
@@ -410,7 +410,7 @@ html, body { overflow-x: clip; }
 /* Back to course button styling */
 .back-to-course {
   position: absolute;
-  top: 20px; right: 20px; left: auto;
+  top: 20px; left: 20px; right: auto;
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -448,7 +448,7 @@ html, body { overflow-x: clip; }
 @media (max-width: 768px) {
   .back-to-course {
     top: 15px;
-    right: 20px; left: auto;
+    left: 20px; right: auto;
     font-size: 13px;
     padding: 6px 10px;
   }
