@@ -339,6 +339,8 @@
 		];
 
 		const posts = document.getElementById('posts');
+                console.log("Posts element found:", posts);
+                console.log("Titles array length:", titles.length);
 		const synonyms = {
 			'aardbeien':'strawberries,fruit', 'appelazijn':'apple cider vinegar,apple', 'kaneel':'cinnamon,spice',
 			'granaatappel':'pomegranate,fruit', 'vijgen':'figs,fruit', 'ananas':'pineapple,fruit', 'chia':'chia seeds,superfood',
@@ -383,8 +385,8 @@
 			const base = t.split('—')[0].split(':')[0].trim().split(' ').slice(0,2).join(' ');
 			return base || 'health wellness';
 		}
-		if (!posts) return;
-		if (!posts) return;
+		if (!posts) { console.log("Posts element not found"); return; }
+		if (!posts) { console.log("Posts element not found"); return; }
 		// Map titles to exact URLs
 		const urlMapping = {
 			'Aardbeien Gezond: De Complete Gids voor 2025 — 02 augustus 2025': '/aardbeien-gezond',
@@ -507,6 +509,7 @@
 			return base.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
 		}
 		titles.forEach(function(t){
+                        console.log("Processing title:", t);
 			var card = document.createElement('div');
 			card.className = 'post-card';
 			var q2 = encodeURIComponent(buildQuery(t));
