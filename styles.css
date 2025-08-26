@@ -1685,3 +1685,8 @@ html, body {
   .why { padding-bottom: 22px !important; }
   .how { padding-top: 18px !important; }
 }
+/* Mobile spacing tweak: reduce space above Results heading */
+@media (max-width: 768px) {
+  .results { padding-top: 32px !important; }
+  .results h2 { margin-top: 0 !important; }
+}
