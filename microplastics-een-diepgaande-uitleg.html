@@ -7,120 +7,181 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=3">
+  <link rel="stylesheet" href="styles.css?v=2">
   <link rel="stylesheet" href="/assets/css/header.css">
-  <link rel="stylesheet" href="/assets/css/fonts.css?v=13">
-  <link rel="stylesheet" href="/assets/css/footer.css?v=13">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
+  <link rel="stylesheet" href="/assets/css/footer.css?v=12">
   <style>
+    /* Clean, modern blog styling */
+    body {
+      background: #fafbfc;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+    
     .blog-hero {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 80px 0 60px;
       text-align: center;
-      margin-bottom: 0;
-    }
-    .blog-hero h1 {
-      font-size: 42px;
-      color: #333333;
-      margin-bottom: 16px;
-      font-weight: 700;
-    }
-    .blog-hero p {
-      color: #6b7280;
-      font-size: 18px;
-      margin: 0;
-    }
-    .blog-content {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 60px 20px;
-    }
-    .blog-content h2 {
-      font-size: 28px;
-      color: #333333;
-      margin: 40px 0 20px 0;
-      font-weight: 600;
-    }
-    .blog-content h3 {
-      font-size: 22px;
-      color: #333333;
-      margin: 30px 0 15px 0;
-      font-weight: 600;
-    }
-    .blog-content p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #374151;
-      margin-bottom: 20px;
-    }
-    .blog-content blockquote {
       position: relative;
-      margin: 32px 0;
-      padding: 22px 24px 22px 56px;
-      background: linear-gradient(180deg,#ffffff,#f6f9fe);
-      border: 1px solid #e6edf7;
-      border-radius: 14px;
-      box-shadow: 0 10px 24px rgba(15,23,42,.06), inset 0 1px 0 #fff;
-      color: #0f172a;
-      font-style: normal;
-      font-size: 17px;
-      line-height: 1.7;
+      overflow: hidden;
     }
-    .blog-content blockquote::before {
-      content: "“";
-      position: absolute;
-      left: 16px; top: 8px;
-      font-size: 42px;
-      line-height: 1;
-      color: #3A9AEA;
-      opacity: .25;
-      font-weight: 800;
-    }
-    .blog-content blockquote::after {
+    
+    .blog-hero::before {
       content: "";
       position: absolute;
-      left: 8px; top: 18px; bottom: 18px;
-      width: 4px;
-      border-radius: 2px;
-      background: #3A9AEA;
-      opacity: .7;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.3;
     }
-    .hero-cover {
-      margin: 24px auto 0;
-      max-width: 1100px;
+    
+    .blog-hero .container {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
     }
-    .hero-cover img {
-      width: 100%;
-      height: 320px;
-      object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 18px 40px rgba(15,23,42,.10);
-      border: 1px solid #e6edf7;
-    }
-    .top-back {
-      margin-bottom: 12px;
-    }
-    .blog-meta {
-      text-align: center;
-      margin-bottom: 40px;
-      color: #6b7280;
-      font-size: 14px;
-    }
+    
     .back-link {
       display: inline-flex;
       align-items: center;
-      gap: 8px;
-      color: #3A9AEA;
+      color: rgba(255,255,255,0.9);
       text-decoration: none;
-      font-weight: 600;
-      margin-bottom: 30px;
-      transition: color 0.2s ease;
+      font-weight: 500;
+      font-size: 15px;
+      margin-bottom: 24px;
+      transition: all 0.2s ease;
     }
+    
     .back-link:hover {
-      color: #2954B4;
+      color: white;
+      transform: translateX(-4px);
     }
+    
     .back-link::before {
       content: "←";
+      margin-right: 8px;
       font-size: 18px;
+    }
+    
+    .blog-hero h1 {
+      font-size: 48px;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+    
+    .blog-hero p {
+      font-size: 20px;
+      opacity: 0.9;
+      margin: 0 0 32px 0;
+      font-weight: 400;
+    }
+    
+    .hero-image {
+      width: 100%;
+      max-width: 600px;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      border: 3px solid rgba(255,255,255,0.2);
+    }
+    
+    .blog-meta {
+      text-align: center;
+      padding: 24px 0;
+      background: white;
+      border-bottom: 1px solid #e5e7eb;
+      color: #6b7280;
+      font-size: 14px;
+    }
+    
+    .blog-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 60px 20px;
+      background: white;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      border-radius: 0 0 16px 16px;
+    }
+    
+    .blog-content h2 {
+      font-size: 32px;
+      font-weight: 700;
+      color: #1a1a1a;
+      margin: 48px 0 24px 0;
+      line-height: 1.3;
+    }
+    
+    .blog-content h3 {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1a1a1a;
+      margin: 36px 0 16px 0;
+    }
+    
+    .blog-content p {
+      font-size: 18px;
+      color: #374151;
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+    
+    .blog-content blockquote {
+      background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+      border-left: 4px solid #3b82f6;
+      padding: 24px 32px;
+      margin: 32px 0;
+      border-radius: 0 12px 12px 0;
+      position: relative;
+      font-style: italic;
+      font-size: 18px;
+      color: #1e293b;
+      line-height: 1.7;
+    }
+    
+    .blog-content blockquote::before {
+      content: """;
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      font-size: 48px;
+      color: #3b82f6;
+      opacity: 0.3;
+      font-family: serif;
+    }
+    
+    @media (max-width: 768px) {
+      .blog-hero h1 {
+        font-size: 36px;
+      }
+      
+      .blog-hero p {
+        font-size: 18px;
+      }
+      
+      .hero-image {
+        height: 200px;
+      }
+      
+      .blog-content {
+        padding: 40px 20px;
+      }
+      
+      .blog-content h2 {
+        font-size: 28px;
+      }
+      
+      .blog-content h3 {
+        font-size: 22px;
+      }
+      
+      .blog-content p {
+        font-size: 16px;
+      }
     }
   </style>
 </head>
@@ -138,24 +199,23 @@
     </div>
   </header>
 
-  <main class="main-content">
+  <main>
     <div class="blog-hero">
       <div class="container">
-        <a href="/blog.html" class="back-link top-back">Terug naar alle artikelen</a>
+        <a href="/blog.html" class="back-link">Terug naar alle artikelen</a>
         <h1>Microplastics | Een diepgaande uitleg</h1>
         <p>Ontdek wat microplastics zijn en hoe ze onze gezondheid beïnvloeden</p>
-        <figure class="hero-cover">
-          <img src="/assets/microplastics-ebook.png" alt="Microplastics cover" />
-        </figure>
+        <img src="/assets/microplastics-ebook.png" alt="Microplastics" class="hero-image">
       </div>
     </div>
 
-    <div class="blog-content">
-      
-      <div class="blog-meta">
-        <span>Gepubliceerd op 07 januari 2025</span>
+    <div class="blog-meta">
+      <div class="container">
+        Gepubliceerd op 07 januari 2025 • 8 min leestijd
       </div>
+    </div>
 
+    <article class="blog-content">
       <h2>Wat zijn microplastics?</h2>
       <p>Microplastics zijn piepkleine plastic deeltjes, kleiner dan vijf millimeter. Stel je voor: het zijn miniatuurversies van de plastic rommel die we elke dag gebruiken. Ze ontstaan door slijtage van grotere plastic voorwerpen of worden bewust gemaakt voor producten zoals cosmetica. Ze zijn overal, van de diepste oceanen tot de lucht die we ademen – en ja, zelfs in ons lichaam.</p>
 
@@ -163,7 +223,7 @@
 
       <p>Deze deeltjes brengen meer mee dan je denkt. Veel producten bevatten chemicaliën zoals BPA of parabenen, die in verband worden gebracht met hormonale verstoringen. Het is alsof we, zonder het te beseffen, een onzichtbare vervuiling creëren telkens als we onze handen of gezichten wassen.</p>
 
-      <blockquote>"Microplastics: klein van formaat, groot in impact."</blockquote>
+      <blockquote>Microplastics: klein van formaat, groot in impact.</blockquote>
 
       <h2>Oorsprong van microplastics</h2>
       <p>Er zijn twee soorten microplastics: de 'primaire' en de 'secundaire'. Primaire microplastics zijn de originele boosdoeners – bewust gemaakt, zoals de kleine korreltjes in scrubs of tandpasta. Ook industriële pallets, gebruikt om allerlei plastic producten te maken, vallen hieronder. Secundaire microplastics ontstaan door slijtage en afbraak van grotere stukken plastic. Denk aan een oude plastic tas die na jaren in de zon uiteenvalt in duizend stukjes.</p>
@@ -177,7 +237,7 @@
 
       <p>Wat nog verbluffender is: microplastics reizen ook door de lucht. Stel je voor, een windvlaag neemt piepkleine plastic deeltjes mee, die honderden kilometers verderop neerdalen. Zo kunnen microplastics uit een stedelijke omgeving zelfs terechtkomen in afgelegen bossen of bergen. Samen met fijnstof vormt dit een cocktail van vervuiling die schadelijk is voor mens en natuur.</p>
 
-      <blockquote>"Microplastics reizen verder dan de horizon reikt."</blockquote>
+      <blockquote>Microplastics reizen verder dan de horizon reikt.</blockquote>
 
       <h2>Microplastics in bloed</h2>
       <p>Het wordt pas echt ongelooflijk als je beseft dat microplastics zelfs in ons bloed terechtkomen. Ja, je leest het goed – in je eigen bloed! Onderzoek heeft dit onlangs bevestigd. Hoewel de exacte gevolgen nog niet volledig duidelijk zijn, is het een zorgwekkende ontdekking.</p>
@@ -189,7 +249,7 @@
 
       <p>Een opvallend feit is dat de kleinste microplastics, de zogenaamde nanoplastics, mogelijk zelfs de bloed-hersenbarrière kunnen passeren. Dat opent een zorgwekkend nieuw hoofdstuk, vooral met betrekking tot neurologische effecten en het risico op hersenschade op de lange termijn. Dit stelt het immuunsysteem flink op de proef, vooral bij kwetsbare groepen zoals kinderen en ouderen. Het feit dat microplastics ook een interactie kunnen hebben met medicijnen en hun werking kunnen verminderen, maakt het probleem nog complexer.</p>
 
-      <blockquote>"Microplastics: klein, maar een grote vijand voor onze gezondheid."</blockquote>
+      <blockquote>Microplastics: klein, maar een grote vijand voor onze gezondheid.</blockquote>
 
       <h2>Hoe komen microplastics in het bloed?</h2>
       <p>Microplastics komen je lichaam binnen via de lucht die je inademt en het voedsel dat je eet. Je drinkt ze zelfs – wist je dat flessenwater vaak meer microplastics bevat dan kraanwater? Het kleinste formaat deeltjes kan zelfs door de darmwand heen en zo in je bloed terechtkomen. Het klinkt als sciencefiction, maar dit is onze realiteit. Zelfs de plastic verpakkingen van voedsel dragen bij aan je dagelijkse blootstelling. Een extra reden om bewuster te kijken naar wat je eet en drinkt.</p>
@@ -201,7 +261,7 @@
 
       <p>Hun immuunsysteem is minder sterk en daardoor gevoeliger voor de schadelijke effecten van deze deeltjes. Dit benadrukt hoe belangrijk het is om actie te ondernemen en de blootstelling aan microplastics zoveel mogelijk te beperken, vooral voor de jongste generaties.</p>
 
-      <blockquote>"Microplastics bedreigen de toekomst van onze kinderen."</blockquote>
+      <blockquote>Microplastics bedreigen de toekomst van onze kinderen.</blockquote>
 
       <h2>Speelgoed en microplastics</h2>
       <p>Wist je dat veel speelgoed plastic bevat dat bij slijtage microplastics kan afgeven? Vooral jongere kinderen, die graag op dingen kauwen, lopen risico. Neem bijvoorbeeld babyflesjes – die kunnen, vooral bij opwarming, microplastics afgeven. Een schokkend feit: baby's die flesvoeding krijgen, slikken dagelijks miljoenen microplastics in. Ja, miljoenen! Dit maakt het extra belangrijk om bewust te kiezen wat je in huis haalt.</p>
@@ -213,7 +273,7 @@
 
       <p>Daarnaast kan de ophoping van microplastics in het lichaam van een kind hun metabolisme beïnvloeden en het vermogen om voedingsstoffen zoals vitaminen op te nemen. Het klinkt misschien klein, maar simpele aanpassingen, zoals het vermijden van plastic verpakkingen, kunnen echt een groot verschil maken.</p>
 
-      <blockquote>"De kleinste deeltjes kunnen de grootste schade aanrichten."</blockquote>
+      <blockquote>De kleinste deeltjes kunnen de grootste schade aanrichten.</blockquote>
 
       <h2>Microplastics in water</h2>
       <p>Water, onze bron van leven, zit helaas ook vol met microplastics. Het maakt niet uit waar je kijkt: van kraanwater tot gletsjers, overal worden deze deeltjes aangetroffen. Zelfs in regenwater zijn microplastics ontdekt. Kun je je dat voorstellen?</p>
@@ -225,7 +285,7 @@
 
       <p>Elke keer dat je synthetische kleding wast, komen duizenden kleine vezels in het water terecht. Deze vezels belanden uiteindelijk in rivieren, oceanen en zelfs ons drinkwater. Dit geeft je een goede reden om bewuster na te denken over je kledingkeuzes en misschien te kiezen voor meer natuurlijke materialen.</p>
 
-      <blockquote>"Elk druppel water draagt een spoor van onze keuzes."</blockquote>
+      <blockquote>Elk druppel water draagt een spoor van onze keuzes.</blockquote>
 
       <h2>Impact op ecosystemen</h2>
       <p>Vissen en andere waterdieren slikken microplastics in, wat hun gezondheid ernstig schaadt. Dit probleem werkt door in de voedselketen, waardoor diezelfde microplastics uiteindelijk op ons bord terechtkomen. Bovendien kunnen deze deeltjes schadelijke chemicaliën vasthouden, wat ze nog giftiger maakt. Een bioloog vertelde me eens hoe zelfs koraalriffen lijden onder deze minuscule vervuiling. Het is echt een wake-up call.</p>
@@ -237,7 +297,7 @@
 
       <p>Het idee dat iets simpels als thee drinken je blootstelt aan microplastics is behoorlijk schokkend. Dit maakt het des te belangrijker om te kiezen voor natuurlijke materialen, zoals losbladige thee of biologisch afbreekbare zakjes.</p>
 
-      <blockquote>"Zelfs een kop thee kan verborgen plastic schenken."</blockquote>
+      <blockquote>Zelfs een kop thee kan verborgen plastic schenken.</blockquote>
 
       <h2>Hoeveel microplastics zitten er in thee?</h2>
       <p>Miljoenen per kopje! Dat klinkt toch absurd? Vooral als je bedenkt dat dit gebeurt bij temperaturen boven de 90 graden. Zelfs met biologisch afbreekbare theezakjes ben je niet volledig veilig.</p>
@@ -248,7 +308,7 @@
       <p>Ga voor losse thee! Het is niet alleen smaakvoller, maar ook veel beter voor het milieu én je gezondheid. Herbruikbare theezeefjes zijn een geweldige keuze – ze zijn praktisch en maken meteen een statement tegen plasticvervuiling. Kleine veranderingen zoals deze kunnen echt een groot verschil maken.</p>
 
       <p>Met deze gids hoop ik je meer inzicht te hebben gegeven in de wereld van microplastics. Het probleem lijkt misschien overweldigend, maar als we allemaal onze steentje bijdragen, kunnen we echt een verschil maken. Begin klein: kies voor duurzame producten, vermijd plastic verpakkingen, en wees bewust van je keuzes. Samen kunnen we de wereld een stukje schoner maken.</p>
-    </div>
+    </article>
   </main>
 
   <footer>
