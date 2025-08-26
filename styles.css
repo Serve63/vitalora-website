@@ -1025,3 +1025,6 @@ html, body {
 
 @media (min-width: 769px){.mobile-only{display:none}}
 @media (max-width:768px){.br-mobile{display:block}}
+
+@media (min-width: 769px){.mobile-only{display:none}}
+@media (max-width:768px){.mobile-break{display:block}}
