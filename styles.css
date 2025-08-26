@@ -816,13 +816,6 @@ html, body {
     }
 }
 
-/* Mobile: CTA button below image */
-@media (max-width: 768px) {
-    .hero-content {
-        display: flex;
-        flex-direction: column;
-        gap: 30px;
-    }
     
     .hero-text {
         order: 1;
@@ -843,5 +836,28 @@ html, body {
         order: 4;
         text-align: center;
         margin-top: 10px;
+    }
+}
+
+/* Mobile: ensure CTA button is visible and positioned correctly */
+@media (max-width: 768px) {
+    .hero-content .cta-button {
+        order: 3 !important;
+        margin: 20px auto !important;
+        display: block !important;
+        width: fit-content !important;
+        background-color: #10b981 !important;
+        color: white !important;
+        border: none !important;
+        padding: 16px 32px !important;
+        font-size: 18px !important;
+        font-weight: 600 !important;
+        border-radius: 8px !important;
+        cursor: pointer !important;
+        transition: background-color 0.3s ease !important;
+    }
+    
+    .hero-content .cta-button:hover {
+        background-color: #059669 !important;
     }
 }
