@@ -1632,3 +1632,13 @@ html, body {
   .mobile-break { display: inline; }
   .mobile-only { display: none; }
 }
+/* Mobile fixes: toxins section sizing and grid */
+@media (max-width: 768px) {
+  .toxins h2 { font-size: 28px !important; line-height: 1.25 !important; margin-bottom: 24px !important; }
+  .toxins-grid { grid-template-columns: 1fr 1fr !important; gap: 16px !important; }
+  .toxin-card { padding: 18px 12px !important; border-radius: 14px !important; }
+  .toxin-icon { width: 48px !important; height: 48px !important; }
+  .toxin-percentage { font-size: 22px !important; }
+  .toxin-card h3 { font-size: 16px !important; }
+  .toxin-card p { font-size: 13px !important; }
+}
