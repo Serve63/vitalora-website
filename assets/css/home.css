@@ -129,3 +129,13 @@ body.home .site-footer .copy { opacity: .8; font-size: 13px; }
   body.home .process-grid { grid-template-columns: 1fr; }
   body.home .site-footer .footer-legal { text-align: left; }
 }
+
+/* Background unification for homepage */
+body.home,
+body.home .hero,
+body.home .toxins,
+body.home .why,
+body.home .how,
+body.home .results {
+  background-color: #EDF7FD !important;
+}
