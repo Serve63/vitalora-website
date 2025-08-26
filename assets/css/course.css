@@ -385,3 +385,51 @@ html, body { overflow-x: clip; }
 
 .lesson-list .lesson-card:hover::before,
 .lesson-list .lesson-card.is-active::before{ opacity:1; }
+
+/* Back to course button styling */
+.back-to-course {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.9;
+  transition: all 0.2s ease;
+  z-index: 10;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-to-course:hover {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+  text-decoration: none;
+  color: white;
+}
+
+.back-to-course svg {
+  transition: transform 0.2s ease;
+}
+
+.back-to-course:hover svg {
+  transform: translateX(-2px);
+}
+
+/* Mobile responsive for back button */
+@media (max-width: 768px) {
+  .back-to-course {
+    top: 15px;
+    left: 15px;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+}
