@@ -1690,3 +1690,7 @@ html, body {
   .results { padding-top: 32px !important; }
   .results h2 { margin-top: 0 !important; }
 }
+/* Mobile spacing tweak: results heading slightly tighter */
+@media (max-width: 768px) {
+  .results { padding-top: 28px !important; }
+}
