@@ -1446,20 +1446,6 @@ html, body {
   }
 }
 
-@media (min-width: 769px){.mobile-only{display:none}}
-@media (max-width:768px){.br-mobile{display:block}}
-
-@media (min-width: 769px){.mobile-only{display:none}}
-@media (max-width:768px){.mobile-break{display:block}}
-
-@media (min-width: 769px){.mobile-only{display:none}}
-@media (max-width:768px){.mobile-break{display:block}}
-
-@media (min-width: 769px){.mobile-only{display:none}}
-@media (max-width:768px){.mobile-break{display:block}}
-
-@media (min-width:769px){.mobile-only{display:none}}
-
 /* Final mobile safety overrides: scope all mobile rules correctly */
 @media (max-width: 768px) {
   /* Hero: order + sizing */
@@ -1631,3 +1617,22 @@ html, body {
   .results h2 { margin-bottom: 20px !important; }
   .cta-section h2 { margin-bottom: 20px !important; }
 }
+
+
+/* === DESKTOP ONLY (clean overlay) === */
+@media (min-width: 1024px) {
+  /* Hero layout desktop */
+  .hero { display: flex; flex-direction: row; align-items: center; gap: 32px; }
+  .hero__image { order: 0; width: 50%; }
+  .hero__content { width: 50%; }
+  .hero__cta { width: auto; align-self: flex-start; }
+
+  /* Cards / grids desktop */
+  .toxins-grid, .process-grid, .results-list, .cards { grid-template-columns: repeat(3, 1fr); gap: 24px; }
+
+  /* Typo scale */
+  h1 { font-size: clamp(32px, 3vw, 48px); }
+  p { font-size: clamp(16px, 1.2vw, 18px); }
+}
+
+}}}
