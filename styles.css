@@ -1659,3 +1659,8 @@ html, body {
   .toxins { padding-bottom: 24px !important; }
   .why { padding-top: 16px !important; }
 }
+/* Mobile spacing tweak: reduce space above 'Hoe gaan we dat doen?' */
+@media (max-width: 768px) {
+  .how { padding-top: 28px !important; }
+  .how h2 { margin-top: 0 !important; margin-bottom: 28px !important; }
+}
