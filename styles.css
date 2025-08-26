@@ -1014,3 +1014,11 @@ html, body {
   .hero-text .cta-button { margin-top: 8px !important; margin-bottom: 8px !important; }
   .toxins { padding-top: 12px !important; }
 }
+
+/* Mobile: make hero CTA button full width like bottom CTA */
+@media (max-width: 768px) {
+  .hero-text .cta-button {
+    width: 100% !important;
+    max-width: none !important;
+  }
+}
