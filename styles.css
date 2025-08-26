@@ -159,6 +159,29 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
     .circle-1 { width: 200px; height: 200px; }
     .circle-2 { width: 120px; height: 120px; }
     .circle-3 { width: 80px; height: 80px; }
@@ -464,6 +487,29 @@ header {
 
 /* Verberg stippellijnen op mobiel */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
     .process-card::after {
         display: none;
     }
@@ -674,6 +720,29 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
     .hero-content {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -936,6 +1005,29 @@ html, body {
 
 /* Mobile: ensure CTA button is visible */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
     .hero-text .cta-button {
         display: block !important;
         margin: 20px auto !important;
@@ -958,6 +1050,29 @@ html, body {
 
 /* Mobile: place photo above CTA by flattening hero-text into grid */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero-content {
     display: grid;
     grid-template-columns: 1fr;
@@ -976,6 +1091,29 @@ html, body {
 
 /* Hide login link on mobile */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero-text .login-link {
     display: none !important;
   }
@@ -983,6 +1121,29 @@ html, body {
 
 /* Hide intro paragraph on mobile */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero-text p:not(.login-link) {
     display: none !important;
   }
@@ -990,6 +1151,29 @@ html, body {
 
 /* Reduce spacing between hero and toxins section on mobile */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .toxins {
     margin-top: 0 !important;
     padding-top: 20px !important;
@@ -998,6 +1182,29 @@ html, body {
 
 /* Mobile: larger centered hero title */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero-text h1 {
     font-size: 2.1rem !important;
     line-height: 1.15 !important;
@@ -1009,6 +1216,29 @@ html, body {
 
 /* Mobile: tighten spacing between CTA and next section */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero { padding-bottom: 24px !important; }
   .hero-content { row-gap: 12px !important; }
   .hero-text .cta-button { margin-top: 8px !important; margin-bottom: 8px !important; }
@@ -1017,6 +1247,29 @@ html, body {
 
 /* Mobile: make hero CTA button full width like bottom CTA */
 @media (max-width: 768px) {
+  .why-text h2 {
+    font-size: 28px !important;
+    margin-bottom: 24px !important;
+  }
+  .benefits-list {
+    gap: 16px !important;
+  }
+  .benefit-item {
+    gap: 12px !important;
+  }
+  .benefit-number {
+    width: 32px !important;
+    height: 32px !important;
+    font-size: 14px !important;
+  }
+  .benefit-content h3 {
+    font-size: 16px !important;
+    margin-bottom: 4px !important;
+  }
+  .benefit-content p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
   .hero-text .cta-button {
     width: 100% !important;
     max-width: none !important;
