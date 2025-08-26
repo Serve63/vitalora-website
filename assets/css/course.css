@@ -479,3 +479,9 @@ html, body { overflow-x: clip; }
     gap: 8px;
   }
   
+
+/* Course hero: center and inline full title */
+.course-hero__inner{ text-align:center; }
+.course-hero h1{ display:inline; margin:8px 8px 12px 0; }
+.course-hero .subtitle{ display:inline; font-size: clamp(2rem, 4vw, 3rem); font-weight:800; line-height:1.1; letter-spacing:-0.02em; margin:8px 0 12px; }
+@media (max-width:768px){ .course-hero h1, .course-hero .subtitle{ display:block; margin:8px 0 12px; } }
