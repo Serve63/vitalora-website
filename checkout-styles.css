@@ -54,7 +54,7 @@ body {
 
 .two-column-layout {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 44% 56%;
     gap: 40px;
     align-items: start;
 }
