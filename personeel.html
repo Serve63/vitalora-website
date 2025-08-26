@@ -21,8 +21,18 @@
   </style>
 </head>
 <body>
-  <div data-include="site-header"></div>
-  <script defer src="/assets/js/header.js?v=2"></script>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-text">Vitalora.nl</span>
+      </a>
+      
+      <div class="header-buttons">
+        <a class="btn login-btn" href="/academy">Inloggen</a>
+      </div>
+    </div>
+  </header>
 
   <main class="staff-gate">
     <div class="staff-card">
@@ -31,7 +41,6 @@
       <div id="err" class="staff-error"></div>
       <input id="staff-code" type="password" inputmode="numeric" maxlength="6" placeholder="6-cijferige code" />
       <button id="enter">Naar dashboard</button>
-      <p style="font-size:12px;color:#94a3b8;margin-top:8px">Tip: toegang wordt lokaal onthouden.</p>
     </div>
   </main>
 
