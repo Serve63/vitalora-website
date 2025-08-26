@@ -5,20 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Personeel Dashboard</title>
   <link rel="stylesheet" href="styles.css?v=2" />
+  <link rel="stylesheet" href="/assets/css/header.css?v=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <style>
     :root{--brand:#3A9AEA;--ink:#0f172a;--muted:#64748b}
     body{background:#f3f6fb}
     .app{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 64px)}
-    .topbar{background:linear-gradient(90deg,var(--brand),#7ec3f5);color:#fff}
-    .topbar .container{display:flex;align-items:center;justify-content:space-between;padding:10px 0}
-    .topbar .brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.4px}
-    .topbar a{color:#fff;text-decoration:none;font-weight:700;opacity:.9}
-    .topbar a:hover{opacity:1}
-
+    
     .sidenav{background:#ffffff;border-right:1px solid #e5e7eb;padding:22px 16px}
     .sidenav h4{font-size:12px;color:#94a3b8;text-transform:uppercase;letter-spacing:.14em;margin-bottom:10px}
+
     .navlist{display:flex;flex-direction:column;gap:6px}
     .navlist a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;color:#334155;text-decoration:none;font-weight:600}
+
     .navlist a.active,.navlist a:hover{background:#eef7fe;color:#1d4ed8}
 
     .content{padding:26px}
@@ -28,11 +30,13 @@
 
     .kpi-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0 24px}
     .kpi{grid-column:span 3;background:linear-gradient(180deg,#ffffff, #f6f9fe);border:1px solid #e6edf7;border-radius:16px;box-shadow:0 10px 26px rgba(15,23,42,.06), inset 0 1px 0 #fff;padding:18px}
+
     .kpi h3{margin:0 0 8px;color:#334155;font-weight:700}
     .kpi .val{font-size:30px;font-weight:800;color:var(--ink)}
     .kpi .sub{font-size:12px;color:#94a3b8;margin-top:4px}
 
     .card{background:#fff;border:1px solid #e6edf7;border-radius:16px;box-shadow:0 10px 24px rgba(15,23,42,.06), inset 0 1px 0 #fff;padding:20px}
+
     .card h3{margin:0 0 10px;color:#333}
     table{width:100%;border-collapse:collapse}
     th,td{padding:12px 10px;border-bottom:1px solid #eef2f7;text-align:left;font-size:14px}
@@ -41,21 +45,21 @@
     @media(max-width:1024px){.kpi{grid-column:span 6}}
     @media(max-width:768px){.app{grid-template-columns:1fr}.sidenav{display:none}.kpi{grid-column:span 12}}
   </style>
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
-  </head>
+</head>
 <body>
-  <div class="topbar">
-    <div class="container">
-      <div class="brand"><span class="logo-text" style="color:#fff">Vitalora.nl</span></div>
-      <div style="display:flex;align-items:center;gap:14px">
-        <a href="/" class="nav-link" style="color:#fff">Naar website</a>
-        <a href="#" id="logout" class="nav-link" style="color:#fff">Uitloggen</a>
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a class="logo" href="/">
+        <span class="logo-text">Vitalora.nl</span>
+      </a>
+      
+      <div class="header-buttons">
+        <a class="btn login-btn" href="/">Naar website</a>
+        <a class="btn login-btn" href="#" id="logout">Uitloggen</a>
       </div>
     </div>
-  </div>
+  </header>
 
   <div class="app">
     <aside class="sidenav">
@@ -76,14 +80,19 @@
 
       <section class="kpi-grid">
         <div class="kpi"><h3>Omzet vandaag</h3><div class="val">€ 124,80</div><div class="sub">+12% vs. gisteren</div></div>
+
         <div class="kpi"><h3>Omzet deze maand</h3><div class="val">€ 3.942,10</div><div class="sub">+7% vs. vorige maand</div></div>
+
         <div class="kpi"><h3>Nieuwe klanten</h3><div class="val">27</div><div class="sub">+3 vandaag</div></div>
+
         <div class="kpi"><h3>Openstaande betalingen</h3><div class="val">5</div><div class="sub">totaal € 241,30</div></div>
+
       </section>
 
       <section id="blogs" class="card">
         <h3>Blogbeheer</h3>
         <p class="muted">Klik op een item om het bronbestand te openen. CMS-koppeling kan later toegevoegd worden.</p>
+
         <table>
           <thead><tr><th>Titel</th><th>Bestand</th></tr></thead>
           <tbody>
@@ -99,8 +108,8 @@
       const key='staff_access_ok';
       if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
       document.getElementById('logout').addEventListener('click',function(e){ e.preventDefault(); localStorage.removeItem(key); window.location.href='/personeel'; });
+
     })();
   </script>
 </body>
 </html>
-
