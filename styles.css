@@ -794,7 +794,29 @@ html, body {
   .login-link { display: none !important; }
 }
 
-/* Mobile: move CTA button below image */
+    
+    .hero-text {
+        order: 1;
+    }
+    
+    .hero-image {
+        order: 2;
+    }
+    
+    .hero-text .cta-button {
+        order: 3;
+        margin-top: 20px;
+        align-self: center;
+    }
+    
+    .hero-text .login-link {
+        order: 4;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile: CTA button below image */
 @media (max-width: 768px) {
     .hero-content {
         display: flex;
@@ -810,10 +832,11 @@ html, body {
         order: 2;
     }
     
-    .hero-text .cta-button {
+    .hero-content .cta-button {
         order: 3;
-        margin-top: 20px;
-        align-self: center;
+        margin: 20px auto;
+        display: block;
+        width: fit-content;
     }
     
     .hero-text .login-link {
