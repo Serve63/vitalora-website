@@ -1694,3 +1694,7 @@ html, body {
 @media (max-width: 768px) {
   .results { padding-top: 28px !important; }
 }
+/* Mobile spacing tweak: results heading 24px top padding */
+@media (max-width: 768px) {
+  .results { padding-top: 24px !important; }
+}
