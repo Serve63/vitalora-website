@@ -1664,3 +1664,14 @@ html, body {
   .how { padding-top: 28px !important; }
   .how h2 { margin-top: 0 !important; margin-bottom: 28px !important; }
 }
+/* Mobile spacing tweak: tighten gap above How section */
+@media (max-width: 768px) {
+  .why { padding-bottom: 20px !important; }
+  .how { padding-top: 12px !important; }
+}
+/* Mobile spacing tweak: even tighter gap above How section */
+@media (max-width: 768px) {
+  .why { padding-bottom: 8px !important; }
+  .how { padding-top: 4px !important; }
+  .how h2 { margin-top: 0 !important; }
+}
