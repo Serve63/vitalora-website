@@ -839,7 +839,53 @@ html, body {
     }
 }
 
-/* Mobile: ensure CTA button is visible and positioned correctly */
+    
+    .hero-content .cta-button:hover {
+        background-color: #059669 !important;
+    }
+}
+
+/* Mobile: reorder elements - text -> image -> button */
+@media (max-width: 768px) {
+    .hero-content {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+    
+    .hero-text {
+        order: 1;
+    }
+    
+    .hero-text .cta-button {
+        display: none;
+    }
+    
+    .hero-image {
+        order: 2;
+    }
+    
+    .hero-content::after {
+        content: '';
+        order: 3;
+        display: block;
+        width: 100%;
+        height: 0;
+    }
+    
+    .hero-content::after {
+        content: '';
+        display: none;
+    }
+    
+    .hero-text .login-link {
+        order: 4;
+        text-align: center;
+        margin-top: 10px;
+    }
+}
+
+/* Mobile: show CTA button after image */
 @media (max-width: 768px) {
     .hero-content .cta-button {
         order: 3 !important;
