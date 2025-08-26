@@ -410,7 +410,7 @@ html, body { overflow-x: clip; }
 /* Back to course button styling */
 .back-to-course {
   position: absolute;
-  top: 20px; left: 8px; right: auto;
+  top: 8px; left: 8px; right: auto;
   color: white;
   text-decoration: none;
   font-size: 14px;
@@ -447,7 +447,7 @@ html, body { overflow-x: clip; }
 /* Mobile responsive for back button */
 @media (max-width: 768px) {
   .back-to-course {
-    top: 15px;
+    top: 6px;
     left: 8px; right: auto;
     font-size: 13px;
     padding: 6px 10px;
