@@ -1675,3 +1675,8 @@ html, body {
   .how { padding-top: 4px !important; }
   .how h2 { margin-top: 0 !important; }
 }
+/* Mobile spacing tweak: loosen gap above How section slightly */
+@media (max-width: 768px) {
+  .why { padding-bottom: 14px !important; }
+  .how { padding-top: 12px !important; }
+}
