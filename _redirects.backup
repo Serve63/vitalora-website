@@ -1,15 +1,13 @@
 # Blog post redirects
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
-/vlierbessensap-gezond    /vlierbessensap-gezond.html   200
-/kruisbloemige-groenten    /kruisbloemige-groenten.html   200
-/zuiveringszout-baking-soda    /zuiveringszout-baking-soda.html   200
-/broccolikiemen    /broccolikiemen.html   200/aardbeien-gezond    /aardbeien-gezond.html   200
-/eiwitpoeders    /eiwitpoeders.html   200/peren-gezond    /post.html?slug=peren-gezond   200
-/olijven-met-knoflook    /olijven-met-knoflook.html   200/mango-gezond    /post.html?slug=mango-gezond   200
-/dopamine-voeding    /dopamine-voeding.html   200
-/suiker    /suiker.html   200# Catch-all for blog posts
-/oligofructose    /oligofructose.html   200/*    /post.html?slug=:s   200
-/waterkers    /waterkers.html   200# Pretty URLs & redirects
+
+/aardbeien-gezond    /aardbeien-gezond.html   200
+/peren-gezond    /post.html?slug=peren-gezond   200
+/mango-gezond    /post.html?slug=mango-gezond   200
+
+# Catch-all for blog posts
+/*    /post.html?slug=:s   200
+# Pretty URLs & redirects
 /academy            /academy.html    200
 /ebook              /landing.html    200
 /wacht-even         /checkout.html   200
