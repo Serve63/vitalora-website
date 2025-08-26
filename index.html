@@ -320,6 +320,28 @@
 
     <script src="script.js?v=live2" defer></script>
 
+  <script id="ftalaten-mobile-inject">
+    (function () {
+      function inject() {
+        if (window.innerWidth > 768) return;
+        var grid = document.querySelector('.toxins-grid');
+        if (!grid) return;
+        if (grid.querySelector('[data-tile="ftalaten"]')) return;
+        var card = document.createElement('div');
+        card.className = 'toxin-card';
+        card.setAttribute('data-tile', 'ftalaten');
+        card.innerHTML = '<div class="toxin-icon">📷</div>\
+          <div class="toxin-percentage">72%</div>\
+          <div class="toxin-label">Aanwezig</div>\
+          <h3>Ftalaten</h3>\
+          <p>Weekmakers in plastic die hormonen verstoren en vruchtbaarheid beïnvloeden.</p>';
+        grid.appendChild(card);
+      }
+      document.addEventListener('DOMContentLoaded', inject, { once: true });
+      window.addEventListener('resize', function(){ if (window.innerWidth <= 768) inject(); });
+    })();
+  </script>
+
 <script id="bg-hotfix">
   (function () {
     var LIGHTBLUE = '#EDF7FD';
