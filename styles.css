@@ -788,3 +788,8 @@ html, body {
   background: transparent !important;
 }
 /* === BG FIX END === */
+
+/* Desktop fixes: ensure CTA styling and hide login-link */
+@media (min-width: 1024px) {
+  .login-link { display: none !important; }
+}
