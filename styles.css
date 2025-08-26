@@ -183,11 +183,9 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -213,8 +211,6 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
     .circle-4 { width: 150px; height: 150px; }
     .circle-5 { width: 60px; height: 60px; }
     .circle-6 { width: 120px; height: 120px; }
-}
-
 /* Header */
 header {
     background-color: transparent; /* let body show through */
@@ -417,15 +413,11 @@ header {
     object-fit: cover;
     border-radius: 16px;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-}
-
 .why-text h2 {
     font-size: 36px;
     font-weight: 700;
     color: #333333;
     margin-bottom: 40px;
-}
-
 .benefits-list {
     display: flex;
     flex-direction: column;
@@ -536,11 +528,9 @@ header {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -794,11 +784,9 @@ footer {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1049,7 +1037,6 @@ html, body {
     .cta-button-mobile:hover {
         background-color: #059669 !important;
     }
-}
 
 /* Desktop: hide mobile button */
 @media (min-width: 769px) {
@@ -1084,11 +1071,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1154,11 +1139,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1220,11 +1203,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1275,11 +1256,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1330,11 +1309,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1386,11 +1363,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1445,11 +1420,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
@@ -1501,11 +1474,9 @@ html, body {
     font-size: 14px !important;
     line-height: 1.5 !important;
   }
-  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
-  }
   .benefits-list {
     gap: 16px !important;
   }
