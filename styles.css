@@ -973,3 +973,10 @@ html, body {
   .hero-text .cta-button { grid-row: 4; justify-self: center; }
   .hero-text .login-link { grid-row: 5; justify-self: center; }
 }
+
+/* Hide login link on mobile */
+@media (max-width: 768px) {
+  .hero-text .login-link {
+    display: none !important;
+  }
+}
