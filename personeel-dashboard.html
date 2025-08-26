@@ -55,8 +55,7 @@
       </a>
       
       <div class="header-buttons">
-        <a class="btn login-btn" href="/">Naar website</a>
-        <a class="btn login-btn" href="#" id="logout">Uitloggen</a>
+        <!-- Header buttons removed for dashboard -->
       </div>
     </div>
   </header>
@@ -107,8 +106,7 @@
     (function(){
       const key='staff_access_ok';
       if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
-      document.getElementById('logout').addEventListener('click',function(e){ e.preventDefault(); localStorage.removeItem(key); window.location.href='/personeel'; });
-
+      // Logout functionality removed from header, can be added elsewhere if needed
     })();
   </script>
 </body>
