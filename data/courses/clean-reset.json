@@ -3,17 +3,21 @@
   "title": "Clean Reset",
   "subtitle": "Detox en gifstoffen",
   "level": "Intensief",
-  "theme": { "grad_a": "#0ea5e9", "grad_b": "#1d4ed8", "brand": "#2563eb" },
+  "theme": {
+    "grad_a": "#0ea5e9",
+    "grad_b": "#1d4ed8",
+    "brand": "#2563eb"
+  },
   "duration_days": 21,
   "lessons": [
     {
       "id": "les-1-microplastics",
       "index": 1,
-      "title": "Les 1: Wat zijn Microplastics?",
+      "title": "Les 1: De eerste stap in jouw detoxreis",
       "type": "Theorie",
       "duration_min": 15,
       "draft": false,
-      "content_html": "<p>Stel je voor: je neemt een slok water, eet een stukje vis of ademt gewoon in, en zonder dat je het doorhebt, krijg je kleine stukjes plastic binnen. Klinkt bizar, toch? Deze piepkleine deeltjes, beter bekend als microplastics, zijn tegenwoordig overal te vinden.</p><p>Microplastics zijn kleine plastic deeltjes die kleiner zijn dan 5 millimeter. Dat is ongeveer zo groot als een sesamzaadje. Er zijn twee hoofdtypen:</p><h3>Primaire microplastics</h3><p>Dit zijn plastic deeltjes die al klein worden gemaakt, zoals:</p><ul><li>Microkorrels in cosmetica (denk aan scrubs of tandpasta)</li><li>Microvezels van synthetische kleding, zoals polyester</li><li>Industriële pellets, die worden gebruikt bij het maken van plastic producten</li></ul><h3>Secundaire microplastics</h3><p>Deze ontstaan door het afbreken van grotere stukken plastic, zoals:</p><ul><li>Plastic zakken die in de natuur belanden</li><li>Flessen of andere plastic verpakkingen die door zonlicht en wind in kleinere stukjes uiteenvallen</li><li>Visnetten die in de oceaan blijven ronddrijven</li></ul>"
+      "content_html": "<h2>🌱 Hoofdstuk 1 – Les 1</h2>\n<h3>De eerste stap in jouw detoxreis</h3>\n\n<p>Toen ik jaren geleden voor het eerst hoorde dat wetenschappers microplastics hadden gevonden in het bloed van mensen, raakte dat me diep. Niet omdat ik dacht: oh jee, de wereld gaat vergaan, maar omdat ik me realiseerde dat dit ook ín mij zat. En in mijn kinderen. Dat besef zette alles op scherp. Want hoe kun je gezond leven, als je elke dag ongemerkt volloopt met stoffen die je lichaam eigenlijk helemaal niet kent?</p>\n\n<p>Detoxen klonk voor mij altijd een beetje vaag. Een hype. Een juice cleanse van drie dagen en klaar. Maar dat is niet waar het om draait. Je lichaam is zelf al een geniale detoxmachine. Je lever, je nieren, je huid, je darmen – ze werken dag en nacht voor je. Alleen… ze krijgen tegenwoordig véél meer te verduren dan vroeger. Denk aan PFAS in ons drinkwater, pesticiden op fruit, parabenen in shampoo, BPA in plastic. Het stapelt zich op. En precies daar gaat deze reis over: leren hoe je die last vermindert, en je lichaam weer de ruimte geeft om te doen waar het voor gemaakt is.</p>\n\n<p>Misschien herken je dit: altijd een beetje moe. Vage huidproblemen. Hormonen die uit balans lijken. Slechte slaap. Ik dacht vroeger dat dat er gewoon \"bij hoorde\". Tot ik besefte dat mijn lichaam niet lui was, maar overbelast. Dat inzicht veranderde mijn hele manier van leven.</p>\n\n<p>Daarom wil ik dat je dit avontuur ook persoonlijk maakt. Neem een notitieboekje of je telefoon erbij en schrijf drie dingen op:</p>\n\n<ul>\n<li>Waarom je hier bent.</li>\n<li>Wat je nu al voelt in je lichaam waar je verandering in wilt.</li>\n<li>Hoe jij je het liefst zou willen voelen drie maanden vanaf nu.</li>\n</ul>\n\n<p>Dat lijkt simpel, maar geloof me: dit is je ankerpunt. Dit is de plek waar je straks op terug kunt kijken en denkt: wauw, kijk eens wat er veranderd is.</p>\n\n<p>Dit programma wordt geen droge studie vol feitjes. Het is een reis. Mijn verhaal loopt erin mee, en jij schrijft ondertussen jouw eigen hoofdstuk. En als je denkt dat toxines vooral in plastic flesjes of fastfood zitten, wacht maar tot je ziet hóe diep ze verweven zijn in ons dagelijks leven. Dat is waar we zo in gaan duiken.</p>"
     },
     {
       "id": "les-2-omgeving",
@@ -42,32 +46,248 @@
       "draft": false,
       "content_html": "<p>Nu je weet wat microplastics zijn en waarom ze een probleem vormen, is het tijd om in actie te komen! Hier zijn praktische tips die je vandaag al kunt toepassen om je microplastic footprint te verkleinen.</p><h3>In de badkamer</h3><ul><li><strong>Kies voor natuurlijke scrubs:</strong> Vermijd producten met microkorrels. Kies in plaats daarvan voor scrubs met natuurlijke ingrediënten zoals suiker, zout of gemalen noten.</li><li><strong>Gebruik een Guppy Friend:</strong> Dit is een speciale waszak die microvezels opvangt tijdens het wassen van synthetische kleding.</li><li><strong>Kies voor vaste zeep en shampoo:</strong> Deze bevatten geen plastic verpakking en zijn vaak ook nog eens beter voor je huid en haar.</li></ul><h3>In de keuken</h3><ul><li><strong>Vermijd wegwerpplastic:</strong> Gebruik herbruikbare waterflessen, koffiebekers en lunchboxen.</li><li><strong>Kies voor glas of roestvrij staal:</strong> Voor voedselopslag en drinken.</li><li><strong>Koop onverpakt:</strong> Ga naar winkels waar je je eigen verpakking kunt meenemen.</li></ul><h3>Kleding en textiel</h3><ul><li><strong>Kies voor natuurlijke materialen:</strong> Katoen, wol, linnen en hennep in plaats van polyester, acryl en nylon.</li><li><strong>Was minder vaak:</strong> Synthetische kleding verliest bij elke wasbeurt microvezels.</li><li><strong>Koop tweedehands:</strong> Dit verlengt de levensduur van kleding en vermindert de vraag naar nieuwe synthetische stoffen.</li></ul><p><strong>Onthoud:</strong> Elke kleine stap telt! Begin met één verandering en bouw langzaam uit. Samen kunnen we een groot verschil maken.</p>"
     },
-    { "id": "les-5", "index": 5, "title": "Les 5: Alternatieven voor plastic verpakkingen", "type": "Praktijk", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over duurzame alternatieven voor plastic verpakkingen in je dagelijks leven.</p>" },
-    { "id": "les-6", "index": 6, "title": "Les 6: Microplastics in cosmetica herkennen", "type": "Praktijk", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je microplastics in cosmetica kunt herkennen en vermijden.</p>" },
-    { "id": "les-7", "index": 7, "title": "Les 7: De impact op oceanen", "type": "Theorie", "duration_min": 14, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de directe impact van microplastics op onze oceanen en zeedieren.</p>" },
-    { "id": "les-8", "index": 8, "title": "Les 8: Duurzame kledingkeuzes", "type": "Praktijk", "duration_min": 17, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je duurzame kledingkeuzes kunt maken die minder microplastics veroorzaken.</p>" },
-    { "id": "les-9", "index": 9, "title": "Les 9: Microplastics in voedsel", "type": "Theorie", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in ons voedsel en hoe je jezelf kunt beschermen.</p>" },
-    { "id": "les-10", "index": 10, "title": "Les 10: Zero-waste lifestyle basics", "type": "Praktijk", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je de basis van een zero-waste lifestyle om microplastics te verminderen.</p>" },
-    { "id": "les-11", "index": 11, "title": "Les 11: Wetenschap achter microplastics", "type": "Theorie", "duration_min": 18, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de wetenschap achter microplastics en hun effecten op het milieu.</p>" },
-    { "id": "les-12", "index": 12, "title": "Les 12: DIY natuurlijke verzorging", "type": "Praktijk", "duration_min": 14, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen natuurlijke verzorgingsproducten kunt maken.</p>" },
-    { "id": "les-13", "index": 13, "title": "Les 13: Microplastics in de lucht", "type": "Theorie", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in de lucht die we inademen.</p>" },
-    { "id": "les-14", "index": 14, "title": "Les 14: Duurzame huishouding", "type": "Praktijk", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je huishouden duurzamer kunt maken.</p>" },
-    { "id": "les-15", "index": 15, "title": "Les 15: Microplastics en gezondheid", "type": "Theorie", "duration_min": 17, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de gezondheidseffecten van microplastics op mensen.</p>" },
-    { "id": "les-16", "index": 16, "title": "Les 16: Bewust winkelen", "type": "Praktijk", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je bewust kunt winkelen om microplastics te vermijden.</p>" },
-    { "id": "les-17", "index": 17, "title": "Les 17: Microplastics in water", "type": "Theorie", "duration_min": 14, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in ons drinkwater en oppervlaktewater.</p>" },
-    { "id": "les-18", "index": 18, "title": "Les 18: Community actie", "type": "Praktijk", "duration_min": 18, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je anderen kunt inspireren en samen actie kunt ondernemen.</p>" },
-    { "id": "les-19", "index": 19, "title": "Les 19: Microplastics en dieren", "type": "Theorie", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de impact van microplastics op wilde dieren en huisdieren.</p>" },
-    { "id": "les-20", "index": 20, "title": "Les 20: Duurzame reizen", "type": "Praktijk", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je duurzaam kunt reizen zonder microplastics te veroorzaken.</p>" },
-    { "id": "les-21", "index": 21, "title": "Les 21: Microplastics in de bodem", "type": "Theorie", "duration_min": 17, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in de bodem en hun effect op planten.</p>" },
-    { "id": "les-22", "index": 22, "title": "Les 22: Kinderen bewust maken", "type": "Praktijk", "duration_min": 14, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je kinderen bewust kunt maken van microplastics.</p>" },
-    { "id": "les-23", "index": 23, "title": "Les 23: Microplastics en klimaat", "type": "Theorie", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de relatie tussen microplastics en klimaatverandering.</p>" },
-    { "id": "les-24", "index": 24, "title": "Les 24: Duurzame feesten en events", "type": "Praktijk", "duration_min": 18, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je feesten en events duurzaam kunt organiseren.</p>" },
-    { "id": "les-25", "index": 25, "title": "Les 25: Microplastics en technologie", "type": "Theorie", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over nieuwe technologieën om microplastics te bestrijden.</p>" },
-    { "id": "les-26", "index": 26, "title": "Les 26: Actieplan maken", "type": "Praktijk", "duration_min": 17, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen actieplan kunt maken om microplastics te verminderen.</p>" },
-    { "id": "les-27", "index": 27, "title": "Les 27: Microplastics en wetgeving", "type": "Theorie", "duration_min": 14, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over wetgeving en beleid rondom microplastics.</p>" },
-    { "id": "les-28", "index": 28, "title": "Les 28: Duurzame werkplek", "type": "Praktijk", "duration_min": 16, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je werkplek duurzamer kunt maken.</p>" },
-    { "id": "les-29", "index": 29, "title": "Les 29: Microplastics en toekomst", "type": "Theorie", "duration_min": 15, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de toekomst van microplastics en mogelijke oplossingen.</p>" },
-    { "id": "les-30", "index": 30, "title": "Les 30: Impact meten", "type": "Praktijk", "duration_min": 18, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen impact kunt meten en bijhouden.</p>" },
-    { "id": "les-31", "index": 31, "title": "Les 31: Afsluiting en vervolg", "type": "Theorie", "duration_min": 12, "draft": false, "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier sluiten we de cursus af en kijken we naar vervolgstappen.</p>" }
+    {
+      "id": "les-5",
+      "index": 5,
+      "title": "Les 5: Alternatieven voor plastic verpakkingen",
+      "type": "Praktijk",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over duurzame alternatieven voor plastic verpakkingen in je dagelijks leven.</p>"
+    },
+    {
+      "id": "les-6",
+      "index": 6,
+      "title": "Les 6: Microplastics in cosmetica herkennen",
+      "type": "Praktijk",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je microplastics in cosmetica kunt herkennen en vermijden.</p>"
+    },
+    {
+      "id": "les-7",
+      "index": 7,
+      "title": "Les 7: De impact op oceanen",
+      "type": "Theorie",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de directe impact van microplastics op onze oceanen en zeedieren.</p>"
+    },
+    {
+      "id": "les-8",
+      "index": 8,
+      "title": "Les 8: Duurzame kledingkeuzes",
+      "type": "Praktijk",
+      "duration_min": 17,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je duurzame kledingkeuzes kunt maken die minder microplastics veroorzaken.</p>"
+    },
+    {
+      "id": "les-9",
+      "index": 9,
+      "title": "Les 9: Microplastics in voedsel",
+      "type": "Theorie",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in ons voedsel en hoe je jezelf kunt beschermen.</p>"
+    },
+    {
+      "id": "les-10",
+      "index": 10,
+      "title": "Les 10: Zero-waste lifestyle basics",
+      "type": "Praktijk",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je de basis van een zero-waste lifestyle om microplastics te verminderen.</p>"
+    },
+    {
+      "id": "les-11",
+      "index": 11,
+      "title": "Les 11: Wetenschap achter microplastics",
+      "type": "Theorie",
+      "duration_min": 18,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de wetenschap achter microplastics en hun effecten op het milieu.</p>"
+    },
+    {
+      "id": "les-12",
+      "index": 12,
+      "title": "Les 12: DIY natuurlijke verzorging",
+      "type": "Praktijk",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen natuurlijke verzorgingsproducten kunt maken.</p>"
+    },
+    {
+      "id": "les-13",
+      "index": 13,
+      "title": "Les 13: Microplastics in de lucht",
+      "type": "Theorie",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in de lucht die we inademen.</p>"
+    },
+    {
+      "id": "les-14",
+      "index": 14,
+      "title": "Les 14: Duurzame huishouding",
+      "type": "Praktijk",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je huishouden duurzamer kunt maken.</p>"
+    },
+    {
+      "id": "les-15",
+      "index": 15,
+      "title": "Les 15: Microplastics en gezondheid",
+      "type": "Theorie",
+      "duration_min": 17,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de gezondheidseffecten van microplastics op mensen.</p>"
+    },
+    {
+      "id": "les-16",
+      "index": 16,
+      "title": "Les 16: Bewust winkelen",
+      "type": "Praktijk",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je bewust kunt winkelen om microplastics te vermijden.</p>"
+    },
+    {
+      "id": "les-17",
+      "index": 17,
+      "title": "Les 17: Microplastics in water",
+      "type": "Theorie",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in ons drinkwater en oppervlaktewater.</p>"
+    },
+    {
+      "id": "les-18",
+      "index": 18,
+      "title": "Les 18: Community actie",
+      "type": "Praktijk",
+      "duration_min": 18,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je anderen kunt inspireren en samen actie kunt ondernemen.</p>"
+    },
+    {
+      "id": "les-19",
+      "index": 19,
+      "title": "Les 19: Microplastics en dieren",
+      "type": "Theorie",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de impact van microplastics op wilde dieren en huisdieren.</p>"
+    },
+    {
+      "id": "les-20",
+      "index": 20,
+      "title": "Les 20: Duurzame reizen",
+      "type": "Praktijk",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je duurzaam kunt reizen zonder microplastics te veroorzaken.</p>"
+    },
+    {
+      "id": "les-21",
+      "index": 21,
+      "title": "Les 21: Microplastics in de bodem",
+      "type": "Theorie",
+      "duration_min": 17,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over microplastics in de bodem en hun effect op planten.</p>"
+    },
+    {
+      "id": "les-22",
+      "index": 22,
+      "title": "Les 22: Kinderen bewust maken",
+      "type": "Praktijk",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je kinderen bewust kunt maken van microplastics.</p>"
+    },
+    {
+      "id": "les-23",
+      "index": 23,
+      "title": "Les 23: Microplastics en klimaat",
+      "type": "Theorie",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de relatie tussen microplastics en klimaatverandering.</p>"
+    },
+    {
+      "id": "les-24",
+      "index": 24,
+      "title": "Les 24: Duurzame feesten en events",
+      "type": "Praktijk",
+      "duration_min": 18,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je feesten en events duurzaam kunt organiseren.</p>"
+    },
+    {
+      "id": "les-25",
+      "index": 25,
+      "title": "Les 25: Microplastics en technologie",
+      "type": "Theorie",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over nieuwe technologieën om microplastics te bestrijden.</p>"
+    },
+    {
+      "id": "les-26",
+      "index": 26,
+      "title": "Les 26: Actieplan maken",
+      "type": "Praktijk",
+      "duration_min": 17,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen actieplan kunt maken om microplastics te verminderen.</p>"
+    },
+    {
+      "id": "les-27",
+      "index": 27,
+      "title": "Les 27: Microplastics en wetgeving",
+      "type": "Theorie",
+      "duration_min": 14,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over wetgeving en beleid rondom microplastics.</p>"
+    },
+    {
+      "id": "les-28",
+      "index": 28,
+      "title": "Les 28: Duurzame werkplek",
+      "type": "Praktijk",
+      "duration_min": 16,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je werkplek duurzamer kunt maken.</p>"
+    },
+    {
+      "id": "les-29",
+      "index": 29,
+      "title": "Les 29: Microplastics en toekomst",
+      "type": "Theorie",
+      "duration_min": 15,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je over de toekomst van microplastics en mogelijke oplossingen.</p>"
+    },
+    {
+      "id": "les-30",
+      "index": 30,
+      "title": "Les 30: Impact meten",
+      "type": "Praktijk",
+      "duration_min": 18,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier leer je hoe je je eigen impact kunt meten en bijhouden.</p>"
+    },
+    {
+      "id": "les-31",
+      "index": 31,
+      "title": "Les 31: Afsluiting en vervolg",
+      "type": "Theorie",
+      "duration_min": 12,
+      "draft": false,
+      "content_html": "<p><strong>Coming Soon!</strong></p><p>Deze les wordt binnenkort toegevoegd. Hier sluiten we de cursus af en kijken we naar vervolgstappen.</p>"
+    }
   ]
 }
