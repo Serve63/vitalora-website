@@ -187,11 +187,11 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -557,11 +557,11 @@ header {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -832,11 +832,11 @@ footer {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1159,11 +1159,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1246,11 +1246,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1329,11 +1329,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1401,11 +1401,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1473,11 +1473,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1546,11 +1546,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1622,11 +1622,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
@@ -1695,11 +1695,11 @@ html, body {
   .process-card:not(:last-child)::after {
     content: "" !important;
     position: absolute !important;
-    bottom: -12px !important;
+    bottom: -24px !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     width: 2px !important;
-    height: 24px !important;
+    height: 32px !important;
     background: repeating-linear-gradient(
       to bottom,
       #2954B4 0,
