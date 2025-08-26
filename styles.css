@@ -1642,3 +1642,10 @@ html, body {
   .toxin-card h3 { font-size: 16px !important; }
   .toxin-card p { font-size: 13px !important; }
 }
+/* Mobile CTA compact layout */
+@media (max-width: 768px) {
+  .cta-section { padding: 44px 0 !important; }
+  .cta-section h2 { font-size: 28px !important; margin-bottom: 12px !important; }
+  .cta-section p { font-size: 16px !important; margin-bottom: 24px !important; }
+  .cta-button-large { width: 100% !important; padding: 16px 20px !important; font-size: 18px !important; }
+}
