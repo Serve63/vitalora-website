@@ -159,6 +159,48 @@ button, .cta { font-weight: 600; letter-spacing: 0.04em; }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -487,6 +529,48 @@ header {
 
 /* Verberg stippellijnen op mobiel */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -720,6 +804,48 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1005,6 +1131,48 @@ html, body {
 
 /* Mobile: ensure CTA button is visible */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1050,6 +1218,48 @@ html, body {
 
 /* Mobile: place photo above CTA by flattening hero-text into grid */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1091,6 +1301,48 @@ html, body {
 
 /* Hide login link on mobile */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1121,6 +1373,48 @@ html, body {
 
 /* Hide intro paragraph on mobile */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1151,6 +1445,48 @@ html, body {
 
 /* Reduce spacing between hero and toxins section on mobile */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1182,6 +1518,48 @@ html, body {
 
 /* Mobile: larger centered hero title */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1216,6 +1594,48 @@ html, body {
 
 /* Mobile: tighten spacing between CTA and next section */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
@@ -1247,6 +1667,48 @@ html, body {
 
 /* Mobile: make hero CTA button full width like bottom CTA */
 @media (max-width: 768px) {
+  .how h2 {
+    font-size: 28px !important;
+    margin-bottom: 32px !important;
+  }
+  .process-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+  .process-card {
+    padding: 24px 16px !important;
+    position: relative !important;
+  }
+  .process-icon {
+    font-size: 36px !important;
+    margin-bottom: 16px !important;
+  }
+  .process-card h3 {
+    font-size: 18px !important;
+    margin-bottom: 8px !important;
+  }
+  .process-card p {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+  }
+  /* Mobiele stippellijnen tussen stappen */
+  .process-card:not(:last-child)::after {
+    content: "" !important;
+    position: absolute !important;
+    bottom: -12px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 2px !important;
+    height: 24px !important;
+    background: repeating-linear-gradient(
+      to bottom,
+      #2954B4 0,
+      #2954B4 4px,
+      transparent 4px,
+      transparent 8px
+    ) !important;
+    display: block !important;
+  }
   .why-text h2 {
     font-size: 28px !important;
     margin-bottom: 24px !important;
