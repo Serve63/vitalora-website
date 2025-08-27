@@ -176,6 +176,11 @@ body.home footer .footer-bottom { opacity: .85; }
     padding: 0 0 56px 0;
   }
   
+  /* Mobile toxins title - negative margin to pull up closer */
+  body.home .toxins h2 {
+    margin-top: -20px;
+  }
+  
 
   
   /* Mobile line break for toxins title */
