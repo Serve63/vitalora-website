@@ -401,6 +401,7 @@ body.home footer .footer-bottom { opacity: .85; }
     line-height: 1.5;
     max-width: 280px;
     margin: 0 auto 0;
+    text-align: center !important;
   }
   
   body.home .site-footer .links {
@@ -554,6 +555,11 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
   body.home .process-grid { grid-template-columns: 1fr; }
   body.home .site-footer .footer-legal { text-align: center !important; }
   
+  /* Keep description centered */
+  body.home .site-footer p {
+    text-align: center !important;
+  }
+  
   /* Force left-align links on mobile */
   body.home .site-footer .links {
     justify-content: flex-start !important;
@@ -573,6 +579,13 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
 
 /* Extra mobile override for footer links */
 @media (max-width: 768px) {
+  /* Keep description centered */
+  body.home .site-footer p {
+    text-align: center !important;
+    margin: 0 auto !important;
+  }
+  
+  /* Only links left-aligned */
   body.home .site-footer .links {
     justify-content: flex-start !important;
     text-align: left !important;
