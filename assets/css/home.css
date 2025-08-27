@@ -356,7 +356,7 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .site-footer .copy {
     order: 3;
-    margin-top: 8px;
+    margin-top: 20px;
     font-size: 12px;
     opacity: 0.7;
   }
