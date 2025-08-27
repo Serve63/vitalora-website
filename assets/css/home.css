@@ -814,26 +814,7 @@ body.home .results {
   background-color: #EDF7FD !important;
 }
 
-/* Remove all animated elements and cursor effects */
-body.home .animated-bg,
-body.home .animated-bg *,
-body.home .circle,
-body.home .circle-1,
-body.home .circle-2,
-body.home .circle-3,
-body.home .circle-4,
-body.home .circle-5,
-body.home .circle-6,
-body.home .floating-circle-1,
-body.home .floating-circle-2,
-body.home .floating-circle-3,
-body.home .floating-circle-4,
-body.home .floating-circle-5 {
-  display: none !important;
-  visibility: hidden !important;
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
+/* Keep animated circles visible but subtle */
 
 /* Remove any custom cursors */
 body.home * {
