@@ -151,10 +151,7 @@ body {
 
 .ebook-cover { max-width: 540px; width:100%; height:auto; margin-top:-12px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
 
-/* Verberg mobiele afbeelding container op desktop */
-.ebook-mobile-container { 
-    display: none !important; 
-}
+
 @media (max-width: 1024px){ .ebook-cover{ max-width: 460px; } }
 @media (max-width: 768px){ .ebook-cover{ max-width: 420px; margin-top:0 } }
 
@@ -360,12 +357,28 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    /* Hero tekst container */
+    .hero-text {
+        order: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Binnen hero-text: volgorde bepalen */
+    .hero-text .direct-access {
+        order: 1;
+        margin-bottom: 20px;
     }
     
     .hero-text h1 {
+        order: 2;
         font-size: 32px;
+        margin-bottom: 20px;
     }
     
     /* Verberg hero description op mobiel */
@@ -373,24 +386,30 @@ body {
         display: none !important;
     }
     
-    /* Verberg originele hero-image op mobiel */
+    .hero-text .features-list {
+        order: 4;
+        margin-bottom: 20px;
+    }
+    
+    .hero-text .cta-button {
+        order: 5;
+    }
+    
+    /* Hero afbeelding tussen titel en features */
     .hero-image {
-        display: none !important;
+        order: 3 !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
-    /* Toon mobiele afbeelding container */
-    .ebook-mobile-container {
-        display: block !important;
-        text-align: center !important;
-        margin: 20px 0 !important;
-    }
-    
-    .ebook-mobile {
+    .hero-image .ebook-cover {
         max-width: 280px !important;
         width: 100% !important;
         height: auto !important;
-        display: block !important;
         margin: 0 auto !important;
+        display: block !important;
     }
     
     .book-stack {
