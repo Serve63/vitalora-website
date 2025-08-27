@@ -124,6 +124,19 @@ body.home footer .footer-bottom { opacity: .85; }
   body.home .hero-text p {
     display: none;
   }
+  
+  body.home .hero-content {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  body.home .hero-image {
+    order: 1;
+  }
+  
+  body.home .hero-text {
+    order: 2;
+  }
 }
 
 /* Footer (homepage) */
