@@ -177,9 +177,18 @@ body.home footer .footer-bottom { opacity: .85; }
     font-size: 30px !important;
   }
   
-  /* Certified badge styling - verborgen */
+  /* Certified badge styling - alleen mobiel */
   body.home .certified-badge {
-    display: none !important;
+    display: inline-flex;
+    align-items: center;
+    background: #10b981;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    order: 0;
   }
   
   body.home .hero-image {
@@ -598,6 +607,11 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
 
 /* Desktop overrides */
 @media (min-width: 769px) {
+  /* Hide certified badge on desktop */
+  body.home .certified-badge {
+    display: none !important;
+  }
+  
   /* Make Why section title consistent with other section titles */
   body.home .why-text h2 {
     font-size: 38px !important;
