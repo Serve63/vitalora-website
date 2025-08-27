@@ -357,28 +357,12 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .hero-content {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-    
-    /* Hero tekst container */
-    .hero-text {
-        order: 1;
-        display: flex;
-        flex-direction: column;
-    }
-    
-    /* Binnen hero-text: volgorde bepalen */
-    .hero-text .direct-access {
-        order: 1;
-        margin-bottom: 20px;
+        grid-template-columns: 1fr;
+        gap: 40px;
     }
     
     .hero-text h1 {
-        order: 2;
         font-size: 32px;
-        margin-bottom: 20px;
     }
     
     /* Verberg hero description op mobiel */
@@ -386,25 +370,20 @@ body {
         display: none !important;
     }
     
-    .hero-text .features-list {
-        order: 5;
-        margin-bottom: 20px;
+    /* Verberg originele hero-image op mobiel (JavaScript verplaatst deze) */
+    .hero-image:not(.moved) {
+        display: none !important;
     }
     
-    .hero-text .cta-button {
-        order: 6;
-    }
-    
-    /* Hero afbeelding tussen titel en features - order 3 */
-    .hero-image {
-        order: 3 !important;
+    /* Styling voor verplaatste afbeelding via JavaScript */
+    .hero-image.moved {
         display: flex !important;
         justify-content: center !important;
         margin: 20px 0 !important;
         padding: 0 !important;
     }
     
-    .hero-image .ebook-cover {
+    .hero-image.moved .ebook-cover {
         max-width: 280px !important;
         width: 100% !important;
         height: auto !important;

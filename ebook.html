@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=20">
+    <link rel="stylesheet" href="landing-styles.css?v=21">
     <link rel="stylesheet" href="icons.css?v=live5">
     <link rel="stylesheet" href="/assets/css/header.css?v=18">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
@@ -18,7 +18,7 @@
     <script defer src="/assets/js/route-scope.js?v=1"></script>
   <script defer src="/assets/js/header.js?v=9"></script>
   
-  <!-- Verberg header op mobiel voor ebook pagina -->
+      <!-- Verberg header op mobiel voor ebook pagina -->
   <script>
     function hideHeaderOnMobile() {
       if (window.innerWidth <= 768) {
@@ -35,18 +35,64 @@
       }
     }
     
+    // Verplaats ebook afbeelding op mobiel
+    function moveEbookImageOnMobile() {
+      if (window.innerWidth <= 768) {
+        const heroImage = document.querySelector('.hero-image');
+        const heroTitle = document.querySelector('.hero-text h1');
+        const featuresContainer = document.querySelector('.features-list');
+        
+        if (heroImage && heroTitle && featuresContainer && !heroImage.classList.contains('moved')) {
+          // Kloon de afbeelding
+          const imageClone = heroImage.cloneNode(true);
+          imageClone.classList.add('moved');
+          imageClone.style.cssText = 'display: flex !important; justify-content: center !important; margin: 20px 0 !important; order: 3 !important;';
+          
+          // Voeg toe na de titel
+          heroTitle.insertAdjacentElement('afterend', imageClone);
+          
+          // Verberg originele afbeelding
+          heroImage.style.display = 'none';
+        }
+      } else {
+        // Desktop: herstel originele staat
+        const movedImage = document.querySelector('.hero-image.moved');
+        const originalImage = document.querySelector('.hero-image:not(.moved)');
+        
+        if (movedImage) {
+          movedImage.remove();
+        }
+        if (originalImage) {
+          originalImage.style.display = '';
+        }
+      }
+    }
+    
     // Run immediately
     hideHeaderOnMobile();
+    moveEbookImageOnMobile();
     
     // Run after DOM is loaded
-    document.addEventListener('DOMContentLoaded', hideHeaderOnMobile);
+    document.addEventListener('DOMContentLoaded', function() {
+      hideHeaderOnMobile();
+      moveEbookImageOnMobile();
+    });
     
     // Run after a short delay to catch dynamically loaded content
-    setTimeout(hideHeaderOnMobile, 100);
-    setTimeout(hideHeaderOnMobile, 500);
+    setTimeout(function() {
+      hideHeaderOnMobile();
+      moveEbookImageOnMobile();
+    }, 100);
+    setTimeout(function() {
+      hideHeaderOnMobile();
+      moveEbookImageOnMobile();
+    }, 500);
     
     // Run on resize
-    window.addEventListener('resize', hideHeaderOnMobile);
+    window.addEventListener('resize', function() {
+      hideHeaderOnMobile();
+      moveEbookImageOnMobile();
+    });
   </script>
 
     <!-- Hero Section -->
