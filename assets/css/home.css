@@ -266,15 +266,12 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .results h2 {
     font-size: 26px;
-    margin-bottom: 12px;
+    margin-bottom: 24px;
     line-height: 1.2;
   }
   
   body.home .results-intro {
-    font-size: 15px;
-    margin-bottom: 28px;
-    line-height: 1.4;
-    opacity: 0.8;
+    display: none;
   }
   
   body.home .results-list {
