@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing-styles.css?v=12">
     <link rel="stylesheet" href="icons.css?v=live5">
-    <link rel="stylesheet" href="/assets/css/header.css?v=17">
+    <link rel="stylesheet" href="/assets/css/header.css?v=18">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
     <link rel="stylesheet" href="/assets/css/footer.css?v=2">
 </head>
@@ -17,6 +17,37 @@
     <div data-include="site-header"></div>
     <script defer src="/assets/js/route-scope.js?v=1"></script>
   <script defer src="/assets/js/header.js?v=9"></script>
+  
+  <!-- Verberg header op mobiel voor ebook pagina -->
+  <script>
+    function hideHeaderOnMobile() {
+      if (window.innerWidth <= 768) {
+        const headers = document.querySelectorAll('.site-header, header, [data-include="site-header"]');
+        headers.forEach(header => {
+          if (header) {
+            header.style.display = 'none';
+            header.style.visibility = 'hidden';
+            header.style.opacity = '0';
+            header.style.height = '0';
+            header.style.overflow = 'hidden';
+          }
+        });
+      }
+    }
+    
+    // Run immediately
+    hideHeaderOnMobile();
+    
+    // Run after DOM is loaded
+    document.addEventListener('DOMContentLoaded', hideHeaderOnMobile);
+    
+    // Run after a short delay to catch dynamically loaded content
+    setTimeout(hideHeaderOnMobile, 100);
+    setTimeout(hideHeaderOnMobile, 500);
+    
+    // Run on resize
+    window.addEventListener('resize', hideHeaderOnMobile);
+  </script>
 
     <!-- Hero Section -->
     <section class="hero">

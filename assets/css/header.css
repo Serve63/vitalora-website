@@ -110,6 +110,16 @@
   body.ebook-page .site-header { 
     display: none !important; 
   }
+  /* Extra sterke regel voor alle mogelijke header elementen op ebook pagina mobiel */
+  .ebook-page .site-header,
+  .ebook-page header,
+  .ebook-page [data-include="site-header"] {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+  }
 }
 
 /* Login badge styling en positie */
