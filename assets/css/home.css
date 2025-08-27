@@ -323,6 +323,12 @@ body.home footer .footer-bottom { opacity: .85; }
   body.home .site-footer .links-right {
     align-items: flex-start;
     gap: 12px;
+    width: 100%;
+  }
+  
+  body.home .site-footer .links-left a,
+  body.home .site-footer .links-right a {
+    text-align: left;
   }
   
   body.home .site-footer .links-left {
