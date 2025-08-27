@@ -377,11 +377,12 @@ body {
     }
     
     .hero-text h1 {
-        font-size: 30px;
+        font-size: 27.5px;
         text-align: center;
         line-height: 1.2;
     }
     .mobile-br { display: inline; }
+    .nowrap { white-space: nowrap; }
     
     /* Verberg hero description op mobiel */
     .hero-description {
@@ -454,7 +455,7 @@ body {
     }
     
     .hero-text h1 {
-        font-size: 28px;
+        font-size: 26px;
     }
     
     .final-cta h2 {
