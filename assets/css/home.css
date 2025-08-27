@@ -227,10 +227,15 @@ body.home footer .footer-bottom { opacity: .85; }
     padding: 20px 16px;
   }
   
+  /* Mobile benefit items - force smaller circles */
+  body.home .benefit-item {
+    grid-template-columns: 24px 1fr !important;
+  }
+  
   body.home .benefit-number {
-    width: 24px;
-    height: 24px;
-    font-size: 11px;
+    width: 24px !important;
+    height: 24px !important;
+    font-size: 11px !important;
   }
   
   body.home .benefit-content h3 {
