@@ -475,6 +475,14 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
     font-size: 38px !important;
     font-weight: 700 !important;
   }
+  
+  /* Make CTA button bigger on desktop */
+  body.home .cta-button {
+    padding: 18px 36px !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    border-radius: 12px !important;
+  }
 }
 
 /* Desktop Footer Override - Clean Layout */
