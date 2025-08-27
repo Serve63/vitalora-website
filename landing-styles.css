@@ -408,7 +408,7 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 20px 0 !important;
+        margin: 8px 0 !important;
         padding: 0 !important;
         background: transparent !important;
     }
@@ -439,9 +439,10 @@ body {
         margin: 0 auto 0 !important;
     }
     
-    /* Verwijder bovenmarge van de titel zodat ruimte onder badge kleiner wordt */
+    /* Verwijder bovenmarge van de titel en maak ruimte naar foto compacter */
     .hero-text h1 {
         margin-top: 0 !important;
+        margin-bottom: 8px !important;
     }
 }
 
