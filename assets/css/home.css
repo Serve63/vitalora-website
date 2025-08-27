@@ -298,11 +298,11 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .why-image {
-    order: 1;
+    display: none !important;
   }
   
   body.home .why-text {
-    order: 2;
+    order: 1;
     padding: 20px 16px;
   }
   
@@ -327,15 +327,7 @@ body.home footer .footer-bottom { opacity: .85; }
   
   /* Mobile How section */
   body.home .how-image {
-    margin: 20px 0;
-    text-align: center;
-  }
-  
-  body.home .how-image img {
-    width: 100%;
-    height: auto;
-    border-radius: 16px;
-    box-shadow: 0 18px 30px -12px rgba(2,6,23,.25);
+    display: none !important;
   }
   
   body.home .process-grid {
