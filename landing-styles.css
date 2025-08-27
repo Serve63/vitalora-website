@@ -152,17 +152,8 @@ body {
 .ebook-cover { max-width: 540px; width:100%; height:auto; margin-top:-12px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
 
 /* Verberg mobiele afbeelding op desktop */
-.hero-image-mobile { 
-    display: none !important; 
-}
-
-/* Zorg dat mobiele afbeelding altijd zichtbaar is op kleine schermen */
-@media (max-width: 768px) {
-    .hero-image-mobile { 
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
+.ebook-mobile { 
+    display: none; 
 }
 @media (max-width: 1024px){ .ebook-cover{ max-width: 460px; } }
 @media (max-width: 768px){ .ebook-cover{ max-width: 420px; margin-top:0 } }
@@ -387,22 +378,14 @@ body {
         display: none !important;
     }
     
-    /* Toon mobiele afbeelding tussen titel en features */
-    .hero-image-mobile {
-        display: flex !important;
-        justify-content: center;
-        align-items: center;
-        margin: 20px 0;
+    /* Toon simpele mobiele afbeelding */
+    .ebook-mobile {
+        display: block !important;
+        margin: 20px auto !important;
         text-align: center;
-    }
-    
-    .hero-image-mobile img.ebook-cover {
         max-width: 280px !important;
         width: 100% !important;
         height: auto !important;
-        filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)) !important;
-        display: block !important;
-        margin: 0 auto !important;
     }
     
     .book-stack {
