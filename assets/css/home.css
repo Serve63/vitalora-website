@@ -67,7 +67,7 @@ body.home .why-text { background: transparent; margin-top: 0; position: relative
 body.home .why-text h2 { text-align: center; margin-bottom: 18px; }
 body.home .benefits-list { display: grid; gap: 12px; }
 body.home .benefit-item { display: grid; grid-template-columns: 36px 1fr; gap: 12px; }
-body.home .benefit-number { width: 36px; height: 36px; border-radius: 9999px; background: #3A9AEA; color: #fff; display: grid; place-items: center; font-weight: 800; }
+body.home .benefit-number { width: 36px; height: 36px; border-radius: 9999px; background: #2954B3; color: #fff; display: grid; place-items: center; font-weight: 800; }
 body.home .benefit-content h3 { font-size: 16px; font-weight: 700; color: #333; }
 body.home .benefit-content p { font-size: 14px; color: #475569; }
 
