@@ -7,12 +7,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    	<link rel="stylesheet" href="styles.css?v=4">
-	<link rel="stylesheet" href="icons.css?v=2">
-	<link rel="stylesheet" href="/assets/css/header.css?v=2">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=4">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=4">
-    <link rel="stylesheet" href="/assets/css/home.css?v=1">
+    	<link rel="stylesheet" href="styles.css?v=5">
+	<link rel="stylesheet" href="icons.css?v=3">
+	<link rel="stylesheet" href="/assets/css/header.css?v=3">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=5">
+    <link rel="stylesheet" href="/assets/css/home.css?v=2">
     <meta name="theme-color" content="#2954B3">
 
 
@@ -65,22 +65,7 @@
     </section>
     </section>
 
-    <script>
-    (function(){
-      function addFtalatenCard(){
-        if(window.innerWidth>768) return;
-        var grid=document.querySelector(".toxins-grid");
-        if(!grid) return;
-        if(grid.querySelector("[data-tile=ftalaten]")) return;
-        var card=document.createElement("div");
-        card.className="toxin-card";
-        card.setAttribute("data-tile","ftalaten");
-        card.innerHTML="<div class=\"toxin-icon icon-search\"></div>\n          <div class=\"toxin-percentage\">72%<\/div>\n          <div class=\"toxin-label\">Aanwezig<\/div>\n          <h3>Ftalaten<\/h3>\n          <p>Weekmakers in plastic die hormonen verstoren en vruchtbaarheid beïnvloeden.<\/p>";
-        grid.appendChild(card);
-      }
-      document.addEventListener("DOMContentLoaded",addFtalatenCard);
-    })();
-    </script>
+
 
     
     
