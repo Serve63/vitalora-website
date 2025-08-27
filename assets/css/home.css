@@ -370,11 +370,8 @@ body.home .site-footer .footer-legal {
   margin: 0 auto; 
   padding: 0 20px; 
 }
-body.home .site-footer .footer-left {
-  flex: 1;
-}
-body.home .site-footer .brand { font-weight: 800; letter-spacing: .2px; margin-bottom: 8px; }
-body.home .site-footer p { opacity: .9; max-width: 500px; margin-bottom: 12px; }
+body.home .site-footer .brand { font-weight: 800; letter-spacing: .2px; margin-bottom: 8px; flex: 1; }
+body.home .site-footer p { opacity: .9; max-width: 500px; margin-bottom: 12px; flex: 1; }
 body.home .site-footer .links { 
   display: flex; 
   gap: 40px; 
@@ -389,7 +386,7 @@ body.home .site-footer .links-right {
 }
 body.home .site-footer .links a { color: #eaf2ff; text-decoration: none; font-weight: 500; font-size: 14px; }
 body.home .site-footer .links a:hover { color: #fff; }
-body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; }
+body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; flex: 1; }
 
 /* Responsive */
 @media (max-width: 1024px) {
