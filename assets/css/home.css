@@ -228,9 +228,9 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .benefit-number {
-    width: 28px;
-    height: 28px;
-    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
   }
   
   body.home .benefit-content h3 {
