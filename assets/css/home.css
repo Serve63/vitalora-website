@@ -146,6 +146,13 @@ body.home footer .footer-bottom { opacity: .85; }
     margin: 20px 0;
   }
   
+  body.home .hero-image img {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 16px;
+  }
+  
   body.home .hero-text .cta-button {
     order: 3;
     margin-top: 0;
