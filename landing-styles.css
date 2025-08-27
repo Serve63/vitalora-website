@@ -36,7 +36,7 @@ body {
 }
 
 .direct-access {
-    background-color: #10b981;
+    background-color: #2954B3;
     color: white;
     border: none;
     padding: 8px 16px;
@@ -50,7 +50,7 @@ body {
 }
 
 .direct-access:hover {
-    background-color: #059669;
+    background-color: #2954B4;
 }
 
 .hero-content {
