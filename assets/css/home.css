@@ -326,6 +326,18 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   /* Mobile How section */
+  body.home .how-image {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  body.home .how-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    box-shadow: 0 18px 30px -12px rgba(2,6,23,.25);
+  }
+  
   body.home .process-grid {
     grid-template-columns: 1fr;
     gap: 16px;
@@ -610,6 +622,11 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
 @media (min-width: 769px) {
   /* Hide certified badge on desktop */
   body.home .certified-badge {
+    display: none !important;
+  }
+  
+  /* Hide how-image on desktop */
+  body.home .how-image {
     display: none !important;
   }
   
