@@ -481,6 +481,13 @@ body {
         width: 100%;
         justify-content: center;
     }
+    /* Maak de hoofd CTA-knop smaller op klein mobiel */
+    #ebook-claim {
+        width: auto !important;
+        display: inline-flex !important;
+        margin: 0 auto !important;
+        padding: 14px 22px !important; /* nog iets smaller */
+    }
     
     .book {
         width: 150px;
