@@ -384,6 +384,9 @@ body.home footer .footer-bottom { opacity: .85; }
     gap: 24px;
     text-align: center;
     align-items: center;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
   }
   
   body.home .site-footer .brand {
@@ -404,23 +407,26 @@ body.home footer .footer-bottom { opacity: .85; }
     order: 3;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: flex-start !important;
     gap: 16px 20px;
     margin: 0;
     width: 100%;
     align-self: flex-start;
+    text-align: left !important;
   }
   
   body.home .site-footer .links-left,
   body.home .site-footer .links-right {
     flex-direction: row;
     gap: 20px;
+    text-align: left !important;
   }
   
   body.home .site-footer .links a {
     font-size: 14px;
     font-weight: 500;
     white-space: nowrap;
+    text-align: left !important;
   }
   
   body.home .site-footer .copy {
