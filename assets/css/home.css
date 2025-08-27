@@ -335,7 +335,7 @@ body.home footer .footer-bottom { opacity: .85; }
     order: 3;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-start;
     gap: 16px 20px;
     margin: 0;
   }
