@@ -299,6 +299,27 @@
 
     <script src="script.js"></script>
 
+  <script id="mobile-cta-title">
+    // Change CTA title on mobile only
+    function updateCTATitleForMobile() {
+      if (window.innerWidth <= 768) {
+        const ctaTitle = document.querySelector('.cta-section h2');
+        if (ctaTitle && ctaTitle.textContent === 'Klaar Om Je Transformatie Te Beginnen?') {
+          ctaTitle.textContent = 'Klaar Om Te Starten?';
+        }
+      } else {
+        const ctaTitle = document.querySelector('.cta-section h2');
+        if (ctaTitle && ctaTitle.textContent === 'Klaar Om Te Starten?') {
+          ctaTitle.textContent = 'Klaar Om Je Transformatie Te Beginnen?';
+        }
+      }
+    }
+    
+    // Run on load and resize
+    document.addEventListener('DOMContentLoaded', updateCTATitleForMobile);
+    window.addEventListener('resize', updateCTATitleForMobile);
+  </script>
+
   <script id="ftalaten-mobile-inject">
     (function () {
       function inject() {
