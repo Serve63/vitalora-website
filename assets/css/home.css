@@ -119,6 +119,13 @@ body.home .cta-button-large:hover { background:#059669; }
 body.home footer { background: #374151; color: #fff; }
 body.home footer .footer-bottom { opacity: .85; }
 
+/* Mobile responsive */
+@media (max-width: 768px) {
+  body.home .hero-text p {
+    display: none;
+  }
+}
+
 /* Footer (homepage) */
 body.home .site-footer { background: #374151; color: #fff; padding: 36px 0; }
 body.home .site-footer .footer-legal { text-align: left; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
