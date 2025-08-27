@@ -380,14 +380,13 @@ body {
         display: none !important;
     }
     
-    /* Toon mobiele book afbeelding - simpele aanpak */
+    /* Mobiele book afbeelding - transparant, geen vakken of schaduw */
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
         margin: 20px 0 !important;
-        padding: 10px !important;
-        background: rgba(41, 84, 179, 0.1) !important;
-        border-radius: 12px !important;
+        padding: 0 !important;
+        background: transparent !important;
     }
     
     .mobile-book-image img {
@@ -396,8 +395,8 @@ body {
         height: auto !important;
         margin: 0 auto !important;
         display: block !important;
-        border-radius: 8px !important;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
     }
     
     .book-stack {
