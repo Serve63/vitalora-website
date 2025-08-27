@@ -384,6 +384,7 @@ body {
     }
     .mobile-br { display: inline; }
     .nowrap { white-space: nowrap; }
+    .features-list { margin-top: 6px !important; }
     
     /* Verberg hero description op mobiel */
     .hero-description {
@@ -409,7 +410,7 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 8px 0 !important;
+        margin: 8px 0 0 !important;
         padding: 0 !important;
         background: transparent !important;
     }
