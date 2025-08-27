@@ -350,6 +350,16 @@ body {
 @media (max-width: 768px) {
   .two-col { grid-template-columns: 1fr }
   .modal-illustration { display:none }
+  /* Mobile modal optimizations */
+  .modal { padding: 0 8px; }
+  .modal-card { width: calc(100% - 16px); max-width: 480px; margin: 6vh auto; padding: 16px 16px 18px; border-radius: 12px; }
+  .modal-ebook { max-width: 100%; max-height: none; }
+  .modal-hero { padding: 18px 20px; }
+  .modal-hero h2 { font-size: 26px; }
+  .modal-subtitle { font-size: 18px; }
+  .modal-copy { padding: 18px 18px 20px; }
+  .modal-cta { width: 100%; display: inline-block; text-align: center; }
+  .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; }
 }
 .modal-close { position:absolute; right: -12px; top: -12px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 18px; line-height: 1; cursor: pointer; color: #08192B; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .modal-header h3 { font-size: 22px; color:#3A9AEA; margin-bottom:6px }
