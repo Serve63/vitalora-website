@@ -83,7 +83,7 @@ body {
 .features-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
     margin-bottom: 40px;
 }
 
@@ -96,8 +96,8 @@ body {
 }
 
 .checkmark.icon-checkmark {
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -108,8 +108,8 @@ body {
 
 .checkmark.icon-checkmark::before {
     content: "";
-    width: 12px;
-    height: 12px;
+    width: 10px;
+    height: 10px;
     background: #ffffff;
     -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E");
     mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E");
