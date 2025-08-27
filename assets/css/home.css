@@ -351,27 +351,32 @@ body.home footer .footer-bottom { opacity: .85; }
     transition: width 0.8s ease-out;
   }
   
-  /* Mobile CTA section */
+  /* Mobile CTA section - Bigger and more prominent */
   body.home .cta-section {
-    padding: 40px 0;
+    padding: 56px 0;
   }
   
   body.home .cta-section h2 {
-    font-size: 22px;
-    margin-bottom: 12px;
+    font-size: 26px;
+    margin-bottom: 16px;
+    line-height: 1.2;
   }
   
   body.home .cta-section p {
-    font-size: 14px;
-    margin-bottom: 20px;
+    font-size: 16px;
+    margin-bottom: 28px;
+    line-height: 1.5;
+    max-width: 340px;
   }
   
   body.home .cta-button-large {
-    padding: 18px 32px;
-    font-size: 18px;
+    padding: 20px 36px;
+    font-size: 19px;
+    font-weight: 800;
     width: 100%;
     display: block;
     text-align: center;
+    border-radius: 14px;
   }
   
   /* Mobile Footer - Clean & Simple */
