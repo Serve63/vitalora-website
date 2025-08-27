@@ -162,6 +162,8 @@ body.home footer .footer-bottom { opacity: .85; }
     letter-spacing: 0.5px;
     margin-bottom: 16px;
     text-align: center;
+    /* Verberg certified badge op mobiel */
+    display: none !important;
   }
   
   body.home .hero-image {
