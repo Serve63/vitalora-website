@@ -515,4 +515,15 @@ body {
     .modal-form .modal-trust {
         text-align: center !important;
     }
+    
+    /* Replace checkmark with lock icon on mobile */
+    .modal-trust .icon-checkmark {
+        display: none !important;
+    }
+    
+    .modal-trust::before {
+        content: "🔒";
+        margin-right: 8px;
+        font-size: 14px;
+    }
 }
