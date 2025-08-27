@@ -113,11 +113,11 @@ body.home .cta-button-large { background: #10b981; color:#fff; border:0; padding
 body.home .cta-button-large:hover { background:#059669; }
 
 /* Footer small tweaks */
-body.home footer { background: #2954B3; color: #fff; }
+body.home footer { background: #374151; color: #fff; }
 body.home footer .footer-bottom { opacity: .85; }
 
 /* Footer (homepage) */
-body.home .site-footer { background: #2954B3; color: #fff; padding: 36px 0; }
+body.home .site-footer { background: #374151; color: #fff; padding: 36px 0; }
 body.home .site-footer .footer-legal { text-align: left; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 body.home .site-footer .brand { font-weight: 800; letter-spacing: .2px; margin-bottom: 8px; }
 body.home .site-footer p { opacity: .9; max-width: 820px; margin-bottom: 12px; }
