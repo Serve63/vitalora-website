@@ -592,18 +592,34 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
 
 /* Extra mobile override for footer links */
 @media (max-width: 768px) {
+  /* Mobile: break footer-left structure and make everything individual */
+  body.home .site-footer .footer-legal {
+    flex-direction: column !important;
+  }
+  
+  body.home .site-footer .footer-left {
+    display: contents !important; /* This makes children act as direct children of footer-legal */
+  }
+  
   /* Keep description left-aligned */
   body.home .site-footer p {
     text-align: left !important;
     margin: 0 !important;
+    order: 2 !important;
   }
   
-  /* Only links left-aligned */
+  /* Brand */
+  body.home .site-footer .brand {
+    order: 1 !important;
+  }
+  
+  /* Links */
   body.home .site-footer .links {
     justify-content: flex-start !important;
     text-align: left !important;
     align-self: flex-start !important;
     margin-left: 0 !important;
+    order: 3 !important;
   }
   
   body.home .site-footer .links-left,
@@ -615,6 +631,12 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
   body.home .site-footer .links a {
     text-align: left !important;
     display: inline-block !important;
+  }
+  
+  /* Copyright at the bottom */
+  body.home .site-footer .copy {
+    order: 4 !important;
+    margin-top: 20px !important;
   }
 }
 
