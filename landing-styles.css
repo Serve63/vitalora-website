@@ -489,8 +489,8 @@ body {
     }
     /* Maak de hoofd CTA-knop smaller op klein mobiel */
     #ebook-claim {
-        width: auto !important;
-        display: inline-flex !important;
+        width: fit-content !important;
+        display: block !important;
         margin: 0 auto !important;
         padding: 14px 22px !important; /* nog iets smaller */
     }
