@@ -162,12 +162,13 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .hero-text .cta-button {
     order: 3;
-    margin-top: -12px;
+    margin-top: -20px;
     width: 100%;
     padding: 16px 24px;
-    font-size: 16px;
+    font-size: 18px;
     display: block;
     text-align: center;
+    font-weight: 700;
   }
   
   /* Mobile line break for toxins title */
