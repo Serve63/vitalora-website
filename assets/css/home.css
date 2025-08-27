@@ -122,6 +122,11 @@ body.home footer .footer-bottom { opacity: .85; }
 
 /* Mobile responsive */
 @media (max-width: 768px) {
+  /* Reduce space above hero title */
+  body.home .hero {
+    padding: 32px 0 64px 0;
+  }
+  
   body.home .hero-text p {
     display: none;
   }
