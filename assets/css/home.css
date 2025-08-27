@@ -139,7 +139,7 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .hero-text h1 {
     order: 1;
-    margin-bottom: 4px;
+    margin-bottom: 0;
   }
   
   body.home .hero-image {
