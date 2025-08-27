@@ -19,7 +19,7 @@ button,.cta-button{ font-weight:600; letter-spacing:.04em }
 body {
     line-height: 1.6;
     color: #374151;
-    background-color: #ffffff;
+    background-color: #EDF2FB;
 }
 
 .container {
@@ -31,7 +31,7 @@ body {
 /* Hero Section */
 .hero {
     padding: 60px 0 80px;
-    background: linear-gradient(135deg, #f8fafc 0%, #e0f2fe 100%);
+    background: #EDF2FB;
     position: relative;
 }
 
