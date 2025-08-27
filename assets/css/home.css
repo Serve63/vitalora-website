@@ -60,13 +60,13 @@ body.home .stat-item {
   text-align: center; 
 }
 body.home .stat-number { 
-  font-size: 24px; 
+  font-size: 20px; 
   font-weight: 700; 
   color: #2954B3; 
   margin-bottom: 2px; 
 }
 body.home .stat-label { 
-  font-size: 12px; 
+  font-size: 11px; 
   color: #6b7280; 
   font-weight: 500; 
 }
