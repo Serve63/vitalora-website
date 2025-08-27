@@ -387,20 +387,20 @@ body {
     }
     
     .hero-text .features-list {
-        order: 4;
+        order: 5;
         margin-bottom: 20px;
     }
     
     .hero-text .cta-button {
-        order: 5;
+        order: 6;
     }
     
-    /* Hero afbeelding tussen titel en features */
+    /* Hero afbeelding tussen titel en features - order 3 */
     .hero-image {
         order: 3 !important;
         display: flex !important;
         justify-content: center !important;
-        margin: 0 !important;
+        margin: 20px 0 !important;
         padding: 0 !important;
     }
     
