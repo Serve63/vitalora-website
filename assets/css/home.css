@@ -468,10 +468,12 @@ body.home .site-footer .links a { color: #eaf2ff; text-decoration: none; font-we
 body.home .site-footer .links a:hover { color: #fff; }
 body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; flex: 1; }
 
-/* Desktop Footer Override */
+/* Desktop Footer Override - Clean Layout */
 @media (min-width: 769px) {
   body.home .site-footer {
     padding: 36px 0 !important;
+    background: #374151 !important;
+    color: #fff !important;
   }
   
   body.home .site-footer .footer-legal {
@@ -479,41 +481,49 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
     flex-direction: row !important;
     justify-content: space-between !important;
     align-items: flex-start !important;
+    max-width: 1200px !important;
+    margin: 0 auto !important;
+    padding: 0 20px !important;
     text-align: left !important;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    gap: 0 !important;
+    gap: 40px !important;
   }
   
+  /* Left side - Brand and description */
   body.home .site-footer .brand {
-    font-weight: 800;
-    letter-spacing: .2px;
-    margin-bottom: 8px;
-    flex: 1;
-    order: initial !important;
-    font-size: initial !important;
+    font-weight: 800 !important;
+    font-size: 18px !important;
+    letter-spacing: 0.2px !important;
+    margin-bottom: 8px !important;
+    color: #fff !important;
+    text-align: left !important;
   }
   
   body.home .site-footer p {
-    opacity: .9;
-    max-width: 500px !important;
-    margin-bottom: 12px !important;
-    flex: 1;
-    order: initial !important;
-    font-size: initial !important;
-    line-height: initial !important;
+    opacity: 0.9 !important;
+    max-width: 400px !important;
     margin: 0 0 12px 0 !important;
+    color: #fff !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    text-align: left !important;
   }
   
+  body.home .site-footer .copy {
+    font-size: 12px !important;
+    opacity: 0.7 !important;
+    margin-top: 16px !important;
+    color: #fff !important;
+    text-align: left !important;
+  }
+  
+  /* Right side - Links */
   body.home .site-footer .links {
     display: flex !important;
     flex-direction: row !important;
     gap: 40px !important;
-    margin-left: 40px !important;
-    order: initial !important;
-    flex-wrap: nowrap !important;
-    justify-content: initial !important;
+    margin: 0 !important;
+    flex-shrink: 0 !important;
+    align-items: flex-start !important;
   }
   
   body.home .site-footer .links-left,
@@ -526,22 +536,15 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
   
   body.home .site-footer .links a {
     color: #eaf2ff !important;
-    text-decoration: none;
+    text-decoration: none !important;
     font-weight: 500 !important;
     font-size: 14px !important;
-    white-space: initial;
+    transition: color 0.3s ease !important;
+    text-align: left !important;
   }
   
   body.home .site-footer .links a:hover {
     color: #fff !important;
-  }
-  
-  body.home .site-footer .copy {
-    font-size: 13px !important;
-    opacity: .7;
-    margin-top: 16px !important;
-    flex: 1;
-    order: initial !important;
   }
 }
 
