@@ -199,6 +199,112 @@ body.home footer .footer-bottom { opacity: .85; }
     font-size: 11px;
     line-height: 1.2;
   }
+  
+  /* Mobile Why section */
+  body.home .why-content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  body.home .why-image {
+    order: 1;
+  }
+  
+  body.home .why-text {
+    order: 2;
+    padding: 20px 16px;
+  }
+  
+  body.home .benefit-number {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  body.home .benefit-content h3 {
+    font-size: 14px;
+  }
+  
+  body.home .benefit-content p {
+    font-size: 12px;
+  }
+  
+  /* Mobile How section */
+  body.home .process-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  body.home .process-card {
+    padding: 20px 16px;
+  }
+  
+  body.home .process-icon {
+    width: 36px;
+    height: 36px;
+  }
+  
+  body.home .process-card h3 {
+    font-size: 16px;
+  }
+  
+  body.home .process-card p {
+    font-size: 13px;
+  }
+  
+  /* Mobile Results section */
+  body.home .results-list {
+    gap: 10px;
+  }
+  
+  body.home .result-item {
+    padding: 12px 14px;
+    grid-template-columns: 20px 1fr auto 70px;
+    gap: 10px;
+  }
+  
+  body.home .result-icon {
+    width: 16px;
+    height: 16px;
+  }
+  
+  body.home .result-content h3 {
+    font-size: 13px;
+  }
+  
+  body.home .result-content p {
+    font-size: 11px;
+  }
+  
+  body.home .result-percentage {
+    font-size: 13px;
+  }
+  
+  body.home .progress-bar {
+    width: 50px;
+    height: 3px;
+  }
+  
+  /* Mobile CTA section */
+  body.home .cta-section {
+    padding: 40px 0;
+  }
+  
+  body.home .cta-section h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+  
+  body.home .cta-section p {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+  
+  body.home .cta-button-large {
+    padding: 14px 28px;
+    font-size: 16px;
+  }
 }
 
 /* Footer (homepage) */
