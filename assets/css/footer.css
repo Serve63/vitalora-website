@@ -35,3 +35,68 @@ footer a[style*="font-weight: 700"] {
   font-weight: 500 !important;
 }
 
+/* Base footer styling for all pages (not just homepage) */
+footer {
+  background-color: #374151 !important;
+  color: white !important;
+  padding: 60px 0 20px !important;
+}
+
+.footer-content {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr !important;
+  gap: 60px !important;
+  margin-bottom: 40px !important;
+}
+
+.footer-logo {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+  color: white !important;
+}
+
+.footer-brand p {
+  font-size: 16px !important;
+  line-height: 1.6 !important;
+  opacity: 0.8 !important;
+  max-width: 400px !important;
+  color: white !important;
+}
+
+.footer-links {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 40px !important;
+}
+
+.footer-column {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 12px !important;
+}
+
+.footer-column a {
+  color: white !important;
+  text-decoration: none !important;
+  font-size: 16px !important;
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease !important;
+}
+
+.footer-column a:hover {
+  opacity: 1 !important;
+}
+
+.footer-bottom {
+  border-top: 1px solid #4b5563 !important;
+  padding-top: 20px !important;
+  text-align: center !important;
+}
+
+.footer-bottom p {
+  font-size: 14px !important;
+  opacity: 0.6 !important;
+  color: white !important;
+}
+
