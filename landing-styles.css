@@ -504,4 +504,9 @@ body {
     .modal-lead {
         display: none !important;
     }
+    
+    /* Center trust text on mobile */
+    .modal-trust {
+        text-align: center !important;
+    }
 }
