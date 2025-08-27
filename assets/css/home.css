@@ -53,7 +53,7 @@ body.home .toxin-card {
   box-shadow: 0 16px 24px -12px rgba(2,6,23,.25), inset 0 1px 0 rgba(255,255,255,.08);
   border: 1px solid rgba(255,255,255,.06);
 }
-body.home .toxin-icon { width: 48px; height: 48px; margin: 0 auto 10px; }
+body.home .toxin-icon { width: 48px; height: 48px; margin: 0 auto 10px; color: #ffffff; }
 body.home .toxin-percentage { font-size: 28px; font-weight: 800; }
 body.home .toxin-label { margin-top: 4px; font-size: 12px; letter-spacing: .08em; opacity: .9; text-transform: uppercase; }
 body.home .toxin-card h3 { margin-top: 6px; font-size: 16px; font-weight: 700; }
