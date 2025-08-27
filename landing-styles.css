@@ -329,18 +329,18 @@ body {
 .modal { position: fixed; inset:0; z-index: 2000; }
 .modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.65); backdrop-filter: blur(2px); }
 .modal-card {
-    position: relative; z-index:1; max-width: 520px; margin: 8vh auto; background: #EEF7FD;
+    position: relative; z-index:1; max-width: 520px; margin: 8vh auto; background: #EFF5FF;
     box-shadow: 0 25px 60px rgba(2,6,23,0.35);
     padding: 24px 24px 28px; border: 0; outline: none;
 }
 .modal-ebook { max-width: 650px; max-height: 500px; padding:0; overflow:visible }
-.modal-hero { background:#08192B; color:#fff; padding:26px 34px; text-align:center; margin: -24px -24px 16px -24px; border-top-left-radius: 12px; border-top-right-radius: 12px; }
+.modal-hero { background:#08192B; color:#fff; padding:26px 34px; text-align:center }
 .modal-hero h2 { font-size:36px; margin:0 0 6px }
 .modal-subtitle { font-size:26px; opacity:.95 }
 .two-col { display:grid; grid-template-columns: 200px 1fr; gap:0 }
-.modal-illustration { background:#EEF7FD }
+.modal-illustration { background:#EFF5FF }
 .modal-illustration img { width:100%; height:100%; object-fit:contain; padding: 15px 15px 5px 15px; }
-.modal-copy { padding:28px 28px 32px; background: #EEF7FD; }
+.modal-copy { padding:28px 28px 32px; background: #EFF5FF; }
 .modal-lead { color:#374151; font-size:18px; margin:0 0 18px }
 .modal-form input { padding:10px 12px; border:1px solid #dbe3ec; border-radius:8px; background: white; }
 .modal-form input + input { margin-top:12px }
@@ -352,12 +352,12 @@ body {
   .modal-illustration { display:none }
   /* Mobile modal optimizations */
   .modal { padding: 0 8px; }
-  .modal-card { width: calc(100% - 16px); max-width: 480px; margin: 6vh auto; padding: 16px 16px 18px; border-radius: 12px; }
+  .modal-card { width: calc(100% - 16px); max-width: 480px; margin: 6vh auto; padding: 16px 16px 18px; border-radius: 12px; background: #EEF7FD; }
   .modal-ebook { max-width: 100%; max-height: none; }
   .modal-hero { padding: 18px 20px; margin: -16px -16px 12px -16px; border-top-left-radius: 12px; border-top-right-radius: 12px; }
   .modal-hero h2 { font-size: 26px; }
   .modal-subtitle { font-size: 18px; }
-  .modal-copy { padding: 18px 18px 20px; }
+  .modal-copy { padding: 18px 18px 20px; background: #EEF7FD; }
   .modal-cta { width: 100%; display: inline-block; text-align: center; }
   .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; }
 }
