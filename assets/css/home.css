@@ -344,14 +344,13 @@ body.home .site-footer .links {
   display: flex; 
   gap: 40px; 
   margin-left: 40px;
-  text-align: right;
 }
 body.home .site-footer .links-left,
 body.home .site-footer .links-right {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  align-items: flex-end;
+  align-items: flex-start;
 }
 body.home .site-footer .links a { color: #eaf2ff; text-decoration: none; font-weight: 500; font-size: 14px; }
 body.home .site-footer .links a:hover { color: #fff; }
