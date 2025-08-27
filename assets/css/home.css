@@ -376,8 +376,8 @@ body.home footer .footer-bottom { opacity: .85; }
   body.home .result-item {
     padding: 18px 16px;
     border-radius: 14px;
-    background: linear-gradient(135deg, #1e40af 0%, #1e3a8a 100%);
-    box-shadow: 0 8px 16px -4px rgba(30, 64, 175, 0.3);
+    background: #2954B3;
+    box-shadow: 0 8px 16px -4px rgba(41, 84, 179, 0.3);
     display: grid;
     grid-template-columns: 40px 1fr auto;
     grid-template-rows: auto auto;
