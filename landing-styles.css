@@ -396,7 +396,7 @@ body {
     .hero-text .highlight { color: #2347A3 !important; }
     .mobile-br { display: inline; }
     .nowrap { white-space: nowrap; }
-    .features-list { margin-top: 4px !important; }
+    .features-list { margin-top: 0 !important; }
     
     /* Verberg hero description op mobiel */
     .hero-description {
@@ -422,7 +422,7 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 6px 0 0 !important;
+        margin: 4px 0 0 !important;
         padding: 0 !important;
         background: transparent !important;
     }
@@ -456,7 +456,7 @@ body {
     /* Verwijder bovenmarge van de titel en maak ruimte naar foto compacter */
     .hero-text h1 {
         margin-top: 0 !important;
-        margin-bottom: 6px !important;
+        margin-bottom: 4px !important;
     }
 }
 
@@ -478,7 +478,7 @@ body {
     }
     
     .cta-button {
-        width: 100%;
+        width: auto;
         justify-content: center;
     }
     /* Maak de hoofd CTA-knop smaller op klein mobiel */
