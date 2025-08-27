@@ -35,6 +35,13 @@ body.home .hero { background: #dbeafe; padding: 64px 0; }
 body.home .hero-content { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
 body.home .hero-text h1 { font-size: clamp(30px, 4vw, 44px); line-height: 1.12; letter-spacing: .1px; }
 body.home .hero-text .highlight { color: #2954B3; }
+body.home .hero-text .highlight-bg { 
+  background: #10b981; 
+  color: white; 
+  padding: 4px 12px; 
+  border-radius: 8px; 
+  display: inline-block;
+}
 body.home .hero-text p { font-size: 18px; color: #475569; margin-top: 12px; }
 body.home .cta-button { margin-top: 20px; background: #10b981; color: #fff; border: 0; padding: 14px 22px; border-radius: 10px; font-weight: 700; cursor: pointer; }
 body.home .cta-button:hover { background: #059669; }
