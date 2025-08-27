@@ -422,7 +422,7 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 4px 0 0 !important;
+        margin: 2px 0 0 !important;
         padding: 0 !important;
         background: transparent !important;
     }
@@ -452,11 +452,17 @@ body {
         display: block !important;
         margin: 0 auto 0 !important;
     }
+    /* Centreer hoofd CTA op mobiel */
+    #ebook-claim {
+        display: block !important;
+        width: fit-content !important;
+        margin: 0 auto !important;
+    }
     
     /* Verwijder bovenmarge van de titel en maak ruimte naar foto compacter */
     .hero-text h1 {
         margin-top: 0 !important;
-        margin-bottom: 4px !important;
+        margin-bottom: 2px !important;
     }
 }
 
