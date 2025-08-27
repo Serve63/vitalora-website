@@ -157,7 +157,10 @@ body.home footer .footer-bottom { opacity: .85; }
     order: 3;
     margin-top: 0;
     width: 100%;
-    max-width: 300px;
+    padding: 16px 24px;
+    font-size: 16px;
+    display: block;
+    text-align: center;
   }
   
   /* Mobile line break for toxins title */
@@ -304,10 +307,11 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .cta-button-large {
-    padding: 14px 28px;
-    font-size: 16px;
+    padding: 18px 32px;
+    font-size: 18px;
     width: 100%;
-    max-width: 300px;
+    display: block;
+    text-align: center;
   }
   
   /* Mobile Footer - Clean & Simple */
