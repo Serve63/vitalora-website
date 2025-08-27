@@ -904,12 +904,8 @@ html, body {
 
 /* Homepage only: turn off the wireframe/line overlay */
 .home .animated-bg {
-  display: none !important;
-  background: transparent !important;
-}
-.home .animated-bg * {
-  background: transparent !important;
-  background-image: none !important;
+  display: block !important;
+  z-index: 0 !important;
 }
 
 /* Common full-viewport wrappers must be transparent so body shows through */
