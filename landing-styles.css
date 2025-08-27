@@ -378,6 +378,7 @@ body {
     
     .hero-text h1 {
         font-size: 34px;
+        text-align: center;
     }
     
     /* Verberg hero description op mobiel */
