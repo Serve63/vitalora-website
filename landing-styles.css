@@ -499,4 +499,9 @@ body {
         width: 150px;
         height: 210px;
     }
+    
+    /* Hide modal lead text on mobile */
+    .modal-lead {
+        display: none !important;
+    }
 }
