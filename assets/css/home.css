@@ -212,7 +212,7 @@ body.home footer .footer-bottom { opacity: .85; }
   /* Stats section op mobiel */
   body.home .stats-section {
     order: 5;
-    margin-top: -40px;
+    margin-top: -24px;
     gap: 20px;
   }
   body.home .stat-number {
