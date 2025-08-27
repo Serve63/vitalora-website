@@ -432,7 +432,7 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .site-footer .copy {
-    order: 4;
+    order: 5;
     margin-top: 20px;
     font-size: 12px;
     opacity: 0.7;
@@ -521,6 +521,7 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
     margin: 0 !important;
     color: #fff !important;
     text-align: left !important;
+    order: 3 !important;
   }
   
   /* Right side - Links */
