@@ -357,6 +357,19 @@ body {
     .hero-content {
         grid-template-columns: 1fr;
         gap: 40px;
+        /* Verander volgorde: afbeelding eerst, dan tekst */
+        display: flex;
+        flex-direction: column;
+    }
+    
+    /* Zet de hero-image bovenaan */
+    .hero-image {
+        order: 1;
+    }
+    
+    /* Hero tekst komt daarna */
+    .hero-text {
+        order: 2;
     }
     
     .hero-text h1 {
