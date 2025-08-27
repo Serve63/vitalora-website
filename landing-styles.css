@@ -371,24 +371,25 @@ body {
     }
     
     /* Verberg originele hero-image op mobiel (JavaScript verplaatst deze) */
-    .hero-image:not(.moved) {
+    .hero-image {
         display: none !important;
     }
     
-    /* Styling voor verplaatste afbeelding via JavaScript */
-    .hero-image.moved {
-        display: flex !important;
-        justify-content: center !important;
+    /* Styling voor mobiele afbeelding via JavaScript */
+    .mobile-ebook-image {
+        display: block !important;
+        text-align: center !important;
         margin: 20px 0 !important;
         padding: 0 !important;
     }
     
-    .hero-image.moved .ebook-cover {
+    .mobile-ebook-image .ebook-cover {
         max-width: 280px !important;
         width: 100% !important;
         height: auto !important;
         margin: 0 auto !important;
         display: block !important;
+        filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)) !important;
     }
     
     .book-stack {
