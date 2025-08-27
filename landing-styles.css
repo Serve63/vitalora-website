@@ -370,12 +370,12 @@ body {
         display: none !important;
     }
     
-    /* Verberg originele hero-image op mobiel (JavaScript verplaatst deze) */
+    /* Verberg originele hero-image op mobiel */
     .hero-image {
         display: none !important;
     }
     
-    /* Styling voor mobiele afbeelding via JavaScript */
+    /* Toon mobiele afbeelding */
     .mobile-ebook-image {
         display: block !important;
         text-align: center !important;

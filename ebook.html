@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=22">
+    <link rel="stylesheet" href="landing-styles.css?v=23">
     <link rel="stylesheet" href="icons.css?v=live5">
     <link rel="stylesheet" href="/assets/css/header.css?v=18">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
@@ -18,106 +18,7 @@
     <script defer src="/assets/js/route-scope.js?v=1"></script>
   <script defer src="/assets/js/header.js?v=9"></script>
   
-      <!-- Verberg header op mobiel voor ebook pagina -->
-  <script>
-    function hideHeaderOnMobile() {
-      if (window.innerWidth <= 768) {
-        const headers = document.querySelectorAll('.site-header, header, [data-include="site-header"]');
-        headers.forEach(header => {
-          if (header) {
-            header.style.display = 'none';
-            header.style.visibility = 'hidden';
-            header.style.opacity = '0';
-            header.style.height = '0';
-            header.style.overflow = 'hidden';
-          }
-        });
-      }
-    }
-    
-    // Verplaats ebook afbeelding op mobiel
-    function moveEbookImageOnMobile() {
-      if (window.innerWidth <= 768) {
-        const heroImage = document.querySelector('.hero-image');
-        const heroTitle = document.querySelector('.hero-text h1');
-        const featuresContainer = document.querySelector('.features-list');
-        
-        // Check if we already moved it
-        if (document.querySelector('.mobile-ebook-image')) {
-          return;
-        }
-        
-        if (heroImage && heroTitle && featuresContainer) {
-          // Maak een simpele div met de afbeelding
-          const mobileImageDiv = document.createElement('div');
-          mobileImageDiv.className = 'mobile-ebook-image';
-          mobileImageDiv.innerHTML = heroImage.innerHTML;
-          mobileImageDiv.style.cssText = `
-            display: block !important;
-            text-align: center !important;
-            margin: 20px 0 !important;
-            padding: 0 !important;
-          `;
-          
-          // Style de afbeelding binnen de div
-          const img = mobileImageDiv.querySelector('.ebook-cover');
-          if (img) {
-            img.style.cssText = `
-              max-width: 280px !important;
-              width: 100% !important;
-              height: auto !important;
-              margin: 0 auto !important;
-              display: block !important;
-              filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)) !important;
-            `;
-          }
-          
-          // Voeg toe na de titel
-          heroTitle.insertAdjacentElement('afterend', mobileImageDiv);
-          
-          // Verberg originele afbeelding
-          heroImage.style.display = 'none';
-        }
-      } else {
-        // Desktop: herstel originele staat
-        const mobileImage = document.querySelector('.mobile-ebook-image');
-        const originalImage = document.querySelector('.hero-image');
-        
-        if (mobileImage) {
-          mobileImage.remove();
-        }
-        if (originalImage) {
-          originalImage.style.display = '';
-        }
-      }
-    }
-    
-    // Run immediately
-    hideHeaderOnMobile();
-    moveEbookImageOnMobile();
-    
-    // Run after DOM is loaded
-    document.addEventListener('DOMContentLoaded', function() {
-      hideHeaderOnMobile();
-      moveEbookImageOnMobile();
-    });
-    
-    // Run after a short delay to catch dynamically loaded content
-    setTimeout(function() {
-      hideHeaderOnMobile();
-      moveEbookImageOnMobile();
-    }, 100);
-    setTimeout(function() {
-      hideHeaderOnMobile();
-      moveEbookImageOnMobile();
-    }, 500);
-    
-    // Run on resize
-    window.addEventListener('resize', function() {
-      hideHeaderOnMobile();
-      moveEbookImageOnMobile();
-    });
-  </script>
+
 
     <!-- Hero Section -->
     <section class="hero">
@@ -129,7 +30,10 @@
                     
                     <p class="hero-description">Ontdek de revolutionaire, gratis methode van Danielle Siegers om je lichaam te zuiveren van schadelijke microplastics. Praktisch, effectief en direct toepasbaar.</p>
                     
-
+                    <!-- Mobiele ebook afbeelding - simpel en direct -->
+                    <div class="mobile-ebook-image" style="display: none;">
+                        <img class="ebook-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEt2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78iIGlkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpyZGY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4gPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPiA8eG1wOkNyZWF0ZURhdGU+MjAyNS0wOC0xNVQxNjowNDowMiswMjowMDwveG1wOkNyZWF0ZURhdGU+IDx4bXA6TWV0YWRhdGFEYXRlPjIwMjUtMDgtMThUMDI6NDI6NDErMDI6MDA8L3htcDpNZXRhZGF0YURhdGU+IDx4bXA6TW9kaWZ5RGF0ZT4yMDI1LTA4LTE4VDAyOjQyOjQxKzAyOjAwPC94bXA6TW9kaWZ5RGF0ZT4gPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDowMWE1YzFhNy1kYzA0LTRmNGItOTM0Ny1hNzM3NzM3NzM3Nzc8L3htcE1NOkluc3RhbmNlSUQ+IDx4bXBNTTpEb2N1bWVudElEPnhtcC5kaWQ6MDFhNWMxYTctZGMwNC00ZjRiLTkzNDctYTczNzc3Mzc3Mzc3PC94bXBNTTpEb2N1bWVudElEPiA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnV1aWQ6NjVlZDM3MTgtYzFhNy0xMWU1LWE3MzctNzM3NzM3Nzc3Nzc8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4gPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4gPHBob3Rvc2hvcDpDb2xvck1vZGU+MzwvcGhvdG9zaG9wOkNvbG9yTW9kZT4gPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4gPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjUwMDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+IDxleGlmOlBpeGVsWURpbWVuc2lvbj41MDA8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAAALAAAAAAABAAEAAAICRAEAOw==" alt="Elimineer Microplastics e‑book" />
+                    </div>
                     
                     <div class="features-list">
                         <div class="feature-item">
