@@ -128,11 +128,12 @@ body {
 /* Specific styling for CTA button in green section */
 .final-cta .cta-button {
     background-color: white;
-    color: #20B981;
+    color: #333333;
 }
 
 .final-cta .cta-button:hover {
     background-color: #f3f4f6;
+    color: #333333;
 }
 
 /* Ensure the main ebook CTA button stays green */
