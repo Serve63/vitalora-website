@@ -139,7 +139,7 @@ body.home .progress-bar { width: 100px; height: 4px; background: rgba(255,255,25
 body.home .progress-fill { height: 100%; background: #10b981; }
 
 /* CTA */
-body.home .cta-section { background: #1e40af; color: #fff; padding: 80px 0; text-align: center; }
+body.home .cta-section { background: #2954B3; color: #fff; padding: 80px 0; text-align: center; }
 body.home .cta-section h2 { font-size: clamp(28px,4vw,42px); font-weight: 700; margin-bottom: 20px; color: #eaf2ff; }
 body.home .cta-section p { max-width: 720px; margin: 0 auto 32px; opacity: .9; font-size: 18px; line-height: 1.6; }
 body.home .cta-button-large { background: #10b981; color:#fff; border:0; padding: 20px 36px; border-radius: 12px; font-weight: 800; cursor: pointer; font-size: 18px; }
