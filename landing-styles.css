@@ -363,6 +363,11 @@ body {
         font-size: 32px;
     }
     
+    /* Verberg hero description op mobiel */
+    .hero-description {
+        display: none !important;
+    }
+    
     .book-stack {
         transform: rotate(0deg);
     }
