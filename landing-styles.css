@@ -380,6 +380,11 @@ body {
         display: none !important;
     }
     
+    /* Kleinere bullet-tekst op mobiel */
+    .feature-item {
+        font-size: 14px !important;
+    }
+
     /* Mobiele book afbeelding - transparant, geen vakken of schaduw */
     .mobile-book-image {
         display: block !important;
