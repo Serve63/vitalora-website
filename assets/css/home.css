@@ -626,3 +626,54 @@ body.home .how,
 body.home .results {
   background-color: #EDF7FD !important;
 }
+
+/* Remove all animated elements and cursor effects */
+body.home .animated-bg,
+body.home .animated-bg *,
+body.home .circle,
+body.home .circle-1,
+body.home .circle-2,
+body.home .circle-3,
+body.home .circle-4,
+body.home .circle-5,
+body.home .circle-6,
+body.home .floating-circle-1,
+body.home .floating-circle-2,
+body.home .floating-circle-3,
+body.home .floating-circle-4,
+body.home .floating-circle-5 {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* Remove any custom cursors */
+body.home * {
+  cursor: default !important;
+}
+
+body.home a,
+body.home button,
+body.home .cta-button,
+body.home .cta-button-large {
+  cursor: pointer !important;
+}
+
+/* Remove any pseudo-elements that could create strange shapes */
+body.home *::before,
+body.home *::after {
+  display: none !important;
+  content: none !important;
+}
+
+/* Allow necessary pseudo-elements for icons and essential UI */
+body.home .toxin-icon::before,
+body.home .toxin-icon::after,
+body.home .result-icon::before,
+body.home .result-icon::after,
+body.home .process-icon::before,
+body.home .process-icon::after {
+  display: initial !important;
+  content: initial !important;
+}
