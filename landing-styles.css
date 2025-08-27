@@ -420,7 +420,7 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 8px 0 0 !important;
+        margin: 6px 0 0 !important;
         padding: 0 !important;
         background: transparent !important;
     }
@@ -454,7 +454,7 @@ body {
     /* Verwijder bovenmarge van de titel en maak ruimte naar foto compacter */
     .hero-text h1 {
         margin-top: 0 !important;
-        margin-bottom: 8px !important;
+        margin-bottom: 6px !important;
     }
 }
 
