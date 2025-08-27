@@ -128,14 +128,27 @@ body.home footer .footer-bottom { opacity: .85; }
   body.home .hero-content {
     display: flex;
     flex-direction: column;
-  }
-  
-  body.home .hero-image {
-    order: 1;
+    align-items: center;
+    text-align: center;
   }
   
   body.home .hero-text {
+    display: contents;
+  }
+  
+  body.home .hero-text h1 {
+    order: 1;
+    margin-bottom: 20px;
+  }
+  
+  body.home .hero-image {
     order: 2;
+    margin: 20px 0;
+  }
+  
+  body.home .hero-text .cta-button {
+    order: 3;
+    margin-top: 0;
   }
 }
 
