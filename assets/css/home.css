@@ -57,7 +57,7 @@ body.home .stats-section {
   gap: 32px; 
 }
 body.home .stat-item { 
-  text-align: left; 
+  text-align: center; 
 }
 body.home .stat-number { 
   font-size: 24px; 
