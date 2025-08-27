@@ -157,6 +157,48 @@ body.home footer .footer-bottom { opacity: .85; }
     order: 3;
     margin-top: 0;
   }
+  
+  /* Mobile line break for toxins title */
+  body.home .mobile-break {
+    display: block;
+  }
+  
+  /* Mobile toxin cards - smaller and more subtle */
+  body.home .toxins-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+  
+  body.home .toxin-card {
+    padding: 16px 12px;
+    border-radius: 12px;
+  }
+  
+  body.home .toxin-icon {
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 8px;
+  }
+  
+  body.home .toxin-percentage {
+    font-size: 24px;
+  }
+  
+  body.home .toxin-label {
+    font-size: 9px;
+    padding: 3px 6px;
+    margin: 6px auto 6px;
+  }
+  
+  body.home .toxin-card h3 {
+    font-size: 14px;
+    margin-top: 4px;
+  }
+  
+  body.home .toxin-card p {
+    font-size: 11px;
+    line-height: 1.2;
+  }
 }
 
 /* Footer (homepage) */
