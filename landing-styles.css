@@ -393,6 +393,7 @@ body {
         text-align: center;
         line-height: 1.2;
     }
+    .hero-text .highlight { color: #2347A3 !important; }
     .mobile-br { display: inline; }
     .nowrap { white-space: nowrap; }
     .features-list { margin-top: 4px !important; }
