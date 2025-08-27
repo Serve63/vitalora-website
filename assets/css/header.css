@@ -105,6 +105,13 @@
 /* Verberg header wanneer het een les-overzicht is */
 .course-overview .site-header { display: none !important; }
 
+/* Verberg header op mobiele versie van ebook pagina */
+@media (max-width: 768px) {
+  body.ebook-page .site-header { 
+    display: none !important; 
+  }
+}
+
 /* Login badge styling en positie */
 .btn.login-badge {
   background: #3A9AEA;
