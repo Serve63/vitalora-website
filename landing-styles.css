@@ -374,6 +374,7 @@ body {
     .hero-content {
         grid-template-columns: 1fr;
         gap: 40px;
+        margin-top: 12px;
     }
     
     .hero-text h1 {
