@@ -483,6 +483,11 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
     font-weight: 700 !important;
     border-radius: 10px !important;
   }
+  
+  /* Ensure highlight words are blue on desktop */
+  body.home .highlight {
+    color: #2954B3 !important;
+  }
 }
 
 /* Desktop Footer Override - Clean Layout */
