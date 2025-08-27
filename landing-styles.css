@@ -508,5 +508,11 @@ body {
     /* Center trust text on mobile */
     .modal-trust {
         text-align: center !important;
+        width: 100% !important;
+        display: block !important;
+    }
+    
+    .modal-form .modal-trust {
+        text-align: center !important;
     }
 }
