@@ -67,7 +67,7 @@ body.home .toxin-label {
   display: inline-block;
 }
 body.home .toxin-card h3 { margin-top: 6px; font-size: 16px; font-weight: 700; color: #ffffff; }
-body.home .toxin-card p { font-size: 13px; opacity: .9; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+body.home .toxin-card p { font-size: 13px; opacity: .9; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; text-align: left; }
 
 /* Why */
 body.home .why { background: #EDF7FD; padding: 64px 0; }
