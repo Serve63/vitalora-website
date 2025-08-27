@@ -221,6 +221,10 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   /* Mobile Why section */
+  body.home .why {
+    padding: 48px 0 0 0;
+  }
+  
   body.home .why-content {
     display: flex;
     flex-direction: column;
