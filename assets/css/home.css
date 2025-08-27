@@ -77,8 +77,8 @@ body.home .why-image img { width: 100%; height: auto; border-radius: 16px; box-s
 body.home .why-text { background: transparent; margin-top: 0; position: relative; padding: 30px 28px 24px; }
 body.home .why-text h2 { text-align: center; margin-bottom: 18px; font-size: 36px; }
 body.home .benefits-list { display: grid; gap: 16px; }
-body.home .benefit-item { display: grid; grid-template-columns: 28px 1fr; gap: 16px; align-items: start; }
-body.home .benefit-number { width: 28px; height: 28px; border-radius: 9999px; background: #2954B3; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 14px; flex-shrink: 0; margin-top: 2px; }
+body.home .benefit-item { display: grid; grid-template-columns: 24px 1fr; gap: 16px; align-items: start; }
+body.home .benefit-number { width: 24px; height: 24px; border-radius: 9999px; background: #2954B3; color: #fff; display: grid; place-items: center; font-weight: 700; font-size: 12px; flex-shrink: 0; margin-top: 2px; }
 body.home .benefit-content h3 { font-size: 16px; font-weight: 700; color: #333; }
 body.home .benefit-content p { font-size: 14px; color: #475569; }
 
