@@ -380,6 +380,11 @@ body {
         display: none !important;
     }
     
+    /* Verberg 'Inloggen' knop in header op mobiel (alleen deze pagina) */
+    .site-header .header-inner .login-btn {
+        display: none !important;
+    }
+
     /* Kleinere bullet-tekst op mobiel */
     .feature-item {
         font-size: 14px !important;
