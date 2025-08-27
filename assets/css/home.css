@@ -171,6 +171,11 @@ body.home footer .footer-bottom { opacity: .85; }
     font-weight: 700;
   }
   
+  /* Mobile toxins section - less space above title */
+  body.home .toxins {
+    padding: 24px 0 56px 0;
+  }
+  
   /* Mobile line break for toxins title */
   body.home .mobile-break {
     display: block;
