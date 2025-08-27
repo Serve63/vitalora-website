@@ -374,56 +374,56 @@ body.home footer .footer-bottom { opacity: .85; }
     text-align: center;
   }
   
-  /* Mobile Footer - Clean & Simple */
+  /* Mobile Footer - Clean & Simple (MOBILE ONLY) */
   body.home .site-footer {
     padding: 32px 0 24px !important;
   }
   
   body.home .site-footer .footer-legal {
-    flex-direction: column;
-    gap: 24px;
-    text-align: center;
+    flex-direction: column !important;
+    gap: 24px !important;
+    text-align: center !important;
   }
   
   body.home .site-footer .brand {
     order: 1;
-    font-size: 18px;
-    margin-bottom: 12px;
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
   }
   
   body.home .site-footer p {
     order: 2;
-    font-size: 14px;
-    line-height: 1.5;
-    max-width: 280px;
-    margin: 0 auto 0;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    max-width: 280px !important;
+    margin: 0 auto 0 !important;
   }
   
   body.home .site-footer .links {
     order: 3;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 16px 20px;
-    margin: 0;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    gap: 16px 20px !important;
+    margin: 0 !important;
   }
   
   body.home .site-footer .links-left,
   body.home .site-footer .links-right {
-    flex-direction: row;
-    gap: 20px;
+    flex-direction: row !important;
+    gap: 20px !important;
   }
   
   body.home .site-footer .links a {
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 14px !important;
+    font-weight: 500 !important;
     white-space: nowrap;
   }
   
   body.home .site-footer .copy {
     order: 4;
-    margin-top: 20px;
-    font-size: 12px;
+    margin-top: 20px !important;
+    font-size: 12px !important;
     opacity: 0.7;
   }
 }
@@ -455,6 +455,83 @@ body.home .site-footer .links-right {
 body.home .site-footer .links a { color: #eaf2ff; text-decoration: none; font-weight: 500; font-size: 14px; }
 body.home .site-footer .links a:hover { color: #fff; }
 body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; flex: 1; }
+
+/* Desktop Footer Override */
+@media (min-width: 769px) {
+  body.home .site-footer {
+    padding: 36px 0 !important;
+  }
+  
+  body.home .site-footer .footer-legal {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    text-align: left !important;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 0 !important;
+  }
+  
+  body.home .site-footer .brand {
+    font-weight: 800;
+    letter-spacing: .2px;
+    margin-bottom: 8px;
+    flex: 1;
+    order: initial !important;
+    font-size: initial !important;
+  }
+  
+  body.home .site-footer p {
+    opacity: .9;
+    max-width: 500px !important;
+    margin-bottom: 12px !important;
+    flex: 1;
+    order: initial !important;
+    font-size: initial !important;
+    line-height: initial !important;
+    margin: 0 0 12px 0 !important;
+  }
+  
+  body.home .site-footer .links {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 40px !important;
+    margin-left: 40px !important;
+    order: initial !important;
+    flex-wrap: nowrap !important;
+    justify-content: initial !important;
+  }
+  
+  body.home .site-footer .links-left,
+  body.home .site-footer .links-right {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 8px !important;
+    align-items: flex-start !important;
+  }
+  
+  body.home .site-footer .links a {
+    color: #eaf2ff !important;
+    text-decoration: none;
+    font-weight: 500 !important;
+    font-size: 14px !important;
+    white-space: initial;
+  }
+  
+  body.home .site-footer .links a:hover {
+    color: #fff !important;
+  }
+  
+  body.home .site-footer .copy {
+    font-size: 13px !important;
+    opacity: .7;
+    margin-top: 16px !important;
+    flex: 1;
+    order: initial !important;
+  }
+}
 
 /* Responsive */
 @media (max-width: 1024px) {
