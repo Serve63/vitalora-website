@@ -333,6 +333,18 @@ body.home footer .footer-bottom { opacity: .85; }
     color: #ffffff;
   }
   
+  /* Force result icons to be visible on mobile */
+  body.home .result-icon.icon-energy,
+  body.home .result-icon.icon-sleep,
+  body.home .result-icon.icon-brain,
+  body.home .result-icon.icon-shield,
+  body.home .result-icon.icon-digestion,
+  body.home .result-icon.icon-beauty {
+    background-size: 20px 20px !important;
+    background-repeat: no-repeat !important;
+    background-position: center !important;
+  }
+  
   body.home .result-content {
     grid-column: 2;
     grid-row: 1;
@@ -744,6 +756,13 @@ body.home *::before,
 body.home *::after {
   display: none !important;
   content: none !important;
+}
+
+/* Override for result icons - force them to be visible */
+body.home .result-icon::before,
+body.home .result-icon::after {
+  display: block !important;
+  content: "" !important;
 }
 
 /* Allow necessary pseudo-elements for icons and essential UI */
