@@ -313,8 +313,15 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .site-footer .links {
+    flex-direction: column;
     align-items: flex-start;
     margin-left: 0;
+    gap: 20px;
+  }
+  
+  body.home .site-footer .links-left,
+  body.home .site-footer .links-right {
+    align-items: flex-start;
   }
 }
 
@@ -335,10 +342,16 @@ body.home .site-footer .brand { font-weight: 800; letter-spacing: .2px; margin-b
 body.home .site-footer p { opacity: .9; max-width: 500px; margin-bottom: 12px; }
 body.home .site-footer .links { 
   display: flex; 
-  flex-direction: column; 
-  gap: 8px; 
-  align-items: flex-end;
+  gap: 40px; 
   margin-left: 40px;
+  text-align: right;
+}
+body.home .site-footer .links-left,
+body.home .site-footer .links-right {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-end;
 }
 body.home .site-footer .links a { color: #eaf2ff; text-decoration: none; font-weight: 500; font-size: 14px; }
 body.home .site-footer .links a:hover { color: #fff; }
