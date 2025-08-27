@@ -12,6 +12,13 @@
 	<link rel="stylesheet" href="/assets/css/header.css">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
     <link rel="stylesheet" href="/assets/css/footer.css?v=3">
+    <style>
+      /* Hide global header on mobile for this page only */
+      @media (max-width: 768px) {
+        header.site-header, .site-header, .global-header, header[role="banner"] { display: none !important; }
+        body { padding-top: 0 !important; }
+      }
+    </style>
 </head>
 <body>
     <!-- Header -->
