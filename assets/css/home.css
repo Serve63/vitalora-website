@@ -552,7 +552,44 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
 @media (max-width: 640px) {
   body.home .toxins-grid { grid-template-columns: repeat(2, 1fr); }
   body.home .process-grid { grid-template-columns: 1fr; }
-  body.home .site-footer .footer-legal { text-align: left; }
+  body.home .site-footer .footer-legal { text-align: center !important; }
+  
+  /* Force left-align links on mobile */
+  body.home .site-footer .links {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    align-self: flex-start !important;
+  }
+  
+  body.home .site-footer .links-left,
+  body.home .site-footer .links-right {
+    text-align: left !important;
+  }
+  
+  body.home .site-footer .links a {
+    text-align: left !important;
+  }
+}
+
+/* Extra mobile override for footer links */
+@media (max-width: 768px) {
+  body.home .site-footer .links {
+    justify-content: flex-start !important;
+    text-align: left !important;
+    align-self: flex-start !important;
+    margin-left: 0 !important;
+  }
+  
+  body.home .site-footer .links-left,
+  body.home .site-footer .links-right {
+    text-align: left !important;
+    justify-content: flex-start !important;
+  }
+  
+  body.home .site-footer .links a {
+    text-align: left !important;
+    display: inline-block !important;
+  }
 }
 
 /* Background unification for homepage */
