@@ -370,14 +370,14 @@ header {
 .toxin-label {
     display: inline-block;
     font-size: 11px;
-    color: #2954B3;
+    color: white;
     margin-bottom: 18px;
     text-transform: uppercase;
     letter-spacing: 0.6px;
     padding: 4px 10px;
     border-radius: 999px;
-    background: white;
-    border: 1px solid white;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
 }
 
 .toxin-card h3 {
