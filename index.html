@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/assets/css/header.css?v=3">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
     <link rel="stylesheet" href="/assets/css/footer.css?v=5">
-    <link rel="stylesheet" href="/assets/css/home.css?v=3">
+    <link rel="stylesheet" href="/assets/css/home.css?v=4">
     <meta name="theme-color" content="#2954B3">
 
 
@@ -332,6 +332,43 @@
       window.addEventListener('resize', function(){ if (window.innerWidth <= 768) inject(); });
     })();
   </script>
+
+<script id="results-animation">
+  (function () {
+    function animateProgressBars() {
+      if (window.innerWidth > 768) return; // Only on mobile
+      
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const progressFills = entry.target.querySelectorAll('.progress-fill');
+            progressFills.forEach((fill, index) => {
+              setTimeout(() => {
+                fill.style.transform = 'scaleX(1)';
+                fill.style.transformOrigin = 'left';
+              }, index * 100);
+            });
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+
+      const resultsSection = document.querySelector('.results');
+      if (resultsSection) {
+        // Initially hide progress bars
+        const progressFills = resultsSection.querySelectorAll('.progress-fill');
+        progressFills.forEach(fill => {
+          fill.style.transform = 'scaleX(0)';
+          fill.style.transformOrigin = 'left';
+        });
+        
+        observer.observe(resultsSection);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', animateProgressBars);
+  })();
+</script>
 
 <script id="bg-hotfix">
   (function () {
