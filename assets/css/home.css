@@ -815,6 +815,15 @@ body.home .results {
 }
 
 /* Keep animated circles visible but subtle */
+body.home .circle {
+  z-index: 1 !important;
+  opacity: 0.12 !important;
+  pointer-events: none !important;
+}
+
+body.home .animated-bg {
+  z-index: 0 !important;
+}
 
 /* Remove any custom cursors */
 body.home * {
