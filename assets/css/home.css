@@ -317,24 +317,22 @@ body.home footer .footer-bottom { opacity: .85; }
     text-align: center;
   }
   
-  body.home .site-footer .footer-left {
-    order: 1;
-  }
-  
   body.home .site-footer .brand {
+    order: 1;
     font-size: 18px;
     margin-bottom: 12px;
   }
   
   body.home .site-footer p {
+    order: 2;
     font-size: 14px;
     line-height: 1.5;
     max-width: 280px;
-    margin: 0 auto 16px;
+    margin: 0 auto 0;
   }
   
   body.home .site-footer .links {
-    order: 2;
+    order: 3;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
@@ -355,7 +353,7 @@ body.home footer .footer-bottom { opacity: .85; }
   }
   
   body.home .site-footer .copy {
-    order: 3;
+    order: 4;
     margin-top: 20px;
     font-size: 12px;
     opacity: 0.7;
