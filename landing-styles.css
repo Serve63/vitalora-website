@@ -151,9 +151,9 @@ body {
 
 .ebook-cover { max-width: 540px; width:100%; height:auto; margin-top:-12px; filter: drop-shadow(0 12px 28px rgba(2,6,23,.15)); }
 
-/* Verberg mobiele afbeelding op desktop */
-.ebook-mobile { 
-    display: none; 
+/* Verberg mobiele afbeelding container op desktop */
+.ebook-mobile-container { 
+    display: none !important; 
 }
 @media (max-width: 1024px){ .ebook-cover{ max-width: 460px; } }
 @media (max-width: 768px){ .ebook-cover{ max-width: 420px; margin-top:0 } }
@@ -378,14 +378,19 @@ body {
         display: none !important;
     }
     
-    /* Toon simpele mobiele afbeelding */
-    .ebook-mobile {
+    /* Toon mobiele afbeelding container */
+    .ebook-mobile-container {
         display: block !important;
-        margin: 20px auto !important;
-        text-align: center;
+        text-align: center !important;
+        margin: 20px 0 !important;
+    }
+    
+    .ebook-mobile {
         max-width: 280px !important;
         width: 100% !important;
         height: auto !important;
+        display: block !important;
+        margin: 0 auto !important;
     }
     
     .book-stack {
