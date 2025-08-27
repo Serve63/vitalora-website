@@ -476,12 +476,12 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
     font-weight: 700 !important;
   }
   
-  /* Make CTA button bigger on desktop */
+  /* Make CTA button optimal size on desktop */
   body.home .cta-button {
-    padding: 18px 36px !important;
-    font-size: 20px !important;
+    padding: 16px 28px !important;
+    font-size: 18px !important;
     font-weight: 700 !important;
-    border-radius: 12px !important;
+    border-radius: 10px !important;
   }
 }
 
