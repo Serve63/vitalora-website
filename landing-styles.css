@@ -402,7 +402,7 @@ body {
 .modal-copy { padding:28px 28px 32px; background: #EFF5FF; }
 .modal-lead { color:#374151; font-size:18px; margin:0 0 18px }
 .modal-form input { padding:10px 12px; border:1px solid #dbe3ec; border-radius:8px; background: white; }
-.modal-form input + input { margin-top:8px }
+.modal-form input + input { margin-top:4px }
 .modal-cta { width:fit-content; margin-top:18px; font-size:16px; padding:12px 20px; display:inline-block; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; font-family: 'Lato', sans-serif !important; }
 .modal-trust { display:flex; align-items:center; gap:6px; color:#6b7280; font-size:12px; margin-top:10px; background: #EFF5FF; }
 
