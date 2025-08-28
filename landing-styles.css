@@ -529,7 +529,7 @@ body {
     
     /* Reduce space above rating display on mobile */
     .rating-display {
-        margin-top: -40px !important;
+        margin-top: -60px !important;
         margin-bottom: 40px !important;
     }
 }
