@@ -275,6 +275,13 @@ body {
     transition: all 0.2s ease;
 }
 
+.mobile-cta .cta-button .arrow {
+    font-weight: 900 !important;
+    font-size: 1.1em !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+
 .mobile-cta .cta-button:hover {
     background-color: #059669;
 }
