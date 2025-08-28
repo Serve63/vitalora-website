@@ -303,7 +303,12 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .why-text {
     order: 1;
-    padding: 20px 16px;
+    padding: 0 16px 20px 16px;
+  }
+  
+  body.home .why-text h2 {
+    margin-top: 0 !important;
+    margin-bottom: 18px;
   }
   
   /* Mobile benefit items - force smaller circles */
