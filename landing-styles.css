@@ -175,7 +175,7 @@ body {
     width: 1.05em !important;
     height: 1.05em !important;
     margin-left: 4px !important;
-    vertical-align: middle !important;
+    vertical-align: -0.1em !important;
 }
 
 #ebook-claim:hover {
