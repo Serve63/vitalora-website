@@ -147,7 +147,7 @@ body {
 .final-cta .cta-button {
     background-color: #2954B3;
     color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     transition: all 0.2s ease;
 }
 
@@ -155,12 +155,12 @@ body {
     background-color: #1e40af;
     color: white;
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
 }
 
 .final-cta .cta-button:active {
     transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 /* Ensure the main ebook CTA button stays green */
@@ -643,7 +643,7 @@ body {
         display: block !important;
         background-color: #2954B3 !important;
         color: white !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5) !important;
         transition: all 0.2s ease !important;
     }
     
@@ -651,11 +651,11 @@ body {
         background-color: #1e40af !important;
         color: white !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4) !important;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6) !important;
     }
     
     .final-cta .cta-button:active {
         transform: translateY(0) !important;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.5) !important;
     }
 }
