@@ -261,7 +261,7 @@ body {
     padding: 16px 24px;
     font-size: 16px;
     font-weight: 600;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', sans-serif !important;
     border: none;
     border-radius: 8px;
     cursor: pointer;
