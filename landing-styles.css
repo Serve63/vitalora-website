@@ -167,7 +167,7 @@ body {
 #ebook-claim {
     background-color: #10b981 !important;
     color: white !important;
-    padding: 16px 26px !important; /* iets smaller */
+    padding: 16px 20px !important; /* minder breed */
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
     transition: all 0.2s ease !important;
 }
@@ -530,7 +530,7 @@ body {
         width: fit-content !important;
         display: block !important;
         margin: 0 auto !important;
-        padding: 14px 22px !important; /* nog iets smaller */
+        padding: 14px 18px !important; /* minder breed */
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
         transition: all 0.2s ease !important;
     }
