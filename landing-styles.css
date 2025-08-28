@@ -47,18 +47,14 @@ body {
     transition: all 0.2s ease;
     display: inline-block;
     margin-bottom: 12px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .direct-access:hover {
     background-color: #2954B4;
-    transform: translateY(-1px);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
 }
 
 .direct-access:active {
-    transform: translateY(0);
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    background-color: #1e40af;
 }
 
 .hero-content {
@@ -477,18 +473,15 @@ body {
         left: auto;
         display: block !important;
         margin: 0 auto 0 !important;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
         transition: all 0.2s ease !important;
     }
     
     .direct-access:hover {
-        transform: translateY(-1px) !important;
-        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.4) !important;
+        background-color: #2954B4 !important;
     }
     
     .direct-access:active {
-        transform: translateY(0) !important;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3) !important;
+        background-color: #1e40af !important;
     }
     /* Centreer hoofd CTA op mobiel */
     #ebook-claim {
