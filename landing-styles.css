@@ -11,7 +11,7 @@ body { font-size:16px; line-height:1.6 }
 h1,h2{ font-weight:700; letter-spacing:.02em }
 h3,h4{ font-weight:500; letter-spacing:.01em }
 p,li,small{ font-weight:400; letter-spacing:0 }
-button,.cta-button{ font-weight:600; letter-spacing:.04em }
+button,.cta-button{ font-weight:600; letter-spacing:.04em; font-family: 'Lato', sans-serif; }
 .hero-description,.testimonials p,.final-cta p{ letter-spacing:0 }
 
 /* Header CSS moved to /assets/css/header.css */
@@ -41,6 +41,7 @@ body {
     border: none;
     padding: 8px 16px;
     font-size: 14px;
+    font-family: 'Lato', sans-serif;
     font-weight: 600;
     border-radius: 20px;
     cursor: pointer;
@@ -397,7 +398,7 @@ body {
 .modal-lead { color:#374151; font-size:18px; margin:0 0 18px }
 .modal-form input { padding:10px 12px; border:1px solid #dbe3ec; border-radius:8px; background: white; }
 .modal-form input + input { margin-top:8px }
-.modal-cta { width:fit-content; margin-top:18px; font-size:16px; padding:12px 20px; display:inline-block; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+.modal-cta { width:fit-content; margin-top:18px; font-size:16px; padding:12px 20px; display:inline-block; box-shadow: 0 1px 3px rgba(0,0,0,0.3); font-family: 'Lato', sans-serif; }
 .modal-trust { display:flex; align-items:center; gap:6px; color:#6b7280; font-size:12px; margin-top:10px; background: #EFF5FF; }
 
 @media (max-width: 768px) {
@@ -411,7 +412,7 @@ body {
   .modal-hero h2 { font-size: 26px; }
   .modal-subtitle { font-size: 18px; }
   .modal-copy { padding: 18px 18px 20px; background: #EEF7FD; }
-  .modal-cta { width: fit-content; max-width: 200px; display: inline-block; text-align: center; margin: 24px auto 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+  .modal-cta { width: fit-content; max-width: 200px; display: inline-block; text-align: center; margin: 24px auto 0 auto; box-shadow: 0 1px 3px rgba(0,0,0,0.3); font-family: 'Lato', sans-serif; }
   .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; }
 }
 .modal-close { position:absolute; right: -12px; top: -12px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 22px; font-weight: 900; line-height: 0.8; cursor: pointer; color: #249587; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
