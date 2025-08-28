@@ -2,7 +2,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Lead capture modal
     const modal = document.getElementById('ebook-modal');
-    const openers = [document.getElementById('ebook-claim'), document.getElementById('ebook-claim-bottom')].filter(Boolean);
+    const openers = [document.getElementById('ebook-claim'), document.getElementById('ebook-claim-bottom'), document.getElementById('mobile-ebook-claim')].filter(Boolean);
     const closeBtn = modal ? modal.querySelector('.modal-close') : null;
     const form = modal ? modal.querySelector('#ebook-form') : null;
     const feedback = modal ? modal.querySelector('#ebook-feedback') : null;

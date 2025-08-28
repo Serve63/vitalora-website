@@ -249,6 +249,38 @@ body {
     background-color: #EDF2FB;
 }
 
+/* Mobile CTA Section */
+.mobile-cta {
+    display: none;
+    padding: 40px 0;
+    background-color: #EDF2FB;
+    text-align: center;
+}
+
+.mobile-cta .cta-button {
+    background-color: #10b981;
+    color: white;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.mobile-cta .cta-button:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
+}
+
+.mobile-cta .cta-button:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
 .rating-display {
     text-align: center;
     font-size: 18px;
@@ -605,6 +637,11 @@ body {
     .testimonial-card .author {
         font-size: 12px !important;
         font-weight: 600 !important;
+    }
+    
+    /* Show mobile CTA section */
+    .mobile-cta {
+        display: block !important;
     }
     
     /* Optimize final CTA section for mobile */
