@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation with green borders
+    // Form validation with green borders and background
     const nameInput = document.getElementById('lead-name');
     const emailInput = document.getElementById('lead-email');
 
@@ -87,9 +87,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (this.value.length >= 3) {
                 this.style.borderColor = '#10b981';
                 this.style.borderWidth = '2px';
+                this.style.backgroundColor = '#E0EEDF';
             } else {
                 this.style.borderColor = '#dbe3ec';
                 this.style.borderWidth = '1px';
+                this.style.backgroundColor = '';
             }
         });
     }
@@ -100,9 +102,11 @@ document.addEventListener('DOMContentLoaded', function() {
             if (emailPattern.test(this.value)) {
                 this.style.borderColor = '#10b981';
                 this.style.borderWidth = '2px';
+                this.style.backgroundColor = '#E0EEDF';
             } else {
                 this.style.borderColor = '#dbe3ec';
                 this.style.borderWidth = '1px';
+                this.style.backgroundColor = '';
             }
         });
     }
