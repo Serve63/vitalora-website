@@ -60,9 +60,16 @@
   gap: 12px;
 }
 
-/* Login button */
+/* Login button - verberg op alle pagina's behalve homepage */
 .btn.login-btn{
-  display: inline-flex;
+  display: none !important;
+}
+
+/* Toon login button alleen op homepage */
+body.home .btn.login-btn,
+body.index .btn.login-btn,
+.homepage .btn.login-btn {
+  display: inline-flex !important;
   align-items: center;
   gap: 8px;
   padding: 8px 16px;
@@ -76,7 +83,9 @@
   transition: all 0.3s ease;
 }
 
-.btn.login-btn:hover{
+body.home .btn.login-btn:hover,
+body.index .btn.login-btn:hover,
+.homepage .btn.login-btn:hover {
   background: rgba(255,255,255,0.1);
   border-color: rgba(255,255,255,0.5);
 }
