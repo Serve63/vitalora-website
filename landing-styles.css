@@ -411,7 +411,7 @@ body {
   .modal-hero h2 { font-size: 26px; }
   .modal-subtitle { font-size: 18px; }
   .modal-copy { padding: 18px 18px 20px; background: #EEF7FD; }
-  .modal-cta { width: 100%; display: inline-block; text-align: center; }
+  .modal-cta { width: fit-content; max-width: 200px; display: inline-block; text-align: center; margin: 0 auto; }
   .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; }
 }
 .modal-close { position:absolute; right: -12px; top: -12px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 22px; font-weight: 900; line-height: 0.8; cursor: pointer; color: #249587; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
