@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation with green borders
+    // Form validation - change existing border to green
     const nameInput = document.getElementById('lead-name');
     const emailInput = document.getElementById('lead-email');
 
@@ -86,10 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
         nameInput.addEventListener('input', function() {
             if (this.value.length >= 3) {
                 this.style.borderColor = '#10b981';
-                this.style.borderWidth = '2px';
             } else {
                 this.style.borderColor = '#dbe3ec';
-                this.style.borderWidth = '1px';
             }
         });
     }
@@ -99,10 +97,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const emailPattern = /^.{2,}@.{2,}\..{2,}$/;
             if (emailPattern.test(this.value)) {
                 this.style.borderColor = '#10b981';
-                this.style.borderWidth = '2px';
             } else {
                 this.style.borderColor = '#dbe3ec';
-                this.style.borderWidth = '1px';
             }
         });
     }
