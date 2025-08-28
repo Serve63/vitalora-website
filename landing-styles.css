@@ -169,6 +169,13 @@ body {
     font-weight: 700 !important;
 }
 
+#ebook-claim .arrow {
+    font-weight: 900 !important;
+    font-size: 1.1em !important;
+    vertical-align: middle !important;
+    margin-left: 4px !important;
+}
+
 #ebook-claim:hover {
     background-color: #059669 !important;
 }
