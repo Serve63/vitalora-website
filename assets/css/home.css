@@ -57,17 +57,18 @@ body.home .cta-button { background: #10b981; color: #fff; border: 0; padding: 14
 body.home .cta-button:hover { background: #059669; }
 
 /* Secondary CTA button - exact same as primary */
-body.home .cta-button-secondary { 
-    background: #10b981 !important; 
-    color: #fff !important; 
-    border: 0 !important; 
-    padding: 14px 22px !important; 
-    border-radius: 10px !important; 
-    font-weight: 700 !important; 
-    cursor: pointer !important; 
-    margin: 0 !important; 
+/* Secondary CTA button - outline style */
+body.home .cta-button-secondary {
+  background: transparent !important;
+  color: #10b981 !important;
+  border: 2px solid #10b981 !important;
+  padding: 12px 22px !important; /* base; mobile/desktop overrides below normalize */
+  border-radius: 10px !important;
+  font-weight: 700 !important;
+  cursor: pointer !important;
+  margin: 0 !important;
 }
-body.home .cta-button-secondary:hover { background: #059669 !important; }
+body.home .cta-button-secondary:hover { background: #10b981 !important; color: #fff !important; }
 body.home .login-link { margin-top: 8px; color: #64748b; font-size: 14px; }
 body.home .login-link a { color: #3A9AEA; text-decoration: none; font-weight: 700; }
 body.home .hero-image img { width: 100%; height: auto; border-radius: 14px; box-shadow: 0 18px 30px -12px rgba(2,6,23,.25); }
@@ -238,16 +239,19 @@ body.home footer .footer-bottom { opacity: .85; }
   
   body.home .hero-text .cta-button,
   body.home .hero-text .cta-button-secondary {
-    margin: 0;
-    width: 280px;
-    max-width: 90%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 16px 24px;
-    font-size: 18px;
-    display: block;
-    text-align: center;
-    font-weight: 700;
+    margin: 0 !important;
+    width: 280px !important; /* same visual width */
+    max-width: 90% !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 16px 24px !important; /* equal padding so heights match */
+    font-size: 18px !important;
+    line-height: 1.2 !important;
+    display: block !important;
+    text-align: center !important;
+    font-weight: 800 !important;
+    border-radius: 12px !important;
+    box-sizing: border-box !important;
   }
   
   /* Stats section op mobiel */
@@ -686,7 +690,7 @@ body.home .site-footer .copy { font-size: 13px; opacity: .7; margin-top: 16px; f
   /* Make CTA button optimal size on desktop */
   body.home .cta-button,
   body.home .cta-button-secondary {
-    padding: 16px 28px !important;
+    padding: 16px 28px !important; /* equal padding on desktop */
     font-size: 18px !important;
     font-weight: 700 !important;
     border-radius: 10px !important;
