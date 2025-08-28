@@ -56,9 +56,18 @@ body.home .hero-buttons {
 body.home .cta-button { background: #10b981; color: #fff; border: 0; padding: 14px 22px; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0; }
 body.home .cta-button:hover { background: #059669; }
 
-/* Secondary CTA button - same as primary */
-body.home .cta-button-secondary { background: #10b981; color: #fff; }
-body.home .cta-button-secondary:hover { background: #059669; }
+/* Secondary CTA button - exact same as primary */
+body.home .cta-button-secondary { 
+    background: #10b981 !important; 
+    color: #fff !important; 
+    border: 0 !important; 
+    padding: 14px 22px !important; 
+    border-radius: 10px !important; 
+    font-weight: 700 !important; 
+    cursor: pointer !important; 
+    margin: 0 !important; 
+}
+body.home .cta-button-secondary:hover { background: #059669 !important; }
 body.home .login-link { margin-top: 8px; color: #64748b; font-size: 14px; }
 body.home .login-link a { color: #3A9AEA; text-decoration: none; font-weight: 700; }
 body.home .hero-image img { width: 100%; height: auto; border-radius: 14px; box-shadow: 0 18px 30px -12px rgba(2,6,23,.25); }
