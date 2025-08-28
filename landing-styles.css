@@ -14,7 +14,7 @@ h1,h2{ font-weight:700; letter-spacing:.02em }
 h3,h4{ font-weight:500; letter-spacing:.01em }
 p,li,small{ font-weight:400; letter-spacing:0 }
 button,.cta-button{ font-weight:600; letter-spacing:.04em; font-family: 'Lato', sans-serif; }
-.hero-description,.testimonials p,.final-cta p{ letter-spacing:0 }
+.hero-description,.testimonials p,.final-cta p{ letter-spacing:0; font-style: normal; }
 
 /* Header CSS moved to /assets/css/header.css */
 
@@ -641,6 +641,7 @@ body {
         font-size: 15px !important;
         line-height: 1.5 !important;
         margin-bottom: 12px !important;
+        font-style: normal !important;
     }
     
     .testimonial-card .author {
