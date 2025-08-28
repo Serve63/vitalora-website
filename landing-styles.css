@@ -168,10 +168,19 @@ body {
     background-color: #10b981 !important;
     color: white !important;
     padding: 16px 26px !important; /* iets smaller */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+    transition: all 0.2s ease !important;
 }
 
 #ebook-claim:hover {
     background-color: #059669 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+}
+
+#ebook-claim:active {
+    transform: translateY(0) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
 }
 
 /* Book Stack */
@@ -522,6 +531,18 @@ body {
         display: block !important;
         margin: 0 auto !important;
         padding: 14px 22px !important; /* nog iets smaller */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    #ebook-claim:hover {
+        transform: translateY(-2px) !important;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+    
+    #ebook-claim:active {
+        transform: translateY(0) !important;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3) !important;
     }
     
     .book {
