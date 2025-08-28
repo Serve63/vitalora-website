@@ -447,7 +447,7 @@ body {
   .modal-subtitle { font-size: 18px; }
   .modal-copy { padding: 18px 18px 20px; background: #EEF7FD; }
   .modal-cta { width: fit-content; max-width: 200px; display: inline-block; text-align: center; margin: 24px auto 0 auto; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important; font-family: 'Lato', sans-serif !important; }
-  .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; }
+  .modal-close { right: 8px; top: 8px; width: 32px; height: 32px; display: flex !important; align-items: center !important; justify-content: center !important; }
 }
 .modal-close { position:absolute; right: -12px; top: -12px; border:0; background: white; border-radius: 50%; width: 32px; height: 32px; font-size: 22px; font-weight: 900; line-height: 0.8; cursor: pointer; color: #249587; display: flex; align-items: center; justify-content: center; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
 .modal-header h3 { font-size: 22px; color:#3A9AEA; margin-bottom:6px }
