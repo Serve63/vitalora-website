@@ -244,7 +244,7 @@ body {
 /* Mobile CTA Section */
 .mobile-cta {
     display: none;
-    padding: 40px 0;
+    padding: 20px 0 40px 0;
     background-color: #EDF2FB;
     text-align: center;
 }
