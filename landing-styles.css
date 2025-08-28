@@ -169,12 +169,13 @@ body {
     font-weight: 700 !important;
 }
 
-#ebook-claim .arrow {
-    font-weight: 900 !important;
-    font-size: 1.2em !important;
-    vertical-align: middle !important;
-    margin-left: 6px !important;
+#ebook-claim .arrow, #ebook-claim-bottom .arrow { display: inline-flex !important; align-items: center !important; }
+#ebook-claim .arrow-icon, #ebook-claim-bottom .arrow-icon {
     display: inline-block !important;
+    width: 1.05em !important;
+    height: 1.05em !important;
+    margin-left: 4px !important;
+    vertical-align: middle !important;
 }
 
 #ebook-claim:hover {
