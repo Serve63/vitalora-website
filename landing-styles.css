@@ -178,6 +178,12 @@ body {
     vertical-align: -0.1em !important;
 }
 
+@media (max-width: 768px) {
+    #ebook-claim .arrow-icon, #ebook-claim-bottom .arrow-icon {
+        vertical-align: 0.1em !important;
+    }
+}
+
 #ebook-claim:hover {
     background-color: #059669 !important;
 }
