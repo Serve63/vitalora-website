@@ -236,7 +236,8 @@ body.home footer .footer-bottom { opacity: .85; }
     width: 100%;
   }
   
-  body.home .hero-text .cta-button {
+  body.home .hero-text .cta-button,
+  body.home .hero-text .cta-button-secondary {
     margin: 0;
     width: 280px;
     max-width: 90%;
