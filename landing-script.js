@@ -78,11 +78,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation with green borders and background
+    // Form validation with green borders and background - remove blue focus
     const nameInput = document.getElementById('lead-name');
     const emailInput = document.getElementById('lead-email');
 
+    // Remove blue focus ring from both inputs
     if (nameInput) {
+        nameInput.style.outline = 'none';
         nameInput.addEventListener('input', function() {
             if (this.value.length >= 3) {
                 this.style.borderColor = '#10b981';
@@ -97,6 +99,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     if (emailInput) {
+        emailInput.style.outline = 'none';
         emailInput.addEventListener('input', function() {
             const emailPattern = /^.{2,}@.{2,}\..{2,}$/;
             if (emailPattern.test(this.value)) {
