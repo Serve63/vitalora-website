@@ -131,8 +131,15 @@
       font-family: inherit;
       font-size: 16px;
       line-height: 1.6;
-      resize: vertical;
       box-sizing: border-box;
+      background: white;
+      outline: none;
+    }
+    
+    .editor-content:empty:before {
+      content: attr(placeholder);
+      color: #9ca3af;
+      pointer-events: none;
     }
     
     .editor-actions {
@@ -268,7 +275,7 @@
           <button type="button" class="toolbar-btn" title="Citaat">"</button>
           <button type="button" class="toolbar-btn" title="Afbeelding Toevoegen">🖼️</button>
         </div>
-        <textarea class="editor-content" id="blog-content" placeholder="Begin met het schrijven van je blog post..."></textarea>
+        <div class="editor-content" id="blog-content" contenteditable="true" placeholder="Begin met het schrijven van je blog post..."></div>
       </div>
       
       <div class="editor-actions">
@@ -318,59 +325,43 @@
       document.querySelectorAll('.toolbar-btn').forEach(btn => {
         btn.addEventListener('click', function() {
           const command = this.title.toLowerCase();
-          const textarea = blogContent;
-          const start = textarea.selectionStart;
-          const end = textarea.selectionEnd;
-          const selectedText = textarea.value.substring(start, end);
-          const beforeText = textarea.value.substring(0, start);
-          const afterText = textarea.value.substring(end);
-          
-          let newText = '';
+          blogContent.focus();
           
           switch(command) {
-            case 'bold':
-              newText = beforeText + '**' + selectedText + '**' + afterText;
+            case 'vet':
+              document.execCommand('bold', false, null);
               break;
-            case 'italic':
-              newText = beforeText + '*' + selectedText + '*' + afterText;
+            case 'cursief':
+              document.execCommand('italic', false, null);
               break;
-            case 'underline':
-              newText = beforeText + '<u>' + selectedText + '</u>' + afterText;
+            case 'onderstreept':
+              document.execCommand('underline', false, null);
               break;
-            case 'normal text':
-              newText = beforeText + selectedText + afterText;
+            case 'normale tekst':
+              document.execCommand('removeFormat', false, null);
               break;
-            case 'heading 1':
-              newText = beforeText + '# ' + selectedText + afterText;
+            case 'kop 1':
+              document.execCommand('formatBlock', false, 'h1');
               break;
-            case 'heading 2':
-              newText = beforeText + '## ' + selectedText + afterText;
+            case 'kop 2':
+              document.execCommand('formatBlock', false, 'h2');
               break;
-            case 'heading 3':
-              newText = beforeText + '### ' + selectedText + afterText;
+            case 'kop 3':
+              document.execCommand('formatBlock', false, 'h3');
               break;
-            case 'heading 4':
-              newText = beforeText + '#### ' + selectedText + afterText;
+            case 'kop 4':
+              document.execCommand('formatBlock', false, 'h4');
               break;
-            case 'quote':
-              newText = beforeText + '> ' + selectedText + afterText;
+            case 'citaat':
+              document.execCommand('formatBlock', false, 'blockquote');
               break;
-            case 'add image':
+            case 'afbeelding toevoegen':
               const imageUrl = prompt('Voer afbeelding URL in:');
               if (imageUrl) {
-                newText = beforeText + '![Image](' + imageUrl + ')' + afterText;
-              } else {
-                return; // Don't change text if user cancels
+                document.execCommand('insertHTML', false, `<img src="${imageUrl}" alt="Afbeelding" style="max-width: 100%; height: auto;">`);
               }
               break;
           }
-          
-          textarea.value = newText;
-          textarea.focus();
-          
-          // Set cursor position after the inserted text
-          const newCursorPos = start + (newText.length - textarea.value.length + (newText.length - beforeText.length - afterText.length));
-          textarea.setSelectionRange(newCursorPos, newCursorPos);
         });
       });
       
@@ -380,7 +371,7 @@
         const slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.value.trim();
+        const content = blogContent.innerHTML;
         
         if (!title) {
           alert('Vul de titel in');
@@ -398,7 +389,7 @@
         const slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.value.trim();
+        const content = blogContent.innerHTML;
         
         if (!title || !content) {
           alert('Vul titel en inhoud in');
@@ -419,7 +410,7 @@
         const slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.value.trim();
+        const content = blogContent.innerHTML;
         
         if (!title || !content) {
           alert('Vul titel en inhoud in');
