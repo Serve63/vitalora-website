@@ -68,7 +68,7 @@ body.home .hero-buttons {
     flex-wrap: wrap;
 }
 
-body.home .cta-button { background: #10b981; color: #fff; border: 0; padding: 14px 22px; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0; }
+body.home .cta-button { background: #10b981; color: #fff; border: 0; padding: 14px 22px; border-radius: 10px; font-weight: 700; cursor: pointer; margin: 0; box-shadow: 0 2px 4px rgba(0,0,0,0.3); }
 body.home .cta-button:hover { background: #059669; }
 
 /* Secondary CTA button - exact same as primary */
