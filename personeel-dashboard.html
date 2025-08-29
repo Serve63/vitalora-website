@@ -96,7 +96,7 @@
 
         <table>
           <thead><tr><th>Titel</th><th>Status</th></tr></thead>
-          <tbody>
+          <tbody id="blog-posts-table">
           </tbody>
         </table>
       </section>
@@ -110,6 +110,48 @@
     (function(){
       const key='staff_access_ok';
       if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
+      
+      // Load and display blog posts in the table
+      function loadBlogPosts() {
+        const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        const tableBody = document.getElementById('blog-posts-table');
+        
+        if (!tableBody) return;
+        
+        // Clear existing rows
+        tableBody.innerHTML = '';
+        
+        if (blogPosts.length === 0) {
+          tableBody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
+          return;
+        }
+        
+        // Add each blog post as a table row
+        blogPosts.forEach(function(post) {
+          const row = document.createElement('tr');
+          row.style.cursor = 'pointer';
+          row.onclick = function() {
+            window.open('/blog-post.html?id=' + post.id, '_blank');
+          };
+          
+          row.innerHTML = `
+            <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">${post.title}</td>
+            <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">
+              <span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">
+                ${post.status === 'published' ? 'Gepubliceerd' : post.status}
+              </span>
+            </td>
+          `;
+          
+          tableBody.appendChild(row);
+        });
+      }
+      
+      // Load blog posts when page loads
+      loadBlogPosts();
+      
+      // Reload blog posts every 5 seconds to catch new publications
+      setInterval(loadBlogPosts, 5000);
     })();
   </script>
 </body>
