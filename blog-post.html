@@ -26,9 +26,19 @@
         }
         
         .blog-post-header {
-            text-align: center;
+            text-align: left;
             margin-bottom: 60px;
             padding: 20px 40px;
+        }
+        
+        .blog-post-meta {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            color: #6b7280;
+            font-size: 15px;
+            margin-bottom: 24px;
+            font-weight: 500;
         }
         
         .blog-post-title {
@@ -38,16 +48,6 @@
             font-weight: 700;
             line-height: 1.2;
             letter-spacing: -0.02em;
-        }
-        
-        .blog-post-meta {
-            display: flex;
-            justify-content: center;
-            gap: 32px;
-            color: #6b7280;
-            font-size: 15px;
-            margin-bottom: 0;
-            font-weight: 500;
         }
 
         .blog-post-meta-item {
@@ -262,7 +262,7 @@
             
             .blog-post-meta {
                 flex-direction: column;
-                gap: 12px;
+                gap: 8px;
             }
 
             .blog-post-content h1 { font-size: 28px; }
@@ -305,11 +305,11 @@
             <a href="/blog.html" class="back-link">← Terug naar blog</a>
             
             <div class="blog-post-header">
-                <h1 class="blog-post-title" id="post-title">Laden...</h1>
                 <div class="blog-post-meta">
                     <span class="blog-post-meta-item blog-post-date" id="post-date">-</span>
                     <span class="blog-post-meta-item blog-post-read-time" id="post-read-time">-</span>
                 </div>
+                <h1 class="blog-post-title" id="post-title">Laden...</h1>
             </div>
             
             <div class="blog-post-content" id="post-content">
