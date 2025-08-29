@@ -3,179 +3,119 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Blogs - Vitalora</title>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <title>Blog - Vitalora</title>
 	<link rel="stylesheet" href="styles.css?v=2">
 	<link rel="stylesheet" href="/assets/css/header.css">
 	<link rel="stylesheet" href="/assets/css/fonts.css?v=12">
 	<link rel="stylesheet" href="/assets/css/footer.css?v=12">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
 	<style>
-		.blog-hero { 
-			padding: 80px 0; 
-			background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%); 
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            background: #f3f6fb;
+            color: #333333;
+        }
+        
+        .main-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+        
+        .blog-header {
 			text-align: center;
-			margin-bottom: 0;
-		}
-		.blog-hero h1 { 
-			font-size: 42px; 
-			color: #333333; 
+            margin-bottom: 40px;
+        }
+        
+        .blog-header h1 {
+            font-size: 48px;
+            color: #1f2937;
 			margin-bottom: 16px;
-			font-weight: 700;
-		}
-		.blog-hero p { 
-			color: #6b7280;
-			font-size: 18px;
-			margin: 0;
-		}
+        }
+        
 		.blog-grid { 
 			display: grid; 
-			grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
-			gap: 32px; 
-			padding: 80px 0;
-			max-width: 1400px;
-			margin: 0 auto;
-		}
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+            margin-top: 40px;
+        }
+        
 		.post-card { 
-			background: #fff; 
-			border: none;
-			border-radius: 20px; 
+            background: white;
+            border-radius: 12px;
 			overflow: hidden; 
-			box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-			transition: all 0.3s ease;
-			position: relative;
-			height: 100%;
-			display: flex;
-			flex-direction: column;
-		}
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        
 		.post-card:hover {
-			transform: translateY(-8px);
-			box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
 		}
+        
 		.post-cover { 
-			aspect-ratio: 16/9; 
-			background: #e5e7eb;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
 			position: relative;
-			overflow: hidden;
-		}
-		.post-cover::before {
-			content: '';
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			background: linear-gradient(45deg, rgba(41, 84, 180, 0.1), rgba(58, 154, 234, 0.1));
-			z-index: 1;
-		}
+        }
+        
 		.post-body { 
-			padding: 24px;
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-		}
+            padding: 20px;
+        }
+        
 		.post-title { 
-			font-size: 18px; 
+            font-size: 20px;
 			font-weight: 600; 
-			color: #333333; 
+            color: #1f2937;
 			margin-bottom: 12px;
 			line-height: 1.4;
-			display: -webkit-box;
-			-webkit-line-clamp: 3;
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-		}
-		.post-date {
-			color: #333333;
-			font-size: 13px;
-			font-weight: 500;
-			display: flex;
-			align-items: center;
-			gap: 4px;
-		}
-		.post-date::before {
-			content: '';
-			font-size: 12px;
-		}
+        }
+        
 		.post-meta {
 			display: flex;
-			align-items: center;
-			justify-content: space-between;
+            gap: 16px;
 			margin-bottom: 16px;
-			gap: 12px;
-		}
-		.post-read-time {
-			color: #333333;
-			font-size: 13px;
-			font-weight: 500;
-			display: flex;
-			align-items: center;
-			gap: 4px;
-			background: #f8fafc;
-			padding: 4px 8px;
-			border-radius: 12px;
-			font-size: 12px;
-			color: #64748b;
-		}
-		.post-read-time::before {
-			content: '';
-			margin-right: 0;
-		}
+            font-size: 14px;
+            color: #6b7280;
+        }
+        
 		.post-link { 
-			display: inline-flex;
-			align-items: center;
-			gap: 8px;
-			margin-top: auto;
-			color: #2954B4; 
+            display: inline-block;
+            background: #3A9AEA;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            text-decoration: none;
 			font-weight: 600; 
-			text-decoration: none;
-			font-size: 15px;
-			transition: all 0.2s ease;
-			padding: 8px 0;
+            transition: background 0.2s ease;
 		}
+        
 		.post-link:hover { 
-			color: #3A9AEA;
-			transform: translateX(4px);
-		}
-		.post-link::after {
-			content: '→';
-			font-size: 18px;
-			transition: transform 0.2s ease;
-		}
-		.post-link:hover::after {
-			transform: translateX(4px);
-		}
-		
-		.page-title {
+            background: #2954B3;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                margin: 20px;
+                padding: 15px;
+            }
+            
+            .blog-header h1 {
 			font-size: 36px;
-			color: #333333;
-			text-align: center;
-			margin: 60px 0 40px 0;
-			font-weight: 700;
 		}
 		
-		@media (max-width: 768px) {
 			.blog-grid {
 				grid-template-columns: 1fr;
-				gap: 24px;
-				padding: 40px 20px;
-			}
-			.blog-hero {
-				padding: 60px 20px;
-			}
-			.blog-hero h1 {
-				font-size: 32px;
-			}
-			.post-body {
-				padding: 20px;
+                gap: 16px;
 			}
 		}
 	</style>
 </head>
 <body>
-	<!-- Header -->
 	<header class="site-header" role="banner">
 	  <div class="header-inner">
 		<a class="logo" href="/">
@@ -190,8 +130,13 @@
 
 	<main class="main-content">
 		<div class="container">
-			<h1 class="page-title">Lees hier alle artikelen</h1>
-			<div class="blog-grid" id="posts"></div>
+            <div class="blog-header">
+                <h1>Lees hier alle artikelen</h1>
+            </div>
+            
+            <div class="blog-grid" id="posts">
+                <!-- Posts will be loaded here -->
+            </div>
 		</div>
 	</main>
 	
@@ -201,7 +146,6 @@
                     <div class="footer-brand">
                         <div class="footer-logo">Vitalora.nl</div>
                         <p>Vitalora helpt je stap voor stap naar een gezonder lichaam met praktische detox programma's die eenvoudig toe te passen zijn in het dagelijks leven.</p>
-
                     </div>
                     <div class="footer-links">
                         <div class="footer-column">
@@ -220,351 +164,87 @@
                 </div>
             </div>
         </footer>
+
                 <script>
-        console.log("=== BLOG SCRIPT STARTING ===");
+        console.log("Blog script starting...");
         
-        (function(){
-                const titles = [
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025',
-                        'Vlierbessensap Gezond — 03 januari 2025',
-                        'Kruisbloemige Groenten — 04 januari 2025',
-                        'Zuiveringszout Baking Soda — 05 januari 2025',
-                        'Broccolikiemen — 06 januari 2025',
-                        'Eiwitpoeders — 07 januari 2025',
-                        'Olijven met Knoflook — 08 januari 2025',
-                        'Dopamine Voeding — 09 januari 2025',
-                        'Suiker — 10 januari 2025',
-                        'Oligofructose — 11 januari 2025',
-                        'Waterkers — 12 januari 2025',
-                        'Aardbeien Gezond: De Complete Gids voor 2025 — 02 augustus 2025',
-                        'Appelazijn Afvallen: De Complete Gids voor 2025 — 30 juli 2025',
-                        'Kaneel Gezond: De Complete Gids voor 2025 — 27 juli 2025',
-                        'Granaatappel Gezond: De Complete Gids voor 2025 — 23 juli 2025',
-                        'Vijgen & Gezondheid: De Complete Gids voor 2025 — 20 juli 2025',
-                        'Ananas gezond: de ultieme gids voor een tropische boost in 2025 — 17 juli 2025',
-                        'Zijn Chiazaden Gezond? De Complete Gids voor 2025 — 05 juli 2025',
-                        'Wat zijn Parabenen en Sulfaten? Betekenis, Gebruik en Gezondheidsrisico's — 03 juli 2025',
-                        'Wat is Asbest? Een Inleiding tot Herkenning en Gevaren voor Gezondheid — 01 juli 2025',
-                        'Wat is PFAS? Een Gids van Deze Chemische Stoffen en Hun Gevaren — 29 juni 2025',
-                        'Is Kinkhoest Besmettelijk? Wat Je Moet Weten om Verspreiding te Voorkomen — 27 juni 2025',
-                        'Wat is Blauw Licht? Wetenschap, Gezondheid en Invloed op Je Leven — 25 juni 2025',
-                        'Wat is BPA? Begrijpen van Bisfenol A en De Gevaren Voor Je Gezondheid — 23 juni 2025',
-                        'Tandpasta zonder Microplastics: De Gids voor een Milieuvriendelijker Gebit — 21 juni 2025',
-                        'Wat zijn Dioxines? Betekenis, Blootstelling en Mogelijke Gezondheidsrisico's — 19 juni 2025',
-                        'Wat is Aspartaam? Betekenis, Gebruik en Producten die Het Bevatten — 17 juni 2025',
-                        'Wat zijn Pesticiden? Betekenis, Gebruik en Hun Rol in de Landbouw — 15 juni 2025',
-                        'Wat zijn Ftalaten? Betekenis, Blootstelling en Mogelijke Gezondheidsrisico's — 13 juni 2025',
-                        'Wat is Fijnstof? Een Volledige Gids over Fijnstof en Luchtkwaliteit — 11 juni 2025',
-                        'Waarom Heb Ik Steeds Ontstekingen? Oorzaken en Oplossingen — 09 juni 2025',
-                        'Schimmel in huis en vermoeidheid: Hoe gevaarlijk is het echt? — 07 juni 2025',
-                        'Is Waterkefir Gevaarlijk? Dit Moet Je Weten! — 05 juni 2025',
-                        'Tecfidera en Gewichtstoename: Wat Je Moet Weten — 03 juni 2025',
-                        'Natuurlijke Luchtwegverwijders: Adem Vrijer met deze Natuurlijke Oplossingen — 01 juni 2025',
-                        'Waarom Forel Gezond is: Voordelen en Feiten die Je Moet Weten — 30 mei 2025',
-                        'Oorzaak Schildklierproblemen: Wat Zijn De Mogelijkheden? — 28 mei 2025',
-                        'Bloeddruk Verhogende Voeding: Welke Producten Moet Je Vermijden? — 26 mei 2025',
-                        'Is Botontkalking Omkeerbaar? Feiten, Mythen en Effectieve Oplossingen — 24 mei 2025',
-                        'Antioxidant in Fruit: De Beste Vruchten voor een Gezonde Levensstijl — 22 mei 2025',
-                        'Wat Voel Je Bij Vetverbranding? Dit Gebeurt Er in Je Lichaam — 20 mei 2025',
-                        'Is Rauwe Paprika Gezond? Ontdek Alle Voordelen en Feiten — 18 mei 2025',
-                        'Meibomklierdysfunctie en Roodheid: Wat Je Moet Weten voor Gezonde Ogen — 16 mei 2025',
-                        'Energetische Geneeskunde: Alles Wat Je Moet Weten Over Energieheling — 14 mei 2025',
-                        'De Ultieme Gids voor het Lymfklierstelsel — 12 mei 2025',
-                        'Is Kaas Echt Verslavend? De Wetenschap Achter Jouw Kaascraving — 10 mei 2025',
-                        'Bijenpollen tegen hooikoorts: Natuurlijke verlichting voor je allergieën — 08 mei 2025',
-                        'Brandnetel en zijn Geneeskracht — 06 mei 2025',
-                        'Slechte Adem Door Stress — 04 mei 2025',
-                        'Perilla olie: De Gezonde Olie die je Nog Niet Kent — 02 mei 2025',
-                        'Is het Candida Dieet Onzin? — 30 april 2025',
-                        'Vacramal Ervaring — 28 april 2025',
-                        'Endometriose en Voeding — 26 april 2025',
-                        'Xeno Oestrogenen — 24 april 2025',
-                        'Is Vis Gezond? — 22 april 2025',
-                        'Is MCT-olie Gezond? — 20 april 2025',
-                        'Verschil Tussen Lijnzaad en Gebroken Lijnzaad — 18 april 2025',
-                        'Chiazaad en Vezels — 16 april 2025',
-                        'Sterkste Natuurlijke Antibiotica — 14 april 2025',
-                        'Pregnenolone Gevaren — 12 april 2025',
-                        'Griekse Yoghurt en Artrose — 10 april 2025',
-                        'Histamine Betekenis — 08 april 2025',
-                        'Ghee: Hoe Gezond Is Dit Gouden Vet Echt? — 06 april 2025',
-                        'Lever en Afvallen — 04 april 2025',
-                        'Voeding bij Lage Bloeddruk — 02 april 2025',
-                        'Waar Zit Omega-3 In Behalve Vis? — 31 maart 2025',
-                        'Is Gierst Glutenvrij? — 29 maart 2025',
-                        'Is Camu Camu Gevaarlijk? — 27 maart 2025',
-                        'Ziekte van Wegener en Voeding — 25 maart 2025',
-                        'Banaan en Galstenen — 23 maart 2025',
-                        'Wat Doet 2 Eieren per Dag met Je Lichaam? — 21 maart 2025',
-                        'Spierpijn bij de Griep: Kan Magnesium Helpen? — 19 maart 2025',
-                        'Bijwerkingen van Gelatine — 17 maart 2025',
-                        'Gezonde Suikervervangers — 15 maart 2025',
-                        'Waar Zit Glyfosaat In? — 13 maart 2025',
-                        'Is Bottenbouillon Gezond? — 11 maart 2025',
-                        '’s Nachts Honger bij Diabetes — 09 maart 2025',
-                        'Ontstekingsremmend Kruid — 07 maart 2025',
-                        'Insuline en Afvallen — 05 maart 2025',
-                        'Waarom Tuinkers Gezond Is — 03 maart 2025',
-                        'Wat Doen Gluten met Je Darmen? — 28 februari 2025',
-                        'Is Koffie Slecht Voor Buikvet? — 26 februari 2025',
-                        'Borrel je darmen na het eten? — 24 februari 2025',
-                        'Is Kokosyoghurt Gezond? — 22 februari 2025',
-                        'Wilde Bosbessen: Gezondheid, Gebruik en Tips — 20 februari 2025',
-                        'Zijn Shiitakes Gezond? — 18 februari 2025',
-                        'Wennen aan Minder Eten — 16 februari 2025',
-                        'Casomorphine — 14 februari 2025',
-                        'Waar is gember goed voor? — 13 februari 2025',
-                        'Maca Werking Bij De Vrouw — 12 februari 2025',
-                        'Hennepzaad Eiwitten — 10 februari 2025',
-                        'Wat is Salie? — 08 februari 2025',
-                        'Voorjaarsgroenten — 06 februari 2025',
-                        'Is Warme Tomaat Gezond? — 04 februari 2025',
-                        'Waarom Eet Ik Zoveel? — 02 februari 2025',
-                        'Zilverkaars en de Overgang — 31 januari 2025',
-                        'Lichaam Ontzuren — 29 januari 2025',
-                        'Alles over Chlorella en Spirulina — 27 januari 2025',
-                        'Edelgistvlokken en Darmen — 25 januari 2025',
-                        'Nachtschade Groenten en Darmen — 23 januari 2025',
-                        'Teunisbloemolie bij PMS — 21 januari 2025',
-                        'Is Waterkers Gezond? — 19 januari 2025',
-                        'Is Oligofructose Slecht? — 17 januari 2025',
-                        'Behoefte aan Suiker — 15 januari 2025',
-                        'Dopamine Voeding — 13 januari 2025',
-                        'Olijven met Knoflook — 11 januari 2025',
-                        'Afvallen met Eiwitpoeder — 09 januari 2025',
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025',
-                        'Broccolikiemen — 05 januari 2025',
-                        'Kruisbloemige Groenten — 04 januari 2025',
-                        'Zuiveringszout (Baking Soda) — 03 januari 2025',
-                        'Is Vlierbessensap Gezond? — 03 januari 2025'
-                ];
-
-                const posts = document.getElementById('posts');
-                if (!posts) { return; }
-
-                const synonyms = {
-                        'aardbeien':'strawberries,fruit', 'appelazijn':'apple cider vinegar,apple', 'kaneel':'cinnamon,spice',
-                        'granaatappel':'pomegranate,fruit', 'vijgen':'figs,fruit', 'ananas':'pineapple,fruit', 'chia':'chia seeds,superfood',
-                        'parabenen':'cosmetics,lab', 'asbest':'asbestos,construction', 'pfas':'chemical,laboratory', 'kinkhoest':'whooping cough,health',
-                        'blauw licht':'blue light,screen', 'bpa':'plastic,bottle', 'tandpasta':'toothpaste,bathroom', 'dioxines':'factory,smoke',
-                        'aspartaam':'artificial sweetener,soda', 'pesticiden':'pesticide,spraying,field', 'ftalaten':'plastic,chemistry',
-                        'fijnstof':'smog,air pollution', 'ontstekingen':'inflammation,health', 'schimmel':'mold,house', 'waterkefir':'kefir,fermented drink',
-                        'tecfidera':'medicine,pills', 'luchtweg':'lungs,respiratory', 'forel':'trout,fish', 'schildklier':'thyroid,health',
-                        'bloeddruk':'blood pressure,health', 'botontkalking':'osteoporosis,bones', 'antioxidant':'berries,antioxidants',
-                        'vetverbranding':'metabolism,fitness', 'paprika':'bell pepper,vegetable', 'meibom':'eyes,ophthalmology', 'energie':'energy,active',
-                        'lymf':'lymph system,health', 'kaas':'cheese', 'bijenpollen':'bee pollen,honey', 'brandnetel':'nettle,herb', 'adem':'breathing,nature',
-                        'perilla':'perilla leaves,shiso', 'candida':'yeast,health', 'endometriose':'endometriosis,woman health', 'vis':'fish,seafood',
-                        'mct':'MCT oil,coconut', 'lijnzaad':'flax seeds', 'antibiotica':'antibiotics,pills', 'pregnenolone':'hormone,lab',
-                        'yoghurt':'yogurt,breakfast', 'histamine':'allergy,health', 'ghee':'ghee,clarified butter', 'lever':'liver organ,health',
-                        'omega-3':'omega 3,fish oil', 'gierst':'millet,grain', 'camu':'camu camu,berries', 'wegener':'autoimmune,health',
-                        'banaan':'banana,fruit', 'eieren':'eggs,breakfast', 'magnesium':'magnesium supplement,pills', 'suiker':'sugar',
-                        'glyfosaat':'glyphosate,herbicide', 'bottenbouillon':'bone broth,soup', 'diabetes':'diabetes,glucose meter', 'kruid':'herb,spice',
-                        'insuline':'insulin,diabetes', 'tuinkers':'cress,sprouts', 'gluten':'bread,gluten', 'koffie':'coffee', 'darm':'gut,healthy food',
-                        'kokosyoghurt':'coconut yogurt', 'bosbessen':'blueberries,berries', 'shiitakes':'shiitake mushrooms', 'wen':'habit,daily routine',
-                        'maca':'maca powder,root', 'hennep':'hemp seeds', 'salie':'sage herb', 'voorjaarsgroenten':'spring vegetables', 'tomaat':'tomatoes',
-                        'zilverkaars':'black cohosh,herb', 'ontzuren':'alkaline water,lemon', 'chlorella':'chlorella algae', 'edelgist':'nutritional yeast',
-                        'nachtschade':'nightshade vegetables', 'pms':'PMS,women health', 'waterkers':'watercress,greens', 'oligofructose':'prebiotic,fiber',
-                        'dopamine':'dopamine,brain', 'olijven':'olives', 'eiwitpoeder':'protein powder', 'microplastics':'microplastic,plastic ocean',
-                        'broccolikiemen':'broccoli sprouts', 'kruisbloemige':'cruciferous vegetables', 'baking soda':'baking soda', 'vlierbessensap':'elderberry juice'
-                };
-
-                function normalize(s){ 
-                        return s.toLowerCase(); 
-                }
-                
-                function buildQuery(title){
-                        const t = normalize(title);
-                        for (const key in synonyms){ 
-                                if (t.includes(key)) return synonyms[key]; 
-                        }
-                        const base = t.split('—')[0].split(':')[0].trim().split(' ').slice(0,2).join(' ');
-                        return base || 'health wellness';
+        const postsContainer = document.getElementById('posts');
+        if (!postsContainer) {
+            console.log("Posts container not found!");
+                        return; 
                 }
 
-                function slugifyTitle(title){
-                        let base = title.split('—')[0];
-                        base = base.replace(/[:]/g,'');
-                        base = base.normalize('NFD').replace(/[̀-ͯ]/g,'');
-                        return base.toLowerCase().trim().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
-                }
+        console.log("Posts container found:", postsContainer);
+        
+        function createPostCard(title, date, readTime, id) {
+            const card = document.createElement('div');
+                        card.className = 'post-card';
+            
+            const keywords = title.toLowerCase().split(' ').slice(0, 2).join(',');
+            const img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+            const href = id ? `/blog-post.html?id=${id}` : `/blog-post.html?title=${encodeURIComponent(title)}`;
 
-                const urlMapping = {
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025': '/microplastics-een-diepgaande-uitleg.html',
-                        'Vlierbessensap Gezond — 03 januari 2025': '/vlierbessensap-gezond.html',
-                        'Kruisbloemige Groenten — 04 januari 2025': '/kruisbloemige-groenten.html',
-                        'Zuiveringszout Baking Soda — 05 januari 2025': '/zuiveringszout-baking-soda.html',
-                        'Broccolikiemen — 06 januari 2025': '/broccolikiemen.html',
-                        'Eiwitpoeders — 07 januari 2025': '/eiwitpoeders.html',
-                        'Olijven met Knoflook — 08 januari 2025': '/olijven-met-knoflook.html',
-                        'Dopamine Voeding — 09 januari 2025': '/dopamine-voeding.html',
-                        'Suiker — 10 januari 2025': '/suiker.html',
-                        'Oligofructose — 11 januari 2025': '/oligofructose.html',
-                        'Waterkers — 12 januari 2025': '/waterkers.html',
-                        'Aardbeien Gezond: De Complete Gids voor 2025 — 02 augustus 2025': '/aardbeien-gezond.html',
-                        'Appelazijn Afvallen: De Complete Gids voor 2025 — 30 juli 2025': '/appelazijn-afvallen.html',
-                        'Kaneel Gezond: De Complete Gids voor 2025 — 27 juli 2025': '/kaneel-gezond.html',
-                        'Granaatappel Gezond: De Complete Gids voor 2025 — 23 juli 2025': '/granaatappel-gezond.html',
-                        'Vijgen & Gezondheid: De Complete Gids voor 2025 — 20 juli 2025': '/vijgen-gezond.html',
-                        'Ananas gezond: de ultieme gids voor een tropische boost in 2025 — 17 juli 2025': '/ananas-gezond.html',
-                        'Zijn Chiazaden Gezond? De Complete Gids voor 2025 — 05 juli 2025': '/zijn-chiazaden-gezond.html',
-                        'Wat zijn Parabenen en Sulfaten? Betekenis, Gebruik en Gezondheidsrisico's — 03 juli 2025': '/wat-zijn-parabenen-en-sulfaten.html',
-                        'Wat is Asbest? Een Inleiding tot Herkenning en Gevaren voor Gezondheid — 01 juli 2025': '/wat-is-asbest.html',
-                        'Wat is PFAS? Een Gids van Deze Chemische Stoffen en Hun Gevaren — 29 juni 2025': '/wat-is-pfas.html',
-                        'Is Kinkhoest Besmettelijk? Wat Je Moet Weten om Verspreiding te Voorkomen — 27 juni 2025': '/kinkhoest-besmettelijk.html',
-                        'Wat is Blauw Licht? Wetenschap, Gezondheid en Invloed op Je Leven — 25 juni 2025': '/wat-is-blauw-licht.html',
-                        'Wat is BPA? Begrijpen van Bisfenol A en De Gevaren Voor Je Gezondheid — 23 juni 2025': '/wat-is-bpa.html',
-                        'Tandpasta zonder Microplastics: De Gids voor een Milieuvriendelijker Gebit — 21 juni 2025': '/tandpasta-zonder-microplastic.html',
-                        'Wat zijn Dioxines? Betekenis, Blootstelling en Mogelijke Gezondheidsrisico's — 19 juni 2025': '/wat-zijn-dioxines.html',
-                        'Wat is Aspartaam? Betekenis, Gebruik en Producten die Het Bevatten — 17 juni 2025': '/wat-is-aspartaam.html',
-                        'Wat zijn Pesticiden? Betekenis, Gebruik en Hun Rol in de Landbouw — 15 juni 2025': '/wat-zijn-pesticiden.html',
-                        'Wat zijn Ftalaten? Betekenis, Blootstelling en Mogelijke Gezondheidsrisico's — 13 juni 2025': '/wat-zijn-ftalaten.html',
-                        'Wat is Fijnstof? Een Volledige Gids over Fijnstof en Luchtkwaliteit — 11 juni 2025': '/wat-is-fijnstof.html',
-                        'Waarom Heb Ik Steeds Ontstekingen? Oorzaken en Oplossingen — 09 juni 2025': '/waarom-heb-ik-steeds-ontstekingen.html',
-                        'Schimmel in huis en vermoeidheid: Hoe gevaarlijk is het echt? — 07 juni 2025': '/schimmel-in-huis-vermoeidheid.html',
-                        'Is Waterkefir Gevaarlijk? Dit Moet Je Weten! — 05 juni 2025': '/waterkefir-gevaarlijk.html',
-                        'Tecfidera en Gewichtstoename: Wat Je Moet Weten — 03 juni 2025': '/tecfidera-gewichtstoename.html',
-                        'Natuurlijke Luchtwegverwijders: Adem Vrijer met deze Natuurlijke Oplossingen — 01 juni 2025': '/natuurlijke-luchtwegverwijders.html',
-                        'Waarom Forel Gezond is: Voordelen en Feiten die Je Moet Weten — 30 mei 2025': '/forel-gezond.html',
-                        'Oorzaak Schildklierproblemen: Wat Zijn De Mogelijkheden? — 28 mei 2025': '/oorzaak-schildklierproblemen.html',
-                        'Bloeddruk Verhogende Voeding: Welke Producten Moet Je Vermijden? — 26 mei 2025': '/bloeddruk-verhogende-voeding.html',
-                        'Is Botontkalking Omkeerbaar? Feiten, Mythen en Effectieve Oplossingen — 24 mei 2025': '/botontkalking-omkeerbaar.html',
-                        'Antioxidant in Fruit: De Beste Vruchten voor een Gezonde Levensstijl — 22 mei 2025': '/antioxidant-fruit.html',
-                        'Wat Voel Je Bij Vetverbranding? Dit Gebeurt Er in Je Lichaam — 20 mei 2025': '/wat-voel-je-bij-vetverbranding.html',
-                        'Is Rauwe Paprika Gezond? Ontdek Alle Voordelen en Feiten — 18 mei 2025': '/rauwe-paprika-gezond.html',
-                        'Meibomklierdysfunctie en Roodheid: Wat Je Moet Weten voor Gezonde Ogen — 16 mei 2025': '/meibomklierdysfunctie-voeding.html',
-                        'Energetische Geneeskunde: Alles Wat Je Moet Weten Over Energieheling — 14 mei 2025': '/energetische-geneeskunde.html',
-                        'De Ultieme Gids voor het Lymfklierstelsel — 12 mei 2025': '/lymfklierstelsel.html',
-                        'Is Kaas Echt Verslavend? De Wetenschap Achter Jouw Kaascraving — 10 mei 2025': '/kaas-verslavend.html',
-                        'Bijenpollen tegen hooikoorts: Natuurlijke verlichting voor je allergieën — 08 mei 2025': '/bijenpollen-tegen-hooikoorts.html',
-                        'Brandnetel en zijn Geneeskracht — 06 mei 2025': '/brandnetel-geneeskracht.html',
-                        'Slechte Adem Door Stress — 04 mei 2025': '/slechte-adem-door-stress.html',
-                        'Perilla olie: De Gezonde Olie die je Nog Niet Kent — 02 mei 2025': '/perilla-olie.html',
-                        'Is het Candida Dieet Onzin? — 30 april 2025': '/candida-dieet.html',
-                        'Vacramal Ervaring — 28 april 2025': '/vacramal-ervaring.html',
-                        'Endometriose en Voeding — 26 april 2025': '/endometriose-en-voeding.html',
-                        'Xeno Oestrogenen — 24 april 2025': '/xeno-oestrogenen.html',
-                        'Is Vis Gezond? — 22 april 2025': '/is-vis-gezond.html',
-                        'Is MCT-olie Gezond? — 20 april 2025': '/is-mct-olie-gezond.html',
-                        'Verschil Tussen Lijnzaad en Gebroken Lijnzaad — 18 april 2025': '/verschil-tussen-lijnzaad-en-gebroken-lijnzaad.html',
-                        'Chiazaad en Vezels — 16 april 2025': '/zijn-chiazaden-gezond.html',
-                        'Sterkste Natuurlijke Antibiotica — 14 april 2025': '/sterkste-natuurlijke-antibiotica.html',
-                        'Pregnenolone Gevaren — 12 april 2025': '/pregnenolone-gevaren.html',
-                        'Griekse Yoghurt en Artrose — 10 april 2025': '/griekse-yoghurt-en-artrose.html',
-                        'Histamine Betekenis — 08 april 2025': '/histamine-betekenis.html',
-                        'Ghee: Hoe Gezond Is Dit Gouden Vet Echt? — 06 april 2025': '/ghee-hoe-gezond-is-dit-gouden-vet-echt.html',
-                        'Lever en Afvallen — 04 april 2025': '/lever-en-afvallen.html',
-                        'Voeding bij Lage Bloeddruk — 02 april 2025': '/voeding-lage-bloeddruk.html',
-                        'Waar Zit Omega-3 In Behalve Vis? — 31 maart 2025': '/waar-zit-omega-3-in-behalve-vis.html',
-                        'Is Gierst Glutenvrij? — 29 maart 2025': '/is-gierst-glutenvrij.html',
-                        'Is Camu Camu Gevaarlijk? — 27 maart 2025': '/is-camu-camu-gevaarlijk.html',
-                        'Ziekte van Wegener en Voeding — 25 maart 2025': '/ziekte-van-wegener-en-voeding.html',
-                        'Banaan en Galstenen — 23 maart 2025': '/banaan-en-galstenen.html',
-                        'Wat Doet 2 Eieren per Dag met Je Lichaam? — 21 maart 2025': '/wat-doet-2-eieren-per-dag-met-je-lichaam.html',
-                        'Spierpijn bij de Griep: Kan Magnesium Helpen? — 19 maart 2025': '/spierpijn-griep-magnesium.html',
-                        'Bijwerkingen van Gelatine — 17 maart 2025': '/bijwerkingen-van-gelatine.html',
-                        'Gezonde Suikervervangers — 15 maart 2025': '/gezonde-suikervervangers.html',
-                        'Waar Zit Glyfosaat In? — 13 maart 2025': '/waar-zit-glyfosaat-in.html',
-                        'Is Bottenbouillon Gezond? — 11 maart 2025': '/is-bottenbouillon-gezond.html',
-                        '’s Nachts Honger bij Diabetes — 09 maart 2025': '/s-nachts-honger-bij-diabetes.html',
-                        'Ontstekingsremmend Kruid — 07 maart 2025': '/ontstekingsremmend-kruid.html',
-                        'Insuline en Afvallen — 05 maart 2025': '/insuline-en-afvallen.html',
-                        'Waarom Tuinkers Gezond Is — 03 maart 2025': '/tuinkers-gezond.html',
-                        'Wat Doen Gluten met Je Darmen? — 28 februari 2025': '/edelgistvlokken-en-darmen.html',
-                        'Is Koffie Slecht Voor Buikvet? — 26 februari 2025': '/is-koffie-slecht-voor-buikvet.html',
-                        'Borrel je darmen na het eten? — 24 februari 2025': '/edelgistvlokken-en-darmen.html',
-                        'Is Kokosyoghurt Gezond? — 22 februari 2025': '/is-kokosyoghurt-gezond.html',
-                        'Wilde Bosbessen: Gezondheid, Gebruik en Tips — 20 februari 2025': '/wilde-bosbessen-gezondheid-gebruik-en-tips.html',
-                        'Zijn Shiitakes Gezond? — 18 februari 2025': '/zijn-shiitakes-gezond.html',
-                        'Wennen aan Minder Eten — 16 februari 2025': '/wenen-aan-minder-eten.html',
-                        'Casomorphine — 14 februari 2025': '/casomorphine.html',
-                        'Waar is gember goed voor? — 13 februari 2025': '/waar-is-gember-goed-voor.html',
-                        'Maca Werking Bij De Vrouw — 12 februari 2025': '/maca-werking-bij-de-vrouw.html',
-                        'Hennepzaad Eiwitten — 10 februari 2025': '/hennepzaad-eiwitten.html',
-                        'Wat is Salie? — 08 februari 2025': '/wat-is-salie.html',
-                        'Voorjaarsgroenten — 06 februari 2025': '/voorjaarsgroenten.html',
-                        'Is Warme Tomaat Gezond? — 04 februari 2025': '/warme-tomaat-gezond.html',
-                        'Waarom Eet Ik Zoveel? — 02 februari 2025': '/waarom-eet-ik-zoveel.html',
-                        'Zilverkaars en de Overgang — 31 januari 2025': '/zilverkaars-en-de-overgang.html',
-                        'Lichaam Ontzuren — 29 januari 2025': '/lichaam-ontzuren-onzin.html',
-                        'Alles over Chlorella en Spirulina — 27 januari 2025': '/chlorella-en-spirulina.html',
-                        'Edelgistvlokken en Darmen — 25 januari 2025': '/edelgistvlokken-en-darmen.html',
-                        'Nachtschade Groenten en Darmen — 23 januari 2025': '/nachtschade-groenten-darmen.html',
-                        'Teunisbloemolie bij PMS — 21 januari 2025': '/teunisbloemolie-bij-pms.html',
-                        'Is Waterkers Gezond? — 19 januari 2025': '/is-waterkers-gezond.html',
-                        'Is Oligofructose Slecht? — 17 januari 2025': '/is-oligofructose-slecht.html',
-                        'Behoefte aan Suiker — 15 januari 2025': '/behoefte-aan-suiker.html',
-                        'Dopamine Voeding — 13 januari 2025': '/dopamine-voeding.html',
-                        'Olijven met Knoflook — 11 januari 2025': '/olijven-met-knoflook.html',
-                        'Afvallen met Eiwitpoeder — 09 januari 2025': '/afvallen-met-eiwitpoeder.html',
-                        'Microplastics | Een diepgaande uitleg — 07 januari 2025': '/microplastics-een-diepgaande-uitleg.html',
-                        'Broccolikiemen — 05 januari 2025': '/broccolikiemen.html',
-                        'Kruisbloemige Groenten — 04 januari 2025': '/kruisbloemige-groenten.html',
-                        'Zuiveringszout (Baking Soda) — 03 januari 2025': '/zuiveringszout-baking-soda.html',
-                        'Is Vlierbessensap Gezond? — 03 januari 2025': '/vlierbessensap-gezond.html'
-                };
-
-                // Load published blog posts from localStorage
-                let publishedPosts = [];
-                try {
-                        publishedPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]').filter(p => (p.status || 'published') === 'published');
-                } catch(e) { publishedPosts = []; }
-                
-                // Test: Add a test post if no posts exist
-                // Fallback posts will be rendered only if nothing exists
-                
-                // Add published posts (if any)
-                if (publishedPosts.length > 0) {
-                        publishedPosts.forEach(function(post) {
-                            var card = document.createElement('div');
-                            card.className = 'post-card';
-                            var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                            var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                            var href = '/blog-post.html?id=' + post.id;
-                            card.innerHTML = `
-                                    <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
-                                    <div class="post-body">
-                                            <div>
-                                                    <div class="post-title">${post.title}</div>
-                                                    <div class="post-meta">
-                                                            <div class="post-date">${post.publishedDate || ''}</div>
-                                                            <div class="post-read-time">${post.readTime || 3} min leestijd</div>
-                                                    </div>
-                                            </div>
-                                            <a href="${href}" class="post-link">Lees meer</a>
-                                    </div>
-                            `;
-                            posts.appendChild(card);
-                        });
-                }
-
-                // If still empty, render a safe fallback list
-                if (posts.children.length === 0) {
-                        var fallback = [
-                                { title: 'Microplastics | Een diepgaande uitleg', publishedDate: '07 januari 2025' },
-                                { title: 'Broccolikiemen', publishedDate: '05 januari 2025' },
-                                { title: 'Kruisbloemige Groenten', publishedDate: '04 januari 2025' },
-                                { title: 'Zuiveringszout (Baking Soda)', publishedDate: '03 januari 2025' },
-                                { title: 'Is Vlierbessensap Gezond?', publishedDate: '03 januari 2025' }
-                        ];
-                        fallback.forEach(function(item){
-                                var card = document.createElement('div');
-                                card.className = 'post-card';
-                                var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(item.title + ',health,wellness');
-                                var href = '/blog-post.html?title=' + encodeURIComponent(item.title);
-                                card.innerHTML = `
-                                        <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
-                                        <div class="post-body">
-                                                <div>
-                                                        <div class="post-title">${item.title}</div>
-                                                        <div class="post-meta"><div class="post-date">${item.publishedDate}</div><div class="post-read-time">3 min leestijd</div></div>
-                                                </div>
-                                                <a href="${href}" class="post-link">Lees meer</a>
+                        card.innerHTML = `
+                                <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+                                <div class="post-body">
+                                        <div>
+                        <div class="post-title">${title}</div>
+                                                        <div class="post-meta">
+                                                                <div class="post-date">${date}</div>
+                                                                <div class="post-read-time">${readTime} min leestijd</div>
+                                                        </div>
                                         </div>
-                                `;
-                                posts.appendChild(card);
-                        });
-                }
-        })();
+                                        <a href="${href}" class="post-link">Lees meer</a>
+                                </div>
+                        `;
+            
+            return card;
+        }
+        
+        // Try to load published posts from localStorage
+        let publishedPosts = [];
+        try {
+            const stored = localStorage.getItem('vitalora_blog_posts');
+            if (stored) {
+                publishedPosts = JSON.parse(stored).filter(p => (p.status || 'published') === 'published');
+                console.log("Found published posts:", publishedPosts.length);
+            }
+        } catch (e) {
+            console.log("Error loading posts from localStorage:", e);
+        }
+        
+        // Add published posts
+        if (publishedPosts.length > 0) {
+            publishedPosts.forEach(post => {
+                const card = createPostCard(
+                    post.title,
+                    post.publishedDate,
+                    post.readTime || 5,
+                    post.id
+                );
+                postsContainer.appendChild(card);
+            });
+        }
+        
+        // If no posts, add fallback posts
+        if (postsContainer.children.length === 0) {
+            console.log("No posts found, adding fallback posts");
+            
+            const fallbackPosts = [
+                { title: 'Microplastics | Een diepgaande uitleg', date: '07 januari 2025', readTime: 8 },
+                { title: 'Broccolikiemen', date: '05 januari 2025', readTime: 5 },
+                { title: 'Kruisbloemige Groenten', date: '04 januari 2025', readTime: 6 },
+                { title: 'Zuiveringszout (Baking Soda)', date: '03 januari 2025', readTime: 7 },
+                { title: 'Is Vlierbessensap Gezond?', date: '03 januari 2025', readTime: 4 }
+            ];
+            
+            fallbackPosts.forEach(post => {
+                const card = createPostCard(post.title, post.date, post.readTime);
+                postsContainer.appendChild(card);
+            });
+        }
+        
+        console.log("Total posts rendered:", postsContainer.children.length);
         </script>
 </body>
 </html>
