@@ -55,7 +55,7 @@ body.home .hero-text p { font-size: 18px; color: #475569; margin-top: 12px; }
     font-size: 13px;
     font-weight: 800;
     margin-bottom: 8px;
-    box-shadow: 0 6px 14px rgba(16,185,129,.25), 0 2px 4px rgba(0,0,0,.08);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
   }
 }
 /* Hero buttons container */
