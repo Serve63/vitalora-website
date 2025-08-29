@@ -322,6 +322,7 @@
             <button class="toolbar-btn" title="Heading 3">H3</button>
             <button class="toolbar-btn" title="Heading 4">H4</button>
             <button class="toolbar-btn" title="Quote">"</button>
+            <button class="toolbar-btn" title="Add Image">🖼️</button>
           </div>
           <textarea class="editor-content" id="blog-content" placeholder="Start writing your blog post..."></textarea>
         </div>
@@ -451,6 +452,14 @@
               break;
             case 'quote':
               newText = beforeText + '> ' + selectedText + afterText;
+              break;
+            case 'add image':
+              const imageUrl = prompt('Enter image URL:');
+              if (imageUrl) {
+                newText = beforeText + '![Image](' + imageUrl + ')' + afterText;
+              } else {
+                return; // Don't change text if user cancels
+              }
               break;
           }
           
