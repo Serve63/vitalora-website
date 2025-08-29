@@ -392,6 +392,29 @@
       const scheduleBtn = document.getElementById('schedule-blog');
       const publishBtn = document.getElementById('publish-blog');
       
+      // Check if we're editing an existing post
+      const urlParams = new URLSearchParams(window.location.search);
+      const editId = urlParams.get('edit');
+      
+      if (editId) {
+        // Load existing blog post for editing
+        const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        const post = blogPosts.find(p => p.id == editId);
+        
+        if (post) {
+          blogTitle.value = post.title;
+          blogSlug.value = post.slug;
+          blogMetaTitle.value = post.metaTitle;
+          blogMetaDescription.value = post.metaDescription;
+          blogContent.innerHTML = post.content;
+          
+          // Update page title
+          document.title = 'Bewerk: ' + post.title + ' - Vitalora';
+          document.querySelector('.editor-title').textContent = 'Blog Bewerken';
+          document.querySelector('.editor-subtitle').textContent = 'Bewerk je bestaande blog post';
+        }
+      }
+      
       // Handle clicking outside summary content to exit
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.summary-content')) {
@@ -547,34 +570,57 @@
         }
         
         if (confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
-          // Save blog post to localStorage
-          const blogPost = {
-            id: Date.now(),
-            title: title,
-            slug: slug,
-            metaTitle: metaTitle,
-            metaDescription: metaDescription,
-            content: content,
-            status: 'published',
-            publishedDate: new Date().toLocaleDateString('nl-NL', {
-              day: 'numeric',
-              month: 'long',
-              year: 'numeric'
-            }),
-            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
-          };
-          
           // Get existing blog posts
           let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
           
-          // Add new blog post
-          blogPosts.unshift(blogPost);
+          if (editId) {
+            // Update existing blog post
+            const postIndex = blogPosts.findIndex(p => p.id == editId);
+            if (postIndex !== -1) {
+              blogPosts[postIndex] = {
+                ...blogPosts[postIndex],
+                title: title,
+                slug: slug,
+                metaTitle: metaTitle,
+                metaDescription: metaDescription,
+                content: content,
+                status: 'published',
+                publishedDate: new Date().toLocaleDateString('nl-NL', {
+                  day: 'numeric',
+                  month: 'long',
+                  year: 'numeric'
+                }),
+                readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+              };
+              alert('Blog succesvol bijgewerkt!');
+            }
+          } else {
+            // Create new blog post
+            const blogPost = {
+              id: Date.now(),
+              title: title,
+              slug: slug,
+              metaTitle: metaTitle,
+              metaDescription: metaDescription,
+              content: content,
+              status: 'published',
+              publishedDate: new Date().toLocaleDateString('nl-NL', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+              }),
+              readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+            };
+            
+            // Add new blog post
+            blogPosts.unshift(blogPost);
+            alert('Blog succesvol gepubliceerd!');
+          }
           
           // Save back to localStorage
           localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
           
-          console.log('Publishing blog:', blogPost);
-          alert('Blog succesvol gepubliceerd!');
+          console.log('Publishing blog:', blogPosts[editId ? blogPosts.findIndex(p => p.id == editId) : 0]);
           window.location.href = '/personeel-dashboard';
         }
       });

@@ -131,7 +131,8 @@
           const row = document.createElement('tr');
           row.style.cursor = 'pointer';
           row.onclick = function() {
-            window.open('/blog-post.html?id=' + post.id, '_blank');
+            // Open blog editor for editing
+            window.open('/blog-editor.html?edit=' + post.id, '_blank');
           };
           
           row.innerHTML = `
