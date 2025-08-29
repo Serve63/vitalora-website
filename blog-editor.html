@@ -146,6 +146,36 @@
       text-decoration: underline;
     }
     
+    .editor-content blockquote {
+      background: #3A9AEA;
+      color: white;
+      padding: 16px 20px;
+      margin: 16px 0;
+      border-radius: 8px;
+      border-left: none;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-style: normal;
+      position: relative;
+    }
+    
+    .editor-content blockquote:before {
+      content: '"';
+      font-size: 24px;
+      color: rgba(255,255,255,0.7);
+      position: absolute;
+      left: 8px;
+      top: 8px;
+    }
+    
+    .editor-content blockquote:after {
+      content: '"';
+      font-size: 24px;
+      color: rgba(255,255,255,0.7);
+      position: absolute;
+      right: 8px;
+      bottom: 8px;
+    }
+    
     .editor-content:empty:before {
       content: attr(placeholder);
       color: #9ca3af;
@@ -363,7 +393,11 @@
               document.execCommand('formatBlock', false, 'h4');
               break;
             case 'citaat':
-              document.execCommand('formatBlock', false, 'blockquote');
+              if (document.queryCommandState('formatBlock') && document.queryCommandValue('formatBlock') === 'blockquote') {
+                document.execCommand('formatBlock', false, 'div');
+              } else {
+                document.execCommand('formatBlock', false, 'blockquote');
+              }
               break;
             case 'afbeelding toevoegen':
               const imageUrl = prompt('Voer afbeelding URL in:');
