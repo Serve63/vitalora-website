@@ -165,26 +165,44 @@
             </div>
         </footer>
 
-                <script>
-        // Add blog posts directly
+                    <script>
+        // Only show blogs from localStorage (created via dashboard)
         var postsContainer = document.getElementById('posts');
         if (postsContainer) {
-            var posts = [
-                { title: 'Microplastics | Een diepgaande uitleg', date: '07 januari 2025', readTime: 8 },
-                { title: 'Broccolikiemen', date: '05 januari 2025', readTime: 5 },
-                { title: 'Kruisbloemige Groenten', date: '04 januari 2025', readTime: 6 },
-                { title: 'Zuiveringszout (Baking Soda)', date: '03 januari 2025', readTime: 7 },
-                { title: 'Is Vlierbessensap Gezond?', date: '03 januari 2025', readTime: 4 }
-            ];
+            var publishedPosts = [];
             
-            for (var i = 0; i < posts.length; i++) {
-                var post = posts[i];
-                        var card = document.createElement('div');
-                        card.className = 'post-card';
-                card.innerHTML = '<div class="post-cover" style="background:url(https://source.unsplash.com/800x450/?health,wellness) center/cover no-repeat"></div><div class="post-body"><div><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + post.date + '</div><div class="post-read-time">' + post.readTime + ' min leestijd</div></div></div><a href="/blog-post.html?title=' + encodeURIComponent(post.title) + '" class="post-link">Lees meer</a></div>';
+            // Try to load published posts from localStorage
+            try {
+                var stored = localStorage.getItem('vitalora_blog_posts');
+                if (stored) {
+                    var allPosts = JSON.parse(stored);
+                    for (var i = 0; i < allPosts.length; i++) {
+                        var post = allPosts[i];
+                        if ((post.status || 'published') === 'published') {
+                            publishedPosts.push(post);
+                        }
+                    }
+                }
+            } catch (e) {
+                console.log('Error loading posts:', e);
+            }
+            
+            // Add published posts
+            for (var j = 0; j < publishedPosts.length; j++) {
+                var post = publishedPosts[j];
+                var card = document.createElement('div');
+                card.className = 'post-card';
+                var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                card.innerHTML = '<div class="post-cover" style="background:url(' + img + ') center/cover no-repeat"></div><div class="post-body"><div><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div></div><a href="/blog-post.html?id=' + post.id + '" class="post-link">Lees meer</a></div>';
                 postsContainer.appendChild(card);
             }
+            
+            // If no posts, show message
+            if (publishedPosts.length === 0) {
+                postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><h3>Nog geen blog posts</h3><p>Maak je eerste blog post via het dashboard!</p></div>';
+            }
         }
-        </script>
+    </script>
 </body>
 </html>
