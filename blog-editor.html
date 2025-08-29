@@ -221,14 +221,14 @@
     <a href="/personeel-dashboard" class="back-link">← Terug naar dashboard</a>
     
     <div class="editor-header">
-      <h1 class="editor-title">Blog post content</h1>
+      <h1 class="editor-title">Blog Inhoud</h1>
       <p class="editor-subtitle">Maak een nieuwe blog post</p>
     </div>
     
     <form class="editor-form">
       <div class="form-group">
-        <label class="form-label">Title</label>
-        <input type="text" class="form-input" id="blog-title" placeholder="Enter blog title">
+        <label class="form-label">Titel</label>
+        <input type="text" class="form-input" id="blog-title" placeholder="Voer blog titel in">
       </div>
       
       <div class="form-row">
@@ -237,44 +237,44 @@
           <input type="text" class="form-input" id="blog-slug" placeholder="blog-url">
         </div>
         <div class="form-group">
-          <label class="form-label">Revisions</label>
+          <label class="form-label">Revisies</label>
           <select class="form-input" id="blog-revisions">
-            <option>Show revisions</option>
+            <option>Toon revisies</option>
           </select>
         </div>
       </div>
       
       <div class="form-group">
-        <label class="form-label">Meta Title</label>
-        <input type="text" class="form-input" id="blog-meta-title" placeholder="SEO title for search engines">
+        <label class="form-label">Meta Titel</label>
+        <input type="text" class="form-input" id="blog-meta-title" placeholder="SEO titel voor zoekmachines">
       </div>
       
       <div class="form-group">
-        <label class="form-label">Meta Description</label>
-        <textarea class="form-input" id="blog-meta-description" rows="3" placeholder="SEO description for search engines (max 160 characters)"></textarea>
+        <label class="form-label">Meta Beschrijving</label>
+        <textarea class="form-input" id="blog-meta-description" rows="3" placeholder="SEO beschrijving voor zoekmachines (max 160 karakters)"></textarea>
       </div>
       
       <div class="form-group">
-        <label class="form-label">Content</label>
+        <label class="form-label">Inhoud</label>
         <div class="editor-toolbar">
-          <button type="button" class="toolbar-btn" title="Bold">B</button>
-          <button type="button" class="toolbar-btn" title="Italic">I</button>
-          <button type="button" class="toolbar-btn" title="Underline">U</button>
-          <button type="button" class="toolbar-btn" title="Normal Text">P</button>
-          <button type="button" class="toolbar-btn" title="Heading 1">H1</button>
-          <button type="button" class="toolbar-btn" title="Heading 2">H2</button>
-          <button type="button" class="toolbar-btn" title="Heading 3">H3</button>
-          <button type="button" class="toolbar-btn" title="Heading 4">H4</button>
-          <button type="button" class="toolbar-btn" title="Quote">"</button>
-          <button type="button" class="toolbar-btn" title="Add Image">🖼️</button>
+          <button type="button" class="toolbar-btn" title="Vet">B</button>
+          <button type="button" class="toolbar-btn" title="Cursief">I</button>
+          <button type="button" class="toolbar-btn" title="Onderstreept">U</button>
+          <button type="button" class="toolbar-btn" title="Normale Tekst">P</button>
+          <button type="button" class="toolbar-btn" title="Kop 1">H1</button>
+          <button type="button" class="toolbar-btn" title="Kop 2">H2</button>
+          <button type="button" class="toolbar-btn" title="Kop 3">H3</button>
+          <button type="button" class="toolbar-btn" title="Kop 4">H4</button>
+          <button type="button" class="toolbar-btn" title="Citaat">"</button>
+          <button type="button" class="toolbar-btn" title="Afbeelding Toevoegen">🖼️</button>
         </div>
-        <textarea class="editor-content" id="blog-content" placeholder="Start writing your blog post..."></textarea>
+        <textarea class="editor-content" id="blog-content" placeholder="Begin met het schrijven van je blog post..."></textarea>
       </div>
       
       <div class="editor-actions">
-        <button type="button" class="btn btn-outline" id="save-draft">Save Draft</button>
-        <button type="button" class="btn btn-outline" id="schedule-blog">Schedule</button>
-        <button type="button" class="btn btn-primary" id="publish-blog">Publish</button>
+        <button type="button" class="btn btn-outline" id="save-draft">Concept Opslaan</button>
+        <button type="button" class="btn btn-outline" id="schedule-blog">Inplannen</button>
+        <button type="button" class="btn btn-primary" id="publish-blog">Publiceren</button>
       </div>
     </form>
   </div>
@@ -356,7 +356,7 @@
               newText = beforeText + '> ' + selectedText + afterText;
               break;
             case 'add image':
-              const imageUrl = prompt('Enter image URL:');
+              const imageUrl = prompt('Voer afbeelding URL in:');
               if (imageUrl) {
                 newText = beforeText + '![Image](' + imageUrl + ')' + afterText;
               } else {
@@ -383,12 +383,12 @@
         const content = blogContent.value.trim();
         
         if (!title) {
-          alert('Please fill in title');
+          alert('Vul de titel in');
           return;
         }
         
         console.log('Saving draft:', { title, slug, metaTitle, metaDescription, content, status: 'draft' });
-        alert('Draft saved successfully!');
+        alert('Concept succesvol opgeslagen!');
         window.location.href = '/personeel-dashboard';
       });
       
@@ -401,15 +401,15 @@
         const content = blogContent.value.trim();
         
         if (!title || !content) {
-          alert('Please fill in title and content');
+          alert('Vul titel en inhoud in');
           return;
         }
         
-        const scheduleDate = prompt('Enter schedule date and time (YYYY-MM-DD HH:MM):');
+        const scheduleDate = prompt('Voer datum en tijd in (YYYY-MM-DD HH:MM):');
         if (!scheduleDate) return;
         
         console.log('Scheduling blog:', { title, slug, metaTitle, metaDescription, content, status: 'scheduled', publishDate: scheduleDate });
-        alert('Blog scheduled successfully!');
+        alert('Blog succesvol ingepland!');
         window.location.href = '/personeel-dashboard';
       });
       
@@ -422,13 +422,13 @@
         const content = blogContent.value.trim();
         
         if (!title || !content) {
-          alert('Please fill in title and content');
+          alert('Vul titel en inhoud in');
           return;
         }
         
-        if (confirm('Are you sure you want to publish this blog post?')) {
+        if (confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
           console.log('Publishing blog:', { title, slug, metaTitle, metaDescription, content, status: 'published' });
-          alert('Blog published successfully!');
+          alert('Blog succesvol gepubliceerd!');
           window.location.href = '/personeel-dashboard';
         }
       });
