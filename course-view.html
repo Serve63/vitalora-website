@@ -571,10 +571,10 @@
         console.log('Loaded course data:', courseData);
         
         // Update course title and subtitle only if they exist in the data
-        if (courseData.title && courseData.title !== 'Clean Reset') {
+        if (courseData.title && courseData.title !== 'Clean Reset' && courseData.title !== 'De Juiste Balans: Energie & Hormonen') {
           document.getElementById('courseTitle').textContent = courseData.title;
         }
-        if (courseData.subtitle && courseData.subtitle !== 'Detox en gifstoffen') {
+        if (courseData.subtitle && courseData.subtitle !== 'Detox en gifstoffen' && courseData.subtitle !== 'Rust, energie en helderheid vanuit je hormonen') {
           document.getElementById('courseSubtitle').textContent = courseData.subtitle;
         }
         
