@@ -517,41 +517,113 @@
         });
       });
       
-      // Save as draft
+      // Save as draft (create or update)
       saveDraftBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
-        const slug = blogSlug.value.trim();
+        let slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
-        
+
         if (!title) {
           alert('Vul de titel in');
           return;
         }
-        
-        console.log('Saving draft:', { title, slug, metaTitle, metaDescription, content, status: 'draft' });
+
+        if (!slug) {
+          slug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+          blogSlug.value = slug;
+        }
+
+        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        if (editId) {
+          const index = blogPosts.findIndex(p => p.id == editId);
+          if (index !== -1) {
+            blogPosts[index] = {
+              ...blogPosts[index],
+              title,
+              slug,
+              metaTitle,
+              metaDescription,
+              content,
+              status: 'draft',
+              updatedAt: new Date().toISOString()
+            };
+          }
+        } else {
+          const newPost = {
+            id: Date.now(),
+            title,
+            slug,
+            metaTitle,
+            metaDescription,
+            content,
+            status: 'draft',
+            createdAt: new Date().toISOString(),
+            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+          };
+          blogPosts.unshift(newPost);
+        }
+
+        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
         alert('Concept succesvol opgeslagen!');
         window.location.href = '/personeel-dashboard';
       });
       
-      // Schedule blog
+      // Schedule blog (create or update)
       scheduleBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
-        const slug = blogSlug.value.trim();
+        let slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
-        
+
         if (!title || !content) {
           alert('Vul titel en inhoud in');
           return;
         }
-        
+
         const scheduleDate = prompt('Voer datum en tijd in (YYYY-MM-DD HH:MM):');
         if (!scheduleDate) return;
-        
-        console.log('Scheduling blog:', { title, slug, metaTitle, metaDescription, content, status: 'scheduled', publishDate: scheduleDate });
+
+        if (!slug) {
+          slug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+          blogSlug.value = slug;
+        }
+
+        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        if (editId) {
+          const index = blogPosts.findIndex(p => p.id == editId);
+          if (index !== -1) {
+            blogPosts[index] = {
+              ...blogPosts[index],
+              title,
+              slug,
+              metaTitle,
+              metaDescription,
+              content,
+              status: 'scheduled',
+              publishDate: scheduleDate,
+              updatedAt: new Date().toISOString()
+            };
+          }
+        } else {
+          const newPost = {
+            id: Date.now(),
+            title,
+            slug,
+            metaTitle,
+            metaDescription,
+            content,
+            status: 'scheduled',
+            publishDate: scheduleDate,
+            createdAt: new Date().toISOString(),
+            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+          };
+          blogPosts.unshift(newPost);
+        }
+
+        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
         alert('Blog succesvol ingepland!');
         window.location.href = '/personeel-dashboard';
       });
@@ -577,20 +649,18 @@
             // Update existing blog post
             const postIndex = blogPosts.findIndex(p => p.id == editId);
             if (postIndex !== -1) {
+              const existing = blogPosts[postIndex];
               blogPosts[postIndex] = {
-                ...blogPosts[postIndex],
-                title: title,
-                slug: slug,
-                metaTitle: metaTitle,
-                metaDescription: metaDescription,
-                content: content,
+                ...existing,
+                title,
+                slug: slug || existing.slug,
+                metaTitle,
+                metaDescription,
+                content,
                 status: 'published',
-                publishedDate: new Date().toLocaleDateString('nl-NL', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                }),
-                readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+                publishedDate: existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
+                readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)),
+                updatedAt: new Date().toISOString()
               };
               alert('Blog succesvol bijgewerkt!');
             }
