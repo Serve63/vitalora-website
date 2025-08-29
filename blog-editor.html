@@ -547,7 +547,33 @@
         }
         
         if (confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
-          console.log('Publishing blog:', { title, slug, metaTitle, metaDescription, content, status: 'published' });
+          // Save blog post to localStorage
+          const blogPost = {
+            id: Date.now(),
+            title: title,
+            slug: slug,
+            metaTitle: metaTitle,
+            metaDescription: metaDescription,
+            content: content,
+            status: 'published',
+            publishedDate: new Date().toLocaleDateString('nl-NL', {
+              day: 'numeric',
+              month: 'long',
+              year: 'numeric'
+            }),
+            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+          };
+          
+          // Get existing blog posts
+          let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+          
+          // Add new blog post
+          blogPosts.unshift(blogPost);
+          
+          // Save back to localStorage
+          localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
+          
+          console.log('Publishing blog:', blogPost);
           alert('Blog succesvol gepubliceerd!');
           window.location.href = '/personeel-dashboard';
         }

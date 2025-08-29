@@ -508,6 +508,36 @@
                         'Is Vlierbessensap Gezond? — 03 januari 2025': '/vlierbessensap-gezond.html'
                 };
 
+                // Load published blog posts from localStorage
+                const publishedPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                
+                // Add published posts to the beginning
+                publishedPosts.forEach(function(post) {
+                    console.log("Processing published post:", post.title);
+                    var card = document.createElement('div');
+                    card.className = 'post-card';
+                    
+                    // Create a simple image based on title keywords
+                    var keywords = post.title.toLowerCase().split(' ').slice(0, 2).join(',');
+                    var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                    var href = '/blog-post.html?id=' + post.id;
+
+                    card.innerHTML = `
+                            <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+                            <div class="post-body">
+                                    <div>
+                                            <div class="post-title">${post.title}</div>
+                                            <div class="post-meta">
+                                                    <div class="post-date">${post.publishedDate}</div>
+                                                    <div class="post-read-time">${post.readTime} min leestijd</div>
+                                            </div>
+                                    </div>
+                                    <a href="${href}" class="post-link">Lees meer</a>
+                            </div>
+                    `;
+                    posts.appendChild(card);
+                });
+
                 console.log("Starting to process titles...");
                 titles.forEach(function(t){
                         console.log("Processing title:", t);
