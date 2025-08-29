@@ -120,9 +120,8 @@
 			color: #64748b;
 		}
 		.post-read-time::before {
-			content: '⏱️';
-			font-size: 11px;
-			margin-right: 2px;
+			content: '';
+			margin-right: 0;
 		}
 		.post-link { 
 			display: inline-flex;
@@ -341,14 +340,7 @@
                 ];
 
                 const posts = document.getElementById('posts');
-                console.log("Posts element found:", posts);
-                console.log("Titles array length:", titles.length);
-                console.log("Published posts will be added to:", posts);
-                
-                if (!posts) { 
-                        console.log("Posts element not found"); 
-                        return; 
-                }
+                if (!posts) { return; }
 
                 const synonyms = {
                         'aardbeien':'strawberries,fruit', 'appelazijn':'apple cider vinegar,apple', 'kaneel':'cinnamon,spice',
@@ -512,91 +504,66 @@
                 };
 
                 // Load published blog posts from localStorage
-                const publishedPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-                console.log("Found published posts:", publishedPosts.length);
-                console.log("Published posts data:", publishedPosts);
+                let publishedPosts = [];
+                try {
+                        publishedPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]').filter(p => (p.status || 'published') === 'published');
+                } catch(e) { publishedPosts = []; }
                 
                 // Test: Add a test post if no posts exist
-                if (publishedPosts.length === 0) {
-                    console.log("No published posts found, adding test post");
-                    const testPost = {
-                        id: 'test123',
-                        title: 'Test Blog Post',
-                        publishedDate: '15 januari 2025',
-                        readTime: 5,
-                        content: '<p>This is a test post</p>'
-                    };
-                    publishedPosts.push(testPost);
-                }
+                // Fallback posts will be rendered only if nothing exists
                 
-                // Add published posts to the beginning
-                publishedPosts.forEach(function(post) {
-                    console.log("Processing published post:", post.title);
-                    var card = document.createElement('div');
-                    card.className = 'post-card';
-                    
-                    // Create a simple image based on title keywords
-                    var keywords = post.title.toLowerCase().split(' ').slice(0, 2).join(',');
-                    var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                    var href = '/blog-post.html?id=' + post.id;
-
-                    card.innerHTML = `
-                            <div class="post-cover" style="background:url(${img}) center/cover no-repeat; position: relative;">
-                                <div style="position: absolute; top: 8px; right: 8px; background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">NIEUW</div>
-                            </div>
-                            <div class="post-body">
-                                    <div>
-                                            <div class="post-title">${post.title}</div>
-                                            <div class="post-meta">
-                                                    <div class="post-date">${post.publishedDate}</div>
-                                                    <div class="post-read-time">${post.readTime} min leestijd</div>
+                // Add published posts (if any)
+                if (publishedPosts.length > 0) {
+                        publishedPosts.forEach(function(post) {
+                            var card = document.createElement('div');
+                            card.className = 'post-card';
+                            var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                            var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                            var href = '/blog-post.html?id=' + post.id;
+                            card.innerHTML = `
+                                    <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+                                    <div class="post-body">
+                                            <div>
+                                                    <div class="post-title">${post.title}</div>
+                                                    <div class="post-meta">
+                                                            <div class="post-date">${post.publishedDate || ''}</div>
+                                                            <div class="post-read-time">${post.readTime || 3} min leestijd</div>
+                                                    </div>
                                             </div>
+                                            <a href="${href}" class="post-link">Lees meer</a>
                                     </div>
-                                    <a href="${href}" class="post-link">Lees meer</a>
-                            </div>
-                    `;
-                    console.log("Appending card to posts container");
-                    posts.appendChild(card);
-                });
-                
-                console.log("Finished adding published posts. Total children now:", posts.children.length);
+                            `;
+                            posts.appendChild(card);
+                        });
+                }
 
-                console.log("Starting to process existing titles...");
-                titles.forEach(function(t){
-                        console.log("Processing title:", t);
-                        var card = document.createElement('div');
-                        card.className = 'post-card';
-                        var q2 = encodeURIComponent(buildQuery(t));
-                        var img = 'https://source.unsplash.com/800x450/?' + q2;
-                        var href = urlMapping[t] || '/' + slugifyTitle(t);
-
-                        // Extract date from title
-                        var dateMatch = t.match(/—\s*(.+)$/);
-                        var date = dateMatch ? dateMatch[1].trim() : '';
-                        var titleWithoutDate = t.replace(/\s*—\s*.+$/, '');
-
-                        // Calculate estimated read time (based on title length)
-                        var wordCount = titleWithoutDate.split(' ').length;
-                        var readTime = Math.max(3, Math.ceil(wordCount / 3));
-
-                        card.innerHTML = `
-                                <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
-                                <div class="post-body">
-                                        <div>
-                                                <div class="post-title">${titleWithoutDate}</div>
-                                                ${date ? `
-                                                        <div class="post-meta">
-                                                                <div class="post-date">${date}</div>
-                                                                <div class="post-read-time">${readTime} min leestijd</div>
-                                                        </div>
-                                                ` : ''}
+                // If still empty, render a safe fallback list
+                if (posts.children.length === 0) {
+                        var fallback = [
+                                { title: 'Microplastics | Een diepgaande uitleg', publishedDate: '07 januari 2025' },
+                                { title: 'Broccolikiemen', publishedDate: '05 januari 2025' },
+                                { title: 'Kruisbloemige Groenten', publishedDate: '04 januari 2025' },
+                                { title: 'Zuiveringszout (Baking Soda)', publishedDate: '03 januari 2025' },
+                                { title: 'Is Vlierbessensap Gezond?', publishedDate: '03 januari 2025' }
+                        ];
+                        fallback.forEach(function(item){
+                                var card = document.createElement('div');
+                                card.className = 'post-card';
+                                var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(item.title + ',health,wellness');
+                                var href = '/blog-post.html?title=' + encodeURIComponent(item.title);
+                                card.innerHTML = `
+                                        <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+                                        <div class="post-body">
+                                                <div>
+                                                        <div class="post-title">${item.title}</div>
+                                                        <div class="post-meta"><div class="post-date">${item.publishedDate}</div><div class="post-read-time">3 min leestijd</div></div>
+                                                </div>
+                                                <a href="${href}" class="post-link">Lees meer</a>
                                         </div>
-                                        <a href="${href}" class="post-link">Lees meer</a>
-                                </div>
-                        `;
-                        posts.appendChild(card);
-                });
-                console.log("Finished processing all titles");
+                                `;
+                                posts.appendChild(card);
+                        });
+                }
         })();
         </script>
 </body>
