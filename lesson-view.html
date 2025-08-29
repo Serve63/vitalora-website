@@ -2,18 +2,18 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <title>Les - Vitalora</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Les - Vitalora</title>
   <script>
     (function(){
       var params=new URLSearchParams(location.search);var slug=params.get('course');
       var themes={
-        'powerfoods-superfood-specerij':{a:'#22c55e',b:'#16a34a',brand:'#22c55e'},
-        'clean-reset':{a:'#10b981',b:'#059669',brand:'#10b981'},
-        'de-juiste-balans':{a:'#8b5cf6',b:'#7c3aed',brand:'#8b5cf6'},
+        'powerfoods-superfood-specerij':{a:'#ef4444',b:'#dc2626',brand:'#ef4444'},
+        'clean-reset':{a:'#3A9AEA',b:'#2563eb',brand:'#3A9AEA'},
+        'de-juiste-balans':{a:'#f59e0b',b:'#d97706',brand:'#f59e0b'},
         '30-dagen-challenge':{a:'#f59e0b',b:'#d97706',brand:'#f59e0b'},
-        'everyday-nutrition-praktisch-gezond':{a:'#06b6d4',b:'#0891b2',brand:'#06b6d4'},
-        'mindful-energy-innerlijke-rust':{a:'#ec4899',b:'#db2777',brand:'#ec4899'},
+        'everyday-nutrition-praktisch-gezond':{a:'#fbbf24',b:'#eab308',brand:'#fbbf24'},
+        'mindful-energy-innerlijke-rust':{a:'#a78bfa',b:'#8b5cf6',brand:'#a78bfa'},
         'energie-hormonen-balans':{a:'#84cc16',b:'#65a30d',brand:'#84cc16'}
       };
       var t=themes[slug]; if(t){ var r=document.documentElement.style; r.setProperty('--grad-a',t.a); r.setProperty('--grad-b',t.b); r.setProperty('--brand',t.brand); }
@@ -22,50 +22,364 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/header.css?v=11">
+  <style>
+    :root {
+      --brand: #3A9AEA;
+      --brand-dark: #2563eb;
+      --text-primary: #333333;
+      --text-secondary: #6b7280;
+      --bg-light: #f8fafc;
+      --border-light: #e2e8f0;
+    }
 
-  <link rel="stylesheet" href="/assets/css/footer.css?v=1">
-  <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
-  <link rel="stylesheet" href="/assets/css/course.css?v=7">
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .lesson-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .lesson-header {
+      background: linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 100%);
+      color: white;
+      padding: 40px;
+      border-radius: 16px;
+      margin-bottom: 32px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(58, 154, 234, 0.2);
+    }
+
+    .lesson-title {
+      font-size: 2rem;
+      font-weight: 700;
+      margin: 0 0 12px 0;
+      line-height: 1.2;
+    }
+
+    .lesson-meta {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .lesson-content {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 32px;
+    }
+
+    .content-section {
+      margin-bottom: 32px;
+    }
+
+    .content-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 16px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: "📖";
+      font-size: 1.2rem;
+    }
+
+    .content-text {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+    }
+
+    .highlight-box {
+      background: var(--bg-light);
+      border-left: 4px solid var(--brand);
+      padding: 20px;
+      border-radius: 8px;
+      margin: 20px 0;
+    }
+
+    .highlight-box h4 {
+      margin: 0 0 12px 0;
+      color: var(--brand);
+      font-weight: 600;
+    }
+
+    .lesson-navigation {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-button {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 24px;
+      background: var(--brand);
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      background: var(--brand-dark);
+      transform: translateY(-2px);
+    }
+
+    .nav-button:disabled {
+      background: var(--border-light);
+      color: var(--text-secondary);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .back-to-course {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 500;
+      margin-bottom: 20px;
+      transition: color 0.3s ease;
+    }
+
+    .back-to-course:hover {
+      color: var(--brand-dark);
+    }
+
+    @media (max-width: 768px) {
+      .lesson-container {
+        padding: 20px 16px;
+      }
+
+      .lesson-header {
+        padding: 30px 20px;
+      }
+
+      .lesson-title {
+        font-size: 1.5rem;
+      }
+
+      .lesson-content {
+        padding: 24px;
+      }
+
+      .lesson-navigation {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .nav-button {
+        width: 100%;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <section id="lessonHero" class="lesson-hero hero--slim" style="opacity: 0; transition: opacity 0.3s ease; visibility: hidden;">
-    <div class="course-hero__inner">
-      <a href="/academy" class="back-to-course">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 12H5M12 19l-7-7 7-7"/>
-        </svg>
-        Terug naar cursus overzicht
-      </a>
-      <div class="overline" id="lessonCourseName">Cursus</div>
-      <h1 id="lessonTitle">Les laden…</h1>
-      <div class="badges">
-        <span id="badgeIndex" class="badge hidden"></span>
-        <span id="badgeDuration" class="badge hidden"></span>
-        <span id="badgeType" class="badge hidden"></span>
+  <div class="lesson-container">
+    <!-- Back to Course -->
+    <a href="#" class="back-to-course" id="backToCourse">
+      ← Terug naar cursus
+    </a>
+
+    <!-- Lesson Header -->
+    <div class="lesson-header">
+      <h1 class="lesson-title" id="lessonTitle">Les 1: De eerste stap in jouw detoxreis</h1>
+      
+      <div class="lesson-meta">
+        <div class="meta-item">
+          <span>⏱️</span>
+          <span id="lessonDuration">15 min</span>
+        </div>
+        <div class="meta-item">
+          <span>📚</span>
+          <span id="lessonType">Theorie</span>
+        </div>
+        <div class="meta-item">
+          <span>📖</span>
+          <span id="lessonChapter">Hoofdstuk 1</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <main class="lesson container" style="opacity: 0; transition: opacity 0.3s ease; visibility: hidden;">
-    <article class="card">
-      <div id="lessonContent" class="prose">
-        <p>Les wordt geladen...</p>
+    <!-- Lesson Content -->
+    <div class="lesson-content">
+      <div class="content-section">
+        <h2 class="section-title">Inleiding</h2>
+        <p class="content-text">
+          Welkom bij deze les! Hier ga je leren over de basisprincipes van detox en waarom het zo belangrijk is voor je gezondheid. We beginnen met de fundamenten en bouwen stap voor stap verder op.
+        </p>
+        
+        <div class="highlight-box">
+          <h4>Wat ga je leren?</h4>
+          <p>In deze les ontdek je de belangrijkste concepten en praktische tips die je direct kunt toepassen in je dagelijkse leven.</p>
+        </div>
       </div>
-    </article>
 
-    <footer class="lesson-footer">
-      <div class="lesson-navigation">
-        <a id="prevLesson" href="#" class="btn link">← Vorige les</a>
-        <a id="nextLesson" href="#" class="btn link">Volgende les →</a>
+      <div class="content-section">
+        <h2 class="section-title">Hoofdinhoud</h2>
+        <p class="content-text">
+          Dit is de kern van de les waar we dieper ingaan op de belangrijkste onderwerpen. Je krijgt concrete informatie, voorbeelden en praktische tips die je kunt gebruiken.
+        </p>
+        
+        <p class="content-text">
+          We behandelen verschillende aspecten en geven je een compleet beeld van het onderwerp. Elke stap wordt duidelijk uitgelegd zodat je alles goed begrijpt.
+        </p>
       </div>
-    </footer>
-  </main>
 
-  <div data-include="site-footer"></div>
+      <div class="content-section">
+        <h2 class="section-title">Praktische Tips</h2>
+        <p class="content-text">
+          Hier vind je concrete acties die je direct kunt ondernemen. Deze tips zijn getest en bewezen effectief.
+        </p>
+        
+        <div class="highlight-box">
+          <h4>Belangrijke tip</h4>
+          <p>Begin klein en bouw langzaam op. Consistentie is belangrijker dan perfectie.</p>
+        </div>
+      </div>
 
-  <script defer src="/assets/js/route-scope.js?v=1"></script>
-  <script defer src="/assets/js/header.js?v=7"></script>
-  <script defer src="/assets/js/lesson-view.js?v=6"></script>
+      <div class="content-section">
+        <h2 class="section-title">Samenvatting</h2>
+        <p class="content-text">
+          In deze les heb je geleerd over de basisprincipes en praktische toepassingen. Je bent nu klaar om deze kennis toe te passen in je dagelijkse leven.
+        </p>
+      </div>
+    </div>
+
+    <!-- Lesson Navigation -->
+    <div class="lesson-navigation">
+      <a href="#" class="nav-button" id="prevLesson">
+        ← Vorige les
+      </a>
+      
+      <div style="text-align: center;">
+        <span id="lessonProgress">Les 1 van 51</span>
+      </div>
+      
+      <a href="#" class="nav-button" id="nextLesson">
+        Volgende les →
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Get URL parameters
+    const urlParams = new URLSearchParams(window.location.search);
+    const courseSlug = urlParams.get('course');
+    const lessonNumber = urlParams.get('lesson') || '1';
+
+    // Set back to course link
+    if (courseSlug) {
+      document.getElementById('backToCourse').href = `course-view.html?course=${courseSlug}`;
+    }
+
+    // Update lesson content based on parameters
+    function updateLessonContent() {
+      const lessonTitles = {
+        '1': 'De eerste stap in jouw detoxreis',
+        '2': 'Wat toxines écht zijn',
+        '3': 'Hoe je lichaam zichzelf reinigt',
+        '4': 'Voeding die ontgift',
+        '5': 'Detox dranken en smoothies',
+        '6': 'Lifestyle aanpassingen',
+        '7': 'Intermittent fasting voor detox',
+        '8': 'Sauna en hitte therapie'
+      };
+
+      const lessonDurations = {
+        '1': '15 min',
+        '2': '12 min',
+        '3': '18 min',
+        '4': '22 min',
+        '5': '16 min',
+        '6': '20 min',
+        '7': '25 min',
+        '8': '19 min'
+      };
+
+      const lessonTypes = {
+        '1': 'Theorie',
+        '2': 'Theorie',
+        '3': 'Theorie',
+        '4': 'Praktisch',
+        '5': 'Recepten',
+        '6': 'Praktisch',
+        '7': 'Geavanceerd',
+        '8': 'Praktisch'
+      };
+
+      const currentLesson = parseInt(lessonNumber);
+      const totalLessons = 51;
+
+      // Update title
+      const title = lessonTitles[lessonNumber] || `Les ${lessonNumber}`;
+      document.getElementById('lessonTitle').textContent = `Les ${lessonNumber}: ${title}`;
+
+      // Update meta
+      document.getElementById('lessonDuration').textContent = lessonDurations[lessonNumber] || '15 min';
+      document.getElementById('lessonType').textContent = lessonTypes[lessonNumber] || 'Theorie';
+      document.getElementById('lessonChapter').textContent = `Hoofdstuk ${Math.ceil(currentLesson / 3)}`;
+
+      // Update progress
+      document.getElementById('lessonProgress').textContent = `Les ${lessonNumber} van ${totalLessons}`;
+
+      // Update navigation
+      if (currentLesson > 1) {
+        document.getElementById('prevLesson').href = `lesson-view.html?course=${courseSlug}&lesson=${currentLesson - 1}`;
+      } else {
+        document.getElementById('prevLesson').style.display = 'none';
+      }
+
+      if (currentLesson < totalLessons) {
+        document.getElementById('nextLesson').href = `lesson-view.html?course=${courseSlug}&lesson=${currentLesson + 1}`;
+      } else {
+        document.getElementById('nextLesson').textContent = 'Cursus voltooid!';
+        document.getElementById('nextLesson').href = `course-view.html?course=${courseSlug}`;
+      }
+    }
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', updateLessonContent);
+  </script>
 </body>
 </html>

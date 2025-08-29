@@ -633,8 +633,10 @@
     document.querySelectorAll('.lesson-card').forEach(card => {
       card.addEventListener('click', function() {
         const lessonNumber = this.querySelector('.lesson-number').textContent;
-        console.log(`Starting lesson ${lessonNumber}`);
-        // Here you would navigate to the actual lesson
+        const courseSlug = new URLSearchParams(window.location.search).get('course');
+        if (courseSlug) {
+          window.location.href = `lesson-view.html?course=${courseSlug}&lesson=${lessonNumber}`;
+        }
       });
     });
   </script>
