@@ -43,6 +43,21 @@ body.home .hero-text .highlight-bg {
   display: inline-block;
 }
 body.home .hero-text p { font-size: 18px; color: #475569; margin-top: 12px; }
+/* Award badge - mobile only */
+@media (max-width: 768px) {
+  body.home .certified-badge {
+    display: inline-flex;
+    align-items: center;
+    background: #10b981;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 800;
+    margin-bottom: 8px;
+    box-shadow: 0 6px 14px rgba(16,185,129,.25), 0 2px 4px rgba(0,0,0,.08);
+  }
+}
 /* Hero buttons container */
 body.home .hero-buttons {
     display: flex;
