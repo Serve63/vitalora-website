@@ -213,7 +213,10 @@
                 var post = publishedPosts[j];
                         var card = document.createElement('div');
                         card.className = 'post-card';
-                card.onclick = (function(id){ return function(){ window.location.href = '/blog-post.html?id=' + id; }; })(post.id);
+                card.onclick = (function(id, slug){ return function(){
+                  const url = slug ? ('/blog-post.html?slug=' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
+                  window.location.href = url;
+                }; })(post.id, post.slug);
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
                 var img = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
                 var src = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');

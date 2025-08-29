@@ -237,6 +237,7 @@
             // Get blog post ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             const postId = parseInt(urlParams.get('id'));
+            const slugParam = urlParams.get('slug');
             
             if (!postId) {
                 document.getElementById('post-title').textContent = 'Blog post niet gevonden';
@@ -246,7 +247,12 @@
             
             // Load blog posts from localStorage
             const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-            const post = blogPosts.find(p => p.id === postId);
+            let post = null;
+            if (slugParam) {
+                post = blogPosts.find(p => p.slug === slugParam);
+            } else {
+                post = blogPosts.find(p => p.id === postId);
+            }
             
             if (!post) {
                 document.getElementById('post-title').textContent = 'Blog post niet gevonden';
@@ -255,11 +261,61 @@
             }
             
             // Display the blog post
-            document.title = post.title + ' - Vitalora';
+            document.title = (post.metaTitle || post.title) + ' - Vitalora';
             document.getElementById('post-title').textContent = post.title;
             document.getElementById('post-date').textContent = post.publishedDate;
             document.getElementById('post-read-time').textContent = post.readTime + ' min leestijd';
             document.getElementById('post-content').innerHTML = post.content;
+
+            // --- SEO Meta Tags (dynamic) ---
+            function setMetaByName(name, content){
+                if(!content) return;
+                var el = document.querySelector('meta[name="'+name+'"]');
+                if(!el){ el = document.createElement('meta'); el.setAttribute('name', name); document.head.appendChild(el); }
+                el.setAttribute('content', content);
+            }
+            function setMetaByProperty(prop, content){
+                if(!content) return;
+                var el = document.querySelector('meta[property="'+prop+'"]');
+                if(!el){ el = document.createElement('meta'); el.setAttribute('property', prop); document.head.appendChild(el); }
+                el.setAttribute('content', content);
+            }
+
+            // Description
+            setMetaByName('description', post.metaDescription || '');
+
+            // Open Graph / Twitter
+            var currentUrl = window.location.href;
+            var ogTitle = post.metaTitle || post.title;
+            var ogDesc = post.metaDescription || '';
+            // Try to extract first image from content
+            var tempDiv = document.createElement('div');
+            tempDiv.innerHTML = post.content || '';
+            var firstImg = tempDiv.querySelector('img');
+            var ogImg = firstImg ? firstImg.src : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1200&q=60';
+
+            setMetaByProperty('og:type', 'article');
+            setMetaByProperty('og:url', currentUrl);
+            setMetaByProperty('og:title', ogTitle);
+            setMetaByProperty('og:description', ogDesc);
+            setMetaByProperty('og:site_name', 'Vitalora.nl');
+            setMetaByProperty('og:image', ogImg);
+
+            setMetaByName('twitter:card', 'summary_large_image');
+            setMetaByName('twitter:title', ogTitle);
+            setMetaByName('twitter:description', ogDesc);
+            setMetaByName('twitter:image', ogImg);
+
+            // Canonical
+            var canonical = document.querySelector('link[rel="canonical"]');
+            if(!canonical){ canonical = document.createElement('link'); canonical.setAttribute('rel','canonical'); document.head.appendChild(canonical); }
+            var canonicalUrl = post.slug ? (location.origin + '/blog-post.html?slug=' + encodeURIComponent(post.slug)) : currentUrl;
+            canonical.setAttribute('href', canonicalUrl);
+
+            // If not published, prevent indexing
+            if(post.status && post.status !== 'published'){
+                setMetaByName('robots','noindex,nofollow');
+            }
         })();
     </script>
 </body>
