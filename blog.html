@@ -512,6 +512,20 @@
                 // Load published blog posts from localStorage
                 const publishedPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
                 console.log("Found published posts:", publishedPosts.length);
+                console.log("Published posts data:", publishedPosts);
+                
+                // Test: Add a test post if no posts exist
+                if (publishedPosts.length === 0) {
+                    console.log("No published posts found, adding test post");
+                    const testPost = {
+                        id: 'test123',
+                        title: 'Test Blog Post',
+                        publishedDate: '15 januari 2025',
+                        readTime: 5,
+                        content: '<p>This is a test post</p>'
+                    };
+                    publishedPosts.push(testPost);
+                }
                 
                 // Add published posts to the beginning
                 publishedPosts.forEach(function(post) {
@@ -539,8 +553,11 @@
                                     <a href="${href}" class="post-link">Lees meer</a>
                             </div>
                     `;
+                    console.log("Appending card to posts container");
                     posts.appendChild(card);
                 });
+                
+                console.log("Finished adding published posts. Total children now:", posts.children.length);
 
                 console.log("Starting to process existing titles...");
                 titles.forEach(function(t){
