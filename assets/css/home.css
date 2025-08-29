@@ -82,6 +82,7 @@ body.home .cta-button-secondary {
   font-weight: 700 !important;
   cursor: pointer !important;
   margin: 0 !important;
+  box-shadow: none !important;
 }
 body.home .cta-button-secondary:hover { background: #10b981 !important; color: #fff !important; }
 body.home .login-link { margin-top: 8px; color: #64748b; font-size: 14px; }
