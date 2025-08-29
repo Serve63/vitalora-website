@@ -386,6 +386,18 @@
             document.getElementById('post-date').textContent = post.publishedDate;
             document.getElementById('post-read-time').textContent = post.readTime + ' min leestijd';
             document.getElementById('post-content').innerHTML = post.content;
+            
+            // Display featured image if available
+            const featuredImageDiv = document.getElementById('featured-image');
+            if (post.featuredImage) {
+                const img = document.createElement('img');
+                img.src = post.featuredImage;
+                img.alt = post.title;
+                featuredImageDiv.innerHTML = '';
+                featuredImageDiv.appendChild(img);
+            } else {
+                featuredImageDiv.innerHTML = '<div class="image-placeholder">Afbeelding placeholder</div>';
+            }
 
             // --- SEO Meta Tags (dynamic) ---
             function setMetaByName(name, content){

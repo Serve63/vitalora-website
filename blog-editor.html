@@ -270,6 +270,36 @@
     .btn-danger { background:#ef4444; color:#fff; }
     .btn-danger:hover { background:#dc2626; }
     
+    .image-upload-section {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    
+    .image-preview {
+      width: 100%;
+      height: 200px;
+      border: 2px dashed #d1d5db;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #f9fafb;
+      overflow: hidden;
+    }
+    
+    .image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    
+    .image-placeholder {
+      color: #6b7280;
+      font-size: 14px;
+      text-align: center;
+    }
+    
     .back-link {
       color: #6b7280;
       text-decoration: none;
@@ -350,6 +380,21 @@
       </div>
       
       <div class="form-group">
+        <label class="form-label">Header Afbeelding</label>
+        <div class="image-upload-section">
+          <div class="image-preview" id="image-preview">
+            <div class="image-placeholder">
+              <span>Geen afbeelding geselecteerd</span>
+            </div>
+          </div>
+          <button type="button" class="btn btn-outline" id="upload-image-btn">
+            📷 Afbeelding uploaden
+          </button>
+          <input type="file" id="image-input" accept="image/*" style="display: none;">
+        </div>
+      </div>
+      
+      <div class="form-group">
         <label class="form-label">Inhoud</label>
         <div class="editor-toolbar">
           <button type="button" class="toolbar-btn" title="Vet">B</button>
@@ -396,6 +441,11 @@
       const publishBtn = document.getElementById('publish-blog');
       const deleteBtn = document.getElementById('delete-blog');
       
+      // Image upload elements
+      const imagePreview = document.getElementById('image-preview');
+      const uploadImageBtn = document.getElementById('upload-image-btn');
+      const imageInput = document.getElementById('image-input');
+      
       // Check if we're editing an existing post
       const urlParams = new URLSearchParams(window.location.search);
       const editId = urlParams.get('edit');
@@ -411,6 +461,15 @@
           blogMetaTitle.value = post.metaTitle;
           blogMetaDescription.value = post.metaDescription;
           blogContent.innerHTML = post.content;
+          
+          // Load existing image if available
+          if (post.featuredImage) {
+            const img = document.createElement('img');
+            img.src = post.featuredImage;
+            img.alt = 'Header afbeelding';
+            imagePreview.innerHTML = '';
+            imagePreview.appendChild(img);
+          }
           
           // Update page title and actions for edit mode
           document.title = 'Bewerk: ' + post.title + ' - Vitalora';
@@ -531,6 +590,26 @@
         });
       });
       
+      // Image upload functionality
+      uploadImageBtn.addEventListener('click', function() {
+        imageInput.click();
+      });
+      
+      imageInput.addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = function(e) {
+            const img = document.createElement('img');
+            img.src = e.target.result;
+            img.alt = 'Header afbeelding';
+            imagePreview.innerHTML = '';
+            imagePreview.appendChild(img);
+          };
+          reader.readAsDataURL(file);
+        }
+      });
+      
       // Save as draft (create or update)
       saveDraftBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
@@ -538,6 +617,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
+        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
 
         if (!title) {
           alert('Vul de titel in');
@@ -560,6 +640,7 @@
               metaTitle,
               metaDescription,
               content,
+              featuredImage,
               status: 'draft',
               updatedAt: new Date().toISOString()
             };
@@ -572,6 +653,7 @@
             metaTitle,
             metaDescription,
             content,
+            featuredImage,
             status: 'draft',
             createdAt: new Date().toISOString(),
             readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
@@ -591,6 +673,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
+        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
 
         if (!title || !content) {
           alert('Vul titel en inhoud in');
@@ -630,6 +713,7 @@
               metaTitle,
               metaDescription,
               content,
+              featuredImage,
               status: 'scheduled',
               publishDate: scheduleDate,
               updatedAt: new Date().toISOString()
@@ -643,6 +727,7 @@
             metaTitle,
             metaDescription,
             content,
+            featuredImage,
             status: 'scheduled',
             publishDate: scheduleDate,
             createdAt: new Date().toISOString(),
@@ -663,6 +748,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
+        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
         
         if (!title || !content) {
           alert('Vul titel en inhoud in');
@@ -685,6 +771,7 @@
                 metaTitle,
                 metaDescription,
                 content,
+                featuredImage,
                 status: 'published',
                 publishedDate: existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
                 readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)),
@@ -701,6 +788,7 @@
               metaTitle: metaTitle,
               metaDescription: metaDescription,
               content: content,
+              featuredImage: featuredImage,
               status: 'published',
               publishedDate: new Date().toLocaleDateString('nl-NL', {
                 day: 'numeric',
