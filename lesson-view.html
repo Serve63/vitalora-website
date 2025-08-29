@@ -44,38 +44,51 @@
       overflow-x: hidden;
     }
 
-    body::before {
+    body::before,
+    body::after {
       content: '';
       position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        radial-gradient(circle at 20% 20%, var(--brand) 0%, transparent 60%),
-        radial-gradient(circle at 80% 40%, var(--brand) 0%, transparent 60%),
-        radial-gradient(circle at 40% 80%, var(--brand) 0%, transparent 60%),
-        radial-gradient(circle at 90% 90%, var(--brand) 0%, transparent 60%);
-      background-size: 300px 300px, 400px 400px, 350px 350px, 250px 250px;
-      opacity: 0.1;
-      animation: float 20s ease-in-out infinite;
+      inset: 0;
       pointer-events: none;
       z-index: -1;
     }
 
-    @keyframes float {
-      0%, 100% { 
-        transform: translate(0, 0) scale(1);
-      }
-      25% { 
-        transform: translate(30px, -20px) scale(1.05);
-      }
-      50% { 
-        transform: translate(-20px, 30px) scale(0.95);
-      }
-      75% { 
-        transform: translate(20px, 20px) scale(1.02);
-      }
+    /* Static, soft circles layer for depth */
+    body::before {
+      background:
+        radial-gradient(circle at 15% 25%, rgba(58, 154, 234, 0.10) 0%, rgba(58, 154, 234, 0.0) 55%),
+        radial-gradient(circle at 85% 35%, rgba(58, 154, 234, 0.08) 0%, rgba(58, 154, 234, 0.0) 55%),
+        radial-gradient(circle at 35% 80%, rgba(58, 154, 234, 0.06) 0%, rgba(58, 154, 234, 0.0) 55%);
+      mask-image: radial-gradient(circle, rgba(0,0,0,0.9), rgba(0,0,0,0.7));
+    }
+
+    /* Animated subtle circles using current --brand color */
+    body::after {
+      background:
+        radial-gradient(circle at var(--c1x, 20%) var(--c1y, 20%), var(--brand) 0%, rgba(0,0,0,0) 60%) no-repeat,
+        radial-gradient(circle at var(--c2x, 80%) var(--c2y, 40%), var(--brand) 0%, rgba(0,0,0,0) 60%) no-repeat,
+        radial-gradient(circle at var(--c3x, 40%) var(--c3y, 80%), var(--brand) 0%, rgba(0,0,0,0) 60%) no-repeat;
+      background-size: 260px 260px, 320px 320px, 280px 280px;
+      opacity: 0.12;
+      animation: floatC1 22s ease-in-out infinite alternate,
+                 floatC2 26s ease-in-out infinite alternate,
+                 floatC3 24s ease-in-out infinite alternate;
+    }
+
+    @keyframes floatC1 {
+      0%   { --c1x: 18%; --c1y: 18%; }
+      50%  { --c1x: 24%; --c1y: 22%; }
+      100% { --c1x: 20%; --c1y: 20%; }
+    }
+    @keyframes floatC2 {
+      0%   { --c2x: 82%; --c2y: 36%; }
+      50%  { --c2x: 78%; --c2y: 44%; }
+      100% { --c2x: 80%; --c2y: 40%; }
+    }
+    @keyframes floatC3 {
+      0%   { --c3x: 38%; --c3y: 78%; }
+      50%  { --c3x: 42%; --c3y: 82%; }
+      100% { --c3x: 40%; --c3y: 80%; }
     }
 
 
