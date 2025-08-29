@@ -135,11 +135,18 @@
             window.open('/blog-editor.html?edit=' + post.id, '_blank');
           };
           
+          const statusMap = {
+            published: {label:'Gepubliceerd', bg:'#10b981'},
+            draft: {label:'Concept', bg:'#6b7280'},
+            scheduled: {label:'Ingepland', bg:'#f59e0b'},
+            offline: {label:'Offline', bg:'#ef4444'}
+          };
+          const meta = statusMap[post.status] || statusMap.published;
           row.innerHTML = `
             <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">${post.title}</td>
             <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">
-              <span style="background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">
-                ${post.status === 'published' ? 'Gepubliceerd' : post.status}
+              <span style="background: ${meta.bg}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">
+                ${meta.label}
               </span>
             </td>
           `;

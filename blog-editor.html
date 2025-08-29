@@ -267,6 +267,8 @@
     .btn-outline:hover {
       background: #f9fafb;
     }
+    .btn-danger { background:#ef4444; color:#fff; }
+    .btn-danger:hover { background:#dc2626; }
     
     .back-link {
       color: #6b7280;
@@ -369,6 +371,7 @@
         <button type="button" class="btn btn-outline" id="save-draft">Concept Opslaan</button>
         <button type="button" class="btn btn-outline" id="schedule-blog">Inplannen</button>
         <button type="button" class="btn btn-primary" id="publish-blog">Publiceren</button>
+        <button type="button" class="btn btn-danger" id="delete-blog" style="display:none;">Verwijderen</button>
       </div>
     </form>
   </div>
@@ -391,6 +394,7 @@
       const saveDraftBtn = document.getElementById('save-draft');
       const scheduleBtn = document.getElementById('schedule-blog');
       const publishBtn = document.getElementById('publish-blog');
+      const deleteBtn = document.getElementById('delete-blog');
       
       // Check if we're editing an existing post
       const urlParams = new URLSearchParams(window.location.search);
@@ -408,10 +412,20 @@
           blogMetaDescription.value = post.metaDescription;
           blogContent.innerHTML = post.content;
           
-          // Update page title
+          // Update page title and actions for edit mode
           document.title = 'Bewerk: ' + post.title + ' - Vitalora';
           document.querySelector('.editor-title').textContent = 'Blog Bewerken';
           document.querySelector('.editor-subtitle').textContent = 'Bewerk je bestaande blog post';
+          publishBtn.textContent = 'Bijwerken';
+          saveDraftBtn.textContent = 'Als concept opslaan';
+          scheduleBtn.textContent = 'Opnieuw inplannen';
+          deleteBtn.style.display = 'inline-block';
+          // Add/offline toggle button inline (reuse schedule button label based on status)
+          if (post.status === 'published') {
+            scheduleBtn.textContent = 'Offline zetten';
+          } else if (post.status === 'offline') {
+            scheduleBtn.textContent = 'Online zetten';
+          }
         }
       }
       
@@ -570,7 +584,7 @@
         window.location.href = '/personeel-dashboard';
       });
       
-      // Schedule blog (create or update)
+      // Schedule or toggle offline/online in edit mode
       scheduleBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
         let slug = blogSlug.value.trim();
@@ -581,6 +595,20 @@
         if (!title || !content) {
           alert('Vul titel en inhoud in');
           return;
+        }
+
+        // If in edit mode and button says Offline/Online zetten, toggle
+        if (editId && (this.textContent.includes('Offline') || this.textContent.includes('Online'))) {
+          let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+          const index = blogPosts.findIndex(p => p.id == editId);
+          if (index !== -1) {
+            const nextStatus = this.textContent.includes('Offline') ? 'offline' : 'published';
+            blogPosts[index].status = nextStatus;
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
+            alert(nextStatus === 'offline' ? 'Blog offline gezet' : 'Blog online gezet');
+            window.location.href = '/personeel-dashboard';
+            return;
+          }
         }
 
         const scheduleDate = prompt('Voer datum en tijd in (YYYY-MM-DD HH:MM):');
@@ -693,6 +721,17 @@
           console.log('Publishing blog:', blogPosts[editId ? blogPosts.findIndex(p => p.id == editId) : 0]);
           window.location.href = '/personeel-dashboard';
         }
+      });
+
+      // Delete blog
+      deleteBtn.addEventListener('click', function(){
+        if(!editId){ return; }
+        if(!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
+        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        blogPosts = blogPosts.filter(p => p.id != editId);
+        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
+        alert('Blog verwijderd');
+        window.location.href = '/personeel-dashboard';
       });
       
     })();
