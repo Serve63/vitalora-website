@@ -570,11 +570,11 @@
         const courseData = await response.json();
         console.log('Loaded course data:', courseData);
         
-        // Update course title and subtitle
-        if (courseData.title) {
+        // Update course title and subtitle only if they exist in the data
+        if (courseData.title && courseData.title !== 'Clean Reset') {
           document.getElementById('courseTitle').textContent = courseData.title;
         }
-        if (courseData.subtitle) {
+        if (courseData.subtitle && courseData.subtitle !== 'Detox en gifstoffen') {
           document.getElementById('courseSubtitle').textContent = courseData.subtitle;
         }
         
