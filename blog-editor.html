@@ -273,7 +273,9 @@
       
       <div class="editor-actions">
         <a href="/personeel-dashboard" class="btn btn-outline">Cancel</a>
-        <button type="button" class="btn btn-primary" id="save-blog">Save</button>
+        <button type="button" class="btn btn-outline" id="save-draft">Save Draft</button>
+        <button type="button" class="btn btn-outline" id="schedule-blog">Schedule</button>
+        <button type="button" class="btn btn-primary" id="publish-blog">Publish</button>
       </div>
     </form>
   </div>
@@ -293,7 +295,9 @@
       const blogMetaTitle = document.getElementById('blog-meta-title');
       const blogMetaDescription = document.getElementById('blog-meta-description');
       const blogContent = document.getElementById('blog-content');
-      const saveBtn = document.getElementById('save-blog');
+      const saveDraftBtn = document.getElementById('save-draft');
+      const scheduleBtn = document.getElementById('schedule-blog');
+      const publishBtn = document.getElementById('publish-blog');
       
       // Auto-generate URL from title
       blogTitle.addEventListener('input', function() {
@@ -371,8 +375,26 @@
         });
       });
       
-      // Save blog
-      saveBtn.addEventListener('click', function() {
+      // Save as draft
+      saveDraftBtn.addEventListener('click', function() {
+        const title = blogTitle.value.trim();
+        const slug = blogSlug.value.trim();
+        const metaTitle = blogMetaTitle.value.trim();
+        const metaDescription = blogMetaDescription.value.trim();
+        const content = blogContent.value.trim();
+        
+        if (!title) {
+          alert('Please fill in title');
+          return;
+        }
+        
+        console.log('Saving draft:', { title, slug, metaTitle, metaDescription, content, status: 'draft' });
+        alert('Draft saved successfully!');
+        window.location.href = '/personeel-dashboard';
+      });
+      
+      // Schedule blog
+      scheduleBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
         const slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
@@ -384,10 +406,32 @@
           return;
         }
         
-        // Here you would typically save to backend
-        console.log('Saving blog:', { title, slug, metaTitle, metaDescription, content });
-        alert('Blog saved successfully!');
+        const scheduleDate = prompt('Enter schedule date and time (YYYY-MM-DD HH:MM):');
+        if (!scheduleDate) return;
+        
+        console.log('Scheduling blog:', { title, slug, metaTitle, metaDescription, content, status: 'scheduled', publishDate: scheduleDate });
+        alert('Blog scheduled successfully!');
         window.location.href = '/personeel-dashboard';
+      });
+      
+      // Publish blog
+      publishBtn.addEventListener('click', function() {
+        const title = blogTitle.value.trim();
+        const slug = blogSlug.value.trim();
+        const metaTitle = blogMetaTitle.value.trim();
+        const metaDescription = blogMetaDescription.value.trim();
+        const content = blogContent.value.trim();
+        
+        if (!title || !content) {
+          alert('Please fill in title and content');
+          return;
+        }
+        
+        if (confirm('Are you sure you want to publish this blog post?')) {
+          console.log('Publishing blog:', { title, slug, metaTitle, metaDescription, content, status: 'published' });
+          alert('Blog published successfully!');
+          window.location.href = '/personeel-dashboard';
+        }
       });
       
     })();
