@@ -253,6 +253,13 @@ body.home footer .footer-bottom { opacity: .85; }
     border-radius: 12px !important;
     box-sizing: border-box !important;
   }
+
+  /* Secondary CTA smaller on mobile */
+  body.home .hero-text .cta-button-secondary {
+    width: 240px !important;
+    padding: 14px 20px !important;
+    font-size: 17px !important;
+  }
   
   /* Stats section op mobiel */
   body.home .stats-section {
