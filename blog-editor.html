@@ -681,7 +681,7 @@
               blogPosts[postIndex] = {
                 ...existing,
                 title,
-                slug: slug || existing.slug,
+                slug: slug, // Always use the new slug value
                 metaTitle,
                 metaDescription,
                 content,
