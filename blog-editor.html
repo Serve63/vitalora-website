@@ -404,10 +404,20 @@
               }
               break;
             case 'afbeelding toevoegen':
-              const imageUrl = prompt('Voer afbeelding URL in:');
-              if (imageUrl) {
-                document.execCommand('insertHTML', false, `<img src="${imageUrl}" alt="Afbeelding" style="max-width: 100%; height: auto;">`);
-              }
+              const fileInput = document.createElement('input');
+              fileInput.type = 'file';
+              fileInput.accept = 'image/*';
+              fileInput.onchange = function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                  const reader = new FileReader();
+                  reader.onload = function(e) {
+                    document.execCommand('insertHTML', false, `<img src="${e.target.result}" alt="Afbeelding" style="max-width: 100%; height: auto;">`);
+                  };
+                  reader.readAsDataURL(file);
+                }
+              };
+              fileInput.click();
               break;
           }
         });
