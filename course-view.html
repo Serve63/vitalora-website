@@ -568,6 +568,7 @@
         }
         
         const courseData = await response.json();
+        console.log('Loaded course data:', courseData);
         
         // Update course title and subtitle
         if (courseData.title) {
@@ -585,11 +586,14 @@
           document.getElementById('badgeDays').textContent = courseData.duration;
         }
         if (courseData.lessons) {
-          document.getElementById('badgeLessons').textContent = courseData.lessons + ' lessen';
+          const lessonsCount = typeof courseData.lessons === 'number' ? courseData.lessons : 51;
+          document.getElementById('badgeLessons').textContent = lessonsCount + ' lessen';
         }
         
         // Update progress
-        updateProgress(courseData.progress || 0, courseData.lessons || 51);
+        const progressCount = typeof courseData.progress === 'number' ? courseData.progress : 0;
+        const totalLessons = typeof courseData.lessons === 'number' ? courseData.lessons : 51;
+        updateProgress(progressCount, totalLessons);
         
       } catch (error) {
         console.log('Error loading course data:', error);
@@ -597,9 +601,13 @@
     }
 
     function updateProgress(completed, total) {
-      const percentage = (completed / total) * 100;
+      // Ensure we have valid numbers
+      const completedNum = typeof completed === 'number' ? completed : 0;
+      const totalNum = typeof total === 'number' ? total : 51;
+      
+      const percentage = (completedNum / totalNum) * 100;
       document.getElementById('progressFill').style.width = percentage + '%';
-      document.getElementById('progressText').textContent = `${completed} van ${total} lessen voltooid`;
+      document.getElementById('progressText').textContent = `${completedNum} van ${totalNum} lessen voltooid`;
     }
 
     // Lesson click handlers
