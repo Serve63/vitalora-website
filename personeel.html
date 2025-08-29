@@ -15,9 +15,12 @@
     .staff-card{max-width:420px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 18px 40px rgba(15,23,42,.08);padding:24px}
     .staff-card h1{font-size:24px;margin-bottom:12px;color:#333}
     .staff-card p{color:#64748b;margin-bottom:16px}
-    .staff-card input{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit;margin-bottom:12px}
+    .pin-container{display:flex;gap:8px;justify-content:center;margin-bottom:16px}
+    .pin-input{width:48px;height:48px;border:2px solid #e5e7eb;border-radius:8px;text-align:center;font-size:20px;font-weight:700;color:#333;background:#fff;transition:all 0.2s ease}
+    .pin-input:focus{outline:none;border-color:#2954B3;box-shadow:0 0 0 3px rgba(41,84,179,0.1)}
+    .pin-input.filled{border-color:#2954B3;background:#f8fafc}
     .staff-card button{width:100%;background:#2954B3;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
-    .staff-error{color:#ef4444;min-height:18px;margin-bottom:8px}
+    .staff-error{color:#ef4444;min-height:18px;margin-bottom:8px;text-align:center}
   </style>
 </head>
 <body>
@@ -39,27 +42,73 @@
       <h1>Personeel</h1>
       <p>Voer de personeelscode in om naar het interne dashboard te gaan.</p>
       <div id="err" class="staff-error"></div>
-      <input id="staff-code" type="password" inputmode="numeric" maxlength="6" placeholder="Toegangscode" />
+      <div class="pin-container">
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+      </div>
       <button id="enter">Naar dashboard</button>
     </div>
   </main>
 
   <script>
     (function(){
-      // Add enter key handler
-      document.getElementById('staff-code').addEventListener('keydown', function(e){ 
-        if(e.key==='Enter'){ 
-          document.getElementById('enter').click(); 
-        } 
+      const pinInputs = document.querySelectorAll('.pin-input');
+      const enterButton = document.getElementById('enter');
+      const errorDiv = document.getElementById('err');
+      
+      // Auto-focus first input
+      pinInputs[0].focus();
+      
+      // Handle input in each PIN field
+      pinInputs.forEach((input, index) => {
+        input.addEventListener('input', function(e) {
+          // Only allow numbers
+          this.value = this.value.replace(/[^0-9]/g, '');
+          
+          // Move to next input if current is filled
+          if (this.value && index < pinInputs.length - 1) {
+            pinInputs[index + 1].focus();
+          }
+        });
+        
+        input.addEventListener('keydown', function(e) {
+          // Handle backspace
+          if (e.key === 'Backspace' && !this.value && index > 0) {
+            pinInputs[index - 1].focus();
+          }
+          
+          // Handle enter key
+          if (e.key === 'Enter') {
+            enterButton.click();
+          }
+        });
+        
+        input.addEventListener('paste', function(e) {
+          e.preventDefault();
+          const pastedData = e.clipboardData.getData('text').replace(/[^0-9]/g, '');
+          for (let i = 0; i < Math.min(pastedData.length, pinInputs.length); i++) {
+            pinInputs[i].value = pastedData[i];
+          }
+          // Focus last filled input or last input
+          const lastFilledIndex = Math.min(pastedData.length - 1, pinInputs.length - 1);
+          pinInputs[lastFilledIndex].focus();
+        });
       });
       
-      document.getElementById('enter').addEventListener('click', function(){
-        const v = (document.getElementById('staff-code').value || '').trim();
-        if(v === '000000') {
+      enterButton.addEventListener('click', function(){
+        const code = Array.from(pinInputs).map(input => input.value).join('');
+        if(code === '000000') {
           localStorage.setItem('staff_access_ok','1');
           window.location.href = '/personeel-dashboard';
         } else {
-          document.getElementById('err').textContent = 'Ongeldige code.';
+          errorDiv.textContent = 'Ongeldige code.';
+          // Clear all inputs and focus first
+          pinInputs.forEach(input => input.value = '');
+          pinInputs[0].focus();
         }
       });
     })();
