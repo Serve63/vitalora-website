@@ -48,26 +48,25 @@
     .bg-circles {
       position: fixed;
       inset: 0;
-      z-index: -1;
+      z-index: 0; /* above body bg, behind content */
       pointer-events: none;
       overflow: hidden;
     }
 
     .bg-circles .circle {
       position: absolute;
-      width: 260px;
-      height: 260px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      background: radial-gradient(circle at 50% 50%, var(--brand) 0%, transparent 60%);
-      opacity: 0.14;
+      background: var(--brand);
+      opacity: 0.08;
       will-change: transform;
-      filter: blur(0.2px);
     }
 
-    .bg-circles .c1 { top: 12%; left: 10%; width: 240px; height: 240px; animation: drift1 22s ease-in-out infinite alternate; }
-    .bg-circles .c2 { top: 28%; right: 12%; width: 300px; height: 300px; animation: drift2 26s ease-in-out infinite alternate; }
-    .bg-circles .c3 { bottom: 14%; left: 28%; width: 260px; height: 260px; animation: drift3 24s ease-in-out infinite alternate; }
-    .bg-circles .c4 { bottom: 8%; right: 10%; width: 220px; height: 220px; animation: drift4 28s ease-in-out infinite alternate; }
+    .bg-circles .c1 { top: 12%; left: 10%; width: 200px; height: 200px; animation: drift1 22s ease-in-out infinite alternate; }
+    .bg-circles .c2 { top: 26%; right: 12%; width: 260px; height: 260px; animation: drift2 26s ease-in-out infinite alternate; }
+    .bg-circles .c3 { bottom: 16%; left: 24%; width: 220px; height: 220px; animation: drift3 24s ease-in-out infinite alternate; }
+    .bg-circles .c4 { bottom: 10%; right: 8%; width: 180px; height: 180px; animation: drift4 28s ease-in-out infinite alternate; }
 
     @keyframes drift1 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(18px,-14px) scale(1.03); } }
     @keyframes drift2 { 0% { transform: translate(0,0) scale(1); } 100% { transform: translate(-22px,16px) scale(0.98); } }
