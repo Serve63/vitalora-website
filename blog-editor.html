@@ -213,6 +213,13 @@
     .editor-content .summary-content {
       padding: 16px;
       color: #333333;
+      min-height: 40px;
+    }
+    
+    .editor-content .summary-content:empty:before {
+      content: "Even Kort Uitgelegd...";
+      color: #9ca3af;
+      font-style: italic;
     }
     
     .editor-content:empty:before {
@@ -385,6 +392,19 @@
       const scheduleBtn = document.getElementById('schedule-blog');
       const publishBtn = document.getElementById('publish-blog');
       
+      // Handle clicking outside summary content to exit
+      document.addEventListener('click', function(e) {
+        if (!e.target.closest('.summary-content')) {
+          // Remove focus from any summary content
+          const summaryContents = document.querySelectorAll('.summary-content');
+          summaryContents.forEach(content => {
+            if (content === document.activeElement) {
+              content.blur();
+            }
+          });
+        }
+      });
+      
       // Auto-generate URL from title
       blogTitle.addEventListener('input', function() {
         const slug = this.value
@@ -448,9 +468,7 @@
                       <div class="icon">📋</div>
                       ${summaryTitle}
                     </div>
-                    <div class="summary-content">
-                      <p>Voeg hier je samenvatting toe...</p>
-                    </div>
+                    <div class="summary-content" contenteditable="true"></div>
                   </div>
                 `;
                 document.execCommand('insertHTML', false, summaryHTML);
