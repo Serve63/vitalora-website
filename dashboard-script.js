@@ -81,12 +81,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }, observerOptions);
     
-    // Observe course cards for animation
+    // Course cards are now visible immediately (no fade-in animation)
     courseCards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        card.style.transition = `opacity 0.6s ease ${index * 0.1}s, transform 0.6s ease ${index * 0.1}s`;
-        observer.observe(card);
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+        card.style.transition = 'none';
     });
 
     // Progress dots animation
@@ -111,18 +110,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Header features animation
+    // Header features are now visible immediately (no fade-in animation)
     const headerFeatures = document.querySelectorAll('.header-features .feature');
     
     headerFeatures.forEach((feature, index) => {
-        feature.style.opacity = '0';
-        feature.style.transform = 'translateY(20px)';
-        feature.style.transition = `opacity 0.6s ease ${index * 0.2}s, transform 0.6s ease ${index * 0.2}s`;
-        
-        setTimeout(() => {
-            feature.style.opacity = '1';
-            feature.style.transform = 'translateY(0)';
-        }, 500 + index * 200);
+        feature.style.opacity = '1';
+        feature.style.transform = 'translateY(0)';
+        feature.style.transition = 'none';
     });
 
     // Course badge color animations
