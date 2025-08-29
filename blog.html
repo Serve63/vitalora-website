@@ -38,10 +38,12 @@
         
 		.blog-grid { 
 			display: grid; 
-            grid-template-columns: repeat(auto-fill, minmax(180px, 180px));
+            grid-template-columns: repeat(auto-fill, 180px) !important;
+            grid-auto-rows: 180px !important;
             gap: 12px;
             margin-top: 40px;
             justify-content: start;
+            justify-items: start;
         }
         
 		.post-card { 
@@ -50,7 +52,8 @@
 			overflow: hidden; 
             box-shadow: 0 2px 8px rgba(0,0,0,0.05);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
-            aspect-ratio: 1;
+            width: 180px !important;
+            height: 180px !important;
 			display: flex;
 			flex-direction: column;
 		}
@@ -119,9 +122,16 @@
 		}
 		
 			.blog-grid {
-				grid-template-columns: repeat(auto-fill, minmax(140px, 140px));
+				grid-template-columns: repeat(auto-fill, 140px) !important;
+                grid-auto-rows: 140px !important;
                 gap: 10px;
                 justify-content: start;
+                justify-items: start;
+			}
+
+			.post-card {
+                width: 140px !important;
+                height: 140px !important;
 			}
 		}
 	</style>
