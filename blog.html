@@ -525,7 +525,9 @@
                     var href = '/blog-post.html?id=' + post.id;
 
                     card.innerHTML = `
-                            <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
+                            <div class="post-cover" style="background:url(${img}) center/cover no-repeat; position: relative;">
+                                <div style="position: absolute; top: 8px; right: 8px; background: #10b981; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">NIEUW</div>
+                            </div>
                             <div class="post-body">
                                     <div>
                                             <div class="post-title">${post.title}</div>
@@ -540,7 +542,7 @@
                     posts.appendChild(card);
                 });
 
-                console.log("Starting to process titles...");
+                console.log("Starting to process existing titles...");
                 titles.forEach(function(t){
                         console.log("Processing title:", t);
                         var card = document.createElement('div');
