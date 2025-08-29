@@ -351,8 +351,8 @@
           <button type="button" class="toolbar-btn" title="Kop 2">H2</button>
           <button type="button" class="toolbar-btn" title="Kop 3">H3</button>
           <button type="button" class="toolbar-btn" title="Kop 4">H4</button>
-          <button type="button" class="toolbar-btn" title="Citaat">"</button>
-          <button type="button" class="toolbar-btn" title="In het kort">📋</button>
+          <button type="button" class="toolbar-btn" title="Quote">"</button>
+          <button type="button" class="toolbar-btn" title="Kort">📋</button>
           <button type="button" class="toolbar-btn" title="Afbeelding Toevoegen">🖼️</button>
         </div>
         <div class="editor-content" id="blog-content" contenteditable="true" placeholder="Begin met het schrijven van je blog post..."></div>
@@ -432,15 +432,15 @@
             case 'kop 4':
               document.execCommand('formatBlock', false, 'h4');
               break;
-            case 'citaat':
+            case 'quote':
               if (document.queryCommandState('formatBlock') && document.queryCommandValue('formatBlock') === 'blockquote') {
                 document.execCommand('formatBlock', false, 'div');
               } else {
                 document.execCommand('formatBlock', false, 'blockquote');
               }
               break;
-            case 'in het kort':
-              const summaryTitle = prompt('Voer titel in voor "In het kort" sectie:', 'In het kort');
+            case 'kort':
+              const summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'Kort');
               if (summaryTitle) {
                 const summaryHTML = `
                   <div class="summary-box">
