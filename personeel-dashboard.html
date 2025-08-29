@@ -313,26 +313,15 @@
         <div class="form-group">
           <label class="form-label">Content</label>
           <div class="editor-toolbar">
-            <button class="toolbar-btn active" title="Bold">B</button>
+            <button class="toolbar-btn" title="Bold">B</button>
             <button class="toolbar-btn" title="Italic">I</button>
             <button class="toolbar-btn" title="Underline">U</button>
-            <button class="toolbar-btn" title="Strikethrough">S</button>
-            <button class="toolbar-btn" title="Link">🔗</button>
-            <button class="toolbar-btn" title="Paragraph">¶</button>
-            <button class="toolbar-btn" title="Blockquote">"</button>
-            <button class="toolbar-btn" title="Color">🎨</button>
-            <button class="toolbar-btn" title="Emoji">😊</button>
-            <button class="toolbar-btn" title="Align">≡</button>
-            <button class="toolbar-btn" title="List">•</button>
-            <button class="toolbar-btn" title="Numbered List">1.</button>
-            <button class="toolbar-btn" title="Image">🖼️</button>
-            <button class="toolbar-btn" title="Video">📹</button>
-            <button class="toolbar-btn" title="Undo">↶</button>
-            <button class="toolbar-btn" title="Redo">↷</button>
-            <button class="toolbar-btn" title="Clear">🧹</button>
-            <button class="toolbar-btn" title="Code">&lt;/&gt;</button>
-            <button class="toolbar-btn" title="Custom">[]</button>
-            <button class="toolbar-btn" title="More">{}</button>
+            <button class="toolbar-btn" title="Normal Text">P</button>
+            <button class="toolbar-btn" title="Heading 1">H1</button>
+            <button class="toolbar-btn" title="Heading 2">H2</button>
+            <button class="toolbar-btn" title="Heading 3">H3</button>
+            <button class="toolbar-btn" title="Heading 4">H4</button>
+            <button class="toolbar-btn" title="Quote">"</button>
           </div>
           <textarea class="editor-content" id="blog-content" placeholder="Start writing your blog post..."></textarea>
         </div>
@@ -422,23 +411,55 @@
         closeModal();
       });
       
-      // Toolbar functionality (basic)
+      // Toolbar functionality
       document.querySelectorAll('.toolbar-btn').forEach(btn => {
         btn.addEventListener('click', function() {
-          // Remove active from all buttons
-          document.querySelectorAll('.toolbar-btn').forEach(b => b.classList.remove('active'));
-          // Add active to clicked button
-          this.classList.add('active');
-          
-          // Basic formatting (you can expand this)
           const command = this.title.toLowerCase();
-          if (command === 'bold') {
-            document.execCommand('bold');
-          } else if (command === 'italic') {
-            document.execCommand('italic');
-          } else if (command === 'underline') {
-            document.execCommand('underline');
+          const textarea = blogContent;
+          const start = textarea.selectionStart;
+          const end = textarea.selectionEnd;
+          const selectedText = textarea.value.substring(start, end);
+          const beforeText = textarea.value.substring(0, start);
+          const afterText = textarea.value.substring(end);
+          
+          let newText = '';
+          
+          switch(command) {
+            case 'bold':
+              newText = beforeText + '**' + selectedText + '**' + afterText;
+              break;
+            case 'italic':
+              newText = beforeText + '*' + selectedText + '*' + afterText;
+              break;
+            case 'underline':
+              newText = beforeText + '<u>' + selectedText + '</u>' + afterText;
+              break;
+            case 'normal text':
+              newText = beforeText + selectedText + afterText;
+              break;
+            case 'heading 1':
+              newText = beforeText + '# ' + selectedText + afterText;
+              break;
+            case 'heading 2':
+              newText = beforeText + '## ' + selectedText + afterText;
+              break;
+            case 'heading 3':
+              newText = beforeText + '### ' + selectedText + afterText;
+              break;
+            case 'heading 4':
+              newText = beforeText + '#### ' + selectedText + afterText;
+              break;
+            case 'quote':
+              newText = beforeText + '> ' + selectedText + afterText;
+              break;
           }
+          
+          textarea.value = newText;
+          textarea.focus();
+          
+          // Set cursor position after the inserted text
+          const newCursorPos = start + (newText.length - textarea.value.length + (newText.length - beforeText.length - afterText.length));
+          textarea.setSelectionRange(newCursorPos, newCursorPos);
         });
       });
       
