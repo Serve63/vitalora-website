@@ -38,8 +38,8 @@
         
 		.blog-grid { 
 			display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 16px;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
             margin-top: 40px;
         }
         
@@ -67,7 +67,7 @@
         }
         
 		.post-body { 
-            padding: 12px;
+            padding: 10px;
 			flex: 1;
 			display: flex;
 			flex-direction: column;
@@ -75,31 +75,31 @@
 		}
         
 		.post-title { 
-            font-size: 14px;
+            font-size: 13px;
 			font-weight: 600; 
             color: #1f2937;
-			margin-bottom: 8px;
+			margin-bottom: 6px;
 			line-height: 1.2;
         }
         
 		.post-meta {
 			display: flex;
-            gap: 8px;
-			margin-bottom: 8px;
-			font-size: 11px;
+            gap: 6px;
+			margin-bottom: 6px;
+            font-size: 10px;
             color: #6b7280;
-		}
+        }
         
 		.post-link { 
             display: inline-block;
             background: #3A9AEA;
             color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
+            padding: 4px 8px;
+            border-radius: 3px;
             text-decoration: none;
 			font-weight: 600; 
             transition: background 0.2s ease;
-            font-size: 12px;
+            font-size: 10px;
             align-self: flex-start;
 		}
         
@@ -203,7 +203,7 @@
                         card.className = 'post-card';
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
                 var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                card.innerHTML = '<div class="post-cover" style="background:url(' + img + ') center/cover no-repeat"></div><div class="post-body"><div><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div></div><a href="/blog-post.html?id=' + post.id + '" class="post-link">Lees meer</a></div>';
+                card.innerHTML = '<div class="post-cover" style="background:url(' + img + ') center/cover no-repeat"></div><div class="post-body"><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div><a href="/blog-post.html?id=' + post.id + '" class="post-link">Lees meer</a></div>';
                 postsContainer.appendChild(card);
             }
             
