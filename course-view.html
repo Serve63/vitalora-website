@@ -25,41 +25,591 @@
   <link rel="stylesheet" href="/assets/css/header.css?v=12">
   <link rel="stylesheet" href="/assets/css/footer.css?v=2">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=4">
-  <link rel="stylesheet" href="/assets/css/course.css?v=60">
+  <style>
+    :root {
+      --brand: #10b981;
+      --brand-dark: #059669;
+      --text-primary: #333333;
+      --text-secondary: #6b7280;
+      --bg-light: #f8fafc;
+      --border-light: #e2e8f0;
+    }
+
+    body {
+      font-family: 'Quicksand', sans-serif;
+      background: var(--bg-light);
+      color: var(--text-primary);
+      line-height: 1.6;
+      margin: 0;
+      padding: 0;
+    }
+
+    .course-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .course-header {
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 20px;
+      margin-bottom: 40px;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(16, 185, 129, 0.2);
+    }
+
+    .course-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin: 0 0 16px 0;
+      line-height: 1.2;
+    }
+
+    .course-subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      margin: 0 0 32px 0;
+      font-weight: 400;
+    }
+
+    .course-meta {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.15);
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-weight: 500;
+      backdrop-filter: blur(10px);
+    }
+
+    .meta-item .icon {
+      width: 20px;
+      height: 20px;
+    }
+
+    .course-content {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .lessons-section {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 32px 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: "📚";
+      font-size: 1.5rem;
+    }
+
+    .chapter {
+      margin-bottom: 40px;
+    }
+
+    .chapter-header {
+      background: var(--bg-light);
+      padding: 20px 24px;
+      border-radius: 12px;
+      margin-bottom: 16px;
+      border-left: 4px solid var(--brand);
+    }
+
+    .chapter-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 8px 0;
+    }
+
+    .chapter-description {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .lessons-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .lesson-card {
+      background: white;
+      border: 2px solid var(--border-light);
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .lesson-card:hover {
+      border-color: var(--brand);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.15);
+    }
+
+    .lesson-number {
+      width: 40px;
+      height: 40px;
+      background: var(--brand);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+
+    .lesson-content {
+      flex: 1;
+    }
+
+    .lesson-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 6px 0;
+    }
+
+    .lesson-meta {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .lesson-duration {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .lesson-type {
+      background: var(--bg-light);
+      color: var(--text-secondary);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .lesson-status {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--border-light);
+      flex-shrink: 0;
+    }
+
+    .lesson-status.completed {
+      background: var(--brand);
+    }
+
+    .lesson-status.current {
+      background: #f59e0b;
+    }
+
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .progress-card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .progress-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      color: var(--text-primary);
+    }
+
+    .progress-bar {
+      width: 100%;
+      height: 8px;
+      background: var(--border-light);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
+      width: 0%;
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      text-align: center;
+    }
+
+    .course-info {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .info-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 16px 0;
+      color: var(--text-primary);
+    }
+
+    .info-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .info-item:last-child {
+      border-bottom: none;
+    }
+
+    .info-label {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    .info-value {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    @media (max-width: 768px) {
+      .course-container {
+        padding: 20px 16px;
+      }
+
+      .course-header {
+        padding: 40px 24px;
+      }
+
+      .course-title {
+        font-size: 2rem;
+      }
+
+      .course-meta {
+        gap: 12px;
+      }
+
+      .meta-item {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+      }
+
+      .course-content {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .lessons-section {
+        padding: 24px;
+      }
+
+      .lesson-card {
+        padding: 16px;
+      }
+
+      .lesson-title {
+        font-size: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Global floating circles for full page animation -->
-  <div class="floating-circle-1"></div>
-  <div class="floating-circle-2"></div>
-  <div class="floating-circle-3"></div>
-  <div class="floating-circle-4"></div>
-  <div class="floating-circle-5"></div>
-
   <div data-include="site-header"></div>
 
-  <section id="courseHero" class="course-hero hero--slim" style="opacity: 0; transition: opacity 0.3s ease; visibility: hidden;">
-    <div class="course-hero__inner">
-      <div class="course-title-container">
-        <h1 id="courseTitle">Cursus laden...</h1>
-        <span id="courseSubtitle" class="subtitle"></span>
-      </div>
-      <div class="badges">
-        <span id="badgeLevel" class="badge">Theorie</span>
-        <span id="badgeDays" class="badge hidden"></span>
-        <span id="badgeLessons" class="badge hidden"></span>
+  <div class="course-container">
+    <!-- Course Header -->
+    <div class="course-header">
+      <h1 class="course-title" id="courseTitle">Cursus laden...</h1>
+      <p class="course-subtitle" id="courseSubtitle">Detox en gifstoffen</p>
+      
+      <div class="course-meta">
+        <div class="meta-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+          </svg>
+          <span id="badgeLevel">Intensief</span>
+        </div>
+        <div class="meta-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+          </svg>
+          <span id="badgeDays">21 dagen</span>
+        </div>
+        <div class="meta-item">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
+          </svg>
+          <span id="badgeLessons">51 lessen</span>
+        </div>
       </div>
     </div>
-  </section>
 
-  <main class="course container" style="opacity: 0; transition: opacity 0.3s ease; visibility: hidden;">
-    <h2 class="section-title">Lessen</h2>
-    <div id="lessonList" class="lesson-list"></div>
-  </main>
+    <!-- Course Content -->
+    <div class="course-content">
+      <!-- Lessons Section -->
+      <div class="lessons-section">
+        <h2 class="section-title">Cursus Inhoud</h2>
+        
+        <!-- Chapter 1 -->
+        <div class="chapter">
+          <div class="chapter-header">
+            <h3 class="chapter-title">Hoofdstuk 1: Introductie tot Detox</h3>
+            <p class="chapter-description">Leer de basisprincipes van detox en waarom het belangrijk is voor je gezondheid</p>
+          </div>
+          <div class="lessons-list">
+            <div class="lesson-card">
+              <div class="lesson-number">1</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">De eerste stap in jouw detoxreis</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">15 min</span>
+                  <span class="lesson-type">Theorie</span>
+                </div>
+              </div>
+              <div class="lesson-status completed"></div>
+            </div>
+            <div class="lesson-card">
+              <div class="lesson-number">2</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Wat toxines écht zijn</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">12 min</span>
+                  <span class="lesson-type">Theorie</span>
+                </div>
+              </div>
+              <div class="lesson-status current"></div>
+            </div>
+            <div class="lesson-card">
+              <div class="lesson-number">3</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Hoe je lichaam zichzelf reinigt</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">18 min</span>
+                  <span class="lesson-type">Theorie</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+          </div>
+        </div>
 
-  <div data-include="site-footer"></div>
+        <!-- Chapter 2 -->
+        <div class="chapter">
+          <div class="chapter-header">
+            <h3 class="chapter-title">Hoofdstuk 2: Praktische Detox Methoden</h3>
+            <p class="chapter-description">Ontdek concrete manieren om je lichaam te ondersteunen bij het ontgiften</p>
+          </div>
+          <div class="lessons-list">
+            <div class="lesson-card">
+              <div class="lesson-number">4</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Voeding die ontgift</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">22 min</span>
+                  <span class="lesson-type">Praktisch</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+            <div class="lesson-card">
+              <div class="lesson-number">5</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Detox dranken en smoothies</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">16 min</span>
+                  <span class="lesson-type">Recepten</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+            <div class="lesson-card">
+              <div class="lesson-number">6</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Lifestyle aanpassingen</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">20 min</span>
+                  <span class="lesson-type">Praktisch</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+          </div>
+        </div>
 
-  <script defer src="/assets/js/route-scope.js?v=1"></script>
-  <script defer src="/assets/js/header.js?v=7"></script>
-  <script defer src="/assets/js/course-view.js?v=10"></script>
+        <!-- Chapter 3 -->
+        <div class="chapter">
+          <div class="chapter-header">
+            <h3 class="chapter-title">Hoofdstuk 3: Geavanceerde Technieken</h3>
+            <p class="chapter-description">Diepgaande methoden voor een complete lichaamstransformatie</p>
+          </div>
+          <div class="lessons-list">
+            <div class="lesson-card">
+              <div class="lesson-number">7</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Intermittent fasting voor detox</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">25 min</span>
+                  <span class="lesson-type">Geavanceerd</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+            <div class="lesson-card">
+              <div class="lesson-number">8</div>
+              <div class="lesson-content">
+                <h4 class="lesson-title">Sauna en hitte therapie</h4>
+                <div class="lesson-meta">
+                  <span class="lesson-duration">19 min</span>
+                  <span class="lesson-type">Praktisch</span>
+                </div>
+              </div>
+              <div class="lesson-status"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="sidebar">
+        <!-- Progress Card -->
+        <div class="progress-card">
+          <h3 class="progress-title">Jouw Voortgang</h3>
+          <div class="progress-bar">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+          <p class="progress-text" id="progressText">2 van 51 lessen voltooid</p>
+        </div>
+
+        <!-- Course Info -->
+        <div class="course-info">
+          <h3 class="info-title">Cursus Informatie</h3>
+          <div class="info-item">
+            <span class="info-label">Niveau</span>
+            <span class="info-value">Intensief</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Duur</span>
+            <span class="info-value">21 dagen</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Lessen</span>
+            <span class="info-value">51 lessen</span>
+          </div>
+          <div class="info-item">
+            <span class="info-label">Certificaat</span>
+            <span class="info-value">Ja</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/assets/js/header.js?v=7"></script>
+  <script>
+    // Course data loading
+    document.addEventListener('DOMContentLoaded', function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseSlug = urlParams.get('course');
+      
+      if (courseSlug) {
+        loadCourseData(courseSlug);
+      }
+    });
+
+    async function loadCourseData(slug) {
+      try {
+        const response = await fetch(`/data/courses/${slug}.json?v=1`);
+        if (!response.ok) {
+          console.log('Course data not found, using default');
+          return;
+        }
+        
+        const courseData = await response.json();
+        
+        // Update course title and subtitle
+        if (courseData.title) {
+          document.getElementById('courseTitle').textContent = courseData.title;
+        }
+        if (courseData.subtitle) {
+          document.getElementById('courseSubtitle').textContent = courseData.subtitle;
+        }
+        
+        // Update meta information
+        if (courseData.level) {
+          document.getElementById('badgeLevel').textContent = courseData.level;
+        }
+        if (courseData.duration) {
+          document.getElementById('badgeDays').textContent = courseData.duration;
+        }
+        if (courseData.lessons) {
+          document.getElementById('badgeLessons').textContent = courseData.lessons + ' lessen';
+        }
+        
+        // Update progress
+        updateProgress(courseData.progress || 0, courseData.lessons || 51);
+        
+      } catch (error) {
+        console.log('Error loading course data:', error);
+      }
+    }
+
+    function updateProgress(completed, total) {
+      const percentage = (completed / total) * 100;
+      document.getElementById('progressFill').style.width = percentage + '%';
+      document.getElementById('progressText').textContent = `${completed} van ${total} lessen voltooid`;
+    }
+
+    // Lesson click handlers
+    document.querySelectorAll('.lesson-card').forEach(card => {
+      card.addEventListener('click', function() {
+        const lessonNumber = this.querySelector('.lesson-number').textContent;
+        console.log(`Starting lesson ${lessonNumber}`);
+        // Here you would navigate to the actual lesson
+      });
+    });
+  </script>
 </body>
 </html>
