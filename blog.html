@@ -166,74 +166,13 @@
         </footer>
 
                 <script>
-        console.log("Blog script starting...");
+        // Simple test - add red div immediately
+        document.body.innerHTML += '<div style="background: red; color: white; padding: 20px; margin: 20px; font-size: 24px; text-align: center;">JAVASCRIPT WERKT!</div>';
         
-        // Test: Add a simple div to see if JavaScript works at all
-        document.body.innerHTML += '<div style="background: red; color: white; padding: 20px; margin: 20px;">JAVASCRIPT WERKT!</div>';
-        
-        const postsContainer = document.getElementById('posts');
-        if (!postsContainer) {
-            console.log("Posts container not found!");
-                        return; 
-                }
-
-        console.log("Posts container found:", postsContainer);
-        
-        function createPostCard(title, date, readTime, id) {
-            const card = document.createElement('div');
-                        card.className = 'post-card';
-            
-            const keywords = title.toLowerCase().split(' ').slice(0, 2).join(',');
-            const img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-            const href = id ? `/blog-post.html?id=${id}` : `/blog-post.html?title=${encodeURIComponent(title)}`;
-
-                        card.innerHTML = `
-                                <div class="post-cover" style="background:url(${img}) center/cover no-repeat"></div>
-                                <div class="post-body">
-                                        <div>
-                        <div class="post-title">${title}</div>
-                                                        <div class="post-meta">
-                                                                <div class="post-date">${date}</div>
-                                                                <div class="post-read-time">${readTime} min leestijd</div>
-                                                        </div>
-                                        </div>
-                                        <a href="${href}" class="post-link">Lees meer</a>
-                                </div>
-                        `;
-            
-            return card;
-        }
-        
-        // Try to load published posts from localStorage
-        let publishedPosts = [];
-        try {
-            const stored = localStorage.getItem('vitalora_blog_posts');
-            if (stored) {
-                publishedPosts = JSON.parse(stored).filter(p => (p.status || 'published') === 'published');
-                console.log("Found published posts:", publishedPosts.length);
-            }
-        } catch (e) {
-            console.log("Error loading posts from localStorage:", e);
-        }
-        
-        // Add published posts
-        if (publishedPosts.length > 0) {
-            publishedPosts.forEach(post => {
-                const card = createPostCard(
-                    post.title,
-                    post.publishedDate,
-                    post.readTime || 5,
-                    post.id
-                );
-                postsContainer.appendChild(card);
-            });
-        }
-        
-        // If no posts, add fallback posts
-        if (postsContainer.children.length === 0) {
-            console.log("No posts found, adding fallback posts");
-            
-            const fallbackPosts = [
+        // Add blog posts directly
+        var postsContainer = document.getElementById('posts');
+        if (postsContainer) {
+            var posts = [
                 { title: 'Microplastics | Een diepgaande uitleg', date: '07 januari 2025', readTime: 8 },
                 { title: 'Broccolikiemen', date: '05 januari 2025', readTime: 5 },
                 { title: 'Kruisbloemige Groenten', date: '04 januari 2025', readTime: 6 },
@@ -241,13 +180,14 @@
                 { title: 'Is Vlierbessensap Gezond?', date: '03 januari 2025', readTime: 4 }
             ];
             
-            fallbackPosts.forEach(post => {
-                const card = createPostCard(post.title, post.date, post.readTime);
+            for (var i = 0; i < posts.length; i++) {
+                var post = posts[i];
+                        var card = document.createElement('div');
+                        card.className = 'post-card';
+                card.innerHTML = '<div class="post-cover" style="background:url(https://source.unsplash.com/800x450/?health,wellness) center/cover no-repeat"></div><div class="post-body"><div><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + post.date + '</div><div class="post-read-time">' + post.readTime + ' min leestijd</div></div></div><a href="/blog-post.html?title=' + encodeURIComponent(post.title) + '" class="post-link">Lees meer</a></div>';
                 postsContainer.appendChild(card);
-            });
+            }
         }
-        
-        console.log("Total posts rendered:", postsContainer.children.length);
         </script>
 </body>
 </html>
