@@ -239,7 +239,8 @@
             const postId = parseInt(urlParams.get('id'));
             const slugParam = urlParams.get('slug');
             
-            if (!postId) {
+            // Require at least one identifier (id or slug)
+            if (!postId && !slugParam) {
                 document.getElementById('post-title').textContent = 'Blog post niet gevonden';
                 document.getElementById('post-content').innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
                 return;
