@@ -289,8 +289,8 @@
         
         <div class="form-row">
           <div class="form-group">
-            <label class="form-label">Slug</label>
-            <input type="text" class="form-input" id="blog-slug" placeholder="blog-slug">
+            <label class="form-label">URL</label>
+            <input type="text" class="form-input" id="blog-slug" placeholder="blog-url">
           </div>
           <div class="form-group">
             <label class="form-label">Revisions</label>
@@ -298,6 +298,16 @@
               <option>Show revisions</option>
             </select>
           </div>
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Meta Title</label>
+          <input type="text" class="form-input" id="blog-meta-title" placeholder="SEO title for search engines">
+        </div>
+        
+        <div class="form-group">
+          <label class="form-label">Meta Description</label>
+          <textarea class="form-input" id="blog-meta-description" rows="3" placeholder="SEO description for search engines (max 160 characters)"></textarea>
         </div>
         
         <div class="form-group">
@@ -347,6 +357,8 @@
       const saveBtn = document.getElementById('save-blog');
       const blogTitle = document.getElementById('blog-title');
       const blogSlug = document.getElementById('blog-slug');
+      const blogMetaTitle = document.getElementById('blog-meta-title');
+      const blogMetaDescription = document.getElementById('blog-meta-description');
       const blogContent = document.getElementById('blog-content');
       
       // Open modal
@@ -361,6 +373,8 @@
         // Clear form
         blogTitle.value = '';
         blogSlug.value = '';
+        blogMetaTitle.value = '';
+        blogMetaDescription.value = '';
         blogContent.value = '';
       }
       
@@ -373,7 +387,7 @@
         }
       });
       
-      // Auto-generate slug from title
+      // Auto-generate URL from title
       blogTitle.addEventListener('input', function() {
         const slug = this.value
           .toLowerCase()
@@ -382,12 +396,19 @@
           .replace(/-+/g, '-')
           .trim('-');
         blogSlug.value = slug;
+        
+        // Auto-fill meta title if empty
+        if (!blogMetaTitle.value) {
+          blogMetaTitle.value = this.value;
+        }
       });
       
       // Save blog (placeholder functionality)
       saveBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
         const slug = blogSlug.value.trim();
+        const metaTitle = blogMetaTitle.value.trim();
+        const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.value.trim();
         
         if (!title || !content) {
@@ -396,7 +417,7 @@
         }
         
         // Here you would typically save to backend
-        console.log('Saving blog:', { title, slug, content });
+        console.log('Saving blog:', { title, slug, metaTitle, metaDescription, content });
         alert('Blog saved successfully!');
         closeModal();
       });
