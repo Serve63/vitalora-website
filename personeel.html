@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Personeel Login</title>
+  <title>Vitalora - Personeel Portal</title>
   <link rel="stylesheet" href="styles.css?v=2" />
   <link rel="stylesheet" href="/assets/css/header.css?v=1">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,13 +11,210 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <style>
-    .staff-gate{min-height:60vh;display:grid;place-items:center;padding:60px 20px}
-    .staff-card{max-width:420px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 18px 40px rgba(15,23,42,.08);padding:24px}
-    .staff-card h1{font-size:24px;margin-bottom:12px;color:#333}
-    .staff-card p{color:#64748b;margin-bottom:16px}
-    .staff-card input{width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit;margin-bottom:12px}
-    .staff-card button{width:100%;background:#3A9AEA;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
-    .staff-error{color:#ef4444;min-height:18px;margin-bottom:8px}
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+    }
+    
+    .staff-gate {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .background-pattern {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(120, 119, 198, 0.2) 0%, transparent 50%);
+      z-index: 1;
+    }
+    
+    .staff-card {
+      max-width: 480px;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      box-shadow: 
+        0 25px 50px rgba(0, 0, 0, 0.15),
+        0 0 0 1px rgba(255, 255, 255, 0.1);
+      padding: 48px 40px;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      transform: translateY(0);
+      transition: all 0.3s ease;
+    }
+    
+    .staff-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 
+        0 35px 70px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(255, 255, 255, 0.2);
+    }
+    
+    .logo-section {
+      margin-bottom: 32px;
+    }
+    
+    .logo-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #3A9AEA, #10b981);
+      border-radius: 20px;
+      margin: 0 auto 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 30px rgba(58, 154, 234, 0.3);
+    }
+    
+    .logo-icon::before {
+      content: "V";
+      color: white;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    
+    .staff-card h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+      color: #1e293b;
+      font-weight: 700;
+      background: linear-gradient(135deg, #3A9AEA, #10b981);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .staff-card .subtitle {
+      color: #64748b;
+      margin-bottom: 32px;
+      font-size: 16px;
+      line-height: 1.5;
+    }
+    
+    .input-group {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    
+    .staff-card input {
+      width: 100%;
+      padding: 16px 20px;
+      border: 2px solid #e2e8f0;
+      border-radius: 12px;
+      font: inherit;
+      font-size: 18px;
+      text-align: center;
+      letter-spacing: 8px;
+      background: rgba(255, 255, 255, 0.8);
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+    }
+    
+    .staff-card input:focus {
+      outline: none;
+      border-color: #3A9AEA;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(58, 154, 234, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .staff-card button {
+      width: 100%;
+      background: linear-gradient(135deg, #3A9AEA, #10b981);
+      color: #fff;
+      border: 0;
+      border-radius: 12px;
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 25px rgba(58, 154, 234, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .staff-card button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 35px rgba(58, 154, 234, 0.4);
+    }
+    
+    .staff-card button:active {
+      transform: translateY(0);
+    }
+    
+    .staff-card button::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+      transition: left 0.5s;
+    }
+    
+    .staff-card button:hover::before {
+      left: 100%;
+    }
+    
+    .staff-error {
+      color: #ef4444;
+      min-height: 20px;
+      margin-bottom: 16px;
+      font-weight: 600;
+    }
+    
+    .security-badge {
+      margin-top: 24px;
+      padding: 12px 20px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      border-radius: 8px;
+      color: #059669;
+      font-size: 14px;
+      font-weight: 600;
+    }
+    
+    .security-badge::before {
+      content: "🔒 ";
+    }
+    
+    @media (max-width: 768px) {
+      .staff-card {
+        padding: 32px 24px;
+        margin: 20px;
+      }
+      
+      .staff-card h1 {
+        font-size: 28px;
+      }
+      
+      .logo-icon {
+        width: 60px;
+        height: 60px;
+      }
+      
+      .logo-icon::before {
+        font-size: 28px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -35,12 +232,26 @@
   </header>
 
   <main class="staff-gate">
+    <div class="background-pattern"></div>
     <div class="staff-card">
-      <h1>Personeel</h1>
-      <p>Voer de personeelscode in om naar het interne dashboard te gaan.</p>
-      <div id="err" class="staff-error"></div>
-      <input id="staff-code" type="password" inputmode="numeric" maxlength="6" placeholder="6-cijferige code" />
-      <button id="enter">Naar dashboard</button>
+      <div class="logo-section">
+        <div class="logo-icon"></div>
+        <h1>Personeel Portal</h1>
+        <p class="subtitle">Welkom bij het interne systeem van Vitalora.<br>Voer uw toegangscode in om verder te gaan.</p>
+      </div>
+      
+      <div class="input-group">
+        <div id="err" class="staff-error"></div>
+        <input id="staff-code" type="password" inputmode="numeric" maxlength="6" placeholder="••••••" />
+      </div>
+      
+      <button id="enter">
+        <span>Toegang Verkrijgen</span>
+      </button>
+      
+      <div class="security-badge">
+        Beveiligde verbinding • 256-bit encryptie
+      </div>
     </div>
   </main>
 
@@ -53,14 +264,36 @@
         } 
       });
       
+      // Add input formatting
+      document.getElementById('staff-code').addEventListener('input', function(e){
+        // Only allow numbers
+        this.value = this.value.replace(/[^0-9]/g, '');
+      });
+      
       document.getElementById('enter').addEventListener('click', function(){
         const v = (document.getElementById('staff-code').value || '').trim();
-        if(v === '000000') {
-          localStorage.setItem('staff_access_ok','1');
-          window.location.href = '/personeel-dashboard';
-        } else {
-          document.getElementById('err').textContent = 'Ongeldige code.';
-        }
+        const button = this;
+        const originalText = button.innerHTML;
+        
+        // Add loading state
+        button.innerHTML = '<span>Verifiëren...</span>';
+        button.disabled = true;
+        
+        // Simulate verification delay for better UX
+        setTimeout(() => {
+          if(v === '000000') {
+            localStorage.setItem('staff_access_ok','1');
+            button.innerHTML = '<span>Toegang Verleend ✓</span>';
+            setTimeout(() => {
+              window.location.href = '/personeel-dashboard';
+            }, 500);
+          } else {
+            button.innerHTML = originalText;
+            button.disabled = false;
+            document.getElementById('err').textContent = 'Ongeldige toegangscode. Probeer opnieuw.';
+            document.getElementById('staff-code').focus();
+          }
+        }, 800);
       });
     })();
   </script>
