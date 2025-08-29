@@ -165,7 +165,7 @@
             </div>
         </footer>
 
-                    <script>
+                <script>
         // Only show blogs from localStorage (created via dashboard)
         var postsContainer = document.getElementById('posts');
         if (postsContainer) {
@@ -190,19 +190,19 @@
             // Add published posts
             for (var j = 0; j < publishedPosts.length; j++) {
                 var post = publishedPosts[j];
-                var card = document.createElement('div');
-                card.className = 'post-card';
+                        var card = document.createElement('div');
+                        card.className = 'post-card';
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
                 var img = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
                 card.innerHTML = '<div class="post-cover" style="background:url(' + img + ') center/cover no-repeat"></div><div class="post-body"><div><div class="post-title">' + post.title + '</div><div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div></div><a href="/blog-post.html?id=' + post.id + '" class="post-link">Lees meer</a></div>';
                 postsContainer.appendChild(card);
             }
             
-            // If no posts, show message
+            // If no posts, show empty state
             if (publishedPosts.length === 0) {
-                postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><h3>Nog geen blog posts</h3><p>Maak je eerste blog post via het dashboard!</p></div>';
+                postsContainer.innerHTML = '';
             }
         }
-    </script>
+        </script>
 </body>
 </html>
