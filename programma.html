@@ -17,6 +17,62 @@
       --border-light: #e2e8f0;
     }
 
+    .header {
+      background: white;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--brand);
+      text-decoration: none;
+    }
+
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .nav a {
+      color: var(--text-primary);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav a:hover {
+      color: var(--brand);
+    }
+
+    .login-btn {
+      background: var(--brand);
+      color: white;
+      padding: 10px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .login-btn:hover {
+      background: var(--brand-dark);
+    }
+
     * {
       margin: 0;
       padding: 0;
@@ -240,6 +296,19 @@
   </style>
 </head>
 <body>
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">Vitalora</a>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="blog.html">Blog</a>
+        <a href="academy.html">Academy</a>
+        <a href="programma.html">Programma</a>
+        <a href="#" class="login-btn">Inloggen</a>
+      </nav>
+    </div>
+  </header>
+
   <div class="container">
     <section class="product-hero">
       <div class="product-image">
