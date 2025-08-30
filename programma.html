@@ -268,11 +268,11 @@
     }
 
     .testimonial-card {
-      background: #10b981;
-      color: white;
-      border-radius: 20px;
-      padding: 24px 32px;
-      box-shadow: 0 12px 40px rgba(16, 185, 129, 0.3);
+      background: transparent;
+      color: #333;
+      border-radius: 0;
+      padding: 0;
+      box-shadow: none;
       max-width: 1100px;
       width: calc(100% - 60px);
       margin: 0 auto;
@@ -287,15 +287,7 @@
     }
 
     .testimonial-card::before {
-      content: '';
-      position: absolute;
-      top: -10px;
-      left: 50px;
-      width: 0;
-      height: 0;
-      border-left: 15px solid transparent;
-      border-right: 15px solid transparent;
-      border-bottom: 15px solid #10b981;
+      display: none;
     }
 
     .quote-icon {
@@ -307,7 +299,7 @@
     .testimonial-text {
       font-size: 1.1rem;
       line-height: 1.6;
-      color: white;
+      color: #333;
       margin: 0 0 20px 0;
       font-style: italic;
     }
@@ -322,12 +314,12 @@
     .author-info h4 {
       font-size: 1.1rem;
       font-weight: 600;
-      color: white;
+      color: #333;
       margin: 0 0 5px 0;
     }
 
     .author-info span {
-      color: rgba(255, 255, 255, 0.8);
+      color: #666;
       font-size: 0.85rem;
     }
 
@@ -565,7 +557,7 @@
         <div class="testimonial-card">
           <div class="testimonial-content">
             <div class="author-photo">
-              <div style="width: 80px; height: 80px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">👩</div>
+              <div style="width: 80px; height: 80px; background: #f0f0f0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #666; font-size: 1.5rem;">👩</div>
             </div>
             <div class="testimonial-right">
               <div class="quote-icon">"</div>
