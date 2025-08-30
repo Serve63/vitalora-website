@@ -132,7 +132,17 @@
       font-weight: 700;
       color: var(--text-primary);
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 40px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .section-description {
@@ -342,75 +352,93 @@
     }
 
     .improvement-item {
-      background: linear-gradient(135deg, rgba(41, 84, 179, 0.02) 0%, rgba(41, 84, 179, 0.05) 100%);
-      color: #333;
-      padding: 12px 16px;
+      background: #2954B3;
+      color: white;
+      padding: 20px;
       border-radius: 12px;
       text-align: left;
-      box-shadow: 0 2px 8px rgba(41, 84, 179, 0.1);
+      box-shadow: 0 4px 12px rgba(41, 84, 179, 0.3);
       transition: all 0.3s ease;
-      border: 1px solid rgba(41, 84, 179, 0.1);
       position: relative;
-      margin-bottom: 8px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
     }
 
     .improvement-item:hover {
       transform: translateY(-3px);
-      background: linear-gradient(135deg, rgba(41, 84, 179, 0.08) 0%, rgba(41, 84, 179, 0.12) 100%);
-      box-shadow: 0 8px 25px rgba(41, 84, 179, 0.2);
-      border-color: rgba(41, 84, 179, 0.2);
+      box-shadow: 0 8px 25px rgba(41, 84, 179, 0.4);
     }
 
     .improvement-icon {
-      font-size: 1.2rem;
-      margin-bottom: 0;
-      margin-right: 12px;
-      display: inline-block;
-      vertical-align: middle;
-      color: #2954B3;
+      font-size: 1.5rem;
+      color: white;
       transition: all 0.3s ease;
-      background: rgba(41, 84, 179, 0.1);
-      padding: 6px;
-      border-radius: 50%;
-      width: 32px;
-      height: 32px;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
     .improvement-icon svg {
-      fill: #2954B3 !important;
-      color: #2954B3 !important;
+      fill: white !important;
+      color: white !important;
+    }
+
+    .improvement-content {
+      flex: 1;
     }
 
     .improvement-item h3 {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 700;
-      color: #2c3e50;
-      margin: 0;
-      display: inline-block;
-      vertical-align: middle;
+      color: white;
+      margin: 0 0 5px 0;
       transition: all 0.3s ease;
       letter-spacing: -0.5px;
     }
 
     .improvement-item p {
-      color: #4a5568;
+      color: rgba(255, 255, 255, 0.9);
       line-height: 1.5;
-      margin: 6px 0 0 0;
-      font-size: 0.95rem;
+      margin: 0;
+      font-size: 1rem;
       font-weight: 400;
     }
 
-    .improvement-item:hover .improvement-icon {
-      transform: scale(1.1) rotate(5deg);
-      background: rgba(41, 84, 179, 0.15);
+    .improvement-stats {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      flex-shrink: 0;
     }
 
-    .improvement-item:hover h3 {
-      color: #2954B3;
-      transform: translateX(5px);
+    .percentage {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .progress-bar {
+      width: 80px;
+      height: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #10b981;
+      border-radius: 4px;
+      transition: width 0.3s ease;
+    }
+
+    .improvement-item:hover .improvement-icon {
+      transform: scale(1.1);
     }
 
     .total-value-section {
@@ -707,24 +735,41 @@
     <section class="life-improvement-section">
       <div class="container">
         <h2 class="section-title">Hoe deze cursus je leven gaat verbeteren</h2>
+        <p class="section-subtitle">Dit zijn wat je kunt verwachten na onze detox. Elke persoon is uniek, daarom kunnen de resultaten variëren.</p>
         <div class="improvement-grid">
-          <div class="improvement-item">
-            <div class="improvement-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <path d="M21 12.5A9 9 0 1111.5 3a7 7 0 009.5 9.5z"/>
-              </svg>
-            </div>
-            <h3>Beter Slapen</h3>
-            <p>Diepere, rustgevende slaap door het verwijderen van gifstoffen die je slaapcyclus verstoren. Je wordt uitgerust wakker en voelt je energieker gedurende de dag.</p>
-          </div>
           <div class="improvement-item">
             <div class="improvement-icon" aria-hidden="true">
               <svg viewBox="0 0 24 24">
                 <path d="M13 2L6 14h6l-1 8 8-12h-6z"/>
               </svg>
             </div>
-            <h3>Meer Energie</h3>
-            <p>Een lichaam zonder gifstoffen functioneert optimaal. Je merkt direct meer energie, betere concentratie en een algeheel gevoel van vitaliteit.</p>
+            <div class="improvement-content">
+              <h3>Meer Energie</h3>
+              <p>Voel je vitaler en actiever gedurende de dag</p>
+            </div>
+            <div class="improvement-stats">
+              <span class="percentage">+85%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 85%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="improvement-item">
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 12.5A9 9 0 1111.5 3a7 7 0 009.5 9.5z"/>
+              </svg>
+            </div>
+            <div class="improvement-content">
+              <h3>Gezond Slaap</h3>
+              <p>Diepere, meer verfrissende slaap</p>
+            </div>
+            <div class="improvement-stats">
+              <span class="percentage">+78%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 78%"></div>
+              </div>
+            </div>
           </div>
           <div class="improvement-item">
             <div class="improvement-icon" aria-hidden="true">
@@ -733,8 +778,16 @@
                 <path d="M9 18h6M10 20h4"/>
               </svg>
             </div>
-            <h3>Helderder Denken</h3>
-            <p>Geen brain fog meer! Je geheugen verbetert, je kunt je beter concentreren en je mentale helderheid neemt aanzienlijk toe.</p>
+            <div class="improvement-content">
+              <h3>Mentale Helderheid</h3>
+              <p>Verbeterde focus en cognitieve functie</p>
+            </div>
+            <div class="improvement-stats">
+              <span class="percentage">+72%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 72%"></div>
+              </div>
+            </div>
           </div>
           <div class="improvement-item">
             <div class="improvement-icon" aria-hidden="true">
@@ -742,8 +795,33 @@
                 <path d="M12 3l7 3v5c0 5-3.2 9-7 10-3.8-1-7-5-7-10V6l7-3z"/>
               </svg>
             </div>
-            <h3>Sterker Immuunsysteem</h3>
-            <p>Een schoon lichaam kan zich beter verdedigen tegen ziekteverwekkers. Je wordt minder vaak ziek en herstelt sneller.</p>
+            <div class="improvement-content">
+              <h3>Sterkere Weerstand</h3>
+              <p>Verbeterd immuunsysteem en gezondheid</p>
+            </div>
+            <div class="improvement-stats">
+              <span class="percentage">+89%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 89%"></div>
+              </div>
+            </div>
+          </div>
+          <div class="improvement-item">
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+              </svg>
+            </div>
+            <div class="improvement-content">
+              <h3>Betere Spijsvertering</h3>
+              <p>Efficiëntere vertering en opname van voedingsstoffen</p>
+            </div>
+            <div class="improvement-stats">
+              <span class="percentage">+81%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 81%"></div>
+              </div>
+            </div>
           </div>
           <div class="improvement-item">
             <div class="improvement-icon" aria-hidden="true">
@@ -751,19 +829,16 @@
                 <path d="M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/>
               </svg>
             </div>
-            <h3>Gezondere Huid</h3>
-            <p>Je huid wordt helderder, zachter en krijgt een natuurlijke glans. Acne en huidproblemen verminderen aanzienlijk.</p>
-          </div>
-          <div class="improvement-item">
-            <div class="improvement-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24">
-                <circle cx="12" cy="12" r="7"/>
-                <circle cx="12" cy="12" r="3"/>
-                <path d="M12 2v2M2 12h2M12 20v2M20 12h2"/>
-              </svg>
+            <div class="improvement-content">
+              <h3>Gezondere Huid/Haar</h3>
+              <p>Stralende huid en sterker haar</p>
             </div>
-            <h3>Betere Focus</h3>
-            <p>Zonder de afleiding van gifstoffen kun je je beter focussen op wat belangrijk is. Je productiviteit en prestaties verbeteren merkbaar.</p>
+            <div class="improvement-stats">
+              <span class="percentage">+76%</span>
+              <div class="progress-bar">
+                <div class="progress-fill" style="width: 76%"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
