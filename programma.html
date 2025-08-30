@@ -1,685 +1,234 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-  <meta http-equiv="Pragma" content="no-cache">
-  <meta http-equiv="Expires" content="0">
-  <title>Clean Reset: Detox & Gifstoffen - Vitalora</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/css/header.css?v=18">
-  <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
-  <style>
-    :root {
-      --brand: #3A9AEA;
-      --brand-dark: #2563eb;
-      --text-primary: #333333;
-      --text-secondary: #6b7280;
-      --bg-light: #f8fafc;
-      --border-light: #e2e8f0;
-    }
-
-
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background: #EDF7FD;
-      color: var(--text-primary);
-      line-height: 1.6;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
-    }
-
-    .product-hero {
-      display: flex;
-      align-items: center;
-      gap: 60px;
-      padding: 80px 0 20px 0;
-      min-height: 80vh;
-    }
-
-    .product-image {
-      flex: 1;
-      max-width: 500px;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    }
-
-    .product-content {
-      flex: 1;
-    }
-
-    .product-title {
-      font-size: 3rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin-bottom: 20px;
-      line-height: 1.2;
-      white-space: nowrap;
-    }
-
-    .usp-list {
-      margin-bottom: 30px;
-    }
-
-    .usp-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 12px;
-      font-size: 1.1rem;
-      color: var(--text-primary);
-    }
-
-    .checkmark {
-      color: #10b981;
-      font-weight: bold;
-      font-size: 1.2rem;
-      flex-shrink: 0;
-    }
-
-    .product-description {
-      font-size: 1.1rem;
-      color: var(--text-primary);
-      margin-bottom: 40px;
-    }
-
-    .cta-button {
-      display: inline-block !important;
-      background: #10b981 !important;
-      color: white !important;
-      padding: 15px 30px !important;
-      border-radius: 12px !important;
-      text-decoration: none !important;
-      font-weight: 700 !important;
-      font-size: 1.1rem !important;
-      transition: all 0.3s ease !important;
-      box-shadow: none !important;
-      border: none !important;
-      cursor: pointer !important;
-      text-align: center !important;
-      min-width: 180px !important;
-    }
-
-    .cta-button:hover {
-      background: #059669 !important;
-    }
-
-    .review-section {
-      padding: 60px 0;
-    }
-
-    .review-card {
-      background: transparent;
-      color: #333;
-      border-radius: 0;
-      padding: 0 0 0 20px;
-      box-shadow: none;
-      max-width: 1100px;
-      width: calc(100% - 60px);
-      margin: 0 auto;
-      position: relative;
-      border-left: 6px solid #2954B3;
-    }
-
-    .review-content {
-      display: block;
-    }
-
-    .quote-icon {
-      font-size: 3rem;
-      margin: 0 0 20px 0;
-      opacity: 0.3;
-      color: #2954B3;
-      font-family: serif;
-    }
-
-    .review-text {
-      font-size: 1.3rem;
-      line-height: 1.7;
-      color: #2c3e50;
-      margin: 0 0 30px 0;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .review-author {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .author-info h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2954B3;
-      margin: 0 0 5px 0;
-    }
-
-    .author-info span {
-      color: #666;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .stars {
-      color: #fbbf24;
-      font-size: 1.4rem;
-      margin-top: 10px;
-    }
-
-    .what-is-section, .access-section {
-      padding: 0 0 80px 0;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .section-subtitle {
-      font-size: 1.1rem;
-      color: #666;
-      text-align: center;
-      margin-bottom: 40px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .section-description {
-      font-size: 1.2rem;
-      color: var(--text-secondary);
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
-    .benefits-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .benefit-item {
-      background: #2954B3;
-      color: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-
-    .benefit-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    }
-
-    .benefit-item h3 {
-      font-size: 1.3rem;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 15px;
-    }
-
-    .benefit-item p {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-    }
-
-    .access-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
-      margin-top: 50px;
-    }
-
-    .access-item {
-      background: #2954B3;
-      color: white;
-      padding: 30px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      position: relative;
-      transition: all 0.3s ease;
-    }
-
-    .access-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    }
-
-    .access-icon, .improvement-icon, .benefit-icon {
-      margin-bottom: 20px;
-    }
-
-    .access-icon svg, .improvement-icon svg, .benefit-icon svg {
-      width: 44px;
-      height: 44px;
-      stroke: #fff;
-      stroke-width: 1.8;
-      fill: none;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-      opacity: 0.95;
-    }
-
-    .access-item h3 {
-      font-size: 1.4rem;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 15px;
-    }
-
-    .access-item p {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-      margin-bottom: 20px;
-    }
-
-    .value {
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 8px 16px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .total-value {
-      text-align: center;
-      margin-top: 50px;
-      padding: 30px;
-      background: #10b981;
-      border-radius: 16px;
-      color: white;
-    }
-
-    .total-value p {
-      font-size: 1.3rem;
-      margin: 0;
-    }
-
-    .price {
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .discount {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 4px 12px;
-      border-radius: 12px;
-      font-size: 1rem;
-    }
-
-    .testimonial-section {
-      padding: 40px 0;
-    }
-
-    .testimonial-card {
-      background: transparent;
-      color: #333;
-      border-radius: 0;
-      padding: 0 0 0 20px;
-      box-shadow: none;
-      max-width: 1100px;
-      width: calc(100% - 60px);
-      margin: 0 auto;
-      position: relative;
-      border-left: 6px solid #2954B3;
-    }
-
-    .testimonial-content {
-      display: block;
-    }
-
-    .testimonial-card::before {
-      display: none;
-    }
-
-    .quote-icon {
-      font-size: 3rem;
-      margin: 0 0 20px 0;
-      opacity: 0.3;
-      color: #2954B3;
-      font-family: serif;
-    }
-
-    .testimonial-text {
-      font-size: 1.3rem;
-      line-height: 1.7;
-      color: #2c3e50;
-      margin: 0 0 30px 0;
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .testimonial-author {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 8px;
-    }
-
-    .author-info h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #2954B3;
-      margin: 0 0 5px 0;
-    }
-
-    .author-info span {
-      color: #666;
-      font-size: 0.9rem;
-      font-weight: 500;
-    }
-
-    .stars {
-      color: #fbbf24;
-      font-size: 1.4rem;
-      margin-top: 10px;
-    }
-
-    .life-improvement-section {
-      padding: 20px 0 60px 0;
-    }
-
-    .improvement-grid {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
-      margin-top: 15px;
-      max-width: 900px;
-      margin-left: auto;
-      margin-right: auto;
-      padding: 0 20px;
-    }
-
-    .improvement-item {
-      background: #2954B3;
-      color: white;
-      padding: 20px;
-      border-radius: 12px;
-      text-align: left;
-      box-shadow: 0 4px 12px rgba(41, 84, 179, 0.3);
-      transition: all 0.3s ease;
-      position: relative;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .improvement-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(41, 84, 179, 0.4);
-    }
-
-    .improvement-icon {
-      font-size: 1.5rem;
-      color: white;
-      transition: all 0.3s ease;
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .improvement-icon svg {
-      fill: white !important;
-      color: white !important;
-    }
-
-    .improvement-content {
-      flex: 1;
-    }
-
-    .improvement-item h3 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      margin: 0 0 5px 0;
-      transition: all 0.3s ease;
-      letter-spacing: -0.5px;
-    }
-
-    .improvement-item p {
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.5;
-      margin: 0;
-      font-size: 1rem;
-      font-weight: 400;
-    }
-
-    .improvement-stats {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      flex-shrink: 0;
-    }
-
-    .percentage {
-      font-size: 1.4rem;
-      font-weight: 700;
-      color: white;
-    }
-
-    .progress-bar {
-      width: 80px;
-      height: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: #10b981;
-      border-radius: 4px;
-      transition: width 0.3s ease;
-    }
-
-    .improvement-item:hover .improvement-icon {
-      transform: scale(1.1);
-    }
-
-    .total-value-section {
-      padding: 80px 0;
-    }
-
-    .cta-section {
-      background: #10b981;
-      padding: 80px 0;
-      margin: 0 -20px;
-      width: 100vw;
-      position: relative;
-      left: 50%;
-      right: 50%;
-      margin-left: -50vw;
-      margin-right: -50vw;
-    }
-
-    .cta-card {
-      background: transparent;
-      color: white;
-      padding: 60px 20px;
-      text-align: center;
-      box-shadow: none;
-      width: 100%;
-      margin: 0;
-    }
-
-    .cta-card h2 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      margin-bottom: 20px;
-      color: white;
-    }
-
-    .cta-card p {
-      font-size: 1.3rem;
-      margin-bottom: 40px;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-    }
-
-    .cta-button-large {
-      display: inline-block !important;
-      background: white !important;
-      color: #10b981 !important;
-      padding: 20px 40px !important;
-      border-radius: 50px !important;
-      text-decoration: none !important;
-      font-weight: 700 !important;
-      font-size: 1.3rem !important;
-      transition: all 0.3s ease !important;
-      box-shadow: none !important;
-      border: none !important;
-      cursor: pointer !important;
-      text-align: center !important;
-      min-width: 220px !important;
-    }
-
-    .cta-button-large:hover {
-      background: #f8fafc !important;
-    }
-
-
-
-    @media (max-width: 768px) {
-      .product-hero {
-        flex-direction: column;
-        gap: 40px;
-        padding: 40px 0;
-      }
-
-      .product-title {
-        font-size: 2.2rem;
-      }
-
-      .product-subtitle {
-        font-size: 1.1rem;
-      }
-
-      .what-is-section, .access-section {
-        padding: 60px 0;
-      }
-
-      .section-title {
-        font-size: 2rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microplastics Detox Methode - Danielle Siegers</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="landing-styles.css?v=60">
+    <link rel="stylesheet" href="icons.css?v=live5">
+    <link rel="stylesheet" href="/assets/css/header.css?v=18">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
+    <link rel="stylesheet" href="/assets/css/footer.css?v=2">
 </head>
 <body class="ebook-page">
-  <div data-include="site-header"></div>
-  <script defer src="/assets/js/route-scope.js?v=1"></script>
+    <div data-include="site-header"></div>
+    <script defer src="/assets/js/route-scope.js?v=1"></script>
   <script defer src="/assets/js/header.js?v=9"></script>
-  <style>
-    /* Verberg contact-knop alleen op deze pagina */
-    .site-header .btn.contact-btn { display: none !important; }
-  </style>
+  
 
-  <div class="container">
-    <section class="product-hero">
-      <div class="product-image">
-        <div style="width: 100%; height: 400px; background: #f0f0f0; border-radius: 16px; display: flex; align-items: center; justify-content: center; color: #999; font-size: 1.2rem;">
-          Placeholder
-        </div>
-      </div>
-      
-      <div class="product-content">
-        <h1 class="product-title">Clean Reset: Detox & Gifstoffen</h1>
-        <div class="usp-list">
-          <div class="usp-item">
-            <span class="checkmark">✓</span>
-            <span>30-dagen detox programma</span>
-          </div>
-          <div class="usp-item">
-            <span class="checkmark">✓</span>
-            <span>Persoonlijke begeleiding</span>
-          </div>
-          <div class="usp-item">
-            <span class="checkmark">✓</span>
-            <span>Wetenschappelijk onderbouwd</span>
-          </div>
-          <div class="usp-item">
-            <span class="checkmark">✓</span>
-            <span>100% natuurlijke methodes</span>
-          </div>
-          <div class="usp-item">
-            <span class="checkmark">✓</span>
-            <span>Levenslange toegang</span>
-          </div>
-        </div>
-        <p class="product-description">
-          Uitgebreide materialen en levenslange ondersteuning voor optimale gezondheid. 
-          Ontdek hoe je je lichaam kunt resetten en je energie kunt herwinnen.
-        </p>
-        <a href="#" class="cta-button">Start Nu - €47</a>
-      </div>
-    </section>
 
-    <!-- Review sectie -->
-    <section class="review-section">
-      <div class="container">
-        <div class="review-card">
-          <div class="review-content">
-            <div class="quote-icon">"</div>
-            <p class="review-text">
-              "Ik was altijd sceptisch over detox programma's, maar de Clean Reset heeft me echt verbaasd. 
-              Na de eerste week voelde ik me al energieker en helderder. Mijn huid zag er beter uit en ik 
-              sliep veel dieper. Het mooie is dat het zo praktisch is - geen ingewikkelde regels, gewoon 
-              duidelijke stappen die je kunt volgen. Na 30 dagen voelde ik me als een nieuw mens!"
-            </p>
-            <div class="review-author">
-              <div class="author-info">
-                <h4>Sarah van der Berg</h4>
-                <span>Marketing Manager, 34 jaar</span>
-              </div>
-              <div class="stars">★★★★★</div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <button class="direct-access">Direct toegang</button>
+                    <h1>De éérste methode in Nederland om <span class="highlight">Microplastics</span> uit je lichaam te Detoxen!</h1>
+                    
+                    <p class="hero-description">Ontdek de revolutionaire, gratis methode van Danielle Siegers om je lichaam te zuiveren van schadelijke microplastics. Praktisch, effectief en direct toepasbaar.</p>
+                    
+                    <!-- Mobiele ebook afbeelding - simpele aanpak zoals homepage -->
+                    <div class="mobile-book-image">
+                        <img src="https://via.placeholder.com/280x350/2954B3/ffffff?text=EBOOK" alt="Microplastics Detox E-book" />
+                    </div>
+                    
+                    <div class="features-list">
+                        <div class="feature-item">
+                            <span class="checkmark icon-checkmark"></span>
+                            <span>Praktisch toepasbaar - Werkt direct</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark icon-checkmark"></span>
+                            <span>Volledig gratis - Geen verborgen kosten</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark icon-checkmark"></span>
+                            <span>Geen gedoe - Makkelijk en overzichtelijk</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark icon-checkmark"></span>
+                            <span>Simpel & duidelijk - Je weet precies wat je moet doen</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="checkmark icon-checkmark"></span>
+                            <span>Steeds populairder - Duizenden gingen je voor</span>
+                        </div>
+                    </div>
+                    
+                    <button class="cta-button" id="ebook-claim">Claim Jouw Exemplaar →</button>
+                </div>
+                
+                <div class="hero-image">
+                    <img class="ebook-cover" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEt2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78i iglkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpypmY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4gPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPiA8eG1wOkNyZWF0ZURhdGU+MjAyNS0wOC0xNVQxNjowNDowMiswMjowMDwveG1wOkNyZWF0ZURhdGU+IDx4bXA6TWV0YWRhdGFEYXRlPjIwMjUtMDgtMThUMDI6NDI6NDErMDI6MDA8L3htcDpNZXRhZGF0YURhdGU+IDx4bXA6TW9kaWZ5RGF0ZT4yMDI1LTA4LTE4VDAyOjQyOjQxKzAyOjAwPC94bXA6TW9kaWZ5RGF0ZT4gPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDowMWE1YzFhNy1kYzA0LTRmNGItOTM0Ny1hNzM3NzM3NzM3Nzc8L3htcE1NOkluc3RhbmNlSUQ+IDx4bXBNTTpEb2N1bWVudElEPnhtcC5kaWQ6MDFhNWMxYTctZGMwNC00ZjRiLTkzNDctYTczNzc3Mzc3Mzc3PC94bXBNTTpEb2N1bWVudElEPiA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnV1aWQ6NjVlZDM3MTgtYzFhNy0xMWU1LWE3MzctNzM3NzM3Nzc3Nzc8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4gPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4gPHBob3Rvc2hvcDpDb2xvck1vZGU+MzwvcGhvdG9zaG9wOkNvbG9yTW9kZT4gPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4gPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjUwMDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+IDxleGlmOlBpeGVsWURpbWVuc2lvbj41MDA8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAAALAAAAAAABAAEAAAICRAEAOw==" alt="Elimineer Microplastics e‑book" />
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </section>
 
-    <!-- CTA sectie -->
-    <section class="cta-section">
-      <div class="cta-card">
-        <h2>Klaar om te starten?</h2>
-        <p>Begin vandaag nog met je Clean Reset detox programma en ervaar binnen 7 dagen al de eerste resultaten!</p>
-                  <a href="#" class="cta-button-large">Start Nu - €47</a>
-      </div>
+    <!-- Lead Capture Modal -->
+    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+        <div class="modal-backdrop"></div>
+        <div class="modal-card modal-ebook">
+            <button class="modal-close" aria-label="Sluiten">×</button>
+            <div class="modal-hero">
+                <h2 id="modal-title">Gratis download</h2>
+                <p class="modal-subtitle">Winstgevende Website Formule</p>
+            </div>
+            <div class="modal-body two-col">
+                <div class="modal-illustration" aria-hidden="true">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfQAAAH0CAYAAADL1t+KAAAACXBIWXMAAA7EAAAOxAGVKw4bAAAEt2lUWHRYTUw6Y29tLmFkb2JlLnhtcAAAAAAAPD94cGFja2V0IGJlZ2luPSLvu78i iglkPSJXNU0wTXBDZWhpSHpyZVN6TlRjemtjOWQiPz4gPHg6eG1wbWV0YSB4bWxuczp4PSJhZG9iZTpuczptZXRhLyIgeDp4bXB0az0iQWRvYmUgWE1QIENvcmUgNy4yLWMwMDAgNzkuMWI2NWE3OWI0LCAyMDIyLzA2LzEzLTIyOjAxOjAxICAgICAgICAiPiA8cmRmOlJERiB4bWxuczpypmY9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkvMDIvMjItcmRmLXN5bnRheC1ucyMiPiA8cmRmOkRlc2NyaXB0aW9uIHJkZjphYm91dD0iIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtbG5zOnhtcE1NPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvbW0vIiB4bWxuczpzdEV2dD0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL3NUeXBlL1Jlc291cmNlRXZlbnQjIiB4bWxuczpkYz0iaHR0cDovL3B1cmwub3JnL2RjL2VsZW1lbnRzLzEuMS8iIHhtbG5zOnBob3Rvc2hvcD0iaHR0cDovL25zLmFkb2JlLmNvbS9waG90b3Nob3AvMS4wLyIgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iIHhtbG5zOmV4aWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20vZXhpZi8xLjAvIj4gPHhtcDpDcmVhdG9yVG9vbD5BZG9iZSBQaG90b3Nob3AgMjQuMCAoTWFjaW50b3NoKTwveG1wOkNyZWF0b3JUb29sPiA8eG1wOkNyZWF0ZURhdGU+MjAyNS0wOC0xNVQxNjowNDowMiswMjowMDwveG1wOkNyZWF0ZURhdGU+IDx4bXA6TWV0YWRhdGFEYXRlPjIwMjUtMDgtMThUMDI6NDI6NDErMDI6MDA8L3htcDpNZXRhZGF0YURhdGU+IDx4bXA6TW9kaWZ5RGF0ZT4yMDI1LTA4LTE4VDAyOjQyOjQxKzAyOjAwPC94bXA6TW9kaWZ5RGF0ZT4gPHhtcE1NOkluc3RhbmNlSUQ+eG1wLmlpZDowMWE1YzFhNy1kYzA0LTRmNGItOTM0Ny1hNzM3NzM3NzM3Nzc8L3htcE1NOkluc3RhbmNlSUQ+IDx4bXBNTTpEb2N1bWVudElEPnhtcC5kaWQ6MDFhNWMxYTctZGMwNC00ZjRiLTkzNDctYTczNzc3Mzc3Mzc3PC94bXBNTTpEb2N1bWVudElEPiA8eG1wTU06T3JpZ2luYWxEb2N1bWVudElEPnV1aWQ6NjVlZDM3MTgtYzFhNy0xMWU1LWE3MzctNzM3NzM3Nzc3Nzc8L3htcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD4gPGRjOmZvcm1hdD5pbWFnZS9wbmc8L2RjOmZvcm1hdD4gPHBob3Rvc2hvcDpDb2xvck1vZGU+MzwvcGhvdG9zaG9wOkNvbG9yTW9kZT4gPHRpZmY6T3JpZW50YXRpb24+MTwvdGlmZjpPcmllbnRhdGlvbj4gPGV4aWY6UGl4ZWxYRGltZW5zaW9uPjUwMDwvZXhpZjpQaXhlbFhEaW1lbnNpb24+IDxleGlmOlBpeGVsWURpbWVuc2lvbj41MDA8L2V4aWY6UGl4ZWxZRGltZW5zaW9uPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PgH//v38+/r5+Pf29fTz8vHw7+7t7Ovq6ejn5uXk4+Lh4N/e3dzb2tnY19bV1NPS0dDPzs3My8rJyMfGxcTDwsHAv769vLu6ubi3trW0s7KxsK+urayrqqmop6alpKOioaCfnp2cm5qZmJeWlZSTkpGQj46NjIuKiYiHhoWEg4KBgH9+fXx7enl4d3Z1dHNycXBvbm1sa2ppaGdmZWRjYmFgX15dXFtaWVhXVlVUU1JRUE9OTUxLSklIR0ZFRENCQUA/Pj08Ozo5ODc2NTQzMjEwLy4tLCsqKSgnJiUkIyIhIB8eHRwbGhkYFxYVFBMSERAPDg0MCwoJCAcGBQQDAgEAACH5BAEAAAAALAAAAAAABAAEAAAICRAEAOw==" alt="Elimineer Microplastics e‑book" />
+                </div>
+                <div class="modal-copy">
+                    <p class="modal-lead">Hét stappenplan om razendsnel meer omzet uit je website te halen!</p>
+                    <form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
+                        <input type="hidden" name="u"   value="3">
+                        <input type="hidden" name="f"   value="3">
+                        <input type="hidden" name="s"   value="">
+                        <input type="hidden" name="c"   value="0">
+                        <input type="hidden" name="m"   value="0">
+                        <input type="hidden" name="act" value="sub">
+                        <input type="hidden" name="v"   value="2">
+                        <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
+
+                        <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
+                        <input type="email" id="lead-email" name="email" placeholder="Email" required />
+                        <button type="submit" class="cta-button modal-cta">Download PDF</button>
+                        <p class="modal-trust"><span class="icon-checkmark" style="margin-right:8px"></span>Je gegevens zijn 100% veilig</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="rating-display">4.7 | 8.000+</div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                    </div>
+                    <p class="quote">"Ik dacht altijd dat gezond eten wel genoeg was... tot ik deze methode ontdekte. Het opent echt je ogen voor wat er allemaal ongemerkt je lichaam binnenkomt. Microplastics dus – iets waar ik nooit echt bij stil had gestaan. De informatie is praktisch toepasbaar en meteen bruikbaar in het dagelijks leven."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Willemien Klein</div>
+                            <div class="profession">Voedingscoach</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                    </div>
+                    <p class="quote">"Wat een wake-up call. De info is zó concreet en helder. Geen zweverig gedoe, maar gewoon duidelijk uitgelegd wat er misgaat en wat je eraan kunt doen. Je merkt dat dit is geschreven door iemand die hier diep in zit. Voor mij was het echt een kantelpunt om dingen in mijn leefstijl te veranderen."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Jesse Vreeken</div>
+                            <div class="profession">Vader van twee</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                        <span class="icon-star" style="color: #FDB542 !important;"></span>
+                    </div>
+                    <p class="quote">"Ik heb dit meteen doorgestuurd naar al mijn studiegenoten. Dit is zó waardevol – en het feit dat het gratis is, maakt het bijna te mooi om waar te zijn. Het leest lekker weg, bevat geen onzin of vage claims, en is super praktisch. Dit zou eigenlijk verplichte kost moeten zijn voor iedereen die met gezondheid bezig is."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Nadia Vermeer</div>
+                            <div class="profession">Student geneeskunde</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                    </div>
+                    <p class="quote">"Eindelijk een methode die echt werkt! ..."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Sandra, 42</div>
+                            <div class="profession">Fysiotherapeut</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                    </div>
+                    <p class="quote">"Als arts was ik eerst sceptisch, ..."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Dr. Robert, 58</div>
+                            <div class="profession">Huisarts</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="stars">
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                        <span class="icon-star"></span>
+                    </div>
+                    <p class="quote">"Ik ben zo blij dat ik dit heb gevonden! ..."</p>
+                    <div class="profile">
+                        <div class="profile-pic"></div>
+                        <div class="profile-info">
+                            <div class="name">Anna, 35</div>
+                            <div class="profession">Marketing manager</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
-  </div>
+    <!-- Final CTA Section -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Klaar om de controle terug te nemen?</h2>
+            <p>Je bent één klik verwijderd van de kennis die je nodig hebt om je lichaam te bevrijden van microplastics.</p>
+            <button class="cta-button" id="ebook-claim-bottom">Claim Jouw Exemplaar →</button>
+        </div>
+    </section>
+
+    <script src="landing-script.js"></script>
 </body>
 </html>
