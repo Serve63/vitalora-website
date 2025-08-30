@@ -118,11 +118,100 @@
       margin: 0 auto;
     }
 
+    .benefits-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
+    .benefit-item {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .benefit-item h3 {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .benefit-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
     .access-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 30px;
       margin-top: 50px;
+    }
+
+    .access-item {
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      text-align: center;
+      position: relative;
+    }
+
+    .access-icon {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    .access-item h3 {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 15px;
+    }
+
+    .access-item p {
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .value {
+      background: var(--brand);
+      color: white;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .total-value {
+      text-align: center;
+      margin-top: 50px;
+      padding: 30px;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      border-radius: 16px;
+      color: white;
+    }
+
+    .total-value p {
+      font-size: 1.3rem;
+      margin: 0;
+    }
+
+    .price {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+
+    .discount {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 1rem;
     }
 
     @media (max-width: 768px) {
@@ -175,8 +264,24 @@
       <div class="container">
         <h2 class="section-title">Wat is de Clean Reset?</h2>
         <p class="section-description">
-          [Inhoud over wat de Clean Reset is komt hier]
+          De Clean Reset is een revolutionair 30-dagen detox programma dat specifiek gericht is op het verwijderen van microplastics uit je lichaam. 
+          Door middel van wetenschappelijk onderbouwde methodes, natuurlijke supplementen en een gestructureerd voedingsplan help je je lichaam 
+          om zichzelf te reinigen en te resetten naar een optimale gezondheid.
         </p>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <h3>🧬 Wetenschappelijk Onderbouwd</h3>
+            <p>Gebaseerd op de nieuwste onderzoeken naar microplastic detox en lichaamseigen reinigingsprocessen.</p>
+          </div>
+          <div class="benefit-item">
+            <h3>🌱 100% Natuurlijk</h3>
+            <p>Alleen natuurlijke ingrediënten en methodes die je lichaam ondersteunen zonder schadelijke bijwerkingen.</p>
+          </div>
+          <div class="benefit-item">
+            <h3>⚡ Snel Resultaat</h3>
+            <p>Binnen 7 dagen voel je al verschil in energie en binnen 30 dagen een complete transformatie.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -185,7 +290,45 @@
       <div class="container">
         <h2 class="section-title">Je krijgt toegang tot</h2>
         <div class="access-grid">
-          <!-- Items komen hier -->
+          <div class="access-item">
+            <div class="access-icon">📚</div>
+            <h3>Complete Ebook</h3>
+            <p>Uitgebreide gids met alle detox methodes, recepten en praktische tips voor dagelijks gebruik.</p>
+            <span class="value">€47 waarde</span>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">🎥</div>
+            <h3>Video Masterclasses</h3>
+            <p>Stap-voor-stap video's waarin Danielle je persoonlijk begeleidt door het detox proces.</p>
+            <span class="value">€97 waarde</span>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">📱</div>
+            <h3>Mobiele App</h3>
+            <p>Dagelijkse reminders, voortgang tracking en toegang tot alle materialen onderweg.</p>
+            <span class="value">€29 waarde</span>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">👥</div>
+            <h3>Community Support</h3>
+            <p>Toegang tot een exclusieve community van gelijkgestemden en directe support van experts.</p>
+            <span class="value">€49 waarde</span>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">🛒</div>
+            <h3>Detox Producten</h3>
+            <p>Kant-en-klare detox supplementen en producten die perfect aansluiten bij het programma.</p>
+            <span class="value">€67 waarde</span>
+          </div>
+          <div class="access-item">
+            <div class="access-icon">🔄</div>
+            <h3>Levenslange Updates</h3>
+            <p>Toegang tot nieuwe content, updates en de nieuwste inzichten in microplastic detox.</p>
+            <span class="value">€99 waarde</span>
+          </div>
+        </div>
+        <div class="total-value">
+          <p><strong>Totale waarde: €388</strong> - Jouw prijs: <span class="price">€197</span> <span class="discount">(49% korting!)</span></p>
         </div>
       </div>
     </section>
