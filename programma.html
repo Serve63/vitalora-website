@@ -7,7 +7,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/header.css">
+  <link rel="stylesheet" href="/assets/css/header.css?v=18">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
   <style>
     :root {
       --brand: #3A9AEA;
@@ -244,18 +245,10 @@
     }
   </style>
 </head>
-<body>
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="/">
-        <span class="logo-text">Vitalora.nl</span>
-      </a>
-      
-      <div class="header-buttons">
-        <a class="btn login-btn" href="/academy">Inloggen</a>
-      </div>
-    </div>
-  </header>
+<body class="ebook-page">
+  <div data-include="site-header"></div>
+  <script defer src="/assets/js/route-scope.js?v=1"></script>
+  <script defer src="/assets/js/header.js?v=9"></script>
 
   <div class="container">
     <section class="product-hero">
