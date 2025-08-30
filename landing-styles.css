@@ -709,3 +709,32 @@ body {
         background-color: #1e3a8a !important;
     }
 }
+
+/* Ebook Cover Placeholders */
+.ebook-cover-placeholder {
+    width: 400px;
+    height: 500px;
+    background-color: #d1d5db;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 18px;
+    font-weight: 500;
+    border: 2px dashed #9ca3af;
+}
+
+.modal-ebook-placeholder {
+    width: 300px;
+    height: 400px;
+    background-color: #d1d5db;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px dashed #9ca3af;
+}
