@@ -189,9 +189,19 @@
       position: relative;
     }
 
-    .access-icon {
-      font-size: 3rem;
+    .access-icon, .improvement-icon, .benefit-icon {
       margin-bottom: 20px;
+    }
+
+    .access-icon svg, .improvement-icon svg, .benefit-icon svg {
+      width: 44px;
+      height: 44px;
+      stroke: #fff;
+      stroke-width: 1.8;
+      fill: none;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      opacity: 0.95;
     }
 
     .access-item h3 {
@@ -447,15 +457,32 @@
         </p>
         <div class="benefits-list">
           <div class="benefit-item">
-            <h3>[LAB] Wetenschappelijk Onderbouwd</h3>
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M10 2h4"/>
+                <path d="M12 2v5l5 7a3 3 0 01-2.5 4.5H9.5A3 3 0 017 14l5-7"/>
+              </svg>
+            </div>
+            <h3>Wetenschappelijk Onderbouwd</h3>
             <p>Gebaseerd op de nieuwste onderzoeken naar microplastic detox en lichaamseigen reinigingsprocessen.</p>
           </div>
           <div class="benefit-item">
-            <h3>[BIO] 100% Natuurlijk</h3>
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 14c5-8 10-6 16-12-2 7-6 12-12 12-2 0-4-1-4 0z"/>
+                <path d="M9 9l3 3"/>
+              </svg>
+            </div>
+            <h3>100% Natuurlijk</h3>
             <p>Alleen natuurlijke ingrediënten en methodes die je lichaam ondersteunen zonder schadelijke bijwerkingen.</p>
           </div>
           <div class="benefit-item">
-            <h3>[7D] Snel Resultaat</h3>
+            <div class="benefit-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2L6 14h6l-1 8 8-12h-6z"/>
+              </svg>
+            </div>
+            <h3>Snel Resultaat</h3>
             <p>Binnen 7 dagen voel je al verschil in energie en binnen 30 dagen een complete transformatie.</p>
           </div>
         </div>
@@ -492,37 +519,71 @@
         <h2 class="section-title">Je krijgt toegang tot</h2>
         <div class="access-grid">
           <div class="access-item">
-            <div class="access-icon">[PDF]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="3" y="5" width="8" height="14" rx="1.5"/>
+                <rect x="13" y="5" width="8" height="14" rx="1.5"/>
+                <path d="M12 5v14"/>
+              </svg>
+            </div>
             <h3>Complete Ebook</h3>
             <p>Uitgebreide gids met alle detox methodes, recepten en praktische tips voor dagelijks gebruik.</p>
             <span class="value">€47 waarde</span>
           </div>
           <div class="access-item">
-            <div class="access-icon">[VID]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="M10 8l6 4-6 4z" fill="#ffffff" stroke="none"/>
+              </svg>
+            </div>
             <h3>Video Masterclasses</h3>
             <p>Stap-voor-stap video's waarin Danielle je persoonlijk begeleidt door het detox proces.</p>
             <span class="value">€97 waarde</span>
           </div>
           <div class="access-item">
-            <div class="access-icon">[APP]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <rect x="7" y="3.5" width="10" height="17" rx="2"/>
+                <circle cx="12" cy="17" r="1"/>
+              </svg>
+            </div>
             <h3>Mobiele App</h3>
             <p>Dagelijkse reminders, voortgang tracking en toegang tot alle materialen onderweg.</p>
             <span class="value">€29 waarde</span>
           </div>
           <div class="access-item">
-            <div class="access-icon">[COM]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="9" cy="9" r="3"/>
+                <circle cx="16" cy="10" r="2"/>
+                <path d="M3 20c0-3.5 4-5.5 8-5.5s8 2 8 5.5"/>
+              </svg>
+            </div>
             <h3>Community Support</h3>
             <p>Toegang tot een exclusieve community van gelijkgestemden en directe support van experts.</p>
             <span class="value">€49 waarde</span>
           </div>
           <div class="access-item">
-            <div class="access-icon">[BOX]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l9 4.5v9L12 21l-9-4.5v-9L12 3z"/>
+                <path d="M12 3v18M3 7.5l9 4.5 9-4.5"/>
+              </svg>
+            </div>
             <h3>Detox Producten</h3>
             <p>Kant-en-klare detox supplementen en producten die perfect aansluiten bij het programma.</p>
             <span class="value">€67 waarde</span>
           </div>
           <div class="access-item">
-            <div class="access-icon">[UPD]</div>
+            <div class="access-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 12a8 8 0 018-8 8 8 0 018 8"/>
+                <path d="M20 12a8 8 0 01-8 8 8 8 0 01-8-8"/>
+                <path d="M12 4l2 2-2 2"/>
+                <path d="M12 20l-2-2 2-2"/>
+              </svg>
+            </div>
             <h3>Levenslange Updates</h3>
             <p>Toegang tot nieuwe content, updates en de nieuwste inzichten in microplastic detox.</p>
             <span class="value">€99 waarde</span>
@@ -537,32 +598,59 @@
         <h2 class="section-title">Hoe deze cursus je leven gaat verbeteren</h2>
         <div class="improvement-grid">
           <div class="improvement-item">
-            <div class="improvement-icon">[ZZZ]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 12.5A9 9 0 1111.5 3a7 7 0 009.5 9.5z"/>
+              </svg>
+            </div>
             <h3>Beter Slapen</h3>
             <p>Diepere, rustgevende slaap door het verwijderen van gifstoffen die je slaapcyclus verstoren. Je wordt uitgerust wakker en voelt je energieker gedurende de dag.</p>
           </div>
           <div class="improvement-item">
-            <div class="improvement-icon">[PWR]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M13 2L6 14h6l-1 8 8-12h-6z"/>
+              </svg>
+            </div>
             <h3>Meer Energie</h3>
             <p>Een lichaam zonder gifstoffen functioneert optimaal. Je merkt direct meer energie, betere concentratie en een algeheel gevoel van vitaliteit.</p>
           </div>
           <div class="improvement-item">
-            <div class="improvement-icon">[IQ]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 2a6 6 0 00-6 6c0 2.3 1.3 4.2 3.2 5.2.5.3.8.8.8 1.3V16h4v-1.5c0-.5.3-1 .8-1.3A6 6 0 0018 8a6 6 0 00-6-6z"/>
+                <path d="M9 18h6M10 20h4"/>
+              </svg>
+            </div>
             <h3>Helderder Denken</h3>
             <p>Geen brain fog meer! Je geheugen verbetert, je kunt je beter concentreren en je mentale helderheid neemt aanzienlijk toe.</p>
           </div>
           <div class="improvement-item">
-            <div class="improvement-icon">[+HP]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l7 3v5c0 5-3.2 9-7 10-3.8-1-7-5-7-10V6l7-3z"/>
+              </svg>
+            </div>
             <h3>Sterker Immuunsysteem</h3>
             <p>Een schoon lichaam kan zich beter verdedigen tegen ziekteverwekkers. Je wordt minder vaak ziek en herstelt sneller.</p>
           </div>
           <div class="improvement-item">
-            <div class="improvement-icon">[GLOW]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <path d="M12 3l3 6 6 3-6 3-3 6-3-6-6-3 6-3z"/>
+              </svg>
+            </div>
             <h3>Gezondere Huid</h3>
             <p>Je huid wordt helderder, zachter en krijgt een natuurlijke glans. Acne en huidproblemen verminderen aanzienlijk.</p>
           </div>
           <div class="improvement-item">
-            <div class="improvement-icon">[AIM]</div>
+            <div class="improvement-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="7"/>
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M12 2v2M2 12h2M12 20v2M20 12h2"/>
+              </svg>
+            </div>
             <h3>Betere Focus</h3>
             <p>Zonder de afleiding van gifstoffen kun je je beter focussen op wat belangrijk is. Je productiviteit en prestaties verbeteren merkbaar.</p>
           </div>
