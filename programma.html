@@ -98,6 +98,33 @@
       box-shadow: 0 12px 32px rgba(58, 154, 234, 0.4);
     }
 
+    .what-is-section, .access-section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .section-description {
+      font-size: 1.2rem;
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .access-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 50px;
+    }
+
     @media (max-width: 768px) {
       .product-hero {
         flex-direction: column;
@@ -111,6 +138,14 @@
 
       .product-subtitle {
         font-size: 1.1rem;
+      }
+
+      .what-is-section, .access-section {
+        padding: 60px 0;
+      }
+
+      .section-title {
+        font-size: 2rem;
       }
     }
   </style>
@@ -132,6 +167,26 @@
           Ontdek hoe je je lichaam kunt resetten en je energie kunt herwinnen.
         </p>
         <a href="#" class="cta-button">Start Nu - €197</a>
+      </div>
+    </section>
+
+    <!-- Wat is de Clean Reset sectie -->
+    <section class="what-is-section">
+      <div class="container">
+        <h2 class="section-title">Wat is de Clean Reset?</h2>
+        <p class="section-description">
+          [Inhoud over wat de Clean Reset is komt hier]
+        </p>
+      </div>
+    </section>
+
+    <!-- Je krijgt toegang tot sectie -->
+    <section class="access-section">
+      <div class="container">
+        <h2 class="section-title">Je krijgt toegang tot</h2>
+        <div class="access-grid">
+          <!-- Items komen hier -->
+        </div>
       </div>
     </section>
   </div>
