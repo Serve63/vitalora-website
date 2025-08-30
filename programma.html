@@ -72,10 +72,24 @@
       line-height: 1.2;
     }
 
-    .product-subtitle {
-      font-size: 1.3rem;
-      color: var(--text-secondary);
+    .usp-list {
       margin-bottom: 30px;
+    }
+
+    .usp-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      color: var(--text-primary);
+    }
+
+    .checkmark {
+      color: #10b981;
+      font-weight: bold;
+      font-size: 1.2rem;
+      flex-shrink: 0;
     }
 
     .product-description {
@@ -327,7 +341,28 @@
       
       <div class="product-content">
         <h1 class="product-title">Clean Reset: Detox & Gifstoffen</h1>
-        <p class="product-subtitle">Krijg toegang tot het complete programma met persoonlijke begeleiding</p>
+        <div class="usp-list">
+          <div class="usp-item">
+            <span class="checkmark">✓</span>
+            <span>30-dagen detox programma</span>
+          </div>
+          <div class="usp-item">
+            <span class="checkmark">✓</span>
+            <span>Persoonlijke begeleiding</span>
+          </div>
+          <div class="usp-item">
+            <span class="checkmark">✓</span>
+            <span>Wetenschappelijk onderbouwd</span>
+          </div>
+          <div class="usp-item">
+            <span class="checkmark">✓</span>
+            <span>100% natuurlijke methodes</span>
+          </div>
+          <div class="usp-item">
+            <span class="checkmark">✓</span>
+            <span>Levenslange toegang</span>
+          </div>
+        </div>
         <p class="product-description">
           Uitgebreide materialen en levenslange ondersteuning voor optimale gezondheid. 
           Ontdek hoe je je lichaam kunt resetten en je energie kunt herwinnen.
