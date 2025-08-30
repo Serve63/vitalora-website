@@ -218,6 +218,69 @@
       font-size: 1rem;
     }
 
+    .testimonial-section {
+      padding: 80px 0;
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .testimonial-card::before {
+      content: '';
+      position: absolute;
+      top: -10px;
+      left: 50px;
+      width: 0;
+      height: 0;
+      border-left: 15px solid transparent;
+      border-right: 15px solid transparent;
+      border-bottom: 15px solid white;
+    }
+
+    .quote-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      opacity: 0.7;
+    }
+
+    .testimonial-text {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+      margin-bottom: 30px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .author-info h4 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin: 0 0 5px 0;
+    }
+
+    .author-info span {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    .stars {
+      color: #fbbf24;
+      font-size: 1.2rem;
+    }
+
 
 
     @media (max-width: 768px) {
@@ -294,6 +357,30 @@
           <div class="benefit-item">
             <h3>⚡ Snel Resultaat</h3>
             <p>Binnen 7 dagen voel je al verschil in energie en binnen 30 dagen een complete transformatie.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial sectie -->
+    <section class="testimonial-section">
+      <div class="container">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">💬</div>
+            <p class="testimonial-text">
+              "Ik was altijd sceptisch over detox programma's, maar de Clean Reset heeft me echt verbaasd. 
+              Na de eerste week voelde ik me al energieker en helderder. Mijn huid zag er beter uit en ik 
+              sliep veel dieper. Het mooie is dat het zo praktisch is - geen ingewikkelde regels, gewoon 
+              duidelijke stappen die je kunt volgen. Na 30 dagen voelde ik me als een nieuw mens!"
+            </p>
+            <div class="testimonial-author">
+              <div class="author-info">
+                <h4>Sarah van der Berg</h4>
+                <span>Marketing Manager, 34 jaar</span>
+              </div>
+              <div class="stars">★★★★★</div>
+            </div>
           </div>
         </div>
       </div>
