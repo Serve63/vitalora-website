@@ -1,314 +1,137 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2954B3">
-    <title>Volledig Microplastic Detox Programma - Vitalora</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=139">
-    <link rel="stylesheet" href="icons.css">
-    <link rel="stylesheet" href="/assets/css/header.css?v=5">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=3">
-    <style>
-      /* Hide login button on this page only */
-      .login-btn { display: none !important; }
-      
-      /* Hide global header on mobile for this page only */
-      @media (max-width: 768px) {
-        header.site-header, .site-header, .global-header, header[role="banner"] { display: none !important; }
-        body { padding-top: 0 !important; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volledig Microplastic Detox Programma - Vitalora</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #3A9AEA;
+      --brand-dark: #2563eb;
+      --text-primary: #333333;
+      --text-secondary: #6b7280;
+      --bg-light: #f8fafc;
+      --border-light: #e2e8f0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: var(--text-primary);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .product-hero {
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      padding: 80px 0;
+      min-height: 80vh;
+    }
+
+    .product-image {
+      flex: 1;
+      max-width: 500px;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .product-content {
+      flex: 1;
+    }
+
+    .product-title {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .product-subtitle {
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      margin-bottom: 30px;
+    }
+
+    .product-description {
+      font-size: 1.1rem;
+      color: var(--text-primary);
+      margin-bottom: 40px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--brand) 0%, var(--brand-dark) 100%);
+      color: white;
+      padding: 18px 36px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+      box-shadow: 0 8px 24px rgba(58, 154, 234, 0.3);
+    }
+
+    .cta-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px rgba(58, 154, 234, 0.4);
+    }
+
+    @media (max-width: 768px) {
+      .product-hero {
+        flex-direction: column;
+        gap: 40px;
+        padding: 40px 0;
       }
-      
-      /* Program page specific styling */
-      .program-hero {
-        background: linear-gradient(135deg, #2954B3 0%, #1e40af 100%);
-        color: white;
-        padding: 80px 0;
-        text-align: center;
+
+      .product-title {
+        font-size: 2.2rem;
       }
-      
-      .program-hero h1 {
-        font-size: clamp(32px, 5vw, 48px);
-        font-weight: 700;
-        margin-bottom: 20px;
-        color: white;
+
+      .product-subtitle {
+        font-size: 1.1rem;
       }
-      
-      .program-hero p {
-        font-size: 18px;
-        opacity: 0.9;
-        max-width: 600px;
-        margin: 0 auto 40px;
-        line-height: 1.6;
-      }
-      
-      .program-features {
-        padding: 80px 0;
-        background: #EDF2FB;
-      }
-      
-      .features-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
-        margin-top: 40px;
-      }
-      
-      .feature-card {
-        background: white;
-        padding: 30px;
-        border-radius: 12px;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        text-align: center;
-      }
-      
-      .feature-icon {
-        width: 60px;
-        height: 60px;
-        background: #2954B3;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin: 0 auto 20px;
-        color: white;
-        font-size: 24px;
-      }
-      
-      .feature-card h3 {
-        font-size: 20px;
-        font-weight: 700;
-        margin-bottom: 15px;
-        color: #333;
-      }
-      
-      .feature-card p {
-        color: #666;
-        line-height: 1.6;
-      }
-      
-      .pricing-section {
-        padding: 80px 0;
-        background: white;
-        text-align: center;
-      }
-      
-      .pricing-card {
-        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-        color: white;
-        padding: 40px;
-        border-radius: 16px;
-        max-width: 500px;
-        margin: 0 auto;
-        box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.25);
-      }
-      
-      .pricing-card h2 {
-        font-size: 32px;
-        font-weight: 700;
-        margin-bottom: 10px;
-      }
-      
-      .price {
-        font-size: 48px;
-        font-weight: 800;
-        margin-bottom: 20px;
-      }
-      
-      .price-period {
-        font-size: 18px;
-        opacity: 0.8;
-      }
-      
-      .pricing-features {
-        list-style: none;
-        padding: 0;
-        margin: 30px 0;
-      }
-      
-      .pricing-features li {
-        padding: 8px 0;
-        font-size: 16px;
-      }
-      
-      .pricing-features li:before {
-        content: "✓";
-        color: #10b981;
-        font-weight: bold;
-        margin-right: 10px;
-      }
-      
-      .purchase-button {
-        background: white;
-        color: #10b981;
-        border: none;
-        padding: 16px 32px;
-        border-radius: 12px;
-        font-size: 18px;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        width: 100%;
-        max-width: 300px;
-      }
-      
-      .purchase-button:hover {
-        background: #f8fafc;
-        transform: translateY(-2px);
-      }
-      
-      @media (max-width: 768px) {
-        .program-hero {
-          padding: 60px 0;
-        }
-        
-        .program-features {
-          padding: 60px 0;
-        }
-        
-        .pricing-section {
-          padding: 60px 0;
-        }
-        
-        .pricing-card {
-          margin: 0 20px;
-          padding: 30px 20px;
-        }
-        
-        .features-grid {
-          grid-template-columns: 1fr;
-          gap: 20px;
-        }
-      }
-    </style>
+    }
+  </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class="site-header" role="banner">
-      <div class="header-inner">
-        <a class="logo" href="/">
-          <span class="logo-text">Vitalora.nl</span>
-        </a>
-        
-        <div class="header-buttons">
-          <a class="btn login-btn" href="/academy">Inloggen</a>
-        </div>
+  <div class="container">
+    <section class="product-hero">
+      <div class="product-image">
+        <img src="https://via.placeholder.com/500x400/3A9AEA/ffffff?text=Detox+Programma" alt="Volledig Microplastic Detox Programma">
       </div>
-    </header>
-
-    <!-- Program Hero Section -->
-    <section class="program-hero">
-        <div class="container">
-            <h1>Volledig Microplastic Detox Programma</h1>
-            <p>Krijg toegang tot het complete programma met persoonlijke begeleiding, uitgebreide materialen en levenslange ondersteuning voor optimale gezondheid.</p>
-        </div>
+      
+      <div class="product-content">
+        <h1 class="product-title">Volledig Microplastic Detox Programma</h1>
+        <p class="product-subtitle">Krijg toegang tot het complete programma met persoonlijke begeleiding</p>
+        <p class="product-description">
+          Uitgebreide materialen en levenslange ondersteuning voor optimale gezondheid. 
+          Ontdek hoe je je lichaam kunt resetten en je energie kunt herwinnen.
+        </p>
+        <a href="#" class="cta-button">Start Nu - €197</a>
+      </div>
     </section>
-
-    <!-- Program Features -->
-    <section class="program-features">
-        <div class="container">
-            <h2 style="text-align: center; font-size: 36px; font-weight: 700; margin-bottom: 20px; color: #333;">Wat krijg je in het volledige programma?</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">📚</div>
-                    <h3>Complete Ebook</h3>
-                    <p>Uitgebreide gids met alle detox methodes, recepten en praktische tips voor dagelijks gebruik.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🎥</div>
-                    <h3>Video Masterclasses</h3>
-                    <p>Stap-voor-stap video's waarin Danielle je persoonlijk begeleidt door het detox proces.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <h3>Mobiele App</h3>
-                    <p>Dagelijkse reminders, voortgang tracking en toegang tot alle materialen onderweg.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">👥</div>
-                    <h3>Community Support</h3>
-                    <p>Toegang tot een exclusieve community van gelijkgestemden en directe support van experts.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🛒</div>
-                    <h3>Detox Producten</h3>
-                    <p>Kant-en-klare detox supplementen en producten die perfect aansluiten bij het programma.</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <h3>Levenslange Updates</h3>
-                    <p>Toegang tot nieuwe content, updates en de nieuwste inzichten in microplastic detox.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section class="pricing-section">
-        <div class="container">
-            <h2 style="font-size: 36px; font-weight: 700; margin-bottom: 20px; color: #333;">Kies je programma</h2>
-            
-            <div class="pricing-card">
-                <h2>Volledig Programma</h2>
-                <div class="price">€197<span class="price-period">/eenmalig</span></div>
-                
-                <ul class="pricing-features">
-                    <li>Complete Ebook (€47 waarde)</li>
-                    <li>Video Masterclasses (€97 waarde)</li>
-                    <li>Mobiele App toegang (€29 waarde)</li>
-                    <li>Community Support (€49 waarde)</li>
-                    <li>Detox Producten Starter Pack (€67 waarde)</li>
-                    <li>Levenslange Updates (€99 waarde)</li>
-                    <li>30-dagen Geld-terug Garantie</li>
-                </ul>
-                
-                <button class="purchase-button" onclick="window.location.href='https://vitalora.nl/academy'">
-                    Start Nu - €197
-                </button>
-                
-                <p style="margin-top: 20px; font-size: 14px; opacity: 0.8;">
-                    Totale waarde: €388 - Jouw prijs: €197 (49% korting!)
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Vitalora</h3>
-                    <p>Je partner in gezondheid en welzijn. Ontdek hoe je je lichaam kunt resetten en je energie kunt herwinnen.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Links</h3>
-                    <ul>
-                        <li><a href="/">Home</a></li>
-                        <li><a href="/ebook">Gratis Ebook</a></li>
-                        <li><a href="/privacy">Privacy</a></li>
-                        <li><a href="/voorwaarden">Algemene Voorwaarden</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>info@vitalora.nl</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 Vitalora. Alle rechten voorbehouden.</p>
-            </div>
-        </div>
-    </footer>
+  </div>
 </body>
 </html>
