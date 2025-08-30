@@ -217,10 +217,7 @@
       font-size: 1rem;
     }
 
-    /* Fix logo font weight */
-    .site-header .logo {
-      font-weight: 400 !important;
-    }
+
 
     @media (max-width: 768px) {
       .product-hero {
@@ -248,17 +245,9 @@
   </style>
 </head>
 <body>
-  <header class="site-header" role="banner">
-    <div class="header-inner">
-      <a class="logo" href="/">
-        <span class="logo-text">Vitalora.nl</span>
-      </a>
-      
-      <div class="header-buttons">
-        <a class="btn login-btn" href="/academy">Inloggen</a>
-      </div>
-    </div>
-  </header>
+  <div data-include="site-header"></div>
+  <script defer src="/assets/js/route-scope.js?v=1"></script>
+  <script defer src="/assets/js/header.js?v=9"></script>
 
   <div class="container">
     <section class="product-hero">
