@@ -341,35 +341,45 @@
       max-width: 900px;
       margin-left: auto;
       margin-right: auto;
+      padding: 0 20px;
     }
 
     .improvement-item {
-      background: transparent;
+      background: linear-gradient(135deg, rgba(41, 84, 179, 0.02) 0%, rgba(41, 84, 179, 0.05) 100%);
       color: #333;
-      padding: 18px 0;
-      border-radius: 0;
+      padding: 20px 25px;
+      border-radius: 12px;
       text-align: left;
-      box-shadow: none;
+      box-shadow: 0 2px 8px rgba(41, 84, 179, 0.1);
       transition: all 0.3s ease;
-      border-bottom: 2px dotted #2954B3;
+      border: 1px solid rgba(41, 84, 179, 0.1);
       position: relative;
+      margin-bottom: 15px;
     }
 
     .improvement-item:hover {
-      transform: translateX(10px);
-      background: rgba(41, 84, 179, 0.05);
-      border-radius: 8px;
-      padding-left: 15px;
+      transform: translateY(-3px);
+      background: linear-gradient(135deg, rgba(41, 84, 179, 0.08) 0%, rgba(41, 84, 179, 0.12) 100%);
+      box-shadow: 0 8px 25px rgba(41, 84, 179, 0.2);
+      border-color: rgba(41, 84, 179, 0.2);
     }
 
     .improvement-icon {
-      font-size: 1.8rem;
+      font-size: 2rem;
       margin-bottom: 0;
       margin-right: 20px;
       display: inline-block;
       vertical-align: middle;
       color: #2954B3;
       transition: all 0.3s ease;
+      background: rgba(41, 84, 179, 0.1);
+      padding: 12px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .improvement-icon svg {
@@ -378,28 +388,32 @@
     }
 
     .improvement-item h3 {
-      font-size: 1.4rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #333;
+      color: #2c3e50;
       margin: 0;
       display: inline-block;
       vertical-align: middle;
       transition: all 0.3s ease;
+      letter-spacing: -0.5px;
     }
 
     .improvement-item p {
-      color: #555;
+      color: #4a5568;
       line-height: 1.7;
-      margin: 8px 0 0 0;
-      font-size: 1.05rem;
+      margin: 12px 0 0 0;
+      font-size: 1.1rem;
+      font-weight: 400;
     }
 
     .improvement-item:hover .improvement-icon {
-      transform: scale(1.1);
+      transform: scale(1.1) rotate(5deg);
+      background: rgba(41, 84, 179, 0.15);
     }
 
     .improvement-item:hover h3 {
       color: #2954B3;
+      transform: translateX(5px);
     }
 
     .total-value-section {
