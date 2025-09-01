@@ -263,7 +263,7 @@
                 var card = document.createElement('div');
                 card.className = 'post-card';
                 card.onclick = (function(id, slug){ return function(){
-                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?id=' + id);
+                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
                   window.location.href = url;
                 }; })(post.id, post.slug);
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
@@ -288,7 +288,7 @@
                                 var card2 = document.createElement('div');
                                 card2.className = 'post-card';
                                 card2.onclick = (function(id, slug){ return function(){
-                                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?id=' + id);
+                                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post2.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
                                   window.location.href = url;
                                 }; })(post2.id, post2.slug);
                                 var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
