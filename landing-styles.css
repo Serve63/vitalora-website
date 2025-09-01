@@ -662,6 +662,18 @@ body {
         margin-bottom: 24px !important;
     }
     
+    /* Force star icon to be blue on mobile */
+    .clean-reset-page .rating-display .icon-star {
+        color: #2954B3 !important;
+    }
+    
+    /* Even stronger rule to override any other star colors */
+    .clean-reset-page .rating-display .icon-star,
+    .clean-reset-page .rating-display span[class*="star"] {
+        color: #2954B3 !important;
+        fill: #2954B3 !important;
+    }
+    
     /* Optimize testimonial cards for mobile */
     .clean-reset-page .testimonials-grid, .ebook-page .testimonials-grid {
         grid-template-columns: 1fr !important;
