@@ -8,166 +8,93 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="landing-styles.css?v=60">
-    <link rel="stylesheet" href="icons.css?v=live5">
     <link rel="stylesheet" href="/assets/css/header.css?v=18">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
     <link rel="stylesheet" href="/assets/css/footer.css?v=2">
+    <style>
+        /* Hier komen alle styles specifiek voor deze pagina */
+        body {
+            font-family: 'Quicksand', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #EDF2FB 0%, #ffffff 100%);
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #333333;
+            margin-bottom: 24px;
+            line-height: 1.2;
+            text-align: center;
+        }
+        
+        .highlight {
+            color: #3A9AEA;
+        }
+        
+        .hero p {
+            font-size: 20px;
+            color: #6b7280;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+        
+        .cta-button {
+            background-color: #3A9AEA;
+            color: white;
+            border: none;
+            padding: 18px 36px;
+            font-size: 18px;
+            font-weight: 700;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: block;
+            margin: 0 auto;
+            text-decoration: none;
+            text-align: center;
+            width: fit-content;
+        }
+        
+        .cta-button:hover {
+            background-color: #2954B3;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(58, 154, 234, 0.3);
+        }
+    </style>
 </head>
-<body class="clean-reset-page">
+<body>
     <div data-include="site-header"></div>
     <script defer src="/assets/js/route-scope.js?v=1"></script>
-  <script defer src="/assets/js/header.js?v=9"></script>
-  
-
+    <script defer src="/assets/js/header.js?v=9"></script>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <div class="hero-content">
-                <div class="hero-text">
-                    <button class="direct-access">Direct toegang</button>
-                    <h1>De complete reset voor een <span class="highlight">schoon</span>, <span class="highlight">sterk</span> en <span class="highlight">energiek</span> lichaam!</h1>
-                    
-                    <p class="hero-description">Ontdek de revolutionaire methode van Danielle Siegers om je lichaam te zuiveren van schadelijke gifstoffen. Praktisch, effectief en direct toepasbaar.</p>
-                    
-                    <!-- Mobiele ebook afbeelding - simpele aanpak zoals homepage -->
-                    <div class="mobile-book-image">
-                        <img src="https://via.placeholder.com/280x350/2954B3/ffffff?text=DETOX" alt="Complete Detox E-book" />
-                    </div>
-                    
-                    <div class="features-list">
-                        <div class="feature-item">
-                            <span class="checkmark icon-checkmark"></span>
-                            <span>Microplastics detox - 99% aanwezig in je lichaam</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="checkmark icon-checkmark"></span>
-                            <span>PFAS verwijdering - "Forever chemicals" elimineren</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="checkmark icon-checkmark"></span>
-                            <span>BPA & pesticiden - Hormoonverstorende stoffen</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="checkmark icon-checkmark"></span>
-                            <span>Parabenen & ftalaten - Cosmetica gifstoffen</span>
-                        </div>
-                        <div class="feature-item">
-                            <span class="checkmark icon-checkmark"></span>
-                            <span>30-dagen programma - Complete lichaamsreset</span>
-                        </div>
-                    </div>
-                    
-                    <button class="cta-button" id="ebook-claim">Direct Starten →</button>
-                </div>
-                
-                <div class="hero-image">
-                    <div class="ebook-cover-placeholder">Complete Detox</div>
-                </div>
-            </div>
+            <h1>De complete reset voor een <span class="highlight">schoon</span>, <span class="highlight">sterk</span> en <span class="highlight">energiek</span> lichaam!</h1>
+            <p>Ontdek de revolutionaire methode van Danielle Siegers om je lichaam te zuiveren van schadelijke gifstoffen. Praktisch, effectief en direct toepasbaar.</p>
+            <a href="#download" class="cta-button">Direct Starten →</a>
         </div>
     </section>
 
-    <!-- Lead Capture Modal -->
-    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
-        <div class="modal-backdrop"></div>
-        <div class="modal-card modal-ebook">
-            <button class="modal-close" aria-label="Sluiten">×</button>
-            <div class="modal-hero">
-                <h2 id="modal-title">Gratis download</h2>
-                <p class="modal-subtitle">Winstgevende Website Formule</p>
-            </div>
-            <div class="modal-body two-col">
-                <div class="modal-illustration" aria-hidden="true">
-                    <div class="modal-ebook-placeholder">Complete Detox</div>
-                </div>
-                <div class="modal-copy">
-                    <p class="modal-lead">Hét stappenplan om razendsnel meer omzet uit je website te halen!</p>
-                    <form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
-                        <input type="hidden" name="u"   value="3">
-                        <input type="hidden" name="f"   value="3">
-                        <input type="hidden" name="s"   value="">
-                        <input type="hidden" name="c"   value="0">
-                        <input type="hidden" name="m"   value="0">
-                        <input type="hidden" name="act" value="sub">
-                        <input type="hidden" name="v"   value="2">
-                        <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
+    <!-- Hier komen alle andere secties -->
 
-                        <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
-                        <input type="email" id="lead-email" name="email" placeholder="Email" required />
-                        <button type="submit" class="cta-button modal-cta">Download PDF</button>
-                        <p class="modal-trust"><span class="icon-checkmark" style="margin-right:8px"></span>Je gegevens zijn 100% veilig</p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials">
-        <div class="container">
-            <div class="rating-display"><span style="color: #2954B3; font-weight: 700;">4.6 | 320+</span></div>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                    </div>
-                    <p class="quote">"Ik dacht altijd dat gezond eten wel genoeg was... tot ik deze methode ontdekte. Het opent echt je ogen voor wat er allemaal ongemerkt je lichaam binnenkomt. Microplastics dus – iets waar ik nooit echt bij stil had gestaan. De informatie is praktisch toepasbaar en meteen bruikbaar in het dagelijks leven."</p>
-                    <div class="profile">
-                        <div class="profile-pic"></div>
-                        <div class="profile-info">
-                            <div class="name">Willemien Klein</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                    </div>
-                    <p class="quote">"Wat een wake-up call. De info is zó concreet en helder. Geen zweverig gedoe, maar gewoon duidelijk uitgelegd wat er misgaat en wat je eraan kunt doen. Je merkt dat dit is geschreven door iemand die hier diep in zit. Voor mij was het echt een kantelpunt om dingen in mijn leefstijl te veranderen."</p>
-                    <div class="profile">
-                        <div class="profile-pic"></div>
-                        <div class="profile-info">
-                            <div class="name">Jesse Vreeken</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="stars">
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                        <span class="icon-star" style="color: #FDB542 !important;"></span>
-                    </div>
-                    <p class="quote">"Ik heb dit meteen doorgestuurd naar al mijn studiegenoten. Dit is zó waardevol – en het feit dat het gratis is, maakt het bijna te mooi om waar te zijn. Het leest lekker weg, bevat geen onzin of vage claims, en is super praktisch. Dit zou eigenlijk verplichte kost moeten zijn voor iedereen die met gezondheid bezig is."</p>
-                    <div class="profile">
-                        <div class="profile-pic"></div>
-                        <div class="profile-info">
-                            <div class="name">Nadia Vermeer</div>
-                        </div>
-                    </div>
-                </div>
-                
-
-            </div>
-        </div>
-    </section>
-
-
-
-    <script src="landing-script.js"></script>
+    <script>
+        // Hier komt alle JavaScript specifiek voor deze pagina
+    </script>
 </body>
 </html>
