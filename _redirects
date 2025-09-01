@@ -1,6 +1,7 @@
 # Blog post redirects
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
 /vlierbessensap-gezond    /vlierbessensap-gezond.html   200
+/*    /post.html?slug=:s   200
 /kruisbloemige-groenten    /kruisbloemige-groenten.html   200
 /zuiveringszout-baking-soda    /zuiveringszout-baking-soda.html   200
 /broccolikiemen    /broccolikiemen.html   200/aardbeien-gezond    /aardbeien-gezond.html   200
