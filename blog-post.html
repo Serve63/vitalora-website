@@ -437,13 +437,31 @@
             // Debug: log wat we hebben gevonden
             console.log('Gevonden post:', post);
             console.log('localStorage blog posts:', JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]'));
+            console.log('Post content:', post.content);
+            console.log('Post content length:', post.content ? post.content.length : 'Geen content');
+            console.log('Post content type:', typeof post.content);
         
             // Display the blog post
             document.title = (post.metaTitle || post.title) + ' - Vitalora';
             document.getElementById('post-title').textContent = post.title;
             document.getElementById('post-date').textContent = post.publishedDate;
             document.getElementById('post-read-time').textContent = post.readTime + ' min leestijd';
-            document.getElementById('post-content').innerHTML = post.content;
+            
+            // Debug: check of content element bestaat
+            const contentElement = document.getElementById('post-content');
+            console.log('Content element gevonden:', contentElement);
+            console.log('Content element innerHTML voor:', contentElement ? contentElement.innerHTML : 'Element niet gevonden');
+            
+            // Set content met extra debug
+            if (post.content && post.content.trim()) {
+                contentElement.innerHTML = post.content;
+                console.log('Content succesvol ingesteld');
+            } else {
+                contentElement.innerHTML = '<p>Geen content gevonden in post data</p>';
+                console.log('Geen content gevonden in post data');
+            }
+            
+            console.log('Content element innerHTML na:', contentElement ? contentElement.innerHTML : 'Element niet gevonden');
             
             // Display featured image if available
             const featuredImageDiv = document.getElementById('featured-image');
