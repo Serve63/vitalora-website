@@ -17,7 +17,18 @@ document.addEventListener('DOMContentLoaded', function() {
     // Laat standaard HTML submissie naar MailBlue; geen JS-intercept
     // (bewust geen form.addEventListener('submit', ...) zodat POST direct naar ActiveCampaign gaat.)
 
-
+    // Add click handler for direct access button
+    const directAccessButton = document.querySelector('.direct-access');
+    if (directAccessButton) {
+        directAccessButton.addEventListener('click', function() {
+            this.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                this.style.transform = 'scale(1)';
+            }, 150);
+            
+            console.log('Direct access button clicked!');
+        });
+    }
 
     // Add hover effects for testimonial cards
     const testimonialCards = document.querySelectorAll('.testimonial-card');

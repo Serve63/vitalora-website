@@ -37,7 +37,28 @@ body {
     position: relative;
 }
 
+.direct-access {
+    background-color: #2954B3;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 600;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-block;
+    margin-bottom: 32px;
+}
 
+.direct-access:hover {
+    background-color: #2954B4;
+}
+
+.direct-access:active {
+    background-color: #1e40af;
+}
 
 .hero-content {
     display: grid;
@@ -482,7 +503,7 @@ body {
     .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; }
     /* Ebook page: mobile tweaks per request */
     .ebook-page .hero-description { display: none !important; }
-
+    .ebook-page .direct-access { display: block !important; margin: 0 auto 12px !important; }
     .ebook-page .feature-item { font-size: 13.5px !important; }
     .ebook-page .features-list { margin-top: 0 !important; margin-bottom: 12px !important; }
     
