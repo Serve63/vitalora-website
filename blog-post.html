@@ -364,7 +364,7 @@
     </footer>
 
     <script>
-        (function() {
+        (async function() {
             // Get blog post ID from URL
             const urlParams = new URLSearchParams(window.location.search);
             const postId = parseInt(urlParams.get('id'));
@@ -418,23 +418,26 @@
                 }
             }
 
-            (async () => {
-                if (!post && slugParam){
-                    post = await fetchStaticFallback(slugParam);
-                    if (post){
-                        // Bewaar een kopie in localStorage zodat de editor hem kan oppakken
-                        const copy = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-                        copy.push(post);
-                        localStorage.setItem('vitalora_blog_posts', JSON.stringify(copy));
-                    }
+            if (!post && slugParam){
+                post = await fetchStaticFallback(slugParam);
+                if (post){
+                    // Bewaar een kopie in localStorage zodat de editor hem kan oppakken
+                    const copy = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                    copy.push(post);
+                    localStorage.setItem('vitalora_blog_posts', JSON.stringify(copy));
                 }
+            }
 
-                if (!post) {
-                    document.getElementById('post-title').textContent = 'Blog post niet gevonden';
-                    document.getElementById('post-content').innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
-                    return;
-                }
-            
+            if (!post) {
+                document.getElementById('post-title').textContent = 'Blog post niet gevonden';
+                document.getElementById('post-content').innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
+                return;
+            }
+
+            // Debug: log wat we hebben gevonden
+            console.log('Gevonden post:', post);
+            console.log('localStorage blog posts:', JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]'));
+        
             // Display the blog post
             document.title = (post.metaTitle || post.title) + ' - Vitalora';
             document.getElementById('post-title').textContent = post.title;
@@ -503,7 +506,7 @@
             if(post.status && post.status !== 'published'){
                 setMetaByName('robots','noindex,nofollow');
             }
-            })();
+        })();
     </script>
 </body>
 </html>
