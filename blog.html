@@ -157,26 +157,33 @@
                 padding: 15px;
             }
             
-            .blog-header h1 {
-			font-size: 36px;
-		}
-		
-			.blog-grid {
-				grid-template-columns: repeat(auto-fill, 260px) !important;
-                grid-auto-rows: 260px !important;
+            .blog-header h1 { font-size: 36px; }
+            
+            .blog-grid {
+                grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
                 gap: 20px;
-                justify-content: start;
-                justify-items: start;
-			}
+                justify-content: center !important;
+                justify-items: center !important;
+            }
 
-			.post-card {
-                width: 260px !important;
-                height: 260px !important;
-			}
+            .post-card {
+                width: 100% !important;
+                max-width: 320px !important;
+                height: auto !important;
+                min-height: 280px !important;
+            }
 
-			.post-title { font-size: 18px; }
-			.post-meta { font-size: 12px; }
-		}
+            .post-title { font-size: 18px; }
+            .post-meta { font-size: 12px; }
+        }
+
+        @media (max-width: 480px) {
+            .main-content { margin: 16px; padding: 12px; }
+            .blog-header h1 { font-size: 28px; }
+            .blog-grid { gap: 16px; }
+            .post-card { max-width: 100% !important; min-height: 260px !important; }
+        }
 	</style>
 </head>
 <body>
@@ -230,14 +237,14 @@
         </footer>
 
                 <script>
-        // Only show blogs from localStorage (created via dashboard)
+        console.log('=== BLOG PAGE SCRIPT START (blog.html) ===');
         var postsContainer = document.getElementById('posts');
+        console.log('Posts container found:', postsContainer);
         if (postsContainer) {
             var publishedPosts = [];
-            
-            // Try to load published posts from localStorage
             try {
                 var stored = localStorage.getItem('vitalora_blog_posts');
+                console.log('localStorage data:', stored);
                 if (stored) {
                     var allPosts = JSON.parse(stored);
                     for (var i = 0; i < allPosts.length; i++) {
@@ -250,12 +257,11 @@
             } catch (e) {
                 console.log('Error loading posts:', e);
             }
-            
-            // Add published posts
+            console.log('Total published posts:', publishedPosts.length);
             for (var j = 0; j < publishedPosts.length; j++) {
                 var post = publishedPosts[j];
-                        var card = document.createElement('div');
-                        card.className = 'post-card';
+                var card = document.createElement('div');
+                card.className = 'post-card';
                 card.onclick = (function(id, slug){ return function(){
                   const url = slug ? ('/' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
                   window.location.href = url;
@@ -270,12 +276,42 @@
                                  '</div>';
                 postsContainer.appendChild(card);
             }
-            
-            // If no posts, show empty state
             if (publishedPosts.length === 0) {
-                postsContainer.innerHTML = '';
+                console.log('No posts found in localStorage. Trying fallback feed /blog-feed.json');
+                fetch('/blog-feed.json?v=' + Date.now())
+                    .then(function(res){ if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
+                    .then(function(data){
+                        if (Array.isArray(data) && data.length) {
+                            postsContainer.innerHTML = '';
+                            for (var j2 = 0; j2 < data.length; j2++) {
+                                var post2 = data[j2];
+                                var card2 = document.createElement('div');
+                                card2.className = 'post-card';
+                                card2.onclick = (function(id, slug){ return function(){
+                                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
+                                  window.location.href = url;
+                                }; })(post2.id, post2.slug);
+                                var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                                var img2 = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
+                                var src2 = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords2 + ',health,wellness');
+                                card2.innerHTML = '<div class="post-cover"><img src="' + src2 + '" alt="" onerror="this.src=\'' + img2 + '\'" /></div>' +
+                                                 '<div class="post-body">' +
+                                                   '<div class="post-title">' + (post2.title || 'Artikel') + '</div>' +
+                                                   '<div class="post-meta"><div class="post-date">' + (post2.publishedDate || '') + '</div><div class="post-read-time">' + (post2.readTime || 5) + ' min leestijd</div></div>' +
+                                                 '</div>';
+                                postsContainer.appendChild(card2);
+                            }
+                            return;
+                        }
+                        postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
+                    })
+                    .catch(function(err){
+                        console.log('Fallback feed failed:', err);
+                        postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
+                    });
             }
         }
+        console.log('=== BLOG PAGE SCRIPT END (blog.html) ===');
         </script>
 </body>
 </html>
