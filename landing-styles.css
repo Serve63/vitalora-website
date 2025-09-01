@@ -499,8 +499,8 @@ body {
     }
     /* Ebook page: hide large hero image and show mobile image */
     .ebook-page .hero-image { display: none !important; }
-    .ebook-page .mobile-book-image { display: none !important; }
-    .ebook-page .mobile-book-image img { display: none !important; }
+    .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 4px auto 6px !important; padding: 0 !important; background: transparent !important; }
+    .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; }
     /* Ebook page: mobile tweaks per request */
     .ebook-page .hero-description { display: none !important; }
     .ebook-page .direct-access { display: block !important; margin: 0 auto 12px !important; }
