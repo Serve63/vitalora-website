@@ -158,25 +158,52 @@
             }
             
             .blog-header h1 {
-			font-size: 36px;
-		}
-		
-			.blog-grid {
-				grid-template-columns: repeat(auto-fill, 260px) !important;
-                grid-auto-rows: 260px !important;
+                font-size: 36px;
+            }
+            
+            .blog-grid {
+                grid-template-columns: 1fr !important;
+                grid-auto-rows: auto !important;
                 gap: 20px;
-                justify-content: start;
-                justify-items: start;
-			}
+                justify-content: center !important;
+                justify-items: center !important;
+            }
 
-			.post-card {
-                width: 260px !important;
-                height: 260px !important;
-			}
-
-			.post-title { font-size: 18px; }
-			.post-meta { font-size: 12px; }
-		}
+            .post-card {
+                width: 100% !important;
+                max-width: 320px !important;
+                height: auto !important;
+                min-height: 280px !important;
+            }
+            
+            .post-title { 
+                font-size: 18px; 
+            }
+            
+            .post-meta { 
+                font-size: 12px; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .main-content {
+                margin: 16px;
+                padding: 12px;
+            }
+            
+            .blog-header h1 {
+                font-size: 28px;
+            }
+            
+            .blog-grid {
+                gap: 16px;
+            }
+            
+            .post-card {
+                max-width: 100% !important;
+                min-height: 260px !important;
+            }
+        }
 	</style>
 </head>
 <body>
