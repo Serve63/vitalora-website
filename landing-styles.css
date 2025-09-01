@@ -49,7 +49,7 @@ body {
     cursor: pointer;
     transition: all 0.2s ease;
     display: inline-block;
-    margin-bottom: 16px;
+    margin-bottom: 32px;
 }
 
 .direct-access:hover {
