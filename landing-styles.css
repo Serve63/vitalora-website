@@ -473,7 +473,7 @@ body {
     .hero-text .highlight { color: #2347A3 !important; }
     .mobile-br { display: inline; }
     .nowrap { white-space: nowrap; }
-    .features-list { margin-top: -4px !important; }
+    .features-list { margin-top: 16px !important; }
     
     /* Verberg hero description op mobiel */
     .hero-description {
