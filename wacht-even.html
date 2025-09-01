@@ -8,12 +8,13 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="checkout-styles.css?v=3">
+    <link rel="stylesheet" href="/assets/css/spacing-v2.css">
     <link rel="stylesheet" href="icons.css">
     <link rel="stylesheet" href="/assets/css/header.css?v=1">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
     <link rel="stylesheet" href="/assets/css/footer.css?v=1">
 </head>
-<body>
+<body class="spacing-v2">
     <!-- Header verborgen op deze pagina -->
 
     <!-- Countdown Header -->
@@ -30,7 +31,7 @@
                 <!-- Left Column -->
                 <div class="left-column">
                     <!-- Hero Image and Text -->
-                    <div class="hero-section">
+                    <section class="section flow">
                         <div class="hero-image">
                             <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2076&q=80" alt="Vrouw met blonde haren in spijkerbroek shirt">
                         </div>
@@ -40,80 +41,44 @@
                             <p class="question">Maar even eerlijk...<br>Kan jij je nog herinneren hoe jij je vroeger voelde?</p>
                             <p class="benefit">Meer energie, een helder brein, minder vage klachten?</p>
                         </div>
-                    </div>
+                    </section>
 
                     <!-- PFAS Statistics -->
-                    <div class="pfas-section">
+                    <section class="section card flow">
                         <h2>In 2010 werd PFAS aangetroffen bij 2% van de bevolking, inmiddels is dat opgelopen tot 98%!</h2>
                         <p>Ik voelde me ook altijd wazig, moe en allesbehalve helder. Ik besloot deze kankerverwekkende stoffen uit m'n lijf te halen, en dit is wat ik ervaarde 👇</p>
-                    </div>
+                    </section>
 
                     <!-- Benefits List -->
-                    <div class="benefits-section">
-                        <div class="benefits-grid">
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Meer energie en mentale scherpte</span>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Diepe, herstellende slaap</span>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Heldere focus en rust in m'n hoofd</span>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Geen opgeblazen gevoel meer</span>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Minder stemmingswisselingen</span>
-                            </div>
-                            <div class="benefit-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Sterkere weerstand</span>
-                            </div>
-                        </div>
-                    </div>
+                    <section class="section flow">
+                        <ul class="stack--sm">
+                            <li><span class="checkmark icon-checkmark"></span>Meer energie en mentale scherpte</li>
+                            <li><span class="checkmark icon-checkmark"></span>Diepe, herstellende slaap</li>
+                            <li><span class="checkmark icon-checkmark"></span>Heldere focus en rust in m'n hoofd</li>
+                            <li><span class="checkmark icon-checkmark"></span>Geen opgeblazen gevoel meer</li>
+                            <li><span class="checkmark icon-checkmark"></span>Minder stemmingswisselingen</li>
+                            <li><span class="checkmark icon-checkmark"></span>Sterkere weerstand</li>
+                        </ul>
+                    </section>
 
                     <!-- Blue Callout Box -->
-                    <div class="callout-box">
+                    <section class="section card flow">
                         <div class="callout-icon icon-heart"></div>
                         <p>Geloof me, je bent vergeten hoe goed het voelt om écht opgeklaard te leven.</p>
-                    </div>
+                    </section>
 
                     <!-- Toxins List -->
-                    <div class="toxins-section">
+                    <section class="section flow">
                         <h3>Mijn Detox werkt voor deze gifstoffen:</h3>
-                        <div class="toxins-grid">
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Parabenen</span>
-                            </div>
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>PFAS</span>
-                            </div>
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>BPA</span>
-                            </div>
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Microplastics</span>
-                            </div>
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Ftalaten</span>
-                            </div>
-                            <div class="toxin-item">
-                                <span class="checkmark icon-checkmark"></span>
-                                <span>Pesticiden</span>
-                            </div>
-                        </div>
-                    </div>
+                        <ul class="stack--sm">
+                            <li><span class="checkmark icon-checkmark"></span>Parabenen</li>
+                            <li><span class="checkmark icon-checkmark"></span>PFAS</li>
+                            <li><span class="checkmark icon-checkmark"></span>BPA</li>
+                            <li><span class="checkmark icon-checkmark"></span>Microplastics</li>
+                            <li><span class="checkmark icon-checkmark"></span>Ftalaten</li>
+                            <li><span class="checkmark icon-checkmark"></span>Pesticiden</li>
+                        </ul>
+                    </section>
                 </div>
 
                 <!-- Right Column - Order Form -->
@@ -220,5 +185,15 @@
     </main>
 
     <script src="checkout-script.js?v=2"></script>
+    <!-- Dev toggle voor spacing-v2 (alleen voor testen) -->
+    <script>
+        // alleen voor dev/test; mag eruit na review
+        document.addEventListener('keydown', e => {
+            if (e.key.toLowerCase() === 'v' && (e.ctrlKey || e.metaKey)) {
+                document.body.classList.toggle('spacing-v2');
+                console.log('Spacing-v2 toggled:', document.body.classList.contains('spacing-v2'));
+            }
+        });
+    </script>
 </body>
 </html>

@@ -1,0 +1,99 @@
+/* ============== Spacing v2 (feature-flagged) ============== */
+body.spacing-v2 {
+  /* schaal in rem (basis 4px = .25rem) */
+  --space-0: 0;
+  --space-1: .25rem;   /* 4px  */
+  --space-2: .5rem;    /* 8px  */
+  --space-3: .75rem;   /* 12px */
+  --space-4: 1rem;     /* 16px */
+  --space-5: 1.5rem;   /* 24px */
+  --space-6: 2rem;     /* 32px */
+  --space-7: 3rem;     /* 48px */
+  --space-8: 4rem;     /* 64px */
+
+  --container-gap: var(--space-7);
+  --card-pad: var(--space-6);
+  --stack-gap: var(--space-4);
+  --small-stack-gap: var(--space-3);
+}
+
+/* Reset marges die nu inconsistent zijn */
+body.spacing-v2 :where(h1,h2,h3,h4,h5,h6,p,ul,ol,blockquote){margin:0}
+
+/* Utility: verticale flow — geef gelijke bovenmarge aan opvolgende children */
+body.spacing-v2 .flow > * + * { margin-top: var(--flow-space, var(--stack-gap)); }
+
+/* Utility: stack & cluster */
+body.spacing-v2 .stack   { display:block; }
+body.spacing-v2 .stack > * + * { margin-top: var(--stack-gap); }
+
+body.spacing-v2 .stack--sm > * + * { margin-top: var(--small-stack-gap); }
+
+body.spacing-v2 .cluster { display:flex; flex-wrap:wrap; gap: var(--cluster-gap, var(--space-3)); align-items:center; }
+
+/* Cards/boxjes links */
+body.spacing-v2 .card    { display:grid; gap: var(--space-3); padding: var(--card-pad); border-radius:12px; }
+
+/* Bulletlijsten netjes */
+body.spacing-v2 :where(ul,ol){ padding-left: 1.25rem; }
+body.spacing-v2 li + li { margin-top: .5em; }
+
+/* Kolommen container (links content, rechts formulier) */
+body.spacing-v2 .page-grid {
+  display:grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: var(--container-gap);
+}
+@media (max-width: 900px){
+  body.spacing-v2 .page-grid { grid-template-columns: 1fr; }
+}
+
+/* Form elementen gelijk gap */
+body.spacing-v2 .form-grid { display:grid; gap: var(--space-3); }
+body.spacing-v2 .pay-methods { display:grid; gap: var(--space-3); grid-template-columns: 1fr; }
+@media (min-width: 520px){
+  body.spacing-v2 .pay-methods { grid-template-columns: 1fr 1fr; }
+}
+
+/* Consistente afstand tussen secties in de linkerkolom */
+body.spacing-v2 .left-rail .section { padding: 0; }
+body.spacing-v2 .left-rail .section.flow { --flow-space: var(--space-5); }
+
+/* Override bestaande margins/padding voor spacing-v2 */
+body.spacing-v2 .two-column-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 560px);
+  gap: var(--container-gap);
+  align-items: start;
+}
+
+body.spacing-v2 .left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Remove existing gap, use .flow instead */
+}
+
+body.spacing-v2 .right-column {
+  position: sticky;
+  top: 24px;
+}
+
+/* Reset bestaande margins in spacing-v2 mode */
+body.spacing-v2 .hero-section,
+body.spacing-v2 .pfas-section,
+body.spacing-v2 .benefits-section,
+body.spacing-v2 .callout-box,
+body.spacing-v2 .toxins-section,
+body.spacing-v2 .bottom-testimonial {
+  margin: 0;
+  padding: 0;
+}
+
+body.spacing-v2 .benefit-item,
+body.spacing-v2 .toxin-item {
+  margin: 0;
+}
+
+body.spacing-v2 .experience-title {
+  margin: 0;
+}
