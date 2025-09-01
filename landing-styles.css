@@ -499,13 +499,13 @@ body {
     }
     /* Ebook page: hide large hero image and show mobile image */
     .ebook-page .hero-image { display: none !important; }
-    .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 0 auto 16px !important; padding: 0 !important; background: transparent !important; }
+    .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 0 auto 8px !important; padding: 0 !important; background: transparent !important; }
     .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; border-radius: 0 !important; box-shadow: none !important; }
     /* Ebook page: mobile tweaks per request */
     .ebook-page .hero-description { display: none !important; }
     .ebook-page .direct-access { display: block !important; margin: 0 auto 12px !important; }
     .ebook-page .feature-item { font-size: 13.5px !important; }
-    .ebook-page .features-list { margin-top: 6px !important; margin-bottom: 12px !important; }
+    .ebook-page .features-list { margin-top: 0 !important; margin-bottom: 12px !important; }
     
     /* Verberg 'Inloggen' knop in header op mobiel (alleen deze pagina) */
     .clean-reset-page .site-header .header-inner .login-btn {
