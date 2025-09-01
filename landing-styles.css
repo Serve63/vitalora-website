@@ -614,6 +614,9 @@ body {
     /* Ebook page: tighter space under main CTA */
     .ebook-page #ebook-claim { margin-top: 32px !important; margin-bottom: 8px !important; }
     
+    /* Clean Reset page: reduce space under main CTA on mobile */
+    .clean-reset-page #ebook-claim { margin-bottom: 0 !important; }
+    
     .clean-reset-page #ebook-claim:hover, .ebook-page #ebook-claim:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9) !important;
