@@ -14,26 +14,26 @@
         .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 
         /* Hero */
-        .hero { background:#EDF2FB; padding:60px 0 40px; }
-        .hero-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:40px; }
-        .hero-text h1 { font-size:42px; font-weight:700; color:var(--text); margin:0 0 16px; line-height:1.2; }
-        .highlight { color: var(--blue-accent); }
-        .hero-description { font-size:18px; color:var(--muted); margin:0 0 24px; line-height:1.7; }
+        body.clean-reset-page .hero { background:#EDF2FB !important; padding:60px 0 40px !important; }
+        body.clean-reset-page .hero-content { display:grid !important; grid-template-columns:1fr 1fr !important; gap:60px !important; align-items:center !important; margin-top:40px !important; }
+        body.clean-reset-page .hero-text h1 { font-size:42px !important; font-weight:700 !important; color:var(--text) !important; margin:0 0 16px !important; line-height:1.2 !important; }
+        body.clean-reset-page .highlight { color: var(--blue-accent) !important; }
+        body.clean-reset-page .hero-description { font-size:18px !important; color:var(--muted) !important; margin:0 0 24px !important; line-height:1.7 !important; }
 
-        .direct-access { background-color: var(--blue); color:#fff; border:none; padding:8px 16px; font-size:14px; font-weight:600; border-radius:20px; cursor:pointer; transition:all .2s ease; display:inline-block; margin-bottom:24px; }
-        .direct-access:hover { background-color:#2f5bd1; }
+        body.clean-reset-page .direct-access { background-color: var(--blue) !important; color:#fff !important; border:none !important; padding:8px 16px !important; font-size:14px !important; font-weight:600 !important; border-radius:20px !important; cursor:pointer !important; transition:all .2s ease !important; display:inline-block !important; margin-bottom:24px !important; }
+        body.clean-reset-page .direct-access:hover { background-color:#2f5bd1 !important; }
 
-        .features-list { display:flex; flex-direction:column; gap:10px; margin: 16px 0 32px; }
-        .feature-item { display:flex; align-items:center; gap:12px; font-size:16px; color:#374151; }
+        body.clean-reset-page .features-list { display:flex !important; flex-direction:column !important; gap:10px !important; margin: 16px 0 32px !important; }
+        body.clean-reset-page .feature-item { display:flex !important; align-items:center !important; gap:12px !important; font-size:16px !important; color:#374151 !important; }
         .checkmark.icon-checkmark { width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background: var(--blue); flex-shrink:0; }
         .checkmark.icon-checkmark::before { content:""; width:10px; height:10px; background:#fff; -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; }
 
         .cta-button { background-color: var(--green); color:white; border:none; padding:18px 36px; font-size:18px; font-weight:700; border-radius:8px; cursor:pointer; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; }
         .cta-button:hover { background-color:#059669; transform:translateY(-2px); box-shadow:0 6px 14px rgba(0,0,0,.15); }
 
-        .hero-image { display:block; }
-        .ebook-cover-placeholder { width: 500px; height: 500px; background:#d1d5db; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#6b7280; font-size:18px; font-weight:500; border:2px dashed #9ca3af; }
-        .mobile-book-image { display:none; }
+        body.clean-reset-page .hero-image { display:block !important; }
+        body.clean-reset-page .ebook-cover { max-width: 500px !important; width: 100% !important; height: auto !important; display: block !important; }
+        body.clean-reset-page .mobile-book-image { display:none !important; }
 
         /* Testimonials */
         .testimonials { background:#fff; padding:40px 0 60px; }
@@ -80,7 +80,7 @@
                     <div class="mobile-book-image" aria-hidden="true">
                         <img src="https://via.placeholder.com/280x350/2954B3/ffffff?text=EBOOK" alt="E-book" />
                     </div>
-
+                    
                     <div class="features-list">
                         <div class="feature-item"><span class="checkmark icon-checkmark"></span><span>Praktisch toepasbaar – Werkt direct</span></div>
                         <div class="feature-item"><span class="checkmark icon-checkmark"></span><span>Volledig gratis – Geen verborgen kosten</span></div>
@@ -88,7 +88,7 @@
                         <div class="feature-item"><span class="checkmark icon-checkmark"></span><span>Simpel & duidelijk – Je weet precies wat je moet doen</span></div>
                         <div class="feature-item"><span class="checkmark icon-checkmark"></span><span>Steeds populairder – Duizenden gingen je voor</span></div>
                     </div>
-
+                    
                     <button class="cta-button" id="ebook-claim">Claim Jouw Exemplaar →</button>
                 </div>
                 <div class="hero-image">
