@@ -3,9 +3,153 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title></title>
-	<style>html,body{margin:0;padding:0;background:#fff}</style>
+	<meta name="theme-color" content="#2954B3">
+	<title>Clean Reset</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+	<style>
+		:root { --blue:#2954B3; --blue-accent:#3A9AEA; --green:#10b981; --text:#333333; --muted:#6b7280; }
+		html, body { margin:0; padding:0; background:#EDF2FB; font-family:'Quicksand', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif; }
+		.container { max-width:1200px; margin:0 auto; padding:0 20px; }
+
+		/* Header */
+		.site-header { background:var(--blue); color:#fff; position:sticky; top:0; z-index:50; }
+		.header-inner { display:flex; align-items:center; gap:16px; padding:14px 20px; max-width:1200px; margin:0 auto; }
+		.logo { text-decoration:none; color:#fff; font-weight:800; letter-spacing:.2px; }
+		.logo-text { color:#fff; font-size:20px; }
+		.btn.login-btn { margin-left:auto; display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.35); color:#fff; text-decoration:none; font-weight:700; font-size:14px; }
+		.btn.login-btn:hover { background:rgba(255,255,255,.12); }
+
+		/* Hero */
+		.hero { padding:64px 0 40px; }
+		.hero-content { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; margin-top:24px; }
+		.hero-text h1 { font-size:42px; font-weight:800; color:var(--text); margin:0 0 16px; line-height:1.2; }
+		.highlight { color: var(--blue-accent); }
+		.hero-description { font-size:18px; color:var(--muted); margin:0 0 24px; line-height:1.7; }
+		.direct-access { background:var(--blue); color:#fff; border:none; padding:8px 16px; font-size:14px; font-weight:700; border-radius:20px; cursor:pointer; transition:all .2s ease; display:inline-block; margin-bottom:24px; }
+		.direct-access:hover { background:#2f5bd1; }
+
+		.features-list { display:flex; flex-direction:column; gap:10px; margin:16px 0 32px; }
+		.feature-item { display:flex; align-items:center; gap:12px; font-size:16px; color:#374151; }
+		.checkmark.icon-checkmark { width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background: var(--blue); flex-shrink:0; }
+		.checkmark.icon-checkmark::before { content:""; width:10px; height:10px; background:#fff; -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; }
+
+		.cta-button { background: var(--green); color:#fff; border:none; padding:18px 36px; font-size:18px; font-weight:800; border-radius:10px; cursor:pointer; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; box-shadow:0 2px 4px rgba(0,0,0,.08); }
+		.cta-button:hover { background:#059669; transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.14); }
+
+		.hero-image { display:block; }
+		.ebook-cover { max-width:500px; width:100%; height:auto; display:block; }
+		.mobile-book-image { display:none; }
+
+		/* Testimonials */
+		.testimonials { background:#fff; padding:40px 0 60px; }
+		.rating-display { font-weight:800; color:var(--blue); margin-bottom:16px; }
+		.testimonials-grid { display:grid; grid-template-columns: repeat(3, 1fr); gap:20px; }
+		.testimonial-card { background:#fff; border:1px solid rgba(0,0,0,.06); border-radius:12px; padding:20px; box-shadow:0 4px 10px rgba(0,0,0,.06); transition:box-shadow .2s ease, transform .2s ease; }
+		.testimonial-card:hover { transform:translateY(-3px); box-shadow:0 10px 22px rgba(0,0,0,.12); }
+		.icon-star::before { content:'★'; color:#FDB542; margin-right:2px; }
+		.quote { color:#111827; line-height:1.6; }
+		.profile { display:flex; align-items:center; gap:10px; margin-top:12px; }
+		.profile-pic { width:36px; height:36px; border-radius:50%; background:#e5e7eb; }
+		.name { font-weight:800; }
+		.profession { font-size:12px; color:#6b7280; }
+
+		/* Final CTA */
+		.final-cta { background:#f3f6fe; padding:48px 0; text-align:center; }
+		.final-cta h2 { font-size:32px; color:var(--text); margin:0 0 12px; }
+		.final-cta p { color:#374151; margin:0 0 20px; }
+
+		/* Responsive */
+		@media (max-width: 992px) { .hero-content { gap:32px; } }
+		@media (max-width: 768px) {
+			.hero-content { grid-template-columns:1fr; gap:40px; margin-top:12px; }
+			.hero-image { display:none; }
+			.mobile-book-image { display:block; text-align:center; margin:0 auto 24px; }
+			.mobile-book-image img { max-width:280px; width:100%; height:auto; display:block; margin:0 auto; }
+			.hero-text h1 { font-size:28px; line-height:1.2; word-break:break-word; hyphens:auto; }
+			.testimonials-grid { grid-template-columns:1fr; }
+		}
+	</style>
 </head>
 <body>
+	<!-- Header -->
+	<header class="site-header" role="banner">
+		<div class="header-inner">
+			<a class="logo" href="/"><span class="logo-text">Vitalora.nl</span></a>
+			<a class="btn login-btn" href="/academy">Inloggen</a>
+		</div>
+	</header>
+
+	<!-- Hero Section -->
+	<section class="hero">
+		<div class="container">
+			<div class="hero-content">
+				<div class="hero-text">
+					<button class="direct-access">Direct toegang</button>
+					<h1>De éérste methode in Nederland om <span class="highlight">Microplastics</span> uit je lichaam te detoxen!</h1>
+					<p class="hero-description">Ontdek de <strong>revolutionaire</strong>, gratis methode van Danielle Siegers om je lichaam te zuiveren van schadelijke microplastics. Praktisch, effectief en direct toepasbaar.</p>
+
+					<div class="mobile-book-image" aria-hidden="true">
+						<img src="https://via.placeholder.com/280x350/2954B3/ffffff?text=EBOOK" alt="Microplastics Detox E‑book" />
+					</div>
+
+					<div class="features-list">
+						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Praktisch toepasbaar</strong> – Werkt direct</span></div>
+						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Volledig gratis</strong> – Geen verborgen kosten</span></div>
+						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Geen gedoe</strong> – Makkelijk en overzichtelijk</span></div>
+						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Simpel & duidelijk</strong> – Je weet precies wat je moet doen</span></div>
+						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Steeds populairder</strong> – Duizenden gingen je voor</span></div>
+					</div>
+
+					<button class="cta-button" id="ebook-claim">Claim Jouw Exemplaar →</button>
+				</div>
+				<div class="hero-image">
+					<img class="ebook-cover" src="/assets/microplastics-ebook.png" alt="Elimineer Microplastics e‑book" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR4nGJ4+fLlPwAHyQL8qOQYvwAAAABJRU5ErkJggg=='">
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Testimonials Section -->
+	<section class="testimonials">
+		<div class="container">
+			<div class="rating-display">★ 4.7 | 8.000+</div>
+			<div class="testimonials-grid">
+				<div class="testimonial-card">
+					<div><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span></div>
+					<p class="quote">“Ik dacht altijd dat gezond eten wel genoeg was... tot ik deze methode ontdekte.”</p>
+					<div class="profile"><div class="profile-pic"></div><div class="profile-info"><div class="name">Willemien Klein</div><div class="profession">Voedingscoach</div></div></div>
+				</div>
+				<div class="testimonial-card">
+					<div><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span></div>
+					<p class="quote">“De info is zó concreet en helder. Geen zweverig gedoe, maar duidelijk.”</p>
+					<div class="profile"><div class="profile-pic"></div><div class="profile-info"><div class="name">Jesse Vreeken</div><div class="profession">Vader van twee</div></div></div>
+				</div>
+				<div class="testimonial-card">
+					<div><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span><span class="icon-star"></span></div>
+					<p class="quote">“Dit is zó waardevol – en het feit dat het gratis is, maakt het bijna te mooi om waar te zijn.”</p>
+					<div class="profile"><div class="profile-pic"></div><div class="profile-info"><div class="name">Nadia Vermeer</div><div class="profession">Student geneeskunde</div></div></div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Final CTA Section -->
+	<section class="final-cta">
+		<div class="container">
+			<h2>Klaar om de controle terug te nemen?</h2>
+			<p>Je bent één klik verwijderd van de kennis die je nodig hebt om je lichaam te bevrijden van microplastics.</p>
+			<button class="cta-button" id="ebook-claim-bottom">Claim Jouw Exemplaar →</button>
+		</div>
+	</section>
+
+	<script>
+		// Kleine klik-animatie voor "Direct toegang"
+		(function(){
+			var btn=document.querySelector('.direct-access');
+			if(btn){ btn.addEventListener('click',function(){ this.style.transform='scale(0.95)'; setTimeout(()=>this.style.transform='scale(1)',150); }); }
+		})();
+	</script>
 </body>
 </html>
