@@ -499,19 +499,22 @@ body {
     .mobile-book-image {
         display: block !important;
         text-align: center !important;
-        margin: 2px 0 0 !important; /* bottom stays 0 to remove extra gap */
+        margin: 16px auto 24px !important;
         padding: 0 !important;
-        background: transparent !important;
+        background: #e5e7eb !important;
+        width: 200px !important;
+        height: 200px !important;
+        border-radius: 12px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #6b7280 !important;
+        font-size: 16px !important;
+        font-weight: 500 !important;
     }
     
     .mobile-book-image img {
-        max-width: 280px !important;
-        width: 100% !important;
-        height: auto !important;
-        margin: 0 auto !important;
-        display: block !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
+        display: none !important;
     }
     
     .book-stack {
