@@ -364,6 +364,10 @@
     </footer>
 
     <script>
+        console.log('=== BLOG POST SCRIPT START ===');
+        console.log('URL:', window.location.href);
+        console.log('Script geladen om:', new Date().toISOString());
+        
         (async function() {
             // Get blog post ID from URL
             const urlParams = new URLSearchParams(window.location.search);
