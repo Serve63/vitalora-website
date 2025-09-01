@@ -527,7 +527,7 @@ body {
         top: auto;
         left: auto;
         display: block !important;
-        margin: 8px auto 24px !important;
+        margin: 0 auto 24px !important;
         transition: all 0.2s ease !important;
     }
     
