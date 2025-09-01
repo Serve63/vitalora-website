@@ -50,16 +50,21 @@
   </main>
 
   <script>
+    console.log('=== POST TEMPLATE SCRIPT START ===');
+    
     (async function(){
       const params = new URLSearchParams(location.search);
       // Haal slug uit querystring of uit de path (pretty URL: /:slug)
       let slug = params.get('slug');
+      console.log('Slug from params:', slug);
+      
       if (!slug) {
         const path = (location.pathname || '/').replace(/\/$/, '');
         // Neem laatste segment tenzij het leeg of 'post.html' is
         const segments = path.split('/').filter(Boolean);
         const last = segments[segments.length - 1] || '';
         slug = (last && last !== 'post.html') ? last : '';
+        console.log('Slug from path:', slug);
       }
 
       const titleEl = document.getElementById('post-title');
@@ -80,9 +85,11 @@
       let post = null;
       try {
         const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        console.log('Posts from localStorage:', posts);
         post = posts.find(p => (p.slug === slug));
+        console.log('Found post:', post);
       } catch (e) {
-        // ignore
+        console.log('Error loading from localStorage:', e);
       }
 
       // 2) Fallback: probeer statische HTML te halen en te parsen
@@ -108,10 +115,13 @@
       }
 
       if (!post) {
+        console.log('No post found in localStorage, trying static fallback...');
         post = await fetchStatic(slug);
+        console.log('Static fallback result:', post);
       }
 
       if (!post) {
+        console.log('No post found anywhere, showing empty state');
         // Niets gevonden in storage en geen statische fallback: toon nette lege staat
         titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
         document.getElementById('post-date').textContent = '-';
@@ -121,20 +131,30 @@
       }
 
       // Toon post data
+      console.log('Rendering post data:', post);
       document.title = (post.metaTitle || post.title || titleEl.textContent) + ' - Vitalora';
       titleEl.textContent = post.title || titleEl.textContent;
+      console.log('Title set to:', titleEl.textContent);
+      
       if (post.publishedDate) {
         if (metaEl) { metaEl.textContent = '/' + slug + ' · ' + post.publishedDate + (post.readTime ? (' · ' + post.readTime + ' min') : ''); }
         document.getElementById('post-date').textContent = post.publishedDate;
         document.getElementById('post-read-time').textContent = (post.readTime || 5) + ' min';
+        console.log('Meta data set');
       }
+      
       if (post.content && post.content.trim()) {
+        console.log('Setting content from post.content');
         contentEl.innerHTML = post.content;
       } else if (post.text || post.excerpt) {
+        console.log('Setting content from post.text/excerpt');
         contentEl.textContent = (post.text || post.excerpt);
       } else {
+        console.log('No content found, showing empty state');
         contentEl.innerHTML = '<p>Deze blog post is nog leeg.</p>';
       }
+      
+      console.log('Content element innerHTML:', contentEl.innerHTML);
 
       // Zet canonical naar pretty URL
       (function setCanonical(){
@@ -147,6 +167,7 @@
         canonical.setAttribute('href', location.origin + '/' + encodeURIComponent(slug));
       })();
 
+      console.log('=== POST TEMPLATE SCRIPT END ===');
     })();
   </script>
 </body>
