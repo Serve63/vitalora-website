@@ -36,7 +36,15 @@
   <script>
     (async function(){
       const params = new URLSearchParams(location.search);
-      const slug = params.get('slug') || '';
+      // Haal slug uit querystring of uit de path (pretty URL: /:slug)
+      let slug = params.get('slug');
+      if (!slug) {
+        const path = (location.pathname || '/').replace(/\/$/, '');
+        // Neem laatste segment tenzij het leeg of 'post.html' is
+        const segments = path.split('/').filter(Boolean);
+        const last = segments[segments.length - 1] || '';
+        slug = (last && last !== 'post.html') ? last : '';
+      }
 
       const titleEl = document.getElementById('post-title');
       const metaEl = document.getElementById('post-meta');
@@ -102,6 +110,17 @@
       if (post.content) {
         contentEl.innerHTML = post.content;
       }
+
+      // Zet canonical naar pretty URL
+      (function setCanonical(){
+        var canonical = document.querySelector('link[rel="canonical"]');
+        if(!canonical){
+          canonical = document.createElement('link');
+          canonical.setAttribute('rel','canonical');
+          document.head.appendChild(canonical);
+        }
+        canonical.setAttribute('href', location.origin + '/' + encodeURIComponent(slug));
+      })();
 
     })();
   </script>
