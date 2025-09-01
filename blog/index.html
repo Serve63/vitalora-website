@@ -257,7 +257,7 @@
                         var card = document.createElement('div');
                         card.className = 'post-card';
                 card.onclick = (function(id, slug){ return function(){
-                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
+                  const url = slug ? ('/post.html?slug=' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
                   window.location.href = url;
                 }; })(post.id, post.slug);
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');

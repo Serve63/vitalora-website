@@ -109,7 +109,7 @@
 		.post-meta {
 			display: flex;
             flex-direction: column;
-            gap: 4px;
+			gap: 4px;
 			margin-bottom: 10px;
             font-size: 13px;
             color: #6b7280;
@@ -257,7 +257,7 @@
                         var card = document.createElement('div');
                         card.className = 'post-card';
                 card.onclick = (function(id, slug){ return function(){
-                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
+                  const url = slug ? ('/post.html?slug=' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
                   window.location.href = url;
                 }; })(post.id, post.slug);
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');

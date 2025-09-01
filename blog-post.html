@@ -453,7 +453,7 @@
             // Canonical
             var canonical = document.querySelector('link[rel="canonical"]');
             if(!canonical){ canonical = document.createElement('link'); canonical.setAttribute('rel','canonical'); document.head.appendChild(canonical); }
-            var canonicalUrl = post.slug ? (location.origin + '/' + encodeURIComponent(post.slug)) : currentUrl;
+            var canonicalUrl = post.slug ? (location.origin + '/post.html?slug=' + encodeURIComponent(post.slug)) : currentUrl;
             canonical.setAttribute('href', canonicalUrl);
 
             // If not published, prevent indexing
