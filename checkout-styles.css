@@ -202,7 +202,7 @@ span.checkmark,
 .callout-box {
     background-color: rgba(58, 154, 234, 0.05);
     padding: 20px;
-    margin: 12px 0;
+    margin: 6px 0;
     position: relative;
     border: 2px dashed #3A9AEA;
 }
