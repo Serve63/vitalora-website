@@ -93,6 +93,12 @@ body {
     margin-bottom: 16px;
 }
 
+/* First success message (Yes het is gelukt 🎉) - make it bigger */
+.hero-text .success-message:first-child {
+    font-size: 28px;
+    font-weight: 800;
+}
+
 .question {
     font-size: 16px;
     font-weight: normal;
