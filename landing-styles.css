@@ -547,6 +547,22 @@ body {
         grid-template-columns: 1fr;
     }
     
+    .clean-reset-page .direct-access {
+        position: relative;
+        top: auto;
+        left: auto;
+        display: block !important;
+        margin: 0 auto 24px !important;
+        transition: all 0.2s ease !important;
+    }
+    
+    .clean-reset-page .direct-access:hover {
+        background-color: #2954B4 !important;
+    }
+    
+    .clean-reset-page .direct-access:active {
+        background-color: #1e40af !important;
+    }
 
     /* Centreer hoofd CTA op mobiel */
     .clean-reset-page #ebook-claim {
