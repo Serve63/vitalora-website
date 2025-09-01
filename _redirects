@@ -1,32 +1,38 @@
 # Blog post redirects
+/clean-reset        /clean-reset.html                      200
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
-/vlierbessensap-gezond    /post.html?slug=vlierbessensap-gezond   200
-/:slug    /post.html?slug=:slug   200
-/kruisbloemige-groenten    /kruisbloemige-groenten.html   200
-/zuiveringszout-baking-soda    /zuiveringszout-baking-soda.html   200
-/broccolikiemen    /broccolikiemen.html   200/aardbeien-gezond    /aardbeien-gezond.html   200
-/eiwitpoeders    /eiwitpoeders.html   200/peren-gezond    /post.html?slug=peren-gezond   200
-/olijven-met-knoflook    /olijven-met-knoflook.html   200/mango-gezond    /post.html?slug=mango-gezond   200
-/dopamine-voeding    /dopamine-voeding.html   200
-/suiker    /suiker.html   200# Catch-all for blog posts
-/oligofructose    /oligofructose.html   200/*    /post.html?slug=:s   200
-/waterkers    /waterkers.html   200# Pretty URLs & redirects
-/clean-reset        /clean-reset.html    200
-/blog               /blog.html       200
-/academy            /academy.html    200
-/ebook              /landing.html    200
-/wacht-even         /checkout.html   200
-/contact            /contact.html    200
-/privacy            /privacy.html    200
-/voorwaarden        /voorwaarden.html    200
-/gefeliciteerd      /gefeliciteerd.html    200
-/bedankt            /bedankt.html          200
+/vlierbessensap-gezond                  /post.html?slug=vlierbessensap-gezond      200
+/:slug                                   /post.html?slug=:slug                      200
+/kruisbloemige-groenten                 /kruisbloemige-groenten.html               200
+/zuiveringszout-baking-soda             /zuiveringszout-baking-soda.html           200
+/broccolikiemen                          /broccolikiemen.html                       200
+/eiwitpoeders                            /eiwitpoeders.html                         200
+/peren-gezond                            /post.html?slug=peren-gezond               200
+/olijven-met-knoflook                    /olijven-met-knoflook.html                 200
+/mango-gezond                            /post.html?slug=mango-gezond               200
+/dopamine-voeding                        /dopamine-voeding.html                     200
+/suiker                                   /suiker.html                               200
+/oligofructose                           /oligofructose.html                        200
+/waterkers                               /waterkers.html                            200
+# Pretty URLs & redirects
+/blog                                    /blog.html                                 200
+/academy                                 /academy.html                              200
+/ebook                                   /landing.html                              200
+/wacht-even                              /checkout.html                             200
+/contact                                 /contact.html                              200
+/privacy                                 /privacy.html                              200
+/voorwaarden                             /voorwaarden.html                          200
+/gefeliciteerd                           /gefeliciteerd.html                        200
+/bedankt                                 /bedankt.html                              200
+
+# Catch-all for blog posts
+/*                                       /post.html?slug=:splat                     200
 
 # Legacy paths
-/dashboard          /academy         301
-/dashboard.html     /academy         301
-/landing            /ebook           301
-/checkout           /wacht-even      301
-/artikelen          /blog            301
-/personeel            /personeel.html       200
-/personeel-dashboard  /personeel-dashboard.html  200
+/dashboard                               /academy                                   301
+/dashboard.html                          /academy                                   301
+/landing                                 /ebook                                     301
+/checkout                                /wacht-even                                301
+/artikelen                               /blog                                      301
+/personeel                               /personeel.html                            200
+/personeel-dashboard                     /personeel-dashboard.html                  200
