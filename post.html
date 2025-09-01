@@ -80,7 +80,7 @@
 
       // Toon basis info
       titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-      metaEl.textContent = '/' + slug;
+      if (metaEl) { metaEl.textContent = '/' + slug; }
 
       // 1) Probeer uit localStorage (van jouw CRM)
       let post = null;
@@ -118,8 +118,11 @@
       }
 
       if (!post) {
-        // Niets gevonden
-        contentEl.innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
+        // Niets gevonden in storage en geen statische fallback: toon nette lege staat
+        titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+        document.getElementById('post-date').textContent = '-';
+        document.getElementById('post-read-time').textContent = '-';
+        contentEl.innerHTML = '<p>Deze blog post is nog leeg.</p>';
         return;
       }
 
@@ -127,12 +130,16 @@
       document.title = (post.metaTitle || post.title || titleEl.textContent) + ' - Vitalora';
       titleEl.textContent = post.title || titleEl.textContent;
       if (post.publishedDate) {
-        metaEl.textContent = '/' + slug + ' · ' + post.publishedDate + (post.readTime ? (' · ' + post.readTime + ' min') : '');
+        if (metaEl) { metaEl.textContent = '/' + slug + ' · ' + post.publishedDate + (post.readTime ? (' · ' + post.readTime + ' min') : ''); }
         document.getElementById('post-date').textContent = post.publishedDate;
         document.getElementById('post-read-time').textContent = (post.readTime || 5) + ' min';
       }
-      if (post.content) {
+      if (post.content && post.content.trim()) {
         contentEl.innerHTML = post.content;
+      } else if (post.text || post.excerpt) {
+        contentEl.textContent = (post.text || post.excerpt);
+      } else {
+        contentEl.innerHTML = '<p>Deze blog post is nog leeg.</p>';
       }
 
       // Zet canonical naar pretty URL
