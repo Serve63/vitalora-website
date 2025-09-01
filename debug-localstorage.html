@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug localStorage - Vitalora</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        .debug-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        pre { background: #f5f5f5; padding: 10px; border-radius: 3px; overflow-x: auto; }
+        .error { color: red; }
+        .success { color: green; }
+    </style>
+</head>
+<body>
+    <h1>Debug localStorage voor Blog Posts</h1>
+    
+    <div class="debug-section">
+        <h2>1. localStorage inhoud</h2>
+        <div id="localstorage-content"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>2. Zoeken naar "pim-meeuwis"</h2>
+        <div id="search-results"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>3. Test URL parameters</h2>
+        <div id="url-test"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>4. Acties</h2>
+        <button onclick="clearLocalStorage()">Clear localStorage</button>
+        <button onclick="refreshDebug()">Refresh Debug Info</button>
+    </div>
+
+    <script>
+        function refreshDebug() {
+            // 1. Toon localStorage inhoud
+            const localStorageContent = document.getElementById('localstorage-content');
+            try {
+                const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                localStorageContent.innerHTML = `
+                    <p><strong>vitalora_blog_posts key bestaat:</strong> ${localStorage.getItem('vitalora_blog_posts') ? 'JA' : 'NEE'}</p>
+                    <p><strong>Aantal blog posts:</strong> ${blogPosts.length}</p>
+                    <p><strong>Raw data:</strong></p>
+                    <pre>${JSON.stringify(blogPosts, null, 2)}</pre>
+                `;
+            } catch (e) {
+                localStorageContent.innerHTML = `<p class="error">Error parsing localStorage: ${e.message}</p>`;
+            }
+            
+            // 2. Zoek naar pim-meeuwis
+            const searchResults = document.getElementById('search-results');
+            try {
+                const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                const pimPost = blogPosts.find(p => p.slug === 'pim-meeuwis');
+                
+                if (pimPost) {
+                    searchResults.innerHTML = `
+                        <p class="success">✅ Blog "pim-meeuwis" gevonden!</p>
+                        <p><strong>Titel:</strong> ${pimPost.title}</p>
+                        <p><strong>Content lengte:</strong> ${pimPost.content ? pimPost.content.length : 'Geen content'}</p>
+                        <p><strong>Content preview:</strong></p>
+                        <pre>${pimPost.content ? pimPost.content.substring(0, 200) + '...' : 'Geen content'}</pre>
+                    `;
+                } else {
+                    searchResults.innerHTML = `
+                        <p class="error">❌ Blog "pim-meeuwis" NIET gevonden in localStorage</p>
+                        <p>Beschikbare slugs:</p>
+                        <ul>${blogPosts.map(p => `<li>${p.slug || 'Geen slug'} (${p.title || 'Geen titel'})</li>`).join('')}</ul>
+                    `;
+                }
+            } catch (e) {
+                searchResults.innerHTML = `<p class="error">Error bij zoeken: ${e.message}</p>`;
+            }
+            
+            // 3. Test URL parameters
+            const urlTest = document.getElementById('url-test');
+            const urlParams = new URLSearchParams(window.location.search);
+            const slugParam = urlParams.get('slug');
+            const postId = urlParams.get('id');
+            
+            urlTest.innerHTML = `
+                <p><strong>Huidige URL:</strong> ${window.location.href}</p>
+                <p><strong>Slug parameter:</strong> ${slugParam || 'Geen'}</p>
+                <p><strong>ID parameter:</strong> ${postId || 'Geen'}</p>
+            `;
+        }
+        
+        function clearLocalStorage() {
+            if (confirm('Weet je zeker dat je localStorage wilt legen?')) {
+                localStorage.removeItem('vitalora_blog_posts');
+                alert('localStorage geleegd!');
+                refreshDebug();
+            }
+        }
+        
+        // Auto-refresh bij laden
+        window.onload = refreshDebug;
+    </script>
+</body>
+</html>
