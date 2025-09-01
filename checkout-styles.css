@@ -269,7 +269,7 @@ span.checkmark,
 
 .highlight { color: #2954B4; }
 
-.experience-title { font-weight: 700; margin-bottom: 6px; }
+.experience-title { font-weight: 700; margin-bottom: 0; }
 
 /* Form Sections */
 .form-section { margin-bottom: 24px; }
