@@ -21,6 +21,11 @@
       @media (max-width: 768px) {
         header.site-header, .site-header, .global-header, header[role="banner"] { display: none !important; }
         body { padding-top: 0 !important; }
+        /* Mobile: ebook-specific tweaks */
+        body.ebook-page .hero-description { display: none !important; }
+        body.ebook-page .direct-access { display: block !important; margin: 0 auto 16px !important; }
+        body.ebook-page .feature-item { font-size: 14px !important; }
+        body.ebook-page #ebook-claim { margin-bottom: 8px !important; }
       }
     </style>
 </head>
