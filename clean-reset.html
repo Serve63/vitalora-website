@@ -42,6 +42,36 @@
 		.ebook-cover { max-width:500px; width:100%; height:auto; display:block; }
 		.mobile-book-image { display:none; }
 
+		/* Modal */
+		.hidden { display:none; }
+		.modal { position: fixed; inset:0; z-index: 2000; }
+		.modal-backdrop { position:absolute; inset:0; background: rgba(2,6,23,0.65); backdrop-filter: blur(2px); }
+		.modal-card { position:relative; width: 100%; max-width: 680px; margin: 8vh auto; background: #EEF7FD; border-radius: 14px; overflow:hidden; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+		.modal-ebook { max-width: 680px; }
+		.modal-close { position:absolute; right: 10px; top: 10px; border:0; background: white; border-radius:50%; width: 36px; height:36px; font-size:22px; font-weight:900; line-height:0.8; cursor:pointer; color:#249587; box-shadow:0 2px 8px rgba(0,0,0,.15); display:flex; align-items:center; justify-content:center; }
+		.modal-hero { background:#08192B; color:#fff; padding:26px 34px; text-align:center }
+		.modal-hero h2 { font-size:34px; margin:0 0 6px }
+		.modal-subtitle { font-size:22px; opacity:.95 }
+		.modal-body { display:grid; grid-template-columns: 1fr 1fr; gap:0; }
+		.modal-illustration { background:#EFF5FF; padding: 15px; display:flex; align-items:center; justify-content:center; }
+		.modal-copy { padding:28px; background:#EFF5FF; }
+		.modal-lead { color:#374151; font-size:18px; margin:0 0 18px }
+		.modal-form input { width:100%; padding:10px 12px; border:1px solid #dbe3ec; border-radius:8px; background:#fff; font:inherit; }
+		.modal-form input + input { margin-top:6px }
+		.modal-cta { width:fit-content; margin-top:18px; font-size:16px; padding:12px 20px; display:inline-block; box-shadow:0 2px 4px rgba(0,0,0,.18); font-weight:800; background:var(--green); color:#fff; border:0; border-radius:8px; cursor:pointer; }
+		.modal-trust { display:flex; align-items:center; gap:6px; color:#6b7280; font-size:12px; margin-top:10px; }
+		.modal-ebook-placeholder { width: 300px; height: 380px; background:#d1d5db; border-radius:8px; display:flex; align-items:center; justify-content:center; color:#6b7280; font-size:16px; font-weight:500; border:2px dashed #9ca3af; }
+
+		@media (max-width: 768px){
+			.modal { padding: 0 8px; }
+			.modal-card { width: calc(100% - 16px); max-width: 480px; margin: 6vh auto; padding: 0; border-radius: 12px; background:#EEF7FD; }
+			.modal-body { grid-template-columns: 1fr; }
+			.modal-hero { padding: 18px 20px; }
+			.modal-hero h2 { font-size: 26px; }
+			.modal-subtitle { font-size: 18px; }
+			.modal-copy { padding: 18px; }
+		}
+
 		/* Testimonials */
 		.testimonials { background:#fff; padding:40px 0 60px; }
 		.rating-display { font-weight:800; color:var(--blue); margin-bottom:16px; }
@@ -111,6 +141,41 @@
 		</div>
 	</section>
 
+	<!-- Lead Capture Modal (standalone, same as ebook) -->
+	<div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+		<div class="modal-backdrop"></div>
+		<div class="modal-card modal-ebook">
+			<button class="modal-close" aria-label="Sluiten">×</button>
+			<div class="modal-hero">
+				<h2 id="modal-title">Gratis download</h2>
+				<p class="modal-subtitle">Elimineer Microplastics Methode</p>
+			</div>
+			<div class="modal-body two-col">
+				<div class="modal-illustration" aria-hidden="true">
+					<div class="modal-ebook-placeholder">Elimineer Microplastics e‑book</div>
+				</div>
+				<div class="modal-copy">
+					<p class="modal-lead">Hét stappenplan om je lichaam te bevrijden van microplastics!</p>
+					<form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
+						<input type="hidden" name="u"   value="3">
+						<input type="hidden" name="f"   value="3">
+						<input type="hidden" name="s"   value="">
+						<input type="hidden" name="c"   value="0">
+						<input type="hidden" name="m"   value="0">
+						<input type="hidden" name="act" value="sub">
+						<input type="hidden" name="v"   value="2">
+						<input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
+
+						<input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
+						<input type="email" id="lead-email" name="email" placeholder="Email" required />
+						<button type="submit" class="modal-cta">Download PDF</button>
+						<p class="modal-trust"><span class="icon-checkmark" style="width:12px;height:12px;background:#2954B3;border-radius:50%;display:inline-block"></span>Je gegevens zijn 100% veilig</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
 	<!-- Testimonials Section -->
 	<section class="testimonials">
 		<div class="container">
@@ -149,6 +214,23 @@
 		(function(){
 			var btn=document.querySelector('.direct-access');
 			if(btn){ btn.addEventListener('click',function(){ this.style.transform='scale(0.95)'; setTimeout(()=>this.style.transform='scale(1)',150); }); }
+		})();
+
+		// Modal open/close (match ebook behavior)
+		(function(){
+			var modal=document.getElementById('ebook-modal');
+			if(!modal) return;
+			var openers=[
+				document.querySelector('.direct-access'),
+				document.getElementById('ebook-claim'),
+				document.getElementById('ebook-claim-bottom')
+			].filter(Boolean);
+			var closeBtn=modal.querySelector('.modal-close');
+			function openModal(){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); (modal.querySelector('input')||{}).focus?.(); }
+			function closeModal(){ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); }
+			openers.forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); openModal(); }); });
+			closeBtn && closeBtn.addEventListener('click', closeModal);
+			modal && modal.addEventListener('click', function(e){ if(e.target.classList.contains('modal-backdrop')) closeModal(); });
 		})();
 	</script>
 </body>
