@@ -499,6 +499,10 @@ body {
     .ebook-page .hero-image { display: none !important; }
     .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 0 auto 24px !important; padding: 0 !important; background: transparent !important; }
     .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; border-radius: 0 !important; box-shadow: none !important; }
+    /* Ebook page: mobile tweaks per request */
+    .ebook-page .hero-description { display: none !important; }
+    .ebook-page .direct-access { display: block !important; margin: 0 auto 16px !important; }
+    .ebook-page .feature-item { font-size: 14px !important; }
     
     /* Verberg 'Inloggen' knop in header op mobiel (alleen deze pagina) */
     .clean-reset-page .site-header .header-inner .login-btn {
@@ -578,6 +582,8 @@ body {
     .clean-reset-page .hero, .ebook-page .hero {
         padding: 20px 0 60px;
     }
+    /* Ebook page: reduce space below CTA (less bottom padding) */
+    .ebook-page .hero { padding-bottom: 32px !important; }
     
     .clean-reset-page .hero-text h1, .ebook-page .hero-text h1 {
         font-size: 32px;
@@ -602,6 +608,8 @@ body {
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8) !important;
         transition: all 0.2s ease !important;
     }
+    /* Ebook page: tighter space under main CTA */
+    .ebook-page #ebook-claim { margin-bottom: 8px !important; }
     
     .clean-reset-page #ebook-claim:hover, .ebook-page #ebook-claim:hover {
         transform: translateY(-2px) !important;
