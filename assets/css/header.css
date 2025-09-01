@@ -159,3 +159,8 @@ body.index .btn.login-btn:hover,
   display: inline-flex !important;
   align-items: center;
 }
+
+/* Hide header only on /clean-reset (wins cascade) */
+.clean-reset-page .site-header {
+  display: none !important;
+}

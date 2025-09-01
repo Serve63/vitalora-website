@@ -785,3 +785,8 @@ body {
     font-weight: 500;
     border: 2px dashed #9ca3af;
 }
+
+/* Fallback: Hide header on clean-reset page */
+.clean-reset-page .site-header { 
+    display: none !important; 
+}
