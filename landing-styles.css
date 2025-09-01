@@ -470,6 +470,11 @@ body {
         text-align: center;
         line-height: 1.2;
     }
+    .ebook-page .hero-text h1 {
+        font-size: 27.5px;
+        text-align: center;
+        line-height: 1.2;
+    }
     .clean-reset-page .hero-text .highlight { color: #2347A3 !important; }
     .clean-reset-page .mobile-br { display: inline; }
     .nowrap { white-space: nowrap; }
@@ -556,28 +561,28 @@ body {
 }
 
 @media (max-width: 480px) {
-    .clean-reset-page .container {
+    .clean-reset-page .container, .ebook-page .container {
         padding: 0 15px;
     }
     
-    .clean-reset-page .hero {
+    .clean-reset-page .hero, .ebook-page .hero {
         padding: 20px 0 60px;
     }
     
-    .clean-reset-page .hero-text h1 {
+    .clean-reset-page .hero-text h1, .ebook-page .hero-text h1 {
         font-size: 32px;
     }
     
-    .clean-reset-page .final-cta h2 {
+    .clean-reset-page .final-cta h2, .ebook-page .final-cta h2 {
         font-size: 28px;
     }
     
-    .clean-reset-page .cta-button {
+    .clean-reset-page .cta-button, .ebook-page .cta-button {
         width: auto;
         justify-content: center;
     }
     /* Maak de hoofd CTA-knop smaller op klein mobiel */
-    .clean-reset-page #ebook-claim {
+    .clean-reset-page #ebook-claim, .ebook-page #ebook-claim {
         width: fit-content !important;
         display: block !important;
         margin: 0 auto !important;
@@ -586,62 +591,62 @@ body {
         transition: all 0.2s ease !important;
     }
     
-    .clean-reset-page #ebook-claim:hover {
+    .clean-reset-page #ebook-claim:hover, .ebook-page #ebook-claim:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9) !important;
     }
     
-    .clean-reset-page #ebook-claim:active {
+    .clean-reset-page #ebook-claim:active, .ebook-page #ebook-claim:active {
         transform: translateY(0) !important;
         box-shadow: 0 1px 2px rgba(0, 0, 0, 0.8) !important;
     }
     
-    .clean-reset-page .book {
+    .clean-reset-page .book, .ebook-page .book {
         width: 150px;
         height: 210px;
     }
     
     /* Hide modal lead text on mobile */
-    .clean-reset-page .modal-lead {
+    .clean-reset-page .modal-lead, .ebook-page .modal-lead {
         display: none !important;
     }
     
     /* Center trust text on mobile */
-    .clean-reset-page .modal-trust {
+    .clean-reset-page .modal-trust, .ebook-page .modal-trust {
         text-align: center !important;
         width: 100% !important;
         display: block !important;
     }
     
-    .clean-reset-page .modal-form .modal-trust {
+    .clean-reset-page .modal-form .modal-trust, .ebook-page .modal-form .modal-trust {
         text-align: center !important;
     }
     
     /* Replace checkmark with lock icon on mobile */
-    .clean-reset-page .modal-trust .icon-checkmark {
+    .clean-reset-page .modal-trust .icon-checkmark, .ebook-page .modal-trust .icon-checkmark {
         display: none !important;
     }
     
-    .clean-reset-page .modal-trust::before {
+    .clean-reset-page .modal-trust::before, .ebook-page .modal-trust::before {
         content: "🔒";
         margin-right: 8px;
         font-size: 14px;
     }
     
     /* Reduce space above rating display on mobile */
-    .clean-reset-page .rating-display {
+    .clean-reset-page .rating-display, .ebook-page .rating-display {
         margin-top: -60px !important;
         margin-bottom: 40px !important;
     }
     
     /* Optimize testimonial cards for mobile */
-    .clean-reset-page .testimonials-grid {
+    .clean-reset-page .testimonials-grid, .ebook-page .testimonials-grid {
         grid-template-columns: 1fr !important;
         gap: 16px !important;
         padding: 0 16px;
     }
     
-    .clean-reset-page .testimonial-card {
+    .clean-reset-page .testimonial-card, .ebook-page .testimonial-card {
         padding: 20px 16px !important;
         border-radius: 8px !important;
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
@@ -649,48 +654,48 @@ body {
         background-color: #EDF2FB !important;
     }
     
-    .clean-reset-page .testimonial-card .stars {
+    .clean-reset-page .testimonial-card .stars, .ebook-page .testimonial-card .stars {
         font-size: 14px !important;
         margin-bottom: 8px !important;
     }
     
-    .clean-reset-page .testimonial-card p {
+    .clean-reset-page .testimonial-card p, .ebook-page .testimonial-card p {
         font-size: 15px !important;
         line-height: 1.5 !important;
         margin-bottom: 12px !important;
         font-style: normal !important;
     }
     
-    .clean-reset-page .testimonial-card .author {
+    .clean-reset-page .testimonial-card .author, .ebook-page .testimonial-card .author {
         font-size: 12px !important;
         font-weight: 600 !important;
     }
     
     /* Show mobile CTA section */
-    .clean-reset-page .mobile-cta {
+    .clean-reset-page .mobile-cta, .ebook-page .mobile-cta {
         display: block !important;
     }
     
     /* Optimize final CTA section for mobile */
-    .clean-reset-page .final-cta {
+    .clean-reset-page .final-cta, .ebook-page .final-cta {
         padding: 40px 20px !important;
     }
     
-    .clean-reset-page .final-cta h2 {
+    .clean-reset-page .final-cta h2, .ebook-page .final-cta h2 {
         font-size: 24px !important;
         font-weight: 700 !important;
         margin-bottom: 16px !important;
         line-height: 1.3 !important;
     }
     
-    .clean-reset-page .final-cta p {
+    .clean-reset-page .final-cta p, .ebook-page .final-cta p {
         font-size: 14px !important;
         line-height: 1.5 !important;
         margin-bottom: 24px !important;
         max-width: 100% !important;
     }
     
-    .clean-reset-page .final-cta .cta-button {
+    .clean-reset-page .final-cta .cta-button, .ebook-page .final-cta .cta-button {
         padding: 14px 24px !important;
         font-size: 14px !important;
         border-radius: 8px !important;
@@ -703,12 +708,12 @@ body {
         transition: all 0.2s ease !important;
     }
     
-    .clean-reset-page .final-cta .cta-button:hover {
+    .clean-reset-page .final-cta .cta-button:hover, .ebook-page .final-cta .cta-button:hover {
         background-color: #1e40af !important;
         color: white !important;
     }
     
-    .clean-reset-page .final-cta .cta-button:active {
+    .clean-reset-page .final-cta .cta-button:active, .ebook-page .final-cta .cta-button:active {
         background-color: #1e3a8a !important;
     }
 }
