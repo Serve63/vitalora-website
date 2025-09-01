@@ -12,6 +12,7 @@
     { "source": "/academy/de-juiste-balans/", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
     { "source": "/ebook", "destination": "/landing.html" },
     { "source": "/wacht-even", "destination": "/checkout.html" },
