@@ -661,7 +661,7 @@ body {
     
     /* Reduce space above rating display on mobile */
     .clean-reset-page .rating-display, .ebook-page .rating-display {
-        margin-top: -40px !important;
+        margin-top: -80px !important;
         margin-bottom: 24px !important;
     }
     
