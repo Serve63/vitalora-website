@@ -480,8 +480,8 @@ body {
         font-size: 27.5px;
         text-align: center;
         line-height: 1.2;
-        margin-top: 12px !important;
-        margin-bottom: 12px !important;
+        margin-top: 8px !important;
+        margin-bottom: 6px !important;
     }
     .clean-reset-page .hero-text .highlight { color: #2347A3 !important; }
     .clean-reset-page .mobile-br { display: inline; }
@@ -499,8 +499,8 @@ body {
     }
     /* Ebook page: hide large hero image and show mobile image */
     .ebook-page .hero-image { display: none !important; }
-    .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 0 auto 8px !important; padding: 0 !important; background: transparent !important; }
-    .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; border-radius: 0 !important; box-shadow: none !important; }
+    .ebook-page .mobile-book-image { display: none !important; }
+    .ebook-page .mobile-book-image img { display: none !important; }
     /* Ebook page: mobile tweaks per request */
     .ebook-page .hero-description { display: none !important; }
     .ebook-page .direct-access { display: block !important; margin: 0 auto 12px !important; }
