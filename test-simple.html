@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test localStorage</title>
+</head>
+<body>
+    <h1>Test localStorage</h1>
+    <div id="output"></div>
+    
+    <script>
+        document.getElementById('output').innerHTML = `
+            <h2>localStorage check:</h2>
+            <p>vitalora_blog_posts bestaat: ${localStorage.getItem('vitalora_blog_posts') ? 'JA' : 'NEE'}</p>
+            <p>Raw data:</p>
+            <pre>${localStorage.getItem('vitalora_blog_posts') || 'Geen data'}</pre>
+            
+            <h2>Zoeken naar pim-meeuwis:</h2>
+        `;
+        
+        try {
+            const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            const pimPost = blogPosts.find(p => p.slug === 'pim-meeuwis');
+            
+            if (pimPost) {
+                document.getElementById('output').innerHTML += `
+                    <p style="color: green;">✅ GEVONDEN!</p>
+                    <p>Titel: ${pimPost.title}</p>
+                    <p>Content: ${pimPost.content ? pimPost.content.substring(0, 100) + '...' : 'GEEN CONTENT'}</p>
+                `;
+            } else {
+                document.getElementById('output').innerHTML += `
+                    <p style="color: red;">❌ NIET GEVONDEN</p>
+                    <p>Beschikbare posts:</p>
+                    <ul>${blogPosts.map(p => `<li>${p.slug || 'geen slug'} - ${p.title || 'geen titel'}</li>`).join('')}</ul>
+                `;
+            }
+        } catch (e) {
+            document.getElementById('output').innerHTML += `<p style="color: red;">Error: ${e.message}</p>`;
+        }
+    </script>
+</body>
+</html>
