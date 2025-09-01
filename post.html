@@ -27,20 +27,82 @@
 
   <main class="post-shell">
     <div class="post-container">
-      <h1 id="post-title" class="post-title">Nog invullen</h1>
+      <h1 id="post-title" class="post-title">Laden...</h1>
       <div id="post-meta" class="post-meta"></div>
-      <div class="post-body">
-        <p>Nog invullen.</p>
-      </div>
+      <div id="post-content" class="post-body">Nog invullen.</div>
     </div>
   </main>
 
   <script>
-    (function(){
+    (async function(){
       const params = new URLSearchParams(location.search);
       const slug = params.get('slug') || '';
-      document.getElementById('post-title').textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-      document.getElementById('post-meta').textContent = '/'+slug;
+
+      const titleEl = document.getElementById('post-title');
+      const metaEl = document.getElementById('post-meta');
+      const contentEl = document.getElementById('post-content');
+
+      if (!slug) {
+        titleEl.textContent = 'Blog post niet gevonden';
+        contentEl.innerHTML = '<p>Geen slug opgegeven.</p>';
+        return;
+      }
+
+      // Toon basis info
+      titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+      metaEl.textContent = '/' + slug;
+
+      // 1) Probeer uit localStorage (van jouw CRM)
+      let post = null;
+      try {
+        const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+        post = posts.find(p => (p.slug === slug));
+      } catch (e) {
+        // ignore
+      }
+
+      // 2) Fallback: probeer statische HTML te halen en te parsen
+      async function fetchStatic(sl){
+        try {
+          const res = await fetch('/' + encodeURIComponent(sl) + '.html', { credentials: 'same-origin' });
+          if (!res.ok) return null;
+          const html = await res.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(html, 'text/html');
+          const h1 = doc.querySelector('.blog-title, h1');
+          const content = doc.querySelector('.blog-content, article, main');
+          const dateEl = doc.querySelector('.blog-date');
+          const parsed = {
+            title: h1 ? h1.textContent.trim() : slug.replace(/-/g,' '),
+            content: content ? content.innerHTML : '<p>Geen inhoud gevonden.</p>',
+            publishedDate: dateEl ? dateEl.textContent.trim() : ''
+          };
+          return parsed;
+        } catch (e) {
+          return null;
+        }
+      }
+
+      if (!post) {
+        post = await fetchStatic(slug);
+      }
+
+      if (!post) {
+        // Niets gevonden
+        contentEl.innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
+        return;
+      }
+
+      // Toon post data
+      document.title = (post.metaTitle || post.title || titleEl.textContent) + ' - Vitalora';
+      titleEl.textContent = post.title || titleEl.textContent;
+      if (post.publishedDate) {
+        metaEl.textContent = '/' + slug + ' · ' + post.publishedDate + (post.readTime ? (' · ' + post.readTime + ' min') : '');
+      }
+      if (post.content) {
+        contentEl.innerHTML = post.content;
+      }
+
     })();
   </script>
 </body>
