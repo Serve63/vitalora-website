@@ -11,6 +11,7 @@
 /oligofructose    /oligofructose.html   200/*    /post.html?slug=:s   200
 /waterkers    /waterkers.html   200# Pretty URLs & redirects
 /clean-reset        /clean-reset.html    200
+/blog               /blog.html       200
 /academy            /academy.html    200
 /ebook              /landing.html    200
 /wacht-even         /checkout.html   200
