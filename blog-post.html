@@ -385,12 +385,55 @@
             } else {
                 post = blogPosts.find(p => p.id === postId);
             }
-            
-            if (!post) {
-                document.getElementById('post-title').textContent = 'Blog post niet gevonden';
-                document.getElementById('post-content').innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
-                return;
+
+            // Fallback: als er geen post in localStorage staat maar er is wél een slug,
+            // probeer dan de bestaande statische pagina te laden en te parsen.
+            async function fetchStaticFallback(slug){
+                try {
+                    const res = await fetch('/' + encodeURIComponent(slug) + '.html', { credentials: 'same-origin' });
+                    if (!res.ok) return null;
+                    const html = await res.text();
+                    const parser = new DOMParser();
+                    const doc = parser.parseFromString(html, 'text/html');
+                    const titleEl = doc.querySelector('.blog-title, h1');
+                    const contentEl = doc.querySelector('.blog-content, article, main');
+                    const dateEl = doc.querySelector('.blog-date');
+                    const featuredImg = doc.querySelector('.blog-image img, .blog-post-featured-image img');
+                    const metaTitle = doc.querySelector('meta[name="title"], title');
+                    const metaDesc = doc.querySelector('meta[name="description"]');
+                    const parsed = {
+                        id: Date.now(),
+                        slug,
+                        title: titleEl ? titleEl.textContent.trim() : slug.replace(/-/g,' '),
+                        content: contentEl ? contentEl.innerHTML : '<p>Geen inhoud gevonden.</p>',
+                        publishedDate: dateEl ? dateEl.textContent.trim() : '',
+                        readTime: 5,
+                        featuredImage: featuredImg ? featuredImg.src : '',
+                        metaTitle: metaTitle ? metaTitle.textContent : '',
+                        metaDescription: metaDesc ? metaDesc.getAttribute('content') : ''
+                    };
+                    return parsed;
+                } catch(e){
+                    return null;
+                }
             }
+
+            (async () => {
+                if (!post && slugParam){
+                    post = await fetchStaticFallback(slugParam);
+                    if (post){
+                        // Bewaar een kopie in localStorage zodat de editor hem kan oppakken
+                        const copy = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                        copy.push(post);
+                        localStorage.setItem('vitalora_blog_posts', JSON.stringify(copy));
+                    }
+                }
+
+                if (!post) {
+                    document.getElementById('post-title').textContent = 'Blog post niet gevonden';
+                    document.getElementById('post-content').innerHTML = '<p>Deze blog post kon niet worden gevonden.</p>';
+                    return;
+                }
             
             // Display the blog post
             document.title = (post.metaTitle || post.title) + ' - Vitalora';
@@ -453,14 +496,14 @@
             // Canonical
             var canonical = document.querySelector('link[rel="canonical"]');
             if(!canonical){ canonical = document.createElement('link'); canonical.setAttribute('rel','canonical'); document.head.appendChild(canonical); }
-            var canonicalUrl = post.slug ? (location.origin + '/post.html?slug=' + encodeURIComponent(post.slug)) : currentUrl;
+            var canonicalUrl = post.slug ? (location.origin + '/' + encodeURIComponent(post.slug)) : currentUrl;
             canonical.setAttribute('href', canonicalUrl);
 
             // If not published, prevent indexing
             if(post.status && post.status !== 'published'){
                 setMetaByName('robots','noindex,nofollow');
             }
-        })();
+            })();
     </script>
 </body>
 </html>
