@@ -227,6 +227,18 @@
             
             <div class="blog-grid" id="posts">
                 <!-- Posts will be loaded here -->
+                <div class="post-card" style="display: none;" id="test-post">
+                    <div class="post-cover">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60" alt="Test" />
+                    </div>
+                    <div class="post-body">
+                        <div class="post-title">Test Artikel</div>
+                        <div class="post-meta">
+                            <div class="post-date">1 september 2025</div>
+                            <div class="post-read-time">3 min leestijd</div>
+                        </div>
+                    </div>
+                </div>
             </div>
 		</div>
 	</main>
@@ -257,52 +269,88 @@
         </footer>
 
                 <script>
+        console.log('=== BLOG PAGE SCRIPT START ===');
+        
         // Only show blogs from localStorage (created via dashboard)
         var postsContainer = document.getElementById('posts');
+        console.log('Posts container found:', postsContainer);
+        
         if (postsContainer) {
             var publishedPosts = [];
             
             // Try to load published posts from localStorage
             try {
                 var stored = localStorage.getItem('vitalora_blog_posts');
+                console.log('localStorage data:', stored);
+                
                 if (stored) {
                     var allPosts = JSON.parse(stored);
+                    console.log('All posts from localStorage:', allPosts);
+                    
                     for (var i = 0; i < allPosts.length; i++) {
                         var post = allPosts[i];
+                        console.log('Checking post:', post);
+                        
                         if ((post.status || 'published') === 'published') {
                             publishedPosts.push(post);
+                            console.log('Added published post:', post.title);
                         }
                     }
+                } else {
+                    console.log('No localStorage data found');
                 }
             } catch (e) {
                 console.log('Error loading posts:', e);
             }
             
+            console.log('Total published posts:', publishedPosts.length);
+            
             // Add published posts
             for (var j = 0; j < publishedPosts.length; j++) {
                 var post = publishedPosts[j];
-                        var card = document.createElement('div');
-                        card.className = 'post-card';
+                console.log('Creating card for post:', post.title);
+                
+                var card = document.createElement('div');
+                card.className = 'post-card';
+                
                 card.onclick = (function(id, slug){ return function(){
                   const url = slug ? ('/' + encodeURIComponent(slug)) : ('/blog-post.html?id=' + id);
                   window.location.href = url;
                 }; })(post.id, post.slug);
+                
                 var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
                 var img = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
                 var src = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                
                 card.innerHTML = '<div class="post-cover"><img src="' + src + '" alt="" onerror="this.src=\'' + img + '\'" /></div>' +
                                  '<div class="post-body">' +
                                    '<div class="post-title">' + (post.title || 'Artikel') + '</div>' +
                                    '<div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div>' +
                                  '</div>';
+                
                 postsContainer.appendChild(card);
+                console.log('Card added to DOM');
             }
             
             // If no posts, show empty state
             if (publishedPosts.length === 0) {
-                postsContainer.innerHTML = '';
+                console.log('No posts found, showing empty state');
+                postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Controleer of je CRM systeem is ingesteld.</p></div>';
             }
+            
+            // Test: Show test post if no real posts (for debugging)
+            if (publishedPosts.length === 0) {
+                console.log('Showing test post for debugging');
+                var testPost = document.getElementById('test-post');
+                if (testPost) {
+                    testPost.style.display = 'block';
+                }
+            }
+        } else {
+            console.log('Posts container not found!');
         }
+        
+        console.log('=== BLOG PAGE SCRIPT END ===');
         </script>
 </body>
 </html>
