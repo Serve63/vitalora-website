@@ -464,6 +464,12 @@ body {
         gap: 40px;
         margin-top: 12px;
     }
+    /* Ebook page: switch hero to single column on mobile */
+    .ebook-page .hero-content {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        margin-top: 12px;
+    }
     
     .clean-reset-page .hero-text h1 {
         font-size: 27.5px;
@@ -489,6 +495,10 @@ body {
     .clean-reset-page .hero-image {
         display: none !important;
     }
+    /* Ebook page: hide large hero image and show mobile image */
+    .ebook-page .hero-image { display: none !important; }
+    .ebook-page .mobile-book-image { display: block !important; text-align: center !important; margin: 0 auto 24px !important; padding: 0 !important; background: transparent !important; }
+    .ebook-page .mobile-book-image img { max-width: 280px !important; width: 100% !important; height: auto !important; margin: 0 auto !important; display: block !important; border-radius: 0 !important; box-shadow: none !important; }
     
     /* Verberg 'Inloggen' knop in header op mobiel (alleen deze pagina) */
     .clean-reset-page .site-header .header-inner .login-btn {
@@ -572,6 +582,8 @@ body {
     .clean-reset-page .hero-text h1, .ebook-page .hero-text h1 {
         font-size: 32px;
     }
+    /* Slightly smaller on ebook to prevent overflow */
+    .ebook-page .hero-text h1 { font-size: 28px; }
     
     .clean-reset-page .final-cta h2, .ebook-page .final-cta h2 {
         font-size: 28px;
