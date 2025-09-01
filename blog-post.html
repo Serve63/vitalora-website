@@ -456,6 +456,35 @@
             if (post.content && post.content.trim()) {
                 contentElement.innerHTML = post.content;
                 console.log('Content succesvol ingesteld');
+                
+                // Voorkom dat andere scripts de content overschrijven
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.type === 'childList' || mutation.type === 'characterData') {
+                            // Als de content wordt gewijzigd, zet hem terug
+                            if (contentElement.innerHTML !== post.content) {
+                                console.log('Content werd gewijzigd, zet terug naar:', post.content);
+                                contentElement.innerHTML = post.content;
+                            }
+                        }
+                    });
+                });
+                
+                // Observeer veranderingen in de content
+                observer.observe(contentElement, {
+                    childList: true,
+                    characterData: true,
+                    subtree: true
+                });
+                
+                // Force content na een korte delay om zeker te zijn
+                setTimeout(() => {
+                    if (contentElement.innerHTML !== post.content) {
+                        console.log('Force content na delay');
+                        contentElement.innerHTML = post.content;
+                    }
+                }, 100);
+                
             } else {
                 contentElement.innerHTML = '<p>Geen content gevonden in post data</p>';
                 console.log('Geen content gevonden in post data');
