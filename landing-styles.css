@@ -586,7 +586,7 @@ body {
         padding: 20px 0 60px;
     }
     /* Ebook page: reduce top/bottom padding */
-    .ebook-page .hero { padding-top: 8px !important; padding-bottom: 24px !important; }
+    .ebook-page .hero { padding-top: 16px !important; padding-bottom: 24px !important; }
     
     .clean-reset-page .hero-text h1, .ebook-page .hero-text h1 {
         font-size: 32px;
