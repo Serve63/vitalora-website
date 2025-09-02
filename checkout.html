@@ -509,7 +509,7 @@
             }
 
             .benefits-inline { grid-template-columns: 1fr; row-gap: 8px; column-gap: 0; }
-            .toxin-list { grid-template-columns: 1fr; row-gap: 8px; column-gap: 0; }
+            .toxin-list { flex-wrap: wrap; gap: 8px 16px; }
             /* Reset explicit placement on mobile */
             .benefits-inline .benefit-item { grid-column: auto; grid-row: auto; }
             .order-form {
@@ -704,11 +704,11 @@
             margin: 16px 0;
         }
         .toxin-list {
-            display: grid;
-            grid-template-columns: repeat(3, max-content);
-            justify-content: start;
-            column-gap: 32px;
-            row-gap: 6px;
+            display: flex;
+            flex-wrap: nowrap;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 32px;
             list-style: none;
             padding: 0;
             margin: 14px 0;
