@@ -44,13 +44,15 @@
 
         /* Countdown Header */
         .countdown-header {
-            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-            color: white;
+            background: linear-gradient(135deg, #2954B3, #1e40af) !important;
+            color: #ffffff !important;
             padding: 12px 0;
             text-align: center;
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            left: 0;
+            right: 0;
+            z-index: 1000;
             box-shadow: 0 4px 12px rgba(41, 84, 179, 0.2);
         }
 
@@ -70,7 +72,7 @@
 
         /* Main Layout */
         .main-content {
-            padding: 24px 0;
+            padding: 84px 0 24px;
         }
 
         .two-column-layout {
@@ -294,7 +296,7 @@
         }
 
         .highlight {
-            color: var(--primary);
+            color: #3A9AEA !important;
         }
 
         .form-section {
@@ -436,8 +438,8 @@
 
         .checkout-button {
             width: 100%;
-            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
-            color: white;
+            background: linear-gradient(135deg, #10B981, #059669) !important;
+            color: #ffffff !important;
             border: none;
             padding: 16px;
             border-radius: 12px;
