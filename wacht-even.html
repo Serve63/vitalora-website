@@ -581,8 +581,10 @@
             .benefit-item::before { font-size: 12.5px; }
             .toxin-list li { font-size: 12.5px; }
 
-            .two-column-layout { gap: 16px; }
-            .main-content { padding-top: 52px; padding-bottom: 10px; }
+            .two-column-layout { display: flex; flex-direction: column; gap: 12px; }
+            .right-column { order: -1; }
+            .main-content { padding-top: 56px; padding-bottom: 10px; }
+            .left-column .section:nth-of-type(n+2) { display: none; }
             
             .checkbox-group label { font-size: 12px; }
             .checkbox-group input[type="checkbox"] { width: 14px; height: 14px; }
