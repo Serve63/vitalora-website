@@ -331,7 +331,21 @@
         }
         
         .total-price {
-            font-size: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        
+        .original-price {
+            font-size: 14px;
+            font-weight: 500;
+            color: #999;
+            text-decoration: line-through;
+        }
+        
+        .discounted-price {
+            font-size: 18px;
             font-weight: 700;
             color: #10B981;
         }
@@ -769,7 +783,10 @@
                             </div>
                             <div class="total">
                                 <div class="total-label">Totaal:</div>
-                                <div class="total-price">€ 27,00</div>
+                                <div class="total-price">
+                                    <span class="original-price">€ 47,00</span>
+                                    <span class="discounted-price">€ 27,00</span>
+                                </div>
                             </div>
                         </div>
 
