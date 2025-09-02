@@ -564,7 +564,8 @@
 
             .benefits-inline {
                 grid-template-columns: 1fr;
-                gap: 8px;
+                row-gap: 8px;
+                column-gap: 0;
             }
 
             .order-form {
@@ -711,9 +712,10 @@
         }
 
         .benefits-inline {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            column-gap: 28px;
+            row-gap: 12px;
             margin: 20px 0;
             padding: 0;
             background: transparent;
