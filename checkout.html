@@ -564,6 +564,7 @@
             }
 
             .benefits-inline { grid-template-columns: 1fr; row-gap: 8px; column-gap: 0; }
+            .toxin-list { grid-template-columns: 1fr; row-gap: 8px; column-gap: 0; }
             /* Reset explicit placement on mobile */
             .benefits-inline .benefit-item { grid-column: auto; grid-row: auto; }
             .order-form {
@@ -756,8 +757,17 @@
             padding: 0;
             margin: 16px 0;
         }
+        .toxin-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            column-gap: 28px;
+            row-gap: 12px;
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
         .toxin-list li {
-            color: #10B981;
+            color: #333333;
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 8px;
@@ -765,7 +775,7 @@
             position: relative;
         }
         .toxin-list li::before {
-            content: "•";
+            content: "✓";
             color: #10B981;
             font-weight: bold;
             position: absolute;
