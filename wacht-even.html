@@ -361,14 +361,8 @@
         .payment-icon {
             width: 28px;
             height: 28px;
-            background: var(--primary);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 12px;
+            object-fit: contain;
+            display: block;
         }
 
         /* Order Summary */
@@ -852,19 +846,19 @@
                             <h3>Hoe wil je betalen?</h3>
                             <div class="payment-methods">
                                 <div class="payment-method selected">
-                                    <div class="payment-icon">i</div>
+                                    <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
                                     <span>iDEAL</span>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-icon">C</div>
+                                    <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
                                     <span>Creditcard</span>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-icon">K</div>
+                                    <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
                                     <span>Klarna</span>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-icon">B</div>
+                                    <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
                                     <span>Bancontact</span>
                                 </div>
                             </div>
