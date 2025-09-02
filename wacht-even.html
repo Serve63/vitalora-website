@@ -622,6 +622,8 @@
                 row-gap: 8px;
                 column-gap: 0;
             }
+            /* Reset explicit placement on mobile */
+            .benefits-inline .benefit-item { grid-column: auto; grid-row: auto; }
 
             .order-form {
                 padding: 20px;
@@ -738,6 +740,13 @@
             font-weight: bold;
             font-size: 18px;
         }
+        /* Force exactly 2 rows of 3 items (row-wise order) */
+        .benefits-inline .benefit-item:nth-child(1) { grid-column: 1; grid-row: 1; }
+        .benefits-inline .benefit-item:nth-child(2) { grid-column: 2; grid-row: 1; }
+        .benefits-inline .benefit-item:nth-child(3) { grid-column: 3; grid-row: 1; }
+        .benefits-inline .benefit-item:nth-child(4) { grid-column: 1; grid-row: 2; }
+        .benefits-inline .benefit-item:nth-child(5) { grid-column: 2; grid-row: 2; }
+        .benefits-inline .benefit-item:nth-child(6) { grid-column: 3; grid-row: 2; }
 
         .story-conclusion {
             font-size: 17px !important;
