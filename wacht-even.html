@@ -749,9 +749,24 @@
         }
 
         .toxin-list {
+            list-style: none;
+            padding: 0;
+            margin: 16px 0;
+        }
+        .toxin-list li {
             color: #10B981;
             font-weight: 600;
             letter-spacing: 0.5px;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        .toxin-list li::before {
+            content: "•";
+            color: #10B981;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
         }
 
         .title-content {
@@ -833,7 +848,15 @@
                             
                             <p class="story-conclusion">💙 <strong>Geloof me, je bent vergeten hoe goed het voelt om écht opgeklaard te leven.</strong></p>
                             
-                            <p class="story-toxins">🔄 <strong>Mijn Detox werkt voor deze gifstoffen:</strong> <span class="toxin-list">Parabenen • PFAS • BPA • Microplastics • Ftalaten • Pesticiden</span></p>
+                            <p class="story-toxins"><strong>Mijn Detox werkt voor deze gifstoffen:</strong></p>
+                            <ul class="toxin-list">
+                                <li>Parabenen</li>
+                                <li>PFAS</li>
+                                <li>BPA</li>
+                                <li>Microplastics</li>
+                                <li>Ftalaten</li>
+                                <li>Pesticiden</li>
+                            </ul>
                         </div>
                     </section>
                 </div>
