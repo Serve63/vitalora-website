@@ -703,24 +703,34 @@
 
         .benefits-inline {
             display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            flex-direction: column;
+            gap: 8px;
             margin: 20px 0;
-            padding: 20px;
-            background: #f8fafc;
-            border-radius: 12px;
-            border-left: 4px solid #10B981;
+            padding: 0;
+            background: transparent;
+            border-radius: 0;
+            border-left: none;
         }
 
         .benefit-item {
-            background: white;
-            padding: 8px 16px;
-            border-radius: 20px;
-            border: 1px solid #e5e7eb;
-            font-size: 14px;
+            background: transparent;
+            padding: 0;
+            border-radius: 0;
+            border: none;
+            font-size: 16px;
             color: #333333;
             font-weight: 500;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            box-shadow: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .benefit-item::before {
+            content: "✓";
+            color: #10B981;
+            font-weight: bold;
+            font-size: 18px;
         }
 
         .story-conclusion {
@@ -801,12 +811,12 @@
                             <p class="story-experience"><strong>Ik voelde me ook altijd wazig, moe en allesbehalve helder.</strong><br>Ik besloot deze kankerverwekkende stoffen uit m'n lijf te halen, en dit is wat ik ervaarde:</p>
                             
                             <div class="benefits-inline">
-                                <span class="benefit-item">✓ Meer energie en mentale scherpte</span>
-                                <span class="benefit-item">✓ Diepe herstellende slaap</span>
-                                <span class="benefit-item">✓ Heldere focus en rust in m'n hoofd</span>
-                                <span class="benefit-item">✓ Geen opgeblazen gevoel meer</span>
-                                <span class="benefit-item">✓ Minder stemmingswisselingen</span>
-                                <span class="benefit-item">✓ Sterkere weerstand</span>
+                                <div class="benefit-item">Meer energie en mentale scherpte</div>
+                                <div class="benefit-item">Diepe herstellende slaap</div>
+                                <div class="benefit-item">Heldere focus en rust in m'n hoofd</div>
+                                <div class="benefit-item">Geen opgeblazen gevoel meer</div>
+                                <div class="benefit-item">Minder stemmingswisselingen</div>
+                                <div class="benefit-item">Sterkere weerstand</div>
                             </div>
                             
                             <p class="story-conclusion">💙 <strong>Geloof me, je bent vergeten hoe goed het voelt om écht opgeklaard te leven.</strong></p>
