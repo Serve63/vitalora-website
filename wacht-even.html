@@ -430,12 +430,16 @@
         @media (max-width: 768px) {
             .two-column-layout {
                 grid-template-columns: 1fr;
-                gap: 32px;
+                gap: 24px;
             }
-            .usps { grid-template-columns: 1fr; }
+            
+            .usps { 
+                grid-template-columns: 1fr; 
+                gap: 8px;
+            }
 
             .benefit-item {
-                font-size: 13px;
+                font-size: 13.5px;
             }
 
             .right-column {
@@ -443,59 +447,114 @@
             }
 
             .order-form {
-                padding: 24px;
+                padding: 20px;
             }
 
             .payment-methods {
                 grid-template-columns: 1fr;
+                gap: 8px;
             }
 
             .section {
-                padding: 24px;
+                padding: 20px;
             }
 
             .hero-image img {
-                height: 250px;
+                height: 200px;
             }
 
             .question {
-                font-size: 24px;
+                font-size: 22px;
             }
 
             .order-form h1 {
-                font-size: 24px;
+                font-size: 22px;
             }
+            
             .main-title {
                 font-size: 24px;
                 line-height: 1.2;
+            }
+            
+            .title-image .title-image-real {
+                width: 180px;
+                height: 180px;
+            }
+            
+            .benefits-inline {
+                max-width: 100%;
+                column-gap: 16px;
+            }
+            
+            .toxin-list {
+                flex-wrap: wrap;
+                gap: 12px 20px;
             }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 16px;
+                padding: 0 12px;
             }
 
-            .benefits-inline { grid-template-columns: 1fr; row-gap: 8px; column-gap: 0; }
-            .toxin-list { flex-wrap: wrap; gap: 8px 16px; }
+            .benefits-inline { 
+                grid-template-columns: 1fr; 
+                row-gap: 6px; 
+                column-gap: 0; 
+            }
+            .toxin-list { 
+                flex-wrap: wrap; 
+                gap: 8px 12px; 
+            }
             /* Reset explicit placement on mobile */
-            .benefits-inline .benefit-item { grid-column: auto; grid-row: auto; }
+            .benefits-inline .benefit-item { 
+                grid-column: auto; 
+                grid-row: auto; 
+            }
 
             .order-form {
-                padding: 20px;
+                padding: 16px;
             }
 
             .section {
-                padding: 20px;
+                padding: 16px;
             }
 
             .countdown-text {
-                font-size: 16px;
+                font-size: 14px;
             }
 
             #timer {
-                font-size: 18px;
-                padding: 6px 12px;
+                font-size: 16px;
+                padding: 4px 10px;
+            }
+            
+            .main-title {
+                font-size: 22px;
+                line-height: 1.3;
+            }
+            
+            .title-image .title-image-real {
+                width: 140px;
+                height: 140px;
+            }
+            
+            .title-with-image {
+                gap: 16px;
+            }
+            
+            .form-group input,
+            .form-group select {
+                padding: 16px 18px;
+                font-size: 14px;
+            }
+            
+            .payment-methods {
+                gap: 6px;
+            }
+            
+            .payment-method {
+                padding: 6px;
             }
         }
 
