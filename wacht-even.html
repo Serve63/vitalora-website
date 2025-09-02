@@ -381,6 +381,25 @@
         }
 
         /* CTA Button */
+        .cta-section {
+            text-align: center;
+            margin-top: 32px;
+        }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #3A9AEA, #2952B3);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(58, 154, 234, 0.3);
+        }
+
         .checkout-button {
             width: 100%;
             background: linear-gradient(135deg, var(--accent), var(--accent-dark));
@@ -733,8 +752,10 @@
                             </div>
                         </div>
 
-                        <!-- CTA Button -->
-                        <button class="checkout-button">Afrekenen <span>→</span></button>
+                        <div class="cta-section">
+                            <div class="badge">Beste Keuze</div>
+                            <button class="checkout-button">Afrekenen <span>→</span></button>
+                        </div>
 
                         <!-- Legal and Trust -->
                         <div class="legal-section">
