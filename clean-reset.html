@@ -97,14 +97,25 @@
 		@media (max-width: 992px) { .hero-content { gap:32px; } }
 		@media (max-width: 768px) {
 			.site-header { display: none !important; }
-			.hero-content { grid-template-columns:1fr; gap:40px; margin-top:12px; }
+			.hero-content { grid-template-columns:1fr; gap:32px; margin-top:16px; }
 			.hero-image { display:none; }
-			.mobile-book-image { display:block; text-align:center; margin:0 auto 24px; }
-			.mobile-book-image img { max-width:280px; width:100%; height:auto; display:block; margin:0 auto; }
-			.hero-text h1 { font-size:28px; line-height:1.2; word-break:break-word; hyphens:auto; }
+			.mobile-book-image { display:block; text-align:center; margin:0 auto 20px; }
+			.mobile-book-image img { max-width:260px; width:100%; height:auto; display:block; margin:0 auto; }
+			.hero-text h1 { font-size:26px; line-height:1.2; word-break:break-word; hyphens:auto; }
 			.hero-description { display: none !important; }
-			.testimonials-grid { grid-template-columns:1fr; }
-			.rating-display { display:block; }
+			.testimonials { padding:32px 0 120px; }
+			.testimonials-grid { grid-template-columns:1fr; gap:16px; }
+			.testimonial-card { padding:20px; border-radius:12px; }
+			.quote { font-size:15px; line-height:1.5; }
+			.rating-display { display:block; margin-bottom:20px; }
+			.container { padding:0 16px; }
+		}
+		
+		@media (max-width: 480px) {
+			.hero-text h1 { font-size:24px; }
+			.testimonial-card { padding:16px; border-radius:8px; }
+			.quote { font-size:14px; }
+			.container { padding:0 12px; }
 		}
 	</style>
 </head>
