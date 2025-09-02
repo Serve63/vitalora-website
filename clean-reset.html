@@ -104,7 +104,9 @@
 			.hero-text h1 { font-size:38px; line-height:1.2; word-break:break-word; hyphens:auto; text-align:center; }
 			.hero-description { display: none !important; }
 			.direct-access { display:block; margin:0 auto 24px; }
-			.cta-button { display:block; margin:0 auto; }
+			.cta-button { display:block; margin:0 auto; box-shadow:0 2px 4px rgba(0,0,0,0.8); }
+			.cta-button:hover { box-shadow:0 4px 8px rgba(0,0,0,0.9); }
+			.cta-button:active { box-shadow:0 1px 2px rgba(0,0,0,0.8); }
 			.hero { padding:32px 0 20px; }
 			.testimonials { padding:32px 0 120px; }
 			.testimonials-grid { grid-template-columns:1fr; gap:48px; }
@@ -120,7 +122,9 @@
 			.testimonial-card { padding:16px; border-radius:8px; }
 			.quote { font-size:14px; }
 			.container { padding:0 12px; }
-			.cta-button { display:block; margin:0 auto; }
+			.cta-button { display:block; margin:0 auto; box-shadow:0 2px 4px rgba(0,0,0,0.8); }
+			.cta-button:hover { box-shadow:0 4px 8px rgba(0,0,0,0.9); }
+			.cta-button:active { box-shadow:0 1px 2px rgba(0,0,0,0.8); }
 		}
 	</style>
 </head>
@@ -146,13 +150,13 @@
 						<img src="https://via.placeholder.com/280x350/2954B3/ffffff?text=EBOOK" alt="Microplastics Detox E‑book" />
                     </div>
                     
-                    					<div class="features-list">
+                    <div class="features-list">
 						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan.</span></div>
 						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten.</span></div>
 						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten.</span></div>
 						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Voelbaar resultaat</strong> – meer energie, betere focus.</span></div>
 						<div class="feature-item"><span class="checkmark icon-checkmark"></span><span><strong>Alles-in-één cursus</strong> – inclusief begeleiding</span></div>
-					</div>
+                    </div>
                     
 					<button class="cta-button" id="ebook-claim">Ik ga starten →</button>
                 </div>
@@ -219,8 +223,8 @@
 					<div class="profile"><div class="profile-pic"></div><div class="profile-info"><div class="name">Ilse Verschoten</div></div></div>
                         </div>
             </div>
-        		</div>
-	</section>
+        </div>
+    </section>
 
 	<!-- Mobile CTA Section -->
 	<div class="mobile-cta">
