@@ -514,17 +514,17 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 12px;
+                padding: 0 10px;
             }
 
             .benefits-inline { 
-                grid-template-columns: 1fr; 
-                row-gap: 4px; 
-                column-gap: 0; 
+                grid-template-columns: 1fr 1fr; 
+                row-gap: 3px; 
+                column-gap: 10px;
+                font-size: 10px !important;
             }
             .toxin-list { 
-                flex-wrap: wrap; 
-                gap: 8px 10px; 
+                display: none; /* Verberg toxin lijst op mobiel */
             }
             /* Reset explicit placement on mobile */
             .benefits-inline .benefit-item { 
@@ -532,58 +532,71 @@
                 grid-row: auto; 
             }
 
-            .order-form { padding: 14px; }
+            .order-form { padding: 12px; }
 
-            .section { padding: 14px; }
+            .section { padding: 0; }
 
             .countdown-text {
-                font-size: 14px;
+                font-size: 12px;
             }
 
             #timer {
-                font-size: 16px;
-                padding: 4px 10px;
+                font-size: 14px;
+                padding: 3px 8px;
             }
             
-            .main-title { font-size: 20px; line-height: 1.25; }
+            .main-title { font-size: 17px; line-height: 1.2; margin-bottom: 6px; }
             
-            .title-image .title-image-real { width: 110px; height: 110px; margin: 0 auto 8px; display: block; }
+            .title-image .title-image-real { width: 80px; height: 80px; margin: 0 auto 8px; display: block; }
             
-            .title-with-image { flex-direction: column; text-align: center; gap: 12px; }
+            .title-with-image { flex-direction: column; text-align: center; gap: 8px; }
             
-            .main-title { text-align: center; margin-bottom: 8px; }
+            .main-title { text-align: center; margin-bottom: 6px; }
             
-            .usps { justify-content: center; margin-top: 8px; gap: 6px; }
-            .usp-item { font-size: 12px; }
-            .usp-checkmark { width: 12px; height: 12px; font-size: 8px; }
+            .usps { display: none; /* Verberg USPs op mobiel */ }
             
             .form-group input,
-            .form-group select { padding: 14px 14px; font-size: 13px; }
+            .form-group select { padding: 10px 12px; font-size: 12px; }
             
-            .payment-methods { gap: 4px; }
+            .payment-methods { 
+                gap: 4px; 
+                grid-template-columns: repeat(2, 1fr);
+            }
             
-            .payment-method { padding: 5px; }
-            .payment-icon { width: 20px; height: 20px; }
+            .payment-method { 
+                padding: 4px;
+                font-size: 11px;
+            }
+            .payment-icon { width: 18px; height: 18px; }
 
-            .order-form h1 { font-size: 20px; margin-bottom: 12px; }
-            .form-section { margin-bottom: 10px; }
-            .form-group { margin-bottom: 6px; }
+            .order-form h1 { display: none; }
+            .form-section { margin-bottom: 8px; }
+            .form-section h3 { font-size: 14px; margin-bottom: 6px; }
+            .form-group { margin-bottom: 5px; }
 
-            .order-summary { padding: 8px; margin: 10px 0; }
-            .total { padding-top: 8px; }
-            .discounted-price { font-size: 16px; }
-            .checkout-button { padding: 9px; font-size: 12px; margin-bottom: 10px; }
+            .order-summary { padding: 6px; margin: 8px 0; }
+            .summary-title { font-size: 11px; margin-bottom: 4px; }
+            .summary-item { font-size: 11px; margin-bottom: 4px; }
+            .total { padding-top: 6px; }
+            .total-label { font-size: 12px; }
+            .original-price { font-size: 11px; }
+            .discounted-price { font-size: 14px; }
+            .checkout-button { padding: 8px; font-size: 11px; margin-bottom: 8px; }
 
-            .story-text p { font-size: 12px; margin-bottom: 8px; line-height: 1.45; }
-            .story-question { font-size: 12px !important; }
-            .story-stat { font-size: 12px !important; margin: 10px 0; padding: 8px 0; }
-            .story-experience { font-size: 12px !important; }
-            .benefit-item { font-size: 12px; }
-            .benefit-item::before { font-size: 12px; }
-            .toxin-list li { font-size: 12px; }
+            .story-text p { font-size: 11px; margin-bottom: 6px; line-height: 1.4; }
+            .story-question { font-size: 11px !important; margin-bottom: 4px !important; }
+            .story-stat { display: none; /* Verberg stat op mobiel */ }
+            .story-experience { font-size: 11px !important; margin-bottom: 4px !important; }
+            .story-toxins { display: none; }
+            .benefit-item { font-size: 10px; }
+            .benefit-item::before { font-size: 10px; }
+            .toxin-list li { font-size: 10px; }
 
-            .two-column-layout { gap: 16px; }
-            .main-content { padding-top: 96px; }
+            .two-column-layout { gap: 10px; }
+            .main-content { padding-top: 48px; padding-bottom: 10px; }
+            
+            .checkbox-group label { font-size: 11px; }
+            .checkbox-group input[type="checkbox"] { width: 14px; height: 14px; }
         }
 
         /* Loading Animation */
