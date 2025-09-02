@@ -707,8 +707,8 @@
         }
 
         .benefits-inline {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            display: flex;
+            flex-wrap: wrap;
             gap: 16px;
             margin: 20px 0;
             padding: 0;
@@ -729,6 +729,7 @@
             display: flex;
             align-items: center;
             gap: 12px;
+            width: calc(33.333% - 11px);
         }
 
         .benefit-item::before {
