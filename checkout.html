@@ -169,6 +169,19 @@
             object-fit: cover;
         }
 
+        .title-image-square {
+            width: 200px;
+            height: 200px;
+            border-radius: 12px;
+            background: #6B7280;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
         .hero-text {
             margin-bottom: 0;
         }
@@ -578,6 +591,8 @@
             0% { transform: translate(-50%, -50%) rotate(0deg); }
             100% { transform: translate(-50%, -50%) rotate(360deg); }
         }
+
+
     </style>
 </head>
 <body>
@@ -598,7 +613,7 @@
                     <section class="section">
                         <div class="title-with-image">
                             <div class="title-image">
-                                <img src="https://via.placeholder.com/200x200/6B7280/ffffff?text=Clean+Reset" alt="Clean Reset Placeholder">
+                                <div class="title-image-square">Clean Reset</div>
                             </div>
                             <h1 class="main-title">Wil je ook <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Pesticiden</span> uit je lichaam detoxen?</h1>
                         </div>
@@ -738,15 +753,15 @@
                                 <input type="checkbox" id="terms" required>
                                 <label for="terms">Ik ga akkoord met de <a href="#">algemene voorwaarden</a>.</label>
                             </div>
-                            <div class="trust-icons">
-                                <div class="trust-item">
+                        <div class="trust-icons">
+                            <div class="trust-item">
                                     <span class="trust-icon">🔒</span>
-                                    <span>Veilige betaling</span>
-                                </div>
-                                <div class="trust-item">
+                                <span>Veilige betaling</span>
+                            </div>
+                            <div class="trust-item">
                                     <span class="trust-icon">🔄</span>
-                                    <span>Niet goed? Geld terug!</span>
-                                </div>
+                                <span>Niet goed? Geld terug!</span>
+                            </div>
                             </div>
                         </div>
                     </div>
