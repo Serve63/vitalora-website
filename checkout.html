@@ -7,17 +7,542 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="checkout-styles.css?v=20">
-    <link rel="stylesheet" href="icons.css">
-    <link rel="stylesheet" href="/assets/css/header.css?v=1">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=1">
-    <link rel="stylesheet" href="/assets/css/spacing-v2.css">
-</head>
-<body class="spacing-v2">
-    <div data-include="site-header"></div>
-    <script defer src="/assets/js/header.js?v=2"></script>
+    <style>
+        :root {
+            --primary: #2954B3;
+            --primary-dark: #1e40af;
+            --accent: #10b981;
+            --accent-dark: #059669;
+            --text: #1f2937;
+            --text-light: #6b7280;
+            --bg: #f8fafc;
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
 
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Countdown Header */
+        .countdown-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 16px 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(41, 84, 179, 0.2);
+        }
+
+        .countdown-text {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        #timer {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin-left: 8px;
+            font-weight: 700;
+            font-size: 20px;
+        }
+
+        /* Main Layout */
+        .main-content {
+            padding: 40px 0;
+        }
+
+        .two-column-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: start;
+        }
+
+        /* Left Column */
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border: 1px solid var(--border);
+        }
+
+        .hero-image {
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
+
+        .success-message {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 16px;
+        }
+
+        .question {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            margin: 24px 0 16px;
+            line-height: 1.3;
+        }
+
+        .benefit {
+            font-size: 20px;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        .section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 16px;
+            line-height: 1.3;
+        }
+
+        .section h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .section p {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .experience-title {
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 24px;
+            line-height: 1.6;
+        }
+
+        .stack--sm {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .stack--sm li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        /* Right Column - Order Form */
+        .right-column {
+            position: sticky;
+            top: 120px;
+        }
+
+        .order-form {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 1px solid var(--border);
+        }
+
+        .order-form h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        .highlight {
+            color: var(--primary);
+        }
+
+        .form-section {
+            margin-bottom: 32px;
+        }
+
+        .form-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(41, 84, 179, 0.1);
+        }
+
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 16px;
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
+
+        .payment-method:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .payment-method.selected {
+            border-color: var(--primary);
+            background: rgba(41, 84, 179, 0.05);
+        }
+
+        .payment-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--primary);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        /* Order Summary */
+        .order-summary {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 32px 0;
+            border: 1px solid var(--border);
+        }
+
+        .summary-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 16px;
+        }
+
+        .summary-item {
+            color: var(--text-light);
+            margin-bottom: 16px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 16px;
+            border-top: 1px solid var(--border);
+        }
+
+        .total-label {
+            font-weight: 500;
+            color: var(--text);
+        }
+
+        .total-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        /* CTA Button */
+        .checkout-button {
+            width: 100%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-dark));
+            color: white;
+            border: none;
+            padding: 20px;
+            border-radius: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 24px;
+        }
+
+        .checkout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+        }
+
+        .checkout-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Legal Section */
+        .legal-section {
+            margin-bottom: 32px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+        }
+
+        .checkbox-group label {
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .checkbox-group a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .trust-icons {
+            display: flex;
+            gap: 24px;
+        }
+
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-light);
+            font-size: 14px;
+        }
+
+        .trust-icon {
+            color: var(--success);
+            font-size: 16px;
+        }
+
+        /* Bottom Testimonial */
+        .bottom-testimonial {
+            background: var(--bg);
+            border-radius: 16px;
+            padding: 24px;
+            border: 1px solid var(--border);
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 16px;
+        }
+
+        .icon-star {
+            color: #fbbf24;
+            font-size: 18px;
+        }
+
+        .bottom-testimonial p {
+            color: var(--text);
+            font-style: italic;
+            margin-bottom: 16px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .author-pic {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .testimonial-author span {
+            font-weight: 600;
+            color: var(--text);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .two-column-layout {
+                gap: 40px;
+            }
+            
+            .order-form {
+                padding: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .two-column-layout {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .right-column {
+                position: static;
+            }
+
+            .order-form {
+                padding: 24px;
+            }
+
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+
+            .section {
+                padding: 24px;
+            }
+
+            .hero-image img {
+                height: 250px;
+            }
+
+            .question {
+                font-size: 24px;
+            }
+
+            .order-form h1 {
+                font-size: 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .order-form {
+                padding: 20px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+
+            .countdown-text {
+                font-size: 16px;
+            }
+
+            #timer {
+                font-size: 18px;
+                padding: 6px 12px;
+            }
+        }
+
+        /* Loading Animation */
+        .loading {
+            position: relative;
+            color: transparent;
+        }
+
+        .loading::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
     <!-- Countdown Header -->
     <header class="countdown-header">
         <div class="container">
@@ -32,7 +557,7 @@
                 <!-- Left Column -->
                 <div class="left-column">
                     <!-- Hero Image and Text -->
-                    <section class="section flow">
+                    <section class="section">
                         <div class="hero-image">
                             <img src="/assets/images/Ontwerp zonder titel - 2025-08-25T141742.442.png" alt="Danielle - Vitalora Expert">
                         </div>
@@ -45,73 +570,56 @@
                     </section>
 
                     <!-- PFAS Statistics -->
-                    <section class="section card flow">
+                    <section class="section">
                         <h2>In 2010 werd PFAS aangetroffen bij 2% van de bevolking,<br>inmiddels is dat opgelopen tot 98%!</h2>
                     </section>
 
                     <!-- Personal Experience and Benefits List -->
-                    <section class="section flow">
+                    <section class="section">
                         <p class="experience-title">Ik voelde me ook altijd wazig, moe en allesbehalve helder. Ik besloot deze kankerverwekkende stoffen uit m'n lijf te halen, en dit is wat ik ervaarde 👇</p>
 
                         <ul class="stack--sm">
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Meer energie en mentale scherpte</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Diepe, herstellende slaap</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Heldere focus en rust in m'n hoofd</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Geen opgeblazen gevoel meer</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Minder stemmingswisselingen</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Sterkere weerstand</li>
+                            <li><span class="checkmark">✓</span>Meer energie en mentale scherpte</li>
+                            <li><span class="checkmark">✓</span>Diepe, herstellende slaap</li>
+                            <li><span class="checkmark">✓</span>Heldere focus en rust in m'n hoofd</li>
+                            <li><span class="checkmark">✓</span>Geen opgeblazen gevoel meer</li>
+                            <li><span class="checkmark">✓</span>Minder stemmingswisselingen</li>
+                            <li><span class="checkmark">✓</span>Sterkere weerstand</li>
                         </ul>
                     </section>
 
                     <!-- Blue Callout Box -->
-                    <section class="section card flow">
+                    <section class="section">
                         <p>Geloof me, je bent vergeten hoe goed het voelt om écht opgeklaard te leven.</p>
                     </section>
 
                     <!-- Toxins List -->
-                    <section class="section flow">
+                    <section class="section">
                         <h3>Mijn Detox werkt voor deze gifstoffen:</h3>
                         <ul class="stack--sm">
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Parabenen</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>PFAS</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>BPA</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Microplastics</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Ftalaten</li>
-                            <li><span class="checkmark" style="color: #10b981 !important; font-weight: 700; font-size: 18px; margin-right: 8px;">✓</span>Pesticiden</li>
+                            <li><span class="checkmark">✓</span>Parabenen</li>
+                            <li><span class="checkmark">✓</span>PFAS</li>
+                            <li><span class="checkmark">✓</span>BPA</li>
+                            <li><span class="checkmark">✓</span>Microplastics</li>
+                            <li><span class="checkmark">✓</span>Ftalaten</li>
+                            <li><span class="checkmark">✓</span>Pesticiden</li>
                         </ul>
                     </section>
 
                     <!-- Bottom Testimonials -->
-                    <section class="section flow">
+                    <section class="section">
                         <div class="bottom-testimonial">
                             <div class="stars">
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
+                                <span class="icon-star">★</span>
+                                <span class="icon-star">★</span>
+                                <span class="icon-star">★</span>
+                                <span class="icon-star">★</span>
+                                <span class="icon-star">★</span>
                             </div>
                             <p>"Na jaren van vermoeidheid en brainfog eindelijk weer energie! De detox methode is praktisch en goed uitgelegd. Ik voel me weer mezelf en kan eindelijk weer genieten van het leven."</p>
                             <div class="testimonial-author">
                                 <div class="author-pic"></div>
                                 <span>Mark van der Berg</span>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section class="section flow">
-                        <div class="bottom-testimonial">
-                            <div class="stars">
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                                <span class="icon-star"></span>
-                            </div>
-                            <p>"Eindelijk geen opgeblazen gevoel meer! Ik voel me veel energieker en mijn huid ziet er ook veel beter uit. Deze detox heeft echt mijn leven veranderd."</p>
-                            <div class="testimonial-author">
-                                <div class="author-pic"></div>
-                                <span>Lisa de Vries</span>
                             </div>
                         </div>
                     </section>
@@ -123,7 +631,7 @@
                         <h1>Wil je ook <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Pesticiden</span> uit je lichaam detoxen?</h1>
 
                         <!-- Personal Details -->
-                        <div class="form-section form-grid">
+                        <div class="form-section">
                             <h3>Jouw gegevens</h3>
                             <div class="form-group">
                                 <input type="text" placeholder="Voornaam" required>
@@ -146,13 +654,13 @@
                         <!-- Payment Methods -->
                         <div class="form-section">
                             <h3>Hoe wil je betalen?</h3>
-                            <div class="pay-methods">
+                            <div class="payment-methods">
                                 <div class="payment-method selected">
-                                    <div class="payment-icon icon-credit-card"></div>
+                                    <div class="payment-icon">i</div>
                                     <span>iDEAL</span>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-icon icon-credit-card"></div>
+                                    <div class="payment-icon">C</div>
                                     <span>Creditcard</span>
                                 </div>
                                 <div class="payment-method">
@@ -160,7 +668,7 @@
                                     <span>Klarna</span>
                                 </div>
                                 <div class="payment-method">
-                                    <div class="payment-icon icon-credit-card"></div>
+                                    <div class="payment-icon">B</div>
                                     <span>Bancontact</span>
                                 </div>
                             </div>
@@ -168,39 +676,34 @@
 
                         <!-- Order Summary -->
                         <div class="order-summary">
+                            <div class="summary-title">Besteloverzicht</div>
                             <div class="summary-item">
-                                <span>Betaaloverzicht:</span>
-                            </div>
-                            <div class="summary-item">
-                                <span>1x Clean Reset Detox & Gifstoffen</span>
+                                <span>1x Clean Reset Detox en Gifstoffen</span>
                             </div>
                             <div class="total">
-                                <div class="total-label">Totaal</div>
-                                <div class="total-subtitle">inclusief btw</div>
-                                <div class="total-price">€ 0,10</div>
+                                <div class="total-label">Totaal inc. btw</div>
+                                <div class="total-price">€ 1,00</div>
                             </div>
                         </div>
 
                         <!-- CTA Button -->
-                        <button class="checkout-button" id="pay-now">Afrekenen <span class="icon-arrow-right"></span></button>
+                        <button class="checkout-button">Afrekenen <span>→</span></button>
 
-                        <!-- Trust Icons -->
-                        <div class="trust-icons">
-                            <div class="trust-item">
-                                <span class="trust-icon icon-lock"></span>
-                                <span>Veilige betaling</span>
-                            </div>
-                            <div class="trust-item">
-                                <span class="trust-icon icon-refresh"></span>
-                                <span>Niet goed? Geld terug!</span>
-                            </div>
-                        </div>
-
-                        <!-- Legal Section -->
+                        <!-- Legal and Trust -->
                         <div class="legal-section">
                             <div class="checkbox-group">
-                                <input type="checkbox" id="terms" required checked>
-                                <label for="terms">Ik ga akkoord met de <a href="/voorwaarden">algemene voorwaarden</a>.</label>
+                                <input type="checkbox" id="terms" required>
+                                <label for="terms">Ik ga akkoord met de <a href="#">algemene voorwaarden</a>.</label>
+                            </div>
+                            <div class="trust-icons">
+                                <div class="trust-item">
+                                    <span class="trust-icon">🔒</span>
+                                    <span>Veilige betaling</span>
+                                </div>
+                                <div class="trust-item">
+                                    <span class="trust-icon">🔄</span>
+                                    <span>Niet goed? Geld terug!</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -209,17 +712,6 @@
         </div>
     </main>
 
-    <script src="checkout-script.js"></script>
-    
-    <!-- Dev toggle voor spacing-v2 (alleen voor testen) -->
-    <script>
-        // alleen voor dev/test; mag eruit na review
-        document.addEventListener('keydown', e => {
-            if (e.key.toLowerCase() === 'v' && (e.ctrlKey || e.metaKey)) {
-                document.body.classList.toggle('spacing-v2');
-                console.log('Spacing-v2 toggled:', document.body.classList.contains('spacing-v2'));
-            }
-        });
-    </script>
+    <script src="checkout-script.js?v=2"></script>
 </body>
 </html>
