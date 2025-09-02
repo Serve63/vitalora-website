@@ -670,13 +670,19 @@
         .benefits-inline {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            column-gap: -60px;
+            column-gap: 0px;
             row-gap: 8px;
             margin: 12px 0;
             padding: 0;
             background: transparent;
             border-radius: 0;
             border-left: none;
+        }
+
+        .benefits-inline .benefit-item:nth-child(4),
+        .benefits-inline .benefit-item:nth-child(5),
+        .benefits-inline .benefit-item:nth-child(6) {
+            margin-left: -80px;
         }
 
         .benefit-item {
