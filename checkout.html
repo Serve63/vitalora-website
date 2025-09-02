@@ -145,11 +145,18 @@
         }
 
         .main-title {
-            font-size: 32px;
+            font-size: 44px;
             font-weight: 700;
             color: var(--text);
             margin-bottom: 32px;
-            line-height: 1.3;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 30px;
+                line-height: 1.25;
+            }
         }
 
         .title-with-image {
