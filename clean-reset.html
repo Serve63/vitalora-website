@@ -112,6 +112,7 @@
 			.quote { font-size:15px; line-height:1.5; }
 			.rating-display { display:block; margin-bottom:20px; text-align:center; }
 			.container { padding:0 16px; }
+			.mobile-cta { display:block; text-align:center; margin-top:40px; }
 		}
 		
 		@media (max-width: 480px) {
@@ -218,9 +219,15 @@
 					<div class="profile"><div class="profile-pic"></div><div class="profile-info"><div class="name">Ilse Verschoten</div></div></div>
                         </div>
             </div>
-        </div>
-    </section>
+        		</div>
+	</section>
 
+	<!-- Mobile CTA Section -->
+	<div class="mobile-cta">
+		<div class="container">
+			<button class="cta-button" id="mobile-cta">Start mijn detox →</button>
+		</div>
+	</div>
 
 
 	<script>
@@ -237,7 +244,7 @@
 			var openers=[
 				document.querySelector('.direct-access'),
 				document.getElementById('ebook-claim'),
-				document.getElementById('ebook-claim-bottom')
+				document.getElementById('mobile-cta')
 			].filter(Boolean);
 			var closeBtn=modal.querySelector('.modal-close');
 			function openModal(){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); (modal.querySelector('input')||{}).focus?.(); }
