@@ -107,6 +107,7 @@
         .success-badge {
             display: none;
         }
+        .main-title.mobile-only { display: none; }
         
         .title-image .title-image-real {
             width: 240px;
@@ -590,6 +591,8 @@
             }
             
             .main-title { text-align: center; margin-bottom: 8px; }
+            .main-title.mobile-only { display: block; }
+            .title-content > .main-title { display: none; }
             
             .usps { justify-content: flex-start; margin-top: 10px; gap: 6px; text-align: left; }
 
@@ -944,6 +947,7 @@
                 <div class="left-column">
                     <!-- Main Title -->
                     <section class="section">
+                        <h1 class="main-title mobile-only">Wil je óók <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Parabenen</span> uit je lichaam gaan detoxen?</h1>
                         <div class="title-with-image">
                             <div class="title-image">
                                 <div class="success-badge">
@@ -954,7 +958,6 @@
                             </div>
                             <div class="title-content">
                                 <h1 class="main-title">Wil je óók <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Parabenen</span> uit je lichaam gaan detoxen?</h1>
-                            </div>
                                 
                                 <div class="usps">
                                     <div class="usp-item">

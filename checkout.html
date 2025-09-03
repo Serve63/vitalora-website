@@ -813,9 +813,9 @@
             .checkbox-group input[type="checkbox"] { width: 14px; height: 14px; }
 
             /* Mobile: Show title above image */
-            .title-with-image .title-content {
-                order: -1;
-            }
+            .title-with-image .title-content { order: 0; }
+            .main-title.mobile-only { display: block; }
+            .title-content > .main-title { display: none; }
         }
 
         /* Loading Animation */
@@ -953,6 +953,7 @@
         .title-content {
             flex: 1;
         }
+        .main-title.mobile-only { display: none; }
 
         /* Hide mobile story intro on desktop */
         .mobile-story-intro {
@@ -1091,6 +1092,7 @@
                 <div class="left-column">
                     <!-- Main Title -->
                     <section class="section">
+                        <h1 class="main-title mobile-only">Wil je óók <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Parabenen</span> uit je lichaam gaan detoxen?</h1>
                         <div class="title-with-image">
                             <div class="title-image">
                                 <div class="success-badge">
@@ -1101,7 +1103,6 @@
                             </div>
                             <div class="title-content">
                                 <h1 class="main-title">Wil je óók <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Parabenen</span> uit je lichaam gaan detoxen?</h1>
-                            </div>
                                 
                                 <div class="usps">
                                     <div class="usp-item">
