@@ -129,23 +129,24 @@ body.home .toxin-icon {
   background-size: 40px 40px;
   background-repeat: no-repeat;
   background-position: center;
+  border: 2px solid red; /* Test border to see if CSS is applied */
 }
 
 /* Specific toxin icons */
 body.home .toxin-card:nth-child(1) .toxin-icon {
-  background-image: url('/assets/images/1.png');
+  background-image: url('/assets/images/1.png?v=1');
 }
 body.home .toxin-card:nth-child(2) .toxin-icon {
-  background-image: url('/assets/images/2.png');
+  background-image: url('/assets/images/2.png?v=1');
 }
 body.home .toxin-card:nth-child(3) .toxin-icon {
-  background-image: url('/assets/images/3.png');
+  background-image: url('/assets/images/3.png?v=1');
 }
 body.home .toxin-card:nth-child(4) .toxin-icon {
-  background-image: url('/assets/images/4.png');
+  background-image: url('/assets/images/4.png?v=1');
 }
 body.home .toxin-card:nth-child(5) .toxin-icon {
-  background-image: url('/assets/images/5.png');
+  background-image: url('/assets/images/5.png?v=1');
 }
 body.home .toxin-percentage { font-size: 28px; font-weight: 800; }
 body.home .toxin-label { 
