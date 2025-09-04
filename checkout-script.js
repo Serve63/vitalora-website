@@ -8,12 +8,29 @@ document.addEventListener('DOMContentLoaded', function() {
         const seconds = timeLeft % 60;
         const timerDisplay = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
         
-        document.getElementById('timer').textContent = timerDisplay;
+        // Update main timer
+        const mainTimer = document.getElementById('timer');
+        if (mainTimer) {
+            mainTimer.textContent = timerDisplay;
+        }
+        
+        // Update badge timers
+        const badgeTimers = document.querySelectorAll('#badge-timer');
+        badgeTimers.forEach(timer => {
+            timer.textContent = timerDisplay;
+        });
         
         if (timeLeft <= 0) {
             // Timer expired - you could redirect or show a message
-            document.getElementById('timer').textContent = '00:00';
-            document.getElementById('timer').style.color = '#ef4444';
+            const expiredDisplay = '00:00';
+            if (mainTimer) {
+                mainTimer.textContent = expiredDisplay;
+                mainTimer.style.color = '#ef4444';
+            }
+            badgeTimers.forEach(timer => {
+                timer.textContent = expiredDisplay;
+                timer.style.color = '#ef4444';
+            });
             return;
         }
         
@@ -179,7 +196,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Timer warning when getting low
     function checkTimerWarning() {
         if (timeLeft <= 60 && timeLeft > 0) { // Last minute
-            document.getElementById('timer').style.animation = 'pulse 1s infinite';
+            const mainTimer = document.getElementById('timer');
+            if (mainTimer) {
+                mainTimer.style.animation = 'pulse 1s infinite';
+            }
+            
+            const badgeTimers = document.querySelectorAll('#badge-timer');
+            badgeTimers.forEach(timer => {
+                timer.style.animation = 'pulse 1s infinite';
+            });
         }
     }
     
