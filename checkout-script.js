@@ -92,6 +92,12 @@ document.addEventListener('DOMContentLoaded', function() {
                     name: (firstName + ' ' + (lastName || '')).trim(),
                     email,
                     method: (function(){
+                        // Check mobile dropdown first
+                        const mobileSelect = document.getElementById('payment-method-mobile');
+                        if (mobileSelect && mobileSelect.offsetParent !== null) {
+                            return mobileSelect.value;
+                        }
+                        // Fallback to desktop selection
                         const m = document.querySelector('.payment-method.selected span')?.textContent?.toLowerCase();
                         if (!m) return undefined;
                         if (m.includes('ideal')) return 'ideal';

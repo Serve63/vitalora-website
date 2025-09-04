@@ -943,6 +943,7 @@
         }
 
         .order-form-mobile { display: none; }
+        .order-form-mobile .payment-mobile { display: none; }
         @media (max-width: 480px) {
             .order-form-mobile { display: block; background: var(--bg-card); border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.12); border-radius: 12px; padding: 16px; margin: 0 -12px; width: calc(100% + 24px); }
             .order-form-mobile .form-group select { 
@@ -955,6 +956,8 @@
                 background: white !important;
                 color: var(--text) !important;
             }
+            .order-form-mobile .payment-methods-desktop { display: none !important; }
+            .order-form-mobile .payment-mobile { display: block !important; }
             .right-column .order-form { display: none !important; }
             .right-column { display: none !important; }
         }
@@ -1112,7 +1115,7 @@
 
                     <div class="form-section">
                         <h3>Hoe wil je betalen?</h3>
-                        <div class="payment-methods">
+                        <div class="payment-methods-desktop">
                             <div class="payment-method selected">
                                 <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
                                 <span>iDEAL</span>
@@ -1129,6 +1132,14 @@
                                 <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
                                 <span>Bancontact</span>
                             </div>
+                        </div>
+                        <div class="form-group payment-mobile">
+                            <select id="payment-method-mobile">
+                                <option value="ideal">iDEAL</option>
+                                <option value="creditcard">Creditcard</option>
+                                <option value="klarna">Klarna</option>
+                                <option value="bancontact">Bancontact</option>
+                            </select>
                         </div>
                     </div>
 
