@@ -126,12 +126,13 @@ body.home .toxin-icon {
   background: rgba(255,255,255,0.2); border-radius: 8px;
   display: grid; place-items: center;
   overflow: hidden;
+  box-shadow: none; /* remove any unexpected outer glow */
 }
 
 body.home .toxin-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   border-radius: 8px;
   display: block;
 }
