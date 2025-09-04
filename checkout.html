@@ -1087,6 +1087,12 @@
             left: 0;
         }
 
+        .order-form-mobile { display: none; }
+
+        @media (max-width: 480px) {
+            .order-form-mobile { display: block; background: var(--bg-card); border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.12); border-radius: 12px; padding: 16px; margin: 0 -12px; width: calc(100% + 24px); }
+            .right-column .order-form { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -1219,6 +1225,74 @@
 
                 <!-- Right Column - Order Form -->
                 <div class="right-column">
+                    <div class="order-form-mobile">
+                        <div class="form-section">
+                            <h3>Jouw gegevens</h3>
+                            <div class="form-group">
+                                <input type="text" placeholder="Voornaam" required>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Achternaam">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="E-mailadres" required>
+                            </div>
+                            <div class="form-group">
+                                <select>
+                                    <option>Nederland</option>
+                                    <option>België</option>
+                                    <option>Duitsland</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-section">
+                            <h3>Hoe wil je betalen?</h3>
+                            <div class="payment-methods">
+                                <div class="payment-method selected">
+                                    <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
+                                    <span>iDEAL</span>
+                                </div>
+                                <div class="payment-method">
+                                    <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
+                                    <span>Creditcard</span>
+                                </div>
+                                <div class="payment-method">
+                                    <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
+                                    <span>Klarna</span>
+                                </div>
+                                <div class="payment-method">
+                                    <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
+                                    <span>Bancontact</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="order-summary">
+                            <div class="summary-title">Besteloverzicht</div>
+                            <div class="summary-item">
+                                <span>1x Clean Reset Detox en Gifstoffen</span>
+                            </div>
+                            <div class="total">
+                                <div class="total-label">Totaal:</div>
+                                <div class="total-price">
+                                    <span class="original-price">€ 47,00</span>
+                                    <span class="discounted-price">€ 27,00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="cta-section">
+                            <button class="checkout-button">Afrekenen <span>→</span></button>
+                        </div>
+
+                        <div class="legal-section">
+                            <div class="checkbox-group">
+                                <input type="checkbox" id="terms-mobile" required checked>
+                                <label for="terms-mobile">Ik ga akkoord met de <a href="#">algemene voorwaarden</a>.</label>
+                            </div>
+                        </div>
+                    </div>
                     <div class="order-form">
                         <!-- Personal Details -->
                         <div class="form-section">

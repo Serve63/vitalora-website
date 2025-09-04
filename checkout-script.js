@@ -54,21 +54,24 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Form Validation and Submission
-    const checkoutForm = document.querySelector('.order-form');
-    const checkoutButton = document.querySelector('.checkout-button');
+    const activeForm = document.querySelector('.order-form-mobile')?.offsetParent !== null
+        ? document.querySelector('.order-form-mobile')
+        : document.querySelector('.order-form');
+    const checkoutButton = activeForm?.querySelector('.checkout-button');
     
     if (checkoutButton) {
         checkoutButton.addEventListener('click', async function(e) {
             e.preventDefault();
             
-            // Get form inputs
-            const firstName = document.querySelector('input[placeholder="Voornaam"]').value;
-            const lastName = document.querySelector('input[placeholder="Achternaam"]').value;
-            const email = document.querySelector('input[placeholder="E-mailadres"]').value;
-            const terms = document.getElementById('terms').checked;
+            // Get form inputs (scoped to active form)
+            const firstName = activeForm.querySelector('input[placeholder="Voornaam"]')?.value?.trim() || '';
+            const lastName = activeForm.querySelector('input[placeholder="Achternaam"]')?.value?.trim() || '';
+            const email = activeForm.querySelector('input[placeholder="E-mailadres"]')?.value?.trim() || '';
+            const termsEl = activeForm.querySelector('#terms') || activeForm.querySelector('#terms-mobile');
+            const terms = !!termsEl && termsEl.checked;
             
             // Basic validation
-            if (!firstName || !lastName || !email || !terms) {
+            if (!firstName || !email || !terms) {
                 alert('Vul alle verplichte velden in en ga akkoord met de voorwaarden.');
                 return;
             }
@@ -86,7 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 const body = {
                     amount: '0.10',
                     description: 'Clean Reset Cursus',
-                    name: firstName + ' ' + lastName,
+                    name: (firstName + ' ' + (lastName || '')).trim(),
                     email,
                     method: (function(){
                         const m = document.querySelector('.payment-method.selected span')?.textContent?.toLowerCase();
