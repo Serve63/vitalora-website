@@ -589,7 +589,7 @@
 
         @media (max-width: 480px) {
             .container {
-                padding: 0;
+                padding: 0 8px;
             }
 
             .benefits-inline { 
@@ -608,12 +608,16 @@
             }
             .order-form { 
                 padding: 20px 16px; 
-                margin: 0;
-                border-radius: 0;
-                width: 100%;
+                margin: 0 -4px;
+                border-radius: 12px;
+                width: calc(100% + 8px);
             }
 
-            .section { padding: 0; }
+            .section { padding: 16px; }
+
+            .countdown-text {
+                font-size: 14px;
+            }
 
             #timer { font-size: 16px; padding: 4px 10px; }
             
