@@ -126,6 +126,26 @@ body.home .toxin-icon {
   background: rgba(255,255,255,0.2); border-radius: 8px;
   display: flex; align-items: center; justify-content: center;
   font-size: 24px; color: #ffffff;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* Specific toxin icons */
+body.home .toxin-card:nth-child(1) .toxin-icon {
+  background-image: url('/assets/images/1.png');
+}
+body.home .toxin-card:nth-child(2) .toxin-icon {
+  background-image: url('/assets/images/2.png');
+}
+body.home .toxin-card:nth-child(3) .toxin-icon {
+  background-image: url('/assets/images/3.png');
+}
+body.home .toxin-card:nth-child(4) .toxin-icon {
+  background-image: url('/assets/images/4.png');
+}
+body.home .toxin-card:nth-child(5) .toxin-icon {
+  background-image: url('/assets/images/5.png');
 }
 body.home .toxin-percentage { font-size: 28px; font-weight: 800; }
 body.home .toxin-label { 
@@ -323,6 +343,7 @@ body.home footer .footer-bottom { opacity: .85; }
     width: 40px;
     height: 40px;
     margin: 0 auto 8px;
+    background-size: 30px 30px;
   }
   
   body.home .toxin-percentage {
