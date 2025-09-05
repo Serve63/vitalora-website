@@ -999,7 +999,16 @@
         }
         
         if (courseSlug) {
-          window.location.href = `/detox-cursus-les${lessonNumber}`;
+          const slugToAlias = {
+            'clean-reset': 'detox-cursus',
+            'powerfoods-superfood-specerij': 'powerfoods',
+            'de-juiste-balans': 'juiste-balans',
+            '30-dagen-challenge': '30-dagen-challenge',
+            'everyday-nutrition-praktisch-gezond': 'everyday-nutrition',
+            'mindful-energy-innerlijke-rust': 'mindful-energy'
+          };
+          const alias = slugToAlias[courseSlug] || 'detox-cursus';
+          window.location.href = `/${alias}-les${lessonNumber}`;
         }
       });
     });

@@ -19,6 +19,22 @@ RewriteRule ^clean-reset-les([0-9]+)/?$ lesson-view.html?course=clean-reset&less
 # Alias: detox-cursus-les{n} → static redirect helper to avoid conflicts
 RewriteRule ^detox-cursus-les([0-9]+)/?$ detox-cursus-les/index.html?l=$1 [L,QSA]
 
+# Other course aliases → course view and lessons
+RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]
+RewriteRule ^powerfoods-les([0-9]+)/?$ lesson-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
+
+RewriteRule ^juiste-balans/?$ course-view.html?course=de-juiste-balans [L,QSA]
+RewriteRule ^juiste-balans-les([0-9]+)/?$ lesson-view.html?course=de-juiste-balans&lesson=$1 [L,QSA]
+
+RewriteRule ^30-dagen-challenge/?$ course-view.html?course=30-dagen-challenge [L,QSA]
+RewriteRule ^30-dagen-challenge-les([0-9]+)/?$ lesson-view.html?course=30-dagen-challenge&lesson=$1 [L,QSA]
+
+RewriteRule ^everyday-nutrition/?$ course-view.html?course=everyday-nutrition-praktisch-gezond [L,QSA]
+RewriteRule ^everyday-nutrition-les([0-9]+)/?$ lesson-view.html?course=everyday-nutrition-praktisch-gezond&lesson=$1 [L,QSA]
+
+RewriteRule ^mindful-energy/?$ course-view.html?course=mindful-energy-innerlijke-rust [L,QSA]
+RewriteRule ^mindful-energy-les([0-9]+)/?$ lesson-view.html?course=mindful-energy-innerlijke-rust&lesson=$1 [L,QSA]
+
 # PowerFoods
 RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]
 RewriteRule ^powerfoods/les([0-9]+)/?$ course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]

@@ -26,8 +26,13 @@
 /bedankt                                 /bedankt.html                              200
 
 # Clean lesson URLs → lesson view (dynamic)
-/clean-reset-les:id                      /lesson-view.html?course=clean-reset&lesson=:id   200
-/detox-cursus-les:id                     /lesson-view.html?course=clean-reset&lesson=:id   200
+/clean-reset-les:id                      /lesson-view.html?course=clean-reset&lesson=:id                         200
+/detox-cursus-les:id                     /lesson-view.html?course=clean-reset&lesson=:id                         200
+/powerfoods-les:id                       /lesson-view.html?course=powerfoods-superfood-specerij&lesson=:id       200
+/juiste-balans-les:id                    /lesson-view.html?course=de-juiste-balans&lesson=:id                    200
+/30-dagen-challenge-les:id               /lesson-view.html?course=30-dagen-challenge&lesson=:id                  200
+/everyday-nutrition-les:id               /lesson-view.html?course=everyday-nutrition-praktisch-gezond&lesson=:id 200
+/mindful-energy-les:id                   /lesson-view.html?course=mindful-energy-innerlijke-rust&lesson=:id      200
 
 # Catch-all for blog posts
 /*                                       /post.html?slug=:splat                     200

@@ -414,8 +414,8 @@
     <div class="lesson-content">
       <div class="content-section">
         <!-- Dynamic content will be loaded here -->
+        </div>
       </div>
-    </div>
 
 
     <!-- Lesson Navigation -->
@@ -435,35 +435,47 @@
   </div>
 
   <script>
-    // Derive course and lesson from query or clean URL
-    // Prefer clean URL pattern: /clean-reset-les{n}
+    // Derive course and lesson from query or clean URL for ALL courses
+    // Clean pattern: /{course-alias}-les{n}
+    const aliasToSlug = {
+      'detox-cursus': 'clean-reset',
+      'powerfoods': 'powerfoods-superfood-specerij',
+      'juiste-balans': 'de-juiste-balans',
+      '30-dagen-challenge': '30-dagen-challenge',
+      'everyday-nutrition': 'everyday-nutrition-praktisch-gezond',
+      'mindful-energy': 'mindful-energy-innerlijke-rust'
+    };
+    const slugToAlias = Object.fromEntries(Object.entries(aliasToSlug).map(([a,s])=>[s,a]));
+
     let courseSlug = null;
+    let courseAlias = null;
     let lessonNumber = null;
     (function deriveFromUrl(){
       const params = new URLSearchParams(window.location.search);
       courseSlug = params.get('course');
       lessonNumber = params.get('lesson');
 
-      // If not present, try clean URL
+      // If not present, try clean URL (any alias)
       if (!lessonNumber) {
         const path = location.pathname.replace(/^\/+/,'');
-        let m = path.match(/^clean-reset-les(\d+)$/);
-        if (!m) m = path.match(/^detox-cursus-les(\d+)$/);
-        if (m) {
-          courseSlug = 'clean-reset';
-          lessonNumber = m[1];
+        const m = path.match(/^([a-z0-9\-]+)-les(\d+)$/);
+        if (m && aliasToSlug[m[1]]) {
+          courseAlias = m[1];
+          courseSlug = aliasToSlug[courseAlias];
+          lessonNumber = m[2];
         }
       }
 
       // Fallbacks
       if (!courseSlug) courseSlug = 'clean-reset';
       if (!lessonNumber) lessonNumber = '1';
+      if (!courseAlias) courseAlias = slugToAlias[courseSlug] || 'detox-cursus';
 
       // Normalize URL to clean format if coming from ugly URL
       // Normalize only if using ugly URL; keep whichever clean variant is used
       const pathNow = location.pathname;
-      const isClean = /^\/clean-reset-les\d+$/.test(pathNow) || /^\/detox-cursus-les\d+$/.test(pathNow);
-      const expected = `/clean-reset-les${lessonNumber}`; // default when normalizing
+      const isClean = /^\/[a-z0-9\-]+-les\d+$/.test(pathNow);
+      const expected = `/${courseAlias}-les${lessonNumber}`; // normalize only from ugly URL
       if (!isClean && pathNow !== expected) {
         history.replaceState(null, '', expected);
       }
@@ -471,7 +483,8 @@
 
     // Set back to course link
     if (courseSlug) {
-      document.getElementById('backToCourse').href = `/detox-cursus`;
+      const backAlias = slugToAlias[courseSlug] || 'detox-cursus';
+      document.getElementById('backToCourse').href = `/${backAlias}`;
     }
 
 
