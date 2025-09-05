@@ -2,6 +2,7 @@
 /clean-reset        /clean-reset.html                      200
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
 /vlierbessensap-gezond                  /post.html?slug=vlierbessensap-gezond      200
+/login                                   /login.html                                 200
 /:slug                                   /post.html?slug=:slug                      200
 /kruisbloemige-groenten                 /kruisbloemige-groenten.html               200
 /zuiveringszout-baking-soda             /zuiveringszout-baking-soda.html           200
