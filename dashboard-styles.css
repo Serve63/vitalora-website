@@ -532,6 +532,8 @@ body {
 .course-card.locked {
     opacity: 0.7;
     position: relative;
+    cursor: not-allowed;
+    pointer-events: none;
 }
 
 .course-card.locked:hover {
