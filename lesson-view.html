@@ -442,7 +442,7 @@
 
     // Set back to course link
     if (courseSlug) {
-      document.getElementById('backToCourse').href = `course-view.html?course=${courseSlug}`;
+      document.getElementById('backToCourse').href = `/detox-cursus`;
     }
 
 
@@ -1826,16 +1826,16 @@ Want dit is niet het einde. Dit is jouw nieuwe start.
 
       // Update navigation
       if (currentLesson > 1) {
-        document.getElementById('prevLesson').href = `lesson-view.html?course=${courseSlug}&lesson=${currentLesson - 1}`;
+        document.getElementById('prevLesson').href = `/detox-cursus/les${currentLesson - 1}`;
       } else {
         document.getElementById('prevLesson').style.display = 'none';
       }
 
       if (currentLesson < totalLessons) {
-        document.getElementById('nextLesson').href = `lesson-view.html?course=${courseSlug}&lesson=${currentLesson + 1}`;
+        document.getElementById('nextLesson').href = `/detox-cursus/les${currentLesson + 1}`;
       } else {
         document.getElementById('nextLesson').textContent = 'Cursus voltooid!';
-        document.getElementById('nextLesson').href = `course-view.html?course=${courseSlug}`;
+        document.getElementById('nextLesson').href = `/detox-cursus`;
       }
     }
 

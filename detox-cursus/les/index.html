@@ -1,22 +1,28 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Detox Cursus - Les</title>
+  <title>Les - Vitalora</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <script>
     (function(){
-      var match = location.pathname.match(/detox-cursus\/les(\d+)/);
-      var lesson = match ? match[1] : '';
-      var target = '/course-view.html?course=clean-reset' + (lesson ? ('&lesson=' + lesson) : '');
-      location.replace(target);
+      // Extract lesson number from URL path
+      var path = location.pathname;
+      var lessonMatch = path.match(/\/les(\d+)$/);
+      
+      if (lessonMatch) {
+        var lessonNumber = lessonMatch[1];
+        // Redirect to lesson-view with clean URL
+        var newUrl = '/lesson-view.html?course=clean-reset&lesson=' + lessonNumber;
+        window.location.replace(newUrl);
+      } else {
+        // Fallback to course overview
+        window.location.replace('/detox-cursus');
+      }
     })();
   </script>
 </head>
 <body>
-  <p>Doorsturen naar les…</p>
+  <p>Les wordt geladen...</p>
 </body>
 </html>
-
-
