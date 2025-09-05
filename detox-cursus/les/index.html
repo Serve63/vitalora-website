@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detox Cursus - Les</title>
+  <script>
+    (function(){
+      var match = location.pathname.match(/detox-cursus\/les(\d+)/);
+      var lesson = match ? match[1] : '';
+      var target = '/course-view.html?course=clean-reset' + (lesson ? ('&lesson=' + lesson) : '');
+      location.replace(target);
+    })();
+  </script>
+</head>
+<body>
+  <p>Doorsturen naar les…</p>
+</body>
+</html>
+
+
