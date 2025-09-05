@@ -598,6 +598,11 @@ body {
     padding: 12px;
     border-radius: 50%;
     font-size: 20px;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .course-card.locked .start-course {
