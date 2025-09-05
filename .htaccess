@@ -1,0 +1,36 @@
+Options -Multiviews
+RewriteEngine On
+RewriteBase /
+
+# Serve existing files/directories as-is
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+
+# Clean URLs for courses → course-view.html with query params
+
+# Clean Reset (detox-cursus)
+RewriteRule ^detox-cursus/?$ course-view.html?course=clean-reset [L,QSA]
+RewriteRule ^detox-cursus/les([0-9]+)/?$ course-view.html?course=clean-reset&lesson=$1 [L,QSA]
+
+# PowerFoods
+RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]
+RewriteRule ^powerfoods/les([0-9]+)/?$ course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
+
+# De Juiste Balans
+RewriteRule ^juiste-balans/?$ course-view.html?course=de-juiste-balans [L,QSA]
+RewriteRule ^juiste-balans/les([0-9]+)/?$ course-view.html?course=de-juiste-balans&lesson=$1 [L,QSA]
+
+# 30 Dagen Challenge
+RewriteRule ^30-dagen-challenge/?$ course-view.html?course=30-dagen-challenge [L,QSA]
+RewriteRule ^30-dagen-challenge/les([0-9]+)/?$ course-view.html?course=30-dagen-challenge&lesson=$1 [L,QSA]
+
+# Everyday Nutrition
+RewriteRule ^everyday-nutrition/?$ course-view.html?course=everyday-nutrition-praktisch-gezond [L,QSA]
+RewriteRule ^everyday-nutrition/les([0-9]+)/?$ course-view.html?course=everyday-nutrition-praktisch-gezond&lesson=$1 [L,QSA]
+
+# Mindful Energy
+RewriteRule ^mindful-energy/?$ course-view.html?course=mindful-energy-innerlijke-rust [L,QSA]
+RewriteRule ^mindful-energy/les([0-9]+)/?$ course-view.html?course=mindful-energy-innerlijke-rust&lesson=$1 [L,QSA]
+
+
