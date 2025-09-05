@@ -12,14 +12,9 @@
 	<link rel="stylesheet" href="/assets/css/fonts.css?v=12">
 	<link rel="stylesheet" href="/assets/css/footer.css?v=12">
 	<style>
-		button[type="submit"]:hover {
-			transform: translateY(-2px);
-			box-shadow: 0 12px 35px rgba(32,185,129,0.5);
-		}
-		button[type="submit"]:active {
-			transform: translateY(0);
-			box-shadow: 0 6px 20px rgba(32,185,129,0.4);
-		}
+		button[type="submit"]{ box-shadow:none !important; }
+		button[type="submit"]:hover{ opacity:.95; }
+		button[type="submit"]:active{ opacity:.9; }
 	</style>
 </head>
 <body>
@@ -57,7 +52,7 @@
 						<label for="message" style="display:block;font-weight:600;color:#333333;margin-bottom:6px">Bericht</label>
 						<textarea id="message" name="message" rows="6" required placeholder="Schrijf hier je bericht..." style="width:100%;padding:12px 14px;border:1px solid #e5e7eb;border-radius:10px;font:inherit"></textarea>
 					</div>
-					<button type="submit" style="background:#20B981;color:#fff;border:none;padding:18px 36px;border-radius:12px;font-size:18px;font-weight:700;cursor:pointer;transition:all .3s ease;margin:0;box-shadow:0 8px 25px rgba(32,185,129,0.4);text-transform:none;letter-spacing:.5px;min-width:160px;display:inline-block;text-align:center">Versturen</button>
+					<button type="submit" style="background:#20B981;color:#fff;border:none;padding:14px 24px;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;transition:opacity .2s ease;margin:0;box-shadow:none;text-transform:none;letter-spacing:.3px;min-width:140px;display:inline-block;text-align:center">Versturen</button>
 					<p id="contact-feedback" style="color:#10b981;font-weight:600;margin-top:12px;display:none">Bedankt! Je bericht is verzonden. We nemen spoedig contact op.</p>
 				</form>
 			</section>
