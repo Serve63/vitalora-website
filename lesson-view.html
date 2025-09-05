@@ -44,11 +44,24 @@
       overflow-x: hidden;
     }
 
+    /* Dark overlay for better content focus */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+      pointer-events: none;
+    }
+
     /* Background floating circles (real elements, not tiled gradients) */
     .bg-circles {
       position: fixed;
       inset: 0;
-      z-index: 0; /* above body bg, behind content */
+      z-index: 0; /* behind overlay and content */
       pointer-events: none;
       overflow: hidden;
     }
@@ -83,6 +96,8 @@
       max-width: 1000px;
       margin: 0 auto;
       padding: 40px 20px;
+      position: relative;
+      z-index: 2;
     }
 
     .lesson-header {
