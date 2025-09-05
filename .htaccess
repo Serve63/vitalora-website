@@ -16,8 +16,8 @@ RewriteRule ^detox-cursus/les([0-9]+)/?$ course-view.html?course=clean-reset&les
 # Clean lesson URLs preferred by user (clean-reset-les{n}) → lesson view
 RewriteRule ^clean-reset-les([0-9]+)/?$ lesson-view.html?course=clean-reset&lesson=$1 [L,QSA]
 
-# Alias: detox-cursus-les{n} → lesson view (supports user's screenshot URL)
-RewriteRule ^detox-cursus-les([0-9]+)/?$ lesson-view.html?course=clean-reset&lesson=$1 [L,QSA]
+# Alias: detox-cursus-les{n} → static redirect helper to avoid conflicts
+RewriteRule ^detox-cursus-les([0-9]+)/?$ detox-cursus-les/index.html?l=$1 [L,QSA]
 
 # PowerFoods
 RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]

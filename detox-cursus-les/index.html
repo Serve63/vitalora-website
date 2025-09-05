@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Les</title>
+  <script>
+    (function(){
+      var p=new URLSearchParams(location.search);
+      var l=p.get('l');
+      if(l){ location.replace('/lesson-view.html?course=clean-reset&lesson='+l); }
+      else { location.replace('/detox-cursus'); }
+    })();
+  </script>
+</head>
+<body>Redirecting...</body>
+</html>
