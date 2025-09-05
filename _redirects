@@ -25,6 +25,10 @@
 /gefeliciteerd                           /gefeliciteerd.html                        200
 /bedankt                                 /bedankt.html                              200
 
+# Clean lesson URLs → lesson view (dynamic)
+/clean-reset-les:id                      /lesson-view.html?course=clean-reset&lesson=:id   200
+/detox-cursus-les:id                     /lesson-view.html?course=clean-reset&lesson=:id   200
+
 # Catch-all for blog posts
 /*                                       /post.html?slug=:splat                     200
 
