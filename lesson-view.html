@@ -1826,13 +1826,13 @@ Want dit is niet het einde. Dit is jouw nieuwe start.
 
       // Update navigation
       if (currentLesson > 1) {
-        document.getElementById('prevLesson').href = `/detox-cursus/les${currentLesson - 1}`;
+        document.getElementById('prevLesson').href = `/detox-cursus-les${currentLesson - 1}`;
       } else {
         document.getElementById('prevLesson').style.display = 'none';
       }
 
       if (currentLesson < totalLessons) {
-        document.getElementById('nextLesson').href = `/detox-cursus/les${currentLesson + 1}`;
+        document.getElementById('nextLesson').href = `/detox-cursus-les${currentLesson + 1}`;
       } else {
         document.getElementById('nextLesson').textContent = 'Cursus voltooid!';
         document.getElementById('nextLesson').href = `/detox-cursus`;

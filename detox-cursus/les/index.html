@@ -12,8 +12,8 @@
       
       if (lessonMatch) {
         var lessonNumber = lessonMatch[1];
-        // Redirect to lesson-view with clean URL
-        var newUrl = '/lesson-view.html?course=clean-reset&lesson=' + lessonNumber;
+        // Redirect to clean URL format
+        var newUrl = '/detox-cursus-les' + lessonNumber;
         window.location.replace(newUrl);
       } else {
         // Fallback to course overview
