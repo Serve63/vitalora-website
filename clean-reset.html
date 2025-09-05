@@ -33,7 +33,7 @@
 		.checkmark.icon-checkmark { width:16px; height:16px; display:inline-flex; align-items:center; justify-content:center; border-radius:50%; background: var(--blue); flex-shrink:0; }
 		.checkmark.icon-checkmark::before { content:""; width:10px; height:10px; background:#fff; -webkit-mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); mask-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-7.364 7.364a1 1 0 01-1.414 0L3.293 10.435a1 1 0 011.414-1.414l3.05 3.05 6.657-6.657a1 1 0 011.293-.121z' clip-rule='evenodd'/%3E%3C/svg%3E"); -webkit-mask-size:contain; mask-size:contain; -webkit-mask-repeat:no-repeat; mask-repeat:no-repeat; -webkit-mask-position:center; mask-position:center; }
 
-		.cta-button { background: var(--green); color:#fff; border:none; padding:14px 22px; font-size:16px; font-weight:800; border-radius:8px; cursor:pointer; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; box-shadow:0 2px 4px rgba(0,0,0,.08); }
+		.cta-button { background: var(--green) !important; color:#fff !important; text-decoration:none !important; border:none; padding:14px 22px; font-size:16px; font-weight:800; border-radius:8px; cursor:pointer; transition:all .2s ease; display:inline-flex; align-items:center; gap:8px; box-shadow:0 2px 4px rgba(0,0,0,.08); }
 		.cta-button:hover { background:#059669; transform:translateY(-2px); box-shadow:0 8px 18px rgba(0,0,0,.14); }
 
 		.hero-image { display:block; }
@@ -250,19 +250,9 @@
 
 		// Modal open/close (match ebook behavior)
 		(function(){
+			// Disable modal openers; allow direct navigation for CTA links
 			var modal=document.getElementById('ebook-modal');
-			if(!modal) return;
-			var openers=[
-				document.querySelector('.direct-access'),
-				document.getElementById('ebook-claim'),
-				document.getElementById('mobile-cta')
-			].filter(Boolean);
-			var closeBtn=modal.querySelector('.modal-close');
-			function openModal(){ modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); (modal.querySelector('input')||{}).focus?.(); }
-			function closeModal(){ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); }
-			openers.forEach(function(b){ b.addEventListener('click',function(e){ e.preventDefault(); openModal(); }); });
-			closeBtn && closeBtn.addEventListener('click', closeModal);
-			modal && modal.addEventListener('click', function(e){ if(e.target.classList.contains('modal-backdrop')) closeModal(); });
+			if(modal){ modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); }
 		})();
 	</script>
 </body>
