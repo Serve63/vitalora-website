@@ -808,14 +808,19 @@
   <script>
     // Course data loading
     document.addEventListener('DOMContentLoaded', function() {
+      console.log('DOMContentLoaded fired');
       const urlParams = new URLSearchParams(window.location.search);
       let courseSlug = urlParams.get('course');
       let lessonParam = urlParams.get('lesson');
+      console.log('Initial courseSlug from params:', courseSlug);
+      console.log('Current pathname:', location.pathname);
+      
       // Fallback to clean URL path parsing
       if(!courseSlug){
         const path = location.pathname.replace(/^\/+|\/+$/g,'');
         const parts = path.split('/');
         const clean = parts[0];
+        console.log('Clean path:', clean);
         const mapCleanToSlug={
           'detox-cursus':'clean-reset',
           'powerfoods':'powerfoods-superfood-specerij',
@@ -826,37 +831,43 @@
         };
         if(parts[1] && /^les\d+$/i.test(parts[1])){ lessonParam = parts[1].replace(/[^\d]/g,''); }
         if(mapCleanToSlug[clean]){ courseSlug = mapCleanToSlug[clean]; }
+        console.log('Final courseSlug:', courseSlug);
       }
-      if (courseSlug) { loadCourseData(courseSlug); }
+      if (courseSlug) { 
+        console.log('Loading course data for:', courseSlug);
+        loadCourseData(courseSlug); 
+      } else {
+        console.log('No course slug found!');
+      }
     });
 
     function loadCourseData(slug) {
-      // Set course title and subtitle based on course slug
-      const courseTitles = {
-        'clean-reset': 'Clean Reset: Detox & Gifstoffen',
-        'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
-        'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
-        '30-dagen-challenge': '30 Dagen Challenge',
-        'everyday-nutrition-praktisch-gezond': 'Everyday Nutrition: Praktisch & Gezond™',
-        'mindful-energy-innerlijke-rust': 'Mindful Energy: Innerlijke Rust',
-        'energie-hormonen-balans': 'Energie & Hormonen Balans'
-      };
-      
-      const courseSubtitles = {
-        'clean-reset': 'Een complete gids voor lichaamstransformatie',
-        'powerfoods-superfood-specerij': 'Dagelijkse gewoontes voor een sterk immuunsysteem',
-        'de-juiste-balans': 'Rust, energie en helderheid vanuit je hormonen',
-        '30-dagen-challenge': 'Transformeer je leven in 30 dagen',
-        'everyday-nutrition-praktisch-gezond': 'Eenvoudige voeding die werkt - elke dag',
-        'mindful-energy-innerlijke-rust': 'Ademwerk, zenuwstelsel en hormonale balans',
-        'energie-hormonen-balans': 'Balans vinden in je dagelijkse leven'
-      };
-      
-      const courseTitle = courseTitles[slug] || 'Cursus';
-      const courseSubtitle = courseSubtitles[slug] || 'Een transformatieve ervaring';
-      
-      document.getElementById('courseTitle').textContent = courseTitle;
-      document.getElementById('courseSubtitle').textContent = courseSubtitle;
+        // Set course title and subtitle based on course slug
+        const courseTitles = {
+          'clean-reset': 'Clean Reset: Detox & Gifstoffen',
+          'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
+          'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
+          '30-dagen-challenge': '30 Dagen Challenge',
+          'everyday-nutrition-praktisch-gezond': 'Everyday Nutrition: Praktisch & Gezond™',
+          'mindful-energy-innerlijke-rust': 'Mindful Energy: Innerlijke Rust',
+          'energie-hormonen-balans': 'Energie & Hormonen Balans'
+        };
+        
+        const courseSubtitles = {
+          'clean-reset': 'Een complete gids voor lichaamstransformatie',
+          'powerfoods-superfood-specerij': 'Dagelijkse gewoontes voor een sterk immuunsysteem',
+          'de-juiste-balans': 'Rust, energie en helderheid vanuit je hormonen',
+          '30-dagen-challenge': 'Transformeer je leven in 30 dagen',
+          'everyday-nutrition-praktisch-gezond': 'Eenvoudige voeding die werkt - elke dag',
+          'mindful-energy-innerlijke-rust': 'Ademwerk, zenuwstelsel en hormonale balans',
+          'energie-hormonen-balans': 'Balans vinden in je dagelijkse leven'
+        };
+        
+        const courseTitle = courseTitles[slug] || 'Cursus';
+        const courseSubtitle = courseSubtitles[slug] || 'Een transformatieve ervaring';
+        
+        document.getElementById('courseTitle').textContent = courseTitle;
+        document.getElementById('courseSubtitle').textContent = courseSubtitle;
         
       // Update meta information with default values
       document.getElementById('badgeLevel').textContent = 'Intensief';
@@ -870,7 +881,7 @@
     function updateProgress(completed, total) {
       // Ensure we have valid numbers
       const completedNum = typeof completed === 'number' ? completed : 0;
-      const totalNum = typeof total === 'number' ? total : 51;
+      const totalNum = typeof total === 'number' ? total : 25;
       
       const percentage = (completedNum / totalNum) * 100;
       document.getElementById('progressFill').style.width = percentage + '%';
@@ -881,7 +892,26 @@
     document.querySelectorAll('.lesson-card').forEach(card => {
       card.addEventListener('click', function() {
         const lessonNumber = this.querySelector('.lesson-number').textContent;
-        const courseSlug = new URLSearchParams(window.location.search).get('course');
+        
+        // Get course slug from URL params or clean URL
+        let courseSlug = new URLSearchParams(window.location.search).get('course');
+        if (!courseSlug) {
+          const path = location.pathname.replace(/^\/+|\/+$/g,'');
+          const parts = path.split('/');
+          const clean = parts[0];
+          const mapCleanToSlug = {
+            'detox-cursus': 'clean-reset',
+            'powerfoods': 'powerfoods-superfood-specerij',
+            'juiste-balans': 'de-juiste-balans',
+            '30-dagen-challenge': '30-dagen-challenge',
+            'everyday-nutrition': 'everyday-nutrition-praktisch-gezond',
+            'mindful-energy': 'mindful-energy-innerlijke-rust'
+          };
+          if (mapCleanToSlug[clean]) {
+            courseSlug = mapCleanToSlug[clean];
+          }
+        }
+        
         if (courseSlug) {
           window.location.href = `lesson-view.html?course=${courseSlug}&lesson=${lessonNumber}`;
         }
