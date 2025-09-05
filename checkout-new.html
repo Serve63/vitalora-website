@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#EAF2FF">
+    <meta name="theme-color" content="#3A9AEA">
     <title>Clean Reset Cursus - Checkout</title>
     <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
     <style>
@@ -13,78 +13,433 @@
             box-sizing: border-box;
         }
 
-        body { background:#EAF2FF; color:#333333; line-height:1.6; min-height:100vh; }
+        body {
+            font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+            background: #f8fafc;
+            color: #1f2937;
+            line-height: 1.6;
+        }
 
-        .container { max-width: 1080px; margin: 0 auto; padding: 48px 24px; }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
 
-        .checkout-card { background:transparent; border-radius:0; padding:0; box-shadow:none; }
+        .checkout-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
 
-        .header { background:#EAF2FF; color:#333333; padding: 0 0 24px; text-align:left; border-radius:0; }
-        .header h1{ font-size: clamp(44px, 9vw, 96px); font-weight:700; line-height: .95; letter-spacing:-.5px; margin:0; }
+        /* Left Column - Product Info */
+        .product-info {
+            background: #E8F2FF;
+            padding: 40px;
+            border-radius: 16px;
+        }
 
-        .content { padding: 8px 0 48px; background:transparent; }
+        .product-title {
+            font-size: 36px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
 
-        .intro-text { font-size: clamp(18px, 2.4vw, 28px); color:#6B7280; margin: 12px 0 28px; line-height:1.55; }
+        .product-description {
+            font-size: 18px;
+            color: #6b7280;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
 
-        .intro-text p {
+        .benefits-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #374151;
+            line-height: 1.5;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            background: #3A9AEA;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .benefits-list strong {
+            color: #1f2937;
+            font-weight: 600;
+        }
+
+        /* Right Column - Checkout Form */
+        .checkout-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e5e7eb;
+        }
+
+        .form-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 30px;
+        }
+
+        .form-section {
+            margin-bottom: 24px;
+        }
+
+        .form-section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .form-group {
             margin-bottom: 16px;
         }
 
-        .benefits-list { list-style:none; margin: 24px 0 32px; padding:0; }
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: all 0.2s ease;
+            background: white;
+        }
 
-        .benefits-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; font-size: clamp(15px, 1.9vw, 20px); color:#374151; line-height:1.5; }
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #3A9AEA;
+            box-shadow: 0 0 0 3px rgba(58, 154, 234, 0.1);
+        }
 
-        .benefits-list li::before { content:"✓"; background:#2954B3; color:#fff; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; margin-top:4px; }
+        /* Payment Methods */
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 8px;
+        }
 
-        .benefits-list strong { color:#0F172A; font-weight:700; }
-        .benefits-list .muted { color:#6B7280; font-weight:500; }
+        .payment-method {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            background: white;
+        }
 
-        .cta-section { text-align:left; margin-top: 40px; }
+        .payment-method:hover {
+            border-color: #3A9AEA;
+            transform: translateY(-1px);
+        }
 
-        .cta-link { display:inline-block; color:#C9D7EE; text-decoration: underline; text-decoration-color:#C9D7EE; text-underline-offset:4px; font-size: clamp(16px, 2.2vw, 22px); font-weight:700; transition: opacity .2s ease; }
+        .payment-method.selected {
+            border-color: #3A9AEA;
+            background: rgba(58, 154, 234, 0.05);
+        }
 
-        .cta-link:hover { opacity:.9; }
+        .payment-icon {
+            width: 24px;
+            height: 24px;
+            object-fit: contain;
+        }
 
-        .cta-link::after { content:" \2192"; margin-left: 6px; }
+        /* Order Summary */
+        .order-summary {
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 24px 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .summary-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: #1f2937;
+            margin-bottom: 12px;
+        }
+
+        .summary-item {
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .total-label {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
+        .total-price {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4px;
+        }
+        
+        .original-price {
+            font-size: 14px;
+            color: #ef4444;
+            text-decoration: line-through;
+        }
+        
+        .discounted-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #10b981;
+        }
+
+        /* CTA Button */
+        .checkout-button {
+            width: 100%;
+            background: linear-gradient(135deg, #3A9AEA, #2954B3);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 12px;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .checkout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(58, 154, 234, 0.3);
+        }
+
+        /* Legal Section */
+        .legal-section {
+            margin-bottom: 20px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            margin-top: 2px;
+            accent-color: #3A9AEA;
+        }
+
+        .checkbox-group label {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .checkbox-group a {
+            color: #3A9AEA;
+            text-decoration: none;
+            font-weight: 500;
+        }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container { padding: 28px 16px; }
-            .content { padding: 8px 0 32px; }
-        }
+            .checkout-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .product-info,
+            .checkout-form {
+                padding: 24px;
+            }
 
-        @media (max-width: 480px) {
-            .header h1 { font-size: 34px; }
+            .payment-methods {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .product-title {
+                font-size: 28px;
+            }
+
+            .product-description {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="checkout-card">
-            <div class="header">
-                <h1>Tijd voor de Clean</h1>
-            </div>
-            
-            <div class="content">
-                <div class="intro-text">
+        <div class="checkout-layout">
+            <!-- Left Column - Product Info -->
+            <div class="product-info">
+                <h1 class="product-title">Tijd voor de Clean</h1>
+                
+                <div class="product-description">
                     <p>Je lichaam stapelt elke dag ongemerkt gifstoffen op.</p>
                     <p>Deze complete detox cursus laat je zien hoe je die verwijdert.</p>
                     <p>Zodat jij meer energie, scherpte en balans ervaart.</p>
                 </div>
 
                 <ul class="benefits-list">
-                    <li><strong>Volledige detox</strong> <span class="muted">– pakt meerdere toxines tegelijk aan</span></li>
-                    <li><strong>Onderbouwd</strong> <span class="muted">– gebaseerd op de nieuwste inzichten</span></li>
-                    <li><strong>Praktisch toepasbaar</strong> <span class="muted">– direct, duidelijk starten</span></li>
-                    <li><strong>Voelbaar resultaat</strong> <span class="muted">– meer energie, betere focus</span></li>
-                    <li><strong>Alles-in-één cursus</strong> <span class="muted">– inclusief begeleiding</span></li>
+                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
+                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
+                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
+                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
+                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
                 </ul>
+            </div>
 
-                <div class="cta-section">
-                    <a href="#" class="cta-link">Direct Starten</a>
+            <!-- Right Column - Checkout Form -->
+            <div class="checkout-form">
+                <h2 class="form-title">Afrekenen</h2>
+                
+                <!-- Personal Details -->
+                <div class="form-section">
+                    <h3>Jouw gegevens</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Voornaam" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Achternaam" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mailadres" required>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Nederland</option>
+                            <option>België</option>
+                            <option>Duitsland</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Payment Methods -->
+                <div class="form-section">
+                    <h3>Hoe wil je betalen?</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method selected">
+                            <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
+                            <span>iDEAL</span>
+                        </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
+                            <span>Creditcard</span>
+                        </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
+                            <span>Klarna</span>
+                        </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
+                            <span>Bancontact</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-title">Besteloverzicht</div>
+                    <div class="summary-item">
+                        <span>1x Clean Reset Detox Cursus</span>
+                    </div>
+                    <div class="total">
+                        <div class="total-label">Totaal:</div>
+                        <div class="total-price">
+                            <span class="original-price">€ 47,00</span>
+                            <span class="discounted-price">€ 27,00</span>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="checkout-button">Afrekenen <span>→</span></button>
+
+                <!-- Legal and Trust -->
+                <div class="legal-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required checked>
+                        <label for="terms">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script>
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Form validation and submission
+        document.querySelector('.checkout-button').addEventListener('click', function() {
+            const form = this.closest('.checkout-form');
+            const inputs = form.querySelectorAll('input[required]');
+            let isValid = true;
+
+            inputs.forEach(input => {
+                if (!input.value.trim()) {
+                    isValid = false;
+                    input.style.borderColor = '#ef4444';
+                } else {
+                    input.style.borderColor = '#e5e7eb';
+                }
+            });
+
+            if (isValid) {
+                // Here you would normally submit to payment processor
+                alert('Checkout formulier is geldig! (Dit zou normaal naar betalingsprocessor gaan)');
+            } else {
+                alert('Vul alle verplichte velden in');
+            }
+        });
+    </script>
 </body>
 </html>
