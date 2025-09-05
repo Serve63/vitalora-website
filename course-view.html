@@ -241,6 +241,20 @@
       box-shadow: 0 8px 25px rgba(var(--grad-a-rgb), 0.15);
     }
 
+    .lesson-card.completed {
+      background: #f0fdf4;
+      border-color: #10b981;
+    }
+
+    .lesson-card.completed .lesson-number {
+      background: #10b981;
+      color: white;
+    }
+
+    .lesson-card.completed .lesson-title {
+      color: #065f46;
+    }
+
     .lesson-number {
       width: 40px;
       height: 40px;
@@ -934,6 +948,9 @@
       
       // Update progress with default values
       updateProgress(0, 24);
+      
+      // Update lesson cards to show completed status
+      updateLessonCards();
     }
 
     function updateProgress(completed, total) {
@@ -947,10 +964,30 @@
       document.getElementById('progressText').textContent = `${completedNum} van ${totalNum} lessen voltooid`;
     }
 
+    function updateLessonCards() {
+      const completedLessons = getCompletedLessons();
+      document.querySelectorAll('.lesson-card').forEach(card => {
+        const lessonNumber = card.querySelector('.lesson-number').textContent;
+        if (completedLessons.includes(lessonNumber)) {
+          card.classList.add('completed');
+        } else {
+          card.classList.remove('completed');
+        }
+      });
+    }
+
     // Lesson click handlers
     document.querySelectorAll('.lesson-card').forEach(card => {
       card.addEventListener('click', function() {
         const lessonNumber = this.querySelector('.lesson-number').textContent;
+        
+        // Mark lesson as completed when clicked
+        const completed = getCompletedLessons();
+        if (!completed.includes(lessonNumber)) {
+          completed.push(lessonNumber);
+          localStorage.setItem('completedLessons', JSON.stringify(completed));
+          updateProgress();
+        }
         
         // Get course slug from URL params or clean URL
         let courseSlug = new URLSearchParams(window.location.search).get('course');

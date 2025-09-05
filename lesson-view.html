@@ -316,53 +316,6 @@
       transform: none;
     }
 
-    .lesson-complete-section {
-      text-align: center;
-      margin: 40px 0;
-      padding: 30px;
-      background: #f8fafc;
-      border-radius: 16px;
-      border: 2px solid #e2e8f0;
-    }
-
-    .complete-button {
-      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-      color: white;
-      border: none;
-      padding: 16px 32px;
-      border-radius: 50px;
-      font-size: 1.1rem;
-      font-weight: 600;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .complete-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
-    }
-
-    .complete-button:disabled {
-      background: #6b7280;
-      cursor: not-allowed;
-      transform: none;
-      box-shadow: none;
-    }
-
-    .complete-button.completed {
-      background: #10b981;
-      cursor: default;
-    }
-
-    .progress-indicator {
-      margin-top: 16px;
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-    }
 
     .back-to-course {
       display: inline-flex;
@@ -464,16 +417,6 @@
       </div>
     </div>
 
-    <!-- Lesson Complete Section -->
-    <div class="lesson-complete-section">
-      <button class="complete-button" id="completeButton">
-        <span>✓</span>
-        <span id="completeButtonText">Les afgerond</span>
-      </button>
-      <div class="progress-indicator" id="progressIndicator">
-        <!-- Progress will be shown here -->
-      </div>
-    </div>
 
     <!-- Lesson Navigation -->
       <div class="lesson-navigation">
@@ -502,47 +445,6 @@
       document.getElementById('backToCourse').href = `course-view.html?course=${courseSlug}`;
     }
 
-    // Progress tracking
-    function getCompletedLessons() {
-      const completed = localStorage.getItem('completedLessons');
-      return completed ? JSON.parse(completed) : [];
-    }
-
-    function markLessonComplete(lessonNumber) {
-      const completed = getCompletedLessons();
-      if (!completed.includes(lessonNumber)) {
-        completed.push(lessonNumber);
-        localStorage.setItem('completedLessons', JSON.stringify(completed));
-        updateProgressDisplay();
-      }
-    }
-
-    function isLessonCompleted(lessonNumber) {
-      const completed = getCompletedLessons();
-      return completed.includes(lessonNumber);
-    }
-
-    function updateProgressDisplay() {
-      const completed = getCompletedLessons();
-      const totalLessons = 24; // Clean Reset has 24 lessons
-      const currentLesson = parseInt(lessonNumber);
-      
-      const progressText = `${completed.length} van ${totalLessons} lessen voltooid`;
-      document.getElementById('progressIndicator').textContent = progressText;
-      
-      const completeButton = document.getElementById('completeButton');
-      const completeButtonText = document.getElementById('completeButtonText');
-      
-      if (isLessonCompleted(currentLesson)) {
-        completeButton.classList.add('completed');
-        completeButton.disabled = true;
-        completeButtonText.textContent = 'Les voltooid ✓';
-      } else {
-        completeButton.classList.remove('completed');
-        completeButton.disabled = false;
-        completeButtonText.textContent = 'Les afgerond';
-      }
-    }
 
     // Update lesson content based on parameters
     function updateLessonContent() {
@@ -1937,15 +1839,9 @@ Want dit is niet het einde. Dit is jouw nieuwe start.
       }
     }
 
-    // Event listeners
-    document.getElementById('completeButton').addEventListener('click', function() {
-      markLessonComplete(lessonNumber);
-    });
-
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
       updateLessonContent();
-      updateProgressDisplay();
     });
   </script>
 </body>
