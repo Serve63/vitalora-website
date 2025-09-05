@@ -1,8 +1,8 @@
 RewriteEngine On
 
 # Internal rewrite for clean course URLs
-RewriteRule ^clean-reset/?$ /course-view.html?course=clean-reset [L,QSA]
-RewriteRule ^clean-reset/les([0-9]+)/?$ /course-view.html?course=clean-reset&lesson=$1 [L,QSA]
+RewriteRule ^detox-cursus/?$ /course-view.html?course=clean-reset [L,QSA]
+RewriteRule ^detox-cursus/les([0-9]+)/?$ /course-view.html?course=clean-reset&lesson=$1 [L,QSA]
 
 RewriteRule ^powerfoods/?$ /course-view.html?course=powerfoods-superfood-specerij [L,QSA]
 RewriteRule ^powerfoods/les([0-9]+)/?$ /course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
