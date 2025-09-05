@@ -435,10 +435,35 @@
   </div>
 
   <script>
-    // Get URL parameters
-    const urlParams = new URLSearchParams(window.location.search);
-    const courseSlug = urlParams.get('course');
-    const lessonNumber = urlParams.get('lesson') || '1';
+    // Derive course and lesson from query or clean URL
+    // Prefer clean URL pattern: /clean-reset-les{n}
+    let courseSlug = null;
+    let lessonNumber = null;
+    (function deriveFromUrl(){
+      const params = new URLSearchParams(window.location.search);
+      courseSlug = params.get('course');
+      lessonNumber = params.get('lesson');
+
+      // If not present, try clean URL
+      if (!lessonNumber) {
+        const path = location.pathname.replace(/^\/+/,'');
+        const m = path.match(/^clean-reset-les(\d+)$/);
+        if (m) {
+          courseSlug = 'clean-reset';
+          lessonNumber = m[1];
+        }
+      }
+
+      // Fallbacks
+      if (!courseSlug) courseSlug = 'clean-reset';
+      if (!lessonNumber) lessonNumber = '1';
+
+      // Normalize URL to clean format if coming from ugly URL
+      const expected = `/clean-reset-les${lessonNumber}`;
+      if (location.pathname !== expected) {
+        history.replaceState(null, '', expected);
+      }
+    })();
 
     // Set back to course link
     if (courseSlug) {
@@ -448,9 +473,7 @@
 
     // Update lesson content based on parameters
     function updateLessonContent() {
-      const urlParams = new URLSearchParams(window.location.search);
-      const courseSlug = urlParams.get('course');
-      const lessonNumber = urlParams.get('lesson');
+      // courseSlug and lessonNumber are derived above (clean URL aware)
       
       // Course-specific lesson data
       const courseLessons = {

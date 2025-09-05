@@ -13,6 +13,9 @@ RewriteRule ^ - [L]
 RewriteRule ^detox-cursus/?$ course-view.html?course=clean-reset [L,QSA]
 RewriteRule ^detox-cursus/les([0-9]+)/?$ course-view.html?course=clean-reset&lesson=$1 [L,QSA]
 
+# Clean lesson URLs preferred by user (clean-reset-les{n}) → lesson view
+RewriteRule ^clean-reset-les([0-9]+)/?$ lesson-view.html?course=clean-reset&lesson=$1 [L,QSA]
+
 # PowerFoods
 RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]
 RewriteRule ^powerfoods/les([0-9]+)/?$ course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
