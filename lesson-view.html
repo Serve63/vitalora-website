@@ -435,6 +435,25 @@
   </div>
 
   <script>
+    // Academy access control
+    if (localStorage.getItem('academyAccess') !== 'granted') {
+      window.location.href = '/login';
+    }
+    
+    // Check if login is still valid (24 hours)
+    const loginTime = localStorage.getItem('loginTime');
+    if (loginTime) {
+      const now = Date.now();
+      const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
+      
+      if (hoursSinceLogin >= 24) {
+        // Clear expired login
+        localStorage.removeItem('academyAccess');
+        localStorage.removeItem('loginTime');
+        window.location.href = '/login';
+      }
+    }
+    
     // Derive course and lesson from query or clean URL for ALL courses
     // Clean pattern: /{course-alias}-les{n}
     const aliasToSlug = {

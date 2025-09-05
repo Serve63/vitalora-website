@@ -213,7 +213,28 @@
     <!-- END SCOPE: academy-features -->
 
     <script src="dashboard-script.js"></script>
-    <!-- Academy login script removed - free access -->
+    
+    <!-- Academy access control -->
+    <script>
+        // Check if user is logged in
+        if (localStorage.getItem('academyAccess') !== 'granted') {
+            window.location.href = '/login';
+        }
+        
+        // Check if login is still valid (24 hours)
+        const loginTime = localStorage.getItem('loginTime');
+        if (loginTime) {
+            const now = Date.now();
+            const hoursSinceLogin = (now - loginTime) / (1000 * 60 * 60);
+            
+            if (hoursSinceLogin >= 24) {
+                // Clear expired login
+                localStorage.removeItem('academyAccess');
+                localStorage.removeItem('loginTime');
+                window.location.href = '/login';
+            }
+        }
+    </script>
     
     <!-- Theme script voor per-cursus kleuren -->
     <script>
