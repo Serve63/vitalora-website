@@ -218,7 +218,7 @@
     <script>
         // Check if user is logged in
         if (localStorage.getItem('academyAccess') !== 'granted') {
-            window.location.href = '/login';
+            window.location.href = '/login.html';
         }
         
         // Check if login is still valid (24 hours)
@@ -231,7 +231,7 @@
                 // Clear expired login
                 localStorage.removeItem('academyAccess');
                 localStorage.removeItem('loginTime');
-                window.location.href = '/login';
+                window.location.href = '/login.html';
             }
         }
     </script>
