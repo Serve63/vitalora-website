@@ -460,9 +460,11 @@
       if (!lessonNumber) lessonNumber = '1';
 
       // Normalize URL to clean format if coming from ugly URL
-      // Normalize to /detox-cursus-lesN (final chosen format)
-      const expected = `/detox-cursus-les${lessonNumber}`;
-      if (location.pathname !== expected) {
+      // Normalize only if using ugly URL; keep whichever clean variant is used
+      const pathNow = location.pathname;
+      const isClean = /^\/clean-reset-les\d+$/.test(pathNow) || /^\/detox-cursus-les\d+$/.test(pathNow);
+      const expected = `/clean-reset-les${lessonNumber}`; // default when normalizing
+      if (!isClean && pathNow !== expected) {
         history.replaceState(null, '', expected);
       }
     })();
