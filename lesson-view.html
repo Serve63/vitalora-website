@@ -447,7 +447,8 @@
       // If not present, try clean URL
       if (!lessonNumber) {
         const path = location.pathname.replace(/^\/+/,'');
-        const m = path.match(/^clean-reset-les(\d+)$/);
+        let m = path.match(/^clean-reset-les(\d+)$/);
+        if (!m) m = path.match(/^detox-cursus-les(\d+)$/);
         if (m) {
           courseSlug = 'clean-reset';
           lessonNumber = m[1];
@@ -459,7 +460,8 @@
       if (!lessonNumber) lessonNumber = '1';
 
       // Normalize URL to clean format if coming from ugly URL
-      const expected = `/clean-reset-les${lessonNumber}`;
+      // Normalize to /detox-cursus-lesN (final chosen format)
+      const expected = `/detox-cursus-les${lessonNumber}`;
       if (location.pathname !== expected) {
         history.replaceState(null, '', expected);
       }
