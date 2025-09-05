@@ -139,6 +139,7 @@
           e.preventDefault();
           const code = Array.from(pinInputs).map(input => input.value).join('');
           if(code === '058267') {
+            try { sessionStorage.setItem('academySession','ok'); } catch(e){}
             window.location.href='/academy';
           } else {
             errorDiv.style.display='block';

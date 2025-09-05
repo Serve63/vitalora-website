@@ -848,10 +848,18 @@
     </div>
   </div>
 
-  <!-- Header script removed for course view -->
+  <!-- Session access control for course view -->
   <script>
-    // No access control - direct access to course view
-    
+    (function(){
+      try {
+        if (sessionStorage.getItem('academySession') !== 'ok') {
+          window.location.href = '/login.html';
+        }
+      } catch (e) {
+        window.location.href = '/login.html';
+      }
+    })();
+    //
     // Progress tracking
     function getCompletedLessons() {
       const completed = localStorage.getItem('completedLessons');

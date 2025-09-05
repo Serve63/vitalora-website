@@ -214,7 +214,18 @@
 
     <script src="dashboard-script.js"></script>
     
-    <!-- No access control - direct access to academy -->
+    <!-- Session access control: require fresh login per session -->
+    <script>
+      (function(){
+        try {
+          if (sessionStorage.getItem('academySession') !== 'ok') {
+            window.location.href = '/login.html';
+          }
+        } catch (e) {
+          window.location.href = '/login.html';
+        }
+      })();
+    </script>
     
     <!-- Theme script voor per-cursus kleuren -->
     <script>

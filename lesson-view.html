@@ -435,7 +435,16 @@
   </div>
 
   <script>
-    // No access control - direct access to lesson view
+    // Session access control for lesson view
+    (function(){
+      try {
+        if (sessionStorage.getItem('academySession') !== 'ok') {
+          window.location.href = '/login.html';
+        }
+      } catch (e) {
+        window.location.href = '/login.html';
+      }
+    })();
     
     // Derive course and lesson from query or clean URL for ALL courses
     // Clean pattern: /{course-alias}-les{n}
