@@ -428,6 +428,82 @@
 
     // Update lesson content based on parameters
     function updateLessonContent() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const courseSlug = urlParams.get('course');
+      const lessonNumber = urlParams.get('lesson');
+      
+      // Course-specific lesson data
+      const courseLessons = {
+        'clean-reset': {
+          titles: {
+            '1': 'Welkom – waarom jij hier bent en waarom dit het juiste moment is',
+            '2': 'Het verhaal achter toxische stoffen in ons dagelijks leven',
+            '3': 'Wat deze cursus jou gaat brengen – helder, haalbaar, levensveranderend',
+            '4': 'PFAS, BPA, microplastics, ftalaten, parabenen en pesticiden – wat zijn het écht?',
+            '5': 'Hoe ze ongemerkt je lichaam binnendringen',
+            '6': 'Waar je ze dagelijks tegenkomt (eye-openers die je niet verwacht)',
+            '7': 'Effect op energie, hormonen en mentale scherpte',
+            '8': 'De link met vetopslag, spierherstel en veroudering',
+            '9': 'De sluipende impact op vruchtbaarheid en gezondheid op lange termijn',
+            '10': 'Waarom nu ingrijpen cruciaal is',
+            '11': 'Hoe je lichaam zichzelf probeert te ontgiften',
+            '12': 'Waarom dat natuurlijke systeem overbelast raakt',
+            '13': 'De waarheid achter detox – voorbij hypes en juice cleanses',
+            '14': 'Krachtige voeding die toxines afvoert',
+            '15': 'Supplementen en natuurlijke boosters die écht werken',
+            '16': 'Lifestyle-tools: sauna, beweging, slaap en stressreset',
+            '17': 'Praktisch stappenplan – jouw eerste Clean Reset week',
+            '18': 'Keuzes in de keuken (van kookgerei tot verpakking)',
+            '19': 'Toxinevrije cosmetica en verzorging',
+            '20': 'Slim schoonmaken en een gezondere leefomgeving',
+            '21': 'Boodschappenhacks – bewust kopen zonder gedoe',
+            '22': 'Van korte detox naar blijvende reset',
+            '23': 'Hoe je dit moeiteloos volhoudt (zonder dat het obsessief wordt)',
+            '24': 'Vooruitblik: leven in een schoner, energieker lichaam',
+            '25': 'Afsluiting – jouw Clean Reset belofte'
+          },
+          durations: {
+            '1': '12 min', '2': '15 min', '3': '10 min', '4': '18 min', '5': '14 min',
+            '6': '16 min', '7': '20 min', '8': '17 min', '9': '19 min', '10': '13 min',
+            '11': '16 min', '12': '14 min', '13': '18 min', '14': '22 min', '15': '19 min',
+            '16': '21 min', '17': '25 min', '18': '17 min', '19': '15 min', '20': '16 min',
+            '21': '14 min', '22': '18 min', '23': '16 min', '24': '12 min', '25': '10 min'
+          },
+          types: {
+            '1': 'Introductie', '2': 'Theorie', '3': 'Overzicht', '4': 'Theorie', '5': 'Theorie',
+            '6': 'Praktisch', '7': 'Theorie', '8': 'Theorie', '9': 'Theorie', '10': 'Motivatie',
+            '11': 'Theorie', '12': 'Theorie', '13': 'Theorie', '14': 'Praktisch', '15': 'Praktisch',
+            '16': 'Praktisch', '17': 'Actieplan', '18': 'Praktisch', '19': 'Praktisch', '20': 'Praktisch',
+            '21': 'Praktisch', '22': 'Strategie', '23': 'Strategie', '24': 'Motivatie', '25': 'Afsluiting'
+          },
+          content: {
+            '1': {
+              title: 'Welkom – waarom jij hier bent en waarom dit het juiste moment is',
+              sections: [
+                {
+                  title: 'Welkom. ✨',
+                  content: `Je bent hier niet zomaar. Je bent hier omdat er in jou iets zegt: het kan beter, het moet schoner, ik wil mijn lichaam terug in zijn pure vorm.
+
+We leven in een tijd waarin alles snel gaat. Je ademt, eet, drinkt en smeert meer stoffen op je huid dan je beseft. Niet omdat je fout bezig was, maar omdat onze wereld de afgelopen decennia volgestopt is met chemische toevoegingen, plastics en pesticiden. Zonder dat je het wist, heb je ze binnengekregen. Elke dag. Jarenlang.
+
+Misschien voel je het aan je energie. Aan je herstel. Aan je hormonen. Misschien merk je dat je minder scherp bent, of dat je lichaam soms signalen geeft die je niet kan plaatsen. Dit zijn geen zwakheden van jou – dit zijn signalen van een lijf dat roept om ruimte. Om reset.
+
+En dát is precies waarom je hier bent. Dit is jouw moment. Geen toeval, geen uitstel meer. Jij kiest om je gezondheid niet langer te laten sturen door onzichtbare vijanden, maar zelf de leiding te nemen.
+
+Wat we in deze cursus doen, is niet oppervlakkig. We gaan niet zeggen dat je "minder plastic tasjes" moet gebruiken. Dit is een deep dive. Je leert welke stoffen je lichaam elke dag belasten, hoe ze écht werken in je lijf, en vooral: hoe jij ze kunt loslaten en voorkomen dat ze terugkomen.
+
+Deze reis is geen sprint. Het is een reset die je fundament verandert. Een keerpunt waar je later op terugkijkt en denkt: daar begon het.
+
+Dus adem diep in. Voel even dat je dit voor jezelf doet.
+Want vanaf nu begint jouw Clean Reset. 🌊`
+                }
+              ]
+            }
+          }
+        }
+      };
+
+      // Fallback lesson data for other courses
       const lessonTitles = {
         '1': 'De eerste stap in jouw detoxreis',
         '2': 'Wat toxines écht zijn',
@@ -462,19 +538,52 @@
       };
 
       const currentLesson = parseInt(lessonNumber);
-      const totalLessons = 51;
+      
+      // Get course-specific data or fallback
+      let courseData = courseLessons[courseSlug];
+      let totalLessons = 51; // fallback
+      let title, duration, type, content;
+      
+      if (courseData) {
+        totalLessons = Object.keys(courseData.titles).length;
+        title = courseData.titles[lessonNumber] || `Les ${lessonNumber}`;
+        duration = courseData.durations[lessonNumber] || '15 min';
+        type = courseData.types[lessonNumber] || 'Theorie';
+        content = courseData.content[lessonNumber];
+      } else {
+        // Fallback for other courses
+        title = lessonTitles[lessonNumber] || `Les ${lessonNumber}`;
+        duration = lessonDurations[lessonNumber] || '15 min';
+        type = lessonTypes[lessonNumber] || 'Theorie';
+      }
 
       // Update title
-      const title = lessonTitles[lessonNumber] || `Les ${lessonNumber}`;
       document.getElementById('lessonTitle').textContent = `Les ${lessonNumber}: ${title}`;
 
       // Update meta
-      document.getElementById('lessonDuration').textContent = lessonDurations[lessonNumber] || '15 min';
-      document.getElementById('lessonType').textContent = lessonTypes[lessonNumber] || 'Theorie';
+      document.getElementById('lessonDuration').textContent = duration;
+      document.getElementById('lessonType').textContent = type;
       document.getElementById('lessonChapter').textContent = `Hoofdstuk ${Math.ceil(currentLesson / 3)}`;
 
       // Update progress
       document.getElementById('lessonProgress').textContent = `Les ${lessonNumber} van ${totalLessons}`;
+
+      // Update lesson content
+      if (content && content.sections) {
+        const contentContainer = document.querySelector('.lesson-content .content-section');
+        if (contentContainer) {
+          contentContainer.innerHTML = '';
+          
+          content.sections.forEach(section => {
+            const sectionDiv = document.createElement('div');
+            sectionDiv.innerHTML = `
+              <h2 class="section-title">${section.title}</h2>
+              <div class="content-text">${section.content.replace(/\n/g, '<br><br>')}</div>
+            `;
+            contentContainer.appendChild(sectionDiv);
+          });
+        }
+      }
 
       // Update navigation
       if (currentLesson > 1) {
