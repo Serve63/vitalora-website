@@ -20,8 +20,10 @@
         .subtitle{color:#666;font-size:16px;margin-bottom:30px}
         .form-group{margin-bottom:20px;text-align:left}
         label{display:block;color:#333;font-weight:500;margin-bottom:8px;font-size:14px}
-        input[type="password"]{width:100%;padding:12px 16px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;transition:border-color .3s ease;box-sizing:border-box}
-        input[type="password"]:focus{outline:none;border-color:#2954B3;box-shadow:0 0 0 3px rgba(41,84,179,.1)}
+        .pin-container{display:flex;gap:10px;justify-content:center;margin-bottom:20px;margin-top:-6px}
+        .pin-input{width:46px;height:46px;border:2px solid #e5e7eb;border-radius:10px;text-align:center;font-size:20px;font-weight:700;color:#333;background:#fff;transition:border-color .3s ease, box-shadow .3s ease}
+        .pin-input:focus{outline:none;border-color:#2954B3;box-shadow:0 0 0 3px rgba(41,84,179,0.12)}
+        .pin-input.filled{border-color:#2954B3;background:#f8fafc}
         .login-btn{width:100%;background:linear-gradient(135deg,#2954B3 0%,#1e3a8a 100%);color:#fff;border:none;padding:14px 20px;border-radius:10px;font-size:16px;font-weight:600;cursor:pointer;transition:all .3s ease;margin-bottom:20px}
         .login-btn:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(41,84,179,.3)}
         .login-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
@@ -47,8 +49,15 @@
         <p class="subtitle">Voer je toegangscode in om verder te gaan</p>
         <form id="loginForm">
             <div class="form-group">
-                <label for="accessCode">Toegangscode</label>
-                <input type="password" id="accessCode" name="accessCode" placeholder="Voer je toegangscode in" required>
+                <label>Toegangscode</label>
+                <div class="pin-container">
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                    <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
+                </div>
             </div>
             <button type="submit" class="login-btn" id="loginBtn">Inloggen <span class="loading" id="loading"><div class="spinner"></div></span></button>
             <div class="error-message" id="errorMessage">Onjuiste toegangscode. Probeer het opnieuw.</div>
@@ -56,28 +65,72 @@
         <a href="/" class="back-link">← Terug naar homepage</a>
     </div>
     <script>
-      document.getElementById('loginForm').addEventListener('submit', function(e){
-        e.preventDefault();
-        const accessCode=document.getElementById('accessCode').value;
-        const loginBtn=document.getElementById('loginBtn');
-        const loading=document.getElementById('loading');
-        const errorMessage=document.getElementById('errorMessage');
-        loginBtn.disabled=true;loading.style.display='inline-block';errorMessage.style.display='none';
-        setTimeout(()=>{
-          if(accessCode==='058267'){
+      (function(){
+        const pinInputs = document.querySelectorAll('.pin-input');
+        const enterButton = document.getElementById('loginBtn');
+        const errorDiv = document.getElementById('errorMessage');
+        const loading = document.getElementById('loading');
+        
+        // Auto-focus first input
+        pinInputs[0].focus();
+        
+        // Handle input in each PIN field
+        pinInputs.forEach((input, index) => {
+          input.addEventListener('input', function(e) {
+            // Only allow numbers
+            this.value = this.value.replace(/[^0-9]/g, '');
+            
+            // Move to next input if current is filled
+            if (this.value && index < pinInputs.length - 1) {
+              pinInputs[index + 1].focus();
+            }
+          });
+          
+          input.addEventListener('keydown', function(e) {
+            // Handle backspace
+            if (e.key === 'Backspace' && !this.value && index > 0) {
+              pinInputs[index - 1].focus();
+            }
+            
+            // Handle enter key
+            if (e.key === 'Enter') {
+              enterButton.click();
+            }
+          });
+          
+          input.addEventListener('paste', function(e) {
+            e.preventDefault();
+            const pastedData = e.clipboardData.getData('text').replace(/[^0-9]/g, '');
+            for (let i = 0; i < Math.min(pastedData.length, pinInputs.length); i++) {
+              pinInputs[i].value = pastedData[i];
+            }
+            // Focus last filled input or last input
+            const lastFilledIndex = Math.min(pastedData.length - 1, pinInputs.length - 1);
+            pinInputs[lastFilledIndex].focus();
+          });
+        });
+        
+        enterButton.addEventListener('click', function(e){
+          e.preventDefault();
+          const code = Array.from(pinInputs).map(input => input.value).join('');
+          if(code === '058267') {
             localStorage.setItem('academyAccess','granted');
             localStorage.setItem('loginTime',Date.now());
             window.location.href='/academy';
-          }else{
-            errorMessage.style.display='block';loginBtn.disabled=false;loading.style.display='none';
-            document.getElementById('accessCode').value='';document.getElementById('accessCode').focus();
+          } else {
+            errorDiv.style.display='block';
+            // Clear all inputs and focus first
+            pinInputs.forEach(input => input.value = '');
+            pinInputs[0].focus();
           }
-        },1000);
-      });
-      if(localStorage.getItem('academyAccess')==='granted'){
-        const t=localStorage.getItem('loginTime');const now=Date.now();const h=(now-t)/(1000*60*60);
-        if(h<24){ window.location.href='/academy'; } else { localStorage.removeItem('academyAccess'); localStorage.removeItem('loginTime'); }
-      }
+        });
+        
+        // Check if already logged in
+        if(localStorage.getItem('academyAccess')==='granted'){
+          const t=localStorage.getItem('loginTime');const now=Date.now();const h=(now-t)/(1000*60*60);
+          if(h<24){ window.location.href='/academy'; } else { localStorage.removeItem('academyAccess'); localStorage.removeItem('loginTime'); }
+        }
+      })();
     </script>
 </body>
 </html>
