@@ -1839,6 +1839,25 @@ Want dit is niet het einde. Dit is jouw nieuwe start.
       }
     }
 
+    // Progress tracking functions
+    function getCompletedLessons() {
+      const completed = localStorage.getItem('completedLessons');
+      return completed ? JSON.parse(completed) : [];
+    }
+
+    function markLessonComplete(lessonNumber) {
+      const completed = getCompletedLessons();
+      if (!completed.includes(lessonNumber)) {
+        completed.push(lessonNumber);
+        localStorage.setItem('completedLessons', JSON.stringify(completed));
+      }
+    }
+
+    // Event listeners
+    document.getElementById('nextLesson').addEventListener('click', function() {
+      markLessonComplete(lessonNumber);
+    });
+
     // Initialize
     document.addEventListener('DOMContentLoaded', function() {
       updateLessonContent();

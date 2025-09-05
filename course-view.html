@@ -241,19 +241,6 @@
       box-shadow: 0 8px 25px rgba(var(--grad-a-rgb), 0.15);
     }
 
-    .lesson-card.completed {
-      background: #f0fdf4;
-      border-color: #10b981;
-    }
-
-    .lesson-card.completed .lesson-number {
-      background: #10b981;
-      color: white;
-    }
-
-    .lesson-card.completed .lesson-title {
-      color: #065f46;
-    }
 
     .lesson-number {
       width: 40px;
@@ -968,10 +955,13 @@
       const completedLessons = getCompletedLessons();
       document.querySelectorAll('.lesson-card').forEach(card => {
         const lessonNumber = card.querySelector('.lesson-number').textContent;
+        const statusDot = card.querySelector('.lesson-status');
+        
         if (completedLessons.includes(lessonNumber)) {
-          card.classList.add('completed');
+          statusDot.classList.add('completed');
+          statusDot.classList.remove('current');
         } else {
-          card.classList.remove('completed');
+          statusDot.classList.remove('completed');
         }
       });
     }
