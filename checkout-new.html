@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3A9AEA">
+    <title>Clean Reset Cursus - Checkout</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
+            background: #E8F2FF;
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .checkout-card {
+            background: #E8F2FF;
+            border-radius: 0;
+            padding: 0;
+            box-shadow: none;
+        }
+
+        .header {
+            background: #3A9AEA;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+            border-radius: 0;
+        }
+
+        .header h1 {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 0;
+            line-height: 1.2;
+        }
+
+        .content {
+            padding: 40px 30px;
+            background: #E8F2FF;
+        }
+
+        .intro-text {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .intro-text p {
+            margin-bottom: 16px;
+        }
+
+        .benefits-list {
+            list-style: none;
+            margin: 30px 0;
+        }
+
+        .benefits-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .benefits-list li::before {
+            content: "✓";
+            background: #3A9AEA;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .benefits-list strong {
+            color: #333;
+            font-weight: 600;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-link {
+            display: inline-block;
+            color: #666;
+            text-decoration: underline;
+            font-size: 18px;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .cta-link:hover {
+            color: #3A9AEA;
+        }
+
+        .cta-link::after {
+            content: " →";
+            margin-left: 4px;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 15px;
+            }
+
+            .header {
+                padding: 30px 20px;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .content {
+                padding: 30px 20px;
+            }
+
+            .intro-text {
+                font-size: 16px;
+            }
+
+            .benefits-list li {
+                font-size: 15px;
+            }
+
+            .cta-link {
+                font-size: 16px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 24px;
+            }
+
+            .intro-text {
+                font-size: 15px;
+            }
+
+            .benefits-list li {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="checkout-card">
+            <div class="header">
+                <h1>Tijd voor de Clean</h1>
+            </div>
+            
+            <div class="content">
+                <div class="intro-text">
+                    <p>Je lichaam stapelt elke dag ongemerkt gifstoffen op.</p>
+                    <p>Deze complete detox cursus laat je zien hoe je die verwijdert.</p>
+                    <p>Zodat jij meer energie, scherpte en balans ervaart.</p>
+                </div>
+
+                <ul class="benefits-list">
+                    <li><strong>Volledige detox</strong> - pakt meerdere toxines tegelijk aan</li>
+                    <li><strong>Onderbouwd</strong> - gebaseerd op de nieuwste inzichten</li>
+                    <li><strong>Praktisch toepasbaar</strong> - direct, duidelijk starten</li>
+                    <li><strong>Voelbaar resultaat</strong> - meer energie, betere focus</li>
+                    <li><strong>Alles-in-één cursus</strong> - inclusief begeleiding</li>
+                </ul>
+
+                <div class="cta-section">
+                    <a href="#" class="cta-link">Direct Starten</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
