@@ -14,13 +14,7 @@
 		body { background:#EDF2FB !important; }
 		.container { max-width:1200px; margin:0 auto; padding:0 20px; }
 
-		/* Header */
-		.site-header { background:var(--blue); color:#fff; position:sticky; top:0; z-index:50; }
-		.header-inner { display:flex; align-items:center; gap:16px; padding:14px 20px; max-width:1200px; margin:0 auto; }
-		.logo { text-decoration:none; color:#fff; font-weight:800; letter-spacing:.2px; }
-		.logo-text { color:#fff; font-size:20px; }
-		.btn.login-btn { margin-left:auto; display:inline-flex; align-items:center; gap:8px; padding:8px 14px; border-radius:8px; border:1px solid rgba(255,255,255,.35); color:#fff; text-decoration:none; font-weight:700; font-size:14px; }
-		.btn.login-btn:hover { background:rgba(255,255,255,.12); }
+		/* Header - use same as ebook page */
 		.btn.login-btn { display: none !important; }
 
 		/* Hero */
@@ -100,7 +94,6 @@
 		/* Responsive */
 		@media (max-width: 992px) { .hero-content { gap:32px; } }
 		@media (max-width: 768px) {
-			.site-header { display: none !important; }
 			.hero-content { grid-template-columns:1fr; gap:8px; margin-top:0; }
 			.hero-image { display:none; }
 			.mobile-book-image { display:block; text-align:center; margin:0 auto 20px; }
@@ -133,13 +126,9 @@
 	</style>
 </head>
 <body>
-	<!-- Header -->
-	<header class="site-header" role="banner">
-		<div class="header-inner">
-			<a class="logo" href="/"><span class="logo-text">Vitalora.nl</span></a>
-			<a class="btn login-btn" href="/academy">Inloggen</a>
-		</div>
-	</header>
+	<div data-include="site-header"></div>
+	<script defer src="/assets/js/route-scope.js?v=1"></script>
+	<script defer src="/assets/js/header.js?v=9"></script>
 
     <!-- Hero Section -->
     <section class="hero">
