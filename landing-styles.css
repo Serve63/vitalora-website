@@ -386,13 +386,16 @@ body {
 
 /* Explicit desktop photos for the first three testimonials on the ebook page */
 .ebook-page .testimonials-grid .testimonial-card:nth-child(1) .profile-pic {
-    background: url('/assets/images/Review%20foto%20vrouw.png?v=2') center/cover no-repeat !important;
+    background: url('/assets/images/Review%20foto%20vrouw.png?v=3') center/cover no-repeat, linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%) !important;
+    min-width: 40px; min-height: 40px;
 }
 .ebook-page .testimonials-grid .testimonial-card:nth-child(2) .profile-pic {
-    background: url('/assets/images/review%20foto%20man.png?v=2') center/cover no-repeat !important;
+    background: url('/assets/images/review%20foto%20man.png?v=3') center/cover no-repeat, linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%) !important;
+    min-width: 40px; min-height: 40px;
 }
 .ebook-page .testimonials-grid .testimonial-card:nth-child(3) .profile-pic {
-    background: url('/assets/images/Review%20foto%20vrouw%202.jpeg?v=2') center/cover no-repeat !important;
+    background: url('/assets/images/Review%20foto%20vrouw%202.jpeg?v=3') center/cover no-repeat, linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%) !important;
+    min-width: 40px; min-height: 40px;
 }
 
 .profile-info {
