@@ -384,6 +384,17 @@ body {
     border-radius: 50%;
 }
 
+/* Explicit desktop photos for the first three testimonials on the ebook page */
+.ebook-page .testimonials-grid .testimonial-card:nth-child(1) .profile-pic {
+    background: url('/assets/images/Review%20foto%20vrouw.png?v=2') center/cover no-repeat !important;
+}
+.ebook-page .testimonials-grid .testimonial-card:nth-child(2) .profile-pic {
+    background: url('/assets/images/review%20foto%20man.png?v=2') center/cover no-repeat !important;
+}
+.ebook-page .testimonials-grid .testimonial-card:nth-child(3) .profile-pic {
+    background: url('/assets/images/Review%20foto%20vrouw%202.jpeg?v=2') center/cover no-repeat !important;
+}
+
 .profile-info {
     display: flex;
     flex-direction: column;
