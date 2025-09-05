@@ -11,15 +11,18 @@
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <style>
-    .staff-gate{min-height:60vh;display:grid;place-items:center;padding:60px 20px}
-    .staff-card{max-width:420px;width:100%;background:#fff;border:1px solid #e5e7eb;border-radius:16px;box-shadow:0 18px 40px rgba(15,23,42,.08);padding:24px}
-    .staff-card h1{font-size:24px;margin-bottom:12px;color:#333}
-    .staff-card p{color:#64748b;margin-bottom:16px}
-    .pin-container{display:flex;gap:8px;justify-content:center;margin-bottom:16px;margin-top:-8px}
-    .pin-input{width:48px;height:48px;border:2px solid #e5e7eb;border-radius:8px;text-align:center;font-size:20px;font-weight:700;color:#333;background:#fff;transition:all 0.2s ease}
-    .pin-input:focus{outline:none;border-color:#2954B3;box-shadow:0 0 0 3px rgba(41,84,179,0.1)}
+    body{font-family:'Blender','Quicksand',sans-serif;background:linear-gradient(135deg,#2954B3 0%,#1e3a8a 100%);min-height:100vh;margin:0}
+    .staff-gate{min-height:calc(100vh - 64px);display:flex;align-items:center;justify-content:center;padding:40px 20px}
+    .staff-card{max-width:420px;width:100%;background:rgba(255,255,255,0.95);backdrop-filter:blur(20px);border-radius:20px;box-shadow:0 20px 50px rgba(0,0,0,0.3);padding:40px;border:none}
+    .staff-card h1{font-size:24px;margin-bottom:10px;color:#333;font-weight:600}
+    .staff-card p{color:#666;margin-bottom:24px;font-size:16px}
+    .pin-container{display:flex;gap:10px;justify-content:center;margin-bottom:20px;margin-top:-6px}
+    .pin-input{width:46px;height:46px;border:2px solid #e5e7eb;border-radius:10px;text-align:center;font-size:20px;font-weight:700;color:#333;background:#fff;transition:border-color .3s ease, box-shadow .3s ease}
+    .pin-input:focus{outline:none;border-color:#2954B3;box-shadow:0 0 0 3px rgba(41,84,179,0.12)}
     .pin-input.filled{border-color:#2954B3;background:#f8fafc}
-    .staff-card button{width:100%;background:#2954B3;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
+    .staff-card button{width:100%;background:linear-gradient(135deg,#2954B3 0%,#1e3a8a 100%);color:#fff;border:0;border-radius:10px;padding:14px 16px;font-weight:700;cursor:pointer;transition:transform .2s ease, box-shadow .2s ease}
+    .staff-card button:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(41,84,179,0.3)}
+    .staff-card button:active{transform:none}
     .staff-error{color:#ef4444;min-height:18px;margin-bottom:8px;text-align:center}
   </style>
 </head>
