@@ -3,11 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#3A9AEA">
+    <meta name="theme-color" content="#EAF2FF">
     <title>Clean Reset Cursus - Checkout</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
     <style>
         * {
             margin: 0;
@@ -15,160 +13,48 @@
             box-sizing: border-box;
         }
 
-        body {
-            font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
-            background: #E8F2FF;
-            color: #333;
-            line-height: 1.6;
-            min-height: 100vh;
-        }
+        body { background:#EAF2FF; color:#333333; line-height:1.6; min-height:100vh; }
 
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+        .container { max-width: 1080px; margin: 0 auto; padding: 48px 24px; }
 
-        .checkout-card {
-            background: #E8F2FF;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-        }
+        .checkout-card { background:transparent; border-radius:0; padding:0; box-shadow:none; }
 
-        .header {
-            background: #3A9AEA;
-            color: white;
-            padding: 40px 30px;
-            text-align: center;
-            border-radius: 0;
-        }
+        .header { background:#EAF2FF; color:#333333; padding: 0 0 24px; text-align:left; border-radius:0; }
+        .header h1{ font-size: clamp(44px, 9vw, 96px); font-weight:700; line-height: .95; letter-spacing:-.5px; margin:0; }
 
-        .header h1 {
-            font-size: 36px;
-            font-weight: 700;
-            margin: 0;
-            line-height: 1.2;
-        }
+        .content { padding: 8px 0 48px; background:transparent; }
 
-        .content {
-            padding: 40px 30px;
-            background: #E8F2FF;
-        }
-
-        .intro-text {
-            font-size: 18px;
-            color: #666;
-            margin-bottom: 30px;
-            line-height: 1.6;
-        }
+        .intro-text { font-size: clamp(18px, 2.4vw, 28px); color:#6B7280; margin: 12px 0 28px; line-height:1.55; }
 
         .intro-text p {
             margin-bottom: 16px;
         }
 
-        .benefits-list {
-            list-style: none;
-            margin: 30px 0;
-        }
+        .benefits-list { list-style:none; margin: 24px 0 32px; padding:0; }
 
-        .benefits-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            margin-bottom: 16px;
-            font-size: 16px;
-            color: #333;
-            line-height: 1.5;
-        }
+        .benefits-list li { display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; font-size: clamp(15px, 1.9vw, 20px); color:#374151; line-height:1.5; }
 
-        .benefits-list li::before {
-            content: "✓";
-            background: #3A9AEA;
-            color: white;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 12px;
-            font-weight: bold;
-            flex-shrink: 0;
-            margin-top: 2px;
-        }
+        .benefits-list li::before { content:"✓"; background:#2954B3; color:#fff; width:22px; height:22px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex-shrink:0; margin-top:4px; }
 
-        .benefits-list strong {
-            color: #333;
-            font-weight: 600;
-        }
+        .benefits-list strong { color:#0F172A; font-weight:700; }
+        .benefits-list .muted { color:#6B7280; font-weight:500; }
 
-        .cta-section {
-            text-align: center;
-            margin-top: 40px;
-        }
+        .cta-section { text-align:left; margin-top: 40px; }
 
-        .cta-link {
-            display: inline-block;
-            color: #666;
-            text-decoration: underline;
-            font-size: 18px;
-            font-weight: 500;
-            transition: color 0.2s ease;
-        }
+        .cta-link { display:inline-block; color:#C9D7EE; text-decoration: underline; text-decoration-color:#C9D7EE; text-underline-offset:4px; font-size: clamp(16px, 2.2vw, 22px); font-weight:700; transition: opacity .2s ease; }
 
-        .cta-link:hover {
-            color: #3A9AEA;
-        }
+        .cta-link:hover { opacity:.9; }
 
-        .cta-link::after {
-            content: " →";
-            margin-left: 4px;
-        }
+        .cta-link::after { content:" \2192"; margin-left: 6px; }
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
-            .container {
-                padding: 20px 15px;
-            }
-
-            .header {
-                padding: 30px 20px;
-            }
-
-            .header h1 {
-                font-size: 28px;
-            }
-
-            .content {
-                padding: 30px 20px;
-            }
-
-            .intro-text {
-                font-size: 16px;
-            }
-
-            .benefits-list li {
-                font-size: 15px;
-            }
-
-            .cta-link {
-                font-size: 16px;
-            }
+            .container { padding: 28px 16px; }
+            .content { padding: 8px 0 32px; }
         }
 
         @media (max-width: 480px) {
-            .header h1 {
-                font-size: 24px;
-            }
-
-            .intro-text {
-                font-size: 15px;
-            }
-
-            .benefits-list li {
-                font-size: 14px;
-            }
+            .header h1 { font-size: 34px; }
         }
     </style>
 </head>
@@ -187,11 +73,11 @@
                 </div>
 
                 <ul class="benefits-list">
-                    <li><strong>Volledige detox</strong> - pakt meerdere toxines tegelijk aan</li>
-                    <li><strong>Onderbouwd</strong> - gebaseerd op de nieuwste inzichten</li>
-                    <li><strong>Praktisch toepasbaar</strong> - direct, duidelijk starten</li>
-                    <li><strong>Voelbaar resultaat</strong> - meer energie, betere focus</li>
-                    <li><strong>Alles-in-één cursus</strong> - inclusief begeleiding</li>
+                    <li><strong>Volledige detox</strong> <span class="muted">– pakt meerdere toxines tegelijk aan</span></li>
+                    <li><strong>Onderbouwd</strong> <span class="muted">– gebaseerd op de nieuwste inzichten</span></li>
+                    <li><strong>Praktisch toepasbaar</strong> <span class="muted">– direct, duidelijk starten</span></li>
+                    <li><strong>Voelbaar resultaat</strong> <span class="muted">– meer energie, betere focus</span></li>
+                    <li><strong>Alles-in-één cursus</strong> <span class="muted">– inclusief begeleiding</span></li>
                 </ul>
 
                 <div class="cta-section">
