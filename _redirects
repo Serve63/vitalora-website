@@ -3,7 +3,8 @@
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
 /vlierbessensap-gezond                  /post.html?slug=vlierbessensap-gezond      200
 /login                                   /login/index.html                           200
-/login.html                              /login/index.html                           200
+/login                                    /login/index.html                           200
+/login.html                               /login/index.html                           301
 /:slug                                   /post.html?slug=:slug                      200
 /kruisbloemige-groenten                 /kruisbloemige-groenten.html               200
 /zuiveringszout-baking-soda             /zuiveringszout-baking-soda.html           200

@@ -59,9 +59,9 @@
         @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
     </style>
     <script>
-      // If this page is somehow served via pretty URL cache, force canonical to /login.html once loaded
+      // Ensure canonical points to /login (not /login.html)
       (function(){
-        var link=document.createElement('link');link.rel='canonical';link.href=location.origin+'/login.html';document.head.appendChild(link);
+        var link=document.createElement('link');link.rel='canonical';link.href=location.origin+'/login';document.head.appendChild(link);
       })();
     </script>
 </head>
