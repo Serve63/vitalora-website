@@ -23,7 +23,7 @@
   display: flex;
   align-items: center;
   color: white !important;
-  font: 700 22px/1 "Quicksand", ui-sans-serif, system-ui;
+  font: 600 22px/1 "Quicksand", ui-sans-serif, system-ui;
   letter-spacing:.2px;
   text-decoration: none !important;
 }
