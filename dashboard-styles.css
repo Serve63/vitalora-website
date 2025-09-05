@@ -528,6 +528,55 @@ body {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
+/* Locked course styling */
+.course-card.locked {
+    opacity: 0.7;
+    position: relative;
+}
+
+.course-card.locked:hover {
+    transform: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.course-card.locked::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 16px;
+    z-index: 10;
+}
+
+.course-card.locked .lock-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 11;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 20px;
+}
+
+.course-card.locked .start-course {
+    background: #9ca3af !important;
+    color: #6b7280 !important;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.course-card.locked .start-course::after {
+    content: ' (Binnenkort)';
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
 .course-header {
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
     padding: 30px 20px;
