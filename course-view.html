@@ -820,7 +820,7 @@
           <div class="progress-bar">
             <div class="progress-fill" id="progressFill"></div>
           </div>
-          <p class="progress-text" id="progressText">2 van 25 lessen voltooid</p>
+          <p class="progress-text" id="progressText">0 van 24 lessen voltooid</p>
         </div>
 
         <!-- Course Info -->
@@ -849,6 +849,21 @@
 
   <!-- Header script removed for course view -->
   <script>
+    // Progress tracking
+    function getCompletedLessons() {
+      const completed = localStorage.getItem('completedLessons');
+      return completed ? JSON.parse(completed) : [];
+    }
+
+    function updateProgressBar() {
+      const completed = getCompletedLessons();
+      const totalLessons = 24;
+      const progressPercentage = (completed.length / totalLessons) * 100;
+      
+      document.getElementById('progressFill').style.width = progressPercentage + '%';
+      document.getElementById('progressText').textContent = `${completed.length} van ${totalLessons} lessen voltooid`;
+    }
+
     // Course data loading
     document.addEventListener('DOMContentLoaded', function() {
       console.log('DOMContentLoaded fired');
@@ -918,13 +933,14 @@
       document.getElementById('badgeLessons').textContent = '25 lessen';
       
       // Update progress with default values
-      updateProgress(0, 25);
+      updateProgress(0, 24);
     }
 
     function updateProgress(completed, total) {
-      // Ensure we have valid numbers
-      const completedNum = typeof completed === 'number' ? completed : 0;
-      const totalNum = typeof total === 'number' ? total : 25;
+      // Use localStorage data if available, otherwise use provided values
+      const completedLessons = getCompletedLessons();
+      const completedNum = completedLessons.length > 0 ? completedLessons.length : (typeof completed === 'number' ? completed : 0);
+      const totalNum = typeof total === 'number' ? total : 24;
       
       const percentage = (completedNum / totalNum) * 100;
       document.getElementById('progressFill').style.width = percentage + '%';
