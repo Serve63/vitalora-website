@@ -574,64 +574,41 @@
       }
     });
 
-    async function loadCourseData(slug) {
-      try {
-        const response = await fetch(`/data/courses/${slug}.json?v=1`);
-        if (!response.ok) {
-          console.log('Course data not found, using default');
-          return;
-        }
+    function loadCourseData(slug) {
+      // Set course title and subtitle based on course slug
+      const courseTitles = {
+        'clean-reset': 'Clean Reset: Detox & Gifstoffen',
+        'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
+        'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
+        '30-dagen-challenge': '30 Dagen Challenge',
+        'everyday-nutrition-praktisch-gezond': 'Everyday Nutrition: Praktisch & Gezond™',
+        'mindful-energy-innerlijke-rust': 'Mindful Energy: Innerlijke Rust',
+        'energie-hormonen-balans': 'Energie & Hormonen Balans'
+      };
+      
+      const courseSubtitles = {
+        'clean-reset': 'Een complete gids voor lichaamstransformatie',
+        'powerfoods-superfood-specerij': 'Dagelijkse gewoontes voor een sterk immuunsysteem',
+        'de-juiste-balans': 'Rust, energie en helderheid vanuit je hormonen',
+        '30-dagen-challenge': 'Transformeer je leven in 30 dagen',
+        'everyday-nutrition-praktisch-gezond': 'Eenvoudige voeding die werkt - elke dag',
+        'mindful-energy-innerlijke-rust': 'Ademwerk, zenuwstelsel en hormonale balans',
+        'energie-hormonen-balans': 'Balans vinden in je dagelijkse leven'
+      };
+      
+      const courseTitle = courseTitles[slug] || 'Cursus';
+      const courseSubtitle = courseSubtitles[slug] || 'Een transformatieve ervaring';
+      
+      document.getElementById('courseTitle').textContent = courseTitle;
+      document.getElementById('courseSubtitle').textContent = courseSubtitle;
         
-        const courseData = await response.json();
-        console.log('Loaded course data:', courseData);
-        
-        // Set course title and subtitle based on course slug
-        const courseTitles = {
-          'clean-reset': 'Clean Reset: Detox & Gifstoffen',
-          'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
-          'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
-          '30-dagen-challenge': '30 Dagen Challenge',
-          'everyday-nutrition-praktisch-gezond': 'Everyday Nutrition: Praktisch & Gezond™',
-          'mindful-energy-innerlijke-rust': 'Mindful Energy: Innerlijke Rust',
-          'energie-hormonen-balans': 'Energie & Hormonen Balans'
-        };
-        
-        const courseSubtitles = {
-          'clean-reset': 'Een complete gids voor lichaamstransformatie',
-          'powerfoods-superfood-specerij': 'Dagelijkse gewoontes voor een sterk immuunsysteem',
-          'de-juiste-balans': 'Rust, energie en helderheid vanuit je hormonen',
-          '30-dagen-challenge': 'Transformeer je leven in 30 dagen',
-          'everyday-nutrition-praktisch-gezond': 'Eenvoudige voeding die werkt - elke dag',
-          'mindful-energy-innerlijke-rust': 'Ademwerk, zenuwstelsel en hormonale balans',
-          'energie-hormonen-balans': 'Balans vinden in je dagelijkse leven'
-        };
-        
-        const courseTitle = courseTitles[slug] || 'Cursus';
-        const courseSubtitle = courseSubtitles[slug] || 'Een transformatieve ervaring';
-        
-        document.getElementById('courseTitle').textContent = courseTitle;
-        document.getElementById('courseSubtitle').textContent = courseSubtitle;
-        
-        // Update meta information
-        if (courseData.level) {
-          document.getElementById('badgeLevel').textContent = courseData.level;
-        }
-        if (courseData.duration) {
-          document.getElementById('badgeDays').textContent = courseData.duration;
-        }
-        if (courseData.lessons) {
-          const lessonsCount = typeof courseData.lessons === 'number' ? courseData.lessons : 51;
-          document.getElementById('badgeLessons').textContent = lessonsCount + ' lessen';
-        }
-        
-        // Update progress
-        const progressCount = typeof courseData.progress === 'number' ? courseData.progress : 0;
-        const totalLessons = typeof courseData.lessons === 'number' ? courseData.lessons : 51;
-        updateProgress(progressCount, totalLessons);
-        
-      } catch (error) {
-        console.log('Error loading course data:', error);
-      }
+      // Update meta information with default values
+      document.getElementById('badgeLevel').textContent = 'Intensief';
+      document.getElementById('badgeDays').textContent = '21 dagen';
+      document.getElementById('badgeLessons').textContent = '51 lessen';
+      
+      // Update progress with default values
+      updateProgress(0, 51);
     }
 
     function updateProgress(completed, total) {
