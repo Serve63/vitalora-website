@@ -7,6 +7,21 @@
   <script>
     (function(){
       var params=new URLSearchParams(location.search);var slug=params.get('course');
+      // Fallback: derive slug from clean URL path (e.g. /detox-cursus)
+      if(!slug){
+        var path=location.pathname.replace(/^\/+|\/+$/g,'');
+        var parts=path.split('/');
+        var clean=parts[0];
+        var mapCleanToSlug={
+          'detox-cursus':'clean-reset',
+          'powerfoods':'powerfoods-superfood-specerij',
+          'juiste-balans':'de-juiste-balans',
+          '30-dagen-challenge':'30-dagen-challenge',
+          'everyday-nutrition':'everyday-nutrition-praktisch-gezond',
+          'mindful-energy':'mindful-energy-innerlijke-rust'
+        };
+        if(mapCleanToSlug[clean]){ slug = mapCleanToSlug[clean]; }
+      }
       var themes={
         'powerfoods-superfood-specerij':{a:'#ef4444',b:'#dc2626',brand:'#ef4444',aRgb:'239, 68, 68',cleanUrl:'powerfoods'},
         'clean-reset':{a:'#3A9AEA',b:'#2563eb',brand:'#3A9AEA',aRgb:'58, 154, 234',cleanUrl:'detox-cursus'},
@@ -24,7 +39,7 @@
         r.setProperty('--brand',t.brand); 
         r.setProperty('--grad-a-rgb',t.aRgb);
         
-        // Redirect to clean URL if we're on the old URL
+        // Redirect to clean URL if we're on the old URL with query string
         if(t.cleanUrl && location.pathname === '/course-view.html') {
           var lesson = params.get('lesson');
           var newUrl = '/' + t.cleanUrl;
@@ -567,11 +582,25 @@
     // Course data loading
     document.addEventListener('DOMContentLoaded', function() {
       const urlParams = new URLSearchParams(window.location.search);
-      const courseSlug = urlParams.get('course');
-      
-      if (courseSlug) {
-        loadCourseData(courseSlug);
+      let courseSlug = urlParams.get('course');
+      let lessonParam = urlParams.get('lesson');
+      // Fallback to clean URL path parsing
+      if(!courseSlug){
+        const path = location.pathname.replace(/^\/+|\/+$/g,'');
+        const parts = path.split('/');
+        const clean = parts[0];
+        const mapCleanToSlug={
+          'detox-cursus':'clean-reset',
+          'powerfoods':'powerfoods-superfood-specerij',
+          'juiste-balans':'de-juiste-balans',
+          '30-dagen-challenge':'30-dagen-challenge',
+          'everyday-nutrition':'everyday-nutrition-praktisch-gezond',
+          'mindful-energy':'mindful-energy-innerlijke-rust'
+        };
+        if(parts[1] && /^les\d+$/i.test(parts[1])){ lessonParam = parts[1].replace(/[^\d]/g,''); }
+        if(mapCleanToSlug[clean]){ courseSlug = mapCleanToSlug[clean]; }
       }
+      if (courseSlug) { loadCourseData(courseSlug); }
     });
 
     function loadCourseData(slug) {
