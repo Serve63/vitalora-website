@@ -212,6 +212,31 @@
       margin-bottom: 20px;
     }
 
+    .lesson-section {
+      margin-bottom: 32px;
+    }
+
+    .lesson-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .lesson-section .section-title {
+      color: var(--brand);
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+      margin-top: 0;
+    }
+
+    .lesson-section .content-text p {
+      margin-bottom: 16px;
+      line-height: 1.7;
+    }
+
+    .lesson-section .content-text p:last-child {
+      margin-bottom: 0;
+    }
+
     .highlight-box {
       background: linear-gradient(135deg, rgba(58, 154, 234, 0.03) 0%, rgba(37, 99, 235, 0.03) 100%);
       border: 1px solid rgba(58, 154, 234, 0.1);
@@ -576,10 +601,31 @@ Want vanaf nu begint jouw Clean Reset. 🌊`
           
           content.sections.forEach(section => {
             const sectionDiv = document.createElement('div');
-            sectionDiv.innerHTML = `
-              <h2 class="section-title">${section.title}</h2>
-              <div class="content-text">${section.content.replace(/\n/g, '<br><br>')}</div>
-            `;
+            sectionDiv.className = 'lesson-section';
+            
+            // Create title if it exists
+            if (section.title) {
+              const titleElement = document.createElement('h2');
+              titleElement.className = 'section-title';
+              titleElement.textContent = section.title;
+              sectionDiv.appendChild(titleElement);
+            }
+            
+            // Create content with proper formatting
+            const contentElement = document.createElement('div');
+            contentElement.className = 'content-text';
+            
+            // Convert line breaks to paragraphs for better readability
+            const paragraphs = section.content.split('\n\n');
+            paragraphs.forEach(paragraph => {
+              if (paragraph.trim()) {
+                const p = document.createElement('p');
+                p.innerHTML = paragraph.trim().replace(/\n/g, '<br>');
+                contentElement.appendChild(p);
+              }
+            });
+            
+            sectionDiv.appendChild(contentElement);
             contentContainer.appendChild(sectionDiv);
           });
         }
