@@ -32,6 +32,12 @@
   color: white;
 }
 
+/* Force consistent header logo text across pages */
+.site-header .logo .logo-text {
+  font-weight: 600; /* medium, not bold */
+  font-size: 22px;
+}
+
 /* Navigatie */
 .main-nav{
   display: flex;
