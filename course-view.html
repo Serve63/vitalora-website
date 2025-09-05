@@ -129,6 +129,36 @@
       height: 20px;
     }
 
+    .back-to-academy {
+      margin-top: 24px;
+    }
+
+    .back-to-academy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255, 255, 255, 0.2);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .back-to-academy-btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .back-to-academy-btn .icon {
+      width: 18px;
+      height: 18px;
+    }
+
     .course-content {
       display: grid;
       grid-template-columns: 1fr 300px;
@@ -368,6 +398,15 @@
         gap: 12px;
       }
 
+      .back-to-academy {
+        margin-top: 20px;
+      }
+
+      .back-to-academy-btn {
+        padding: 10px 20px;
+        font-size: 0.9rem;
+      }
+
       .meta-item {
         padding: 8px 16px;
         font-size: 0.9rem;
@@ -420,6 +459,15 @@
           </svg>
           <span id="badgeLessons">25 lessen</span>
         </div>
+      </div>
+      
+      <div class="back-to-academy">
+        <a href="/academy" class="back-to-academy-btn">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+          </svg>
+          Cursus Overzicht
+        </a>
       </div>
     </div>
 
