@@ -1,39 +1,20 @@
 RewriteEngine On
 
-# Redirect course-view.html URLs to clean course URLs
-RewriteRule ^clean-reset/?$ course-view.html?course=clean-reset [L,QSA]
-RewriteRule ^clean-reset/les([0-9]+)/?$ course-view.html?course=clean-reset&lesson=$1 [L,QSA]
+# Internal rewrite for clean course URLs
+RewriteRule ^clean-reset/?$ /course-view.html?course=clean-reset [L,QSA]
+RewriteRule ^clean-reset/les([0-9]+)/?$ /course-view.html?course=clean-reset&lesson=$1 [L,QSA]
 
-RewriteRule ^powerfoods/?$ course-view.html?course=powerfoods-superfood-specerij [L,QSA]
-RewriteRule ^powerfoods/les([0-9]+)/?$ course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
+RewriteRule ^powerfoods/?$ /course-view.html?course=powerfoods-superfood-specerij [L,QSA]
+RewriteRule ^powerfoods/les([0-9]+)/?$ /course-view.html?course=powerfoods-superfood-specerij&lesson=$1 [L,QSA]
 
-RewriteRule ^juiste-balans/?$ course-view.html?course=de-juiste-balans [L,QSA]
-RewriteRule ^juiste-balans/les([0-9]+)/?$ course-view.html?course=de-juiste-balans&lesson=$1 [L,QSA]
+RewriteRule ^juiste-balans/?$ /course-view.html?course=de-juiste-balans [L,QSA]
+RewriteRule ^juiste-balans/les([0-9]+)/?$ /course-view.html?course=de-juiste-balans&lesson=$1 [L,QSA]
 
-RewriteRule ^30-dagen-challenge/?$ course-view.html?course=30-dagen-challenge [L,QSA]
-RewriteRule ^30-dagen-challenge/les([0-9]+)/?$ course-view.html?course=30-dagen-challenge&lesson=$1 [L,QSA]
+RewriteRule ^30-dagen-challenge/?$ /course-view.html?course=30-dagen-challenge [L,QSA]
+RewriteRule ^30-dagen-challenge/les([0-9]+)/?$ /course-view.html?course=30-dagen-challenge&lesson=$1 [L,QSA]
 
-RewriteRule ^everyday-nutrition/?$ course-view.html?course=everyday-nutrition-praktisch-gezond [L,QSA]
-RewriteRule ^everyday-nutrition/les([0-9]+)/?$ course-view.html?course=everyday-nutrition-praktisch-gezond&lesson=$1 [L,QSA]
+RewriteRule ^everyday-nutrition/?$ /course-view.html?course=everyday-nutrition-praktisch-gezond [L,QSA]
+RewriteRule ^everyday-nutrition/les([0-9]+)/?$ /course-view.html?course=everyday-nutrition-praktisch-gezond&lesson=$1 [L,QSA]
 
-RewriteRule ^mindful-energy/?$ course-view.html?course=mindful-energy-innerlijke-rust [L,QSA]
-RewriteRule ^mindful-energy/les([0-9]+)/?$ course-view.html?course=mindful-energy-innerlijke-rust&lesson=$1 [L,QSA]
-
-# Optional: Redirect old URLs to new clean URLs
-RewriteCond %{QUERY_STRING} ^course=clean-reset$
-RewriteRule ^course-view\.html$ /clean-reset? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^course=powerfoods-superfood-specerij$
-RewriteRule ^course-view\.html$ /powerfoods? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^course=de-juiste-balans$
-RewriteRule ^course-view\.html$ /juiste-balans? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^course=30-dagen-challenge$
-RewriteRule ^course-view\.html$ /30-dagen-challenge? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^course=everyday-nutrition-praktisch-gezond$
-RewriteRule ^course-view\.html$ /everyday-nutrition? [R=301,L]
-
-RewriteCond %{QUERY_STRING} ^course=mindful-energy-innerlijke-rust$
-RewriteRule ^course-view\.html$ /mindful-energy? [R=301,L]
+RewriteRule ^mindful-energy/?$ /course-view.html?course=mindful-energy-innerlijke-rust [L,QSA]
+RewriteRule ^mindful-energy/les([0-9]+)/?$ /course-view.html?course=mindful-energy-innerlijke-rust&lesson=$1 [L,QSA]
