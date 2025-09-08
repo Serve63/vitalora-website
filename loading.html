@@ -217,7 +217,7 @@
             steps[0].classList.add('completed');
             
             steps[1].classList.add('active');
-        }, 1200);
+        }, 1500);
 
         // Step 2: Detox methode succesvol verzonden
         setTimeout(() => {
@@ -225,18 +225,18 @@
             steps[1].classList.add('completed');
             
             steps[2].classList.add('active');
-        }, 2400);
+        }, 3000);
 
         // Step 3: Onweerstaanbaar aanbod voorstellen
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
-        }, 3600);
+        }, 4500);
 
-        // Redirect to wacht-even page after 4 seconds
+        // Redirect to wacht-even page after 4.5 seconds
         setTimeout(() => {
             window.location.href = '/wacht-even';
-        }, 4000);
+        }, 4500);
     </script>
 </body>
 </html>
