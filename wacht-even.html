@@ -1131,13 +1131,17 @@
             }
             
             /* Hide specific story paragraphs on desktop */
-            .story-text p:first-child,
+            .story-text p:first-child {
+                display: none;
+            }
+            
+            /* Hide the second paragraph but keep the story-experience paragraph */
             .story-text p:nth-child(2) {
                 display: none;
             }
             
-            /* Show the third paragraph (the one we want to keep) */
-            .story-text p:nth-child(3) {
+            /* Show the story-experience paragraph (the one we want to keep) */
+            .story-text p.story-experience {
                 display: block !important;
             }
         }
