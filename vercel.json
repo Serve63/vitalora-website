@@ -7,7 +7,7 @@
     { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
     { "source": "/landing", "destination": "/ebook", "permanent": true },
     { "source": "/checkout.html", "destination": "/checkout", "permanent": true },
-    { "source": "/wacht-even", "destination": "/checkout", "permanent": true },
+    { "source": "/wacht-even", "destination": "/wacht-even.html", "permanent": false },
     { "source": "/artikelen", "destination": "/blog", "permanent": true },
     { "source": "/academy/de-juiste-balans", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true },
     { "source": "/academy/de-juiste-balans/", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true }
