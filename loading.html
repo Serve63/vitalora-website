@@ -159,22 +159,28 @@
         .step span { white-space: nowrap; }
 
         .step .step-icon {
-            width: 20px;
-            height: 20px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.18);
-            font-size: 13px;
-            line-height: 1;
-            color: #ffffff;
-            flex: 0 0 20px;
-            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+            background: rgba(255, 255, 255, 0.4);
+            flex: 0 0 10px;
+            box-shadow: none;
         }
         .step.completed .step-icon {
+            width: 18px;
+            height: 18px;
             background: #2954B4;
+            position: relative;
+        }
+        .step.completed .step-icon::after {
+            content: '\2713';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -55%);
             color: #ffffff;
+            font-size: 12px;
+            line-height: 1;
         }
 
         /* Progress bar + status (classic style) */
@@ -255,15 +261,15 @@
         
         <div class="loading-steps" aria-live="polite" aria-atomic="true">
             <div class="step active">
-                <div class="step-icon">⏳</div>
+                <div class="step-icon"></div>
                 <span>Gegevens verwerken</span>
             </div>
             <div class="step">
-                <div class="step-icon">⏳</div>
+                <div class="step-icon"></div>
                 <span>Succesvol verstuurd</span>
             </div>
             <div class="step">
-                <div class="step-icon">⏳</div>
+                <div class="step-icon"></div>
                 <span>Exclusieve deal klaarzetten 🎁</span>
             </div>
         </div>
@@ -305,9 +311,7 @@
             steps[0].classList.remove('active');
             steps[0].classList.add('completed');
             
-            // icon becomes check
-            const icon0 = steps[0].querySelector('.step-icon');
-            if (icon0) icon0.textContent = '✓';
+            // icon becomes check (handled by CSS .completed)
             
             steps[1].classList.add('active');
             
@@ -318,9 +322,7 @@
             steps[1].classList.remove('active');
             steps[1].classList.add('completed');
             
-            // icon becomes check
-            const icon1 = steps[1].querySelector('.step-icon');
-            if (icon1) icon1.textContent = '✓';
+            // icon becomes check (handled by CSS .completed)
             
             steps[2].classList.add('active');
             
@@ -331,9 +333,7 @@
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
             
-            // icon becomes check
-            const icon2 = steps[2].querySelector('.step-icon');
-            if (icon2) icon2.textContent = '✓';
+            // icon becomes check (handled by CSS .completed)
             
             // Append a green checkmark to the last step text
             const lastText = steps[2].querySelector('span');
