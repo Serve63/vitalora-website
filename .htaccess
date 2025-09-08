@@ -10,6 +10,12 @@ RewriteRule ^ - [L]
 # Pretty URL for checkout → serve checkout-new.html
 RewriteRule ^checkout/?$ checkout-new.html [L,QSA]
 
+# Pretty URL for loading → serve loading.html
+RewriteRule ^loading/?$ loading.html [L,QSA]
+
+# Pretty URL for wacht-even → serve wacht-even.html
+RewriteRule ^wacht-even/?$ wacht-even.html [L,QSA]
+
 # Clean URLs for courses → course-view.html with query params
 
 # Clean Reset (detox-cursus)

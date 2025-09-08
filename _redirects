@@ -21,7 +21,8 @@
 /blog                                    /blog.html                                 200
 /academy                                 /academy.html                              200
 /ebook                                   /landing.html                              200
-# wacht-even moet bereikbaar zijn (geen redirect naar checkout)
+# Loading and wacht-even pages
+/loading                                 /loading.html                                200
 /wacht-even                              /wacht-even.html                            200
 /contact                                 /contact.html                              200
 /privacy                                 /privacy.html                              200

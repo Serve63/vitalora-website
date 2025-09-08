@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#2954B4">
+    <title>Downloaden...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #2954B4, #1e3a8a);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            text-align: center;
+            max-width: 400px;
+            padding: 40px 20px;
+        }
+
+        .loading-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .loading-spinner {
+            width: 80px;
+            height: 80px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loading-checkmark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 40px;
+            color: #10B981;
+            opacity: 0;
+            animation: checkmark 0.5s ease-in-out 2s forwards;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes checkmark {
+            0% { opacity: 0; transform: translate(-50%, -50%) scale(0.5); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        .loading-title {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.3s forwards;
+        }
+
+        .loading-subtitle {
+            font-size: 18px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.6s forwards;
+        }
+
+        .loading-description {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.5;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 0.9s forwards;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            margin: 30px 0;
+            overflow: hidden;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.2s forwards;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #10B981, #059669);
+            border-radius: 2px;
+            width: 0%;
+            animation: progress 3s ease-out 1.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            20% { width: 25%; }
+            40% { width: 50%; }
+            60% { width: 75%; }
+            80% { width: 90%; }
+            100% { width: 100%; }
+        }
+
+        .loading-steps {
+            margin-top: 30px;
+            text-align: left;
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out 1.8s forwards;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 14px;
+        }
+
+        .step-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .step.completed .step-icon {
+            background: #10B981;
+        }
+
+        .step.active .step-icon {
+            background: #FDB542;
+        }
+
+        @media (max-width: 480px) {
+            .loading-container {
+                padding: 20px;
+            }
+            
+            .loading-title {
+                font-size: 24px;
+            }
+            
+            .loading-subtitle {
+                font-size: 16px;
+            }
+            
+            .loading-description {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <div class="loading-icon">
+            <div class="loading-spinner"></div>
+            <div class="loading-checkmark">✓</div>
+        </div>
+        
+        <h1 class="loading-title">Downloaden...</h1>
+        <p class="loading-subtitle">Je PDF wordt voorbereid</p>
+        <p class="loading-description">Even geduld, we maken je persoonlijke detox gids klaar</p>
+        
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+        
+        <div class="loading-steps">
+            <div class="step completed">
+                <div class="step-icon">✓</div>
+                <span>Gegevens ontvangen</span>
+            </div>
+            <div class="step completed">
+                <div class="step-icon">✓</div>
+                <span>PDF gegenereerd</span>
+            </div>
+            <div class="step active">
+                <div class="step-icon">⏳</div>
+                <span>Email verzenden...</span>
+            </div>
+            <div class="step">
+                <div class="step-icon">⏳</div>
+                <span>Klaar!</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Simulate loading process
+        setTimeout(() => {
+            // Update steps
+            const steps = document.querySelectorAll('.step');
+            steps[2].classList.remove('active');
+            steps[2].classList.add('completed');
+            steps[2].querySelector('.step-icon').textContent = '✓';
+            
+            steps[3].classList.add('active');
+            steps[3].querySelector('.step-icon').textContent = '✓';
+        }, 3500);
+
+        // Redirect to wacht-even page after 4 seconds
+        setTimeout(() => {
+            window.location.href = '/wacht-even';
+        }, 4000);
+    </script>
+</body>
+</html>
