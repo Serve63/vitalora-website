@@ -1129,6 +1129,12 @@
                 font-size: 17px;
                 line-height: 1.7;
             }
+            
+            /* Hide specific story paragraphs on desktop */
+            .story-text p:first-child,
+            .story-text p:nth-child(2) {
+                display: none;
+            }
         }
 
         .story-intro {
