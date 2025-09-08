@@ -203,15 +203,12 @@
         
         <div class="loading-steps">
             <div class="step active">
-                <div class="step-icon">⏳</div>
                 <span>Detox methode verzenden</span>
             </div>
             <div class="step">
-                <div class="step-icon">⏳</div>
                 <span>Detox methode succesvol verzonden</span>
             </div>
             <div class="step">
-                <div class="step-icon">⏳</div>
                 <span>Onweerstaanbaar aanbod voorstellen</span>
             </div>
         </div>
@@ -225,7 +222,6 @@
         setTimeout(() => {
             steps[0].classList.remove('active');
             steps[0].classList.add('completed');
-            steps[0].querySelector('.step-icon').textContent = '✓';
             
             steps[1].classList.add('active');
         }, 1200);
@@ -234,7 +230,6 @@
         setTimeout(() => {
             steps[1].classList.remove('active');
             steps[1].classList.add('completed');
-            steps[1].querySelector('.step-icon').textContent = '✓';
             
             steps[2].classList.add('active');
         }, 2400);
@@ -243,7 +238,6 @@
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
-            steps[2].querySelector('.step-icon').textContent = '✓';
         }, 3600);
 
         // Redirect to wacht-even page after 4 seconds
