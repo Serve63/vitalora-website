@@ -7,6 +7,9 @@ RewriteCond %{REQUEST_FILENAME} -f [OR]
 RewriteCond %{REQUEST_FILENAME} -d
 RewriteRule ^ - [L]
 
+# Pretty URL for checkout → serve checkout-new.html
+RewriteRule ^checkout/?$ checkout-new.html [L,QSA]
+
 # Clean URLs for courses → course-view.html with query params
 
 # Clean Reset (detox-cursus)
