@@ -14,8 +14,28 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtn && closeBtn.addEventListener('click', closeModal);
     modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
 
-    // Laat standaard HTML submissie naar MailBlue; geen JS-intercept
-    // (bewust geen form.addEventListener('submit', ...) zodat POST direct naar ActiveCampaign gaat.)
+    // Intercept form submission and redirect to checkout
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('lead-name').value;
+            const email = document.getElementById('lead-email').value;
+            
+            if (name && email) {
+                // Store lead data in localStorage for checkout page
+                localStorage.setItem('lead_data', JSON.stringify({
+                    name: name,
+                    email: email,
+                    source: 'ebook_download'
+                }));
+                
+                // Close modal and redirect to checkout
+                closeModal();
+                window.location.href = '/checkout';
+            }
+        });
+    }
 
     // Add click handler for direct access button
     const directAccessButton = document.querySelector('.direct-access');

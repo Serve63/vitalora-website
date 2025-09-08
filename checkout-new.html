@@ -431,6 +431,30 @@
     </div>
 
     <script>
+        // Pre-fill form with lead data from ebook download
+        document.addEventListener('DOMContentLoaded', function() {
+            const leadData = localStorage.getItem('lead_data');
+            if (leadData) {
+                try {
+                    const data = JSON.parse(leadData);
+                    const nameInputs = document.querySelectorAll('input[placeholder="Voornaam"], input[placeholder="Achternaam"]');
+                    const emailInput = document.querySelector('input[placeholder="E-mailadres"]');
+                    
+                    if (data.name && nameInputs.length > 0) {
+                        nameInputs[0].value = data.name;
+                    }
+                    if (data.email && emailInput) {
+                        emailInput.value = data.email;
+                    }
+                    
+                    // Clear the lead data after using it
+                    localStorage.removeItem('lead_data');
+                } catch (e) {
+                    console.log('Error parsing lead data:', e);
+                }
+            }
+        });
+
         // Payment method selection
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('click', function() {
@@ -455,8 +479,8 @@
             });
 
             if (isValid) {
-                // Here you would normally submit to payment processor
-                alert('Checkout formulier is geldig! (Dit zou normaal naar betalingsprocessor gaan)');
+                // Redirect to wacht-even page after successful checkout
+                window.location.href = '/wacht-even';
             } else {
                 alert('Vul alle verplichte velden in');
             }
