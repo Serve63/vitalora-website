@@ -46,9 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Immediately send user to loading screen (fallback if provider ignores our redirect)
             setTimeout(function() {
-                // Preserve potential tracking params
+                // Preserve potential tracking params and add cache-busting param
                 var qs = window.location.search || '';
-                window.location.href = '/loading' + (qs ? qs : '');
+                var sep = qs ? '&' : '?';
+                var cb = 'cb=' + Date.now();
+                window.location.href = '/loading' + (qs ? qs : '') + sep + cb;
             }, 10);
             // Do NOT preventDefault; allow the form to submit to MailBlue
         });
