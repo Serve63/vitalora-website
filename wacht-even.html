@@ -180,6 +180,19 @@
             .trust-elements {
                 display: none;
             }
+            
+            /* Change title text on mobile to include 'gaan' */
+            .main-title {
+                font-size: 0; /* Hide original text */
+            }
+            
+            .main-title::before {
+                content: "Wil je óók BPA, PFAS en Parabenen uit je lichaam gaan detoxen?";
+                font-size: 28px;
+                font-weight: 700;
+                color: var(--text);
+                line-height: 1.15;
+            }
         }
         
         /* Desktop specific trust elements styling */
