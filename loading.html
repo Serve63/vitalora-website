@@ -202,37 +202,49 @@
         </div>
         
         <div class="loading-steps">
-            <div class="step completed">
-                <div class="step-icon">✓</div>
-                <span>Gegevens ontvangen</span>
-            </div>
-            <div class="step completed">
-                <div class="step-icon">✓</div>
-                <span>PDF gegenereerd</span>
-            </div>
             <div class="step active">
                 <div class="step-icon">⏳</div>
-                <span>Email verzenden...</span>
+                <span>Detox methode verzenden</span>
             </div>
             <div class="step">
                 <div class="step-icon">⏳</div>
-                <span>Klaar!</span>
+                <span>Detox methode succesvol verzonden</span>
+            </div>
+            <div class="step">
+                <div class="step-icon">⏳</div>
+                <span>Onweerstaanbaar aanbod voorstellen</span>
             </div>
         </div>
     </div>
 
     <script>
-        // Simulate loading process
+        // Simulate loading process with 3 steps
+        const steps = document.querySelectorAll('.step');
+        
+        // Step 1: Detox methode verzenden (active by default)
         setTimeout(() => {
-            // Update steps
-            const steps = document.querySelectorAll('.step');
+            steps[0].classList.remove('active');
+            steps[0].classList.add('completed');
+            steps[0].querySelector('.step-icon').textContent = '✓';
+            
+            steps[1].classList.add('active');
+        }, 1200);
+
+        // Step 2: Detox methode succesvol verzonden
+        setTimeout(() => {
+            steps[1].classList.remove('active');
+            steps[1].classList.add('completed');
+            steps[1].querySelector('.step-icon').textContent = '✓';
+            
+            steps[2].classList.add('active');
+        }, 2400);
+
+        // Step 3: Onweerstaanbaar aanbod voorstellen
+        setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
             steps[2].querySelector('.step-icon').textContent = '✓';
-            
-            steps[3].classList.add('active');
-            steps[3].querySelector('.step-icon').textContent = '✓';
-        }, 3500);
+        }, 3600);
 
         // Redirect to wacht-even page after 4 seconds
         setTimeout(() => {
@@ -241,3 +253,4 @@
     </script>
 </body>
 </html>
+
