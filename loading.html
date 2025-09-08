@@ -112,6 +112,14 @@
             animation: progress 3s ease-out 1.5s forwards;
         }
 
+        /* Original steps style (earliest variant) */
+        .steps { display: flex; flex-direction: column; gap: 10px; width: 100%; margin-top: 12px; text-align: left; }
+        .step-item { display: flex; align-items: center; gap: 10px; font-size: 16px; opacity: 0.55; transition: opacity 0.25s ease; }
+        .step-item.active { opacity: 1; font-weight: 600; }
+        .step-dot { width: 10px; height: 10px; background: rgba(255, 255, 255, 0.5); border-radius: 50%; }
+        .step-item.active .step-dot { background: #ffffff; }
+        .step-checkmark { color: #10B981; font-size: 18px; line-height: 1; }
+
         @keyframes fadeInUp {
             0% {
                 opacity: 0;
@@ -257,101 +265,59 @@
             <div class="progress-bar" id="progressBar"></div>
         </div>
         
-
-        
-        <div class="loading-steps" aria-live="polite" aria-atomic="true">
-            <div class="step active">
-                <div class="step-icon"></div>
-                <span>Gegevens verwerken</span>
+        <div class="steps" id="loadingSteps" aria-live="polite" aria-atomic="true">
+            <div class="step-item active" data-step="0">
+                <span class="step-dot"></span> Gegevens ontvangen
             </div>
-            <div class="step">
-                <div class="step-icon"></div>
-                <span>Succesvol verstuurd</span>
+            <div class="step-item" data-step="1">
+                <span class="step-dot"></span> PDF gegenereerd
             </div>
-            <div class="step">
-                <div class="step-icon"></div>
-                <span>Exclusieve deal klaarzetten 🎁</span>
+            <div class="step-item" data-step="2">
+                <span class="step-dot"></span> Email verzenden...
+            </div>
+            <div class="step-item" data-step="3">
+                <span class="step-dot"></span> Klaar!
             </div>
         </div>
     </div>
 
     <script>
-        // Simulate loading process with 3 steps
-        const steps = document.querySelectorAll('.step');
-        
-        const progressBar = document.getElementById('progressBar');
-        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-        const t1 = reduceMotion ? 500 : 1000;
-        const t2 = reduceMotion ? 1000 : 2000;
-        const t3 = reduceMotion ? 1500 : 3500;
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progressBar');
+            const loadingSteps = document.getElementById('loadingSteps');
+            const steps = loadingSteps.querySelectorAll('.step-item');
+            let progress = 0;
+            let currentStep = 0;
 
-        // Drive progress bar per step: 0%->33%->66%->100%
-        if (progressBar) {
-            progressBar.style.transition = 'none';
-            progressBar.style.width = '0%';
-            const d1 = t1;           // step 1 duration
-            const d2 = t2 - t1;      // step 2 duration
-            const d3 = t3 - t2;      // step 3 duration
-            requestAnimationFrame(() => {
-                progressBar.style.transition = 'width ' + d1 + 'ms ease-out';
-                progressBar.style.width = '33%';
-                setTimeout(() => {
-                    progressBar.style.transition = 'width ' + d2 + 'ms ease-out';
-                    progressBar.style.width = '66%';
-                }, d1);
-                setTimeout(() => {
-                    progressBar.style.transition = 'width ' + d3 + 'ms ease-out';
-                    progressBar.style.width = '100%';
-                }, d1 + d2);
-            });
-        }
-        
-        // Step 1: Detox methode verzenden (1.0s or reduced)
-        setTimeout(() => {
-            steps[0].classList.remove('active');
-            steps[0].classList.add('completed');
-            
-            // icon becomes check (handled by CSS .completed)
-            
-            steps[1].classList.add('active');
-            
-        }, t1);
+            function updateProgress() {
+                if (progress < 100) {
+                    progress += 2; // speed
+                    progressBar.style.width = progress + '%';
 
-        // Step 2: Detox methode succesvol verzonden (1.0s or reduced)
-        setTimeout(() => {
-            steps[1].classList.remove('active');
-            steps[1].classList.add('completed');
-            
-            // icon becomes check (handled by CSS .completed)
-            
-            steps[2].classList.add('active');
-            
-        }, t2);
+                    const stepThreshold = [0, 25, 50, 75];
+                    if (progress >= stepThreshold[currentStep] && currentStep < steps.length) {
+                        steps[currentStep].classList.add('active');
+                        if (currentStep > 0) {
+                            steps[currentStep - 1]
+                                .querySelector('.step-dot')
+                                .outerHTML = '<span class="step-checkmark">✓</span>';
+                        }
+                        currentStep++;
+                    }
 
-        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s or reduced) + show checkmark at the end
-        setTimeout(() => {
-            steps[2].classList.remove('active');
-            steps[2].classList.add('completed');
-            
-            // icon becomes check (handled by CSS .completed)
-            
-            // Append a green checkmark to the last step text
-            const lastText = steps[2].querySelector('span');
-            if (lastText && !lastText.querySelector('.done-check')) {
-                const check = document.createElement('span');
-                check.className = 'done-check';
-                check.textContent = ' ✓';
-                check.style.color = '#10B981';
-                check.style.marginLeft = '6px';
-                lastText.appendChild(check);
+                    setTimeout(updateProgress, 80);
+                } else {
+                    if (currentStep > 0) {
+                        steps[currentStep - 1]
+                            .querySelector('.step-dot')
+                            .outerHTML = '<span class="step-checkmark">✓</span>';
+                    }
+                    setTimeout(() => { window.location.href = '/wacht-even'; }, 500);
+                }
             }
-            
-        }, t3);
 
-        // Redirect to wacht-even page after sequence
-        setTimeout(() => {
-            window.location.href = '/wacht-even';
-        }, t3);
+            updateProgress();
+        });
     </script>
 </body>
 </html>
