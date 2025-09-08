@@ -175,6 +175,13 @@
             font-weight: 500;
         }
         
+        /* Hide trust elements on mobile */
+        @media (max-width: 768px) {
+            .trust-elements {
+                display: none;
+            }
+        }
+        
         /* Desktop specific trust elements styling */
         @media (min-width: 769px) {
             .trust-elements {
