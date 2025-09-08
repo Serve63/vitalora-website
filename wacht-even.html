@@ -145,9 +145,8 @@
         @media (min-width: 769px) {
             .title-with-image {
                 display: flex;
-                flex-direction: column;
-                align-items: center;
-                gap: 32px;
+                align-items: flex-start;
+                gap: 40px;
                 margin-bottom: 40px;
             }
         }
@@ -223,7 +222,7 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 20px 40px;
                 max-width: 600px;
-                margin: 0 auto;
+                margin: 32px auto 0;
             }
             
             .usp-item {
@@ -1390,7 +1389,6 @@
         @media (min-width: 769px) {
             .title-content {
                 flex: 1;
-                text-align: center;
             }
         }
 
@@ -1744,5 +1742,13 @@
     </main>
 
     <script src="checkout-script.js?v=2"></script>
+    
+    <script>
+        // Clean URL by removing tracking parameters
+        if (window.location.search.includes('vgo_ee=')) {
+            const cleanUrl = window.location.origin + window.location.pathname;
+            window.history.replaceState({}, document.title, cleanUrl);
+        }
+    </script>
 </body>
 </html>
