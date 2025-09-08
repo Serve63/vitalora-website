@@ -217,15 +217,47 @@
         
         /* Desktop specific USP styling */
         @media (min-width: 769px) {
+            .usps {
+                background: #ffffff;
+                border-radius: 20px;
+                padding: 32px;
+                box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+                border: 1px solid #e2e8f0;
+                margin-top: 32px;
+            }
+            
             .usp-item {
                 display: flex;
-                align-items: center;
-                gap: 16px;
+                align-items: flex-start;
+                gap: 20px;
                 color: #374151;
                 font-size: 16px;
                 line-height: 1.6;
-                margin-bottom: 16px;
-                padding: 12px 0;
+                margin-bottom: 24px;
+                padding: 16px 20px;
+                background: #f8fafc;
+                border-radius: 12px;
+                border-left: 4px solid #3b82f6;
+                transition: all 0.3s ease;
+            }
+            
+            .usp-item:hover {
+                background: #eff6ff;
+                transform: translateX(4px);
+            }
+            
+            .usp-item:last-child {
+                margin-bottom: 0;
+            }
+            
+            .usp-text {
+                font-weight: 500;
+                line-height: 1.6;
+            }
+            
+            .usp-text strong {
+                color: #1f2937;
+                font-weight: 700;
             }
         }
         
@@ -246,18 +278,19 @@
         /* Desktop specific USP checkmark styling */
         @media (min-width: 769px) {
             .usp-checkmark {
-                width: 20px;
-                height: 20px;
+                width: 24px;
+                height: 24px;
                 background: linear-gradient(135deg, #3b82f6, #1d4ed8);
                 border-radius: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 color: white;
-                font-size: 12px;
+                font-size: 14px;
                 font-weight: 700;
                 flex-shrink: 0;
                 box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+                margin-top: 2px;
             }
         }
         
@@ -1376,6 +1409,14 @@
 
         .title-content {
             flex: 1;
+        }
+        
+        /* Desktop specific title content styling */
+        @media (min-width: 769px) {
+            .title-content {
+                flex: 1;
+                padding-left: 20px;
+            }
         }
 
         /* Hide mobile story intro on desktop */
