@@ -141,6 +141,52 @@
             gap: 20px;
         }
         
+        /* Trust Elements Styling */
+        .trust-elements {
+            display: flex;
+            gap: 24px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .trust-icon {
+            background: #1BA070;
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .trust-text {
+            font-size: 14px;
+            color: #374151;
+            font-weight: 500;
+        }
+        
+        /* Desktop specific trust elements styling */
+        @media (min-width: 769px) {
+            .trust-elements {
+                gap: 32px;
+                margin: 24px 0;
+            }
+            
+            .trust-text {
+                font-size: 15px;
+            }
+        }
+        
         /* Desktop specific title with image layout */
         @media (min-width: 769px) {
             .title-with-image {
@@ -1523,6 +1569,23 @@
                         </div>
                             <div class="title-content">
                                 <h1 class="main-title">Wil je óók <span class="highlight" style="color: #3A9AEA;">BPA</span>, <span class="highlight" style="color: #3A9AEA;">PFAS</span> en <span class="highlight" style="color: #3A9AEA;">Parabenen</span> uit je lichaam detoxen?</h1>
+                                
+                                <!-- Trust Elements -->
+                                <div class="trust-elements">
+                                    <div class="trust-item">
+                                        <div class="trust-icon">✓</div>
+                                        <div class="trust-text">Wetenschappelijk onderbouwd</div>
+                                    </div>
+                                    <div class="trust-item">
+                                        <div class="trust-icon">✓</div>
+                                        <div class="trust-text">1000+ tevreden klanten</div>
+                                    </div>
+                                    <div class="trust-item">
+                                        <div class="trust-icon">✓</div>
+                                        <div class="trust-text">30 dagen garantie</div>
+                                    </div>
+                                </div>
+                                
                                 <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox" class="mobile-image-placeholder">
                                 
                                 <!-- Mobile Story Intro -->
