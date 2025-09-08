@@ -15,11 +15,12 @@ document.addEventListener('DOMContentLoaded', function() {
     modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
 
     // Store lead data before form submission to MailBlue
+    // and ensure the user immediately sees the loading screen regardless of provider redirect timing
     if (form) {
         form.addEventListener('submit', function(e) {
             const name = document.getElementById('lead-name').value;
             const email = document.getElementById('lead-email').value;
-            
+
             if (name && email) {
                 // Store lead data in localStorage for checkout page
                 localStorage.setItem('lead_data', JSON.stringify({
@@ -28,7 +29,28 @@ document.addEventListener('DOMContentLoaded', function() {
                     source: 'ebook_download'
                 }));
             }
-            // Let the form submit normally to MailBlue (no preventDefault)
+
+            // Submit the MailBlue form in the background (hidden iframe)
+            // so we can immediately show our loading screen to the user
+            try {
+                let iframe = document.getElementById('mb-submit-frame');
+                if (!iframe) {
+                    iframe = document.createElement('iframe');
+                    iframe.name = 'mb-submit-frame';
+                    iframe.id = 'mb-submit-frame';
+                    iframe.style.display = 'none';
+                    document.body.appendChild(iframe);
+                }
+                form.setAttribute('target', 'mb-submit-frame');
+            } catch (_) {}
+
+            // Immediately send user to loading screen (fallback if provider ignores our redirect)
+            setTimeout(function() {
+                // Preserve potential tracking params
+                var qs = window.location.search || '';
+                window.location.href = '/loading' + (qs ? qs : '');
+            }, 10);
+            // Do NOT preventDefault; allow the form to submit to MailBlue
         });
     }
 
