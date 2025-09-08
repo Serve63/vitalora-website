@@ -224,32 +224,32 @@
         // Simulate loading process with 3 steps
         const steps = document.querySelectorAll('.step');
         
-        // Step 1: Detox methode verzenden (active by default)
+        // Step 1: Detox methode verzenden (1.0s)
         setTimeout(() => {
             steps[0].classList.remove('active');
             steps[0].classList.add('completed');
             
             steps[1].classList.add('active');
-        }, 1500);
+        }, 1000);
 
-        // Step 2: Detox methode succesvol verzonden
+        // Step 2: Detox methode succesvol verzonden (1.0s)
         setTimeout(() => {
             steps[1].classList.remove('active');
             steps[1].classList.add('completed');
             
             steps[2].classList.add('active');
-        }, 3000);
+        }, 2000);
 
-        // Step 3: Onweerstaanbaar aanbod voorstellen
+        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s)
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
-        }, 4500);
+        }, 3500);
 
-        // Redirect to wacht-even page after 4.5 seconds
+        // Redirect to wacht-even page after 3.5 seconds
         setTimeout(() => {
             window.location.href = '/wacht-even';
-        }, 4500);
+        }, 3500);
     </script>
 </body>
 </html>
