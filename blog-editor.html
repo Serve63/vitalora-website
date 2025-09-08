@@ -618,6 +618,11 @@
         }
       });
       
+      function getFeaturedImageFromPreview() {
+        const previewImg = imagePreview.querySelector('img');
+        return previewImg ? previewImg.src : null;
+      }
+
       // Save as draft (create or update)
       saveDraftBtn.addEventListener('click', function() {
         const title = blogTitle.value.trim();
@@ -625,7 +630,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
-        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
+        let featuredImage = getFeaturedImageFromPreview();
 
         if (!title) {
           alert('Vul de titel in');
@@ -641,6 +646,9 @@
         if (editId) {
           const index = blogPosts.findIndex(p => p.id == editId);
           if (index !== -1) {
+            if (!featuredImage && blogPosts[index].featuredImage) {
+              featuredImage = blogPosts[index].featuredImage;
+            }
             blogPosts[index] = {
               ...blogPosts[index],
               title,
@@ -681,7 +689,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
-        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
+        let featuredImage = getFeaturedImageFromPreview();
 
         if (!title || !content) {
           alert('Vul titel en inhoud in');
@@ -714,6 +722,9 @@
         if (editId) {
           const index = blogPosts.findIndex(p => p.id == editId);
           if (index !== -1) {
+            if (!featuredImage && blogPosts[index].featuredImage) {
+              featuredImage = blogPosts[index].featuredImage;
+            }
             blogPosts[index] = {
               ...blogPosts[index],
               title,
@@ -756,7 +767,7 @@
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
-        const featuredImage = imagePreview.querySelector('img') ? imagePreview.querySelector('img').src : null;
+        let featuredImage = getFeaturedImageFromPreview();
         
         if (!title || !content) {
           alert('Vul titel en inhoud in');
@@ -772,6 +783,9 @@
             const postIndex = blogPosts.findIndex(p => p.id == editId);
             if (postIndex !== -1) {
               const existing = blogPosts[postIndex];
+              if (!featuredImage && existing.featuredImage) {
+                featuredImage = existing.featuredImage;
+              }
               blogPosts[postIndex] = {
                 ...existing,
                 title,

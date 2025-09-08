@@ -266,10 +266,16 @@
                   const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
                   window.location.href = url;
                 }; })(post.id, post.slug);
-                var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                var img = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                var src = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                card.innerHTML = '<div class="post-cover"><img src="' + src + '" alt="" onerror="this.src=\'' + img + '\'" /></div>' +
+                // Use featured image if available, otherwise fallback to Unsplash
+                var imgSrc;
+                if (post.featuredImage) {
+                    imgSrc = post.featuredImage;
+                } else {
+                    var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                    var fallbackImg = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
+                    imgSrc = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                }
+                card.innerHTML = '<div class="post-cover"><img src="' + imgSrc + '" alt="" onerror="this.src=\'' + (post.featuredImage ? post.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
                                  '<div class="post-body">' +
                                    '<div class="post-title">' + (post.title || 'Artikel') + '</div>' +
                                    '<div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div>' +
@@ -291,10 +297,16 @@
                                   const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post2.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
                                   window.location.href = url;
                                 }; })(post2.id, post2.slug);
-                                var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                                var img2 = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                                var src2 = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords2 + ',health,wellness');
-                                card2.innerHTML = '<div class="post-cover"><img src="' + src2 + '" alt="" onerror="this.src=\'' + img2 + '\'" /></div>' +
+                                // Use featured image if available, otherwise fallback to Unsplash
+                                var imgSrc2;
+                                if (post2.featuredImage) {
+                                    imgSrc2 = post2.featuredImage;
+                                } else {
+                                    var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                                    var fallbackImg2 = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
+                                    imgSrc2 = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords2 + ',health,wellness');
+                                }
+                                card2.innerHTML = '<div class="post-cover"><img src="' + imgSrc2 + '" alt="" onerror="this.src=\'' + (post2.featuredImage ? post2.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
                                                  '<div class="post-body">' +
                                                    '<div class="post-title">' + (post2.title || 'Artikel') + '</div>' +
                                                    '<div class="post-meta"><div class="post-date">' + (post2.publishedDate || '') + '</div><div class="post-read-time">' + (post2.readTime || 5) + ' min leestijd</div></div>' +

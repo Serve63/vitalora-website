@@ -156,6 +156,34 @@
       
       console.log('Content element innerHTML:', contentEl.innerHTML);
 
+      // Featured image handling
+      try {
+        const featuredWrap = document.getElementById('featured-image');
+        if (featuredWrap) {
+          if (post.featuredImage && typeof post.featuredImage === 'string' && post.featuredImage.trim() !== '') {
+            const img = document.createElement('img');
+            img.src = post.featuredImage;
+            img.alt = post.title || slug;
+            featuredWrap.innerHTML = '';
+            featuredWrap.appendChild(img);
+          } else {
+            // Fallback: try first image from content if present
+            const tmp = document.createElement('div');
+            tmp.innerHTML = post.content || '';
+            const firstImg = tmp.querySelector('img');
+            if (firstImg && firstImg.src) {
+              const img = document.createElement('img');
+              img.src = firstImg.src;
+              img.alt = post.title || slug;
+              featuredWrap.innerHTML = '';
+              featuredWrap.appendChild(img);
+            }
+          }
+        }
+      } catch (e) {
+        console.log('Error rendering featured image:', e);
+      }
+
       // Zet canonical naar pretty URL
       (function setCanonical(){
         var canonical = document.querySelector('link[rel="canonical"]');
