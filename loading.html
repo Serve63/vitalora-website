@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="prefetch" href="/wacht-even" as="document">
     <style>
         * {
             margin: 0;
@@ -36,7 +37,9 @@
             border: 1px solid rgba(255, 255, 255, 0.14);
             border-radius: 20px;
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255,255,255,0.06);
-            backdrop-filter: blur(16px);
+        }
+        @supports (backdrop-filter: blur(16px)) {
+            .loading-container { backdrop-filter: blur(16px); }
         }
 
         .loading-icon {
@@ -54,6 +57,7 @@
             border-radius: 50%;
             animation: spin 0.9s linear infinite;
             box-shadow: 0 0 0 4px rgba(255,255,255,0.03), 0 8px 24px rgba(0,0,0,0.25);
+            will-change: transform;
         }
 
         
@@ -206,7 +210,7 @@
         </div>
         
         
-        <div class="loading-steps">
+        <div class="loading-steps" aria-live="polite" aria-atomic="true">
             <div class="step active">
                 <span>Detox methode verzenden</span>
             </div>
@@ -222,24 +226,28 @@
     <script>
         // Simulate loading process with 3 steps
         const steps = document.querySelectorAll('.step');
+        const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        const t1 = reduceMotion ? 500 : 1000;
+        const t2 = reduceMotion ? 1000 : 2000;
+        const t3 = reduceMotion ? 1500 : 3500;
         
-        // Step 1: Detox methode verzenden (1.0s)
+        // Step 1: Detox methode verzenden (1.0s or reduced)
         setTimeout(() => {
             steps[0].classList.remove('active');
             steps[0].classList.add('completed');
             
             steps[1].classList.add('active');
-        }, 1000);
+        }, t1);
 
-        // Step 2: Detox methode succesvol verzonden (1.0s)
+        // Step 2: Detox methode succesvol verzonden (1.0s or reduced)
         setTimeout(() => {
             steps[1].classList.remove('active');
             steps[1].classList.add('completed');
             
             steps[2].classList.add('active');
-        }, 2000);
+        }, t2);
 
-        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s) + show checkmark at the end
+        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s or reduced) + show checkmark at the end
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
@@ -254,12 +262,12 @@
                 check.style.marginLeft = '6px';
                 lastText.appendChild(check);
             }
-        }, 3500);
+        }, t3);
 
-        // Redirect to wacht-even page after 3.5 seconds
+        // Redirect to wacht-even page after sequence
         setTimeout(() => {
             window.location.href = '/wacht-even';
-        }, 3500);
+        }, t3);
     </script>
 </body>
 </html>
