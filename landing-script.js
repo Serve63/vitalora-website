@@ -14,11 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
     closeBtn && closeBtn.addEventListener('click', closeModal);
     modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
 
-    // Intercept form submission and redirect to checkout
+    // Store lead data before form submission to MailBlue
     if (form) {
         form.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
             const name = document.getElementById('lead-name').value;
             const email = document.getElementById('lead-email').value;
             
@@ -29,11 +27,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     email: email,
                     source: 'ebook_download'
                 }));
-                
-                // Close modal and redirect to checkout
-                closeModal();
-                window.location.href = '/checkout';
             }
+            // Let the form submit normally to MailBlue (no preventDefault)
         });
     }
 
