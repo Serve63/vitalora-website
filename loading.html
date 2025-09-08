@@ -135,15 +135,18 @@
         .loading-steps {
             margin-top: 30px;
             text-align: left;
-            opacity: 0;
-            animation: fadeInUp 0.6s ease-out 1.8s forwards;
+            opacity: 1;
         }
 
         .step {
-            display: flex;
+            display: none;
             align-items: center;
             margin-bottom: 12px;
             font-size: 14px;
+        }
+
+        .step.active {
+            display: block;
         }
 
         .step-icon {
