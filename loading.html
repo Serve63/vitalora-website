@@ -134,19 +134,29 @@
 
         .loading-steps {
             margin-top: 30px;
-            text-align: left;
+            text-align: center;
             opacity: 1;
         }
 
         .step {
             display: none;
             align-items: center;
-            margin-bottom: 12px;
-            font-size: 14px;
+            justify-content: center;
+            margin-bottom: 16px;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
         }
 
         .step.active {
             display: block;
+            animation: fadeInUp 0.35s ease-out;
+        }
+
+        @media (max-width: 480px) {
+            .step {
+                font-size: 18px;
+            }
         }
 
         .step-icon {
