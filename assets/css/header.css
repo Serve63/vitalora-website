@@ -8,7 +8,7 @@
   height: var(--header-h);
   background: #2954B3;
   border-bottom:1px solid rgba(15,23,42,.06);
-  position: sticky; top:0; z-index:100;
+  position: relative; top:auto; z-index:10;
 }
 
 /* Inhoud */
