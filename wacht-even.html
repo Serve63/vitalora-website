@@ -1744,9 +1744,11 @@
     <script src="checkout-script.js?v=2"></script>
     
     <script>
-        // Clean URL by removing tracking parameters
-        if (window.location.search.includes('vgo_ee=')) {
-            const cleanUrl = window.location.origin + window.location.pathname;
+        // Clean URL display by removing tracking parameters and .html extension
+        if (window.location.search.includes('vgo_ee=') || window.location.pathname.includes('.html')) {
+            const cleanPath = window.location.pathname.replace('.html', '');
+            const cleanUrl = window.location.origin + cleanPath;
+            // Only update the browser URL display, don't interfere with MailBlue tracking
             window.history.replaceState({}, document.title, cleanUrl);
         }
     </script>
