@@ -682,6 +682,32 @@
                 display: inline;
             }
         }
+
+        /* Mobile warning badge styling */
+        .mobile-warning-badge {
+            display: none;
+            text-align: center;
+            margin-bottom: 16px;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-warning-badge {
+                display: block;
+            }
+        }
+
+        .warning-text {
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.3);
+            display: inline-block;
+        }
         
         /* Desktop specific summary title styling */
         @media (min-width: 769px) {
@@ -1600,6 +1626,10 @@
                                 
                         </div>
                             <div class="title-content">
+                                <!-- Mobile warning badge -->
+                                <div class="mobile-warning-badge">
+                                    <span class="warning-text">One Life Time Offer</span>
+                                </div>
                                 <h1 class="main-title">Wil je óók <span class="highlight" style="color: #2954B4;">BPA</span>, <span class="highlight" style="color: #2954B4;">PFAS</span> en <span class="highlight" style="color: #2954B4;">Parabenen</span> uit je lichaam <span class="mobile-gaan">gaan </span>detoxen?</h1>
                                 
                                 <!-- Trust Elements -->
