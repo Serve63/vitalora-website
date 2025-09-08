@@ -83,6 +83,32 @@
             align-items: start;
         }
         
+        /* Desktop specific layout redesign */
+        @media (min-width: 769px) {
+            .main-content {
+                padding: 100px 0 40px;
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+                min-height: 100vh;
+            }
+            
+            .container {
+                max-width: 1400px;
+                padding: 0 40px;
+            }
+            
+            .two-column-layout {
+                display: grid;
+                grid-template-columns: 1.2fr 0.8fr;
+                gap: 60px;
+                align-items: start;
+                background: #ffffff;
+                border-radius: 24px;
+                padding: 60px;
+                box-shadow: 0 25px 80px rgba(0, 0, 0, 0.1);
+                margin: 0 auto;
+            }
+        }
+        
         .hero-image img {
             width: 100%;
             height: 160px;
@@ -97,10 +123,32 @@
             line-height: 1.15;
         }
         
+        /* Desktop specific main title styling */
+        @media (min-width: 769px) {
+            .main-title {
+                font-size: 42px;
+                font-weight: 800;
+                color: #1f2937;
+                margin-bottom: 32px;
+                line-height: 1.1;
+                letter-spacing: -1px;
+            }
+        }
+        
         .title-with-image {
             display: flex;
             align-items: flex-start;
             gap: 20px;
+        }
+        
+        /* Desktop specific title with image layout */
+        @media (min-width: 769px) {
+            .title-with-image {
+                display: flex;
+                align-items: flex-start;
+                gap: 40px;
+                margin-bottom: 40px;
+            }
         }
 
         /* Hide badge on desktop */
@@ -126,10 +174,36 @@
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
         
+        /* Desktop specific product image styling */
+        @media (min-width: 769px) {
+            .title-image .title-image-real {
+                width: 320px;
+                height: 320px;
+                border-radius: 20px;
+                object-fit: cover;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+                transition: transform 0.3s ease;
+            }
+            
+            .title-image .title-image-real:hover {
+                transform: scale(1.02);
+            }
+        }
+        
         .section p {
             color: #333333;
             margin-bottom: 12px;
             line-height: 1.45;
+        }
+        
+        /* Desktop specific section text styling */
+        @media (min-width: 769px) {
+            .section p {
+                color: #4b5563;
+                margin-bottom: 20px;
+                line-height: 1.6;
+                font-size: 16px;
+            }
         }
         
         .usp-item {
@@ -139,6 +213,20 @@
             color: #333333;
             font-size: 13.5px;
             line-height: 1.5;
+        }
+        
+        /* Desktop specific USP styling */
+        @media (min-width: 769px) {
+            .usp-item {
+                display: flex;
+                align-items: center;
+                gap: 16px;
+                color: #374151;
+                font-size: 16px;
+                line-height: 1.6;
+                margin-bottom: 16px;
+                padding: 12px 0;
+            }
         }
         
         .usp-checkmark {
@@ -153,6 +241,24 @@
             font-size: 9px;
             font-weight: 700;
             flex-shrink: 0;
+        }
+        
+        /* Desktop specific USP checkmark styling */
+        @media (min-width: 769px) {
+            .usp-checkmark {
+                width: 20px;
+                height: 20px;
+                background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+                flex-shrink: 0;
+                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
+            }
         }
         
         .story-intro {
@@ -989,6 +1095,25 @@
             color: #333333;
             font-size: 15px;
         }
+        
+        /* Desktop specific story text styling */
+        @media (min-width: 769px) {
+            .story-text {
+                line-height: 1.8;
+                background: #f8fafc;
+                padding: 32px;
+                border-radius: 20px;
+                border: 1px solid #e2e8f0;
+                margin-top: 40px;
+            }
+
+            .story-text p {
+                margin-bottom: 24px;
+                color: #4b5563;
+                font-size: 17px;
+                line-height: 1.7;
+            }
+        }
 
         .story-intro {
             font-size: 18px !important;
@@ -996,14 +1121,43 @@
             font-weight: 600;
             margin-top: 0 !important;
         }
+        
+        /* Desktop specific story intro styling */
+        @media (min-width: 769px) {
+            .story-intro {
+                font-size: 24px !important;
+                color: #1f2937 !important;
+                font-weight: 700;
+                margin-top: 0 !important;
+                margin-bottom: 24px !important;
+            }
+        }
 
         .story-question {
             font-size: 13.5px !important;
+        }
+        
+        /* Desktop specific story question styling */
+        @media (min-width: 769px) {
+            .story-question {
+                font-size: 19px !important;
+                color: #374151 !important;
+                font-weight: 600;
+                line-height: 1.6;
+            }
         }
 
         .highlight-text {
             color: #2497F5;
             font-weight: 600;
+        }
+        
+        /* Desktop specific highlight text styling */
+        @media (min-width: 769px) {
+            .highlight-text {
+                color: #3b82f6;
+                font-weight: 700;
+            }
         }
 
         .story-stat {
@@ -1013,9 +1167,33 @@
             text-align: left !important;
             margin: 20px 0;
         }
+        
+        /* Desktop specific story stat styling */
+        @media (min-width: 769px) {
+            .story-stat {
+                background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+                color: white !important;
+                padding: 20px 24px;
+                border-radius: 16px;
+                font-size: 16px !important;
+                text-align: center !important;
+                margin: 32px 0;
+                box-shadow: 0 8px 24px rgba(59, 130, 246, 0.3);
+            }
+        }
 
         .story-experience {
             font-size: 13.5px !important;
+        }
+        
+        /* Desktop specific story experience styling */
+        @media (min-width: 769px) {
+            .story-experience {
+                font-size: 18px !important;
+                color: #374151 !important;
+                font-weight: 600;
+                line-height: 1.6;
+            }
         }
 
         .benefits-inline {
@@ -1031,6 +1209,23 @@
             justify-content: flex-start;
             max-width: 500px;
         }
+        
+        /* Desktop specific benefits inline styling */
+        @media (min-width: 769px) {
+            .benefits-inline {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                column-gap: 32px;
+                row-gap: 16px;
+                margin: 32px 0;
+                padding: 0;
+                background: transparent;
+                border-radius: 0;
+                border-left: none;
+                justify-content: flex-start;
+                max-width: 100%;
+            }
+        }
 
         .benefit-item {
             background: transparent;
@@ -1045,6 +1240,23 @@
             align-items: center;
             gap: 10px;
         }
+        
+        /* Desktop specific benefit item styling */
+        @media (min-width: 769px) {
+            .benefit-item {
+                background: transparent;
+                padding: 0;
+                border-radius: 0;
+                border: none;
+                font-size: 16px;
+                color: #374151;
+                font-weight: 500;
+                box-shadow: none;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+            }
+        }
 
         .benefit-item::before {
             content: "✓";
@@ -1052,15 +1264,43 @@
             font-weight: bold;
             font-size: 16px;
         }
+        
+        /* Desktop specific benefit item checkmark styling */
+        @media (min-width: 769px) {
+            .benefit-item::before {
+                content: "✓";
+                color: #3b82f6;
+                font-weight: bold;
+                font-size: 18px;
+            }
+        }
         /* Two columns x three rows */
 
         .story-conclusion {
             font-size: 17px !important;
             color: #2497F5 !important;
         }
+        
+        /* Desktop specific story conclusion styling */
+        @media (min-width: 769px) {
+            .story-conclusion {
+                font-size: 20px !important;
+                color: #3b82f6 !important;
+                font-weight: 700;
+            }
+        }
 
         .story-toxins {
             font-size: 13.5px !important;
+        }
+        
+        /* Desktop specific story toxins styling */
+        @media (min-width: 769px) {
+            .story-toxins {
+                font-size: 18px !important;
+                color: #374151 !important;
+                font-weight: 600;
+            }
         }
 
         .toxin-list {
@@ -1078,6 +1318,20 @@
             padding: 0;
             margin: 14px 0;
         }
+        
+        /* Desktop specific toxin list styling */
+        @media (min-width: 769px) {
+            .toxin-list {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 24px;
+                list-style: none;
+                padding: 0;
+                margin: 24px 0;
+            }
+        }
         .toxin-list li {
             color: #333333;
             font-weight: normal;
@@ -1087,12 +1341,37 @@
             position: relative;
             font-size: 13.5px;
         }
+        
+        /* Desktop specific toxin list item styling */
+        @media (min-width: 769px) {
+            .toxin-list li {
+                color: #374151;
+                font-weight: 500;
+                letter-spacing: 0.5px;
+                margin-bottom: 8px;
+                padding-left: 24px;
+                position: relative;
+                font-size: 16px;
+            }
+        }
         .toxin-list li::before {
             content: "✓";
             color: #10B981;
             font-weight: bold;
             position: absolute;
             left: 0;
+        }
+        
+        /* Desktop specific toxin list checkmark styling */
+        @media (min-width: 769px) {
+            .toxin-list li::before {
+                content: "✓";
+                color: #3b82f6;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+                font-size: 16px;
+            }
         }
 
         .title-content {
@@ -1195,9 +1474,9 @@
                                 <div class="success-badge">
                                     <span class="badge-checkmark">✓</span>
                                     <span class="badge-text">Eenmalig aanbod: <span id="badge-timer">04:57</span></span>
-                                </div>
+                        </div>
                                 <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox" class="title-image-real">
-                            </div>
+                        </div>
                             <div class="title-content">
                                 <h1 class="main-title">Wil je óók <span class="highlight">BPA</span>, <span class="highlight">PFAS</span> en <span class="highlight">Parabenen</span> uit je lichaam gaan detoxen?</h1>
                                 <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox" class="mobile-image-placeholder">
@@ -1295,46 +1574,46 @@
 
                 <!-- Mobile Order Form (outside right-column) -->
                 <div class="order-form-mobile">
-                    <div class="form-section">
-                        <h3>Jouw gegevens</h3>
-                        <div class="form-group">
-                            <input type="text" placeholder="Voornaam" required>
-                        </div>
-                        <div class="form-group">
+                        <div class="form-section">
+                            <h3>Jouw gegevens</h3>
+                            <div class="form-group">
+                                <input type="text" placeholder="Voornaam" required>
+                            </div>
+                            <div class="form-group">
                             <input type="text" placeholder="Achternaam">
+                            </div>
+                            <div class="form-group">
+                                <input type="email" placeholder="E-mailadres" required>
+                            </div>
+                            <div class="form-group">
+                                <select>
+                                    <option>Nederland</option>
+                                    <option>België</option>
+                                    <option>Duitsland</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <input type="email" placeholder="E-mailadres" required>
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option>Nederland</option>
-                                <option>België</option>
-                                <option>Duitsland</option>
-                            </select>
-                        </div>
-                    </div>
 
-                    <div class="form-section">
-                        <h3>Hoe wil je betalen?</h3>
+                        <div class="form-section">
+                            <h3>Hoe wil je betalen?</h3>
                         <div class="payment-methods-desktop">
-                            <div class="payment-method selected">
+                                <div class="payment-method selected">
                                 <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
-                                <span>iDEAL</span>
-                            </div>
-                            <div class="payment-method">
+                                    <span>iDEAL</span>
+                                </div>
+                                <div class="payment-method">
                                 <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
-                                <span>Creditcard</span>
-                            </div>
-                            <div class="payment-method">
+                                    <span>Creditcard</span>
+                                </div>
+                                <div class="payment-method">
                                 <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
-                                <span>Klarna</span>
-                            </div>
-                            <div class="payment-method">
+                                    <span>Klarna</span>
+                                </div>
+                                <div class="payment-method">
                                 <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
-                                <span>Bancontact</span>
+                                    <span>Bancontact</span>
+                                </div>
                             </div>
-                        </div>
                         <div class="form-group payment-mobile">
                             <select id="payment-method-mobile">
                                 <option value="ideal">iDEAL</option>
@@ -1342,34 +1621,34 @@
                                 <option value="klarna">Klarna</option>
                                 <option value="bancontact">Bancontact</option>
                             </select>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="order-summary">
-                        <div class="summary-title">Besteloverzicht</div>
-                        <div class="summary-item">
-                            <span>1x Clean Reset Detox en Gifstoffen</span>
-                        </div>
-                        <div class="total">
+                        <div class="order-summary">
+                            <div class="summary-title">Besteloverzicht</div>
+                            <div class="summary-item">
+                                <span>1x Clean Reset Detox en Gifstoffen</span>
+                            </div>
+                            <div class="total">
                             <div class="total-label">Totaal:</div>
                             <div class="total-price">
                                 <span class="original-price">€ 47,00</span>
                                 <span class="discounted-price">€ 27,00</span>
                             </div>
+                            </div>
                         </div>
-                    </div>
 
                     <div class="cta-section">
                         <button class="checkout-button">Afrekenen <span>→</span></button>
                     </div>
 
-                    <div class="legal-section">
-                        <div class="checkbox-group">
+                        <div class="legal-section">
+                            <div class="checkbox-group">
                             <input type="checkbox" id="terms-mobile" required checked>
                             <label for="terms-mobile">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
-                        </div>
-                    </div>
-                </div>
+                            </div>
+                                </div>
+                                </div>
 
                 <!-- Right Column - Order Form -->
                 <div class="right-column">
@@ -1399,15 +1678,15 @@
                                 <div class="payment-method selected">
                                     <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
                                     <span>iDEAL</span>
-                                </div>
+                            </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
                                     <span>Creditcard</span>
-                                </div>
+                            </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
                                     <span>Klarna</span>
-                                </div>
+                        </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
                                     <span>Bancontact</span>
