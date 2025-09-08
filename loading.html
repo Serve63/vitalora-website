@@ -141,6 +141,8 @@
             animation: fadeInUp 0.35s ease-out;
         }
 
+        .step span { white-space: nowrap; }
+
         @media (max-width: 480px) {
             .step {
                 font-size: 18px;
@@ -227,10 +229,21 @@
             steps[2].classList.add('active');
         }, 2000);
 
-        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s)
+        // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s) + show checkmark at the end
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
+            
+            // Append a green checkmark to the last step text
+            const lastText = steps[2].querySelector('span');
+            if (lastText && !lastText.querySelector('.done-check')) {
+                const check = document.createElement('span');
+                check.className = 'done-check';
+                check.textContent = ' ✓';
+                check.style.color = '#10B981';
+                check.style.marginLeft = '6px';
+                lastText.appendChild(check);
+            }
         }, 3500);
 
         // Redirect to wacht-even page after 3.5 seconds
