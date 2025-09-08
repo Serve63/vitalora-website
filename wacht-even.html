@@ -105,7 +105,14 @@
 
         /* Hide badge on desktop */
         .success-badge {
-            display: none;
+            display: none !important;
+        }
+        
+        /* Ensure badge is hidden on all desktop sizes */
+        @media (min-width: 481px) {
+            .success-badge {
+                display: none !important;
+            }
         }
         .main-title.mobile-only { display: none; }
         .mobile-title-image { display: none; }
@@ -565,20 +572,7 @@
             #timer { font-size: 16px; padding: 4px 10px; }
             
             .success-badge {
-                display: flex;
-                align-items: center;
-                gap: 4px;
-                background: #2497F5;
-                color: white;
-                padding: 6px 8px;
-                border-radius: 16px;
-                font-size: 13px;
-                font-weight: 600;
-                margin-bottom: 16px;
-                justify-content: center;
-                max-width: 200px;
-                margin-left: auto;
-                margin-right: auto;
+                display: none !important;
             }
 
             .badge-checkmark {
@@ -904,20 +898,7 @@
         }
 
         .success-badge {
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            background: #2497F5;
-            color: white;
-            padding: 6px 8px;
-            border-radius: 16px;
-            font-size: 13px;
-            font-weight: 800;
-            margin-bottom: 16px;
-            justify-content: center;
-            max-width: 180px;
-            margin-left: auto;
-            margin-right: auto;
+            display: none !important;
         }
 
         .badge-checkmark {
