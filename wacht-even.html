@@ -671,6 +671,18 @@
             font-weight: 700;
         }
         
+        /* Hide 'gaan' on desktop */
+        .mobile-gaan {
+            display: none;
+        }
+        
+        /* Show 'gaan' on mobile */
+        @media (max-width: 768px) {
+            .mobile-gaan {
+                display: inline;
+            }
+        }
+        
         /* Desktop specific summary title styling */
         @media (min-width: 769px) {
             .summary-title {
@@ -1587,7 +1599,7 @@
                                 
                         </div>
                             <div class="title-content">
-                                <h1 class="main-title">Wil je óók <span class="highlight" style="color: #2954B4;">BPA</span>, <span class="highlight" style="color: #2954B4;">PFAS</span> en <span class="highlight" style="color: #2954B4;">Parabenen</span> uit je lichaam detoxen?</h1>
+                                <h1 class="main-title">Wil je óók <span class="highlight" style="color: #2954B4;">BPA</span>, <span class="highlight" style="color: #2954B4;">PFAS</span> en <span class="highlight" style="color: #2954B4;">Parabenen</span> uit je lichaam <span class="mobile-gaan">gaan </span>detoxen?</h1>
                                 
                                 <!-- Trust Elements -->
                                 <div class="trust-elements">
