@@ -156,6 +156,28 @@
 
         .step span { white-space: nowrap; }
 
+        /* Progress bar + status (classic style) */
+        .progress-bar-container {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            height: 10px;
+            overflow: hidden;
+            margin: 12px 0 10px 0;
+        }
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: white;
+            border-radius: 10px;
+        }
+        .status-text {
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 6px;
+            opacity: 0.9;
+        }
+
         @media (max-width: 480px) {
             .step { font-size: 20px; }
             .loading-container { max-width: 92%; padding: 28px 18px; }
@@ -209,6 +231,11 @@
             <div class="loading-spinner"></div>
         </div>
         
+        <div class="progress-bar-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+        <p class="status-text" id="statusText">Detox methode verzenden...</p>
+
         
         <div class="loading-steps" aria-live="polite" aria-atomic="true">
             <div class="step active">
@@ -226,10 +253,20 @@
     <script>
         // Simulate loading process with 3 steps
         const steps = document.querySelectorAll('.step');
+        const statusText = document.getElementById('statusText');
+        const progressBar = document.getElementById('progressBar');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const t1 = reduceMotion ? 500 : 1000;
         const t2 = reduceMotion ? 1000 : 2000;
         const t3 = reduceMotion ? 1500 : 3500;
+
+        // Animate progress bar to mimic the original classic loader
+        if (progressBar) {
+            requestAnimationFrame(() => {
+                progressBar.style.transition = 'width ' + t3 + 'ms linear';
+                progressBar.style.width = '100%';
+            });
+        }
         
         // Step 1: Detox methode verzenden (1.0s or reduced)
         setTimeout(() => {
@@ -237,6 +274,7 @@
             steps[0].classList.add('completed');
             
             steps[1].classList.add('active');
+            if (statusText) statusText.textContent = 'Detox methode succesvol verzonden...';
         }, t1);
 
         // Step 2: Detox methode succesvol verzonden (1.0s or reduced)
@@ -245,6 +283,7 @@
             steps[1].classList.add('completed');
             
             steps[2].classList.add('active');
+            if (statusText) statusText.textContent = 'Onweerstaanbaar aanbod voorstellen...';
         }, t2);
 
         // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s or reduced) + show checkmark at the end
@@ -262,6 +301,7 @@
                 check.style.marginLeft = '6px';
                 lastText.appendChild(check);
             }
+            if (statusText) statusText.textContent = 'Klaar!';
         }, t3);
 
         // Redirect to wacht-even page after sequence
