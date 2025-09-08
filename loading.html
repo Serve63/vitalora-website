@@ -279,11 +279,24 @@
         const t2 = reduceMotion ? 1000 : 2000;
         const t3 = reduceMotion ? 1500 : 3500;
 
-        // Animate progress bar to mimic the original classic loader
+        // Drive progress bar per step: 0%->33%->66%->100%
         if (progressBar) {
+            progressBar.style.transition = 'none';
+            progressBar.style.width = '0%';
+            const d1 = t1;           // step 1 duration
+            const d2 = t2 - t1;      // step 2 duration
+            const d3 = t3 - t2;      // step 3 duration
             requestAnimationFrame(() => {
-                progressBar.style.transition = 'width ' + t3 + 'ms linear';
-                progressBar.style.width = '100%';
+                progressBar.style.transition = 'width ' + d1 + 'ms ease-out';
+                progressBar.style.width = '33%';
+                setTimeout(() => {
+                    progressBar.style.transition = 'width ' + d2 + 'ms ease-out';
+                    progressBar.style.width = '66%';
+                }, d1);
+                setTimeout(() => {
+                    progressBar.style.transition = 'width ' + d3 + 'ms ease-out';
+                    progressBar.style.width = '100%';
+                }, d1 + d2);
             });
         }
         
