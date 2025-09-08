@@ -133,28 +133,49 @@
         }
 
         .loading-steps {
-            margin-top: 30px;
-            text-align: center;
+            margin-top: 20px;
+            text-align: left;
             opacity: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
         }
 
         .step {
-            display: none;
+            display: flex;
             align-items: center;
-            justify-content: center;
-            margin-bottom: 16px;
-            font-size: 24px;
+            gap: 10px;
+            font-size: 20px;
             font-weight: 700;
             letter-spacing: 0.2px;
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0.55;
+            transition: opacity 0.25s ease;
         }
 
-        .step.active {
-            display: block;
-            animation: fadeInUp 0.35s ease-out;
-        }
+        .step.active { opacity: 1; }
+        .step.completed { opacity: 1; }
 
         .step span { white-space: nowrap; }
+
+        .step .step-icon {
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.18);
+            font-size: 13px;
+            line-height: 1;
+            color: #ffffff;
+            flex: 0 0 20px;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
+        }
+        .step.completed .step-icon {
+            background: #2954B4;
+            color: #ffffff;
+        }
 
         /* Progress bar + status (classic style) */
         .progress-bar-container {
@@ -179,7 +200,7 @@
         }
 
         @media (max-width: 480px) {
-            .step { font-size: 20px; }
+            .step { font-size: 18px; }
             .loading-container { max-width: 92%; padding: 28px 18px; }
             .loading-icon { width: 56px; height: 56px; }
             .loading-spinner { width: 56px; height: 56px; }
@@ -239,12 +260,15 @@
         
         <div class="loading-steps" aria-live="polite" aria-atomic="true">
             <div class="step active">
+                <div class="step-icon">⏳</div>
                 <span>Detox methode verzenden</span>
             </div>
             <div class="step">
+                <div class="step-icon">⏳</div>
                 <span>Detox methode succesvol verzonden</span>
             </div>
             <div class="step">
+                <div class="step-icon">⏳</div>
                 <span>Onweerstaanbaar aanbod voorstellen</span>
             </div>
         </div>
@@ -273,6 +297,10 @@
             steps[0].classList.remove('active');
             steps[0].classList.add('completed');
             
+            // icon becomes check
+            const icon0 = steps[0].querySelector('.step-icon');
+            if (icon0) icon0.textContent = '✓';
+            
             steps[1].classList.add('active');
             if (statusText) statusText.textContent = 'Detox methode succesvol verzonden...';
         }, t1);
@@ -282,6 +310,10 @@
             steps[1].classList.remove('active');
             steps[1].classList.add('completed');
             
+            // icon becomes check
+            const icon1 = steps[1].querySelector('.step-icon');
+            if (icon1) icon1.textContent = '✓';
+            
             steps[2].classList.add('active');
             if (statusText) statusText.textContent = 'Onweerstaanbaar aanbod voorstellen...';
         }, t2);
@@ -290,6 +322,10 @@
         setTimeout(() => {
             steps[2].classList.remove('active');
             steps[2].classList.add('completed');
+            
+            // icon becomes check
+            const icon2 = steps[2].querySelector('.step-icon');
+            if (icon2) icon2.textContent = '✓';
             
             // Append a green checkmark to the last step text
             const lastText = steps[2].querySelector('span');
