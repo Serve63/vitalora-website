@@ -192,12 +192,7 @@
             background: white;
             border-radius: 10px;
         }
-        .status-text {
-            font-size: 16px;
-            font-weight: 600;
-            margin-top: 6px;
-            opacity: 0.9;
-        }
+        
 
         @media (max-width: 480px) {
             .step { font-size: 18px; }
@@ -255,7 +250,7 @@
         <div class="progress-bar-container">
             <div class="progress-bar" id="progressBar"></div>
         </div>
-        <p class="status-text" id="statusText">Detox methode verzenden...</p>
+        
 
         
         <div class="loading-steps" aria-live="polite" aria-atomic="true">
@@ -277,7 +272,7 @@
     <script>
         // Simulate loading process with 3 steps
         const steps = document.querySelectorAll('.step');
-        const statusText = document.getElementById('statusText');
+        
         const progressBar = document.getElementById('progressBar');
         const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         const t1 = reduceMotion ? 500 : 1000;
@@ -302,7 +297,7 @@
             if (icon0) icon0.textContent = '✓';
             
             steps[1].classList.add('active');
-            if (statusText) statusText.textContent = 'Detox methode succesvol verzonden...';
+            
         }, t1);
 
         // Step 2: Detox methode succesvol verzonden (1.0s or reduced)
@@ -315,7 +310,7 @@
             if (icon1) icon1.textContent = '✓';
             
             steps[2].classList.add('active');
-            if (statusText) statusText.textContent = 'Onweerstaanbaar aanbod voorstellen...';
+            
         }, t2);
 
         // Step 3: Onweerstaanbaar aanbod voorstellen (1.5s or reduced) + show checkmark at the end
@@ -337,7 +332,7 @@
                 check.style.marginLeft = '6px';
                 lastText.appendChild(check);
             }
-            if (statusText) statusText.textContent = 'Klaar!';
+            
         }, t3);
 
         // Redirect to wacht-even page after sequence
