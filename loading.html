@@ -49,6 +49,27 @@
             position: relative;
         }
 
+        /* Checkmark shown when loading is completed */
+        .loading-checkmark {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            color: #ffffff;
+            text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+        }
+
+        .loading-icon.completed .loading-spinner { display: none; }
+        .loading-icon.completed .loading-checkmark { display: flex; }
+
         .loading-spinner {
             width: 64px;
             height: 64px;
@@ -220,6 +241,7 @@
     <div class="loading-container">
         <div class="loading-icon">
             <div class="loading-spinner"></div>
+            <div class="loading-checkmark" aria-hidden="true">✓</div>
         </div>
         
         
@@ -261,6 +283,8 @@
                             .querySelector('.step-dot')
                             .outerHTML = '<span class="step-checkmark">✓</span>';
                     }
+                    const loadingIcon = document.querySelector('.loading-icon');
+                    if (loadingIcon) loadingIcon.classList.add('completed');
                     setTimeout(() => { window.location.href = '/wacht-even'; }, 500);
                 }
             }
