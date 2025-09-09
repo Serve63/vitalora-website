@@ -28,6 +28,6 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#eef3fb;color:
 
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
-  .hero .photo img{height:280px}
+  .hero .photo img{height:auto;min-height:280px;max-height:400px;object-fit:cover}
   .steps{grid-template-columns:1fr}
 }
