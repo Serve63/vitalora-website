@@ -149,6 +149,12 @@
             .loading-title, .loading-subtitle, .loading-description { animation: none !important; opacity: 1; }
         }
 
+        /* Minimal mode: hide brand/trust, simplify steps */
+        .loading-brand, .loading-trust { display: none !important; }
+        .step-item { padding-left: 0 !important; }
+        .step-item + .step-item::before { content: none !important; }
+        .step-item .step-dot { position: static !important; }
+
         .loading-trust {
             display: flex;
             gap: 8px;
@@ -299,10 +305,7 @@
 </head>
 <body>
     <div class="loading-container">
-        <div class="loading-brand" aria-hidden="true">
-            <img src="/assets/images/vitalora logo.webp" alt="" />
-            <div class="brand-text">Vitalora</div>
-        </div>
+        
         <div class="loading-icon">
             <div class="loading-spinner"></div>
             <div class="loading-checkmark" aria-hidden="true">✓</div>
@@ -323,11 +326,7 @@
                 <span class="step-dot"></span> Klaar!
             </div>
         </div>
-
-        <div class="loading-trust">
-            <div class="trust-pill">✓ 1000+ tevreden klanten</div>
-            <div class="trust-pill">✓ 30 dagen garantie</div>
-        </div>
+        
     </div>
 
     <script>
