@@ -29,7 +29,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#eef3fb;color:
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
   /* Match homepage mobile hero image sizing */
-  .hero .photo{background:transparent;box-shadow:none;border-radius:16px;margin:-8px 0 20px 0;aspect-ratio:16/9}
-  .hero .photo img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block}
+  .hero .photo{background:transparent;box-shadow:none;border-radius:16px;margin:-8px 0 20px 0;aspect-ratio:4/3}
+  .hero .photo img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;object-position:center top}
   .steps{grid-template-columns:1fr}
 }
