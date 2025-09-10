@@ -58,6 +58,10 @@
             line-height: 1.2;
         }
 
+        /* Mobile-only line break helper inside .product-title */
+        .product-title .mobile-break { display: none; }
+        @media (max-width: 768px) { .product-title .mobile-break { display: block; } }
+
         .product-description {
             font-size: 18px;
             color: #1f2937;
@@ -378,7 +382,7 @@
         <div class="checkout-layout">
             <!-- Left Column - Product Info -->
             <div class="product-info">
-                <h1 class="product-title">Clean Reset: Detox & Gifstoffen</h1>
+                <h1 class="product-title">Clean Reset:<span class="mobile-break"></span> Detox & Gifstoffen</h1>
 
                 <div class="product-image">
                     <img src="/assets/images/Clean-reset 2025.png" alt="Clean Reset Detox Cursus" style="width: 100%; max-width: 400px; height: auto; border-radius: 12px; margin: 20px 0;">
