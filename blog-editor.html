@@ -373,10 +373,8 @@
           <small id="slug-hint" style="display:block;color:#64748b;margin-top:4px">Uniek, alleen letters/cijfers/koppelteken</small>
         </div>
         <div class="form-group">
-          <label class="form-label">Revisies</label>
-          <select class="form-input" id="blog-revisions">
-            <option>Toon revisies</option>
-          </select>
+          <label class="form-label">Publicatiedatum</label>
+          <input type="date" class="form-input" id="blog-date" placeholder="jjjj-mm-dd">
         </div>
       </div>
       
@@ -450,6 +448,7 @@
       const blogMetaTitle = document.getElementById('blog-meta-title');
       const blogMetaDescription = document.getElementById('blog-meta-description');
       const blogContent = document.getElementById('blog-content');
+      const blogDate = document.getElementById('blog-date');
       const saveDraftBtn = document.getElementById('save-draft');
       const scheduleBtn = document.getElementById('schedule-blog');
       const publishBtn = document.getElementById('publish-blog');
@@ -532,6 +531,10 @@
           blogMetaTitle.value = post.metaTitle;
           blogMetaDescription.value = post.metaDescription;
           blogContent.innerHTML = post.content;
+          if (blogDate) {
+            var d = post.publishedDate || post.publishDate || '';
+            if (/^\d{4}-\d{2}-\d{2}$/.test(d)) blogDate.value = d;
+          }
           
           // Load existing image if available
           if (post.featuredImage) {
@@ -791,7 +794,7 @@
           }
         }
 
-        const scheduleDate = prompt('Voer datum en tijd in (YYYY-MM-DD HH:MM):');
+        const scheduleDate = (blogDate && blogDate.value) ? blogDate.value : prompt('Voer datum (YYYY-MM-DD):');
         if (!scheduleDate) return;
 
         if (!slug) {
@@ -876,7 +879,7 @@
                 content,
                 featuredImage,
                 status: 'published',
-                publishedDate: existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
+                publishedDate: (blogDate && blogDate.value) ? blogDate.value : (existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })),
                 readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)),
                 updatedAt: new Date().toISOString()
               };
@@ -893,11 +896,7 @@
               content: content,
               featuredImage: featuredImage,
               status: 'published',
-              publishedDate: new Date().toLocaleDateString('nl-NL', {
-                day: 'numeric',
-                month: 'long',
-                year: 'numeric'
-              }),
+              publishedDate: (blogDate && blogDate.value) ? blogDate.value : new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
               readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
             };
             
