@@ -44,14 +44,29 @@ document.addEventListener('DOMContentLoaded', function() {
                 form.setAttribute('target', 'mb-submit-frame');
             } catch (_) {}
 
-            // Immediately send user to loading screen (fallback if provider ignores our redirect)
-            setTimeout(function() {
-                // Preserve potential tracking params and add cache-busting param
-                var qs = window.location.search || '';
-                var sep = qs ? '&' : '?';
-                var cb = 'cb=' + Date.now();
-                window.location.href = '/loading' + (qs ? qs : '') + sep + cb;
-            }, 10);
+            // Show inline loading in modal instead of separate page
+            try {
+                var loadingBox = document.getElementById('modal-loading');
+                var steps = loadingBox ? loadingBox.querySelectorAll('.step') : [];
+                var bar = document.getElementById('modal-progress');
+                if (loadingBox) {
+                    form.classList.add('hidden');
+                    loadingBox.classList.add('active');
+                    var i = 0;
+                    function advance(){
+                        steps.forEach(s => s.classList.remove('active'));
+                        if (steps[i]) steps[i].classList.add('active');
+                        if (bar) bar.style.width = Math.min((i+1)*33, 100) + '%';
+                        i++;
+                        if (i<=steps.length) setTimeout(advance, i<steps.length ? 900 : 1200);
+                        else {
+                            var qs = window.location.search || '';
+                            window.location.href = '/wacht-even' + (qs ? qs : '');
+                        }
+                    }
+                    setTimeout(advance, 200);
+                }
+            } catch(_) {}
             // Do NOT preventDefault; allow the form to submit to MailBlue
         });
     }

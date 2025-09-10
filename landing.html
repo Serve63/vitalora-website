@@ -27,6 +27,17 @@
         body.ebook-page .feature-item { font-size: 14px !important; }
         body.ebook-page #ebook-claim { margin-bottom: 8px !important; }
       }
+      /* Inline loading-in-modal UI */
+      .hidden{display:none}
+      #modal-loading{display:none;padding:12px 0}
+      #modal-loading.active{display:block}
+      .loading-icon{width:36px;height:36px;border:3px solid rgba(41,84,179,.2);border-top-color:#2954B3;border-radius:50%;animation:spin 1s linear infinite;margin:0 0 10px}
+      @keyframes spin{to{transform:rotate(360deg)}}
+      .loading-steps{display:flex;flex-direction:column;gap:6px;color:#333333;font-weight:600}
+      .loading-steps .step{opacity:.35}
+      .loading-steps .step.active{opacity:1}
+      .loading-progress{height:6px;background:#e5f0ff;border-radius:999px;overflow:hidden;margin-top:10px}
+      .loading-progress .bar{height:100%;width:0;background:#2954B3;transition:width .4s ease}
     </style>
 <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
@@ -124,6 +135,16 @@
                         <input type="email" id="lead-email" name="email" placeholder="Email" required />
                         <button type="submit" class="cta-button modal-cta">Download PDF</button>
                     </form>
+                    <!-- Fake loading inserted in modal -->
+                    <div id="modal-loading" aria-live="polite" aria-atomic="true">
+                        <div class="loading-icon" id="modal-loading-icon"></div>
+                        <div class="loading-steps">
+                            <div class="step" data-step="0">Gegevens verwerken</div>
+                            <div class="step" data-step="1">Succesvol verstuurd</div>
+                            <div class="step" data-step="2">Superdeal unlocken</div>
+                        </div>
+                        <div class="loading-progress"><div class="bar" id="modal-progress"></div></div>
+                    </div>
                 </div>
             </div>
         </div>
