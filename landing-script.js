@@ -47,22 +47,31 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show inline loading in modal instead of separate page
             try {
                 var loadingBox = document.getElementById('modal-loading');
-                var steps = loadingBox ? loadingBox.querySelectorAll('.step') : [];
                 var bar = document.getElementById('modal-progress');
+                var phrase = document.getElementById('modal-loading-phrase');
                 if (loadingBox) {
                     form.classList.add('hidden');
                     loadingBox.classList.add('active');
-                    var i = 0;
+                    var wordSets = [
+                        ['Gegevens', 'verwerken…'],
+                        ['Succesvol', 'verstuurd'],
+                        ['Superdeal', 'unlocken']
+                    ];
+                    var step = 0;
+                    function showWords(words){
+                        phrase.innerHTML = words.map(w => '<span class="word">'+w+'</span>').join(' ');
+                        var els = phrase.querySelectorAll('.word');
+                        els.forEach((el,idx)=> setTimeout(()=>{ el.style.opacity=1; el.style.transform='translateY(0)'; }, idx*220));
+                    }
                     function advance(){
-                        steps.forEach(s => s.classList.remove('active'));
-                        if (steps[i]) steps[i].classList.add('active');
-                        if (bar) bar.style.width = Math.min((i+1)*33, 100) + '%';
-                        i++;
-                        if (i<=steps.length) setTimeout(advance, i<steps.length ? 900 : 1200);
-                        else {
+                        if (bar) bar.style.width = Math.min((step+1)*33, 100) + '%';
+                        showWords(wordSets[step]||[]);
+                        step++;
+                        if (step < wordSets.length) setTimeout(advance, 1000);
+                        else setTimeout(function(){
                             var qs = window.location.search || '';
                             window.location.href = '/wacht-even' + (qs ? qs : '');
-                        }
+                        }, 1200);
                     }
                     setTimeout(advance, 200);
                 }

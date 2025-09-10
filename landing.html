@@ -33,9 +33,9 @@
       #modal-loading.active{display:block}
       .loading-icon{width:36px;height:36px;border:3px solid rgba(41,84,179,.2);border-top-color:#2954B3;border-radius:50%;animation:spin 1s linear infinite;margin:0 0 10px}
       @keyframes spin{to{transform:rotate(360deg)}}
-      .loading-steps{display:flex;flex-direction:column;gap:6px;color:#333333;font-weight:600}
-      .loading-steps .step{opacity:.35}
-      .loading-steps .step.active{opacity:1}
+      .loading-steps{display:none}
+      .loading-phrase{font-size:18px;font-weight:700;color:#333333;margin:6px 0 4px}
+      .loading-phrase .word{opacity:0;display:inline-block;margin-right:6px;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
       .loading-progress{height:6px;background:#e5f0ff;border-radius:999px;overflow:hidden;margin-top:10px}
       .loading-progress .bar{height:100%;width:0;background:#2954B3;transition:width .4s ease}
     </style>
@@ -138,11 +138,7 @@
                     <!-- Fake loading inserted in modal -->
                     <div id="modal-loading" aria-live="polite" aria-atomic="true">
                         <div class="loading-icon" id="modal-loading-icon"></div>
-                        <div class="loading-steps">
-                            <div class="step" data-step="0">Gegevens verwerken</div>
-                            <div class="step" data-step="1">Succesvol verstuurd</div>
-                            <div class="step" data-step="2">Superdeal unlocken</div>
-                        </div>
+                        <div class="loading-phrase" id="modal-loading-phrase"></div>
                         <div class="loading-progress"><div class="bar" id="modal-progress"></div></div>
                     </div>
                 </div>
