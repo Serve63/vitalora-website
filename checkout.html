@@ -1175,6 +1175,37 @@
             .right-column .order-form { display: none !important; }
             .right-column { display: none !important; }
         }
+        /* Hard mobile overrides appended last to beat cascade */
+        @media (max-width: 768px) {
+            /* Hide any USP blocks everywhere */
+            body .usps,
+            body .title-content .usps {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Equal field heights in whichever form is visible */
+            body .order-form .form-group input,
+            body .order-form .form-group select,
+            body .order-form-mobile .form-group input,
+            body .order-form-mobile .form-group select {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 18px 20px !important;
+                line-height: 1 !important;
+                box-sizing: border-box !important;
+            }
+            body .order-form .form-group select,
+            body .order-form-mobile .form-group select {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: none !important;
+            }
+        }
     </style>
 </head>
 <body>
