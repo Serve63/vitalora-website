@@ -59,7 +59,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     ];
                     var step = 0;
                     function showWords(words){
-                        phrase.innerHTML = words.map(w => '<span class="word">'+w+'</span>').join(' ');
+                        // Join without extra spaces; spacing controlled via CSS margin
+                        phrase.innerHTML = words.map(w => '<span class="word">'+w+'</span>').join('');
                         var els = phrase.querySelectorAll('.word');
                         els.forEach((el,idx)=> setTimeout(()=>{ el.style.opacity=1; el.style.transform='translateY(0)'; }, idx*220));
                     }
