@@ -65,7 +65,7 @@
         <h3>Klantenoverzicht</h3>
         <p class="muted">Overzicht van alle klanten en hun bestedingen.</p>
 
-        <table>
+        <table id="customers-table">
           <thead>
             <tr>
               <th>Naam</th>
@@ -73,11 +73,35 @@
               <th>Bedrag</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody id="customers-body">
           </tbody>
         </table>
       </section>
     </main>
   </div>
+  <script>
+    (async function(){
+      try{
+        const res = await fetch('/api/customers');
+        const data = await res.json();
+        if(!res.ok) throw new Error(JSON.stringify(data));
+        const body = document.getElementById('customers-body');
+        function fmt(v){ return '€ ' + Number(v||0).toFixed(2).replace('.', ','); }
+        if(!data.customers || data.customers.length===0){
+          body.innerHTML = '<tr><td colspan="3" style="color:#6b7280;padding:16px">Geen klanten gevonden</td></tr>';
+          return;
+        }
+        data.customers.forEach(c => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = '<td>'+(c.name||'-')+'</td><td>'+(c.email||'-')+'</td><td>'+fmt(c.total)+'</td>';
+          body.appendChild(tr);
+        });
+      }catch(e){
+        const body = document.getElementById('customers-body');
+        body.innerHTML = '<tr><td colspan="3" style="color:#ef4444;padding:16px">Fout bij laden klanten</td></tr>';
+        console.log('Customers load failed', e);
+      }
+    })();
+  </script>
 </body>
 </html>
