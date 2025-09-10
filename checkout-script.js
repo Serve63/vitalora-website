@@ -89,8 +89,15 @@ document.addEventListener('DOMContentLoaded', function() {
             this.disabled = true;
 
             try {
+                // Determine amount per page
+                const path = (window.location && window.location.pathname) || '';
+                let amountValue = '27.00';
+                if (path === '/checkout' || path === '/checkout-new.html') amountValue = '47.00';
+                if (path === '/clean-reset' || path === '/clean-reset.html') amountValue = '47.00';
+                if (path === '/wacht-even' || path === '/wacht-even.html') amountValue = '27.00';
+
                 const body = {
-                    amount: '0.10',
+                    amount: amountValue,
                     description: 'Clean Reset Cursus',
                     name: (firstName + ' ' + (lastName || '')).trim(),
                     email,
