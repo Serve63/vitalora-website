@@ -54,9 +54,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Form Validation and Submission
-    const activeForm = document.querySelector('.order-form-mobile')?.offsetParent !== null
-        ? document.querySelector('.order-form-mobile')
-        : document.querySelector('.order-form');
+    const activeForm = (function(){
+        const mobile = document.querySelector('.order-form-mobile');
+        if (mobile && mobile.offsetParent !== null) return mobile;
+        // Support both checkout.html (.order-form) and checkout-new.html (.checkout-form)
+        return document.querySelector('.order-form') || document.querySelector('.checkout-form');
+    })();
     const checkoutButton = activeForm?.querySelector('.checkout-button');
     
     if (checkoutButton) {
@@ -87,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 const body = {
-                    amount: '0.10',
+                    amount: '27.00',
                     description: 'Clean Reset Cursus',
                     name: (firstName + ' ' + (lastName || '')).trim(),
                     email,

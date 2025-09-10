@@ -486,28 +486,8 @@
             });
         });
 
-        // Form validation and submission
-        document.querySelector('.checkout-button').addEventListener('click', function() {
-            const form = this.closest('.checkout-form');
-            const inputs = form.querySelectorAll('input[required]');
-            let isValid = true;
-
-            inputs.forEach(input => {
-                if (!input.value.trim()) {
-                    isValid = false;
-                    input.style.borderColor = '#ef4444';
-                } else {
-                    input.style.borderColor = '#e5e7eb';
-                }
-            });
-
-            if (isValid) {
-                // Redirect to wacht-even page after successful checkout
-                window.location.href = '/wacht-even';
-            } else {
-                alert('Vul alle verplichte velden in');
-            }
-        });
+        // Remove legacy redirect handler; real submission handled by checkout-script.js
     </script>
+    <script src="/checkout-script.js?v=3"></script>
 </body>
 </html>
