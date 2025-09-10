@@ -217,7 +217,7 @@
     }
     
     .editor-content .summary-content:empty:before {
-      content: "Even Kort Uitgelegd...";
+      content: "In het kort...";
       color: #9ca3af;
       font-style: italic;
     }
@@ -578,7 +578,7 @@
               }
               break;
             case 'kort':
-              const summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'Kort');
+              const summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'In het kort...');
               if (summaryTitle) {
                 const summaryHTML = `
                   <div class="summary-box">
