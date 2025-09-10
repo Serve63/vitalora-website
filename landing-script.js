@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', function() {
             // Show inline loading in modal instead of separate page
             try {
                 var loadingBox = document.getElementById('modal-loading');
-                var bar = document.getElementById('modal-progress');
+                var progress = document.getElementById('modal-progress');
                 var phrase = document.getElementById('modal-loading-phrase');
                 if (loadingBox) {
                     form.classList.add('hidden');
@@ -62,7 +62,10 @@ document.addEventListener('DOMContentLoaded', function() {
                         phrase.textContent = text;
                     }
                     function advance(){
-                        if (bar) bar.style.width = Math.min((step+1)*33, 100) + '%';
+                        if (progress) {
+                            var segs = progress.querySelectorAll('.seg');
+                            segs.forEach((s,idx)=>{ s.classList.toggle('filled', idx < step+1); });
+                        }
                         showWords(wordSets[step]||'');
                         step++;
                         if (step < wordSets.length) setTimeout(advance, 1000);
