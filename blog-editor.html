@@ -578,8 +578,9 @@
               }
               break;
             case 'kort':
-              const summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'In het kort...');
-              if (summaryTitle) {
+              let summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'In het kort...');
+              if (!summaryTitle) summaryTitle = 'In het kort...';
+              {
                 const summaryHTML = `
                   <div class="summary-box">
                     <div class="summary-header">
