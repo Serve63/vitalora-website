@@ -79,13 +79,13 @@
       </div>
 
       <section class="kpi-grid">
-        <div class="kpi"><h3>Alltime omzet</h3><div class="val">€ 0,00</div></div>
+        <div class="kpi"><h3>Alltime omzet</h3><div class="val" id="rev-all">€ 0,00</div></div>
 
-        <div class="kpi"><h3>Omzet dit jaar</h3><div class="val">€ 0,00</div></div>
+        <div class="kpi"><h3>Omzet dit jaar</h3><div class="val" id="rev-year">€ 0,00</div></div>
 
-        <div class="kpi"><h3>Omzet deze maand</h3><div class="val">€ 0,00</div></div>
+        <div class="kpi"><h3>Omzet deze maand</h3><div class="val" id="rev-month">€ 0,00</div></div>
 
-        <div class="kpi"><h3>Omzet vandaag</h3><div class="val">€ 0,00</div></div>
+        <div class="kpi"><h3>Omzet vandaag</h3><div class="val" id="rev-today">€ 0,00</div></div>
 
       </section>
 
@@ -114,6 +114,21 @@
     (function(){
       const key='staff_access_ok';
       if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
+      // Revenue fetch
+      async function loadRevenue(){
+        try{
+          const res = await fetch('/api/orders-summary');
+          const data = await res.json();
+          if(!res.ok) throw new Error(JSON.stringify(data));
+          function fmt(v){ return '€ ' + (Number(v||0).toFixed(2)).replace('.', ','); }
+          document.getElementById('rev-all').textContent = fmt(data.allTime);
+          document.getElementById('rev-year').textContent = fmt(data.year);
+          document.getElementById('rev-month').textContent = fmt(data.month);
+          document.getElementById('rev-today').textContent = fmt(data.today);
+        }catch(e){ console.log('Revenue load failed', e); }
+      }
+      loadRevenue();
+      setInterval(loadRevenue, 60000);
       
       // Load and display blog posts in the table
       function loadBlogPosts() {
