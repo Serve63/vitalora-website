@@ -75,6 +75,9 @@
             padding: 0;
         }
 
+        /* Mobile-only USP list (hidden by default) */
+        .usps-mobile { display: none; }
+
         .benefits-list li {
             display: flex;
             align-items: flex-start;
@@ -318,10 +321,39 @@
             .product-description {
                 display: none !important;
             }
-            /* Show USP list under the image on mobile */
-            .benefits-list {
-                display: block !important;
+            /* Hide desktop benefits list and show custom mobile USP list */
+            .benefits-list { display: none !important; }
+            .usps-mobile {
+                display: grid !important;
+                grid-template-columns: 1fr;
+                row-gap: 8px;
                 margin-top: 12px;
+                padding: 0;
+                list-style: none;
+                text-align: left;
+            }
+            .usps-mobile li {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-size: 13px;
+                line-height: 1.45;
+                color: #333333;
+            }
+            .usps-mobile li::before {
+                content: "✓";
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #28A270;
+                color: #ffffff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-top: 2px;
             }
             
             .benefits-list li {
@@ -388,6 +420,15 @@
                 <div class="product-image">
                     <img src="/assets/images/Clean-reset 2025.png" alt="Clean Reset Detox Cursus" style="width: 100%; max-width: 400px; height: auto; border-radius: 12px; margin: 20px 0;">
                 </div>
+                
+                <!-- Mobile-only USP section under the image -->
+                <ul class="usps-mobile">
+                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
+                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
+                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
+                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
+                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
+                </ul>
                 
                 <div class="product-description">
                     <p>Je lichaam stapelt elke dag ongemerkt gifstoffen op.</p>
