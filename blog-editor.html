@@ -369,6 +369,7 @@
         <div class="form-group">
           <label class="form-label">URL</label>
           <input type="text" class="form-input" id="blog-slug" placeholder="blog-url">
+          <small id="slug-hint" style="display:block;color:#64748b;margin-top:4px">Uniek, alleen letters/cijfers/koppelteken</small>
         </div>
         <div class="form-group">
           <label class="form-label">Revisies</label>
@@ -426,6 +427,7 @@
         <button type="button" class="btn btn-outline" id="save-draft">Concept Opslaan</button>
         <button type="button" class="btn btn-outline" id="schedule-blog">Inplannen</button>
         <button type="button" class="btn btn-primary" id="publish-blog">Publiceren</button>
+        <button type="button" class="btn btn-secondary" id="preview-blog">Preview</button>
         <button type="button" class="btn btn-danger" id="delete-blog" style="display:none;">Verwijderen</button>
       </div>
     </form>
@@ -443,6 +445,7 @@
       // Get elements
       const blogTitle = document.getElementById('blog-title');
       const blogSlug = document.getElementById('blog-slug');
+      const slugHint = document.getElementById('slug-hint');
       const blogMetaTitle = document.getElementById('blog-meta-title');
       const blogMetaDescription = document.getElementById('blog-meta-description');
       const blogContent = document.getElementById('blog-content');
@@ -511,22 +514,31 @@
         }
       });
       
-      // Auto-generate URL from title
-      blogTitle.addEventListener('input', function() {
-        const slug = this.value
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, '')
-          .replace(/\s+/g, '-')
-          .replace(/-+/g, '-')
-          .trim('-');
-        blogSlug.value = slug;
-        
-        // Auto-fill meta title if empty
-        if (!blogMetaTitle.value) {
-          blogMetaTitle.value = this.value;
+      function normalizeSlug(input){
+        return (input||'').toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+      }
+
+      function isUniqueSlug(slug, ignoreId){
+        try {
+          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts')||'[]');
+          return !posts.some(p => p.slug === slug && String(p.id) !== String(ignoreId||''));
+        } catch(_) { return true; }
+      }
+
+      blogTitle.addEventListener('blur', function(){
+        if(!blogSlug.value.trim()){
+          blogSlug.value = normalizeSlug(blogTitle.value);
         }
       });
-      
+
+      blogSlug.addEventListener('input', function(){
+        const normalized = normalizeSlug(blogSlug.value);
+        if (blogSlug.value !== normalized) blogSlug.value = normalized;
+        const ok = isUniqueSlug(blogSlug.value, editId);
+        slugHint.style.color = ok ? '#64748b' : '#ef4444';
+        slugHint.textContent = ok ? 'Uniek, alleen letters/cijfers/koppelteken' : 'Slug is al in gebruik';
+      });
+
       // Toolbar functionality
       document.querySelectorAll('.toolbar-btn').forEach(btn => {
         btn.addEventListener('click', function() {
@@ -845,6 +857,37 @@
         alert('Blog verwijderd');
         window.location.href = '/personeel-dashboard';
       });
+      
+      // Preview opens post.html with current slug in new tab
+      const previewBtn = document.getElementById('preview-blog');
+      if (previewBtn) {
+        previewBtn.addEventListener('click', function(){
+          const slug = normalizeSlug(blogSlug.value || blogTitle.value);
+          if(!slug){ alert('Vul eerst titel of slug in'); return; }
+          // ensure current changes are reflected for preview: save draft temporarily in storage
+          try {
+            let posts = JSON.parse(localStorage.getItem('vitalora_blog_posts')||'[]');
+            const idx = editId ? posts.findIndex(p=>String(p.id)===String(editId)) : -1;
+            const doc = {
+              id: editId || Date.now(),
+              title: blogTitle.value.trim() || slug,
+              slug: slug,
+              metaTitle: blogMetaTitle.value.trim(),
+              metaDescription: blogMetaDescription.value.trim(),
+              content: blogContent.innerHTML,
+              featuredImage: (function(){
+                const img= document.getElementById('image-preview')?.querySelector('img');
+                return img? img.src : (idx>=0 && posts[idx] && posts[idx].featuredImage) ? posts[idx].featuredImage : null;
+              })(),
+              status: (idx>=0 && posts[idx].status) || 'draft',
+              updatedAt: new Date().toISOString()
+            };
+            if (idx>=0) { posts[idx]= { ...posts[idx], ...doc }; } else { posts.unshift(doc); }
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(posts));
+          } catch(_){}
+          window.open('/post.html?slug=' + encodeURIComponent(slug), '_blank');
+        });
+      }
       
     })();
   </script>

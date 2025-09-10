@@ -90,9 +90,15 @@
       </section>
 
       <section id="blogs" class="card">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
           <h3 style="margin: 0;">Blogbeheer</h3>
-          <a href="/blog-editor.html" style="background: #10b981 !important; color: white !important; padding: 8px 16px !important; border-radius: 6px !important; text-decoration: none !important; font-weight: 600 !important; font-size: 14px !important; border: none !important; display: inline-block !important;">Blog aanmaken</a>
+          <div style="display:flex; gap:8px; align-items:center;">
+            <a href="/blog-editor.html" style="background: #10b981 !important; color: white !important; padding: 8px 16px !important; border-radius: 6px !important; text-decoration: none !important; font-weight: 600 !important; font-size: 14px !important; border: none !important; display: inline-block !important;">Blog aanmaken</a>
+            <button id="export-posts" style="background:#2954B3;color:#fff;border:0;border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer">Exporteren</button>
+            <button id="import-posts" style="background:#3A9AEA;color:#fff;border:0;border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer">Importeren</button>
+            <button id="sync-feed" style="background:#64748b;color:#fff;border:0;border-radius:6px;padding:8px 12px;font-weight:700;cursor:pointer">Genereer feed</button>
+            <input id="import-file" type="file" accept="application/json" style="display:none" />
+          </div>
         </div>
         <p class="muted">Klik op een item om het bronbestand te openen. CMS-koppeling kan later toegevoegd worden.</p>
 
@@ -157,6 +163,81 @@
         });
       }
       
+      function downloadFile(filename, text) {
+        const blob = new Blob([text], {type: 'application/json;charset=utf-8'});
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(() => { URL.revokeObjectURL(url); document.body.removeChild(a); }, 0);
+      }
+
+      // Export posts
+      const exportBtn = document.getElementById('export-posts');
+      if (exportBtn) {
+        exportBtn.onclick = function(){
+          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+          downloadFile('blog-posts-export.json', JSON.stringify(posts, null, 2));
+        };
+      }
+
+      // Import posts (merge by slug)
+      const importBtn = document.getElementById('import-posts');
+      const importInput = document.getElementById('import-file');
+      if (importBtn && importInput) {
+        importBtn.onclick = () => importInput.click();
+        importInput.onchange = function(ev){
+          const file = ev.target.files && ev.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function(e){
+            try {
+              const imported = JSON.parse(String(e.target.result || '[]'));
+              if (!Array.isArray(imported)) { alert('Ongeldig JSON-formaat'); return; }
+              let current = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+              const bySlug = new Map(current.map(p => [p.slug, p]));
+              imported.forEach(p => {
+                if (!p || !p.slug) return;
+                if (bySlug.has(p.slug)) {
+                  const existing = bySlug.get(p.slug);
+                  const merged = { ...existing, ...p };
+                  bySlug.set(p.slug, merged);
+                } else {
+                  bySlug.set(p.slug, p);
+                }
+              });
+              current = Array.from(bySlug.values());
+              localStorage.setItem('vitalora_blog_posts', JSON.stringify(current));
+              alert('Import voltooid. ' + current.length + ' posts in totaal.');
+              loadBlogPosts();
+              importInput.value = '';
+            } catch(err){
+              alert('Import mislukt: ' + err.message);
+            }
+          };
+          reader.readAsText(file);
+        };
+      }
+
+      // Generate simple feed JSON for site commit
+      const syncBtn = document.getElementById('sync-feed');
+      if (syncBtn) {
+        syncBtn.onclick = function(){
+          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]')
+            .filter(p => (p.status || 'published') === 'published')
+            .map((p, idx) => ({
+              id: p.id || (idx+1),
+              slug: p.slug,
+              title: p.title,
+              publishedDate: p.publishedDate || p.publishDate || '',
+              readTime: p.readTime || Math.max(3, Math.ceil(String(p.content||'').replace(/<[^>]*>/g,'').split(/\s+/).length/200))
+            }));
+          downloadFile('blog-feed.json', JSON.stringify(posts, null, 2));
+        };
+      }
+
       // Load blog posts when page loads
       loadBlogPosts();
       
