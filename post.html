@@ -207,6 +207,23 @@
         canonical.setAttribute('href', location.origin + '/' + encodeURIComponent(slug));
       })();
 
+      // Normalize summary headers label to "In het kort..." on render
+      (function normalizeSummaryHeaders(){
+        try {
+          var headers = document.querySelectorAll('.summary-header');
+          headers.forEach(function(h){
+            // Preserve icon, replace label
+            var icon = h.querySelector('.icon');
+            h.innerHTML = '';
+            var iconEl = document.createElement('div');
+            iconEl.className = 'icon';
+            iconEl.textContent = '📋';
+            h.appendChild(iconEl);
+            h.appendChild(document.createTextNode(' In het kort...'));
+          });
+        } catch(_) {}
+      })();
+
       console.log('=== POST TEMPLATE SCRIPT END ===');
     })();
   </script>
