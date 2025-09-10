@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             try {
                 const body = {
-                    amount: '27.00',
+                    amount: '0.10',
                     description: 'Clean Reset Cursus',
                     name: (firstName + ' ' + (lastName || '')).trim(),
                     email,
