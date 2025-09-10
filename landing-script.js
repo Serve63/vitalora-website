@@ -53,20 +53,17 @@ document.addEventListener('DOMContentLoaded', function() {
                     form.classList.add('hidden');
                     loadingBox.classList.add('active');
                     var wordSets = [
-                        ['Gegevens', 'verwerken…'],
-                        ['Succesvol', 'verstuurd'],
-                        ['Deal', 'voorbereiden']
+                        'Gegevens verwerken…',
+                        'Succesvol verstuurd',
+                        'Exclusief aanbod creëren 🎁'
                     ];
                     var step = 0;
-                    function showWords(words){
-                        // Join without extra spaces; spacing controlled via CSS margin
-                        phrase.innerHTML = words.map(w => '<span class="word">'+w+'</span>').join('');
-                        var els = phrase.querySelectorAll('.word');
-                        els.forEach((el,idx)=> setTimeout(()=>{ el.style.opacity=1; el.style.transform='translateY(0)'; }, idx*220));
+                    function showWords(text){
+                        phrase.textContent = text;
                     }
                     function advance(){
                         if (bar) bar.style.width = Math.min((step+1)*33, 100) + '%';
-                        showWords(wordSets[step]||[]);
+                        showWords(wordSets[step]||'');
                         step++;
                         if (step < wordSets.length) setTimeout(advance, 1000);
                         else setTimeout(function(){

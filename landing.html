@@ -36,7 +36,8 @@
       @keyframes spin{to{transform:rotate(360deg)}}
       .loading-steps{display:none}
       .loading-phrase{font-size:18px;font-weight:700;color:#333333;margin:6px 0 4px;font-family:'Lato', Arial, sans-serif}
-      .loading-phrase .word{opacity:0;display:inline-block;margin-right:6px;transform:translateY(6px);transition:opacity .25s ease,transform .25s ease}
+      /* No per-word animation now */
+      .loading-phrase .word{opacity:1;display:inline-block;margin-right:6px;transform:none;transition:none}
       .loading-phrase .word:last-child{margin-right:0}
       .loading-progress{height:6px;background:#e5f0ff;border-radius:999px;overflow:hidden;margin-top:10px}
       .loading-progress .bar{height:100%;width:0;background:#2954B3;transition:width .4s ease}
