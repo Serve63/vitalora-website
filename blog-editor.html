@@ -462,6 +462,63 @@
       // Check if we're editing an existing post
       const urlParams = new URLSearchParams(window.location.search);
       const editId = urlParams.get('edit');
+
+      // --- Editor UX helpers for "In het kort..." box ---
+      function normalizeSummaryHeadersInEditor() {
+        try {
+          document.querySelectorAll('.summary-header').forEach(function(h){
+            const icon = h.querySelector('.icon');
+            h.innerHTML = '';
+            const iconEl = document.createElement('div');
+            iconEl.className = 'icon';
+            iconEl.textContent = '📋';
+            h.appendChild(iconEl);
+            h.appendChild(document.createTextNode(' In het kort...'));
+          });
+        } catch(_) {}
+      }
+
+      function ensureParagraphAfterSummaryBoxes() {
+        document.querySelectorAll('.summary-box').forEach(function(box){
+          const next = box.nextSibling && box.nextSibling.nodeType === 1 ? box.nextSibling : box.nextElementSibling;
+          if (!next || (next.tagName !== 'P' && !next.classList?.contains('summary-box'))) {
+            const p = document.createElement('p');
+            p.innerHTML = '<br>';
+            box.insertAdjacentElement('afterend', p);
+          }
+        });
+      }
+
+      function placeCaret(el){
+        try {
+          const range = document.createRange();
+          range.selectNodeContents(el);
+          range.collapse(true);
+          const sel = window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+        } catch(_) {}
+      }
+
+      // On load, normalize label and make sure you can click below the box
+      normalizeSummaryHeadersInEditor();
+      ensureParagraphAfterSummaryBoxes();
+
+      // Hitting Enter inside summary-content moves caret below the box (Shift+Enter = nieuwe regel)
+      blogContent.addEventListener('keydown', function(e){
+        const target = e.target;
+        if (target && target.classList && target.classList.contains('summary-content')) {
+          if (e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault();
+            const box = target.closest('.summary-box');
+            if (!box) return;
+            const p = document.createElement('p');
+            p.innerHTML = '<br>';
+            box.insertAdjacentElement('afterend', p);
+            placeCaret(p);
+          }
+        }
+      });
       
       if (editId) {
         // Load existing blog post for editing
@@ -588,9 +645,17 @@
                       ${summaryTitle}
                     </div>
                     <div class="summary-content" contenteditable="true"></div>
-                  </div>
-                `;
+                  </div>`;
                 document.execCommand('insertHTML', false, summaryHTML);
+                // After insert: normalize label and add paragraph after
+                setTimeout(function(){
+                  try {
+                    normalizeSummaryHeadersInEditor();
+                    ensureParagraphAfterSummaryBoxes();
+                    const lastBox = blogContent.querySelector('.summary-box:last-of-type');
+                    if (lastBox && lastBox.nextElementSibling) blogContent.focus();
+                  } catch(_){}
+                }, 0);
               }
               break;
             case 'afbeelding toevoegen':
