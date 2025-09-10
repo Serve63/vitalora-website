@@ -30,6 +30,8 @@
 
     .kpi-grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:18px 0 24px}
     .kpi{grid-column:span 3;background:#ffffff;border:1px solid #e6edf7;border-radius:16px;box-shadow:0 2px 8px rgba(15,23,42,.06);padding:18px}
+    /* Highlight today's revenue card */
+    #kpi-today{border:2px solid #10b981}
 
     .kpi h3{margin:0 0 8px;color:#334155;font-weight:700}
     .kpi .val{font-size:30px;font-weight:800;color:var(--ink)}
@@ -85,7 +87,7 @@
 
         <div class="kpi"><h3>Omzet deze maand</h3><div class="val" id="rev-month">€ 0,00</div></div>
 
-        <div class="kpi"><h3>Omzet vandaag</h3><div class="val" id="rev-today">€ 0,00</div></div>
+        <div class="kpi" id="kpi-today"><h3>Omzet vandaag</h3><div class="val" id="rev-today">€ 0,00</div></div>
 
       </section>
 
@@ -93,7 +95,7 @@
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; gap: 12px; flex-wrap: wrap;">
           <h3 style="margin: 0;">Blogbeheer</h3>
           <div style="display:flex; gap:8px; align-items:center;">
-            <a href="/blog-editor.html" style="background: #10b981 !important; color: white !important; padding: 8px 16px !important; border-radius: 6px !important; text-decoration: none !important; font-weight: 600 !important; font-size: 14px !important; border: none !important; display: inline-block !important;">Blog aanmaken</a>
+          <a href="/blog-editor.html" style="background: #10b981 !important; color: white !important; padding: 8px 16px !important; border-radius: 6px !important; text-decoration: none !important; font-weight: 600 !important; font-size: 14px !important; border: none !important; display: inline-block !important;">Blog aanmaken</a>
           </div>
         </div>
         <p class="muted">Klik op een item om het bronbestand te openen. CMS-koppeling kan later toegevoegd worden.</p>
@@ -213,13 +215,13 @@
               window.open(url, '_blank');
             });
           }
-
+          
           tableBody.appendChild(row);
         });
       }
       
       // No extra actions here; only listing and create button per verzoek
-
+      
       // Load blog posts when page loads
       loadBlogPosts();
       
