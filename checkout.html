@@ -586,6 +586,34 @@
                 flex-wrap: wrap;
                 gap: 12px 20px;
             }
+
+            /* Hide USPs on tablet and mobile */
+            .usps, .title-content .usps {
+                display: none !important;
+                visibility: hidden !important;
+                height: 0 !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* Ensure consistent field heights for default form on small screens */
+            .order-form .form-group input,
+            .order-form .form-group select {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 18px 20px !important;
+                line-height: 1 !important;
+                box-sizing: border-box !important;
+            }
+            .order-form .form-group select {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: none !important;
+                border: 2px solid #1BA070 !important;
+                background: white !important;
+                color: var(--text) !important;
+            }
         }
 
         @media (max-width: 480px) {
