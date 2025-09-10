@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     var wordSets = [
                         ['Gegevens', 'verwerken…'],
                         ['Succesvol', 'verstuurd'],
-                        ['Superdeal', 'unlocken']
+                        ['Deal', 'voorbereiden']
                     ];
                     var step = 0;
                     function showWords(words){
