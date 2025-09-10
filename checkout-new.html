@@ -324,6 +324,24 @@
                 text-align: left;
                 margin-bottom: 10px;
             }
+
+            /* Equalize field heights for inputs and country select on mobile */
+            .checkout-form .form-group input,
+            .checkout-form .form-group select {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 18px 20px !important;
+                line-height: 1.2 !important;
+                box-sizing: border-box !important;
+            }
+            .checkout-form .form-group select {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: none !important;
+                border-color: #28A270 !important;
+                background-color: #ffffff !important;
+            }
             
             .product-info,
             .checkout-form {
