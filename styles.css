@@ -271,12 +271,16 @@ header {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.8);
     margin-bottom: 16px;
 }
 
 .cta-button:hover {
     background-color: #059669;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.9);
 }
+
+.cta-button:active { box-shadow: 0 1px 2px rgba(0,0,0,0.8); }
 
 .login-link {
     font-size: 14px;
