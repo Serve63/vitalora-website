@@ -422,11 +422,11 @@
         }
         
         .order-form {
-            background: transparent;
-            border-radius: 0;
-            padding: 0;
-            box-shadow: none;
-            border: none;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 24px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
         }
         
         /* Desktop specific styling - Complete redesign */
@@ -434,11 +434,11 @@
             .order-form {
                 max-width: 420px;
                 margin: 0 auto;
-                padding: 0;
-                background: transparent;
-                border-radius: 0;
-                box-shadow: none;
-                border: none;
+                padding: 28px;
+                background: var(--bg-card);
+                border-radius: 20px;
+                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
+                border: 1px solid var(--border);
             }
         }
         
@@ -464,20 +464,22 @@
         
         .form-section {
             margin-bottom: 16px;
-            background: transparent;
-            padding: 0;
-            border: none;
-            border-radius: 0;
+            background: transparent !important;
+            padding: 0 !important;
+            border: none !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
         }
         
         /* Desktop specific form spacing */
         @media (min-width: 769px) {
             .form-section {
                 margin-bottom: 28px;
-                background: transparent;
-                padding: 0;
-                border-radius: 0;
-                border: none;
+                background: transparent !important;
+                padding: 0 !important;
+                border-radius: 0 !important;
+                border: none !important;
+                box-shadow: none !important;
             }
         }
         
@@ -1790,7 +1792,7 @@
                             <label for="terms-mobile">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
                             </div>
                                 </div>
-                                </div>
+                </div>
 
                 <!-- Right Column - Order Form -->
                 <div class="right-column">
@@ -1820,15 +1822,15 @@
                                 <div class="payment-method selected">
                                     <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
                                     <span>iDEAL</span>
-                            </div>
+                                </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
                                     <span>Creditcard</span>
-                            </div>
+                                </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
                                     <span>Klarna</span>
-                        </div>
+                                </div>
                                 <div class="payment-method">
                                     <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
                                     <span>Bancontact</span>
