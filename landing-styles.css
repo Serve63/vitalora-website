@@ -134,6 +134,7 @@ body {
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.8);
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -141,7 +142,10 @@ body {
 
 .cta-button:hover {
     background-color: #059669;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.9);
 }
+
+.cta-button:active { box-shadow: 0 1px 2px rgba(0,0,0,0.8); }
 
 /* Specific styling for CTA button in green section */
 .final-cta .cta-button {
@@ -191,6 +195,7 @@ body {
 
 #ebook-claim:active {
     background-color: #047857 !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.8) !important;
 }
 
 /* Book Stack */
