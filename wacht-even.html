@@ -1604,8 +1604,9 @@
                 font-size: 16px !important;
                 border-radius: 10px !important;
             }
-            .order-form-mobile .payment-methods-desktop { display: none !important; }
-            .order-form-mobile .payment-mobile { display: block !important; }
+            /* Show all payment methods stacked; hide dropdown */
+            .order-form-mobile .payment-methods-desktop { display: grid !important; grid-template-columns: 1fr !important; gap: 8px !important; }
+            .order-form-mobile .payment-mobile { display: none !important; }
             .order-form-mobile .order-summary { 
                 background: transparent !important; 
                 border: none !important; 
