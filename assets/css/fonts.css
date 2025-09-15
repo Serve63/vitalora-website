@@ -48,8 +48,9 @@ a:hover { text-decoration-thickness: 2px; }
   text-decoration-color: rgba(255,255,255,.7);
 }
 
-/* Veiligheidsnet: haal eventuele highlight-effecten weg */
-a, .prose a {
+/* Veiligheidsnet: haal eventuele highlight-effecten weg
+   Let op: laat CTA-knoppen met .cta-button met rust. */
+a:not(.cta-button), .prose a:not(.cta-button) {
   background: none !important;
   box-shadow: none !important;
   -webkit-box-decoration-break: slice;
@@ -61,7 +62,7 @@ html, body { margin: 0; padding: 0; overflow-x: clip; }
 /* Normale links overal (geen gekke markers) */
 a { color: #2563eb; text-decoration: underline; text-underline-offset: 2px; }
 a:hover { text-decoration-thickness: 2px; }
-.prose a, .course-hero a, .lesson-hero a {
+.prose a:not(.cta-button), .course-hero a:not(.cta-button), .lesson-hero a:not(.cta-button) {
   background: none !important;
   box-shadow: none !important;
 }
