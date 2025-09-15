@@ -674,8 +674,7 @@ body.home footer .footer-bottom { opacity: .85; }
     display: block !important;
     margin-top: 12px !important;
     font-weight: 400 !important;
-    text-decoration: underline !important;
-    text-underline-offset: 2px !important;
+    text-decoration: none !important;
     color: #ffffff !important;
   }
 }
