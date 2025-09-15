@@ -75,6 +75,13 @@ footer {
   margin-top: 8px !important;
 }
 
+/* Bold label preceding the brand email */
+.footer-brand .brand-email .label {
+  font-weight: 800 !important;
+  text-decoration: none !important;
+  margin-right: 6px !important;
+}
+
 /* Ensure brand email link is white in the footer */
 .footer-brand a {
   color: white !important;
