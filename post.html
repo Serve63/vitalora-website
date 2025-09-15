@@ -168,6 +168,31 @@
       
       console.log('Content element innerHTML:', contentEl.innerHTML);
 
+      // Extra guard: some environments/scripts may try to reset the template.
+      // Keep the rendered title/content stable by restoring if they get overwritten.
+      try {
+        function enforceRender(){
+          try {
+            if (titleEl && (titleEl.textContent || '').trim().toLowerCase() === 'laden...') {
+              titleEl.textContent = post.title || titleEl.textContent;
+            }
+            if (contentEl) {
+              var html = (contentEl.innerHTML || '').trim();
+              if (!html || html === 'Nog invullen.' || html.indexOf('Nog invullen') !== -1) {
+                contentEl.innerHTML = post.content || '<p>Deze blog post is nog leeg.</p>';
+              }
+            }
+          } catch(_) {}
+        }
+        // Observe future mutations and re-apply if needed
+        var contentObserver = new MutationObserver(function(muts){ enforceRender(); });
+        contentObserver.observe(contentEl, { childList: true, characterData: true, subtree: true });
+        // Re-enforce a few times after load as belt-and-suspenders
+        setTimeout(enforceRender, 100);
+        setTimeout(enforceRender, 600);
+        setTimeout(enforceRender, 1500);
+      } catch(_) {}
+
       // Featured image handling
       try {
         const featuredWrap = document.getElementById('featured-image');
