@@ -1,0 +1,12 @@
+{
+  "name": "vitalora-website",
+  "version": "1.0.0",
+  "description": "Vitalora website with contact form functionality",
+  "main": "index.js",
+  "dependencies": {
+    "@sendgrid/mail": "^8.1.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

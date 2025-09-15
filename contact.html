@@ -91,15 +91,51 @@
 	(function(){
 		const form = document.getElementById('contact-form');
 		const feedback = document.getElementById('contact-feedback');
-		form.addEventListener('submit', function(e){
+		const submitBtn = form.querySelector('button[type="submit"]');
+		
+		form.addEventListener('submit', async function(e){
 			e.preventDefault();
 			if(!form.checkValidity()){
 				form.reportValidity();
 				return;
 			}
-			// Simuleer succesvol verzenden
-			feedback.style.display = 'block';
-			form.reset();
+			
+			// Disable submit button and show loading state
+			submitBtn.disabled = true;
+			submitBtn.textContent = 'Versturen...';
+			
+			try {
+				const formData = new FormData(form);
+				const data = {
+					name: formData.get('name'),
+					email: formData.get('email'),
+					message: formData.get('message')
+				};
+				
+				const response = await fetch('/api/contact', {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json',
+					},
+					body: JSON.stringify(data)
+				});
+				
+				const result = await response.json();
+				
+				if (response.ok) {
+					feedback.style.display = 'block';
+					form.reset();
+				} else {
+					alert('Er is een fout opgetreden: ' + (result.error || 'Onbekende fout'));
+				}
+			} catch (error) {
+				console.error('Error:', error);
+				alert('Er is een fout opgetreden bij het verzenden van je bericht.');
+			} finally {
+				// Re-enable submit button
+				submitBtn.disabled = false;
+				submitBtn.textContent = 'Versturen';
+			}
 		});
 	})();
 	</script>
