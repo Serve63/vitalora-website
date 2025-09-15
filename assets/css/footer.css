@@ -67,7 +67,9 @@ footer {
 /* Non-clickable brand email styling */
 .footer-brand .brand-email {
   color: white !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
   font-size: 14px !important;
   display: inline-block !important;
   margin-top: 8px !important;
@@ -106,7 +108,9 @@ footer {
 /* Homepage variant for non-clickable brand email */
 .site-footer .footer-left .brand-email {
   color: white !important;
-  font-weight: 700 !important;
+  font-weight: 400 !important;
+  text-decoration: underline !important;
+  text-underline-offset: 2px !important;
   font-size: 14px !important;
   display: inline-block !important;
   margin-top: 8px !important;
