@@ -64,6 +64,15 @@ footer {
   color: white !important;
 }
 
+/* Non-clickable brand email styling */
+.footer-brand .brand-email {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  display: inline-block !important;
+  margin-top: 8px !important;
+}
+
 /* Ensure brand email link is white in the footer */
 .footer-brand a {
   color: white !important;
@@ -92,6 +101,15 @@ footer {
 .site-footer .footer-left a:hover {
   opacity: 1 !important;
   color: #ffffff !important;
+}
+
+/* Homepage variant for non-clickable brand email */
+.site-footer .footer-left .brand-email {
+  color: white !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+  display: inline-block !important;
+  margin-top: 8px !important;
 }
 
 .footer-links {
