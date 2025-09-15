@@ -76,7 +76,14 @@ footer {
 
 /* Bold label preceding the brand email */
 .footer-brand .brand-email .label {
-  font-weight: 800 !important;
+  font-weight: 700 !important;
+  text-decoration: none !important;
+  margin-right: 6px !important;
+}
+
+/* Homepage footer variant: make "Contact:" bold */
+.site-footer .footer-left .brand-email .label {
+  font-weight: 700 !important;
   text-decoration: none !important;
   margin-right: 6px !important;
 }
