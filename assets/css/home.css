@@ -667,6 +667,15 @@ body.home footer .footer-bottom { opacity: .85; }
     opacity: 0.7;
     text-align: left !important;
   }
+  
+  /* Ensure brand email sits at the very bottom on mobile */
+  body.home .site-footer .brand-email {
+    order: 6 !important;
+    display: block !important;
+    margin-top: 12px !important;
+    font-weight: 800 !important;
+    color: #ffffff !important;
+  }
 }
 
 /* Footer (homepage) */
