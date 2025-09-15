@@ -91,8 +91,11 @@ document.addEventListener('DOMContentLoaded', function() {
             try {
                 // Determine amount per page
                 const path = (window.location && window.location.pathname) || '';
-                // Test mode: force all payments to €1.00 regardless of page
-                let amountValue = '1.00';
+                // Restore original pricing per page
+                let amountValue = '27.00';
+                if (path === '/checkout' || path === '/checkout-new.html') amountValue = '47.00';
+                if (path === '/clean-reset' || path === '/clean-reset.html') amountValue = '47.00';
+                if (path === '/wacht-even' || path === '/wacht-even.html') amountValue = '27.00';
 
                 const body = {
                     amount: amountValue,
