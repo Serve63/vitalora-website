@@ -53,6 +53,13 @@ Deze website is geoptimaliseerd voor statische hosting op:
 - GitHub Pages
 - Elke andere statische hosting service
 
+## 📝 Blog beheer API
+
+- Serverless endpoint: `/api/blogs`
+- Vereist een PostgreSQL-verbinding via `POSTGRES_URL`, `DATABASE_URL`, `POSTGRES_URL_NON_POOLING` of `POSTGRES_PRISMA_URL`
+- Maakt automatisch de tabel `blog_posts` aan (met kolommen voor titel, slug, content, status, enz.)
+- Ondersteunt `GET`, `POST`, `PUT/PATCH` en `DELETE` voor blogposts
+
 ## 📱 Responsive Design
 
 - Desktop (1200px+)

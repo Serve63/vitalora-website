@@ -99,7 +99,7 @@
       enterButton.addEventListener('click', function(){
         const code = Array.from(pinInputs).map(input => input.value).join('');
         if(code === '248911') {
-          localStorage.setItem('staff_access_ok','1');
+          document.cookie = 'staff_access_ok=1; path=/; max-age=86400';
           window.location.href = '/personeel-dashboard';
         } else {
           errorDiv.textContent = 'Ongeldige code.';

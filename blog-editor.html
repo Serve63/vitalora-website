@@ -433,12 +433,17 @@
   </div>
 
   <script>
-    (function(){
-      // Check if user has access
-      const key='staff_access_ok';
-      if(localStorage.getItem(key)!=='1'){ 
-        window.location.href='/personeel'; 
-        return; 
+    (async function(){
+      // Check if user has access via cookie set op het personeelsscherm
+      function hasStaffAccess(){
+        return document.cookie.split(';').some(function(part){
+          return part.trim().startsWith('staff_access_ok=');
+        });
+      }
+
+      if(!hasStaffAccess()){
+        window.location.href='/personeel';
+        return;
       }
       
       // Get elements
@@ -461,7 +466,86 @@
       
       // Check if we're editing an existing post
       const urlParams = new URLSearchParams(window.location.search);
-      const editId = urlParams.get('edit');
+      let editId = urlParams.get('edit');
+      let currentPost = null;
+      let blogPostsCache = [];
+      const API_BASE = '/api/blogs';
+
+      async function fetchJson(url, options = {}) {
+        const init = { ...options };
+        init.headers = init.headers ? { ...init.headers } : {};
+        if (init.body && !(init.body instanceof FormData)) {
+          init.headers['Content-Type'] = 'application/json';
+        }
+        const response = await fetch(url, init);
+        const text = await response.text();
+        let data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (_) { data = null; }
+        }
+        if (!response.ok) {
+          const message = (data && data.error) || response.statusText || 'Onbekende fout';
+          const error = new Error(message);
+          error.status = response.status;
+          error.details = data;
+          throw error;
+        }
+        return data;
+      }
+
+      async function refreshCache() {
+        try {
+          const res = await fetchJson(API_BASE);
+          blogPostsCache = Array.isArray(res?.data) ? res.data : [];
+        } catch (error) {
+          blogPostsCache = [];
+          console.error('Kon blogposts niet laden', error);
+        }
+        return blogPostsCache;
+      }
+
+      async function fetchPostById(id) {
+        if (!id) return null;
+        const res = await fetchJson(`${API_BASE}?id=${encodeURIComponent(id)}`);
+        return res?.data || null;
+      }
+
+      async function upsertPost(payload) {
+        if (editId) {
+          const res = await fetchJson(`${API_BASE}?id=${encodeURIComponent(editId)}`, {
+            method: 'PUT',
+            body: JSON.stringify(payload)
+          });
+          return res?.data || null;
+        }
+        const res = await fetchJson(API_BASE, {
+          method: 'POST',
+          body: JSON.stringify(payload)
+        });
+        return res?.data || null;
+      }
+
+      async function removePost(id) {
+        if (!id) return;
+        await fetchJson(`${API_BASE}?id=${encodeURIComponent(id)}`, { method: 'DELETE' });
+      }
+
+      function updateScheduleButtonLabel(status) {
+        if (!scheduleBtn) return;
+        if (status === 'published') {
+          scheduleBtn.textContent = 'Offline zetten';
+        } else if (status === 'offline') {
+          scheduleBtn.textContent = 'Online zetten';
+        } else {
+          scheduleBtn.textContent = 'Inplannen';
+        }
+      }
+
+      function handleError(prefix, error) {
+        console.error(prefix, error);
+        const message = error && error.message ? error.message : 'Onbekende fout';
+        alert(prefix + ': ' + message);
+      }
 
       // --- Editor UX helpers for "In het kort..." box ---
       function normalizeSummaryHeadersInEditor() {
@@ -520,23 +604,33 @@
         }
       });
       
+      await refreshCache();
+      updateSlugHint();
+
       if (editId) {
-        // Load existing blog post for editing
-        const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        const post = blogPosts.find(p => p.id == editId);
-        
-        if (post) {
-          blogTitle.value = post.title;
-          blogSlug.value = post.slug;
-          blogMetaTitle.value = post.metaTitle;
-          blogMetaDescription.value = post.metaDescription;
-          blogContent.innerHTML = post.content;
+        try {
+          const post = await fetchPostById(editId);
+          if (!post) {
+            alert('Blogpost niet gevonden');
+            window.location.href = '/personeel-dashboard';
+            return;
+          }
+
+          currentPost = post;
+          blogTitle.value = post.title || '';
+          blogSlug.value = post.slug || '';
+          blogMetaTitle.value = post.metaTitle || '';
+          blogMetaDescription.value = post.metaDescription || '';
+          blogContent.innerHTML = post.content || '';
           if (blogDate) {
             var d = post.publishedDate || post.publishDate || '';
-            if (/^\d{4}-\d{2}-\d{2}$/.test(d)) blogDate.value = d;
+            if (/^\d{4}-\d{2}-\d{2}$/.test(d)) {
+              blogDate.value = d;
+            } else {
+              blogDate.value = '';
+            }
           }
-          
-          // Load existing image if available
+
           if (post.featuredImage) {
             const img = document.createElement('img');
             img.src = post.featuredImage;
@@ -544,21 +638,19 @@
             imagePreview.innerHTML = '';
             imagePreview.appendChild(img);
           }
-          
-          // Update page title and actions for edit mode
+
           document.title = 'Bewerk: ' + post.title + ' - Vitalora';
           document.querySelector('.editor-title').textContent = 'Blog Bewerken';
           document.querySelector('.editor-subtitle').textContent = 'Bewerk je bestaande blog post';
           publishBtn.textContent = 'Bijwerken';
           saveDraftBtn.textContent = 'Als concept opslaan';
-          scheduleBtn.textContent = 'Opnieuw inplannen';
           deleteBtn.style.display = 'inline-block';
-          // Add/offline toggle button inline (reuse schedule button label based on status)
-          if (post.status === 'published') {
-            scheduleBtn.textContent = 'Offline zetten';
-          } else if (post.status === 'offline') {
-            scheduleBtn.textContent = 'Online zetten';
-          }
+          updateScheduleButtonLabel(post.status);
+          updateSlugHint();
+        } catch (error) {
+          handleError('Kon blogpost niet laden', error);
+          window.location.href = '/personeel-dashboard';
+          return;
         }
       }
       
@@ -580,24 +672,32 @@
       }
 
       function isUniqueSlug(slug, ignoreId){
-        try {
-          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts')||'[]');
-          return !posts.some(p => p.slug === slug && String(p.id) !== String(ignoreId||''));
-        } catch(_) { return true; }
+        if (!slug) return true;
+        return !blogPostsCache.some(function(post){
+          return post.slug === slug && String(post.id) !== String(ignoreId || '');
+        });
+      }
+
+      function updateSlugHint(){
+        if (!slugHint) return;
+        const normalized = normalizeSlug(blogSlug.value);
+        if (blogSlug.value !== normalized) {
+          blogSlug.value = normalized;
+        }
+        const ok = isUniqueSlug(blogSlug.value, editId);
+        slugHint.style.color = ok ? '#64748b' : '#ef4444';
+        slugHint.textContent = ok ? 'Uniek, alleen letters/cijfers/koppelteken' : 'Slug is al in gebruik';
       }
 
       blogTitle.addEventListener('blur', function(){
         if(!blogSlug.value.trim()){
           blogSlug.value = normalizeSlug(blogTitle.value);
         }
+        updateSlugHint();
       });
 
       blogSlug.addEventListener('input', function(){
-        const normalized = normalizeSlug(blogSlug.value);
-        if (blogSlug.value !== normalized) blogSlug.value = normalized;
-        const ok = isUniqueSlug(blogSlug.value, editId);
-        slugHint.style.color = ok ? '#64748b' : '#ef4444';
-        slugHint.textContent = ok ? 'Uniek, alleen letters/cijfers/koppelteken' : 'Slug is al in gebruik';
+        updateSlugHint();
       });
 
       // Toolbar functionality
@@ -707,10 +807,10 @@
         return previewImg ? previewImg.src : null;
       }
 
-      // Save as draft (create or update)
-      saveDraftBtn.addEventListener('click', function() {
+      function buildBasePayload(options = {}) {
+        const requireContent = options && options.requireContent === true;
         const title = blogTitle.value.trim();
-        let slug = blogSlug.value.trim();
+        let slugValue = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
         const content = blogContent.innerHTML;
@@ -718,243 +818,234 @@
 
         if (!title) {
           alert('Vul de titel in');
-          return;
+          return null;
         }
 
-        if (!slug) {
-          slug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-          blogSlug.value = slug;
-        }
-
-        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        if (editId) {
-          const index = blogPosts.findIndex(p => p.id == editId);
-          if (index !== -1) {
-            if (!featuredImage && blogPosts[index].featuredImage) {
-              featuredImage = blogPosts[index].featuredImage;
-            }
-            blogPosts[index] = {
-              ...blogPosts[index],
-              title,
-              slug,
-              metaTitle,
-              metaDescription,
-              content,
-              featuredImage,
-              status: 'draft',
-              updatedAt: new Date().toISOString()
-            };
-          }
+        if (!slugValue) {
+          slugValue = normalizeSlug(title);
         } else {
-          const newPost = {
-            id: Date.now(),
-            title,
-            slug,
-            metaTitle,
-            metaDescription,
-            content,
-            featuredImage,
-            status: 'draft',
-            createdAt: new Date().toISOString(),
-            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
-          };
-          blogPosts.unshift(newPost);
+          slugValue = normalizeSlug(slugValue);
         }
 
-        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
-        alert('Concept succesvol opgeslagen!');
-        window.location.href = '/personeel-dashboard';
+        blogSlug.value = slugValue;
+
+        if (!slugValue) {
+          alert('Slug mag niet leeg zijn');
+          updateSlugHint();
+          return null;
+        }
+
+        if (!isUniqueSlug(slugValue, editId)) {
+          alert('Slug is al in gebruik');
+          updateSlugHint();
+          return null;
+        }
+
+        if (requireContent && !content) {
+          alert('Vul de inhoud in');
+          return null;
+        }
+
+        if (!featuredImage && currentPost && currentPost.featuredImage) {
+          featuredImage = currentPost.featuredImage;
+        }
+
+        const plainWords = content
+          .replace(/<[^>]*>/g, ' ')
+          .split(/\s+/)
+          .filter(Boolean);
+        const readTime = Math.max(3, Math.ceil(plainWords.length / 200));
+
+        updateSlugHint();
+
+        return {
+          title,
+          slug: slugValue,
+          metaTitle,
+          metaDescription,
+          content,
+          featuredImage,
+          readTime
+        };
+      }
+
+      // Save as draft (create or update)
+      saveDraftBtn.addEventListener('click', async function() {
+        const base = buildBasePayload();
+        if (!base) return;
+
+        const payload = {
+          ...base,
+          status: 'draft',
+          publishDate: (blogDate && blogDate.value) ? blogDate.value : (currentPost?.publishDate || null),
+          publishedDate: currentPost?.publishedDate || null
+        };
+
+        try {
+          const saved = await upsertPost(payload);
+          if (!saved) throw new Error('Geen antwoord van de server');
+          currentPost = saved;
+          editId = String(saved.id);
+          deleteBtn.style.display = 'inline-block';
+          updateScheduleButtonLabel(saved.status);
+          await refreshCache();
+          updateSlugHint();
+          alert('Concept succesvol opgeslagen!');
+          window.location.href = '/personeel-dashboard';
+        } catch (error) {
+          handleError('Opslaan mislukt', error);
+        }
       });
-      
+
       // Schedule or toggle offline/online in edit mode
-      scheduleBtn.addEventListener('click', function() {
-        const title = blogTitle.value.trim();
-        let slug = blogSlug.value.trim();
-        const metaTitle = blogMetaTitle.value.trim();
-        const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.innerHTML;
-        let featuredImage = getFeaturedImageFromPreview();
+      scheduleBtn.addEventListener('click', async function() {
+        const base = buildBasePayload({ requireContent: true });
+        if (!base) return;
 
-        if (!title || !content) {
-          alert('Vul titel en inhoud in');
-          return;
-        }
+        const buttonText = this.textContent || '';
 
-        // If in edit mode and button says Offline/Online zetten, toggle
-        if (editId && (this.textContent.includes('Offline') || this.textContent.includes('Online'))) {
-          let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-          const index = blogPosts.findIndex(p => p.id == editId);
-          if (index !== -1) {
-            const nextStatus = this.textContent.includes('Offline') ? 'offline' : 'published';
-            blogPosts[index].status = nextStatus;
-            localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
+        if (editId && (buttonText.includes('Offline') || buttonText.includes('Online'))) {
+          const nextStatus = buttonText.includes('Offline') ? 'offline' : 'published';
+          const payload = {
+            ...base,
+            status: nextStatus,
+            publishDate: currentPost?.publishDate || null,
+            publishedDate: currentPost?.publishedDate || null
+          };
+          try {
+            const saved = await upsertPost(payload);
+            if (!saved) throw new Error('Geen antwoord van de server');
+            currentPost = saved;
+            editId = String(saved.id);
+            updateScheduleButtonLabel(saved.status);
+            await refreshCache();
+            updateSlugHint();
             alert(nextStatus === 'offline' ? 'Blog offline gezet' : 'Blog online gezet');
             window.location.href = '/personeel-dashboard';
-            return;
+          } catch (error) {
+            handleError('Status bijwerken mislukt', error);
           }
+          return;
         }
 
         const scheduleDate = (blogDate && blogDate.value) ? blogDate.value : prompt('Voer datum (YYYY-MM-DD):');
         if (!scheduleDate) return;
 
-        if (!slug) {
-          slug = title.toLowerCase().replace(/[^a-z0-9\s-]/g, '').replace(/\s+/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
-          blogSlug.value = slug;
-        }
+        const payload = {
+          ...base,
+          status: 'scheduled',
+          publishDate: scheduleDate,
+          publishedDate: null
+        };
 
-        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        if (editId) {
-          const index = blogPosts.findIndex(p => p.id == editId);
-          if (index !== -1) {
-            if (!featuredImage && blogPosts[index].featuredImage) {
-              featuredImage = blogPosts[index].featuredImage;
-            }
-            blogPosts[index] = {
-              ...blogPosts[index],
-              title,
-              slug,
-              metaTitle,
-              metaDescription,
-              content,
-              featuredImage,
-              status: 'scheduled',
-              publishDate: scheduleDate,
-              updatedAt: new Date().toISOString()
-            };
-          }
-        } else {
-          const newPost = {
-            id: Date.now(),
-            title,
-            slug,
-            metaTitle,
-            metaDescription,
-            content,
-            featuredImage,
-            status: 'scheduled',
-            publishDate: scheduleDate,
-            createdAt: new Date().toISOString(),
-            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
-          };
-          blogPosts.unshift(newPost);
+        try {
+          const saved = await upsertPost(payload);
+          if (!saved) throw new Error('Geen antwoord van de server');
+          currentPost = saved;
+          editId = String(saved.id);
+          deleteBtn.style.display = 'inline-block';
+          updateScheduleButtonLabel(saved.status);
+          await refreshCache();
+          updateSlugHint();
+          alert('Blog succesvol ingepland!');
+          window.location.href = '/personeel-dashboard';
+        } catch (error) {
+          handleError('Inplannen mislukt', error);
         }
-
-        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
-        alert('Blog succesvol ingepland!');
-        window.location.href = '/personeel-dashboard';
       });
-      
+
       // Publish blog
-      publishBtn.addEventListener('click', function() {
-        const title = blogTitle.value.trim();
-        const slug = blogSlug.value.trim();
-        const metaTitle = blogMetaTitle.value.trim();
-        const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.innerHTML;
-        let featuredImage = getFeaturedImageFromPreview();
-        
-        if (!title || !content) {
-          alert('Vul titel en inhoud in');
+      publishBtn.addEventListener('click', async function() {
+        const base = buildBasePayload({ requireContent: true });
+        if (!base) return;
+
+        if (!confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
           return;
         }
-        
-        if (confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
-          // Get existing blog posts
-          let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-          
-          if (editId) {
-            // Update existing blog post
-            const postIndex = blogPosts.findIndex(p => p.id == editId);
-            if (postIndex !== -1) {
-              const existing = blogPosts[postIndex];
-              if (!featuredImage && existing.featuredImage) {
-                featuredImage = existing.featuredImage;
-              }
-              blogPosts[postIndex] = {
-                ...existing,
-                title,
-                slug: slug, // Always use the new slug value
-                metaTitle,
-                metaDescription,
-                content,
-                featuredImage,
-                status: 'published',
-                publishedDate: (blogDate && blogDate.value) ? blogDate.value : (existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })),
-                readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)),
-                updatedAt: new Date().toISOString()
-              };
-              alert('Blog succesvol bijgewerkt!');
-            }
+
+        const wasExisting = Boolean(editId);
+        let publishedDate = (blogDate && blogDate.value) ? blogDate.value : null;
+        if (!publishedDate) {
+          if (currentPost && currentPost.publishedDate) {
+            publishedDate = currentPost.publishedDate;
           } else {
-            // Create new blog post
-            const blogPost = {
-              id: Date.now(),
-              title: title,
-              slug: slug,
-              metaTitle: metaTitle,
-              metaDescription: metaDescription,
-              content: content,
-              featuredImage: featuredImage,
-              status: 'published',
-              publishedDate: (blogDate && blogDate.value) ? blogDate.value : new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
-              readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
-            };
-            
-            // Add new blog post
-            blogPosts.unshift(blogPost);
-            alert('Blog succesvol gepubliceerd!');
+            publishedDate = new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' });
           }
-          
-          // Save back to localStorage
-          localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
-          
-          console.log('Publishing blog:', blogPosts[editId ? blogPosts.findIndex(p => p.id == editId) : 0]);
+        }
+
+        const payload = {
+          ...base,
+          status: 'published',
+          publishDate: null,
+          publishedDate
+        };
+
+        try {
+          const saved = await upsertPost(payload);
+          if (!saved) throw new Error('Geen antwoord van de server');
+          currentPost = saved;
+          editId = String(saved.id);
+          deleteBtn.style.display = 'inline-block';
+          updateScheduleButtonLabel(saved.status);
+          await refreshCache();
+          updateSlugHint();
+          alert(wasExisting ? 'Blog succesvol bijgewerkt!' : 'Blog succesvol gepubliceerd!');
           window.location.href = '/personeel-dashboard';
+        } catch (error) {
+          handleError('Publiceren mislukt', error);
         }
       });
 
       // Delete blog
-      deleteBtn.addEventListener('click', function(){
+      deleteBtn.addEventListener('click', async function(){
         if(!editId){ return; }
         if(!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
-        let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        blogPosts = blogPosts.filter(p => p.id != editId);
-        localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
-        alert('Blog verwijderd');
-        window.location.href = '/personeel-dashboard';
+        try {
+          await removePost(editId);
+          alert('Blog verwijderd');
+          window.location.href = '/personeel-dashboard';
+        } catch (error) {
+          handleError('Verwijderen mislukt', error);
+        }
       });
-      
+
       // Preview opens post.html with current slug in new tab
       const previewBtn = document.getElementById('preview-blog');
       if (previewBtn) {
-        previewBtn.addEventListener('click', function(){
+        previewBtn.addEventListener('click', async function(){
           const slug = normalizeSlug(blogSlug.value || blogTitle.value);
           if(!slug){ alert('Vul eerst titel of slug in'); return; }
-          // ensure current changes are reflected for preview: save draft temporarily in storage
+          blogSlug.value = slug;
+
+          const base = buildBasePayload();
+          if (!base) return;
+
+          const payload = {
+            ...base,
+            slug,
+            status: currentPost?.status || 'draft',
+            publishDate: (blogDate && blogDate.value) ? blogDate.value : (currentPost?.publishDate || null),
+            publishedDate: currentPost?.publishedDate || null
+          };
+
           try {
-            let posts = JSON.parse(localStorage.getItem('vitalora_blog_posts')||'[]');
-            const idx = editId ? posts.findIndex(p=>String(p.id)===String(editId)) : -1;
-            const doc = {
-              id: editId || Date.now(),
-              title: blogTitle.value.trim() || slug,
-              slug: slug,
-              metaTitle: blogMetaTitle.value.trim(),
-              metaDescription: blogMetaDescription.value.trim(),
-              content: blogContent.innerHTML,
-              featuredImage: (function(){
-                const img= document.getElementById('image-preview')?.querySelector('img');
-                return img? img.src : (idx>=0 && posts[idx] && posts[idx].featuredImage) ? posts[idx].featuredImage : null;
-              })(),
-              status: (idx>=0 && posts[idx].status) || 'draft',
-              updatedAt: new Date().toISOString()
-            };
-            if (idx>=0) { posts[idx]= { ...posts[idx], ...doc }; } else { posts.unshift(doc); }
-            localStorage.setItem('vitalora_blog_posts', JSON.stringify(posts));
-          } catch(_){}
+            const saved = await upsertPost(payload);
+            if (!saved) throw new Error('Geen antwoord van de server');
+            currentPost = saved;
+            editId = String(saved.id);
+            deleteBtn.style.display = 'inline-block';
+            updateScheduleButtonLabel(saved.status);
+            await refreshCache();
+            updateSlugHint();
+          } catch (error) {
+            handleError('Opslaan voor preview mislukt', error);
+            return;
+          }
+
           window.open('/post.html?slug=' + encodeURIComponent(slug), '_blank');
         });
       }
-      
+
     })();
   </script>
 </body>

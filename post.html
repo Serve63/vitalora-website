@@ -62,52 +62,60 @@
   </main>
 
   <script>
-    console.log('=== POST TEMPLATE SCRIPT START ===');
-    
     (async function(){
-      const params = new URLSearchParams(location.search);
-      // Haal slug uit querystring of uit de path (pretty URL: /:slug)
-      let slug = params.get('slug');
-      console.log('Slug from params:', slug);
-      
-      if (!slug) {
-        const path = (location.pathname || '/').replace(/\/$/, '');
-        // Neem laatste segment tenzij het leeg of 'post.html' is
-        const segments = path.split('/').filter(Boolean);
-        const last = segments[segments.length - 1] || '';
-        slug = (last && last !== 'post.html') ? last : '';
-        console.log('Slug from path:', slug);
+      const API_BASE = '/api/blogs';
+
+      function hasStaffAccess(){
+        return document.cookie.split(';').some(function(part){
+          return part.trim().startsWith('staff_access_ok=');
+        });
       }
 
-      const titleEl = document.getElementById('post-title');
-      const metaEl = document.getElementById('post-meta');
-      const contentEl = document.getElementById('post-content');
-
-      if (!slug) {
-        titleEl.textContent = 'Blog post niet gevonden';
-        contentEl.innerHTML = '<p>Geen slug opgegeven.</p>';
-        return;
+      function slugToTitle(value){
+        return (value || '')
+          .replace(/-/g, ' ')
+          .replace(/\b\w/g, function(letter){ return letter.toUpperCase(); });
       }
 
-      // Toon basis info
-      titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-      if (metaEl) { metaEl.textContent = '/' + slug; }
-
-      // 1) Probeer uit localStorage (van jouw CRM)
-      let post = null;
-      try {
-        const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        console.log('Posts from localStorage:', posts);
-        post = posts.find(p => (p.slug === slug));
-        console.log('Found post:', post);
-      } catch (e) {
-        console.log('Error loading from localStorage:', e);
+      function formatReadTime(value){
+        const number = Number(value);
+        const minutes = Number.isFinite(number) && !Number.isNaN(number) && number > 0
+          ? Math.round(number)
+          : 5;
+        return minutes;
       }
 
-      // 2) Fallback: probeer statische HTML te halen en te parsen
-      async function fetchStatic(sl){
+      async function fetchPostFromApi(slug){
         try {
-          const res = await fetch('/' + encodeURIComponent(sl) + '.html', { credentials: 'same-origin' });
+          const res = await fetch(API_BASE + '?slug=' + encodeURIComponent(slug), { cache: 'no-store' });
+          if (res.status === 404) return null;
+          if (!res.ok) throw new Error('API fout: ' + res.status);
+          const data = await res.json();
+          return data?.data || null;
+        } catch (error) {
+          console.warn('Kon blogpost niet uit API laden:', error);
+          return null;
+        }
+      }
+
+      function loadFromLocalStorage(slug){
+        try {
+          const stored = localStorage.getItem('vitalora_blog_posts');
+          if (!stored) return null;
+          const parsed = JSON.parse(stored);
+          if (!Array.isArray(parsed)) return null;
+          return parsed.find(function(post){
+            return post && post.slug === slug;
+          }) || null;
+        } catch (error) {
+          console.warn('Kon localStorage niet lezen:', error);
+          return null;
+        }
+      }
+
+      async function fetchStatic(slug){
+        try {
+          const res = await fetch('/' + encodeURIComponent(slug) + '.html', { credentials: 'same-origin' });
           if (!res.ok) return null;
           const html = await res.text();
           const parser = new DOMParser();
@@ -115,96 +123,148 @@
           const h1 = doc.querySelector('.blog-title, h1');
           const content = doc.querySelector('.blog-content, article, main');
           const dateEl = doc.querySelector('.blog-date');
-          const parsed = {
-            title: h1 ? h1.textContent.trim() : slug.replace(/-/g,' '),
+          return {
+            title: h1 ? h1.textContent.trim() : slugToTitle(slug),
             content: content ? content.innerHTML : '<p>Geen inhoud gevonden.</p>',
             publishedDate: dateEl ? dateEl.textContent.trim() : ''
           };
-          return parsed;
-        } catch (e) {
+        } catch (error) {
+          console.warn('Kon statisch fallback bestand niet laden:', error);
           return null;
         }
       }
 
+      function cachePost(post){
+        try {
+          const key = 'vitalora_blog_posts';
+          const stored = localStorage.getItem(key);
+          const parsed = stored ? JSON.parse(stored) : [];
+          const list = Array.isArray(parsed) ? parsed : [];
+          const others = list.filter(function(item){
+            if (!item) return false;
+            if (post.id && item.id) return Number(item.id) !== Number(post.id);
+            return item.slug !== post.slug;
+          });
+          others.push(post);
+          localStorage.setItem(key, JSON.stringify(others));
+        } catch (error) {
+          console.warn('Kon post niet cachen:', error);
+        }
+      }
+
+      function normalizeSummaryHeaders(){
+        try {
+          var headers = document.querySelectorAll('.summary-header');
+          headers.forEach(function(h){
+            var icon = h.querySelector('.icon');
+            h.innerHTML = '';
+            var iconEl = document.createElement('div');
+            iconEl.className = 'icon';
+            iconEl.textContent = '📋';
+            h.appendChild(iconEl);
+            h.appendChild(document.createTextNode(' In het kort...'));
+          });
+        } catch(_) {}
+      }
+
+      const params = new URLSearchParams(location.search);
+      let slug = params.get('slug');
+      if (!slug) {
+        const path = (location.pathname || '/').replace(/\/$/, '');
+        const segments = path.split('/').filter(Boolean);
+        const last = segments[segments.length - 1] || '';
+        slug = (last && last !== 'post.html') ? last : '';
+      }
+
+      const titleEl = document.getElementById('post-title');
+      const contentEl = document.getElementById('post-content');
+      const dateEl = document.getElementById('post-date');
+      const readTimeEl = document.getElementById('post-read-time');
+      const featuredWrap = document.getElementById('featured-image');
+
+      if (!slug) {
+        titleEl.textContent = 'Blog post niet gevonden';
+        contentEl.innerHTML = '<p>Geen slug opgegeven.</p>';
+        dateEl.textContent = '-';
+        readTimeEl.textContent = '-';
+        return;
+      }
+
+      titleEl.textContent = slugToTitle(slug);
+
+      let post = await fetchPostFromApi(slug);
       if (!post) {
-        console.log('No post found in localStorage, trying static fallback...');
+        post = loadFromLocalStorage(slug);
+      }
+      if (!post) {
         post = await fetchStatic(slug);
-        console.log('Static fallback result:', post);
       }
 
       if (!post) {
-        console.log('No post found anywhere, showing empty state');
-        // Niets gevonden in storage en geen statische fallback: toon nette lege staat
-        titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
-        document.getElementById('post-date').textContent = '-';
-        document.getElementById('post-read-time').textContent = '-';
+        dateEl.textContent = '-';
+        readTimeEl.textContent = '-';
         contentEl.innerHTML = '<p>Deze blog post is nog leeg.</p>';
         return;
       }
 
-      // Toon post data
-      console.log('Rendering post data:', post);
-      document.title = (post.metaTitle || post.title || titleEl.textContent) + ' - Vitalora';
-      titleEl.textContent = post.title || titleEl.textContent;
-      console.log('Title set to:', titleEl.textContent);
-      
-      if (post.publishedDate) {
-        if (metaEl) { metaEl.textContent = '/' + slug + ' · ' + post.publishedDate + (post.readTime ? (' · ' + post.readTime + ' min') : ''); }
-        document.getElementById('post-date').textContent = post.publishedDate;
-        document.getElementById('post-read-time').textContent = (post.readTime || 5) + ' min';
-        console.log('Meta data set');
+      if (post.status && post.status !== 'published' && !hasStaffAccess()) {
+        titleEl.textContent = 'Artikel niet gepubliceerd';
+        dateEl.textContent = '-';
+        readTimeEl.textContent = '-';
+        contentEl.innerHTML = '<p>Dit artikel is nog niet beschikbaar.</p>';
+        if (featuredWrap) {
+          featuredWrap.textContent = 'Afbeelding placeholder';
+        }
+        return;
       }
-      
-      if (post.content && post.content.trim()) {
-        console.log('Setting content from post.content');
+
+      document.title = (post.metaTitle || post.title || slugToTitle(slug)) + ' - Vitalora';
+      titleEl.textContent = post.title || slugToTitle(slug);
+
+      const displayDate = post.publishedDate || post.publishDate || '';
+      dateEl.textContent = displayDate || '-';
+      readTimeEl.textContent = formatReadTime(post.readTime) + ' min';
+
+      if (post.content && typeof post.content === 'string' && post.content.trim()) {
         contentEl.innerHTML = post.content;
       } else if (post.text || post.excerpt) {
-        console.log('Setting content from post.text/excerpt');
-        contentEl.textContent = (post.text || post.excerpt);
+        contentEl.textContent = post.text || post.excerpt;
       } else {
-        console.log('No content found, showing empty state');
         contentEl.innerHTML = '<p>Deze blog post is nog leeg.</p>';
       }
-      
-      console.log('Content element innerHTML:', contentEl.innerHTML);
 
-      // Extra guard: some environments/scripts may try to reset the template.
-      // Keep the rendered title/content stable by restoring if they get overwritten.
+      normalizeSummaryHeaders();
+
       try {
         function enforceRender(){
           try {
-            if (titleEl && (titleEl.textContent || '').trim().toLowerCase() === 'laden...') {
-              titleEl.textContent = post.title || titleEl.textContent;
+            if (titleEl && !titleEl.textContent.trim()) {
+              titleEl.textContent = post.title || slugToTitle(slug);
             }
             if (contentEl) {
-              var html = (contentEl.innerHTML || '').trim();
+              const html = (contentEl.innerHTML || '').trim();
               if (!html || html === 'Nog invullen.' || html.indexOf('Nog invullen') !== -1) {
                 contentEl.innerHTML = post.content || '<p>Deze blog post is nog leeg.</p>';
               }
             }
-          } catch(_) {}
+          } catch (_) {}
         }
-        // Observe future mutations and re-apply if needed
-        var contentObserver = new MutationObserver(function(muts){ enforceRender(); });
-        contentObserver.observe(contentEl, { childList: true, characterData: true, subtree: true });
-        // Re-enforce a few times after load as belt-and-suspenders
+        const observer = new MutationObserver(function(){ enforceRender(); });
+        observer.observe(contentEl, { childList: true, characterData: true, subtree: true });
         setTimeout(enforceRender, 100);
         setTimeout(enforceRender, 600);
         setTimeout(enforceRender, 1500);
-      } catch(_) {}
+      } catch (_) {}
 
-      // Featured image handling
       try {
-        const featuredWrap = document.getElementById('featured-image');
         if (featuredWrap) {
-          if (post.featuredImage && typeof post.featuredImage === 'string' && post.featuredImage.trim() !== '') {
+          if (post.featuredImage && typeof post.featuredImage === 'string' && post.featuredImage.trim()) {
             const img = document.createElement('img');
             img.src = post.featuredImage;
             img.alt = post.title || slug;
             featuredWrap.innerHTML = '';
             featuredWrap.appendChild(img);
           } else {
-            // Fallback: try first image from content if present
             const tmp = document.createElement('div');
             tmp.innerHTML = post.content || '';
             const firstImg = tmp.querySelector('img');
@@ -217,39 +277,23 @@
             }
           }
         }
-      } catch (e) {
-        console.log('Error rendering featured image:', e);
+      } catch (error) {
+        console.warn('Kon headerafbeelding niet renderen:', error);
       }
 
-      // Zet canonical naar pretty URL
-      (function setCanonical(){
+      try {
         var canonical = document.querySelector('link[rel="canonical"]');
-        if(!canonical){
+        if (!canonical) {
           canonical = document.createElement('link');
-          canonical.setAttribute('rel','canonical');
+          canonical.setAttribute('rel', 'canonical');
           document.head.appendChild(canonical);
         }
         canonical.setAttribute('href', location.origin + '/' + encodeURIComponent(slug));
-      })();
+      } catch (_) {}
 
-      // Normalize summary headers label to "In het kort..." on render
-      (function normalizeSummaryHeaders(){
-        try {
-          var headers = document.querySelectorAll('.summary-header');
-          headers.forEach(function(h){
-            // Preserve icon, replace label
-            var icon = h.querySelector('.icon');
-            h.innerHTML = '';
-            var iconEl = document.createElement('div');
-            iconEl.className = 'icon';
-            iconEl.textContent = '📋';
-            h.appendChild(iconEl);
-            h.appendChild(document.createTextNode(' In het kort...'));
-          });
-        } catch(_) {}
-      })();
-
-      console.log('=== POST TEMPLATE SCRIPT END ===');
+      if (post && (post.id || post.slug)) {
+        cachePost(post);
+      }
     })();
   </script>
 </body>
