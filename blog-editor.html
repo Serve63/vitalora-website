@@ -514,13 +514,16 @@
             }
           } catch (_) {}
         } catch (error) {
-          blogPostsCache = [];
           console.error('Kon blogposts niet laden', error);
           try {
             if (typeof localStorage !== 'undefined') {
-              localStorage.removeItem('vitalora_blog_posts');
+              const fallback = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+              blogPostsCache = Array.isArray(fallback) ? fallback : [];
             }
           } catch (_) {}
+          if (!Array.isArray(blogPostsCache)) {
+            blogPostsCache = [];
+          }
         }
         return blogPostsCache;
       }

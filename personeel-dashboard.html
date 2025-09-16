@@ -176,12 +176,40 @@
           } catch (_) {}
         }
 
+        if (!blogPosts.length) {
+          try {
+            const feedResp = await fetch('/blog-feed.json?v=' + Date.now());
+            if (feedResp.ok) {
+              const feed = await feedResp.json().catch(() => []);
+              if (Array.isArray(feed) && feed.length) {
+                blogPosts = feed.map(item => ({
+                  id: item.id || item.slug || Math.random().toString(36).slice(2),
+                  title: item.title || 'Zonder titel',
+                  slug: item.slug || '',
+                  status: 'published',
+                  publishDate: null,
+                  publishedDate: item.publishedDate || '',
+                  readTime: item.readTime || null,
+                  metaTitle: item.metaTitle || item.title || '',
+                  metaDescription: item.metaDescription || '',
+                  featuredImage: item.featuredImage || '',
+                  content: item.content || ''
+                }));
+              }
+            }
+          } catch (_) {}
+        }
+
         tableBody.innerHTML = '';
 
         if (!blogPosts.length) {
           tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
           return;
         }
+
+        try {
+          localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
+        } catch (_) {}
 
           blogPosts.forEach(function(post) {
             const row = document.createElement('tr');
