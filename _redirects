@@ -50,4 +50,4 @@
 /checkout.html                            /checkout                                  301
 /artikelen                               /blog                                      301
 /personeel                               /personeel.html                            200
-/personeel-dashboard                     /personeel-dashboard.html                  200
+/personeel-dashboard                     /api/personeel-dashboard                   200

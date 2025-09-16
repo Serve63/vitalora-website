@@ -114,12 +114,16 @@
 
   <script>
     (function(){
-      const key='staff_access_ok';
-      if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
       // Revenue fetch
       async function loadRevenue(){
         try{
-          const res = await fetch('/api/orders-summary');
+          const res = await fetch('/api/orders-summary', {
+            headers: { 'Accept': 'application/json' }
+          });
+          if(res.status === 401 || res.status === 403){
+            window.location.href = '/personeel';
+            return;
+          }
           const data = await res.json();
           if(!res.ok) throw new Error(JSON.stringify(data));
           function fmt(v){ return '€ ' + (Number(v||0).toFixed(2)).replace('.', ','); }

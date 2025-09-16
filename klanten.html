@@ -51,7 +51,7 @@
     <nav class="sidenav">
       <h4>MENU</h4>
       <div class="navlist">
-        <a href="/personeel-dashboard.html">Overzicht</a>
+        <a href="/personeel-dashboard">Overzicht</a>
         <a href="/klanten.html" class="active">Klanten</a>
       </div>
     </nav>
@@ -84,8 +84,12 @@
       const body = document.getElementById('customers-body');
       try{
         body.innerHTML = '<tr><td colspan="3" style="color:#64748b;padding:16px">Laden…</td></tr>';
-        const res = await fetch('/api/customers');
-        const data = await res.json();
+        const res = await fetch('/api/customers', { headers: { 'Accept': 'application/json' } });
+        if(res.status === 401 || res.status === 403){
+          window.location.href = '/personeel';
+          return;
+        }
+        const data = await res.json().catch(() => ({}));
         if(!res.ok) throw new Error(JSON.stringify(data));
         function fmt(v){ return '€ ' + Number(v||0).toFixed(2).replace('.', ','); }
         if(!data.customers || data.customers.length===0){
