@@ -10,6 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js" referrerpolicy="origin"></script>
   <style>
     :root{--brand:#3A9AEA;--ink:#0f172a;--muted:#64748b}
     body{background:#f3f6fb; margin: 0; font-family: 'Quicksand', sans-serif;}
@@ -135,6 +136,15 @@
       background: white;
       outline: none;
       color: #333333 !important;
+    }
+
+    .editor-content.mce-content-body {
+      outline: none;
+    }
+
+    .editor-content.mce-content-body.mce-edit-focus {
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
     }
     
     .editor-content * {
@@ -419,7 +429,7 @@
           <button type="button" class="toolbar-btn" title="Kort">📋</button>
           <button type="button" class="toolbar-btn" title="Afbeelding Toevoegen">🖼️</button>
         </div>
-        <div class="editor-content" id="blog-content" contenteditable="true" placeholder="Begin met het schrijven van je blog post..."></div>
+        <div class="editor-content" id="blog-content" placeholder="Begin met het schrijven van je blog post..."></div>
       </div>
       
       <div class="editor-actions">
@@ -463,111 +473,249 @@
       const urlParams = new URLSearchParams(window.location.search);
       const editId = urlParams.get('edit');
 
-      // --- Editor UX helpers for "In het kort..." box ---
-      function normalizeSummaryHeadersInEditor() {
+      function getEditorRoot(editor) {
+        if (editor && typeof editor.getBody === 'function') {
+          return editor.getBody();
+        }
+        return blogContent;
+      }
+
+      function normalizeSummaryHeadersInEditor(editor) {
         try {
-          document.querySelectorAll('.summary-header').forEach(function(h){
-            const icon = h.querySelector('.icon');
-            h.innerHTML = '';
-            const iconEl = document.createElement('div');
-            iconEl.className = 'icon';
+          const root = getEditorRoot(editor);
+          if (!root) return;
+          root.querySelectorAll('.summary-header').forEach(function(header) {
+            const doc = header.ownerDocument || document;
+            const iconCandidates = Array.from(header.children || []).filter(child => child.classList && child.classList.contains('icon'));
+            let iconEl = iconCandidates[0] || null;
+            if (!iconEl) {
+              iconEl = doc.createElement('div');
+              iconEl.className = 'icon';
+              header.insertBefore(iconEl, header.firstChild);
+            }
             iconEl.textContent = '📋';
-            h.appendChild(iconEl);
-            h.appendChild(document.createTextNode(' In het kort...'));
+            if (iconEl !== header.firstChild) {
+              header.insertBefore(iconEl, header.firstChild);
+            }
+            iconCandidates.slice(1).forEach(extra => {
+              if (extra && extra.parentNode) {
+                extra.parentNode.removeChild(extra);
+              }
+            });
+
+            let titleEl = header.querySelector('.summary-title');
+            if (titleEl) {
+              const extraTitles = header.querySelectorAll('.summary-title');
+              extraTitles.forEach((node, index) => {
+                if (index === 0) return;
+                while (node.firstChild) {
+                  titleEl.appendChild(node.firstChild);
+                }
+                if (node.parentNode) {
+                  node.parentNode.removeChild(node);
+                }
+              });
+            } else {
+              titleEl = doc.createElement('span');
+              titleEl.className = 'summary-title';
+            }
+
+            const nodesToMove = [];
+            Array.from(header.childNodes).forEach(node => {
+              if (node === iconEl || node === titleEl) return;
+              if (node.nodeType === 3 && !node.textContent.trim()) {
+                if (node.parentNode) {
+                  node.parentNode.removeChild(node);
+                }
+                return;
+              }
+              if (titleEl && node.parentNode === header) {
+                nodesToMove.push(node);
+              }
+            });
+            nodesToMove.forEach(node => titleEl.appendChild(node));
+
+            if (!titleEl.textContent.trim()) {
+              titleEl.textContent = 'In het kort...';
+            }
+
+            if (titleEl.parentNode !== header) {
+              header.insertBefore(titleEl, iconEl.nextSibling);
+            } else if (titleEl.previousSibling !== iconEl) {
+              header.insertBefore(titleEl, iconEl.nextSibling);
+            }
+          });
+
+          root.querySelectorAll('.summary-content').forEach(function(content) {
+            if (!content.hasAttribute('contenteditable')) {
+              content.setAttribute('contenteditable', 'true');
+            }
           });
         } catch(_) {}
       }
 
-      function ensureParagraphAfterSummaryBoxes() {
-        document.querySelectorAll('.summary-box').forEach(function(box){
+      function ensureParagraphAfterSummaryBoxes(editor) {
+        const root = getEditorRoot(editor);
+        if (!root) return;
+        root.querySelectorAll('.summary-box').forEach(function(box) {
           const next = box.nextSibling && box.nextSibling.nodeType === 1 ? box.nextSibling : box.nextElementSibling;
           if (!next || (next.tagName !== 'P' && !next.classList?.contains('summary-box'))) {
-            const p = document.createElement('p');
-            p.innerHTML = '<br>';
-            box.insertAdjacentElement('afterend', p);
+            if (editor && editor.dom) {
+              const paragraph = editor.dom.create('p', {}, '<br>');
+              editor.dom.insertAfter(paragraph, box);
+            } else {
+              const p = document.createElement('p');
+              p.innerHTML = '<br>';
+              box.insertAdjacentElement('afterend', p);
+            }
           }
         });
       }
 
-      function placeCaret(el){
+      function placeCaret(editor, element) {
+        if (!element) return;
+        if (editor && editor.selection) {
+          try {
+            editor.selection.select(element);
+            editor.selection.collapse(false);
+            return;
+          } catch(_) {}
+        }
         try {
           const range = document.createRange();
-          range.selectNodeContents(el);
-          range.collapse(true);
+          range.selectNodeContents(element);
+          range.collapse(false);
           const sel = window.getSelection();
           sel.removeAllRanges();
           sel.addRange(range);
         } catch(_) {}
       }
 
-      // On load, normalize label and make sure you can click below the box
-      normalizeSummaryHeadersInEditor();
-      ensureParagraphAfterSummaryBoxes();
-
-      // Hitting Enter inside summary-content moves caret below the box (Shift+Enter = nieuwe regel)
-      blogContent.addEventListener('keydown', function(e){
-        const target = e.target;
-        if (target && target.classList && target.classList.contains('summary-content')) {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            const box = target.closest('.summary-box');
-            if (!box) return;
-            const p = document.createElement('p');
-            p.innerHTML = '<br>';
-            box.insertAdjacentElement('afterend', p);
-            placeCaret(p);
+      let editorInstance = null;
+      const editorReady = (function initEditor() {
+        return new Promise((resolve, reject) => {
+          if (!window.tinymce) {
+            reject(new Error('TinyMCE kon niet worden geladen.'));
+            return;
           }
-        }
+          tinymce.init({
+            selector: '#blog-content',
+            inline: true,
+            menubar: false,
+            toolbar: false,
+            plugins: 'link lists image paste',
+            forced_root_block: 'p',
+            convert_fonts_to_spans: false,
+            browser_spellcheck: true,
+            valid_elements: '*[*]',
+            extended_valid_elements: 'div[*],span[*],p[*],img[*],blockquote[*],h1[*],h2[*],h3[*],h4[*],section[*],article[*]',
+            content_style: `body { font-family: 'Quicksand', sans-serif; font-size: 16px; line-height: 1.6; color: #333333; }
+blockquote { background: #2954B4; color: white; padding: 16px 20px; margin: 16px 0; border-radius: 8px; border-left: none; box-shadow: 0 2px 4px rgba(0,0,0,0.1); font-style: normal; position: relative; }
+blockquote:before { content: '\"'; font-size: 24px; color: rgba(255,255,255,0.7); position: absolute; left: 8px; top: 8px; }
+blockquote:after { content: '\"'; font-size: 24px; color: rgba(255,255,255,0.7); position: absolute; right: 8px; bottom: 8px; }
+.summary-box { background: white; border-radius: 8px; margin: 16px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.1); overflow: hidden; border-left: 4px solid #2954B4; }
+.summary-header { background: #2954B4; color: white; padding: 12px 16px; display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.summary-header .icon { width: 20px; height: 20px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+.summary-content { padding: 16px; color: #333333; min-height: 40px; }
+.summary-content:empty:before { content: 'In het kort...'; color: #9ca3af; font-style: italic; }`,
+            formats: {
+              paragraph: { block: 'p' },
+              h1: { block: 'h1' },
+              h2: { block: 'h2' },
+              h3: { block: 'h3' },
+              h4: { block: 'h4' },
+              blockquote: { block: 'blockquote' }
+            },
+            placeholder: blogContent?.getAttribute('placeholder') || 'Begin met het schrijven van je blog post...',
+            setup(editor) {
+              editorInstance = editor;
+              const syncSummary = () => {
+                normalizeSummaryHeadersInEditor(editor);
+                ensureParagraphAfterSummaryBoxes(editor);
+              };
+              editor.on('init', () => {
+                syncSummary();
+                resolve(editor);
+              });
+              editor.on('SetContent', syncSummary);
+              editor.on('NodeChange', syncSummary);
+              editor.on('keydown', (e) => {
+                const target = e.target;
+                if (target && target.classList && target.classList.contains('summary-content')) {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    const box = target.closest('.summary-box');
+                    if (!box) return;
+                    const paragraph = editor.dom.create('p', {}, '<br>');
+                    editor.dom.insertAfter(paragraph, box);
+                    placeCaret(editor, paragraph);
+                  }
+                }
+              });
+            }
+          });
+        });
+      })();
+
+      editorReady.catch(err => {
+        console.error(err);
+        alert('De teksteditor kon niet worden geladen. Vernieuw de pagina.');
       });
       
+      let existingPost = null;
       if (editId) {
-        // Load existing blog post for editing
         const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        const post = blogPosts.find(p => p.id == editId);
-        
-        if (post) {
-          blogTitle.value = post.title;
-          blogSlug.value = post.slug;
-          blogMetaTitle.value = post.metaTitle;
-          blogMetaDescription.value = post.metaDescription;
-          blogContent.innerHTML = post.content;
+        existingPost = blogPosts.find(p => p.id == editId);
+
+        if (existingPost) {
+          blogTitle.value = existingPost.title;
+          blogSlug.value = existingPost.slug;
+          blogMetaTitle.value = existingPost.metaTitle;
+          blogMetaDescription.value = existingPost.metaDescription;
           if (blogDate) {
-            var d = post.publishedDate || post.publishDate || '';
+            const d = existingPost.publishedDate || existingPost.publishDate || '';
             if (/^\d{4}-\d{2}-\d{2}$/.test(d)) blogDate.value = d;
           }
-          
-          // Load existing image if available
-          if (post.featuredImage) {
+
+          if (existingPost.featuredImage) {
             const img = document.createElement('img');
-            img.src = post.featuredImage;
+            img.src = existingPost.featuredImage;
             img.alt = 'Header afbeelding';
             imagePreview.innerHTML = '';
             imagePreview.appendChild(img);
           }
-          
-          // Update page title and actions for edit mode
-          document.title = 'Bewerk: ' + post.title + ' - Vitalora';
+
+          document.title = 'Bewerk: ' + existingPost.title + ' - Vitalora';
           document.querySelector('.editor-title').textContent = 'Blog Bewerken';
           document.querySelector('.editor-subtitle').textContent = 'Bewerk je bestaande blog post';
           publishBtn.textContent = 'Bijwerken';
           saveDraftBtn.textContent = 'Als concept opslaan';
           scheduleBtn.textContent = 'Opnieuw inplannen';
           deleteBtn.style.display = 'inline-block';
-          // Add/offline toggle button inline (reuse schedule button label based on status)
-          if (post.status === 'published') {
+          if (existingPost.status === 'published') {
             scheduleBtn.textContent = 'Offline zetten';
-          } else if (post.status === 'offline') {
+          } else if (existingPost.status === 'offline') {
             scheduleBtn.textContent = 'Online zetten';
           }
         }
       }
+
+      editorReady.then(editor => {
+        if (existingPost && existingPost.content) {
+          editor.setContent(existingPost.content);
+        } else {
+          editor.setContent('');
+        }
+        normalizeSummaryHeadersInEditor(editor);
+        ensureParagraphAfterSummaryBoxes(editor);
+      }).catch(() => {});
       
       // Handle clicking outside summary content to exit
       document.addEventListener('click', function(e) {
         if (!e.target.closest('.summary-content')) {
-          // Remove focus from any summary content
-          const summaryContents = document.querySelectorAll('.summary-content');
-          summaryContents.forEach(content => {
+          const root = getEditorRoot(editorInstance);
+          if (!root) return;
+          root.querySelectorAll('.summary-content').forEach(content => {
             if (content === document.activeElement) {
               content.blur();
             }
@@ -577,6 +725,15 @@
       
       function normalizeSlug(input){
         return (input||'').toLowerCase().replace(/[^a-z0-9\s-]/g,'').replace(/\s+/g,'-').replace(/-+/g,'-').replace(/^-|-$/g,'');
+      }
+
+      function escapeHtml(value) {
+        return String(value || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
       }
 
       function isUniqueSlug(slug, ignoreId){
@@ -600,88 +757,90 @@
         slugHint.textContent = ok ? 'Uniek, alleen letters/cijfers/koppelteken' : 'Slug is al in gebruik';
       });
 
-      // Toolbar functionality
-      document.querySelectorAll('.toolbar-btn').forEach(btn => {
-        btn.addEventListener('click', function() {
+      const toolbarButtons = document.querySelectorAll('.toolbar-btn');
+      toolbarButtons.forEach(btn => {
+        btn.addEventListener('click', async function() {
           const command = this.title.toLowerCase();
-          blogContent.focus();
-          
-          switch(command) {
-            case 'vet':
-              document.execCommand('bold', false, null);
-              break;
-            case 'cursief':
-              document.execCommand('italic', false, null);
-              break;
-            case 'onderstreept':
-              document.execCommand('underline', false, null);
-              break;
-            case 'normale tekst':
-              document.execCommand('removeFormat', false, null);
-              break;
-            case 'kop 1':
-              document.execCommand('formatBlock', false, 'h1');
-              break;
-            case 'kop 2':
-              document.execCommand('formatBlock', false, 'h2');
-              break;
-            case 'kop 3':
-              document.execCommand('formatBlock', false, 'h3');
-              break;
-            case 'kop 4':
-              document.execCommand('formatBlock', false, 'h4');
-              break;
-            case 'quote':
-              if (document.queryCommandState('formatBlock') && document.queryCommandValue('formatBlock') === 'blockquote') {
-                document.execCommand('formatBlock', false, 'div');
-              } else {
-                document.execCommand('formatBlock', false, 'blockquote');
-              }
-              break;
-            case 'kort':
-              let summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'In het kort...');
-              if (!summaryTitle) summaryTitle = 'In het kort...';
-              {
+          try {
+            const editor = await editorReady;
+            editor.focus();
+            switch(command) {
+              case 'vet':
+                editor.formatter.toggle('bold');
+                break;
+              case 'cursief':
+                editor.formatter.toggle('italic');
+                break;
+              case 'onderstreept':
+                editor.formatter.toggle('underline');
+                break;
+              case 'normale tekst':
+                ['bold','italic','underline','h1','h2','h3','h4','blockquote'].forEach(fmt => editor.formatter.remove(fmt));
+                editor.formatter.apply('paragraph');
+                break;
+              case 'kop 1':
+                editor.formatter.toggle('h1');
+                break;
+              case 'kop 2':
+                editor.formatter.toggle('h2');
+                break;
+              case 'kop 3':
+                editor.formatter.toggle('h3');
+                break;
+              case 'kop 4':
+                editor.formatter.toggle('h4');
+                break;
+              case 'quote':
+                editor.formatter.toggle('blockquote');
+                break;
+              case 'kort': {
+                let summaryTitle = prompt('Voer titel in voor "Kort" sectie:', 'In het kort...');
+                if (summaryTitle) summaryTitle = summaryTitle.trim();
+                if (!summaryTitle) summaryTitle = 'In het kort...';
                 const summaryHTML = `
                   <div class="summary-box">
                     <div class="summary-header">
                       <div class="icon">📋</div>
-                      ${summaryTitle}
+                      <span class="summary-title">${escapeHtml(summaryTitle)}</span>
                     </div>
                     <div class="summary-content" contenteditable="true"></div>
                   </div>`;
-                document.execCommand('insertHTML', false, summaryHTML);
-                // After insert: normalize label and add paragraph after
-                setTimeout(function(){
-                  try {
-                    normalizeSummaryHeadersInEditor();
-                    ensureParagraphAfterSummaryBoxes();
-                    const lastBox = blogContent.querySelector('.summary-box:last-of-type');
-                    if (lastBox && lastBox.nextElementSibling) blogContent.focus();
-                  } catch(_){}
+                editor.insertContent(summaryHTML);
+                setTimeout(() => {
+                  normalizeSummaryHeadersInEditor(editor);
+                  ensureParagraphAfterSummaryBoxes(editor);
+                  const lastContent = getEditorRoot(editor)?.querySelector('.summary-box:last-of-type .summary-content');
+                  if (lastContent) {
+                    lastContent.focus();
+                  }
                 }, 0);
+                break;
               }
-              break;
-            case 'afbeelding toevoegen':
-              const fileInput = document.createElement('input');
-              fileInput.type = 'file';
-              fileInput.accept = 'image/*';
-              fileInput.onchange = function(e) {
-                const file = e.target.files[0];
-                if (file) {
-                  const reader = new FileReader();
-                  reader.onload = function(e) {
-                    document.execCommand('insertHTML', false, `<img src="${e.target.result}" alt="Afbeelding" style="max-width: 100%; height: auto;">`);
-                  };
-                  reader.readAsDataURL(file);
-                }
-              };
-              fileInput.click();
-              break;
+              case 'afbeelding toevoegen': {
+                const fileInput = document.createElement('input');
+                fileInput.type = 'file';
+                fileInput.accept = 'image/*';
+                fileInput.onchange = function(e) {
+                  const file = e.target.files[0];
+                  if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(evt) {
+                      const imgHtml = `<img src="${evt.target.result}" alt="Afbeelding" style="max-width:100%; height:auto;">`;
+                      editor.insertContent(imgHtml);
+                    };
+                    reader.readAsDataURL(file);
+                  }
+                };
+                fileInput.click();
+                break;
+              }
+            }
+          } catch(err) {
+            console.error('Editor niet beschikbaar', err);
           }
         });
       });
-      
+
       // Image upload functionality
       uploadImageBtn.addEventListener('click', function() {
         imageInput.click();
@@ -708,12 +867,21 @@
       }
 
       // Save as draft (create or update)
-      saveDraftBtn.addEventListener('click', function() {
+      saveDraftBtn.addEventListener('click', async function() {
+        let editor;
+        try {
+          editor = await editorReady;
+        } catch (err) {
+          alert('De editor is nog niet geladen. Probeer het opnieuw.');
+          return;
+        }
+
         const title = blogTitle.value.trim();
         let slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.innerHTML;
+        const content = editor.getContent({ format: 'html' });
+        const textContent = editor.getContent({ format: 'text' }).trim();
         let featuredImage = getFeaturedImageFromPreview();
 
         if (!title) {
@@ -746,6 +914,7 @@
             };
           }
         } else {
+          const cleanWords = textContent ? textContent.split(/\s+/).filter(Boolean).length : 0;
           const newPost = {
             id: Date.now(),
             title,
@@ -756,7 +925,7 @@
             featuredImage,
             status: 'draft',
             createdAt: new Date().toISOString(),
-            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+            readTime: Math.max(3, Math.ceil(cleanWords / 200))
           };
           blogPosts.unshift(newPost);
         }
@@ -767,15 +936,24 @@
       });
       
       // Schedule or toggle offline/online in edit mode
-      scheduleBtn.addEventListener('click', function() {
+      scheduleBtn.addEventListener('click', async function() {
+        let editor;
+        try {
+          editor = await editorReady;
+        } catch (err) {
+          alert('De editor is nog niet geladen. Probeer het opnieuw.');
+          return;
+        }
+
         const title = blogTitle.value.trim();
         let slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.innerHTML;
+        const content = editor.getContent({ format: 'html' });
+        const textContent = editor.getContent({ format: 'text' }).trim();
         let featuredImage = getFeaturedImageFromPreview();
 
-        if (!title || !content) {
+        if (!title || !textContent) {
           alert('Vul titel en inhoud in');
           return;
         }
@@ -823,6 +1001,7 @@
             };
           }
         } else {
+          const cleanWords = textContent ? textContent.split(/\s+/).filter(Boolean).length : 0;
           const newPost = {
             id: Date.now(),
             title,
@@ -834,7 +1013,7 @@
             status: 'scheduled',
             publishDate: scheduleDate,
             createdAt: new Date().toISOString(),
-            readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+            readTime: Math.max(3, Math.ceil(cleanWords / 200))
           };
           blogPosts.unshift(newPost);
         }
@@ -845,48 +1024,56 @@
       });
       
       // Publish blog
-      publishBtn.addEventListener('click', function() {
+      publishBtn.addEventListener('click', async function() {
+        let editor;
+        try {
+          editor = await editorReady;
+        } catch (err) {
+          alert('De editor is nog niet geladen. Probeer het opnieuw.');
+          return;
+        }
+
         const title = blogTitle.value.trim();
         const slug = blogSlug.value.trim();
         const metaTitle = blogMetaTitle.value.trim();
         const metaDescription = blogMetaDescription.value.trim();
-        const content = blogContent.innerHTML;
+        const content = editor.getContent({ format: 'html' });
+        const textContent = editor.getContent({ format: 'text' }).trim();
         let featuredImage = getFeaturedImageFromPreview();
-        
-        if (!title || !content) {
+
+        if (!title || !textContent) {
           alert('Vul titel en inhoud in');
           return;
         }
-        
+
         if (confirm('Weet je zeker dat je deze blog post wilt publiceren?')) {
-          // Get existing blog posts
           let blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-          
+
           if (editId) {
-            // Update existing blog post
             const postIndex = blogPosts.findIndex(p => p.id == editId);
             if (postIndex !== -1) {
               const existing = blogPosts[postIndex];
               if (!featuredImage && existing.featuredImage) {
                 featuredImage = existing.featuredImage;
               }
+              const cleanWords = textContent ? textContent.split(/\s+/).filter(Boolean).length : 0;
               blogPosts[postIndex] = {
                 ...existing,
                 title,
-                slug: slug, // Always use the new slug value
+                slug: slug,
                 metaTitle,
                 metaDescription,
                 content,
                 featuredImage,
                 status: 'published',
                 publishedDate: (blogDate && blogDate.value) ? blogDate.value : (existing.publishedDate || new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' })),
-                readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200)),
+                readTime: Math.max(3, Math.ceil(cleanWords / 200)),
                 updatedAt: new Date().toISOString()
               };
               alert('Blog succesvol bijgewerkt!');
             }
           } else {
-            // Create new blog post
+            const cleanWords = textContent ? textContent.split(/\s+/).filter(Boolean).length : 0;
             const blogPost = {
               id: Date.now(),
               title: title,
@@ -897,17 +1084,15 @@
               featuredImage: featuredImage,
               status: 'published',
               publishedDate: (blogDate && blogDate.value) ? blogDate.value : new Date().toLocaleDateString('nl-NL', { day: 'numeric', month: 'long', year: 'numeric' }),
-              readTime: Math.max(3, Math.ceil(content.replace(/<[^>]*>/g, '').split(' ').length / 200))
+              readTime: Math.max(3, Math.ceil(cleanWords / 200))
             };
-            
-            // Add new blog post
+
             blogPosts.unshift(blogPost);
             alert('Blog succesvol gepubliceerd!');
           }
-          
-          // Save back to localStorage
+
           localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPosts));
-          
+
           console.log('Publishing blog:', blogPosts[editId ? blogPosts.findIndex(p => p.id == editId) : 0]);
           window.location.href = '/personeel-dashboard';
         }
@@ -927,11 +1112,12 @@
       // Preview opens post.html with current slug in new tab
       const previewBtn = document.getElementById('preview-blog');
       if (previewBtn) {
-        previewBtn.addEventListener('click', function(){
+        previewBtn.addEventListener('click', async function(){
           const slug = normalizeSlug(blogSlug.value || blogTitle.value);
           if(!slug){ alert('Vul eerst titel of slug in'); return; }
           // ensure current changes are reflected for preview: save draft temporarily in storage
           try {
+            const editor = await editorReady;
             let posts = JSON.parse(localStorage.getItem('vitalora_blog_posts')||'[]');
             const idx = editId ? posts.findIndex(p=>String(p.id)===String(editId)) : -1;
             const doc = {
@@ -940,7 +1126,7 @@
               slug: slug,
               metaTitle: blogMetaTitle.value.trim(),
               metaDescription: blogMetaDescription.value.trim(),
-              content: blogContent.innerHTML,
+              content: editor.getContent({ format: 'html' }),
               featuredImage: (function(){
                 const img= document.getElementById('image-preview')?.querySelector('img');
                 return img? img.src : (idx>=0 && posts[idx] && posts[idx].featuredImage) ? posts[idx].featuredImage : null;
@@ -950,7 +1136,11 @@
             };
             if (idx>=0) { posts[idx]= { ...posts[idx], ...doc }; } else { posts.unshift(doc); }
             localStorage.setItem('vitalora_blog_posts', JSON.stringify(posts));
-          } catch(_){}
+          } catch(err){
+            console.error('Preview kon niet worden voorbereid', err);
+            alert('De editor is nog niet geladen. Probeer het opnieuw.');
+            return;
+          }
           window.open('/post.html?slug=' + encodeURIComponent(slug), '_blank');
         });
       }
