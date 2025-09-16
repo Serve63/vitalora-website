@@ -243,87 +243,98 @@
         var postsContainer = document.getElementById('posts');
         console.log('Posts container found:', postsContainer);
         if (postsContainer) {
-            var publishedPosts = [];
-            try {
-                var stored = localStorage.getItem('vitalora_blog_posts');
-                console.log('localStorage data:', stored);
-                if (stored) {
-                    var allPosts = JSON.parse(stored);
-                    for (var i = 0; i < allPosts.length; i++) {
-                        var post = allPosts[i];
-                        if ((post.status || 'published') === 'published') {
-                            publishedPosts.push(post);
+            function renderPosts(list) {
+                postsContainer.innerHTML = '';
+                if (!Array.isArray(list) || !list.length) {
+                    postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
+                    return;
+                }
+                list.forEach(function(post, index){
+                    var card = document.createElement('div');
+                    card.className = 'post-card';
+                    card.onclick = (function(id, slug, title){ return function(){
+                      var safeTitle = (title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+                      const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + safeTitle);
+                      window.location.href = url;
+                    }; })(post.id || index, post.slug, post.title);
+
+                    var imgSrc = post.featuredImage;
+                    if (!imgSrc) {
+                        var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
+                        imgSrc = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
+                    }
+                    var fallbackImg = post.featuredImage ? post.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
+                    card.innerHTML = '<div class="post-cover"><img src="' + imgSrc + '" alt="" onerror="this.src=\'' + fallbackImg + '\'" /></div>' +
+                                     '<div class="post-body">' +
+                                       '<div class="post-title">' + (post.title || 'Artikel') + '</div>' +
+                                       '<div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div>' +
+                                     '</div>';
+                    postsContainer.appendChild(card);
+                });
+            }
+
+            function loadFromLocalStorage() {
+                try {
+                    var stored = localStorage.getItem('vitalora_blog_posts');
+                    if (stored) {
+                        var allPosts = JSON.parse(stored);
+                        var filtered = [];
+                        for (var i = 0; i < allPosts.length; i++) {
+                            var post = allPosts[i];
+                            if ((post.status || 'published') === 'published') {
+                                filtered.push(post);
+                            }
+                        }
+                        if (filtered.length) {
+                            console.log('Loaded posts from localStorage', filtered.length);
+                            renderPosts(filtered);
+                            return true;
                         }
                     }
+                } catch (err) {
+                    console.log('localStorage parse error:', err);
                 }
-            } catch (e) {
-                console.log('Error loading posts:', e);
+                return false;
             }
-            console.log('Total published posts:', publishedPosts.length);
-            for (var j = 0; j < publishedPosts.length; j++) {
-                var post = publishedPosts[j];
-                var card = document.createElement('div');
-                card.className = 'post-card';
-                card.onclick = (function(id, slug){ return function(){
-                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
-                  window.location.href = url;
-                }; })(post.id, post.slug);
-                // Use featured image if available, otherwise fallback to Unsplash
-                var imgSrc;
-                if (post.featuredImage) {
-                    imgSrc = post.featuredImage;
-                } else {
-                    var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                    var fallbackImg = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                    imgSrc = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                }
-                card.innerHTML = '<div class="post-cover"><img src="' + imgSrc + '" alt="" onerror="this.src=\'' + (post.featuredImage ? post.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
-                                 '<div class="post-body">' +
-                                   '<div class="post-title">' + (post.title || 'Artikel') + '</div>' +
-                                   '<div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div>' +
-                                 '</div>';
-                postsContainer.appendChild(card);
-            }
-            if (publishedPosts.length === 0) {
-                console.log('No posts found in localStorage. Trying fallback feed /blog-feed.json');
-                fetch('/blog-feed.json?v=' + Date.now())
+
+            function loadFallbackJson() {
+                console.log('Falling back to static /blog-feed.json');
+                return fetch('/blog-feed.json?v=' + Date.now())
                     .then(function(res){ if (!res.ok) throw new Error('HTTP ' + res.status); return res.json(); })
                     .then(function(data){
                         if (Array.isArray(data) && data.length) {
-                            postsContainer.innerHTML = '';
-                            for (var j2 = 0; j2 < data.length; j2++) {
-                                var post2 = data[j2];
-                                var card2 = document.createElement('div');
-                                card2.className = 'post-card';
-                                card2.onclick = (function(id, slug){ return function(){
-                                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post2.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
-                                  window.location.href = url;
-                                }; })(post2.id, post2.slug);
-                                // Use featured image if available, otherwise fallback to Unsplash
-                                var imgSrc2;
-                                if (post2.featuredImage) {
-                                    imgSrc2 = post2.featuredImage;
-                                } else {
-                                    var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                                    var fallbackImg2 = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                                    imgSrc2 = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords2 + ',health,wellness');
-                                }
-                                card2.innerHTML = '<div class="post-cover"><img src="' + imgSrc2 + '" alt="" onerror="this.src=\'' + (post2.featuredImage ? post2.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
-                                                 '<div class="post-body">' +
-                                                   '<div class="post-title">' + (post2.title || 'Artikel') + '</div>' +
-                                                   '<div class="post-meta"><div class="post-date">' + (post2.publishedDate || '') + '</div><div class="post-read-time">' + (post2.readTime || 5) + ' min leestijd</div></div>' +
-                                                 '</div>';
-                                postsContainer.appendChild(card2);
-                            }
-                            return;
+                            renderPosts(data);
+                            return true;
                         }
-                        postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
+                        return false;
                     })
                     .catch(function(err){
-                        console.log('Fallback feed failed:', err);
-                        postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
+                        console.log('Static feed failed', err);
+                        return false;
                     });
             }
+
+            fetch('/api/blog-feed')
+                .then(function(res){
+                    if (!res.ok) throw new Error('HTTP ' + res.status);
+                    return res.json();
+                })
+                .then(function(payload){
+                    if (payload && Array.isArray(payload.data) && payload.data.length) {
+                        try { localStorage.setItem('vitalora_blog_posts', JSON.stringify(payload.data)); } catch (_) {}
+                        renderPosts(payload.data);
+                        return;
+                    }
+                    if (!loadFromLocalStorage()) {
+                        return loadFallbackJson();
+                    }
+                })
+                .catch(function(err){
+                    console.log('API feed failed', err);
+                    if (!loadFromLocalStorage()) {
+                        loadFallbackJson();
+                    }
+                });
         }
         console.log('=== BLOG PAGE SCRIPT END (blog.html) ===');
         </script>

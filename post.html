@@ -93,18 +93,6 @@
       titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
       if (metaEl) { metaEl.textContent = '/' + slug; }
 
-      // 1) Probeer uit localStorage (van jouw CRM)
-      let post = null;
-      try {
-        const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
-        console.log('Posts from localStorage:', posts);
-        post = posts.find(p => (p.slug === slug));
-        console.log('Found post:', post);
-      } catch (e) {
-        console.log('Error loading from localStorage:', e);
-      }
-
-      // 2) Fallback: probeer statische HTML te halen en te parsen
       async function fetchStatic(sl){
         try {
           const res = await fetch('/' + encodeURIComponent(sl) + '.html', { credentials: 'same-origin' });
@@ -126,15 +114,56 @@
         }
       }
 
+      async function fetchPublicApi(sl){
+        try {
+          const res = await fetch('/api/blog-feed?slug=' + encodeURIComponent(sl));
+          if (!res.ok) return null;
+          const data = await res.json();
+          if (data && data.data) return data.data;
+          return null;
+        } catch (e) {
+          console.log('API fetch error', e);
+          return null;
+        }
+      }
+
+      async function fetchFromLocal(sl){
+        try {
+          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+          console.log('Posts from localStorage:', posts);
+          return posts.find(p => (p.slug === sl));
+        } catch (e) {
+          console.log('Error loading from localStorage:', e);
+          return null;
+        }
+      }
+
+      let post = await fetchPublicApi(slug);
+      console.log('Post from API:', post);
+      if (post) {
+        try {
+          const posts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+          const filtered = Array.isArray(posts) ? posts.filter(p => p.slug !== slug) : [];
+          filtered.unshift(post);
+          localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+        } catch (err) {
+          console.log('Failed to sync localStorage with API post', err);
+        }
+      }
+
       if (!post) {
-        console.log('No post found in localStorage, trying static fallback...');
+        post = await fetchFromLocal(slug);
+        console.log('Local fallback result:', post);
+      }
+
+      if (!post) {
+        console.log('Trying static HTML fallback...');
         post = await fetchStatic(slug);
         console.log('Static fallback result:', post);
       }
 
       if (!post) {
         console.log('No post found anywhere, showing empty state');
-        // Niets gevonden in storage en geen statische fallback: toon nette lege staat
         titleEl.textContent = slug.replace(/-/g,' ').replace(/\b\w/g, c => c.toUpperCase());
         document.getElementById('post-date').textContent = '-';
         document.getElementById('post-read-time').textContent = '-';
@@ -142,7 +171,6 @@
         return;
       }
 
-      // Toon post data
       console.log('Rendering post data:', post);
       document.title = (post.metaTitle || post.title || titleEl.textContent) + ' - Vitalora';
       titleEl.textContent = post.title || titleEl.textContent;
@@ -254,4 +282,3 @@
   </script>
 </body>
 </html>
-
