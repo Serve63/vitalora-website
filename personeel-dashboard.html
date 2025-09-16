@@ -114,8 +114,37 @@
 
   <script>
     (function(){
-      const key='staff_access_ok';
-      if(localStorage.getItem(key)!=='1'){ window.location.href='/personeel'; return; }
+      function hasStaffAccess(){
+        return document.cookie.split(';').some(function(part){
+          return part.trim().startsWith('staff_access_ok=');
+        });
+      }
+
+      if(!hasStaffAccess()){ window.location.href='/personeel'; return; }
+
+      const API_BASE = '/api/blogs';
+
+      async function fetchJson(url, options = {}){
+        const init = { ...options };
+        init.headers = init.headers ? { ...init.headers } : {};
+        if (init.body && !(init.body instanceof FormData)) {
+          init.headers['Content-Type'] = 'application/json';
+        }
+        const response = await fetch(url, init);
+        const text = await response.text();
+        let data = null;
+        if (text) {
+          try { data = JSON.parse(text); } catch (_) { data = null; }
+        }
+        if (!response.ok) {
+          const message = (data && data.error) || response.statusText || 'Onbekende fout';
+          const error = new Error(message);
+          error.status = response.status;
+          error.details = data;
+          throw error;
+        }
+        return data;
+      }
       // Revenue fetch
       async function loadRevenue(){
         try{
@@ -132,94 +161,107 @@
       loadRevenue();
       setInterval(loadRevenue, 60000);
       
+
+      function escapeHtml(value){
+        return String(value || '').replace(/[&<>"']/g, function(char){
+          return ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char];
+        });
+      }
+
       // Load and display blog posts in the table
-      function loadBlogPosts() {
-        const blogPosts = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+      async function loadBlogPosts() {
         const tableBody = document.getElementById('blog-posts-table');
-        
+
         if (!tableBody) return;
-        
-        // Clear existing rows
-        tableBody.innerHTML = '';
-        
-        if (blogPosts.length === 0) {
-          tableBody.innerHTML = '<tr><td colspan="2" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
-          return;
-        }
-        
-        // Add each blog post as a table row
-        blogPosts.forEach(function(post) {
-          const row = document.createElement('tr');
-          row.style.cursor = 'pointer';
-          row.onclick = function() {
-            // Open blog editor for editing
-            window.open('/blog-editor.html?edit=' + post.id, '_blank');
-          };
-          
-          const statusMap = {
-            published: {label:'Gepubliceerd', bg:'#10b981'},
-            draft: {label:'Concept', bg:'#6b7280'},
-            scheduled: {label:'Ingepland', bg:'#f59e0b'},
-            offline: {label:'Offline', bg:'#ef4444'}
-          };
-          const meta = statusMap[post.status] || statusMap.published;
-          row.innerHTML = `
-            <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">${post.title}</td>
+
+        tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Laden...</td></tr>';
+
+        try {
+          const res = await fetchJson(API_BASE);
+          const blogPosts = Array.isArray(res?.data) ? res.data : [];
+
+          tableBody.innerHTML = '';
+
+          if (!blogPosts.length) {
+            tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
+            return;
+          }
+
+          blogPosts.forEach(function(post) {
+            const row = document.createElement('tr');
+            row.style.cursor = 'pointer';
+            row.onclick = function() {
+              window.open('/blog-editor.html?edit=' + encodeURIComponent(post.id), '_blank');
+            };
+
+            const statusMap = {
+              published: {label:'Gepubliceerd', bg:'#10b981'},
+              draft: {label:'Concept', bg:'#6b7280'},
+              scheduled: {label:'Ingepland', bg:'#f59e0b'},
+              offline: {label:'Offline', bg:'#ef4444'}
+            };
+            const meta = statusMap[post.status] || statusMap.published;
+            const safeTitle = escapeHtml(post.title || 'Zonder titel');
+
+            row.innerHTML = `
+            <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">${safeTitle}</td>
             <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; color: #333333;">
               <span style="background: ${meta.bg}; color: white; padding: 4px 8px; border-radius: 12px; font-size: 12px; font-weight: 600;">
                 ${meta.label}
               </span>
             </td>
             <td style="padding: 12px 10px; border-bottom: 1px solid #eef2f7; text-align:right; white-space:nowrap;">
-              <button class="view-post" data-id="${post.id}" aria-label="Bekijken" title="Bekijken" style="background:transparent;border:0;color:#3A9AEA;cursor:pointer;padding:6px;border-radius:6px;margin-right:6px;">
+              <button class="view-post" aria-label="Bekijken" title="Bekijken" style="background:transparent;border:0;color:#3A9AEA;cursor:pointer;padding:6px;border-radius:6px;margin-right:6px;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M12 5c-7 0-11 7-11 7s4 7 11 7 11-7 11-7-4-7-11-7zm0 12a5 5 0 1 1 0-10 5 5 0 0 1 0 10zm0-8a3 3 0 1 0 .001 6.001A3 3 0 0 0 12 9z"/>
                 </svg>
               </button>
-              <button class="delete-post" data-id="${post.id}" aria-label="Verwijderen" title="Verwijderen" style="background:transparent;border:0;color:#ef4444;cursor:pointer;padding:6px;border-radius:6px;">
+              <button class="delete-post" aria-label="Verwijderen" title="Verwijderen" style="background:transparent;border:0;color:#ef4444;cursor:pointer;padding:6px;border-radius:6px;">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                   <path d="M9 3h6a1 1 0 0 1 1 1v1h5v2h-1v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7H3V5h5V4a1 1 0 0 1 1-1zm1 2v0h4V5h-4zM6 7v12h12V7H6zm4 2h2v8h-2V9zm-4 0h2v8H6V9zm10 0h-2v8h2V9z"/>
                 </svg>
               </button>
             </td>
           `;
-          // Hook delete button
-          const del = row.querySelector('.delete-post');
-          if (del) {
-            del.addEventListener('click', function(ev){
-              ev.stopPropagation();
-              const id = this.getAttribute('data-id');
-              if (!id) return;
-              if (!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
-              let list = [];
-              try { list = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]'); } catch(_) {}
-              list = list.filter(function(p){ return String(p.id) !== String(id); });
-              localStorage.setItem('vitalora_blog_posts', JSON.stringify(list));
-              loadBlogPosts();
-            });
-          }
-          
-          // Hook view button
-          const viewBtn = row.querySelector('.view-post');
-          if (viewBtn) {
-            viewBtn.addEventListener('click', function(ev){
-              ev.stopPropagation();
-              const id = this.getAttribute('data-id');
-              let list = [];
-              try { list = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]'); } catch(_) {}
-              const post = list.find(function(p){ return String(p.id) === String(id); });
-              if (!post) return;
-              const slug = post.slug || '';
-              const status = post.status || 'published';
-              const url = status === 'published' ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + encodeURIComponent(slug));
-              window.open(url, '_blank');
-            });
-          }
-          
-          tableBody.appendChild(row);
-        });
+
+            const del = row.querySelector('.delete-post');
+            if (del) {
+              del.addEventListener('click', async function(ev){
+                ev.stopPropagation();
+                if (!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
+                try {
+                  await fetchJson(`${API_BASE}?id=${encodeURIComponent(post.id)}`, { method: 'DELETE' });
+                  await loadBlogPosts();
+                } catch (error) {
+                  alert('Verwijderen mislukt: ' + (error && error.message ? error.message : 'Onbekende fout'));
+                }
+              });
+            }
+
+            const viewBtn = row.querySelector('.view-post');
+            if (viewBtn) {
+              viewBtn.addEventListener('click', function(ev){
+                ev.stopPropagation();
+                const slug = post.slug || '';
+                if (!slug) {
+                  window.open('/blog-editor.html?edit=' + encodeURIComponent(post.id), '_blank');
+                  return;
+                }
+                const status = post.status || 'published';
+                const url = status === 'published' ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + encodeURIComponent(slug));
+                window.open(url, '_blank');
+              });
+            }
+
+            tableBody.appendChild(row);
+          });
+        } catch (error) {
+          const message = error && error.message ? error.message : 'Onbekende fout';
+          tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #ef4444; padding: 20px;">Fout bij laden: ' + escapeHtml(message) + '</td></tr>';
+        }
       }
-      
+
+// No extra actions here; only listing and create button per verzoek
       // No extra actions here; only listing and create button per verzoek
       
       // Load blog posts when page loads
