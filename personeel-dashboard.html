@@ -150,26 +150,38 @@
 
         tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Laden...</td></tr>';
 
+        let blogPosts = [];
         try {
           const resp = await fetch('/api/blogs', { credentials: 'same-origin' });
           if (resp.status === 401) {
             window.location.href = '/personeel';
             return;
           }
-          const payload = await resp.json().catch(() => ({}));
-          if (!resp.ok) {
-            const message = payload?.error || 'Kon blogposts niet laden';
-            tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #ef4444; padding: 20px;">' + escapeHtml(message) + '</td></tr>';
-            return;
+          if (resp.ok) {
+            const payload = await resp.json().catch(() => ({}));
+            if (Array.isArray(payload?.data)) {
+              blogPosts = payload.data;
+            }
           }
-          const blogPosts = Array.isArray(payload?.data) ? payload.data : [];
+        } catch (_err) {
+          // Val later terug op localStorage
+        }
 
-          tableBody.innerHTML = '';
+        if (!blogPosts.length) {
+          try {
+            const stored = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            if (Array.isArray(stored) && stored.length) {
+              blogPosts = stored;
+            }
+          } catch (_) {}
+        }
 
-          if (!blogPosts.length) {
-            tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
-            return;
-          }
+        tableBody.innerHTML = '';
+
+        if (!blogPosts.length) {
+          tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Geen blog posts gevonden</td></tr>';
+          return;
+        }
 
           blogPosts.forEach(function(post) {
             const row = document.createElement('tr');
@@ -213,6 +225,7 @@
               del.addEventListener('click', async function(ev){
                 ev.stopPropagation();
                 if (!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
+                let apiRemoved = false;
                 try {
                   const delResp = await fetch(`/api/blogs?id=${encodeURIComponent(post.id)}`, {
                     method: 'DELETE',
@@ -222,14 +235,21 @@
                     window.location.href = '/personeel';
                     return;
                   }
-                  if (!delResp.ok) {
-                    const errorPayload = await delResp.json().catch(() => ({}));
-                    alert('Verwijderen mislukt: ' + (errorPayload?.error || delResp.statusText));
-                    return;
+                  if (delResp.ok) {
+                    apiRemoved = true;
                   }
                 } catch (_) {
-                  alert('Verwijderen mislukt. Probeer het opnieuw.');
-                  return;
+                  // laat fallback hierna lopen
+                }
+
+                try {
+                  const stored = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+                  const filtered = stored.filter(p => String(p.id) !== String(post.id));
+                  localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+                } catch (_) {}
+
+                if (!apiRemoved) {
+                  alert('Server verwijdering is mogelijk mislukt, maar lokale kopie is bijgewerkt.');
                 }
                 await loadBlogPosts();
               });
