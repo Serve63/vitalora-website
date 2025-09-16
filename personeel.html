@@ -38,8 +38,15 @@
       <h1>Personeel</h1>
       <p>Log in om het interne dashboard te openen.</p>
       <div id="err" class="staff-error" role="alert"></div>
-      <form id="staff-login" autocomplete="off" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-        <input type="password" id="access-code" placeholder="Toegangscode" inputmode="text" autocomplete="one-time-code" style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;letter-spacing:4px;text-align:center;" />
+      <form id="staff-login" autocomplete="off" style="display:flex;flex-direction:column;gap:16px;margin-top:8px">
+        <div class="pin-container" id="pin-container" role="group" aria-label="Toegangscode">
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" autocomplete="one-time-code" aria-label="Eerste cijfer" />
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" aria-label="Tweede cijfer" />
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" aria-label="Derde cijfer" />
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" aria-label="Vierde cijfer" />
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" aria-label="Vijfde cijfer" />
+          <input class="pin-input" type="password" inputmode="numeric" maxlength="1" aria-label="Zesde cijfer" />
+        </div>
         <button type="submit" id="enter">Inloggen</button>
       </form>
       <a href="/" class="back-link">← Terug naar homepage</a>
@@ -53,9 +60,14 @@
       form.addEventListener('submit', async function(ev){
         ev.preventDefault();
         errorDiv.textContent='';
-        const codeInput = document.getElementById('access-code');
-        const code = codeInput.value.trim();
-        if(!code){ errorDiv.textContent = 'Voer je toegangscode in.'; codeInput.focus(); return; }
+        const inputs = Array.from(document.querySelectorAll('.pin-input'));
+        const code = inputs.map(inp => inp.value.replace(/\D/g,'')).join('');
+        if(code.length !== inputs.length){
+          errorDiv.textContent = 'Vul alle cijfers in.';
+          const firstEmpty = inputs.find(inp => !inp.value);
+          (firstEmpty || inputs[0]).focus();
+          return;
+        }
         try{
           const resp = await fetch('/api/staff/login',{
             method:'POST',
@@ -67,6 +79,47 @@
           if(!resp.ok){ errorDiv.textContent = data?.error || 'Inloggen mislukt.'; return; }
           window.location.href = '/personeel-dashboard';
         }catch(e){ errorDiv.textContent='Netwerkfout. Probeer opnieuw.'; }
+      });
+
+      const pinInputs = Array.from(document.querySelectorAll('.pin-input'));
+      if (pinInputs.length) {
+        pinInputs[0].focus();
+      }
+
+      pinInputs.forEach((input, idx) => {
+        input.addEventListener('input', (e) => {
+          const value = e.target.value.replace(/\D/g, '');
+          e.target.value = value.slice(-1);
+          if (value && idx < pinInputs.length - 1) {
+            pinInputs[idx + 1].focus();
+          }
+        });
+
+        input.addEventListener('keydown', (e) => {
+          if (e.key === 'Backspace' && !input.value && idx > 0) {
+            pinInputs[idx - 1].focus();
+            pinInputs[idx - 1].value = '';
+          }
+          if (e.key === 'ArrowLeft' && idx > 0) {
+            pinInputs[idx - 1].focus();
+          }
+          if (e.key === 'ArrowRight' && idx < pinInputs.length - 1) {
+            pinInputs[idx + 1].focus();
+          }
+        });
+
+        input.addEventListener('paste', (e) => {
+          const paste = (e.clipboardData || window.clipboardData).getData('text');
+          const digits = String(paste).replace(/\D/g, '').slice(0, pinInputs.length);
+          if (!digits) return;
+          e.preventDefault();
+          digits.split('').forEach((char, offset) => {
+            const target = pinInputs[idx + offset];
+            if (target) target.value = char;
+          });
+          const nextIndex = Math.min(idx + digits.length, pinInputs.length - 1);
+          pinInputs[nextIndex].focus();
+        });
       });
     })();
   </script>
