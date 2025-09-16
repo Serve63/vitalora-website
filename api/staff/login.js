@@ -1,10 +1,19 @@
 const crypto = require('crypto');
 
+function getConfiguredCodes(){
+  const raw = process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '248911';
+  return String(raw)
+    .split(',')
+    .map(v => v.trim())
+    .filter(Boolean);
+}
+
 function resolveSessionSecret(){
   const configured = process.env.SESSION_SECRET;
   if (configured && configured !== 'dev-secret-change-me') return configured;
-  const fallbackCode = process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '';
-  if (!fallbackCode) return null;
+  const codes = getConfiguredCodes();
+  if (!codes.length) return null;
+  const fallbackCode = codes[0];
   return crypto.createHash('sha256').update(`vitalora::${fallbackCode}`).digest('hex');
 }
 
@@ -42,10 +51,7 @@ async function handler(req, res){
       return;
     }
 
-    const configuredCodes = (process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '')
-      .split(',')
-      .map(v => v.trim())
-      .filter(Boolean);
+    const configuredCodes = getConfiguredCodes();
 
     if (!configuredCodes.length || !configuredCodes.some(stored => safeCompare(stored, submitted))) {
       res.status(401).json({ error: 'Ongeldige toegangscode' });
