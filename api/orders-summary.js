@@ -1,6 +1,14 @@
+import { requireStaff } from './staff/login.js';
+
 export default async function handler(req, res) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
+    return;
+  }
+
+  const staff = requireStaff(req);
+  if (!staff) {
+    res.status(401).json({ error: 'Niet ingelogd' });
     return;
   }
 
@@ -74,5 +82,4 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Unexpected server error', details: String(err) });
   }
 }
-
 

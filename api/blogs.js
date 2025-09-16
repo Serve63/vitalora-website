@@ -1,6 +1,7 @@
 const path = require('path');
 const fs = require('fs');
 const { spawn } = require('child_process');
+const { requireStaff } = require('./staff/login.js');
 
 const DATA_DIR = path.join(process.cwd(), 'data');
 const DB_PATH = path.join(DATA_DIR, 'blogs.sqlite');
@@ -418,6 +419,11 @@ async function handleDelete(req, res) {
 
 export default async function handler(req, res) {
   try {
+    const staff = requireStaff(req);
+    if (!staff) {
+      res.status(401).json({ error: 'Niet ingelogd' });
+      return;
+    }
     await ensureDatabase();
 
     if (req.method === 'GET') {
@@ -447,4 +453,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Onverwachte serverfout' });
   }
 }
-

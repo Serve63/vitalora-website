@@ -114,37 +114,11 @@
 
   <script>
     (function(){
-      function hasStaffAccess(){
-        return document.cookie.split(';').some(function(part){
-          return part.trim().startsWith('staff_access_ok=');
-        });
-      }
-
-      if(!hasStaffAccess()){ window.location.href='/personeel'; return; }
-
-      const API_BASE = '/api/blogs';
-
-      async function fetchJson(url, options = {}){
-        const init = { ...options };
-        init.headers = init.headers ? { ...init.headers } : {};
-        if (init.body && !(init.body instanceof FormData)) {
-          init.headers['Content-Type'] = 'application/json';
-        }
-        const response = await fetch(url, init);
-        const text = await response.text();
-        let data = null;
-        if (text) {
-          try { data = JSON.parse(text); } catch (_) { data = null; }
-        }
-        if (!response.ok) {
-          const message = (data && data.error) || response.statusText || 'Onbekende fout';
-          const error = new Error(message);
-          error.status = response.status;
-          error.details = data;
-          throw error;
-        }
-        return data;
-      }
+      // Server-side gated via cookie. As a small UX guard, verify at load.
+      fetch('/api/staff/guard', { credentials: 'same-origin' })
+        .then(r => r.ok ? r.json() : Promise.reject())
+        .then(() => {})
+        .catch(() => { window.location.href='/personeel'; });
       // Revenue fetch
       async function loadRevenue(){
         try{
@@ -177,8 +151,18 @@
         tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #6b7280; padding: 20px;">Laden...</td></tr>';
 
         try {
-          const res = await fetchJson(API_BASE);
-          const blogPosts = Array.isArray(res?.data) ? res.data : [];
+          const resp = await fetch('/api/blogs', { credentials: 'same-origin' });
+          if (resp.status === 401) {
+            window.location.href = '/personeel';
+            return;
+          }
+          const payload = await resp.json().catch(() => ({}));
+          if (!resp.ok) {
+            const message = payload?.error || 'Kon blogposts niet laden';
+            tableBody.innerHTML = '<tr><td colspan="3" style="text-align: center; color: #ef4444; padding: 20px;">' + escapeHtml(message) + '</td></tr>';
+            return;
+          }
+          const blogPosts = Array.isArray(payload?.data) ? payload.data : [];
 
           tableBody.innerHTML = '';
 
@@ -230,11 +214,24 @@
                 ev.stopPropagation();
                 if (!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
                 try {
-                  await fetchJson(`${API_BASE}?id=${encodeURIComponent(post.id)}`, { method: 'DELETE' });
-                  await loadBlogPosts();
-                } catch (error) {
-                  alert('Verwijderen mislukt: ' + (error && error.message ? error.message : 'Onbekende fout'));
+                  const delResp = await fetch(`/api/blogs?id=${encodeURIComponent(post.id)}`, {
+                    method: 'DELETE',
+                    credentials: 'same-origin'
+                  });
+                  if (delResp.status === 401) {
+                    window.location.href = '/personeel';
+                    return;
+                  }
+                  if (!delResp.ok) {
+                    const errorPayload = await delResp.json().catch(() => ({}));
+                    alert('Verwijderen mislukt: ' + (errorPayload?.error || delResp.statusText));
+                    return;
+                  }
+                } catch (_) {
+                  alert('Verwijderen mislukt. Probeer het opnieuw.');
+                  return;
                 }
+                await loadBlogPosts();
               });
             }
 

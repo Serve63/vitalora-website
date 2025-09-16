@@ -36,77 +36,37 @@
   <main class="staff-gate">
     <div class="staff-card">
       <h1>Personeel</h1>
-      <p>Voer de personeelscode in om naar het interne dashboard te gaan.</p>
-      <div id="err" class="staff-error"></div>
-      <div class="pin-container">
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-        <input type="text" class="pin-input" maxlength="1" inputmode="numeric" />
-      </div>
-      <button id="enter">Naar dashboard</button>
+      <p>Log in om het interne dashboard te openen.</p>
+      <div id="err" class="staff-error" role="alert"></div>
+      <form id="staff-login" autocomplete="on" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+        <input type="email" id="email" name="email" placeholder="E-mail" required style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;" />
+        <input type="password" id="password" name="password" placeholder="Wachtwoord" required style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;" />
+        <button type="submit" id="enter">Inloggen</button>
+      </form>
       <a href="/" class="back-link">← Terug naar homepage</a>
     </div>
   </main>
 
   <script>
     (function(){
-      const pinInputs = document.querySelectorAll('.pin-input');
-      const enterButton = document.getElementById('enter');
+      const form = document.getElementById('staff-login');
       const errorDiv = document.getElementById('err');
-      
-      // Auto-focus first input
-      pinInputs[0].focus();
-      
-      // Handle input in each PIN field
-      pinInputs.forEach((input, index) => {
-        input.addEventListener('input', function(e) {
-          // Only allow numbers
-          this.value = this.value.replace(/[^0-9]/g, '');
-          
-          // Move to next input if current is filled
-          if (this.value && index < pinInputs.length - 1) {
-            pinInputs[index + 1].focus();
-          }
-        });
-        
-        input.addEventListener('keydown', function(e) {
-          // Handle backspace
-          if (e.key === 'Backspace' && !this.value && index > 0) {
-            pinInputs[index - 1].focus();
-          }
-          
-          // Handle enter key
-          if (e.key === 'Enter') {
-            enterButton.click();
-          }
-        });
-        
-        input.addEventListener('paste', function(e) {
-          e.preventDefault();
-          const pastedData = e.clipboardData.getData('text').replace(/[^0-9]/g, '');
-          for (let i = 0; i < Math.min(pastedData.length, pinInputs.length); i++) {
-            pinInputs[i].value = pastedData[i];
-          }
-          // Focus last filled input or last input
-          const lastFilledIndex = Math.min(pastedData.length - 1, pinInputs.length - 1);
-          pinInputs[lastFilledIndex].focus();
-        });
-      });
-      
-      enterButton.addEventListener('click', function(){
-        const code = Array.from(pinInputs).map(input => input.value).join('');
-        if(code === '248911') {
-          document.cookie = 'staff_access_ok=1; path=/; max-age=86400';
+      form.addEventListener('submit', async function(ev){
+        ev.preventDefault();
+        errorDiv.textContent='';
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+        try{
+          const resp = await fetch('/api/staff/login',{
+            method:'POST',
+            headers:{'Content-Type':'application/json'},
+            credentials:'same-origin',
+            body: JSON.stringify({ email, password })
+          });
+          const data = await resp.json().catch(()=>({}));
+          if(!resp.ok){ errorDiv.textContent = data?.error || 'Inloggen mislukt.'; return; }
           window.location.href = '/personeel-dashboard';
-        } else {
-          errorDiv.textContent = 'Ongeldige code.';
-          // Clear all inputs and focus first
-          pinInputs.forEach(input => input.value = '');
-          pinInputs[0].focus();
-        }
+        }catch(e){ errorDiv.textContent='Netwerkfout. Probeer opnieuw.'; }
       });
     })();
   </script>

@@ -434,15 +434,20 @@
 
   <script>
     (async function(){
-      // Check if user has access via cookie set op het personeelsscherm
-      function hasStaffAccess(){
-        return document.cookie.split(';').some(function(part){
-          return part.trim().startsWith('staff_access_ok=');
-        });
+      async function confirmStaffAccess(){
+        try {
+          const resp = await fetch('/api/staff/guard', { credentials: 'same-origin' });
+          if (!resp.ok) throw new Error('Unauthorized');
+          return resp.json();
+        } catch (_) {
+          window.location.href = '/personeel';
+          throw new Error('redirecting');
+        }
       }
 
-      if(!hasStaffAccess()){
-        window.location.href='/personeel';
+      try {
+        await confirmStaffAccess();
+      } catch (_) {
         return;
       }
       
@@ -477,6 +482,9 @@
         if (init.body && !(init.body instanceof FormData)) {
           init.headers['Content-Type'] = 'application/json';
         }
+        if (!init.credentials) {
+          init.credentials = 'same-origin';
+        }
         const response = await fetch(url, init);
         const text = await response.text();
         let data = null;
@@ -488,6 +496,9 @@
           const error = new Error(message);
           error.status = response.status;
           error.details = data;
+          if (response.status === 401) {
+            window.location.href = '/personeel';
+          }
           throw error;
         }
         return data;
@@ -497,9 +508,19 @@
         try {
           const res = await fetchJson(API_BASE);
           blogPostsCache = Array.isArray(res?.data) ? res.data : [];
+          try {
+            if (typeof localStorage !== 'undefined') {
+              localStorage.setItem('vitalora_blog_posts', JSON.stringify(blogPostsCache));
+            }
+          } catch (_) {}
         } catch (error) {
           blogPostsCache = [];
           console.error('Kon blogposts niet laden', error);
+          try {
+            if (typeof localStorage !== 'undefined') {
+              localStorage.removeItem('vitalora_blog_posts');
+            }
+          } catch (_) {}
         }
         return blogPostsCache;
       }
@@ -1002,6 +1023,7 @@
         if(!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
         try {
           await removePost(editId);
+          await refreshCache();
           alert('Blog verwijderd');
           window.location.href = '/personeel-dashboard';
         } catch (error) {
