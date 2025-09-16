@@ -1,10 +1,12 @@
-const { query } = require('./db');
+const { query, connectionMeta } = require('./db');
 
 let initPromise = null;
 
 async function ensureBlogTable() {
   if (!initPromise) {
     initPromise = (async () => {
+      const meta = connectionMeta && connectionMeta();
+      console.log('Supabase host (init)', meta?.host);
       await query(`
         CREATE TABLE IF NOT EXISTS blog_posts (
           id SERIAL PRIMARY KEY,
@@ -59,4 +61,3 @@ module.exports = {
   ensureBlogTable,
   rowToBlog,
 };
-

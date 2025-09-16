@@ -1,6 +1,7 @@
 const { Pool } = require('pg');
 
 let pool = null;
+let connectionMeta = null;
 
 function resolveConnectionString() {
   return (
@@ -20,13 +21,26 @@ function getPool() {
     throw new Error('DATABASE_URL ontbreekt voor blogdatabase.');
   }
   const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
+  try {
+    const parsed = new URL(connectionString);
+    connectionMeta = {
+      host: parsed.hostname,
+      database: parsed.pathname || '',
+    };
+  } catch (_) {
+    connectionMeta = { host: 'onbekend', database: '' };
+  }
+
   pool = new Pool({
     connectionString,
     ssl: isLocal ? false : { rejectUnauthorized: false },
     max: 5,
   });
   pool.on('error', (err) => {
-    console.error('Postgres pool error', err);
+    console.error('Postgres pool error', {
+      message: err?.message,
+      host: connectionMeta?.host,
+    });
   });
   return pool;
 }
@@ -40,4 +54,4 @@ async function query(text, params = []) {
   }
 }
 
-module.exports = { getPool, query };
+module.exports = { getPool, query, connectionMeta: () => connectionMeta };
