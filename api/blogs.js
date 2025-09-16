@@ -417,7 +417,7 @@ async function handleDelete(req, res) {
   res.status(200).json({ success: true });
 }
 
-export default async function handler(req, res) {
+async function handler(req, res) {
   try {
     const staff = requireStaff(req);
     if (!staff) {
@@ -453,3 +453,5 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Onverwachte serverfout' });
   }
 }
+
+module.exports = handler;

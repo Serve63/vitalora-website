@@ -1,6 +1,6 @@
-import { requireStaff } from './staff/login.js';
+const { requireStaff } = require('./staff/login.js');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     res.status(405).json({ error: 'Method not allowed' });
     return;
@@ -82,4 +82,3 @@ export default async function handler(req, res) {
     res.status(500).json({ error: 'Unexpected server error', details: String(err) });
   }
 }
-

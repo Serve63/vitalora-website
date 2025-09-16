@@ -3,10 +3,16 @@ const crypto = require('crypto');
 function resolveSessionSecret(){
   const configured = process.env.SESSION_SECRET;
   if (configured && configured !== 'dev-secret-change-me') return configured;
-  const email = process.env.STAFF_EMAIL || '';
-  const password = process.env.STAFF_PASSWORD || '';
-  if (!email || !password) return null;
-  return crypto.createHash('sha256').update(`${email}::${password}`).digest('hex');
+  const fallbackCode = process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '';
+  if (!fallbackCode) return null;
+  return crypto.createHash('sha256').update(`vitalora::${fallbackCode}`).digest('hex');
+}
+
+function safeCompare(a, b){
+  const aBuf = Buffer.from(String(a));
+  const bBuf = Buffer.from(String(b));
+  if (aBuf.length !== bBuf.length) return false;
+  return crypto.timingSafeEqual(aBuf, bBuf);
 }
 
 // Simple HMAC-signed cookie session. In production, use a real auth provider.
@@ -29,19 +35,20 @@ async function handler(req, res){
     return;
   }
   try{
-    const { email, password } = req.body || {};
-    if(!email || !password){
-      res.status(400).json({ error: 'Email en wachtwoord verplicht' });
+    const { code } = req.body || {};
+    const submitted = typeof code === 'string' ? code.trim() : '';
+    if(!submitted){
+      res.status(400).json({ error: 'Toegangscode verplicht' });
       return;
     }
 
-    // Validate against environment credentials or placeholder list
-    const ADMIN_EMAIL = process.env.STAFF_EMAIL;
-    const ADMIN_PASS = process.env.STAFF_PASSWORD;
+    const configuredCodes = (process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '')
+      .split(',')
+      .map(v => v.trim())
+      .filter(Boolean);
 
-    const ok = (ADMIN_EMAIL && ADMIN_PASS && email === ADMIN_EMAIL && password === ADMIN_PASS);
-    if(!ok){
-      res.status(401).json({ error: 'Ongeldige inloggegevens' });
+    if (!configuredCodes.length || !configuredCodes.some(stored => safeCompare(stored, submitted))) {
+      res.status(401).json({ error: 'Ongeldige toegangscode' });
       return;
     }
 
@@ -51,7 +58,7 @@ async function handler(req, res){
       return;
     }
     const ttlMs = 1000 * 60 * 60 * 12; // 12u sessie
-    const payload = JSON.stringify({ email, exp: Date.now() + ttlMs });
+    const payload = JSON.stringify({ code: submitted, exp: Date.now() + ttlMs });
     const token = sign(Buffer.from(payload).toString('base64url'), secret);
 
     res.setHeader('Set-Cookie', `vitalora_staff=${token}; Path=/; HttpOnly; SameSite=Lax; Secure`);

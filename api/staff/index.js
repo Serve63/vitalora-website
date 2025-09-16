@@ -1,6 +1,6 @@
-import { requireStaff } from './login';
+const { requireStaff } = require('./login');
 
-export default async function handler(req, res){
+module.exports = async function handler(req, res){
   const user = requireStaff(req);
   if(!user){
     // Not logged in → send login page
@@ -17,4 +17,3 @@ export default async function handler(req, res){
     res.status(500).send('Kon dashboard niet laden');
   }
 }
-

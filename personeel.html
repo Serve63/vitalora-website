@@ -38,9 +38,8 @@
       <h1>Personeel</h1>
       <p>Log in om het interne dashboard te openen.</p>
       <div id="err" class="staff-error" role="alert"></div>
-      <form id="staff-login" autocomplete="on" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
-        <input type="email" id="email" name="email" placeholder="E-mail" required style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;" />
-        <input type="password" id="password" name="password" placeholder="Wachtwoord" required style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;" />
+      <form id="staff-login" autocomplete="off" style="display:flex;flex-direction:column;gap:12px;margin-top:8px">
+        <input type="password" id="access-code" placeholder="Toegangscode" inputmode="text" autocomplete="one-time-code" style="padding:12px 14px;border:2px solid #e5e7eb;border-radius:10px;font-size:16px;letter-spacing:4px;text-align:center;" />
         <button type="submit" id="enter">Inloggen</button>
       </form>
       <a href="/" class="back-link">← Terug naar homepage</a>
@@ -54,14 +53,15 @@
       form.addEventListener('submit', async function(ev){
         ev.preventDefault();
         errorDiv.textContent='';
-        const email = document.getElementById('email').value.trim();
-        const password = document.getElementById('password').value;
+        const codeInput = document.getElementById('access-code');
+        const code = codeInput.value.trim();
+        if(!code){ errorDiv.textContent = 'Voer je toegangscode in.'; codeInput.focus(); return; }
         try{
           const resp = await fetch('/api/staff/login',{
             method:'POST',
             headers:{'Content-Type':'application/json'},
             credentials:'same-origin',
-            body: JSON.stringify({ email, password })
+            body: JSON.stringify({ code })
           });
           const data = await resp.json().catch(()=>({}));
           if(!resp.ok){ errorDiv.textContent = data?.error || 'Inloggen mislukt.'; return; }
