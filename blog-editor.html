@@ -912,7 +912,12 @@
           editId = String(saved.id);
           deleteBtn.style.display = 'inline-block';
           updateScheduleButtonLabel(saved.status);
-          await refreshCache();
+          try {
+            const localList = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            const filtered = Array.isArray(localList) ? localList.filter(item => String(item.id) !== String(saved.id)) : [];
+            filtered.unshift(saved);
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+          } catch (_) {}
           updateSlugHint();
           alert('Concept succesvol opgeslagen!');
           window.location.href = '/personeel-dashboard';
@@ -969,7 +974,12 @@
           editId = String(saved.id);
           deleteBtn.style.display = 'inline-block';
           updateScheduleButtonLabel(saved.status);
-          await refreshCache();
+          try {
+            const localList = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            const filtered = Array.isArray(localList) ? localList.filter(item => String(item.id) !== String(saved.id)) : [];
+            filtered.unshift(saved);
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+          } catch (_) {}
           updateSlugHint();
           alert('Blog succesvol ingepland!');
           window.location.href = '/personeel-dashboard';
@@ -1011,7 +1021,12 @@
           editId = String(saved.id);
           deleteBtn.style.display = 'inline-block';
           updateScheduleButtonLabel(saved.status);
-          await refreshCache();
+          try {
+            const localList = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            const filtered = Array.isArray(localList) ? localList.filter(item => String(item.id) !== String(saved.id)) : [];
+            filtered.unshift(saved);
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+          } catch (_) {}
           updateSlugHint();
           alert(wasExisting ? 'Blog succesvol bijgewerkt!' : 'Blog succesvol gepubliceerd!');
           window.location.href = '/personeel-dashboard';
@@ -1026,7 +1041,11 @@
         if(!confirm('Weet je zeker dat je deze blog wilt verwijderen?')) return;
         try {
           await removePost(editId);
-          await refreshCache();
+          try {
+            const localList = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+            const filtered = Array.isArray(localList) ? localList.filter(item => String(item.id) !== String(editId)) : [];
+            localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+          } catch (_) {}
           alert('Blog verwijderd');
           window.location.href = '/personeel-dashboard';
         } catch (error) {
@@ -1060,7 +1079,12 @@
             editId = String(saved.id);
             deleteBtn.style.display = 'inline-block';
             updateScheduleButtonLabel(saved.status);
-            await refreshCache();
+            try {
+              const localList = JSON.parse(localStorage.getItem('vitalora_blog_posts') || '[]');
+              const filtered = Array.isArray(localList) ? localList.filter(item => String(item.id) !== String(saved.id)) : [];
+              filtered.unshift(saved);
+              localStorage.setItem('vitalora_blog_posts', JSON.stringify(filtered));
+            } catch (_) {}
             updateSlugHint();
           } catch (error) {
             handleError('Opslaan voor preview mislukt', error);
