@@ -1,0 +1,63 @@
+<!doctype html><html lang="nl"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Supabase Connect • Smoke Test</title>
+<meta name="supabase-url" content="https://csnmhxgfyantepgqcjxy.supabase.co">
+<meta name="supabase-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzbm1oeGdmeWFudGVwZ3Fjanh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwOTc5MDUsImV4cCI6MjA3MzY3MzkwNX0._9Uf73tQENuwvBuaspSdsQvNH6ZzsZU92yaWBfC1auM">
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:24px;max-width:780px}
+  input,button{padding:10px;margin:6px 0}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  .muted{color:#666;font-size:12px}
+  pre{background:#f7f7f7;padding:12px;border-radius:8px;overflow:auto}
+</style></head><body>
+<h1>Supabase Connect — Smoke Test</h1>
+<p class="muted">Deze pagina test alleen de koppeling: login → haal /auth/v1/user op. Geen data-tabellen.</p>
+
+<div class="row">
+  <input id="email" type="email" placeholder="email" autocomplete="email"/>
+  <input id="password" type="password" placeholder="password" autocomplete="current-password"/>
+  <button id="btnLogin">Inloggen</button>
+  <button id="btnUser" disabled>Check user</button>
+</div>
+
+<div id="status" class="muted">Status: niet ingelogd</div>
+<h3>Resultaat</h3>
+<pre id="out">—</pre>
+
+<script>
+const SB_URL=document.querySelector('meta[name="supabase-url"]').content;
+const SB_KEY=document.querySelector('meta[name="supabase-key"]').content;
+let token=null;
+
+async function login(email,password){
+  const r=await fetch(`${SB_URL}/auth/v1/token?grant_type=password`,{
+    method:'POST',
+    headers:{'Content-Type':'application/json','apikey':SB_KEY},
+    body:JSON.stringify({email,password})
+  });
+  const d=await r.json();
+  if(!r.ok) throw new Error(d.error_description||'Login failed');
+  token=d.access_token;
+  document.getElementById('status').textContent='Status: ingelogd';
+  document.getElementById('btnUser').disabled=false;
+  out(d);
+}
+
+async function getUser(){
+  if(!token) return out({error:'Geen token'});
+  const r=await fetch(`${SB_URL}/auth/v1/user`,{
+    headers:{'apikey':SB_KEY,'Authorization':`Bearer ${token}`}
+  });
+  const d=await r.json();
+  out(d);
+}
+
+function out(obj){document.getElementById('out').textContent=JSON.stringify(obj,null,2);}
+
+document.getElementById('btnLogin').onclick=()=>login(
+  document.getElementById('email').value.trim(),
+  document.getElementById('password').value
+);
+document.getElementById('btnUser').onclick=getUser;
+</script>
+</body></html>
