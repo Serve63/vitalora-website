@@ -1,0 +1,143 @@
+<!doctype html><html lang="nl"><head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>CRM</title>
+<!-- Supabase project config -->
+<meta name="supabase-url" content="https://csnmhxgfyantepgqcjxy.supabase.co">
+<meta name="supabase-key" content="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNzbm1oeGdmeWFudGVwZ3Fjanh5Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTgwOTc5MDUsImV4cCI6MjA3MzY3MzkwNX0._9Uf73tQENuwvBuaspSdsQvNH6ZzsZU92yaWBfC1auM">
+<style>
+  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;margin:24px}
+  input,button,textarea{padding:10px;margin:6px 0}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  .card{border:1px solid #ddd;padding:12px;border-radius:10px;margin:8px 0}
+  .muted{color:#666;font-size:12px}
+</style></head><body>
+<h1>CRM (MVP)</h1>
+
+<section id="auth">
+  <h3>Login</h3>
+  <div class="row">
+    <input id="email" type="email" placeholder="email" autocomplete="email"/>
+    <input id="password" type="password" placeholder="password" autocomplete="current-password"/>
+    <button id="btnLogin">Inloggen</button>
+    <button id="btnLogout" style="display:none">Uitloggen</button>
+  </div>
+  <div id="authStatus" class="muted"></div>
+</section>
+<hr/>
+
+<section id="addContact" style="display:none">
+  <h3>Nieuw contact</h3>
+  <div class="row">
+    <input id="full_name" placeholder="Naam *"/>
+    <input id="email_c" placeholder="E-mail"/>
+    <input id="phone" placeholder="Telefoon"/>
+    <input id="company" placeholder="Bedrijf"/>
+  </div>
+  <textarea id="note" placeholder="Notitie" rows="3" style="width:100%"></textarea>
+  <button id="btnAdd">Opslaan</button>
+</section>
+
+<section id="contacts" style="display:none">
+  <h3>Contacts</h3>
+  <div class="row"><input id="q" placeholder="Zoeken…"/><button id="btnReload">Vernieuwen</button></div>
+  <div id="list"></div>
+</section>
+
+<script>
+const SB_URL=document.querySelector('meta[name="supabase-url"]').content;
+const SB_KEY=document.querySelector('meta[name="supabase-key"]').content;
+
+let accessToken=null,user=null;
+
+// ---- Auth: password grant (GoTrue)
+async function authRequest(path,body){
+  const r=await fetch(`${SB_URL}/auth/v1/${path}`,{
+    method:'POST',
+    headers:{'apikey':SB_KEY,'Content-Type':'application/json'},
+    body:JSON.stringify(body)
+  });
+  if(!r.ok) throw new Error('Auth failed'); return r.json();
+}
+async function login(email,password){
+  const d=await authRequest('token?grant_type=password',{email,password});
+  accessToken=d.access_token; user=d.user;
+  localStorage.setItem('sb_access_token',accessToken);
+  localStorage.setItem('sb_user',JSON.stringify(user));
+  renderAuth();
+}
+function logout(){
+  accessToken=null; user=null;
+  localStorage.removeItem('sb_access_token'); localStorage.removeItem('sb_user');
+  renderAuth();
+}
+function loadSession(){
+  accessToken=localStorage.getItem('sb_access_token');
+  const u=localStorage.getItem('sb_user'); user=u?JSON.parse(u):null;
+}
+function authHeader(){return {'apikey':SB_KEY,'Authorization':`Bearer ${accessToken}`};}
+
+// ---- REST helpers (PostgREST /rest/v1)
+async function insertContact(payload){
+  const r=await fetch(`${SB_URL}/rest/v1/contacts`,{
+    method:'POST',
+    headers:{...authHeader(),'Content-Type':'application/json','Prefer':'return=representation'},
+    body:JSON.stringify(payload)
+  });
+  if(!r.ok) throw new Error('Insert failed'); return r.json();
+}
+async function searchContacts(q=''){
+  const p=new URLSearchParams();
+  p.set('select','id,full_name,email,phone,company,created_at');
+  if(q) p.set('or',`(full_name.ilike.%${q}%,email.ilike.%${q}%)`);
+  p.set('order','created_at.desc');
+  const r=await fetch(`${SB_URL}/rest/v1/contacts?${p}`,{headers:authHeader()});
+  if(!r.ok) throw new Error('Search failed'); return r.json();
+}
+
+// ---- UI bindings
+const $=s=>document.querySelector(s);
+$('#btnLogin').onclick=async()=>{try{await login($('#email').value.trim(),$('#password').value)}catch(e){$('#authStatus').textContent='Login mislukt.'}};
+$('#btnLogout').onclick=logout;
+$('#btnAdd').onclick=async()=>{
+  const payload={
+    full_name:$('#full_name').value.trim(),
+    email:$('#email_c').value.trim()||null,
+    phone:$('#phone').value.trim()||null,
+    company:$('#company').value.trim()||null,
+    note:$('#note').value.trim()||null
+  };
+  if(!payload.full_name) return alert('Naam is verplicht');
+  try{
+    await insertContact(payload);
+    $('#full_name').value=$('#email_c').value=$('#phone').value=$('#company').value=$('#note').value='';
+    await reloadList();
+  }catch(e){ alert('Opslaan faalde'); }
+};
+$('#btnReload').onclick=reloadList;
+$('#q').oninput=debounce(reloadList,300);
+function debounce(fn,ms){let t;return(...a)=>{clearTimeout(t);t=setTimeout(()=>fn(...a),ms)}}
+
+async function reloadList(){
+  if(!accessToken) return;
+  const q=$('#q').value.trim();
+  const rows=await searchContacts(q);
+  $('#list').innerHTML=rows.map(r=>`<div class="card">
+    <b>${x(r.full_name)}</b>
+    <div class="muted">${r.email||''} ${r.phone?'• '+r.phone:''} ${r.company?'• '+r.company:''}</div>
+    <div class="muted">${new Date(r.created_at).toLocaleString()}</div>
+  </div>`).join('')||'<div class="muted">Geen resultaten.</div>';
+}
+function x(s){return (s||'').replace(/[&<>\"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+
+function renderAuth(){
+  $('#authStatus').textContent=user?`Ingelogd als ${user.email}`:'Niet ingelogd';
+  $('#btnLogin').style.display=user?'none':'inline-block';
+  $('#btnLogout').style.display=user?'inline-block':'none';
+  $('#addContact').style.display=user?'block':'none';
+  $('#contacts').style.display=user?'block':'none';
+  if(user) reloadList();
+}
+loadSession(); renderAuth();
+</script>
+</body></html>
+
