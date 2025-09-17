@@ -1,0 +1,173 @@
+<!doctype html><html lang="nl"><head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>BEYOND PRESENCE – Projector & Stayer</title>
+<meta name="description" content="Presence die je niet kan negeren. Kies Projector (explosief) of Stayer (loyaal). Bestel nu via Stripe Payment Links."/>
+<meta property="og:title" content="BEYOND PRESENCE – Projector & Stayer"/>
+<meta property="og:description" content="Presence die je niet kan negeren. Twee geuren: Projector & Stayer."/>
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://www.vitalora.nl/beyond-presence.html"/>
+<meta name="theme-color" content="#000000"/>
+<style>
+  :root{--bg:#000;--fg:#fff;--muted:#9aa0a6;--gold:#c9a24a;--wine:#7c2436;--card:#0c0c0c;--ring:#222}
+  *{box-sizing:border-box}html,body{margin:0;padding:0;background:#000;color:#fff;font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+  a{color:inherit;text-decoration:none}
+  .container{max-width:1100px;margin:0 auto;padding:20px}
+  .nav{position:sticky;top:0;z-index:50;background:rgba(0,0,0,.85);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--ring)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:14px}
+  .brand{font-weight:800;letter-spacing:.12em}
+  .btn{display:inline-block;padding:12px 18px;border-radius:10px;font-weight:700;border:1px solid #333;background:#0f0f0f;color:#fff;transition:all .2s}
+  .btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.4)}
+  .btn-gold{border-color:var(--gold);color:#111;background:linear-gradient(180deg,#f5d77a,#c9a24a)}
+  .btn-wine{border-color:var(--wine);background:linear-gradient(180deg,#b9485d,#7c2436)}
+  .hero{display:grid;grid-template-columns:1fr;gap:24px;padding:32px 0}
+  .hero h1{font-size:42px;line-height:1.1;margin:0 0 10px}
+  .hero p{color:var(--muted);margin:0 0 16px}
+  .hero-img{width:100%;aspect-ratio:1/1;border-radius:18px;background:radial-gradient(60% 60% at 50% 40%,#111,transparent),url('https://images.unsplash.com/photo-1541643600914-78b084683601?q=80&w=1200&auto=format&fit=crop') center/cover no-repeat;border:1px solid var(--ring)}
+  .hero-cta{display:flex;gap:10px;flex-wrap:wrap}
+  .proof{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:12px 0}
+  .proof div{background:var(--card);border:1px solid var(--ring);padding:10px;border-radius:10px;text-align:center;color:#d1d5db;font-size:13px}
+  .section{padding:36px 0}
+  .cards{display:grid;grid-template-columns:1fr;gap:14px}
+  .card{background:var(--card);border:1px solid var(--ring);padding:20px;border-radius:14px}
+  .split{display:grid;grid-template-columns:1fr;gap:18px}
+  .review{border-left:3px solid #333;padding-left:12px;color:#e5e7eb}
+  .faq details{background:var(--card);border:1px solid var(--ring);border-radius:12px;padding:14px}
+  .faq summary{cursor:pointer;font-weight:700}
+  .buy{display:grid;grid-template-columns:1fr;gap:12px}
+  .variant{display:flex;gap:8px}
+  .variant button{flex:1;padding:12px;border-radius:10px;border:1px solid var(--ring);background:#0e0e0e;color:#fff;font-weight:700}
+  .variant .active{outline:2px solid #fff;background:#151515}
+  footer{border-top:1px solid var(--ring);color:#9aa0a6;padding:20px 0}
+  @media(min-width:800px){
+    .hero{grid-template-columns:1.1fr .9fr;align-items:center}
+    .cards{grid-template-columns:repeat(2,1fr)}
+    .split{grid-template-columns:1fr 1fr}
+    .buy{grid-template-columns:1fr .7fr}
+  }
+</style>
+</head><body>
+<script>
+window.CONFIG={
+  projectorLink:"https://buy.stripe.com/test_123PROJECTOR",
+  stayerLink:"https://buy.stripe.com/test_123STAYER"
+};
+</script>
+
+<nav class="nav"><div class="container nav-inner">
+  <div class="brand">BEYOND&nbsp;PRESENCE</div>
+  <a href="#buy" class="btn">Bestel nu</a>
+</div></nav>
+
+<main>
+  <section class="container hero">
+    <div>
+      <h1>Presence die je niet kan negeren</h1>
+      <p>Kies je signatuur: <b style="color:var(--gold)">Projector</b> (explosief) of <b style="color:var(--wine)">Stayer</b> (loyaal). Eén product, twee karakters.</p>
+      <div class="hero-cta">
+        <a data-variant="projector" class="btn btn-gold" href="#buy">Projector bestellen</a>
+        <a data-variant="stayer" class="btn btn-wine" href="#buy">Stayer bestellen</a>
+      </div>
+      <div class="proof">
+        <div>Snelle levering (1–2 werkdagen)</div>
+        <div>Gratis retourneren binnen 30 dagen</div>
+        <div>Veilig betalen met Stripe</div>
+      </div>
+    </div>
+    <div class="hero-img" aria-hidden="true"></div>
+  </section>
+
+  <section class="container section split">
+    <div class="card">
+      <h2 style="margin:0 0 6px;color:var(--gold)">Projector</h2>
+      <p>Explosieve opening, massieve sillage. Laat een indruk achter die lang nazindert. Voor momenten dat je gezien móét worden.</p>
+    </div>
+    <div class="card">
+      <h2 style="margin:0 0 6px;color:var(--wine)">Stayer</h2>
+      <p>Loyale, omhullende aanwezigheid. Dicht op de huid; blijft bij je. Voor mensen die dichtbij mogen komen.</p>
+    </div>
+  </section>
+
+  <section class="container section">
+    <h3 style="margin:0 0 12px">Reviews</h3>
+    <div class="cards">
+      <div class="card review">“Projector draait hoofden. Eerste keer dragen direct 3 complimenten.” – Dani</div>
+      <div class="card review">“Stayer is intiem en warm. Mijn partner vindt ’m verslavend.” – Noor</div>
+      <div class="card review">“Eindelijk een keuze die simpel is maar precies klopt.” – Marco</div>
+      <div class="card review">“Topkwaliteit, minimalistisch, en snel geleverd.” – Amina</div>
+    </div>
+  </section>
+
+  <section class="container section faq">
+    <h3 style="margin:0 0 12px">FAQ</h3>
+    <div class="cards">
+      <details class="card"><summary>Wat is het verschil tussen Projector en Stayer?</summary><p>Projector is krachtig en projecterend; Stayer blijft dichter op de huid en is langdurig aanwezig.</p></details>
+      <details class="card"><summary>Kan ik retourneren?</summary><p>Ja, 30 dagen kosteloos retour (onbeschadigd en verzegeld).</p></details>
+      <details class="card"><summary>Hoe snel leveren jullie?</summary><p>Bestellingen vóór 22:00 worden meestal binnen 1–2 werkdagen geleverd.</p></details>
+      <details class="card"><summary>Betaalopties?</summary><p>Stripe: iDEAL, creditcard en meer.</p></details>
+    </div>
+  </section>
+
+  <section id="buy" class="container section">
+    <div class="buy">
+      <div class="card">
+        <h3 style="margin:0 0 10px">Kies je variant</h3>
+        <div class="variant">
+          <button id="v-projector" class="active">Projector</button>
+          <button id="v-stayer">Stayer</button>
+        </div>
+        <p id="variant-text" style="margin:10px 0;color:#d1d5db">Explosief, massieve sillage. Voor momenten dat je gezien moet worden.</p>
+        <a id="cta" class="btn" style="width:100%;text-align:center;border:1px solid #444;background:#141414">Bestel via Stripe</a>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 10px">Waarom BEYOND PRESENCE?</h3>
+        <ul style="margin:0;padding-left:18px;color:#d1d5db">
+          <li>Minimalistisch: één product, twee karakters</li>
+          <li>Premium samenstelling en verpakking</li>
+          <li>Veilig afrekenen met Stripe</li>
+          <li>Gratis retour binnen 30 dagen</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="container">
+  <div style="display:flex;gap:12px;flex-wrap:wrap">
+    <a href="/privacy" class="muted">Privacy</a>
+    <a href="/voorwaarden" class="muted">Terms</a>
+    <a href="/returns.html" class="muted">Returns</a>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const $=s=>document.querySelector(s);
+  const state={variant:'projector'};
+  function applyVariant(){
+    const projector=state.variant==='projector';
+    $('#v-projector').classList.toggle('active', projector);
+    $('#v-stayer').classList.toggle('active', !projector);
+    const link = projector? (window.CONFIG?.projectorLink||'#') : (window.CONFIG?.stayerLink||'#');
+    const cta=$('#cta');
+    cta.href=link;
+    cta.style.background= projector? 'linear-gradient(180deg,#f5d77a,#c9a24a)' : 'linear-gradient(180deg,#b9485d,#7c2436)';
+    cta.style.borderColor=projector? 'var(--gold)' : 'var(--wine)';
+    $('#variant-text').textContent = projector
+      ? 'Explosief, massieve sillage. Voor momenten dat je gezien moet worden.'
+      : 'Loyale, omhullende aanwezigheid. Dicht op de huid; blijft bij je.';
+  }
+  $('#v-projector').onclick=function(){state.variant='projector';applyVariant();}
+  $('#v-stayer').onclick=function(){state.variant='stayer';applyVariant();}
+  document.querySelectorAll('[data-variant]').forEach(el=>{
+    el.addEventListener('click', function(){ state.variant=this.getAttribute('data-variant'); setTimeout(applyVariant,0);});
+  });
+  // Analytics: checkout clicks
+  $('#cta').addEventListener('click', function(){
+    try{navigator.sendBeacon('/api/checkout-click', JSON.stringify({variant:state.variant, t:Date.now()}));}catch(_){/*no-op*/}
+  });
+  applyVariant();
+})();
+</script>
+</body></html>
+
