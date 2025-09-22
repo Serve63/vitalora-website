@@ -120,8 +120,6 @@
     }
 
     upsellBtn.addEventListener('click', async function(){
-      if(!confirm('Wil je de bundel direct toevoegen voor €0,10?')) return;
-
       upsellBtn.textContent = 'Bezig...';
       upsellBtn.disabled = true;
       setFeedback('We verwerken je betaling...', '');
