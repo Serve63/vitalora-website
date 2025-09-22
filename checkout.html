@@ -405,6 +405,9 @@
             color: #10B981;
         }
 
+        /* Ensure price shows only once if markup has duplicates */
+        .total-price .discounted-price + .discounted-price { display: none; }
+
         /* CTA Button */
         .checkout-button {
             width: 100%;
