@@ -71,6 +71,51 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     } catch (_) {}
 
+    // Ensure total block and correct price are visible on /checkout
+    try {
+        const path = (window.location && window.location.pathname) || '';
+        const isCheckout = (path === '/checkout' || path === '/checkout-new.html');
+        const isWachtEven = (path === '/wacht-even' || path === '/wacht-even.html');
+        const priceText = isWachtEven ? '€ 27,00' : (isCheckout ? '€ 47,00' : null);
+
+        if (priceText) {
+            document.querySelectorAll('.order-summary').forEach(summary => {
+                let totalEl = summary.querySelector('.total');
+                if (!totalEl) {
+                    totalEl = document.createElement('div');
+                    totalEl.className = 'total';
+                    const label = document.createElement('div');
+                    label.className = 'total-label';
+                    label.textContent = 'Totaal:';
+                    const priceWrap = document.createElement('div');
+                    priceWrap.className = 'total-price';
+                    const priceSpan = document.createElement('span');
+                    priceSpan.className = 'discounted-price';
+                    priceSpan.textContent = priceText;
+                    priceWrap.appendChild(priceSpan);
+                    totalEl.appendChild(label);
+                    totalEl.appendChild(priceWrap);
+                    summary.appendChild(totalEl);
+                } else {
+                    // Update or create price inside existing total block
+                    let priceSpan = totalEl.querySelector('.total-price .discounted-price');
+                    if (!priceSpan) {
+                        let priceWrap = totalEl.querySelector('.total-price');
+                        if (!priceWrap) {
+                            priceWrap = document.createElement('div');
+                            priceWrap.className = 'total-price';
+                            totalEl.appendChild(priceWrap);
+                        }
+                        priceSpan = document.createElement('span');
+                        priceSpan.className = 'discounted-price';
+                        priceWrap.appendChild(priceSpan);
+                    }
+                    priceSpan.textContent = priceText;
+                }
+            });
+        }
+    } catch (_) {}
+
     // Payment Method Selection
     const paymentMethods = document.querySelectorAll('.payment-method');
     
