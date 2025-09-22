@@ -25,6 +25,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .tick-list{list-style:none;display:grid;gap:8px;margin-bottom:12px}
 .tick-list li{display:flex;gap:8px;align-items:center;color:#334155}
 .tick-list .icon{width:16px;height:16px;border-radius:4px;background:#10b981;box-shadow:inset 0 0 0 2px #0f172a00}
+.tick-list .icon-success{width:16px;height:16px;background-color:#10b981;border-radius:4px}
 .dash-list{list-style:disc;margin-left:18px;color:#334155}
 
 .symbolic{text-align:center;color:#0f172a;margin:24px 0;font-size:20px}
