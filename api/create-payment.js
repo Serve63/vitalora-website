@@ -16,6 +16,7 @@ export default async function handler(req, res) {
       customerId,
       recurring,
       recurringMethod,
+      postSaleRedirect,
     } = req.body || {};
 
     const isRecurringCharge = Boolean(recurring);
@@ -34,8 +35,13 @@ export default async function handler(req, res) {
       metadata: { name, email },
     };
 
+    const fallbackUpsellRedirect = 'https://www.vitalora.nl/gefeliciteerd.html';
+    const fallbackThanksRedirect = 'https://www.vitalora.nl/bedankt.html';
+    const firstRedirect = redirectUrl || fallbackUpsellRedirect;
+    const afterUpsellRedirect = postSaleRedirect || fallbackThanksRedirect;
+
     if (!isRecurringCharge) {
-      payload.redirectUrl = redirectUrl || 'https://www.vitalora.nl/bedankt.html';
+      payload.redirectUrl = firstRedirect;
     }
 
     if (method && !isRecurringCharge) payload.method = method;
@@ -68,6 +74,7 @@ export default async function handler(req, res) {
       const base = new URL(payload.redirectUrl, 'https://www.vitalora.nl');
       base.searchParams.set('cid', currentCustomerId);
       if (method) base.searchParams.set('pm', method);
+      base.searchParams.set('next', afterUpsellRedirect);
       payload.redirectUrl = base.toString();
     }
 

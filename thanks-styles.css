@@ -26,19 +26,6 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#eef3fb;color:
 .help p{font-size:14px;color:#475569;margin-bottom:10px}
 .help .contact{margin-top:14px;background:#2563eb;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
 
-.upsell{margin:48px 0 20px}
-.upsell-card{background:#fff;border-radius:18px;border:1px solid #e2e8f0;box-shadow:0 16px 34px rgba(15,23,42,.08);padding:28px 32px;text-align:center}
-.upsell-badge{display:inline-block;background:#fef3c7;color:#b45309;padding:6px 12px;border-radius:999px;font-weight:700;font-size:12px;margin-bottom:16px}
-.upsell-card h3{font-size:26px;margin-bottom:12px;color:#0f172a}
-.upsell-card p{color:#475569;line-height:1.7;margin-bottom:18px}
-.upsell-actions{display:flex;flex-direction:column;gap:12px;align-items:center;justify-content:center;margin-bottom:8px}
-.upsell-cta{background:#10b981;color:#fff;border:0;border-radius:12px;padding:14px 28px;font-weight:700;cursor:pointer;box-shadow:0 18px 36px rgba(16,185,129,.32);min-width:220px}
-.upsell-cta:hover{filter:brightness(0.96)}
-.upsell-link{background:transparent;border:0;color:#2563eb;font-weight:600;cursor:pointer}
-.upsell-feedback{font-size:14px;color:#1e293b}
-.upsell-feedback.success{color:#047857;font-weight:600}
-.upsell-feedback.error{color:#b91c1c}
-
 @media (max-width:900px){
   .hero{grid-template-columns:1fr}
   /* Match homepage mobile hero image sizing */
