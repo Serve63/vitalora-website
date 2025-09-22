@@ -24,7 +24,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .section-label{font-weight:700;color:#1e293b;margin:12px 0 8px}
 .tick-list{list-style:none;display:grid;gap:10px;margin-bottom:12px}
 .tick-list li{display:flex;gap:12px;align-items:center;color:#334155}
-.benefit-icon{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#eef2ff,#c7d2fe);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(79,70,229,.25);flex-shrink:0}
+.benefit-icon{width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .benefit-icon::before{content:'';width:20px;height:20px;background-repeat:no-repeat;background-position:center;background-size:contain;display:block}
 .benefit-icon.icon-cap-green::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23059A6E' d='M2 9l10-5 10 5-10 5L2 9zm2 5.18V17l8 4 8-4v-2.82l-8 4-8-4z'/%3E%3C/svg%3E");}
 .benefit-icon.icon-cap-orange::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%23F97316' d='M2 9l10-5 10 5-10 5L2 9zm2 5.18V17l8 4 8-4v-2.82l-8 4-8-4z'/%3E%3C/svg%3E");}
