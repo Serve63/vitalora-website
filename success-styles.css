@@ -14,7 +14,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .subtitle{text-align:center;color:#475569;margin:10px 0 26px}
 
 .success-grid{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;background:transparent;border:0;border-radius:16px;box-shadow:none;padding:24px}
-.visual img{width:100%;height:420px;object-fit:cover;border-radius:12px}
+.visual img{display:block;width:80%;max-width:480px;height:auto;object-fit:contain;border-radius:12px;margin:0 auto}
 .content{position:relative}
 .discount-badge{position:absolute;right:0;top:-8px;background:#e0e7ff;color:#4338ca;border-radius:999px;padding:6px 10px;font-weight:700;font-size:12px}
 .selling-title{font-size:28px;line-height:1.3;margin:22px 0;color:#0f172a}
@@ -39,5 +39,5 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 
 @media (max-width:900px){
   .success-grid{grid-template-columns:1fr}
-  .visual img{height:280px}
+  .visual img{width:100%;max-width:360px;height:auto}
 }
