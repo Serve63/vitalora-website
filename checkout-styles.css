@@ -343,7 +343,8 @@ span.checkmark,
 
 .summary-title { font-size: 18px; font-weight: 600; color: #333333; margin-bottom: 16px; }
 
-.summary-item { font-size: 16px; color: #374151; margin-bottom: 12px; }
+.summary-item { font-size: 16px; color: #374151; margin-bottom: 12px; display:flex; justify-content:space-between; align-items:center; gap:12px; }
+.summary-price { font-weight:700; color:#111827; }
 .summary-item:first-child { font-weight: 700; }
 
 .total { border-top: 1px solid #e5e7eb; padding-top: 12px; }
