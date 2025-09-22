@@ -1,7 +1,7 @@
 // Checkout page functionality
 document.addEventListener('DOMContentLoaded', function() {
-    // Countdown Timer
-    let timeLeft = 4 * 60 + 57; // 4 minutes and 57 seconds in seconds
+    // Countdown Timer (mobile badge should show 5:00)
+    let timeLeft = 5 * 60; // 5 minutes in seconds
     
     function updateTimer() {
         const minutes = Math.floor(timeLeft / 60);
@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (path === '/clean-reset' || path === '/clean-reset.html') amountValue = '1.00';
                 if (path === '/wacht-even' || path === '/wacht-even.html') amountValue = '1.00';
 
+                const origin = window.location?.origin || 'https://www.vitalora.nl';
                 const body = {
                     amount: amountValue,
                     description: 'Clean Reset Cursus',
@@ -116,7 +117,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         if (m.includes('credit')) return 'creditcard';
                         if (m.includes('klarna')) return 'klarna';
                         return undefined;
-                    })()
+                    })(),
+                    redirectUrl: `${origin}/gefeliciteerd.html`,
+                    postSaleRedirect: `${origin}/bedankt.html`
                 };
 
                 const resp = await fetch('/api/create-payment', {
