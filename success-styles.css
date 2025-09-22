@@ -23,7 +23,7 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .accent-link:hover{text-decoration:underline}
 .section-label{font-weight:700;color:#1e293b;margin:12px 0 8px}
 .tick-list{list-style:none;display:grid;gap:8px;margin-bottom:12px}
-.tick-list li{display:flex;gap:10px;align-items:flex-start;color:#334155}
+.tick-list li{display:flex;gap:8px;align-items:center;color:#334155}
 .tick-list .icon{width:16px;height:16px;border-radius:4px;background:#10b981;box-shadow:inset 0 0 0 2px #0f172a00}
 .dash-list{list-style:disc;margin-left:18px;color:#334155}
 
