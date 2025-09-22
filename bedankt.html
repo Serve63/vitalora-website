@@ -81,7 +81,7 @@
     <section class="upsell">
       <div class="upsell-card">
         <div class="upsell-badge">Eenmalig aanbod</div>
-        <h3>Voeg de Detox Bundel toe voor slechts €0,10</h3>
+        <h3>Voeg de Detox Bundel toe voor slechts €1,00</h3>
         <p>Direct toegang tot extra modules, cheatsheets en audio’s die je Clean Reset traject nog makkelijker maken. Kies hieronder om het symbolische bedrag te laten incasseren via je opgeslagen betaalmethode.</p>
         <div class="upsell-actions">
           <button id="upsell-buy" class="upsell-cta">Ja, voeg de bundel toe →</button>
@@ -149,14 +149,14 @@
       }
 
       upsellBtn.addEventListener('click', async function(){
-        if(!confirm('Wil je de bundel direct toevoegen voor €0,10 met je opgeslagen betaalmethode?')) return;
+        if(!confirm('Wil je de bundel direct toevoegen voor €1,00 met je opgeslagen betaalmethode?')) return;
 
         upsellBtn.textContent = 'Bezig...';
         upsellBtn.disabled = true;
         setFeedback('We verwerken je betaling...', '');
 
         try{
-          const payload = { amount:'0.10', description:'Upsell Bundel', recurring: true, customerId: cid };
+          const payload = { amount:'1.00', description:'Upsell Bundel', recurring: true, customerId: cid };
           if(recurringMethod) payload.recurringMethod = recurringMethod;
 
           const resp = await fetch('/api/create-payment', {

@@ -6,7 +6,7 @@ export default async function handler(req, res) {
 
   try {
     const {
-      amount = '0.10',
+      amount = '1.00',
       description = 'Clean Reset Cursus',
       name,
       email,

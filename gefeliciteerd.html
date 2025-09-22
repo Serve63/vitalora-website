@@ -45,10 +45,10 @@
         </div>
       </div>
 
-      <p class="symbolic">Symbolisch bedrag: <strong>€0,10</strong></p>
+      <p class="symbolic">Symbolisch bedrag: <strong>€1,00</strong></p>
 
       <div class="cta-row upsell">
-        <button id="upsell-buy" class="cta">Voeg bundel toe voor €0,10</button>
+        <button id="upsell-buy" class="cta">Voeg bundel toe voor €1,00</button>
         <button id="skip-upsell" class="link-btn" type="button">Nee bedankt, ga verder</button>
       </div>
       <p id="upsell-feedback" class="upsell-feedback" role="status"></p>
@@ -119,14 +119,14 @@
     }
 
     upsellBtn.addEventListener('click', async function(){
-      if(!confirm('Wil je de bundel direct toevoegen voor €0,10?')) return;
+      if(!confirm('Wil je de bundel direct toevoegen voor €1,00?')) return;
 
       upsellBtn.textContent = 'Bezig...';
       upsellBtn.disabled = true;
       setFeedback('We verwerken je betaling...', '');
 
       try{
-        const payload = { amount:'0.10', description:'Upsell Bundel', recurring: true, customerId: cid };
+        const payload = { amount:'1.00', description:'Upsell Bundel', recurring: true, customerId: cid };
         if(recurringMethod) payload.recurringMethod = recurringMethod;
         const resp = await fetch('/api/create-payment', {
           method:'POST', headers:{'Content-Type':'application/json'},
@@ -156,7 +156,7 @@
         throw new Error(`Onverwachte status: ${status || 'onbekend'}`);
       }catch(e){
         setFeedback('Kon upsell niet starten. Probeer opnieuw of neem contact op met support@vitalora.nl.', 'error');
-        upsellBtn.textContent = 'Voeg bundel toe voor €0,10';
+        upsellBtn.textContent = 'Voeg bundel toe voor €1,00';
         upsellBtn.disabled = false;
       }
     });
