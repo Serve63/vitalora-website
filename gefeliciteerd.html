@@ -49,29 +49,113 @@
 
       <div class="cta-row upsell">
         <button id="upsell-buy" class="cta">Voeg bundel toe voor €1,-</button>
-        <button id="skip-upsell" class="link-btn" onclick="window.location.href='academy'">Nee bedankt, ga naar de Academy</button>
+        <button id="skip-upsell" class="link-btn" type="button">Nee bedankt, ga verder</button>
       </div>
+      <p id="upsell-feedback" class="upsell-feedback" role="status"></p>
     </div>
   </main>
   <script>
   (function(){
     const upsellBtn = document.getElementById('upsell-buy');
+    const feedbackEl = document.getElementById('upsell-feedback');
+    const skipBtn = document.getElementById('skip-upsell');
     if(!upsellBtn) return;
+    const params = new URLSearchParams(location.search);
+    const cid = params.get('cid');
+    const pm = (params.get('pm') || '').toLowerCase();
+    const nextParam = params.get('next') || '/academy';
+
+    const normaliseNextUrl = (value) => {
+      if (!value) return '/academy';
+      if (value.startsWith('http://') || value.startsWith('https://')) return value;
+      if (value.startsWith('/')) return value;
+      return `/${value}`;
+    };
+
+    const nextUrl = normaliseNextUrl(nextParam);
+
+    const resolveRecurringMethod = (paymentMethod) => {
+      if(!paymentMethod) return '';
+      if(paymentMethod.includes('ideal') || paymentMethod.includes('bancontact')) return 'directdebit';
+      if(paymentMethod.includes('directdebit') || paymentMethod.includes('sepa')) return 'directdebit';
+      if(paymentMethod.includes('credit')) return 'creditcard';
+      return '';
+    };
+
+    const recurringMethod = resolveRecurringMethod(pm);
+
+    const setFeedback = (message, type = '') => {
+      if (!feedbackEl) return;
+      feedbackEl.textContent = message;
+      feedbackEl.className = `upsell-feedback${type ? ' ' + type : ''}`;
+    };
+
+    if(!cid){
+      upsellBtn.disabled = true;
+      upsellBtn.textContent = 'Betaalgegevens niet gevonden';
+      setFeedback('We kunnen je opgeslagen betaalmethode niet vinden. Neem contact op met support@vitalora.nl.', 'error');
+      if(skipBtn){
+        skipBtn.disabled = true;
+        skipBtn.textContent = 'Neem contact op met support';
+      }
+      return;
+    }
+
+    try{
+      const cleanParams = new URLSearchParams(params);
+      cleanParams.delete('cid');
+      cleanParams.delete('pm');
+      const query = cleanParams.toString();
+      const newUrl = `${location.pathname}${query ? `?${query}` : ''}${location.hash}`;
+      history.replaceState({}, '', newUrl);
+    }catch(_e){
+      // ignore history API issues
+    }
+
+    if(skipBtn){
+      skipBtn.addEventListener('click', function(){
+        window.location.href = nextUrl;
+      });
+    }
+
     upsellBtn.addEventListener('click', async function(){
+      if(!confirm('Wil je de bundel direct toevoegen voor €1,-?')) return;
+
       upsellBtn.textContent = 'Bezig...';
       upsellBtn.disabled = true;
+      setFeedback('We verwerken je betaling...', '');
+
       try{
-        const params = new URLSearchParams(location.search);
-        const cid = params.get('cid');
+        const payload = { amount:'1.00', description:'Upsell Bundel', recurring: true, customerId: cid };
+        if(recurringMethod) payload.recurringMethod = recurringMethod;
         const resp = await fetch('/api/create-payment', {
           method:'POST', headers:{'Content-Type':'application/json'},
-          body: JSON.stringify({ amount:'1.00', description:'Upsell Bundel', redirectUrl: 'https://www.vitalora.nl/academy', recurring: true, customerId: cid })
+          body: JSON.stringify(payload)
         });
         const data = await resp.json();
-        if(!resp.ok || !data.checkoutUrl) throw new Error('geen checkoutUrl');
-        window.location.href = data.checkoutUrl;
+        if(!resp.ok) throw new Error(data?.error || 'Upsell mislukt');
+
+        if(data.checkoutUrl){
+          window.location.href = data.checkoutUrl;
+          return;
+        }
+
+        const status = (data.status || '').toLowerCase();
+        if(['paid','authorized'].includes(status)){
+          setFeedback('Gelukt! De bundel wordt meteen toegevoegd aan je account.', 'success');
+          setTimeout(() => window.location.href = nextUrl, 1200);
+          return;
+        }
+
+        if(['pending','open','processing'].includes(status)){
+          setFeedback('Je betaling is ontvangen en wordt verwerkt. Dit rondt binnen enkele minuten af.', 'success');
+          setTimeout(() => window.location.href = nextUrl, 2000);
+          return;
+        }
+
+        throw new Error(`Onverwachte status: ${status || 'onbekend'}`);
       }catch(e){
-        alert('Kon upsell niet starten. Probeer opnieuw.');
+        setFeedback('Kon upsell niet starten. Probeer opnieuw of neem contact op met support@vitalora.nl.', 'error');
         upsellBtn.textContent = 'Voeg bundel toe voor €1,-';
         upsellBtn.disabled = false;
       }

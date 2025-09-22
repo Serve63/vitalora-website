@@ -5,20 +5,42 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { amount = '0.10', description = 'Clean Reset Cursus', name, email, method, redirectUrl, enableRecurring, customerId, recurring } = req.body || {};
+    const {
+      amount = '0.10',
+      description = 'Clean Reset Cursus',
+      name,
+      email,
+      method,
+      redirectUrl,
+      enableRecurring,
+      customerId,
+      recurring,
+      recurringMethod,
+    } = req.body || {};
+
+    const isRecurringCharge = Boolean(recurring);
+
+    let currentCustomerId = customerId;
+
+    if (isRecurringCharge && !currentCustomerId) {
+      res.status(400).json({ error: 'Missing customerId for recurring charge' });
+      return;
+    }
 
     const payload = {
       amount: { currency: 'EUR', value: String(Number(amount).toFixed(2)) },
       description,
-      redirectUrl: redirectUrl || 'https://www.vitalora.nl/bedankt.html',
       webhookUrl: 'https://www.vitalora.nl/api/mollie-webhook',
       metadata: { name, email },
     };
 
-    if (method) payload.method = method;
+    if (!isRecurringCharge) {
+      payload.redirectUrl = redirectUrl || 'https://www.vitalora.nl/bedankt.html';
+    }
+
+    if (method && !isRecurringCharge) payload.method = method;
 
     // If this is the first payment of a recurring flow, create customer and mark sequenceType
-    let currentCustomerId = customerId;
     if (enableRecurring && !currentCustomerId) {
       const createCustomer = await fetch('https://api.mollie.com/v2/customers', {
         method: 'POST',
@@ -39,21 +61,24 @@ export default async function handler(req, res) {
       currentCustomerId = custData.id;
     }
 
-    if (enableRecurring) {
+    if (enableRecurring && !isRecurringCharge) {
       payload.customerId = currentCustomerId;
       payload.sequenceType = 'first';
-      // include customer id back in redirect so upsell can charge without re-entering details
-      const base = new URL(payload.redirectUrl);
+      // include customer id back in redirect so upsell can prefill payment mandate details
+      const base = new URL(payload.redirectUrl, 'https://www.vitalora.nl');
       base.searchParams.set('cid', currentCustomerId);
+      if (method) base.searchParams.set('pm', method);
       payload.redirectUrl = base.toString();
     }
 
     // Subsequent one-click upsell (charge existing mandate)
-    if (recurring && currentCustomerId) {
+    if (isRecurringCharge && currentCustomerId) {
       payload.customerId = currentCustomerId;
       payload.sequenceType = 'recurring';
-      // For SEPA/creditcard one-click we should not set method explicitly; Mollie uses mandate
+      // Default: Mollie selects the stored mandate, override when frontend sends a specific method
       delete payload.method;
+      delete payload.redirectUrl;
+      if (recurringMethod) payload.method = recurringMethod;
     }
 
     const resp = await fetch('https://api.mollie.com/v2/payments', {
@@ -71,13 +96,17 @@ export default async function handler(req, res) {
       return;
     }
 
-    const checkoutUrl = data?._links?.checkout?.href;
-    if (!checkoutUrl) {
+    const checkoutUrl = data?._links?.checkout?.href || null;
+    if (!checkoutUrl && !isRecurringCharge) {
       res.status(500).json({ error: 'No checkout URL from Mollie' });
       return;
     }
 
-    res.status(200).json({ checkoutUrl });
+    res.status(200).json({
+      checkoutUrl,
+      paymentId: data?.id,
+      status: data?.status,
+    });
   } catch (err) {
     res.status(500).json({ error: 'Unexpected server error', details: String(err) });
   }

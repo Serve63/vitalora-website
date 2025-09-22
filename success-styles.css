@@ -33,6 +33,9 @@ body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#f0f5ff;color:
 .cta:hover{filter:brightness(0.95)}
 .cta-row.upsell{flex-direction:column;align-items:center;gap:10px}
 .link-btn{background:transparent;border:0;color:#2563eb;font-weight:600;cursor:pointer}
+.upsell-feedback{margin-top:12px;text-align:center;font-size:14px;color:#1e293b;max-width:420px;margin-left:auto;margin-right:auto}
+.upsell-feedback.success{color:#047857;font-weight:600}
+.upsell-feedback.error{color:#b91c1c}
 
 @media (max-width:900px){
   .success-grid{grid-template-columns:1fr}
