@@ -40,6 +40,37 @@ document.addEventListener('DOMContentLoaded', function() {
     
     updateTimer();
 
+    // Deduplicate duplicated discounted totals (e.g., double € 27,00)
+    // If for any reason multiple .discounted-price nodes are rendered inside
+    // a single .total-price container, keep only the first one.
+    try {
+        document.querySelectorAll('.total-price').forEach(container => {
+            const discountedNodes = container.querySelectorAll('.discounted-price');
+            if (discountedNodes.length > 1) {
+                discountedNodes.forEach((node, index) => {
+                    if (index > 0) node.remove();
+                });
+            }
+        });
+        // Also remove any duplicate amounts inside the same .total block that
+        // accidentally repeat the discounted price (seen on both desktop and mobile).
+        document.querySelectorAll('.order-summary .total').forEach(totalEl => {
+            const finalNode = totalEl.querySelector('.discounted-price');
+            if (!finalNode) return;
+            const normalize = (s) => (s || '').replace(/\s+/g, '').trim();
+            const finalText = normalize(finalNode.textContent);
+            if (!finalText) return;
+            totalEl.querySelectorAll('*').forEach(el => {
+                if (el === finalNode) return;
+                if (el.classList && el.classList.contains('original-price')) return;
+                if (normalize(el.textContent) === finalText) {
+                    // Remove duplicates of the same discounted amount
+                    el.remove();
+                }
+            });
+        });
+    } catch (_) {}
+
     // Payment Method Selection
     const paymentMethods = document.querySelectorAll('.payment-method');
     
