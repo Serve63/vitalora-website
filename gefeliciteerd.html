@@ -46,7 +46,7 @@
         </div>
       </div>
 
-      <p class="symbolic"><strong class="label">Symbolisch bedrag:</strong> <strong class="price">€0,10</strong></p>
+      <p class="symbolic"><strong class="label">Symbolisch bedrag:</strong> <strong class="price">€10,00</strong></p>
 
       <div class="cta-row upsell">
         <button id="upsell-buy" class="cta">Voeg bundel toe</button>
@@ -125,7 +125,7 @@
       setFeedback('We verwerken je betaling...', '');
 
       try{
-        const payload = { amount:'1.00', description:'Upsell Bundel', recurring: true, customerId: cid };
+        const payload = { amount:'10.00', description:'Upsell Bundel', recurring: true, customerId: cid };
         if(recurringMethod) payload.recurringMethod = recurringMethod;
         const resp = await fetch('/api/create-payment', {
           method:'POST', headers:{'Content-Type':'application/json'},
@@ -155,7 +155,7 @@
         throw new Error(`Onverwachte status: ${status || 'onbekend'}`);
       }catch(e){
         setFeedback('Kon upsell niet starten. Probeer opnieuw of neem contact op met support@vitalora.nl.', 'error');
-        upsellBtn.textContent = 'Voeg bundel toe voor €0,10';
+        upsellBtn.textContent = 'Voeg bundel toe';
         upsellBtn.disabled = false;
       }
     });
