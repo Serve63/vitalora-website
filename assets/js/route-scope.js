@@ -23,7 +23,7 @@
   }
   
   // Ebook detectie
-  if (path.includes('/ebook') || path.includes('/landing')) {
+  if (path.includes('/detox') || path.includes('/landing')) {
     document.documentElement.classList.add('route-ebook');
   }
 })();

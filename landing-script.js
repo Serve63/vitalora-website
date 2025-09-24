@@ -1,87 +1,161 @@
-// Landing page interactions
+const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Lead capture modal
     const modal = document.getElementById('ebook-modal');
-    const openers = [document.getElementById('ebook-claim'), document.getElementById('ebook-claim-bottom'), document.getElementById('mobile-ebook-claim')].filter(Boolean);
-    const closeBtn = modal ? modal.querySelector('.modal-close') : null;
-    const form = modal ? modal.querySelector('#ebook-form') : null;
-    const feedback = modal ? modal.querySelector('#ebook-feedback') : null;
+    const form = document.getElementById('ebook-form');
+    if (!modal || !form) return;
 
-    function openModal() { if (!modal) return; modal.classList.remove('hidden'); modal.setAttribute('aria-hidden','false'); (modal.querySelector('input')||{}).focus?.(); }
-    function closeModal() { if (!modal) return; modal.classList.add('hidden'); modal.setAttribute('aria-hidden','true'); }
+    const openers = ['ebook-claim', 'ebook-claim-bottom', 'mobile-ebook-claim']
+        .map(id => document.getElementById(id))
+        .filter(Boolean);
+    const closeBtn = modal.querySelector('.modal-close');
+    const backdrop = modal.querySelector('.modal-backdrop');
+    const loading = document.getElementById('modal-loading');
+    const errorBox = document.getElementById('ebook-error');
+    const successBox = document.getElementById('ebook-success');
+    const nameInput = document.getElementById('lead-name');
+    const emailInput = document.getElementById('lead-email');
 
-    openers.forEach(btn => btn && btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
-    closeBtn && closeBtn.addEventListener('click', closeModal);
-    modal && modal.addEventListener('click', (e) => { if (e.target.classList.contains('modal-backdrop')) closeModal(); });
+    let lastFocusedElement = null;
 
-    // Store lead data before form submission to MailBlue
-    // and ensure the user immediately sees the loading screen regardless of provider redirect timing
-    if (form) {
-        form.addEventListener('submit', function(e) {
-            const name = document.getElementById('lead-name').value;
-            const email = document.getElementById('lead-email').value;
+    function toggleBodyScroll(disable) {
+        document.body.style.overflow = disable ? 'hidden' : '';
+    }
 
-            if (name && email) {
-                // Store lead data in localStorage for checkout page
-                localStorage.setItem('lead_data', JSON.stringify({
-                    name: name,
-                    email: email,
-                    source: 'ebook_download'
-                }));
-            }
+    function resetFeedback() {
+        [errorBox, successBox].forEach(box => {
+            if (!box) return;
+            box.classList.remove('is-visible');
+            box.textContent = '';
+        });
+        if (loading) {
+            loading.classList.remove('is-visible');
+            loading.setAttribute('aria-hidden', 'true');
+        }
+        form.classList.remove('hidden');
+    }
 
-            // Submit the MailBlue form in the background (hidden iframe)
-            // so we can immediately show our loading screen to the user
-            try {
-                let iframe = document.getElementById('mb-submit-frame');
-                if (!iframe) {
-                    iframe = document.createElement('iframe');
-                    iframe.name = 'mb-submit-frame';
-                    iframe.id = 'mb-submit-frame';
-                    iframe.style.display = 'none';
-                    document.body.appendChild(iframe);
-                }
-                form.setAttribute('target', 'mb-submit-frame');
-            } catch (_) {}
+    function showFeedback(box, message) {
+        if (!box) return;
+        box.textContent = message;
+        box.classList.add('is-visible');
+    }
 
-            // Show inline loading in modal instead of separate page
-            try {
-                var loadingBox = document.getElementById('modal-loading');
-                var progress = document.getElementById('modal-progress');
-                var phrase = document.getElementById('modal-loading-phrase');
-                if (loadingBox) {
-                    form.classList.add('hidden');
-                    loadingBox.classList.add('active');
-                    var wordSets = [
-                        'Gegevens verwerken…',
-                        'Succesvol verstuurd',
-                        'Exclusief aanbod creëren 🎁'
-                    ];
-                    var step = 0;
-                    function showWords(text){
-                        phrase.textContent = text;
-                    }
-                    function advance(){
-                        if (progress) {
-                            var segs = progress.querySelectorAll('.seg');
-                            segs.forEach((s,idx)=>{ s.classList.toggle('filled', idx < step+1); });
-                        }
-                        showWords(wordSets[step]||'');
-                        step++;
-                        if (step < wordSets.length) setTimeout(advance, 1000);
-                        else setTimeout(function(){
-                            var qs = window.location.search || '';
-                            window.location.href = '/wacht-even' + (qs ? qs : '');
-                        }, 1200);
-                    }
-                    setTimeout(advance, 200);
-                }
-            } catch(_) {}
-            // Do NOT preventDefault; allow the form to submit to MailBlue
+    function focusFirstField() {
+        const target = form.querySelector('input:not([type="hidden"])');
+        if (target) target.focus({ preventScroll: true });
+    }
+
+    function openModal() {
+        lastFocusedElement = document.activeElement;
+        modal.classList.remove('hidden');
+        modal.classList.add('is-active');
+        modal.setAttribute('aria-hidden', 'false');
+        toggleBodyScroll(true);
+        resetFeedback();
+        focusFirstField();
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('is-active');
+        modal.setAttribute('aria-hidden', 'true');
+        toggleBodyScroll(false);
+        form.reset();
+        resetFeedback();
+        if (lastFocusedElement && typeof lastFocusedElement.focus === 'function') {
+            lastFocusedElement.focus({ preventScroll: true });
+        }
+    }
+
+    openers.forEach(button => {
+        button.addEventListener('click', event => {
+            event.preventDefault();
+            openModal();
+        });
+    });
+
+    if (closeBtn) {
+        closeBtn.addEventListener('click', event => {
+            event.preventDefault();
+            closeModal();
         });
     }
 
-    // Add click handler for direct access button
+    if (backdrop) {
+        backdrop.addEventListener('click', closeModal);
+    }
+
+    document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.classList.contains('is-active')) {
+            event.preventDefault();
+            closeModal();
+        }
+    });
+
+    form.addEventListener('submit', async event => {
+        event.preventDefault();
+        resetFeedback();
+
+        const firstName = (nameInput?.value || '').trim();
+        const email = (emailInput?.value || '').trim();
+
+        if (firstName.length < 2) {
+            showFeedback(errorBox, 'Vul je voornaam in (minimaal 2 tekens).');
+            return;
+        }
+        if (!emailRegex.test(email)) {
+            showFeedback(errorBox, 'Vul een geldig e-mailadres in.');
+            return;
+        }
+
+        const payload = {
+            firstname: firstName,
+            email,
+            source: 'ebook_download'
+        };
+
+        if (loading) {
+            loading.classList.add('is-visible');
+            loading.setAttribute('aria-hidden', 'false');
+        }
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload)
+            });
+
+            const data = await response.json().catch(() => ({}));
+
+            if (!response.ok || !data.success) {
+                const message = data?.error || 'Er ging iets mis. Probeer het opnieuw.';
+                showFeedback(errorBox, message);
+                return;
+            }
+
+            try {
+                localStorage.setItem('lead_data', JSON.stringify({
+                    name: firstName,
+                    email,
+                    source: 'ebook_download'
+                }));
+            } catch (_) {}
+
+            form.classList.add('hidden');
+            showFeedback(successBox, 'Gelukt! Het e-book is onderweg naar je inbox. Controleer zo nodig je spamfolder.');
+        } catch (error) {
+            console.error('ebook submit error', error);
+            showFeedback(errorBox, 'We konden je aanvraag niet versturen. Controleer je verbinding en probeer het later opnieuw.');
+        } finally {
+            if (loading) {
+                loading.classList.remove('is-visible');
+                loading.setAttribute('aria-hidden', 'true');
+            }
+        }
+    });
+
     const directAccessButton = document.querySelector('.direct-access');
     if (directAccessButton) {
         directAccessButton.addEventListener('click', function() {
@@ -89,73 +163,39 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => {
                 this.style.transform = 'scale(1)';
             }, 150);
-            
-            console.log('Direct access button clicked!');
         });
     }
 
-    // Add hover effects for testimonial cards
-    const testimonialCards = document.querySelectorAll('.testimonial-card');
-    
-    testimonialCards.forEach(card => {
+    document.querySelectorAll('.testimonial-card').forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-5px)';
             this.style.boxShadow = '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -1px rgba(0, 0, 0, 0.06)';
         });
-        
         card.addEventListener('mouseleave', function() {
             this.style.transform = 'translateY(0)';
             this.style.boxShadow = '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)';
         });
     });
 
-    // Add subtle animation to book stack
-    const bookStack = document.querySelector('.book-stack');
-    if (bookStack) {
-        bookStack.addEventListener('mouseenter', function() {
-            this.style.transform = 'rotate(-3deg) scale(1.02)';
-        });
-        
-        bookStack.addEventListener('mouseleave', function() {
-            this.style.transform = 'rotate(-5deg) scale(1)';
-        });
-    }
-
-    // Testimonial cards are now visible by default - no fade-in animation
-    // (Animation code removed to show reviews immediately)
-
-    // Add smooth scrolling for any anchor links
-    const links = document.querySelectorAll('a[href^="#"]');
-    
-    links.forEach(link => {
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
         link.addEventListener('click', function(e) {
             e.preventDefault();
-            const targetId = this.getAttribute('href');
-            const targetElement = document.querySelector(targetId);
-            
+            const targetElement = document.querySelector(this.getAttribute('href'));
             if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
+                targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     });
 
-    // Form validation with green borders and background - remove blue focus
-    const nameInput = document.getElementById('lead-name');
-    const emailInput = document.getElementById('lead-email');
-
-    // Remove blue focus ring from both inputs
     if (nameInput) {
         nameInput.style.outline = 'none';
         nameInput.addEventListener('input', function() {
-            if (this.value.length >= 3) {
+            if (this.value.length >= 2) {
                 this.style.borderColor = '#10b981';
                 this.style.borderWidth = '2px';
                 this.style.backgroundColor = '#E0EEDF';
             } else {
-                this.style.borderColor = '#dbe3ec';
+                this.style.borderColor = '#C7D2FE';
                 this.style.borderWidth = '1px';
                 this.style.backgroundColor = '';
             }
@@ -165,13 +205,12 @@ document.addEventListener('DOMContentLoaded', function() {
     if (emailInput) {
         emailInput.style.outline = 'none';
         emailInput.addEventListener('input', function() {
-            const emailPattern = /^.{2,}@.{2,}\..{2,}$/;
-            if (emailPattern.test(this.value)) {
+            if (emailRegex.test(this.value.trim())) {
                 this.style.borderColor = '#10b981';
                 this.style.borderWidth = '2px';
                 this.style.backgroundColor = '#E0EEDF';
             } else {
-                this.style.borderColor = '#dbe3ec';
+                this.style.borderColor = '#C7D2FE';
                 this.style.borderWidth = '1px';
                 this.style.backgroundColor = '';
             }

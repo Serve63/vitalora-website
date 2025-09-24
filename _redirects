@@ -20,7 +20,7 @@
 # Pretty URLs & redirects
 /blog                                    /blog.html                                 200
 /academy                                 /academy.html                              200
-/ebook                                   /landing.html                              200
+/detox                                   /landing.html                              200
 # Loading and wacht-even pages
 /loading                                 /loading.html                                200
 /wacht-even                              /wacht-even.html                            200
@@ -45,7 +45,7 @@
 # Legacy paths
 /dashboard                               /academy                                   301
 /dashboard.html                          /academy                                   301
-/landing                                 /ebook                                     301
+/landing                                 /detox                                     301
 /checkout                                 /checkout-new.html                         200
 /checkout.html                            /checkout                                  301
 /artikelen                               /blog                                      301

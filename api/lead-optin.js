@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       try {
         body = JSON.parse(rawBody);
       } catch (parseError) {
-        console.warn('tk-ebook invalid JSON payload', parseError);
+        console.warn('lead-optin invalid JSON payload', parseError);
         body = {};
       }
     } else if (rawBody && typeof rawBody === 'object') {
@@ -74,7 +74,7 @@ export default async function handler(req, res) {
       method: 'POST',
       headers: {
         'Content-Type': 'application/x-www-form-urlencoded',
-        'User-Agent': 'vitalora-tk-ebook-proxy'
+        'User-Agent': 'vitalora-lead-optin-proxy'
       },
       body: params.toString()
     });
@@ -82,21 +82,21 @@ export default async function handler(req, res) {
     const upstreamText = await response.text();
 
     if (!response.ok) {
-      console.error('tk-ebook upstream error', response.status, upstreamText);
+      console.error('lead-optin upstream error', response.status, upstreamText);
       res.status(502).json({ success: false, error: 'Aanvraag kon niet worden verwerkt. Probeer het later opnieuw.' });
       return;
     }
 
     // ActiveCampaign returns 200 even bij fouten; controleer op error strings
     if (/error/i.test(upstreamText) && !/success/i.test(upstreamText)) {
-      console.error('tk-ebook upstream responded with error text', upstreamText.slice(0, 250));
+      console.error('lead-optin upstream responded with error text', upstreamText.slice(0, 250));
       res.status(502).json({ success: false, error: 'Aanvraag kon niet worden verwerkt. Probeer het later opnieuw.' });
       return;
     }
 
     res.status(200).json({ success: true });
   } catch (error) {
-    console.error('tk-ebook proxy failure', error);
+    console.error('lead-optin proxy failure', error);
     res.status(500).json({ success: false, error: 'Interne fout. Probeer het later opnieuw.' });
   }
 }

@@ -5,43 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#EDF2FB">
     <title>Microplastics Detox Methode - Danielle Siegers</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    	    <link rel="stylesheet" href="landing-styles.css?v=139">
-	<link rel="stylesheet" href="icons.css">
-	<link rel="stylesheet" href="/assets/css/header.css">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=3">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=3">
-    <style>
-      /* Hide login button on this page only */
-      .login-btn { display: none !important; }
-      
-      /* Hide global header on mobile for this page only */
-      @media (max-width: 768px) {
-        header.site-header, .site-header, .global-header, header[role="banner"] { display: none !important; }
-        body { padding-top: 0 !important; }
-        /* Mobile: ebook-specific tweaks */
-        body.ebook-page .hero-description { display: none !important; }
-        body.ebook-page .direct-access { display: block !important; margin: 0 auto 16px !important; }
-        body.ebook-page .feature-item { font-size: 14px !important; }
-        body.ebook-page #ebook-claim { margin-bottom: 8px !important; }
-      }
-      /* Inline loading-in-modal UI */
-      .hidden{display:none}
-      #modal-loading{display:none;padding:12px 0}
-      #modal-loading.active{display:block}
-      .loading-icon{width:36px;height:36px;border:3px solid rgba(32,185,129,.25);border-top-color:#20B981;border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 10px}
-      @keyframes spin{to{transform:rotate(360deg)}}
-      .loading-steps{display:none}
-      .loading-phrase{font-size:18px;font-weight:700;color:#333333;margin:6px 0 4px;font-family:'Lato', Arial, sans-serif;text-align:center}
-      /* No per-word animation now */
-      .loading-phrase .word{opacity:1;display:inline-block;margin-right:6px;transform:none;transition:none}
-      .loading-phrase .word:last-child{margin-right:0}
-      .loading-progress{height:6px;display:flex;gap:6px;width:70%;margin:12px auto 0}
-      .loading-progress .seg{flex:1;height:6px;background:#ffffff;border-radius:999px}
-      .loading-progress .seg.filled{background:#20B981}
+    <link rel="canonical" href="https://vitalora.nl/detox">
+    <link rel="preload" href="/assets/microplastics-ebook.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="/landing-styles.css?v=140" as="style">
+    <link rel="stylesheet" href="/landing-styles.css?v=140" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/landing-styles.css?v=140"></noscript>
+    <link rel="stylesheet" href="/icons.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/icons.css"></noscript>
+    <link rel="stylesheet" href="/assets/css/header.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/css/header.css"></noscript>
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=4" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/css/fonts.css?v=4"></noscript>
+    <link rel="stylesheet" href="/assets/css/footer.css?v=4" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="/assets/css/footer.css?v=4"></noscript>
+        <style>
+      :root{color-scheme:light;--font-sans:"Quicksand",system-ui,-apple-system,"Segoe UI",sans-serif}
+      *,*::before,*::after{box-sizing:border-box}
+      .hidden{display:none!important}
+      body{margin:0;background:#EDF2FB;color:#333;font-family:var(--font-sans);-webkit-font-smoothing:antialiased}
+      img{max-width:100%;display:block}
+      button{font:inherit}
+      .site-header{background:#fff;box-shadow:0 8px 24px rgba(17,24,39,.08);position:sticky;top:0;z-index:100}
+      .site-header .header-inner{max-width:1200px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between}
+      .logo-text{font-weight:700;color:#2954B3;text-decoration:none;font-size:1.05rem;letter-spacing:.02em}
+      .login-btn{display:none !important}
+      .container{max-width:1200px;margin:0 auto;padding:0 20px}
+      .hero{padding:60px 0 20px;background:#EDF2FB;position:relative}
+      .direct-access{background:#2954B3;color:#fff;border:none;padding:8px 16px;font-size:14px;font-family:'Lato',sans-serif;font-weight:600;border-radius:20px;cursor:pointer;transition:all .2s ease;display:inline-block;margin-bottom:32px}
+      .hero-content{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-top:40px}
+      .hero-text h1{font-size:42px;font-weight:700;color:#333;margin:0 0 24px;line-height:1.2}
+      .hero-description{font-size:18px;color:#6b7280;margin:0 0 32px;line-height:1.7}
+      .features-list{display:flex;flex-direction:column;gap:8px;margin-bottom:40px}
+      .feature-item{display:flex;align-items:center;gap:12px;font-size:16px;color:#374151}
+      .feature-item .icon-checkmark{display:inline-flex;width:16px;height:16px;border-radius:50%;background:#2954B3;color:#fff;align-items:center;justify-content:center;font-size:.75rem}
+      .cta-button,.mobile-only{background:#10b981;color:#fff;border:none;padding:18px 36px;font-size:18px;font-family:'Quicksand',sans-serif;font-weight:700;border-radius:8px;cursor:pointer;transition:background-color .3s ease;box-shadow:0 2px 4px rgba(0,0,0,.8);display:inline-flex;align-items:center;gap:8px}
+      .cta-button:hover{background:#059669;box-shadow:0 4px 8px rgba(0,0,0,.9)}
+      .hero-image{display:flex;justify-content:center;align-items:flex-start}
+      .mobile-book-image{display:none}
+      .testimonials{padding:80px 0;background:#EDF2FB}
+      .testimonials,.mobile-cta,.final-cta{content-visibility:auto;contain-intrinsic-size:600px}
+      .testimonials .container{max-width:980px}
+      .testimonials-grid{display:grid;gap:30px;grid-template-columns:repeat(auto-fit,minmax(350px,1fr))}
+      .testimonial-card{background:#EDF2FB;padding:30px;border-radius:12px;box-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -1px rgba(0,0,0,.06);border:1px solid #e5e7eb}
+      .mobile-cta{display:none;padding:10px 0 40px;background:#EDF2FB;text-align:center}
+      .final-cta{display:none}
+      .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:16px;z-index:2000}
+      .modal-card{background:#EEF7FD;border-radius:12px;max-width:520px;width:100%;box-shadow:0 24px 48px rgba(8,25,43,.25);position:relative;overflow:hidden}
+      .modal-header{background:#08192B;color:#fff;padding:26px 28px;text-align:center}
+      .modal-body{padding:24px 28px;display:grid;gap:16px;background:#EEF7FD}
+      .modal-form{display:flex;flex-direction:column;gap:12px}
+      .modal-form input{padding:10px 12px;border-radius:8px;border:1px solid #dbe3ec;background:#fff}
+      .modal-close{position:absolute;top:-12px;right:-12px;border:0;background:#fff;border-radius:50%;width:32px;height:32px;font-size:22px;font-weight:900;line-height:.8;cursor:pointer;color:#249587;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+      .modal-backdrop{position:absolute;inset:0;background:rgba(5,15,28,.65);backdrop-filter:blur(2px)}
+      .modal-feedback{display:none;border-radius:12px;padding:14px 16px;font-weight:600}
+      .modal-feedback--error{background:#FEE2E2;color:#991B1B;border:1px solid rgba(185,28,28,.35)}
+      .modal-feedback--success{background:#DCFCE7;color:#166534;border:1px solid rgba(22,101,52,.35)}
+      .modal-loading{display:none;align-items:center;gap:10px;font-weight:600;color:#1B3E90}
+      .modal-loading span{width:9px;height:9px;border-radius:50%;background:currentColor;animation:bounce .9s infinite ease-in-out alternate}
+      .modal-loading span:nth-child(2){animation-delay:.15s}
+      .modal-loading span:nth-child(3){animation-delay:.3s}
+      .modal.is-active{display:flex}
+      .is-visible{display:block!important}
+      @keyframes bounce{from{transform:translateY(0);opacity:.6}to{transform:translateY(-8px);opacity:1}}
+      @media (max-width:768px){.site-header{display:none}.hero{padding:32px 0 32px}.hero-content{grid-template-columns:1fr;gap:24px;margin-top:8px}.hero-text h1{font-size:24px;text-align:center;margin-top:8px;margin-bottom:6px}.hero-description{display:none}.direct-access{display:block;margin:0 auto 12px}.hero-image{display:none}.mobile-book-image{display:block;text-align:center;margin:4px auto 2px;padding:0;background:transparent}.mobile-book-image img{max-width:280px;width:100%;height:auto;margin:0 auto;display:block}.features-list{margin-top:0;margin-bottom:12px}.feature-item{font-size:13.5px}.mobile-cta{display:block;padding:10px 0 40px}.modal-card{width:calc(100% - 16px);margin:6vh auto;padding:16px}.modal-header{padding:18px 20px}.modal-close{right:8px;top:8px;width:32px;height:32px}}
+      @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}}
     </style>
 <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
@@ -73,7 +100,7 @@
                     
                     <!-- Mobiele ebook afbeelding - simpele aanpak zoals homepage -->
                     <div class="mobile-book-image">
-                        <img src="assets/microplastics-ebook.png?v=3" alt="Elimineer Microplastics e‑book" />
+                        <img src="/assets/microplastics-ebook.webp" alt="Elimineer Microplastics e‑book" fetchpriority="high" />
                     </div>
                     
                     <div class="features-list">
@@ -103,7 +130,7 @@
                 </div>
                 
                 <div class="hero-image">
-                    <img class="ebook-cover" src="assets/microplastics-ebook.png?v=3" alt="Elimineer Microplastics e‑book" />
+                    <img class="ebook-cover" src="/assets/microplastics-ebook.webp" alt="Elimineer Microplastics e‑book" fetchpriority="high" />
                 </div>
             </div>
         </div>
@@ -120,11 +147,11 @@
             </div>
             <div class="modal-body two-col">
                 <div class="modal-illustration" aria-hidden="true">
-                    <img src="assets/microplastics-ebook.png?v=3" alt="Elimineer Microplastics e‑book" />
+                    <img src="/assets/microplastics-ebook.webp" alt="Elimineer Microplastics e‑book" />
                 </div>
                 <div class="modal-copy">
                     <p class="modal-lead">Hét stappenplan om je lichaam te bevrijden van schadelijke microplastics!</p>
-                    <form id="ebook-form" class="modal-form" method="post" action="https://mcvecommerce2.activehosted.com/proc.php" accept-charset="utf-8">
+                    <form id="ebook-form" class="modal-form" method="post" action="/api/lead-optin" novalidate>
                         <input type="hidden" name="u"   value="3">
                         <input type="hidden" name="f"   value="3">
                         <input type="hidden" name="s"   value="">
@@ -133,17 +160,16 @@
                         <input type="hidden" name="act" value="sub">
                         <input type="hidden" name="v"   value="2">
                         <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
-                        <input type="hidden" name="redirect" value="https://vitalora.nl/loading">
 
                         <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" required />
                         <input type="email" id="lead-email" name="email" placeholder="Email" required />
                         <button type="submit" class="cta-button modal-cta">Download PDF</button>
                     </form>
-                    <!-- Fake loading inserted in modal -->
-                    <div id="modal-loading" aria-live="polite" aria-atomic="true">
-                        <div class="loading-icon" id="modal-loading-icon"></div>
-                        <div class="loading-phrase" id="modal-loading-phrase"></div>
-                        <div class="loading-progress" id="modal-progress"><div class="seg"></div><div class="seg"></div><div class="seg"></div></div>
+                    <div id="ebook-error" class="modal-feedback modal-feedback--error" role="alert"></div>
+                    <div id="ebook-success" class="modal-feedback modal-feedback--success" role="status"></div>
+                    <div id="modal-loading" class="modal-loading" aria-live="polite" aria-atomic="true">
+                        <span></span><span></span><span></span>
+                        <div>We verwerken je aanvraag…</div>
                     </div>
                 </div>
             </div>
@@ -216,6 +242,6 @@
         </div>
     </section>
 
-    <script src="landing-script.js"></script>
+    <script src="/landing-script.js?v=2" defer></script>
 </body>
 </html>

@@ -3,9 +3,15 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.vitalora.nl" }],
+      "destination": "https://vitalora.nl/:path*",
+      "permanent": true
+    },
     { "source": "/dashboard", "destination": "/academy", "permanent": true },
     { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
-    { "source": "/landing", "destination": "/ebook", "permanent": true },
+    { "source": "/landing", "destination": "/detox", "permanent": true },
     { "source": "/checkout.html", "destination": "/checkout", "permanent": true },
     { "source": "/loading", "destination": "/loading.html", "permanent": false },
     { "source": "/wacht-even", "destination": "/wacht-even.html", "permanent": false },
@@ -18,7 +24,7 @@
     { "source": "/tk-ebook/", "destination": "/tk-ebook/index.html" },
     { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
-    { "source": "/ebook", "destination": "/landing.html" },
+    { "source": "/detox", "destination": "/landing.html" },
     { "source": "/checkout", "destination": "/checkout-new.html" },
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
@@ -105,6 +111,44 @@
     ,{ "source": "/:slug", "destination": "/post.html?slug=:slug" }
   ],
   "headers": [
+    {
+      "source": "/assets/(.*)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/landing-styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/landing-script.js",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/icons.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }
+      ]
+    },
+    {
+      "source": "/detox",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self' https://www.tiktok.com https://*.tiktok.com https://tiktok.com;" }
+      ]
+    },
+    {
+      "source": "/landing.html",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self' https://www.tiktok.com https://*.tiktok.com https://tiktok.com;" }
+      ]
+    },
     {
       "source": "/tk-ebook",
       "headers": [
