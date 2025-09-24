@@ -18,7 +18,7 @@ vitalora-website/
 ├── index.html                 # Homepage
 ├── styles.css                 # Homepage styling
 ├── script.js                  # Homepage JavaScript
-├── landing.html               # Landing page
+├── detox.html                 # Landing page
 ├── landing-styles.css         # Landing page styling
 ├── landing-script.js          # Landing page JavaScript
 ├── checkout.html              # Checkout page

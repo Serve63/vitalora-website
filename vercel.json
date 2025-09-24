@@ -12,6 +12,7 @@
     { "source": "/dashboard", "destination": "/academy", "permanent": true },
     { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
     { "source": "/landing", "destination": "/detox", "permanent": true },
+    { "source": "/ebook", "destination": "/detox", "permanent": true },
     { "source": "/checkout.html", "destination": "/checkout", "permanent": true },
     { "source": "/loading", "destination": "/loading.html", "permanent": false },
     { "source": "/wacht-even", "destination": "/wacht-even.html", "permanent": false },
@@ -24,7 +25,8 @@
     { "source": "/tk-ebook/", "destination": "/tk-ebook/index.html" },
     { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
-    { "source": "/detox", "destination": "/landing.html" },
+    { "source": "/detox", "destination": "/detox.html" },
+    { "source": "/detox/", "destination": "/detox.html" },
     { "source": "/checkout", "destination": "/checkout-new.html" },
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
@@ -143,7 +145,7 @@
       ]
     },
     {
-      "source": "/landing.html",
+      "source": "/detox.html",
       "headers": [
         { "key": "X-Frame-Options", "value": "" },
         { "key": "Content-Security-Policy", "value": "frame-ancestors 'self' https://www.tiktok.com https://*.tiktok.com https://tiktok.com;" }
