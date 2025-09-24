@@ -78,3 +78,4 @@ Deze website is geoptimaliseerd voor statische hosting op:
 ## 📄 Licentie
 
 Dit project is gebouwd voor Vitalora.nl 
+
