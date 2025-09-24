@@ -9,7 +9,7 @@
 /*    /post.html?slug=:s   200
 # Pretty URLs & redirects
 /academy            /academy.html    200
-/detox              /landing.html    200
+/detox              /detox/index.html    200
 /wacht-even         /checkout.html   200
 /contact            /contact.html    200
 /blog               /blog.html       200

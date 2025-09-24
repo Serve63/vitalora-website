@@ -18,7 +18,8 @@ vitalora-website/
 ├── index.html                 # Homepage
 ├── styles.css                 # Homepage styling
 ├── script.js                  # Homepage JavaScript
-├── landing.html               # Landing page
+├── landing.html               # Landing page (legacy URL)
+├── detox/index.html           # Landing page served at /detox
 ├── landing-styles.css         # Landing page styling
 ├── landing-script.js          # Landing page JavaScript
 ├── checkout.html              # Checkout page

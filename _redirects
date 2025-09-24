@@ -20,7 +20,7 @@
 # Pretty URLs & redirects
 /blog                                    /blog.html                                 200
 /academy                                 /academy.html                              200
-/detox                                   /landing.html                              200
+/detox                                   /detox/index.html                          200
 # Loading and wacht-even pages
 /loading                                 /loading.html                                200
 /wacht-even                              /wacht-even.html                            200
