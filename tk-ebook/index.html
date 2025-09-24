@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Microplastics Detox E-book | Vitalora</title>
+  <meta name="description" content="Download het gratis Microplastics Detox e-book van Vitalora en ontdek de simpele stappen om je lichaam te beschermen.">
+  <link rel="canonical" href="https://vitalora.nl/tk-ebook">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/landing-styles.css?v=62">
+  <link rel="stylesheet" href="/icons.css?v=live5">
+  <link rel="stylesheet" href="/assets/css/header.css?v=19">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=2">
+  <link rel="stylesheet" href="/assets/css/footer.css?v=2">
+  <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <style>
+    body.tk-ebook-page { background: #F1F5F9; color: #0F172A; font-family: "Quicksand", sans-serif; }
+    .tk-hero { padding: 60px 16px 40px; background: linear-gradient(160deg, #0F172A 0%, #1D4ED8 60%, #60A5FA 100%); color: #fff; }
+    .tk-container { max-width: 1100px; margin: 0 auto; }
+    .tk-hero-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 48px; align-items: center; }
+    .tk-hero h1 { font-size: clamp(2.2rem, 4vw, 3.2rem); line-height: 1.1; margin-bottom: 18px; }
+    .tk-hero p { font-size: 1.05rem; line-height: 1.6; margin-bottom: 24px; }
+    .tk-cta-btn { background: #FACC15; color: #0F172A; border: none; padding: 16px 32px; border-radius: 999px; font-weight: 700; font-size: 1.05rem; cursor: pointer; transition: transform .2s ease, box-shadow .2s ease; box-shadow: 0 12px 24px rgba(15, 23, 42, 0.25); }
+    .tk-cta-btn:hover, .tk-cta-btn:focus { transform: translateY(-2px); box-shadow: 0 18px 32px rgba(15, 23, 42, 0.28); }
+    .tk-badge-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 18px; margin-top: 30px; }
+    .tk-badge { background: rgba(255, 255, 255, 0.2); padding: 12px 16px; border-radius: 14px; font-weight: 600; backdrop-filter: blur(2px); display: flex; align-items: center; gap: 10px; }
+    .tk-section { padding: 70px 16px; }
+    .tk-section h2 { text-align: center; font-size: clamp(1.8rem, 3vw, 2.6rem); margin-bottom: 12px; }
+    .tk-section p.section-lead { text-align: center; max-width: 700px; margin: 0 auto 48px; color: #475569; font-size: 1.05rem; }
+    .tk-feature-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+    .tk-feature-card { background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08); border: 1px solid rgba(148, 163, 184, 0.16); }
+    .tk-feature-card h3 { font-size: 1.25rem; margin-bottom: 10px; color: #0F172A; }
+    .tk-feature-card p { color: #475569; line-height: 1.6; }
+    .tk-testimonials { background: linear-gradient(145deg, #F8FAFC 0%, #E0F2FE 100%); }
+    .tk-testimonial-grid { display: grid; gap: 24px; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .tk-testimonial-card { background: #fff; border-radius: 18px; padding: 28px; box-shadow: 0 14px 32px rgba(30, 64, 175, 0.12); }
+    .tk-testimonial-card .stars { color: #FACC15; margin-bottom: 16px; font-size: 1.1rem; }
+    .tk-testimonial-card p { color: #1E293B; line-height: 1.6; }
+    .tk-author { margin-top: 16px; font-weight: 600; color: #0F172A; }
+    .tk-modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; z-index: 3000; }
+    .tk-modal.is-active { display: flex; }
+    .tk-modal-backdrop { position: absolute; inset: 0; background: rgba(15, 23, 42, 0.65); backdrop-filter: blur(2px); }
+    .tk-modal-card { position: relative; background: #fff; max-width: min(95vw, 520px); border-radius: 18px; box-shadow: 0 24px 60px rgba(15, 23, 42, 0.28); overflow: hidden; }
+    .tk-modal-header { background: linear-gradient(135deg, #0F172A, #1D4ED8); padding: 28px; color: #fff; }
+    .tk-modal-header h2 { margin: 0; font-size: 1.9rem; }
+    .tk-modal-body { padding: 28px; display: grid; gap: 18px; }
+    .tk-modal-form input { width: 100%; padding: 14px 16px; border-radius: 12px; border: 1px solid #CBD5F5; font-size: 1rem; }
+    .tk-modal-form button { width: 100%; margin-top: 8px; }
+    .tk-modal-close { position: absolute; top: 14px; right: 14px; background: rgba(15, 23, 42, 0.2); color: #fff; border: none; width: 40px; height: 40px; border-radius: 50%; font-size: 1.6rem; line-height: 1; cursor: pointer; display: grid; place-items: center; }
+    .tk-feedback { display: none; padding: 18px; border-radius: 12px; font-weight: 600; }
+    .tk-feedback.is-visible { display: block; }
+    .tk-feedback.is-success { background: #DCFCE7; color: #166534; border: 1px solid rgba(22, 101, 52, 0.35); }
+    .tk-feedback.is-error { background: #FEE2E2; color: #991B1B; border: 1px solid rgba(185, 28, 28, 0.35); }
+    .tk-loading { display: none; align-items: center; gap: 12px; font-weight: 600; color: #1D4ED8; }
+    .tk-loading.is-active { display: flex; }
+    .tk-loading span { width: 10px; height: 10px; border-radius: 50%; background: currentColor; animation: tk-bounce 0.9s infinite ease-in-out alternate; }
+    .tk-loading span:nth-child(2) { animation-delay: .15s; }
+    .tk-loading span:nth-child(3) { animation-delay: .3s; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); border: 0; }
+    @keyframes tk-bounce { from { transform: translateY(0); opacity: .6; } to { transform: translateY(-8px); opacity: 1; } }
+    @media (max-width: 768px) {
+      .tk-hero { padding-top: 42px; }
+      .tk-cta-btn { width: 100%; text-align: center; }
+      .tk-modal-card { width: calc(100% - 24px); }
+    }
+  </style>
+</head>
+<body class="tk-ebook-page">
+  <header class="site-header" role="banner">
+    <div class="header-inner tk-container">
+      <a class="logo" href="/" aria-label="Ga naar Vitalora startpagina">
+        <span class="logo-text">Vitalora.nl</span>
+      </a>
+      <div class="header-buttons">
+        <a class="btn login-btn" href="/login">Inloggen</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="tk-hero" aria-labelledby="hero-title">
+      <div class="tk-container">
+        <div class="tk-hero-grid">
+          <div>
+            <h1 id="hero-title">Ontdek de Microplastics Detox Methode</h1>
+            <p>Download het gratis e-book van orthomoleculair specialist Danielle Siegers en leer hoe je microplastics actief uit je lichaam helpt verwijderen. Praktische stappen, duidelijke uitleg en direct toepasbaar.</p>
+            <button class="tk-cta-btn" data-modal-open>Claim jouw exemplaar</button>
+            <div class="tk-badge-list" aria-label="Belangrijkste voordelen">
+              <div class="tk-badge"><span class="icon-checkmark"></span> Gratis toegang</div>
+              <div class="tk-badge"><span class="icon-checkmark"></span> Wetenschappelijk onderbouwd</div>
+              <div class="tk-badge"><span class="icon-checkmark"></span> Binnen 5 minuten starten</div>
+            </div>
+          </div>
+          <div>
+            <img src="/assets/images/desktop.png" alt="Voorbeeldpagina's van het Microplastics Detox e-book" style="max-width: 100%; border-radius: 18px; box-shadow: 0 22px 45px rgba(15, 23, 42, 0.35);" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="tk-section" aria-labelledby="content-intro">
+      <div class="tk-container">
+        <h2 id="content-intro">Wat je in het e-book ontdekt</h2>
+        <p class="section-lead">Een compact stappenplan dat je helpt om microplastics en andere toxische stoffen sneller af te voeren, met leefstijl- en voedingskeuzes die eenvoudig in te passen zijn.</p>
+        <div class="tk-feature-grid">
+          <article class="tk-feature-card">
+            <h3>Detox roadmap</h3>
+            <p>Krijg een uitgewerkte volgorde van voedingsmiddelen, supplementen en gewoontes die microplastics helpen afvoeren.</p>
+          </article>
+          <article class="tk-feature-card">
+            <h3>Checklist voor thuis</h3>
+            <p>Leer hoe je dagelijks microplastics beperkt met simpele aanpassingen in je keuken, badkamer en huishouding.</p>
+          </article>
+          <article class="tk-feature-card">
+            <h3>Bonus: 7-daagse kickstart</h3>
+            <p>Volg een korte kickstart die je energielevel verhoogt en je hormoonbalans ondersteunt.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tk-section tk-testimonials" aria-labelledby="reviews-title">
+      <div class="tk-container">
+        <h2 id="reviews-title">Wat lezers zeggen</h2>
+        <p class="section-lead">Meer dan 8.000 lezers gebruiken dagelijks tips uit dit e-book om hun lichaam te beschermen.</p>
+        <div class="tk-testimonial-grid">
+          <figure class="tk-testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Ik dacht dat microplastics vooral een mediahype waren, maar dit e-book laat zien wat er écht gebeurt en geeft direct toepasbare adviezen. Ik gebruik het nu als naslagwerk voor mijn gezin."</blockquote>
+            <figcaption class="tk-author">— Marleen, moeder van drie</figcaption>
+          </figure>
+          <figure class="tk-testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Helder, to the point en zonder poespas. Vooral de checklist en kickstart zijn goud waard. Ik voelde me na een week al helderder."</blockquote>
+            <figcaption class="tk-author">— Peter, ondernemer</figcaption>
+          </figure>
+          <figure class="tk-testimonial-card">
+            <div class="stars">★★★★★</div>
+            <blockquote>"Als orthomoleculair therapeut verwijs ik mijn cliënten hiernaar door. Het sluit perfect aan op wat ik in de praktijk zie."</blockquote>
+            <figcaption class="tk-author">— Anne, orthomoleculair therapeut</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="tk-section" aria-labelledby="cta-repeat">
+      <div class="tk-container" style="text-align:center;">
+        <h2 id="cta-repeat">Klaar om met je detox te starten?</h2>
+        <p class="section-lead">Claim het e-book gratis en ontvang het direct per e-mail.</p>
+        <button class="tk-cta-btn" data-modal-open>Ik wil het e-book</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner tk-container">
+      <div class="footer-columns">
+        <div class="footer-column">
+          <h3>Vitalora</h3>
+          <p>We helpen je lichaam gezond te houden met praktische programma's van Danielle Siegers.</p>
+        </div>
+        <div class="footer-column">
+          <h3>Snel naar</h3>
+          <ul>
+            <li><a href="/" rel="nofollow">Home</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/privacy">Privacy</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Volg Vitalora</h3>
+          <ul>
+            <li><a href="https://www.instagram.com/vitalora" rel="nofollow">Instagram</a></li>
+            <li><a href="https://www.facebook.com/vitalora" rel="nofollow">Facebook</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer-bottom">&copy; <span id="footer-year"></span> Vitalora. Alle rechten voorbehouden.</p>
+    </div>
+  </footer>
+
+  <div class="tk-modal" id="tk-ebook-modal" role="dialog" aria-modal="true" aria-labelledby="tk-modal-title" aria-hidden="true">
+    <div class="tk-modal-backdrop" data-modal-close></div>
+    <div class="tk-modal-card">
+      <button class="tk-modal-close" type="button" aria-label="Sluit venster" data-modal-close>&times;</button>
+      <header class="tk-modal-header">
+        <h2 id="tk-modal-title">Claim je gratis e-book</h2>
+        <p style="margin-top:8px; opacity:0.85;">Binnen een minuut in je inbox – wij sturen geen spam.</p>
+      </header>
+      <div class="tk-modal-body">
+        <div id="tk-ebook-error" class="tk-feedback" role="alert"></div>
+        <div id="tk-ebook-success" class="tk-feedback" role="status"></div>
+        <form id="tk-ebook-form" class="tk-modal-form" method="post" action="/api/tk-ebook-optin" novalidate>
+          <input type="hidden" name="u" value="3">
+          <input type="hidden" name="f" value="3">
+          <input type="hidden" name="s" value="">
+          <input type="hidden" name="c" value="0">
+          <input type="hidden" name="m" value="0">
+          <input type="hidden" name="act" value="sub">
+          <input type="hidden" name="v" value="2">
+          <input type="hidden" name="or" value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
+          <label class="sr-only" for="tk-firstname">Voornaam</label>
+          <input id="tk-firstname" name="firstname" type="text" placeholder="Voornaam" autocomplete="given-name" required>
+          <label class="sr-only" for="tk-email">E-mailadres</label>
+          <input id="tk-email" name="email" type="email" placeholder="E-mailadres" autocomplete="email" required>
+          <button type="submit" class="tk-cta-btn">Verstuur en ontvang</button>
+        </form>
+        <div class="tk-loading" id="tk-loading" aria-hidden="true">
+          <span></span><span></span><span></span>
+          <div>We verwerken je aanvraag…</div>
+        </div>
+        <p style="font-size:0.85rem; color:#64748B; margin:0;">Door te versturen ga je akkoord met onze <a href="/voorwaarden">voorwaarden</a> en <a href="/privacy">privacyverklaring</a>.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+  </script>
+  <script defer src="/assets/js/tk-ebook.js?v=1"></script>
+</body>
+</html>

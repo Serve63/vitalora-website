@@ -14,6 +14,8 @@
     { "source": "/academy/de-juiste-balans/", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true }
   ],
   "rewrites": [
+    { "source": "/tk-ebook", "destination": "/tk-ebook/index.html" },
+    { "source": "/tk-ebook/", "destination": "/tk-ebook/index.html" },
     { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
     { "source": "/ebook", "destination": "/landing.html" },
@@ -101,5 +103,21 @@
     ,{ "source": "/griekse-yoghurt-en-artrose", "destination": "/post.html?slug=griekse-yoghurt-en-artrose" }
     ,{ "source": "/hennepzaad-eiwitten", "destination": "/post.html?slug=hennepzaad-eiwitten" }
     ,{ "source": "/:slug", "destination": "/post.html?slug=:slug" }
+  ],
+  "headers": [
+    {
+      "source": "/tk-ebook",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self' https://www.tiktok.com https://*.tiktok.com https://tiktok.com;" }
+      ]
+    },
+    {
+      "source": "/tk-ebook/index.html",
+      "headers": [
+        { "key": "X-Frame-Options", "value": "" },
+        { "key": "Content-Security-Policy", "value": "frame-ancestors 'self' https://www.tiktok.com https://*.tiktok.com https://tiktok.com;" }
+      ]
+    }
   ]
 }
