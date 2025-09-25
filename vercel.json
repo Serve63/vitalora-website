@@ -18,6 +18,8 @@
     { "source": "/tk-ebook/", "destination": "/tk-ebook/index.html" },
     { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
+    { "source": "/ebook", "destination": "/ebook.html" },
+    { "source": "/ebook/", "destination": "/ebook.html" },
     { "source": "/detox", "destination": "/ebook.html" },
     { "source": "/detox/", "destination": "/ebook.html" },
     { "source": "/detox/:path*", "destination": "/ebook/:path*" },
