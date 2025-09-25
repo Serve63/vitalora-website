@@ -230,7 +230,7 @@ body.home footer .footer-bottom { opacity: .85; }
   body.home .certified-badge {
     display: inline-flex;
     align-items: center;
-    background: #3A9AEA;
+    background: #3A9AEA !important;
     color: white;
     padding: 6px 12px;
     border-radius: 20px;
