@@ -4,7 +4,7 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/(.*)",
+      "source": "/:path*",
       "has": [{ "type": "host", "value": "www.vitalora.nl" }],
       "destination": "https://vitalora.nl/:path*",
       "permanent": true
@@ -12,7 +12,6 @@
     { "source": "/dashboard", "destination": "/academy", "permanent": true },
     { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
     { "source": "/landing", "destination": "/detox", "permanent": true },
-    { "source": "/ebook", "destination": "/detox", "permanent": true },
     { "source": "/checkout.html", "destination": "/checkout", "permanent": true },
     { "source": "/loading", "destination": "/loading.html", "permanent": false },
     { "source": "/wacht-even", "destination": "/wacht-even.html", "permanent": false },
@@ -25,8 +24,8 @@
     { "source": "/tk-ebook/", "destination": "/tk-ebook/index.html" },
     { "source": "/clean-reset", "destination": "/clean-reset.html" },
     { "source": "/academy", "destination": "/academy.html" },
-    { "source": "/detox", "destination": "/landing.html" },
-    { "source": "/detox/", "destination": "/landing.html" },
+    { "source": "/detox", "destination": "/ebook" },
+    { "source": "/detox/:path*", "destination": "/ebook/:path*" },
     { "source": "/checkout", "destination": "/checkout-new.html" },
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
