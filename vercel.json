@@ -3,12 +3,6 @@
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
-    {
-      "source": "/:path*",
-      "has": [{ "type": "host", "value": "www.vitalora.nl" }],
-      "destination": "https://vitalora.nl/:path*",
-      "permanent": true
-    },
     { "source": "/dashboard", "destination": "/academy", "permanent": true },
     { "source": "/dashboard.html", "destination": "/academy", "permanent": true },
     { "source": "/landing", "destination": "/detox", "permanent": true },
