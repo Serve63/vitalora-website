@@ -116,7 +116,7 @@ button {
 
 .s-course {
   margin-top: 2px;
-  color: var(--brand);
+  color: #fff;
   font-size: 11.5px;
   font-weight: 500;
 }
@@ -203,8 +203,8 @@ button {
 }
 
 .s-lesson.complete .s-dot {
-  background: var(--brand);
-  border-color: var(--brand);
+  background: #fff;
+  border-color: #fff;
 }
 
 .s-num {
@@ -231,7 +231,7 @@ button {
   flex: 0 0 7px;
   width: 7px;
   height: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.85);
   border-radius: 50%;
 }
 
@@ -386,6 +386,7 @@ h1.title {
   border-radius: 20px;
   font-size: 11.5px;
   font-weight: 500;
+  white-space: nowrap;
 }
 
 .tag-g {
@@ -434,7 +435,7 @@ h1.title {
 
 .content h3 {
   margin: 36px 0 12px;
-  color: var(--brand-dark);
+  color: var(--ink);
   font-size: 19px;
   font-weight: 650;
 }
