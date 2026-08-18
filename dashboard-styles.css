@@ -279,8 +279,13 @@ body {
 }
 
 .back-to-home .icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
     font-size: 18px;
     font-weight: bold;
+    transform: translateY(-1px);
 }
 
 /* === SCOPE: academy-cards === */
