@@ -78,6 +78,7 @@
     39: 'Ademhaling & stress',
     40: 'Ontspanning & detox',
     41: 'Detox-voeding & supplementen',
+    44: 'Zwavelverbindingen & detox',
     45: 'Supplementen voor detox',
     46: 'Toxines in je leefomgeving',
     48: 'Huisstof & toxines',
