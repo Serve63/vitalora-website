@@ -208,7 +208,7 @@ button {
 .s-lesson.active {
   color: var(--sidebar-active);
   background: var(--sidebar-selected);
-  border-left-color: var(--brand);
+  border-left-color: var(--sidebar-active);
 }
 
 .s-lesson.complete .s-dot {
