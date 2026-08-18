@@ -170,6 +170,17 @@
     return `/course-view.html?course=${encodeURIComponent(state.slug)}&lesson=${encodeURIComponent(lesson.index)}`;
   }
 
+  function lessonPath(slug, lesson) {
+    const alias = slugToAlias[slug];
+    return alias
+      ? `/${alias}?lesson=${encodeURIComponent(lesson.index)}`
+      : `/course-view.html?course=${encodeURIComponent(slug)}&lesson=${encodeURIComponent(lesson.index)}`;
+  }
+
+  function updateLessonUrl(slug, lesson, method) {
+    window.history[method]({ course: slug, lesson: lesson.index }, '', lessonPath(slug, lesson));
+  }
+
   function buildGroups() {
     const blueprint = state.slug === 'clean-reset' ? cleanResetChapters : null;
     if (blueprint) {
@@ -207,7 +218,8 @@
         return `
           <a class="s-lesson${active ? ' active' : ''}${complete ? ' complete' : ''}"
              href="${lessonHref(lesson)}"
-             title="${escapeHTML(view.title)}">
+             data-lesson-index="${escapeHTML(lesson.index)}"
+             aria-label="${escapeHTML(view.title)}"${active ? ' aria-current="page"' : ''}>
             <span class="s-num">${String(lesson.index).padStart(2, '0')}</span>
             <span class="s-lesson-title">${escapeHTML(shortTitle(view.title))}</span>
             <span class="s-dot" aria-hidden="true"></span>
@@ -298,9 +310,32 @@
 
   function renderPage() {
     const title = displayTitles[state.slug] || state.course.title || 'Cursus';
-    document.title = `${shortTitle(lessonView(state.current).title)} | ${title} | Vitalora`;
+    updateDocumentTitle();
     $('#sCourse').textContent = title.split(':')[0];
     renderSidebar();
+    renderLesson();
+  }
+
+  function updateDocumentTitle() {
+    const title = displayTitles[state.slug] || state.course.title || 'Cursus';
+    document.title = `${shortTitle(lessonView(state.current).title)} | ${title} | Vitalora`;
+  }
+
+  function updateSidebarActive() {
+    document.querySelectorAll('#sNav .s-lesson').forEach((link) => {
+      const active = link.dataset.lessonIndex === String(state.current.index);
+      link.classList.toggle('active', active);
+      if (active) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+  }
+
+  function showLesson(lesson, { push = false } = {}) {
+    if (!lesson) return;
+    state.current = lesson;
+    if (push) updateLessonUrl(state.slug, lesson, 'pushState');
+    updateSidebarActive();
+    updateDocumentTitle();
     renderLesson();
   }
 
@@ -312,6 +347,15 @@
 
   function setupReaderInteractions() {
     const menu = $('#mobileMenu');
+    const nav = $('#sNav');
+    nav?.addEventListener('click', (event) => {
+      const link = event.target.closest('a.s-lesson');
+      if (!link || (event.button !== undefined && event.button !== 0) || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      const requested = state.lessons.find((lesson) => String(lesson.index) === link.dataset.lessonIndex);
+      if (!requested) return;
+      event.preventDefault();
+      if (requested.index !== state.current.index) showLesson(requested, { push: true });
+    });
     menu?.addEventListener('click', () => {
       const open = document.body.classList.toggle('sidebar-open');
       menu.setAttribute('aria-expanded', String(open));
@@ -332,6 +376,15 @@
       const percentage = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
       $('#rFill').style.width = `${percentage}%`;
     }, { passive: true });
+    window.addEventListener('popstate', () => {
+      const locationState = getLocationState();
+      if (locationState.slug !== state.slug) {
+        window.location.reload();
+        return;
+      }
+      const requested = state.lessons.find((lesson) => String(lesson.index) === String(locationState.lessonParam));
+      if (requested) showLesson(requested);
+    });
   }
 
   async function loadReader() {
