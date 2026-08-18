@@ -48,6 +48,43 @@
     { start: 46, end: 51, title: 'Leefomgeving & afronding' }
   ];
 
+  const cleanResetSidebarTitles = {
+    3: 'Hoe toxines binnenkomen',
+    6: 'Jouw lichaam als detoxmachine',
+    7: 'De lever als detoxfabriek',
+    8: 'De nieren als filters',
+    9: 'De darmen als poortwachters',
+    12: 'Microplastics in je lichaam',
+    13: 'Microplastics & gezondheid',
+    14: 'Microplastics verminderen',
+    15: 'Microplastics afvoeren',
+    17: 'Waarom PFAS gevaarlijk zijn',
+    19: 'PFAS-blootstelling verminderen',
+    20: 'PFAS sneller kwijtraken',
+    21: 'Pesticiden in je voeding',
+    22: 'Biologisch: wat betekent het?',
+    23: 'Detox-boosters tegen pesticiden',
+    24: 'Pesticiden verminderen',
+    25: 'Regie over je voeding',
+    26: 'BPA & ftalaten',
+    28: 'BPA & ftalaten en hormonen',
+    29: 'BPA & ftalaten vermijden',
+    30: 'BPA & ftalaten kwijtraken',
+    31: 'Parabenen in cosmetica',
+    33: 'Parabenen & labels',
+    34: 'Cosmetica zonder parabenen',
+    36: 'Leefstijl als detox-sleutel',
+    37: 'Beweging & lymfesysteem',
+    39: 'Ademhaling & stress',
+    40: 'Ontspanning & detox',
+    41: 'Detox-voeding & supplementen',
+    45: 'Supplementen voor detox',
+    46: 'Toxines in je leefomgeving',
+    48: 'Huisstof & toxines',
+    49: 'Schone huishoudproducten',
+    50: 'Maak je leefomgeving detox-proof'
+  };
+
   const readerOverrides = {
     'clean-reset:1': {
       title: 'Welkom & intentie van de cursus',
@@ -166,6 +203,13 @@
     return String(title || '').replace(/^((les|dag)\s*\d+\s*:\s*)/i, '');
   }
 
+  function sidebarTitle(lesson, view) {
+    if (state.slug === 'clean-reset' && cleanResetSidebarTitles[lesson.index]) {
+      return cleanResetSidebarTitles[lesson.index];
+    }
+    return shortTitle(view.title);
+  }
+
   function lessonHref(lesson) {
     return `/course-view.html?course=${encodeURIComponent(state.slug)}&lesson=${encodeURIComponent(lesson.index)}`;
   }
@@ -221,7 +265,7 @@
              data-lesson-index="${escapeHTML(lesson.index)}"
              aria-label="${escapeHTML(view.title)}"${active ? ' aria-current="page"' : ''}>
             <span class="s-num">${String(lesson.index).padStart(2, '0')}</span>
-            <span class="s-lesson-title">${escapeHTML(shortTitle(view.title))}</span>
+            <span class="s-lesson-title">${escapeHTML(sidebarTitle(lesson, view))}</span>
             <span class="s-dot" aria-hidden="true"></span>
           </a>`;
       }).join('')}
