@@ -365,10 +365,11 @@ button {
 h1.title {
   margin: 0 0 17px;
   color: var(--ink);
-  font-size: clamp(28px, 4vw, 44px);
+  font-size: clamp(28px, 4vw, 40px);
   font-weight: 600;
   letter-spacing: -0.035em;
   line-height: 1.13;
+  white-space: nowrap;
 }
 
 .lesson-lead {
@@ -598,6 +599,7 @@ h1.title {
 
   h1.title {
     font-size: clamp(28px, 9vw, 38px);
+    white-space: normal;
   }
 
   .lesson-lead {
