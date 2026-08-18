@@ -7,7 +7,7 @@
 }
 
 :root {
-  --sidebar-w: 272px;
+  --sidebar-w: 360px;
   --sidebar-bg: #2954b3;
   --sidebar-border: rgba(255, 255, 255, 0.14);
   --sidebar-text: #d7e5f3;
