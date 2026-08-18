@@ -169,6 +169,8 @@ button {
 
 .s-ch-label {
   padding: 16px 22px 5px;
+  color: var(--sidebar-active);
+  font-weight: 700;
 }
 
 .s-lesson {
