@@ -87,8 +87,7 @@
     lessons: [],
     groups: [],
     current: null,
-    completed: new Set(),
-    done: false
+    completed: new Set()
   };
 
   const $ = (selector) => document.querySelector(selector);
@@ -161,27 +160,6 @@
   function lessonView(lesson) {
     const override = readerOverrides[`${state.slug}:${lesson.index}`];
     return override ? { ...lesson, ...override } : lesson;
-  }
-
-  function writeCompletion(lesson, done) {
-    try {
-      const stored = JSON.parse(localStorage.getItem('completedLessons') || '[]');
-      const values = Array.isArray(stored) ? stored.map(String) : [];
-      const index = values.indexOf(String(lesson.index));
-      if (done && index === -1) values.push(String(lesson.index));
-      if (!done && index !== -1) values.splice(index, 1);
-      localStorage.setItem('completedLessons', JSON.stringify(values));
-      localStorage.setItem(`progress:${state.slug}:${lesson.id}:done`, String(done));
-    } catch (error) {
-      // The reader remains usable even when progress cannot be persisted.
-    }
-    if (done) {
-      state.completed.add(String(lesson.index));
-      state.completed.add(String(lesson.id));
-    } else {
-      state.completed.delete(String(lesson.index));
-      state.completed.delete(String(lesson.id));
-    }
   }
 
   function shortTitle(title) {
@@ -297,21 +275,12 @@
     return '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="6" cy="6" r="5"/><path d="M6 3.5v2.75L7.5 8"/></svg>';
   }
 
-  function checkIcon() {
-    return '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m3 8.5 3.5 3.5 6.5-7"/></svg>';
-  }
-
   function renderLesson() {
     const view = lessonView(state.current);
-    const index = state.lessons.findIndex((lesson) => lesson.id === state.current.id);
-    const previous = index > 0 ? state.lessons[index - 1] : null;
-    const next = index < state.lessons.length - 1 ? state.lessons[index + 1] : null;
     const content = view.lead
       ? { lead: view.lead, html: view.content_html }
       : extractContent(state.current);
     const chapter = getChapterNumber(state.current);
-    const complete = isComplete(state.current);
-    state.done = complete;
 
     $('#sCourse').textContent = (displayTitles[state.slug] || state.course.title || 'Cursus').split(':')[0];
     $('#tbLabel').textContent = `Les ${String(state.current.index).padStart(2, '0')}`;
@@ -325,13 +294,6 @@
       <span class="tag tag-o">${escapeHTML(view.type || state.course.level || 'Theorie')}</span>
       <span class="tag tag-o">Hoofdstuk ${chapter}</span>`;
     $('#lessonContent').innerHTML = decorateContent(content.html);
-    $('#footerMeta').textContent = `Les ${state.current.index} van ${state.lessons.length} · Hoofdstuk ${chapter}`;
-    $('#doneBtn').classList.toggle('done', complete);
-    $('#doneBtn').innerHTML = complete ? `${checkIcon()} Voltooid` : `${checkIcon()} Markeer als voltooid`;
-    $('#prevBtn').href = previous ? lessonHref(previous) : '/academy';
-    $('#prevBtn').textContent = previous ? '← Vorige' : '← Academy';
-    $('#nextBtn').href = next ? lessonHref(next) : '/academy';
-    $('#nextBtn').textContent = next ? 'Volgende les →' : 'Cursus voltooid →';
   }
 
   function renderPage() {
@@ -363,17 +325,6 @@
         document.body.classList.remove('sidebar-open');
         menu?.setAttribute('aria-expanded', 'false');
       }
-    });
-
-    $('#doneBtn')?.addEventListener('click', () => {
-      state.done = !state.done;
-      writeCompletion(state.current, state.done);
-      renderSidebar();
-      renderLesson();
-    });
-
-    $('#nextBtn')?.addEventListener('click', () => {
-      if (!state.done) writeCompletion(state.current, true);
     });
 
     window.addEventListener('scroll', () => {
