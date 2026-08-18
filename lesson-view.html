@@ -392,7 +392,7 @@
       background: var(--reader-bg);
       color: var(--reader-ink);
       font-family: "Avenir Next", "Segoe UI", sans-serif;
-      line-height: 1.55;
+      line-height: 1.45;
     }
 
     body::before,
@@ -402,7 +402,7 @@
 
     .lesson-container {
       max-width: 1240px;
-      padding: 16px 24px 40px;
+      padding: 12px 18px 28px;
       z-index: 2;
     }
 
@@ -410,14 +410,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin: 0 0 10px;
+      margin: 0 0 8px;
       padding: 0;
       color: var(--brand);
       background: transparent;
       border: 0;
       border-radius: 0;
       box-shadow: none;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.01em;
       transition: color 0.2s ease, transform 0.2s ease;
@@ -435,14 +435,14 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto;
       align-items: end;
-      column-gap: 24px;
-      margin: 0 0 16px;
-      padding: 14px 12px 15px 18px;
+      column-gap: 16px;
+      margin: 0 0 10px;
+      padding: 10px 8px 10px 12px;
       color: var(--reader-ink);
       background: transparent;
       border: 0;
-      border-left: 4px solid var(--brand);
-      border-bottom: 2px solid color-mix(in srgb, var(--brand) 42%, var(--reader-line));
+      border-left: 2px solid var(--brand);
+      border-bottom: 1px solid color-mix(in srgb, var(--brand) 42%, var(--reader-line));
       border-radius: 0;
       box-shadow: none;
       text-align: left;
@@ -458,9 +458,9 @@
       content: "";
       position: absolute;
       top: 0;
-      left: 18px;
-      width: 42px;
-      height: 4px;
+      left: 12px;
+      width: 28px;
+      height: 2px;
       background: var(--brand);
       border-radius: 999px;
     }
@@ -473,27 +473,27 @@
       max-width: none;
       margin: 0;
       color: var(--reader-ink);
-      font-size: clamp(1.8rem, 2.7vw, 2.65rem);
-      font-weight: 700;
-      letter-spacing: -0.04em;
-      line-height: 1.1;
+      font-size: clamp(1.45rem, 1.7vw, 1.95rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.12;
     }
 
     .lesson-meta {
       justify-content: flex-start;
-      gap: 8px;
+      gap: 5px;
       margin-top: 0;
     }
 
     .meta-item {
       gap: 7px;
-      padding: 7px 10px;
+      padding: 5px 8px;
       color: var(--brand);
       background: var(--reader-accent-soft);
       border: 1px solid color-mix(in srgb, var(--brand) 28%, var(--reader-line));
       border-radius: 999px;
       box-shadow: none;
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       font-weight: 600;
       backdrop-filter: none;
       transition: border-color 0.2s ease, color 0.2s ease;
@@ -507,14 +507,14 @@
     }
 
     .lesson-content {
-      max-width: 1100px;
-      margin: 0 auto 18px;
-      padding: 30px 46px;
+      max-width: 1120px;
+      margin: 0 auto 12px;
+      padding: 20px 34px;
       background: var(--reader-paper);
       border: 1px solid #e8edf4;
-      border-top: 3px solid var(--brand);
-      border-radius: 14px;
-      box-shadow: 0 7px 22px rgba(23, 36, 58, 0.05);
+      border-top: 2px solid var(--brand);
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(23, 36, 58, 0.04);
     }
 
     .lesson-content::before {
@@ -522,13 +522,13 @@
     }
 
     .content-section {
-      max-width: 920px;
+      max-width: 1000px;
       margin: 0 auto;
     }
 
     .lesson-section {
-      margin-bottom: 28px;
-      padding-bottom: 24px;
+      margin-bottom: 20px;
+      padding-bottom: 17px;
       border-bottom: 1px solid #edf1f5;
     }
 
@@ -540,27 +540,27 @@
 
     .lesson-section:first-child .content-text p:first-child {
       color: #26364e;
-      font-size: 1rem;
-      line-height: 1.65;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
     .lesson-section .section-title {
       display: flex;
       align-items: center;
-      gap: 9px;
-      margin: 0 0 10px;
+      gap: 7px;
+      margin: 0 0 7px;
       color: var(--brand);
-      font-size: 1.25rem;
-      font-weight: 700;
-      letter-spacing: -0.025em;
+      font-size: 1.05rem;
+      font-weight: 600;
+      letter-spacing: -0.01em;
       line-height: 1.25;
     }
 
     .lesson-section .section-title::before {
       content: "";
-      width: 8px;
-      height: 8px;
-      flex: 0 0 8px;
+      width: 6px;
+      height: 6px;
+      flex: 0 0 6px;
       background: var(--brand);
       border-radius: 50%;
     }
@@ -568,13 +568,13 @@
     .content-text {
       margin: 0;
       color: #3d4c61;
-      font-size: 0.95rem;
-      line-height: 1.65;
+      font-size: 0.88rem;
+      line-height: 1.5;
     }
 
     .lesson-section .content-text p {
-      margin: 0 0 12px;
-      line-height: 1.65;
+      margin: 0 0 8px;
+      line-height: 1.5;
     }
 
     .lesson-section .content-text p:last-child {
@@ -582,12 +582,12 @@
     }
 
     .highlight-box {
-      margin: 18px 0;
-      padding: 16px 18px;
+      margin: 12px 0;
+      padding: 12px 14px;
       background: var(--reader-accent-soft);
       border: 1px solid color-mix(in srgb, var(--brand) 16%, #e1e9f4);
-      border-left: 3px solid var(--brand);
-      border-radius: 9px;
+      border-left: 2px solid var(--brand);
+      border-radius: 7px;
     }
 
     .highlight-box::before {
@@ -604,10 +604,10 @@
       display: grid;
       grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
       align-items: center;
-      gap: 12px;
-      max-width: 1100px;
+      gap: 8px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 14px 0 0;
+      padding: 10px 0 0;
       background: transparent;
       border: 0;
       border-top: 1px solid var(--reader-line);
@@ -628,7 +628,7 @@
       align-items: center;
       gap: 8px;
       white-space: nowrap;
-      padding: 5px 9px;
+      padding: 3px 7px;
       color: var(--brand);
       background: var(--reader-accent-soft);
       border: 1px solid color-mix(in srgb, var(--brand) 24%, var(--reader-line));
@@ -644,14 +644,14 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      min-height: 38px;
-      padding: 8px 13px;
+      min-height: 32px;
+      padding: 6px 10px;
       color: var(--reader-ink);
       background: var(--reader-paper);
       border: 1px solid var(--reader-line);
-      border-radius: 12px;
+      border-radius: 8px;
       box-shadow: 0 3px 10px rgba(23, 36, 58, 0.05);
-      font-size: 0.8rem;
+      font-size: 0.7rem;
       font-weight: 700;
       transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
     }
@@ -684,64 +684,64 @@
 
     @media (max-width: 768px) {
       .lesson-container {
-        padding: 12px 12px 32px;
+        padding: 10px 10px 24px;
       }
 
       .back-to-course {
-        margin-bottom: 8px;
-        font-size: 0.78rem;
+        margin-bottom: 6px;
+        font-size: 0.7rem;
       }
 
       .lesson-header {
         grid-template-columns: 1fr;
-        gap: 10px;
-        margin-bottom: 12px;
-        padding: 12px 8px 13px 13px;
+        gap: 7px;
+        margin-bottom: 8px;
+        padding: 9px 6px 9px 10px;
       }
 
       .lesson-title {
-        font-size: clamp(1.55rem, 7vw, 2rem);
-        letter-spacing: -0.035em;
+        font-size: clamp(1.35rem, 6vw, 1.7rem);
+        letter-spacing: -0.02em;
       }
 
       .lesson-meta {
-        gap: 6px;
+        gap: 4px;
         margin-top: 0;
       }
 
       .meta-item {
-        padding: 6px 8px;
-        font-size: 0.7rem;
+        padding: 4px 6px;
+        font-size: 0.62rem;
       }
 
       .lesson-content {
-        padding: 20px 16px;
-        border-radius: 12px;
+        padding: 16px 13px;
+        border-radius: 9px;
       }
 
       .lesson-section {
-        margin-bottom: 24px;
-        padding-bottom: 22px;
+        margin-bottom: 18px;
+        padding-bottom: 16px;
       }
 
       .lesson-section:first-child .content-text p:first-child,
       .content-text {
-        font-size: 0.9rem;
-        line-height: 1.62;
+        font-size: 0.84rem;
+        line-height: 1.5;
       }
 
       .lesson-section .content-text p {
-        line-height: 1.62;
+        line-height: 1.5;
       }
 
       .lesson-section .section-title {
-        font-size: 1.12rem;
+        font-size: 0.98rem;
       }
 
       .lesson-navigation {
         grid-template-columns: 1fr 1fr;
         gap: 10px;
-        padding-top: 12px;
+        padding-top: 9px;
       }
 
       .lesson-navigation > div {
