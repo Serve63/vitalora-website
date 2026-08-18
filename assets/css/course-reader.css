@@ -531,6 +531,233 @@ h1.title {
   margin-bottom: 0;
 }
 
+.lesson-opening {
+  margin: 0 0 52px;
+  padding: 0 0 30px;
+  border-bottom: 1px solid var(--line);
+}
+
+.lesson-opening p:first-child {
+  color: var(--ink);
+  font-size: 17px;
+  line-height: 1.82;
+}
+
+.lesson-callout {
+  margin: 28px 0 0;
+  padding: 18px 20px;
+  background: rgba(var(--brand-rgb), 0.075);
+  border: 1px solid rgba(var(--brand-rgb), 0.2);
+  border-radius: 10px;
+}
+
+.lesson-callout-warning {
+  background: #fff7f2;
+  border-color: #eed6c7;
+}
+
+.lesson-callout p {
+  margin: 4px 0 0;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.callout-label,
+.action-kicker,
+.remember-kicker {
+  color: var(--brand-dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.lesson-callout-warning .callout-label {
+  color: #a74d27;
+}
+
+.course-figure {
+  margin: -10px 0 60px;
+}
+
+.course-figure img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 12px 32px rgba(24, 34, 44, 0.1);
+}
+
+.course-figure figcaption {
+  margin-top: 10px;
+  color: var(--muted);
+  font-size: 11.5px;
+  line-height: 1.55;
+}
+
+.lesson-action {
+  margin: 68px 0 34px;
+  padding: 28px 30px 30px;
+  color: var(--body-text);
+  background: linear-gradient(145deg, rgba(var(--brand-rgb), 0.12), rgba(var(--brand-rgb), 0.055));
+  border: 1px solid rgba(var(--brand-rgb), 0.23);
+  border-radius: 14px;
+}
+
+.action-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 12px;
+}
+
+.action-time {
+  color: var(--brand-dark);
+  font-size: 11.5px;
+  font-weight: 600;
+}
+
+.lesson-action h2,
+.lesson-remember h2,
+.lesson-sources h2 {
+  margin: 0 0 14px;
+}
+
+.lesson-action > p {
+  margin-bottom: 18px;
+  font-size: 14.5px;
+  line-height: 1.7;
+}
+
+.content ol.step-list {
+  counter-reset: lesson-step;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin: 22px 0 0;
+  list-style: none;
+}
+
+.content ol.step-list li {
+  counter-increment: lesson-step;
+  display: grid;
+  grid-template-columns: 27px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  font-size: 14.5px;
+  line-height: 1.65;
+}
+
+.content ol.step-list li::before {
+  content: counter(lesson-step);
+  display: grid;
+  place-items: center;
+  width: 27px;
+  height: 27px;
+  margin-top: 1px;
+  color: #fff;
+  background: var(--brand);
+  border-radius: 50%;
+  font-size: 10.5px;
+  font-weight: 700;
+}
+
+.reflection {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(var(--brand-rgb), 0.2);
+}
+
+.reflection > span {
+  color: var(--brand-dark);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.reflection p {
+  margin: 5px 0 0;
+  color: var(--ink);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.lesson-remember {
+  margin: 34px 0;
+  padding: 26px 0 30px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.lesson-remember .flist {
+  margin-bottom: 0;
+}
+
+.lesson-remember .flist li {
+  color: var(--ink);
+  font-size: 14.5px;
+  font-weight: 550;
+  line-height: 1.6;
+}
+
+.lesson-sources {
+  margin: 36px 0 20px;
+  padding: 24px;
+  background: var(--surface);
+  border: 1px solid var(--line-light);
+  border-radius: 10px;
+}
+
+.lesson-sources h2 {
+  font-size: 18px;
+}
+
+.lesson-sources > p {
+  margin-bottom: 14px;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.content .lesson-sources ul {
+  gap: 8px;
+  margin: 0;
+}
+
+.content .lesson-sources li {
+  display: block;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.content .lesson-sources li::before {
+  display: none;
+}
+
+.lesson-sources a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 9px 0;
+  color: var(--brand-dark);
+  border-bottom: 1px solid var(--line-light);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.lesson-sources li:last-child a {
+  border-bottom: 0;
+}
+
+.lesson-sources a:hover {
+  color: var(--brand);
+}
+
 .sec-eyebrow {
   margin-bottom: 8px;
   color: var(--brand);
@@ -612,6 +839,25 @@ h1.title {
   .content li {
     font-size: 14.5px;
     line-height: 1.72;
+  }
+
+  .lesson-opening {
+    margin-bottom: 40px;
+    padding-bottom: 22px;
+  }
+
+  .lesson-opening p:first-child {
+    font-size: 15.5px;
+    line-height: 1.72;
+  }
+
+  .lesson-action {
+    margin-top: 48px;
+    padding: 23px 20px 24px;
+  }
+
+  .course-figure {
+    margin-bottom: 44px;
   }
 
 }
