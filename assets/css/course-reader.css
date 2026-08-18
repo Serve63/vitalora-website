@@ -100,6 +100,11 @@ button {
   color: var(--sidebar-active);
 }
 
+.s-back {
+  color: var(--sidebar-active);
+  font-weight: 600;
+}
+
 .s-back svg {
   width: 12px;
   height: 12px;
@@ -143,8 +148,12 @@ button {
   text-transform: uppercase;
 }
 
+.s-prog-label {
+  color: var(--sidebar-active);
+}
+
 .s-prog-count {
-  color: var(--brand);
+  color: var(--sidebar-active);
   font-size: 11px;
   font-weight: 700;
 }
@@ -216,7 +225,7 @@ button {
 }
 
 .s-lesson.active .s-num {
-  color: var(--brand);
+  color: var(--sidebar-active);
 }
 
 .s-lesson-title {
