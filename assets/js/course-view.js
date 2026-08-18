@@ -287,10 +287,10 @@
     $('#tbTitle').textContent = shortTitle(view.title);
     $('#rtBadge').textContent = `${view.duration_min || 10} min leestijd`;
     $('#lessonNumber').textContent = `Les ${String(state.current.index).padStart(2, '0')} van ${state.lessons.length}`;
+    $('#lessonDuration').innerHTML = `${clockIcon()} ${view.duration_min || 10} minuten`;
     $('#lessonTitle').textContent = shortTitle(view.title);
     $('#lessonLead').textContent = content.lead;
     $('#lessonTags').innerHTML = `
-      <span class="tag tag-g">${clockIcon()} ${view.duration_min || 10} minuten</span>
       <span class="tag tag-o">${escapeHTML(view.type || state.course.level || 'Theorie')}</span>
       <span class="tag tag-o">Hoofdstuk ${chapter}</span>`;
     $('#lessonContent').innerHTML = decorateContent(content.html);
