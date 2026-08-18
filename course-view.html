@@ -65,19 +65,25 @@
       --border-light: #e2e8f0;
     }
 
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Quicksand', sans-serif;
       background: var(--bg-light);
       color: var(--text-primary);
-      line-height: 1.6;
+      line-height: 1.5;
       margin: 0;
       padding: 0;
     }
 
     .course-container {
-      max-width: 1200px;
+      max-width: 1180px;
       margin: 0 auto;
-      padding: 40px 20px;
+      padding: 24px 20px 48px;
       opacity: 1;
       visibility: visible;
     }
@@ -85,31 +91,32 @@
     .course-header {
       background: linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 100%);
       color: white;
-      padding: 60px 40px;
-      border-radius: 20px;
-      margin-bottom: 40px;
+      padding: 32px 36px;
+      border-radius: 16px;
+      margin-bottom: 24px;
       text-align: center;
-      box-shadow: 0 20px 40px rgba(var(--grad-a-rgb), 0.2);
+      box-shadow: 0 12px 28px rgba(var(--grad-a-rgb), 0.16);
     }
 
     .course-title {
-      font-size: 2.5rem;
+      font-size: 2.15rem;
       font-weight: 700;
-      margin: 0 0 16px 0;
+      margin: 0 0 10px;
       line-height: 1.2;
     }
 
     .course-subtitle {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       opacity: 0.9;
-      margin: 0 0 32px 0;
+      max-width: 720px;
+      margin: 0 auto 20px;
       font-weight: 400;
     }
 
     .course-meta {
       display: flex;
       justify-content: center;
-      gap: 24px;
+      gap: 10px;
       flex-wrap: wrap;
     }
 
@@ -118,19 +125,20 @@
       align-items: center;
       gap: 8px;
       background: rgba(255, 255, 255, 0.15);
-      padding: 12px 20px;
+      padding: 8px 14px;
       border-radius: 50px;
       font-weight: 500;
+      font-size: 0.9rem;
       backdrop-filter: blur(10px);
     }
 
     .meta-item .icon {
-      width: 20px;
-      height: 20px;
+      width: 17px;
+      height: 17px;
     }
 
     .back-to-academy {
-      margin-top: 24px;
+      margin-top: 16px;
     }
 
     .back-to-academy-btn {
@@ -139,30 +147,30 @@
       gap: 8px;
       background: rgba(255, 255, 255, 0.2);
       color: white;
-      padding: 12px 24px;
+      padding: 9px 18px;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 500;
       transition: all 0.3s ease;
-      border: 2px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.3);
       backdrop-filter: blur(10px);
     }
 
     .back-to-academy-btn:hover {
       background: rgba(255, 255, 255, 0.3);
       border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-2px);
+      transform: translateY(-1px);
     }
 
     .back-to-academy-btn .icon {
-      width: 18px;
-      height: 18px;
+      width: 17px;
+      height: 17px;
     }
 
     .course-content {
       display: grid;
-      grid-template-columns: 1fr 300px;
-      gap: 40px;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      gap: 24px;
       align-items: start;
       opacity: 1;
       visibility: visible;
@@ -170,81 +178,86 @@
 
     .lessons-section {
       background: white;
-      border-radius: 16px;
-      padding: 40px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      padding: 24px 28px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       opacity: 1;
       visibility: visible;
     }
 
     .section-title {
-      font-size: 1.8rem;
+      font-size: 1.45rem;
       font-weight: 700;
       color: var(--text-primary);
-      margin: 0 0 32px 0;
+      margin: 0 0 22px;
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
 
     .section-title::before {
       content: "📚";
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     .chapter {
-      margin-bottom: 40px;
+      margin-bottom: 24px;
+    }
+
+    .chapter:last-child {
+      margin-bottom: 0;
     }
 
     .chapter-header {
       background: var(--bg-light);
-      padding: 20px 24px;
-      border-radius: 12px;
-      margin-bottom: 16px;
-      border-left: 4px solid var(--brand);
+      padding: 14px 16px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--brand);
     }
 
     .chapter-title {
-      font-size: 1.3rem;
+      font-size: 1.08rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 0 0 8px 0;
+      margin: 0 0 4px;
     }
 
     .chapter-description {
       color: var(--text-secondary);
       margin: 0;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
+      line-height: 1.4;
     }
 
     .lessons-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 8px;
     }
 
     .lesson-card {
       background: white;
-      border: 2px solid var(--border-light);
-      border-radius: 12px;
-      padding: 20px 24px;
+      border: 1px solid var(--border-light);
+      border-radius: 10px;
+      padding: 13px 16px;
       display: flex;
       align-items: center;
-      gap: 16px;
-      transition: all 0.3s ease;
+      gap: 12px;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
       cursor: pointer;
     }
 
     .lesson-card:hover {
       border-color: var(--brand);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 25px rgba(var(--grad-a-rgb), 0.15);
+      transform: translateY(-1px);
+      box-shadow: 0 5px 14px rgba(var(--grad-a-rgb), 0.1);
     }
 
 
     .lesson-number {
-      width: 40px;
-      height: 40px;
+      width: 32px;
+      height: 32px;
       background: var(--brand);
       color: white;
       border-radius: 50%;
@@ -252,7 +265,7 @@
       align-items: center;
       justify-content: center;
       font-weight: 600;
-      font-size: 1rem;
+      font-size: 0.9rem;
       flex-shrink: 0;
     }
 
@@ -261,36 +274,37 @@
     }
 
     .lesson-title {
-      font-size: 1.1rem;
+      font-size: 0.98rem;
       font-weight: 600;
       color: var(--text-primary);
-      margin: 0 0 6px 0;
+      margin: 0 0 4px;
+      line-height: 1.35;
     }
 
     .lesson-meta {
       display: flex;
-      gap: 12px;
+      gap: 8px;
       align-items: center;
     }
 
     .lesson-duration {
       color: var(--text-secondary);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
       font-weight: 500;
     }
 
     .lesson-type {
       background: var(--bg-light);
       color: var(--text-secondary);
-      padding: 4px 12px;
+      padding: 3px 9px;
       border-radius: 20px;
-      font-size: 0.8rem;
+      font-size: 0.72rem;
       font-weight: 500;
     }
 
     .lesson-status {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--border-light);
       flex-shrink: 0;
@@ -307,30 +321,30 @@
     .sidebar {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 16px;
     }
 
     .progress-card {
       background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     .progress-title {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       font-weight: 600;
-      margin: 0 0 16px 0;
+      margin: 0 0 12px;
       color: var(--text-primary);
     }
 
     .progress-bar {
       width: 100%;
-      height: 8px;
+      height: 6px;
       background: var(--border-light);
       border-radius: 4px;
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .progress-fill {
@@ -341,22 +355,22 @@
     }
 
     .progress-text {
-      font-size: 0.9rem;
+      font-size: 0.82rem;
       color: var(--text-secondary);
       text-align: center;
     }
 
     .course-info {
       background: white;
-      border-radius: 16px;
-      padding: 24px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      border-radius: 14px;
+      padding: 18px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
     }
 
     .info-title {
-      font-size: 1.2rem;
+      font-size: 1.05rem;
       font-weight: 600;
-      margin: 0 0 16px 0;
+      margin: 0 0 10px;
       color: var(--text-primary);
     }
 
@@ -364,7 +378,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 0;
+      padding: 9px 0;
       border-bottom: 1px solid var(--border-light);
     }
 
@@ -375,59 +389,94 @@
     .info-label {
       color: var(--text-secondary);
       font-weight: 500;
+      font-size: 0.82rem;
     }
 
     .info-value {
       color: var(--text-primary);
       font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 900px) {
+      .course-content {
+        grid-template-columns: minmax(0, 1fr) 220px;
+        gap: 16px;
+      }
+
+      .lessons-section {
+        padding: 22px;
+      }
     }
 
     @media (max-width: 768px) {
       .course-container {
-        padding: 20px 16px;
+        padding: 16px 12px 32px;
       }
 
       .course-header {
-        padding: 40px 24px;
+        padding: 28px 18px;
       }
 
       .course-title {
-        font-size: 2rem;
+        font-size: 1.75rem;
+      }
+
+      .course-subtitle {
+        font-size: 0.98rem;
+        margin-bottom: 18px;
       }
 
       .course-meta {
-        gap: 12px;
+        gap: 8px;
       }
 
       .back-to-academy {
-        margin-top: 20px;
+        margin-top: 14px;
       }
 
       .back-to-academy-btn {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+        padding: 9px 16px;
+        font-size: 0.86rem;
       }
 
       .meta-item {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 7px 12px;
+        font-size: 0.84rem;
       }
 
       .course-content {
         grid-template-columns: 1fr;
-        gap: 24px;
+        gap: 16px;
       }
 
       .lessons-section {
-        padding: 24px;
+        padding: 18px;
       }
 
       .lesson-card {
-        padding: 16px;
+        padding: 12px;
+        gap: 10px;
       }
 
       .lesson-title {
+        font-size: 0.92rem;
+      }
+
+      .chapter {
+        margin-bottom: 20px;
+      }
+
+      .chapter-header {
+        padding: 12px 14px;
+      }
+
+      .chapter-title {
         font-size: 1rem;
+      }
+
+      .chapter-description {
+        font-size: 0.8rem;
       }
     }
   </style>
