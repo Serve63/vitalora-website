@@ -26,7 +26,7 @@
   };
 
   const displayTitles = {
-    'clean-reset': 'Clean Reset: Detox & Gifstoffen',
+    'clean-reset': 'Clean Reset',
     'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
     'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
     '30-dagen-challenge': '30 Dagen Challenge',
@@ -36,88 +36,13 @@
   };
 
   const cleanResetChapters = [
-    { start: 1, end: 5, title: 'Introductie' },
-    { start: 6, end: 10, title: 'Voeding' },
-    { start: 11, end: 15, title: 'Supplementen' },
-    { start: 16, end: 20, title: 'Leefstijl' },
-    { start: 21, end: 25, title: 'Reset & behoud' },
-    { start: 26, end: 30, title: 'BPA & ftalaten' },
-    { start: 31, end: 35, title: 'Parabenen & verzorging' },
-    { start: 36, end: 40, title: 'Leefstijl verdiept' },
-    { start: 41, end: 45, title: 'Voeding & supplementen' },
-    { start: 46, end: 51, title: 'Leefomgeving & afronding' }
+    { start: 1, end: 4, title: 'Regie zonder angst' },
+    { start: 5, end: 9, title: 'Stoffen begrijpen' },
+    { start: 10, end: 13, title: 'Keuken & drinkwater' },
+    { start: 14, end: 17, title: 'Huis & verzorging' },
+    { start: 18, end: 21, title: 'Je lichaam ondersteunen' },
+    { start: 22, end: 24, title: 'Jouw resetplan' }
   ];
-
-  const cleanResetSidebarTitles = {
-    3: 'Hoe toxines binnenkomen',
-    6: 'Jouw lichaam als detoxmachine',
-    7: 'De lever als detoxfabriek',
-    8: 'De nieren als filters',
-    9: 'De darmen als poortwachters',
-    12: 'Microplastics in je lichaam',
-    13: 'Microplastics & gezondheid',
-    14: 'Microplastics verminderen',
-    15: 'Microplastics afvoeren',
-    17: 'Waarom PFAS gevaarlijk zijn',
-    19: 'PFAS-blootstelling verminderen',
-    20: 'PFAS sneller kwijtraken',
-    21: 'Pesticiden in je voeding',
-    22: 'Biologisch: wat betekent het?',
-    23: 'Detox-boosters tegen pesticiden',
-    24: 'Pesticiden verminderen',
-    25: 'Regie over je voeding',
-    26: 'BPA & ftalaten',
-    28: 'BPA & ftalaten en hormonen',
-    29: 'BPA & ftalaten vermijden',
-    30: 'BPA & ftalaten kwijtraken',
-    31: 'Parabenen in cosmetica',
-    33: 'Parabenen & labels',
-    34: 'Cosmetica zonder parabenen',
-    36: 'Leefstijl als detox-sleutel',
-    37: 'Beweging & lymfesysteem',
-    39: 'Ademhaling & stress',
-    40: 'Ontspanning & detox',
-    41: 'Detox-voeding & supplementen',
-    44: 'Zwavelverbindingen & detox',
-    45: 'Supplementen voor detox',
-    46: 'Toxines in je leefomgeving',
-    48: 'Huisstof & toxines',
-    49: 'Schone huishoudproducten',
-    50: 'Maak je leefomgeving detox-proof'
-  };
-
-  const readerOverrides = {
-    'clean-reset:1': {
-      title: 'Welkom & intentie van de cursus',
-      lead: 'De fundering voor alles wat volgt — waarom je hier bent, wat Clean Reset je gaat brengen, en hoe je dit programma het beste benadert.',
-      duration_min: 12,
-      type: 'Introductie',
-      content_html: `
-        <p>Stel je voor: je lichaam is een huis waarin jij al je hele leven woont. Dag en nacht zorgt dat huis voor jou — het beschermt je, geeft je energie, herstelt zich telkens weer. Maar zonder dat je het doorhad, zijn er door de jaren heen kleine scheurtjes ontstaan. Niet omdat je iets verkeerd deed, maar omdat de wereld waarin we leven veranderde.</p>
-        <p>Je ademt lucht in die niet meer zo puur is als honderd jaar geleden. Je drinkt water waar onzichtbare deeltjes in zweven. Je eet voeding die bewerkt, bespoten of verpakt is. En zo bouwt dat huis, jouw lichaam, ongemerkt steeds meer bagage op.</p>
-        <p>Toxines. Stoffen waar je niet om hebt gevraagd. Stoffen die je niet ziet, maar die wel invloed hebben op hoe je je voelt, hoe je presteert, hoe je veroudert. Dat is precies waar deze cursus over gaat.</p>
-        <h2>Waarom jij hier bent</h2>
-        <p>Je bent hier omdat je diep van binnen voelt dat het anders kan. Misschien herken je het: vermoeid wakker worden terwijl je genoeg geslapen hebt. Last van concentratie-dips midden op de dag. Een hormonale disbalans die je lijf of gemoed onderuit haalt. Of gewoon het besef: ik leef gezond, maar tóch voel ik me niet optimaal.</p>
-        <blockquote><p>Dat is geen toeval. Het is het resultaat van die stille, onzichtbare belasting waar we allemaal mee te maken hebben.</p></blockquote>
-        <h2>Wat deze cursus je gaat brengen</h2>
-        <p>Clean Reset is geen hype, geen snelle detox-kuur waarbij je drie dagen op sap leeft. Het is een fundamenteel herstartpunt. Een manier om:</p>
-        <ul>
-          <li>Bewust te worden van de stoffen die je nu nog tegenhouden</li>
-          <li>Te leren hoe je lichaam van nature wil ontgiften — en hoe jij dat proces kunt ondersteunen</li>
-          <li>Praktisch aan de slag te gaan met voeding, supplementen en leefstijl</li>
-          <li>Slim keuzes te maken zodat je blootstelling drastisch afneemt</li>
-          <li>Een nieuwe standaard te creëren voor jezelf, die je de rest van je leven vooruit helpt</li>
-        </ul>
-        <blockquote><p>Dit is niet alleen een cursus die je informatie geeft — dit is een cursus die je transformatie geeft.</p></blockquote>
-        <h2>De intentie</h2>
-        <p>Mijn intentie met Clean Reset is helder: jou de regie teruggeven. Je lichaam kán meer dan je denkt, als je het de juiste omstandigheden geeft. Jij gaat ontdekken hoe krachtig een lichaam kan zijn dat minder toxische ballast hoeft te dragen.</p>
-        <p>Dat betekent meer energie. Meer focus. Een beter herstel. En misschien wel het belangrijkste: een gevoel van lichtheid, vrijheid in je lijf, omdat je weet dat je niet langer onbewust volloopt met stoffen die je helemaal niet nodig hebt.</p>
-        <h2>Jouw commitment</h2>
-        <p>Dit is jouw startpunt. Vanaf vandaag kies jij voor helderheid. Voor bewustzijn. Voor verandering die écht blijft hangen.</p>
-        <p>Zie deze cursus als een belofte aan jezelf: dat je niet genoegen neemt met "wel oké", maar dat je voor het beste gaat wat jouw lichaam je te bieden heeft.</p>
-        <blockquote><p>Welkom bij Clean Reset. Dit is het begin van jouw nieuwe standaard.</p></blockquote>`
-    }
-  };
 
   const state = {
     slug: null,
@@ -172,15 +97,25 @@
 
   function readCompleted() {
     const result = new Set();
-    try {
-      const stored = JSON.parse(localStorage.getItem('completedLessons') || '[]');
-      if (Array.isArray(stored)) stored.forEach((value) => result.add(String(value)));
-    } catch (error) {
-      // Keep the reader available when storage is blocked or malformed.
+    const contentVersion = Number(state.course?.content_version || 1);
+    const usesVersionedProgress = state.slug === 'clean-reset' && contentVersion >= 2;
+
+    if (!usesVersionedProgress) {
+      try {
+        const stored = JSON.parse(localStorage.getItem('completedLessons') || '[]');
+        if (Array.isArray(stored)) stored.forEach((value) => result.add(String(value)));
+      } catch (error) {
+        // Keep the reader available when storage is blocked or malformed.
+      }
     }
+
     state.lessons.forEach((lesson) => {
       try {
-        if (localStorage.getItem(`progress:${state.slug}:${lesson.id}:done`) === 'true') {
+        const versionedKey = `progress:${state.slug}:v${contentVersion}:${lesson.id}:done`;
+        const lessonKey = `progress:${state.slug}:${lesson.id}:done`;
+        const isDone = localStorage.getItem(usesVersionedProgress ? versionedKey : lessonKey) === 'true'
+          || (usesVersionedProgress && localStorage.getItem(lessonKey) === 'true');
+        if (isDone) {
           result.add(String(lesson.index));
           result.add(String(lesson.id));
         }
@@ -196,8 +131,7 @@
   }
 
   function lessonView(lesson) {
-    const override = readerOverrides[`${state.slug}:${lesson.index}`];
-    return override ? { ...lesson, ...override } : lesson;
+    return lesson;
   }
 
   function shortTitle(title) {
@@ -205,9 +139,6 @@
   }
 
   function sidebarTitle(lesson, view) {
-    if (state.slug === 'clean-reset' && cleanResetSidebarTitles[lesson.index]) {
-      return cleanResetSidebarTitles[lesson.index];
-    }
     return shortTitle(view.title);
   }
 
@@ -292,6 +223,94 @@
     return { lead, html: holder.innerHTML || '<p>De inhoud van deze les wordt binnenkort toegevoegd.</p>' };
   }
 
+  function renderParagraphs(paragraphs, className = '') {
+    return (paragraphs || []).map((paragraph) => `<p${className ? ` class="${className}"` : ''}>${escapeHTML(paragraph)}</p>`).join('');
+  }
+
+  function renderBullets(items, ordered = false) {
+    if (!Array.isArray(items) || !items.length) return '';
+    const tag = ordered ? 'ol' : 'ul';
+    return `<${tag} class="${ordered ? 'step-list' : 'flist'}">${items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</${tag}>`;
+  }
+
+  function renderLessonImage(image) {
+    if (!image || !String(image.src || '').startsWith('/assets/')) return '';
+    return `
+      <figure class="course-figure">
+        <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt || '')}" loading="lazy" decoding="async">
+        ${image.caption ? `<figcaption>${escapeHTML(image.caption)}</figcaption>` : ''}
+      </figure>`;
+  }
+
+  function renderCallout(kind, text) {
+    if (!text) return '';
+    const labels = { note: 'Praktisch', warning: 'Let op' };
+    return `
+      <aside class="lesson-callout lesson-callout-${kind}">
+        <span class="callout-label">${labels[kind] || 'Notitie'}</span>
+        <p>${escapeHTML(text)}</p>
+      </aside>`;
+  }
+
+  function renderStructuredLesson(lesson) {
+    const imageAfterSection = Number(lesson.image?.after_section || 0);
+    const sections = (lesson.sections || []).map((section, index) => `
+      <section class="sec">
+        <div class="sec-eyebrow">Stap ${String(index + 1).padStart(2, '0')}</div>
+        <h2>${escapeHTML(section.title)}</h2>
+        ${renderParagraphs(section.paragraphs)}
+        ${renderBullets(section.bullets)}
+        ${renderCallout('note', section.note)}
+        ${renderCallout('warning', section.warning)}
+      </section>
+      ${lesson.image && imageAfterSection === index + 1 ? renderLessonImage(lesson.image) : ''}
+    `).join('');
+
+    const assignment = lesson.assignment ? `
+      <section class="lesson-action" aria-labelledby="lesson-action-title">
+        <div class="action-topline">
+          <span class="action-kicker">Jouw actie</span>
+          ${lesson.assignment.time ? `<span class="action-time">${escapeHTML(lesson.assignment.time)}</span>` : ''}
+        </div>
+        <h2 id="lesson-action-title">${escapeHTML(lesson.assignment.title)}</h2>
+        ${lesson.assignment.intro ? `<p>${escapeHTML(lesson.assignment.intro)}</p>` : ''}
+        ${renderBullets(lesson.assignment.steps, true)}
+        ${lesson.assignment.reflection ? `
+          <div class="reflection">
+            <span>Reflectievraag</span>
+            <p>${escapeHTML(lesson.assignment.reflection)}</p>
+          </div>` : ''}
+      </section>` : '';
+
+    const remember = Array.isArray(lesson.remember) && lesson.remember.length ? `
+      <section class="lesson-remember">
+        <div class="remember-kicker">Neem mee</div>
+        <h2>Onthoud dit</h2>
+        ${renderBullets(lesson.remember)}
+      </section>` : '';
+
+    const sources = Array.isArray(lesson.sources) && lesson.sources.length ? `
+      <section class="lesson-sources">
+        <h2>Betrouwbare verdieping</h2>
+        <p>Deze links brengen je naar de oorspronkelijke publieke informatie waarop deze les steunt.</p>
+        <ul>
+          ${lesson.sources.map((source) => `
+            <li><a href="${escapeHTML(source.url)}" target="_blank" rel="noopener noreferrer">${escapeHTML(source.label)}<span aria-hidden="true">↗</span></a></li>
+          `).join('')}
+        </ul>
+      </section>` : '';
+
+    return `
+      <div class="lesson-opening">
+        ${renderParagraphs(lesson.opening)}
+      </div>
+      ${lesson.image && imageAfterSection === 0 ? renderLessonImage(lesson.image) : ''}
+      ${sections}
+      ${assignment}
+      ${remember}
+      ${sources}`;
+  }
+
   function decorateContent(html) {
     const holder = document.createElement('div');
     holder.innerHTML = String(html || '').trim();
@@ -334,6 +353,7 @@
 
   function renderLesson() {
     const view = lessonView(state.current);
+    const isStructured = Array.isArray(view.sections) && view.sections.length > 0;
     const content = view.lead
       ? { lead: view.lead, html: view.content_html }
       : extractContent(state.current);
@@ -350,7 +370,9 @@
     $('#lessonTags').innerHTML = `
       <span class="tag tag-o">${escapeHTML(view.type || state.course.level || 'Theorie')}</span>
       <span class="tag tag-o">Hoofdstuk ${chapter}</span>`;
-    $('#lessonContent').innerHTML = decorateContent(content.html);
+    $('#lessonContent').innerHTML = isStructured
+      ? renderStructuredLesson(view)
+      : decorateContent(content.html);
   }
 
   function renderPage() {
@@ -438,7 +460,7 @@
     applyTheme(themes[state.slug], state.slug);
 
     try {
-      const response = await fetch(`/data/courses/${encodeURIComponent(state.slug)}.json?v=4`, { credentials: 'same-origin' });
+      const response = await fetch(`/data/courses/${encodeURIComponent(state.slug)}.json?v=5`, { credentials: 'same-origin' });
       if (!response.ok) throw new Error('course-not-found');
       state.course = await response.json();
       state.lessons = (state.course.lessons || []).filter((lesson) => !lesson.draft);
