@@ -2,1077 +2,123 @@
 <html lang="nl">
 <head>
   <meta charset="utf-8">
-  <title>Cursus - Vitalora</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Les | Vitalora</title>
+  <meta name="description" content="Lees je Vitalora-les in alle rust.">
   <script>
-    (function(){
-      var params=new URLSearchParams(location.search);var slug=params.get('course');
-      // Fallback: derive slug from clean URL path (e.g. /detox-cursus)
-      if(!slug){
-        var path=location.pathname.replace(/^\/+|\/+$/g,'');
-        var parts=path.split('/');
-        var clean=parts[0];
-        var mapCleanToSlug={
-          'detox-cursus':'clean-reset',
-          'powerfoods':'powerfoods-superfood-specerij',
-          'juiste-balans':'de-juiste-balans',
-          '30-dagen-challenge':'30-dagen-challenge',
-          'everyday-nutrition':'everyday-nutrition-praktisch-gezond',
-          'mindful-energy':'mindful-energy-innerlijke-rust'
-        };
-        if(mapCleanToSlug[clean]){ slug = mapCleanToSlug[clean]; }
-      }
-      var themes={
-        'powerfoods-superfood-specerij':{a:'#ef4444',b:'#dc2626',brand:'#ef4444',aRgb:'239, 68, 68',cleanUrl:'powerfoods'},
-        'clean-reset':{a:'#3A9AEA',b:'#2563eb',brand:'#3A9AEA',aRgb:'58, 154, 234',cleanUrl:'detox-cursus'},
-        'de-juiste-balans':{a:'#f59e0b',b:'#d97706',brand:'#f59e0b',aRgb:'245, 158, 11',cleanUrl:'juiste-balans'},
-        '30-dagen-challenge':{a:'#f59e0b',b:'#d97706',brand:'#f59e0b',aRgb:'245, 158, 11',cleanUrl:'30-dagen-challenge'},
-        'everyday-nutrition-praktisch-gezond':{a:'#fde047',b:'#eab308',brand:'#fde047',aRgb:'253, 224, 71',cleanUrl:'everyday-nutrition'},
-        'mindful-energy-innerlijke-rust':{a:'#a78bfa',b:'#8b5cf6',brand:'#a78bfa',aRgb:'167, 139, 250',cleanUrl:'mindful-energy'},
-        'energie-hormonen-balans':{a:'#84cc16',b:'#65a30d',brand:'#84cc16',aRgb:'132, 204, 22',cleanUrl:'energie-hormonen'}
-      };
-      var t=themes[slug]; 
-      if(t){ 
-        var r=document.documentElement.style; 
-        r.setProperty('--grad-a',t.a); 
-        r.setProperty('--grad-b',t.b); 
-        r.setProperty('--brand',t.brand); 
-        r.setProperty('--grad-a-rgb',t.aRgb);
-        
-        // Redirect to clean URL if we're on the old URL with query string
-        if(t.cleanUrl && location.pathname === '/course-view.html') {
-          var lesson = params.get('lesson');
-          var newUrl = '/' + t.cleanUrl;
-          if(lesson) newUrl += '/les' + lesson;
-          history.replaceState(null, '', newUrl);
-        }
-      }
-    })();
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-  <!-- Header CSS removed for course view -->
-  <link rel="stylesheet" href="/assets/css/footer.css?v=2">
-  <link rel="stylesheet" href="/assets/css/fonts.css?v=4">
-  <style>
-    :root {
-      --brand: #3A9AEA;
-      --brand-dark: #2563eb;
-      --text-primary: #333333;
-      --text-secondary: #6b7280;
-      --bg-light: #f8fafc;
-      --border-light: #e2e8f0;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Quicksand', sans-serif;
-      background: var(--bg-light);
-      color: var(--text-primary);
-      line-height: 1.5;
-      margin: 0;
-      padding: 0;
-    }
-
-    .course-container {
-      max-width: 1180px;
-      margin: 0 auto;
-      padding: 24px 20px 48px;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .course-header {
-      background: linear-gradient(135deg, var(--grad-a) 0%, var(--grad-b) 100%);
-      color: white;
-      padding: 32px 36px;
-      border-radius: 16px;
-      margin-bottom: 24px;
-      text-align: center;
-      box-shadow: 0 12px 28px rgba(var(--grad-a-rgb), 0.16);
-    }
-
-    .course-title {
-      font-size: 2.15rem;
-      font-weight: 700;
-      margin: 0 0 10px;
-      line-height: 1.2;
-    }
-
-    .course-subtitle {
-      font-size: 1.05rem;
-      opacity: 0.9;
-      max-width: 720px;
-      margin: 0 auto 20px;
-      font-weight: 400;
-    }
-
-    .course-meta {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.15);
-      padding: 8px 14px;
-      border-radius: 50px;
-      font-weight: 500;
-      font-size: 0.9rem;
-      backdrop-filter: blur(10px);
-    }
-
-    .meta-item .icon {
-      width: 17px;
-      height: 17px;
-    }
-
-    .back-to-academy {
-      margin-top: 16px;
-    }
-
-    .back-to-academy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(255, 255, 255, 0.2);
-      color: white;
-      padding: 9px 18px;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      backdrop-filter: blur(10px);
-    }
-
-    .back-to-academy-btn:hover {
-      background: rgba(255, 255, 255, 0.3);
-      border-color: rgba(255, 255, 255, 0.5);
-      transform: translateY(-1px);
-    }
-
-    .back-to-academy-btn .icon {
-      width: 17px;
-      height: 17px;
-    }
-
-    .course-content {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 240px;
-      gap: 24px;
-      align-items: start;
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .lessons-section {
-      background: white;
-      border-radius: 14px;
-      padding: 24px 28px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .section-title {
-      font-size: 1.45rem;
-      font-weight: 700;
-      color: var(--text-primary);
-      margin: 0 0 22px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .section-title::before {
-      content: "📚";
-      font-size: 1.2rem;
-    }
-
-    .chapter {
-      margin-bottom: 24px;
-    }
-
-    .chapter:last-child {
-      margin-bottom: 0;
-    }
-
-    .chapter-header {
-      background: var(--bg-light);
-      padding: 14px 16px;
-      border-radius: 10px;
-      margin-bottom: 10px;
-      border-left: 3px solid var(--brand);
-    }
-
-    .chapter-title {
-      font-size: 1.08rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 0 0 4px;
-    }
-
-    .chapter-description {
-      color: var(--text-secondary);
-      margin: 0;
-      font-size: 0.85rem;
-      line-height: 1.4;
-    }
-
-    .lessons-list {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .lesson-card {
-      background: white;
-      border: 1px solid var(--border-light);
-      border-radius: 10px;
-      padding: 13px 16px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
-      cursor: pointer;
-    }
-
-    .lesson-card:hover {
-      border-color: var(--brand);
-      transform: translateY(-1px);
-      box-shadow: 0 5px 14px rgba(var(--grad-a-rgb), 0.1);
-    }
-
-
-    .lesson-number {
-      width: 32px;
-      height: 32px;
-      background: var(--brand);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-      font-size: 0.9rem;
-      flex-shrink: 0;
-    }
-
-    .lesson-content {
-      flex: 1;
-    }
-
-    .lesson-title {
-      font-size: 0.98rem;
-      font-weight: 600;
-      color: var(--text-primary);
-      margin: 0 0 4px;
-      line-height: 1.35;
-    }
-
-    .lesson-meta {
-      display: flex;
-      gap: 8px;
-      align-items: center;
-    }
-
-    .lesson-duration {
-      color: var(--text-secondary);
-      font-size: 0.8rem;
-      font-weight: 500;
-    }
-
-    .lesson-type {
-      background: var(--bg-light);
-      color: var(--text-secondary);
-      padding: 3px 9px;
-      border-radius: 20px;
-      font-size: 0.72rem;
-      font-weight: 500;
-    }
-
-    .lesson-status {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--border-light);
-      flex-shrink: 0;
-    }
-
-    .lesson-status.completed {
-      background: var(--brand);
-    }
-
-    .lesson-status.current {
-      background: #f59e0b;
-    }
-
-    .sidebar {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .progress-card {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    .progress-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin: 0 0 12px;
-      color: var(--text-primary);
-    }
-
-    .progress-bar {
-      width: 100%;
-      height: 6px;
-      background: var(--border-light);
-      border-radius: 4px;
-      overflow: hidden;
-      margin-bottom: 10px;
-    }
-
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(90deg, var(--brand), var(--brand-dark));
-      width: 0%;
-      transition: width 0.3s ease;
-    }
-
-    .progress-text {
-      font-size: 0.82rem;
-      color: var(--text-secondary);
-      text-align: center;
-    }
-
-    .course-info {
-      background: white;
-      border-radius: 14px;
-      padding: 18px;
-      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-    }
-
-    .info-title {
-      font-size: 1.05rem;
-      font-weight: 600;
-      margin: 0 0 10px;
-      color: var(--text-primary);
-    }
-
-    .info-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 9px 0;
-      border-bottom: 1px solid var(--border-light);
-    }
-
-    .info-item:last-child {
-      border-bottom: none;
-    }
-
-    .info-label {
-      color: var(--text-secondary);
-      font-weight: 500;
-      font-size: 0.82rem;
-    }
-
-    .info-value {
-      color: var(--text-primary);
-      font-weight: 600;
-      font-size: 0.86rem;
-    }
-
-    @media (max-width: 900px) {
-      .course-content {
-        grid-template-columns: minmax(0, 1fr) 220px;
-        gap: 16px;
-      }
-
-      .lessons-section {
-        padding: 22px;
-      }
-    }
-
-    @media (max-width: 768px) {
-      .course-container {
-        padding: 16px 12px 32px;
-      }
-
-      .course-header {
-        padding: 28px 18px;
-      }
-
-      .course-title {
-        font-size: 1.75rem;
-      }
-
-      .course-subtitle {
-        font-size: 0.98rem;
-        margin-bottom: 18px;
-      }
-
-      .course-meta {
-        gap: 8px;
-      }
-
-      .back-to-academy {
-        margin-top: 14px;
-      }
-
-      .back-to-academy-btn {
-        padding: 9px 16px;
-        font-size: 0.86rem;
-      }
-
-      .meta-item {
-        padding: 7px 12px;
-        font-size: 0.84rem;
-      }
-
-      .course-content {
-        grid-template-columns: 1fr;
-        gap: 16px;
-      }
-
-      .lessons-section {
-        padding: 18px;
-      }
-
-      .lesson-card {
-        padding: 12px;
-        gap: 10px;
-      }
-
-      .lesson-title {
-        font-size: 0.92rem;
-      }
-
-      .chapter {
-        margin-bottom: 20px;
-      }
-
-      .chapter-header {
-        padding: 12px 14px;
-      }
-
-      .chapter-title {
-        font-size: 1rem;
-      }
-
-      .chapter-description {
-        font-size: 0.8rem;
-      }
-    }
-  </style>
-<link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-<link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-</head>
-<body>
-  <!-- Header hidden for course view -->
-
-  <div class="course-container">
-    <!-- Course Header -->
-    <div class="course-header">
-      <h1 class="course-title" id="courseTitle">Cursus laden...</h1>
-      <p class="course-subtitle" id="courseSubtitle">Loading...</p>
-      
-      <div class="course-meta">
-        <div class="meta-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-          </svg>
-          <span id="badgeLevel">Intensief</span>
-        </div>
-        <div class="meta-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-          </svg>
-          <span id="badgeDays">21 dagen</span>
-        </div>
-        <div class="meta-item">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/>
-          </svg>
-          <span id="badgeLessons">24 lessen</span>
-        </div>
-      </div>
-      
-      <div class="back-to-academy">
-        <a href="/academy" class="back-to-academy-btn">
-          <svg class="icon" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-          </svg>
-          Cursus Overzicht
-        </a>
-      </div>
-    </div>
-
-    <!-- Course Content -->
-    <div class="course-content">
-      <!-- Lessons Section -->
-      <div class="lessons-section">
-        <h2 class="section-title">Cursus Inhoud</h2>
-        
-        <!-- Chapter 1 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 1: De Start van Jouw Reset</h3>
-            <p class="chapter-description">Welkom bij jouw transformatie - waarom dit het juiste moment is</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">1</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Welkom & intentie van de cursus</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">12 min</span>
-                  <span class="lesson-type">Introductie</span>
-                </div>
-              </div>
-              <div class="lesson-status completed"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">2</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">De impact van toxines in ons moderne leven</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">15 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status current"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">3</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Wat je van deze cursus mag verwachten (de roadmap)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">10 min</span>
-                  <span class="lesson-type">Overzicht</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 2 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 2: De Onzichtbare Vijanden</h3>
-            <p class="chapter-description">Ontdek welke toxische stoffen je dagelijks tegenkomt en hoe ze je beïnvloeden</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">4</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Inzicht in PFAS, BPA, microplastics, ftalaten, parabenen & pesticiden</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">18 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">5</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Hoe ze ongemerkt je lichaam binnendringen</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">14 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">6</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Effect op hormonen, energie en focus</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">16 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 3 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 3: Waarom je lichaam hunkert naar detox</h3>
-            <p class="chapter-description">Begrijp de impact van toxines op je energie, gezondheid en welzijn</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">7</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">De link met overgewicht, verminderde spiergroei en herstel</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">20 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">8</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Lange termijn risico's: van vruchtbaarheid tot chronische ziekten</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">17 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">9</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Waarom detoxen nu urgenter is dan ooit</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">19 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">10</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Hoe ons lichaam van nature ontgift</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">13 min</span>
-                  <span class="lesson-type">Motivatie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 4 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 4: Het Geheim van Je Lichaam</h3>
-            <p class="chapter-description">Ontdek hoe je lichaam werkt en waarom het ondersteuning nodig heeft</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">11</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Waarom onze natuurlijke detox overbelast is</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">16 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">12</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Wat "detox" wél en níet betekent</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">14 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">13</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Voeding die je helpt (vezels, bepaalde groenten, antioxidanten)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">18 min</span>
-                  <span class="lesson-type">Theorie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 5 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 5: De Weg naar Zuiverheid</h3>
-            <p class="chapter-description">Praktische tools en methoden voor een effectieve detox</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">14</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Supplementen en natuurlijke boosters (wetenschappelijk onderbouwd)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">22 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">15</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Leefstijl: sauna, beweging, slaap, stressmanagement</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">21 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">16</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Realistisch stappenplan – hoe begin je vandaag al</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">25 min</span>
-                  <span class="lesson-type">Actieplan</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 6 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 6: Bescherm je Nieuwe Basis</h3>
-            <p class="chapter-description">Creëer een toxinevrije omgeving voor blijvende resultaten</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">17</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Slim kiezen in de keuken (kookgerei, opslag, verpakking)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">17 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">18</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Cosmetica & verzorging zonder toxines</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">15 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">19</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Schoonmaakmiddelen & huisproducten</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">16 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">20</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Bewust boodschappen doen (checklist & hacks)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">14 min</span>
-                  <span class="lesson-type">Praktisch</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Chapter 7 -->
-        <div class="chapter">
-          <div class="chapter-header">
-            <h3 class="chapter-title">Hoofdstuk 7: Jouw Nieuwe Levensstijl</h3>
-            <p class="chapter-description">Van tijdelijke detox naar blijvende transformatie</p>
-          </div>
-          <div class="lessons-list">
-            <div class="lesson-card">
-              <div class="lesson-number">21</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Integreren in je dagelijks leven</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">18 min</span>
-                  <span class="lesson-type">Strategie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">22</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Hoe je jezelf consistent houdt (zonder stress)</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">16 min</span>
-                  <span class="lesson-type">Strategie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">23</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Toekomstvisie – jouw lichaam vrij van toxines</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">12 min</span>
-                  <span class="lesson-type">Motivatie</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-            <div class="lesson-card">
-              <div class="lesson-number">24</div>
-              <div class="lesson-content">
-                <h4 class="lesson-title">Afsluiting – je Clean Reset commitment</h4>
-                <div class="lesson-meta">
-                  <span class="lesson-duration">10 min</span>
-                  <span class="lesson-type">Afsluiting</span>
-                </div>
-              </div>
-              <div class="lesson-status"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Sidebar -->
-      <div class="sidebar">
-        <!-- Progress Card -->
-        <div class="progress-card">
-          <h3 class="progress-title">Jouw Voortgang</h3>
-          <div class="progress-bar">
-            <div class="progress-fill" id="progressFill"></div>
-          </div>
-          <p class="progress-text" id="progressText">0 van 24 lessen voltooid</p>
-        </div>
-
-        <!-- Course Info -->
-        <div class="course-info">
-          <h3 class="info-title">Cursus Informatie</h3>
-          <div class="info-item">
-            <span class="info-label">Niveau</span>
-            <span class="info-value">Intensief</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Duur</span>
-            <span class="info-value">21 dagen</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Lessen</span>
-            <span class="info-value">25 lessen</span>
-          </div>
-          <div class="info-item">
-            <span class="info-label">Certificaat</span>
-            <span class="info-value">Ja</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Session access control for course view -->
-  <script>
-    (function(){
+    (function () {
       try {
         if (sessionStorage.getItem('academySession') !== 'ok') {
-          window.location.href = '/login';
+          window.location.replace('/login');
+          return;
         }
-      } catch (e) {
-        window.location.href = '/login';
+      } catch (error) {
+        window.location.replace('/login');
+        return;
+      }
+
+      var params = new URLSearchParams(window.location.search);
+      var slug = params.get('course');
+      var pathSlug = {
+        'detox-cursus': 'clean-reset',
+        powerfoods: 'powerfoods-superfood-specerij',
+        'juiste-balans': 'de-juiste-balans',
+        '30-dagen-challenge': '30-dagen-challenge',
+        'everyday-nutrition': 'everyday-nutrition-praktisch-gezond',
+        'mindful-energy': 'mindful-energy-innerlijke-rust',
+        'energie-hormonen': 'energie-hormonen-balans'
+      };
+      if (!slug) slug = pathSlug[window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0]];
+
+      var themes = {
+        'clean-reset': ['#3a9aea', '#2563eb'],
+        'powerfoods-superfood-specerij': ['#ef4444', '#dc2626'],
+        'de-juiste-balans': ['#f59e0b', '#d97706'],
+        '30-dagen-challenge': ['#f59e0b', '#d97706'],
+        'everyday-nutrition-praktisch-gezond': ['#fbbf24', '#eab308'],
+        'mindful-energy-innerlijke-rust': ['#a78bfa', '#8b5cf6'],
+        'energie-hormonen-balans': ['#84cc16', '#65a30d']
+      };
+      if (themes[slug]) {
+        document.documentElement.style.setProperty('--brand', themes[slug][0]);
+        document.documentElement.style.setProperty('--brand-dark', themes[slug][1]);
       }
     })();
-    //
-    // Progress tracking
-    function getCompletedLessons() {
-      const completed = localStorage.getItem('completedLessons');
-      return completed ? JSON.parse(completed) : [];
-    }
-
-    function updateProgressBar() {
-      const completed = getCompletedLessons();
-      const totalLessons = 24;
-      const progressPercentage = (completed.length / totalLessons) * 100;
-      
-      document.getElementById('progressFill').style.width = progressPercentage + '%';
-      document.getElementById('progressText').textContent = `${completed.length} van ${totalLessons} lessen voltooid`;
-    }
-
-    // Course data loading
-    document.addEventListener('DOMContentLoaded', function() {
-      console.log('DOMContentLoaded fired');
-      const urlParams = new URLSearchParams(window.location.search);
-      let courseSlug = urlParams.get('course');
-      let lessonParam = urlParams.get('lesson');
-      console.log('Initial courseSlug from params:', courseSlug);
-      console.log('Current pathname:', location.pathname);
-      
-      // Fallback to clean URL path parsing
-      if(!courseSlug){
-        const path = location.pathname.replace(/^\/+|\/+$/g,'');
-        const parts = path.split('/');
-        const clean = parts[0];
-        console.log('Clean path:', clean);
-        const mapCleanToSlug={
-          'detox-cursus':'clean-reset',
-          'powerfoods':'powerfoods-superfood-specerij',
-          'juiste-balans':'de-juiste-balans',
-          '30-dagen-challenge':'30-dagen-challenge',
-          'everyday-nutrition':'everyday-nutrition-praktisch-gezond',
-          'mindful-energy':'mindful-energy-innerlijke-rust'
-        };
-        if(parts[1] && /^les\d+$/i.test(parts[1])){ lessonParam = parts[1].replace(/[^\d]/g,''); }
-        if(mapCleanToSlug[clean]){ courseSlug = mapCleanToSlug[clean]; }
-        console.log('Final courseSlug:', courseSlug);
-      }
-      if (courseSlug) {
-        console.log('Loading course data for:', courseSlug);
-        loadCourseData(courseSlug);
-      } else {
-        console.log('No course slug found!');
-      }
-    });
-
-    function loadCourseData(slug) {
-        // Set course title and subtitle based on course slug
-        const courseTitles = {
-          'clean-reset': 'Clean Reset: Detox & Gifstoffen',
-          'powerfoods-superfood-specerij': 'PowerFoods: Superfood & Specerij™',
-          'de-juiste-balans': 'De Juiste Balans: Energie & Hormonen',
-          '30-dagen-challenge': '30 Dagen Challenge',
-          'everyday-nutrition-praktisch-gezond': 'Everyday Nutrition: Praktisch & Gezond™',
-          'mindful-energy-innerlijke-rust': 'Mindful Energy: Innerlijke Rust',
-          'energie-hormonen-balans': 'Energie & Hormonen Balans'
-        };
-        
-        const courseSubtitles = {
-          'clean-reset': 'Een complete gids voor lichaamstransformatie',
-          'powerfoods-superfood-specerij': 'Dagelijkse gewoontes voor een sterk immuunsysteem',
-          'de-juiste-balans': 'Rust, energie en helderheid vanuit je hormonen',
-          '30-dagen-challenge': 'Transformeer je leven in 30 dagen',
-          'everyday-nutrition-praktisch-gezond': 'Eenvoudige voeding die werkt - elke dag',
-          'mindful-energy-innerlijke-rust': 'Ademwerk, zenuwstelsel en hormonale balans',
-          'energie-hormonen-balans': 'Balans vinden in je dagelijkse leven'
-        };
-        
-        const courseTitle = courseTitles[slug] || 'Cursus';
-        const courseSubtitle = courseSubtitles[slug] || 'Een transformatieve ervaring';
-        
-        document.getElementById('courseTitle').textContent = courseTitle;
-        document.getElementById('courseSubtitle').textContent = courseSubtitle;
-        
-      // Update meta information with default values
-      document.getElementById('badgeLevel').textContent = 'Intensief';
-      document.getElementById('badgeDays').textContent = '21 dagen';
-      document.getElementById('badgeLessons').textContent = '25 lessen';
-      
-      // Update progress with default values
-      updateProgress(0, 24);
-      
-      // Update lesson cards to show completed status
-      updateLessonCards();
-    }
-
-    function updateProgress(completed, total) {
-      // Use localStorage data if available, otherwise use provided values
-      const completedLessons = getCompletedLessons();
-      const completedNum = completedLessons.length > 0 ? completedLessons.length : (typeof completed === 'number' ? completed : 0);
-      const totalNum = typeof total === 'number' ? total : 24;
-      
-      const percentage = (completedNum / totalNum) * 100;
-      document.getElementById('progressFill').style.width = percentage + '%';
-      document.getElementById('progressText').textContent = `${completedNum} van ${totalNum} lessen voltooid`;
-    }
-
-    function updateLessonCards() {
-      const completedLessons = getCompletedLessons();
-      document.querySelectorAll('.lesson-card').forEach(card => {
-        const lessonNumber = card.querySelector('.lesson-number').textContent;
-        const statusDot = card.querySelector('.lesson-status');
-        
-        if (completedLessons.includes(lessonNumber)) {
-          statusDot.classList.add('completed');
-          statusDot.classList.remove('current');
-        } else {
-          statusDot.classList.remove('completed');
-        }
-      });
-    }
-
-    // Lesson click handlers
-    document.querySelectorAll('.lesson-card').forEach(card => {
-      card.addEventListener('click', function() {
-        const lessonNumber = this.querySelector('.lesson-number').textContent;
-        
-        // Mark lesson as completed when clicked
-        const completed = getCompletedLessons();
-        if (!completed.includes(lessonNumber)) {
-          completed.push(lessonNumber);
-          localStorage.setItem('completedLessons', JSON.stringify(completed));
-          updateProgress();
-        }
-        
-        // Get course slug from URL params or clean URL
-        let courseSlug = new URLSearchParams(window.location.search).get('course');
-        if (!courseSlug) {
-          const path = location.pathname.replace(/^\/+|\/+$/g,'');
-          const parts = path.split('/');
-          const clean = parts[0];
-          const mapCleanToSlug = {
-            'detox-cursus': 'clean-reset',
-            'powerfoods': 'powerfoods-superfood-specerij',
-            'juiste-balans': 'de-juiste-balans',
-            '30-dagen-challenge': '30-dagen-challenge',
-            'everyday-nutrition': 'everyday-nutrition-praktisch-gezond',
-            'mindful-energy': 'mindful-energy-innerlijke-rust'
-          };
-          if (mapCleanToSlug[clean]) {
-            courseSlug = mapCleanToSlug[clean];
-          }
-        }
-        
-        if (courseSlug) {
-          const slugToAlias = {
-            'clean-reset': 'detox-cursus',
-            'powerfoods-superfood-specerij': 'powerfoods',
-            'de-juiste-balans': 'juiste-balans',
-            '30-dagen-challenge': '30-dagen-challenge',
-            'everyday-nutrition-praktisch-gezond': 'everyday-nutrition',
-            'mindful-energy-innerlijke-rust': 'mindful-energy'
-          };
-          const alias = slugToAlias[courseSlug] || 'detox-cursus';
-          window.location.href = `/${alias}-les${lessonNumber}`;
-        }
-      });
-    });
   </script>
+  <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
+  <link rel="stylesheet" href="/assets/css/course-reader.css?v=2">
+</head>
+<body>
+  <aside class="sidebar" aria-label="Cursusnavigatie">
+    <div class="s-brand">
+      <a class="s-back" href="/academy">
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M8 2 4 6l4 4"/>
+        </svg>
+        Cursusoverzicht
+      </a>
+      <a class="s-logo" href="/academy" aria-label="Terug naar Vitalora Academy">Vitalora</a>
+      <div class="s-course" id="sCourse">Clean Reset</div>
+    </div>
+
+    <div class="s-prog">
+      <div class="s-prog-top">
+        <span class="s-prog-label">Voortgang</span>
+        <span class="s-prog-count" id="sProgCount">0 / 0</span>
+      </div>
+      <div class="s-track" aria-hidden="true"><div class="s-track-fill" id="sProgFill"></div></div>
+    </div>
+
+    <nav class="s-nav" id="sNav" aria-label="Lessen">
+      <div class="s-ch-label">Lessen laden...</div>
+    </nav>
+
+  </aside>
+
+  <div class="sidebar-scrim" id="sidebarScrim" aria-hidden="true"></div>
+
+  <main class="main" id="main">
+    <div class="rbar" aria-hidden="true"><div class="rbar-fill" id="rFill"></div></div>
+
+    <header class="topbar">
+      <div class="topbar-l">
+        <button class="mobile-menu" id="mobileMenu" type="button" aria-label="Open cursuslessen" aria-expanded="false">☰</button>
+        <span class="tb-label" id="tbLabel">Les 01</span>
+        <span class="tb-sep" aria-hidden="true">·</span>
+        <span class="tb-title" id="tbTitle">Les laden...</span>
+      </div>
+      <div class="rt-badge" aria-label="Leestijd"><span aria-hidden="true">◷</span><span id="rtBadge">— min leestijd</span></div>
+    </header>
+
+    <div class="wrap">
+      <div class="lesson-head">
+        <div class="lesson-num-label" id="lessonNumber">Les 01 van 0</div>
+        <h1 class="title" id="lessonTitle">Les laden...</h1>
+        <p class="lesson-lead" id="lessonLead">Even geduld, de les wordt geladen.</p>
+        <div class="tags" id="lessonTags"></div>
+      </div>
+
+      <article class="content" id="lessonContent" aria-live="polite">
+        <p>Lesinhoud laden...</p>
+      </article>
+    </div>
+
+    <footer class="lesson-footer">
+      <div class="footer-inner">
+        <div class="footer-meta">
+          <div class="footer-meta-top">Voortgang</div>
+          <div class="footer-meta-sub" id="footerMeta">Les laden...</div>
+        </div>
+        <div class="btn-group">
+          <button class="btn-done" id="doneBtn" type="button">✓ Markeer als voltooid</button>
+          <a class="btn btn-ghost cta-button" id="prevBtn" href="/academy">← Vorige</a>
+          <a class="btn btn-primary cta-button" id="nextBtn" href="/academy">Volgende les →</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="/assets/js/course-view.js?v=3" defer></script>
 </body>
 </html>
