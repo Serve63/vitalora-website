@@ -28,6 +28,7 @@
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
     { "source": "/bedankt", "destination": "/bedankt.html" },
     { "source": "/personeel", "destination": "/personeel.html" },
+    { "source": "/funnel", "destination": "/funnel.html" },
     { "source": "/cursus/hormonaal-in-balans/les-1", "destination": "/pages/cursus/hormonaal-in-balans/les-1/index.html" },
     { "source": "/cursus/hormonaal-in-balans/les-2", "destination": "/pages/cursus/hormonaal-in-balans/les-2/index.html" },
     { "source": "/lesson-view", "destination": "/lesson-view.html" },
