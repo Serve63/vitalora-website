@@ -143,13 +143,16 @@
             return;
           }
 
-          if (form) form.style.display = 'none';
-          if (successBox) {
-            successBox.textContent = 'Gelukt! Het e-book is naar je inbox gestuurd. Controleer eventueel ook je spam-map.';
-            successBox.classList.add('is-visible', 'is-success');
-          }
+          try {
+            localStorage.setItem('lead_data', JSON.stringify({
+              name: firstName,
+              email: email,
+              source: 'ebook_download'
+            }));
+          } catch (_) {}
 
-          stopLoading();
+          window.location.assign('/checkout');
+          return;
         } catch (error) {
           console.error('tk-ebook submit error', error);
           if (errorBox) {

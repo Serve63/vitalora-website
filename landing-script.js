@@ -143,8 +143,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 }));
             } catch (_) {}
 
-            form.classList.add('hidden');
-            showFeedback(successBox, 'Gelukt! Het e-book is onderweg naar je inbox. Controleer zo nodig je spamfolder.');
+            window.location.assign('/checkout');
+            return;
         } catch (error) {
             console.error('ebook submit error', error);
             showFeedback(errorBox, 'We konden je aanvraag niet versturen. Controleer je verbinding en probeer het later opnieuw.');
