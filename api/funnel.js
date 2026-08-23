@@ -148,7 +148,13 @@ module.exports = async function handler(req, res) {
 
   const mailingList = mailingResult.status === 'fulfilled'
     ? mailingResult.value
-    : { available: false, message: 'Mailinglijst kon niet worden geladen.', contacts: [] };
+    : {
+      available: false,
+      message: /^MailBlue gaf status \d+$/.test(String(mailingResult.reason?.message || ''))
+        ? `Mailinglijst kon niet worden geladen (${mailingResult.reason.message}).`
+        : 'Mailinglijst kon niet worden geladen.',
+      contacts: [],
+    };
   const cleanReset = cleanResetResult.status === 'fulfilled'
     ? cleanResetResult.value
     : { available: false, message: 'Clean Reset-klanten konden niet worden geladen.', customers: [] };
