@@ -97,6 +97,13 @@ module.exports = async function handler(req, res) {
     fetchCleanResetCustomers(),
   ]);
 
+  if (mailingResult.status === 'rejected') {
+    console.error('funnel ebook lead storage failed', {
+      message: mailingResult.reason?.message || 'unknown error',
+      code: mailingResult.reason?.code || null,
+    });
+  }
+
   const mailingList = mailingResult.status === 'fulfilled'
     ? mailingResult.value
     : { available: false, message: 'Mailinglijst kon niet worden geladen.', contacts: [] };
