@@ -13,7 +13,9 @@ const ALLOWED_EXTRA_FIELDS = new Set(['firstname', 'email', 'source']);
 
 const DEFAULT_UPSTREAM_URL = 'https://mcvecommerce2.activehosted.com/proc.php';
 
-export default async function handler(req, res) {
+const { upsertEbookLead } = require('./_lib/ebook-leads-store');
+
+module.exports = async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
 
   if (req.method !== 'POST') {
@@ -92,6 +94,16 @@ export default async function handler(req, res) {
       console.error('lead-optin upstream responded with error text', upstreamText.slice(0, 250));
       res.status(502).json({ success: false, error: 'Aanvraag kon niet worden verwerkt. Probeer het later opnieuw.' });
       return;
+    }
+
+    try {
+      await upsertEbookLead({
+        firstName: firstname,
+        email,
+        source: typeof body.source === 'string' ? body.source.trim() : '',
+      });
+    } catch (storageError) {
+      console.error('lead-optin database storage failed', storageError?.message || 'unknown error');
     }
 
     res.status(200).json({ success: true });

@@ -24,6 +24,13 @@ test('Funnel-pagina bevat exact de drie gevraagde tabbladen', () => {
   assert.equal((funnel.match(/role="tab"/g) || []).length, 3);
 });
 
+test('e-bookleads blijven server-side en de tabel heeft RLS zonder publieke grants', () => {
+  const store = read('api/_lib/ebook-leads-store.js');
+  assert.match(store, /ALTER TABLE ebook_leads ENABLE ROW LEVEL SECURITY/);
+  assert.match(store, /REVOKE ALL ON TABLE ebook_leads FROM anon/);
+  assert.match(store, /REVOKE ALL ON TABLE ebook_leads FROM authenticated/);
+});
+
 test('Funnel-API weigert een niet-ingelogde aanvraag voordat databronnen worden benaderd', async () => {
   const handler = require('../api/funnel.js');
   const req = { method: 'GET', headers: {} };
@@ -40,18 +47,17 @@ test('Funnel-API weigert een niet-ingelogde aanvraag voordat databronnen worden 
   assert.equal(result.headers['Cache-Control'], 'private, no-store');
 });
 
-test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-bestellingen', async () => {
+test('Funnel-API combineert opgeslagen e-bookinschrijvingen en alleen betaalde Clean Reset-bestellingen', async () => {
   const previousEnv = {
     SESSION_SECRET: process.env.SESSION_SECRET,
-    MAILBLUE_API_URL: process.env.MAILBLUE_API_URL,
-    MAILBLUE_API_KEY: process.env.MAILBLUE_API_KEY,
     MOLLIE_API_KEY: process.env.MOLLIE_API_KEY,
   };
   const originalFetch = global.fetch;
+  const db = require('../api/_lib/db');
+  const originalQuery = db.query;
   process.env.SESSION_SECRET = 'test-session-secret';
-  process.env.MAILBLUE_API_URL = 'https://mailblue.test/api/3';
-  process.env.MAILBLUE_API_KEY = 'test-mailblue-key';
   process.env.MOLLIE_API_KEY = 'test-mollie-key';
+  let leadInsertSeen = false;
 
   try {
     const login = require('../api/staff/login.js');
@@ -66,13 +72,15 @@ test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-
     );
     assert.match(cookie, /^vitalora_staff=/);
 
-    global.fetch = async (url) => {
-      if (String(url).startsWith('https://mailblue.test/api/3/contacts?')) {
-        assert.match(String(url), /formid=3/);
-        return new Response(JSON.stringify({
-          contacts: [{ id: '9', firstName: 'Eva', lastName: 'Jansen', email: 'Eva@example.nl', cdate: '2026-08-23T10:15:00Z' }],
-        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
+    db.query = async (sql) => {
+      if (/SELECT id, first_name, email/.test(sql)) {
+        return { rows: [{ id: '9', first_name: 'Eva', email: 'eva@example.nl', source: 'ebook', first_downloaded_at: '2026-08-23T10:15:00Z' }] };
       }
+      if (/INSERT INTO ebook_leads/.test(sql)) leadInsertSeen = true;
+      return { rows: [], rowCount: 1 };
+    };
+
+    global.fetch = async (url) => {
       if (String(url).startsWith('https://api.mollie.com/v2/payments')) {
         return new Response(JSON.stringify({
           _embedded: { payments: [
@@ -102,8 +110,27 @@ test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-
     assert.deepEqual(result.body.cleanReset.customers.map((item) => item.email), ['sam@example.nl']);
     assert.equal(result.body.cleanReset.customers[0].total, 47);
     assert.equal(result.body.academy.available, false);
+
+    global.fetch = async (url) => {
+      assert.equal(String(url), 'https://mcvecommerce2.activehosted.com/proc.php');
+      return new Response('success', { status: 200 });
+    };
+    const leadOptin = require('../api/lead-optin.js');
+    const leadResult = { status: null, body: null };
+    await leadOptin(
+      { method: 'POST', body: { firstname: 'Eva', email: 'eva@example.nl', source: 'ebook' } },
+      {
+        setHeader() {},
+        status(code) { leadResult.status = code; return this; },
+        json(body) { leadResult.body = body; return this; },
+      }
+    );
+    assert.equal(leadResult.status, 200);
+    assert.equal(leadResult.body.success, true);
+    assert.equal(leadInsertSeen, true);
   } finally {
     global.fetch = originalFetch;
+    db.query = originalQuery;
     Object.entries(previousEnv).forEach(([key, value]) => {
       if (value === undefined) delete process.env[key];
       else process.env[key] = value;

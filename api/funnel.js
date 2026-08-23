@@ -1,60 +1,11 @@
 const { requireStaff } = require('./staff/login.js');
+const { listEbookLeads } = require('./_lib/ebook-leads-store');
 
 const CLEAN_RESET_PATTERN = /clean\s*reset/i;
 const MAX_PAGES = 50;
 
-function normalizeApiBase(value) {
-  return String(value || '').replace(/\/+$/, '');
-}
-
 async function fetchEbookContacts() {
-  const apiBase = normalizeApiBase(process.env.MAILBLUE_API_URL);
-  const apiKey = process.env.MAILBLUE_API_KEY;
-  const formId = String(process.env.MAILBLUE_EBOOK_FORM_ID || '3');
-
-  if (!apiBase || !apiKey) {
-    return {
-      available: false,
-      message: 'MailBlue is niet geconfigureerd.',
-      contacts: [],
-    };
-  }
-
-  const contacts = [];
-  let lastId = 0;
-
-  for (let page = 0; page < MAX_PAGES; page += 1) {
-    const params = new URLSearchParams({
-      formid: formId,
-      limit: '100',
-      id_greater: String(lastId),
-      'orders[id]': 'ASC',
-    });
-    const response = await fetch(`${apiBase}/contacts?${params.toString()}`, {
-      headers: { 'Api-Token': apiKey },
-    });
-    const payload = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      throw new Error(`MailBlue gaf status ${response.status}`);
-    }
-
-    const batch = Array.isArray(payload.contacts) ? payload.contacts : [];
-    contacts.push(...batch.map((contact) => ({
-      id: String(contact.id || ''),
-      name: [contact.firstName, contact.lastName].filter(Boolean).join(' ').trim(),
-      email: String(contact.email || '').trim().toLowerCase(),
-      addedAt: contact.cdate || contact.adate || contact.udate || null,
-      status: 'Ingeschreven',
-    })).filter((contact) => contact.email));
-
-    if (batch.length < 100) break;
-    const nextId = Number(batch[batch.length - 1]?.id || 0);
-    if (!nextId || nextId <= lastId) break;
-    lastId = nextId;
-  }
-
-  contacts.sort((a, b) => String(b.addedAt || '').localeCompare(String(a.addedAt || '')));
+  const contacts = await listEbookLeads();
   return { available: true, message: '', contacts };
 }
 
@@ -148,13 +99,7 @@ module.exports = async function handler(req, res) {
 
   const mailingList = mailingResult.status === 'fulfilled'
     ? mailingResult.value
-    : {
-      available: false,
-      message: /^MailBlue gaf status \d+$/.test(String(mailingResult.reason?.message || ''))
-        ? `Mailinglijst kon niet worden geladen (${mailingResult.reason.message}).`
-        : 'Mailinglijst kon niet worden geladen.',
-      contacts: [],
-    };
+    : { available: false, message: 'Mailinglijst kon niet worden geladen.', contacts: [] };
   const cleanReset = cleanResetResult.status === 'fulfilled'
     ? cleanResetResult.value
     : { available: false, message: 'Clean Reset-klanten konden niet worden geladen.', customers: [] };
