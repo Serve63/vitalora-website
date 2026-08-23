@@ -6,26 +6,13 @@
     <meta name="theme-color" content="#2954B4">
     <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
     <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-    <title>Clean Reset Cursus - Checkout</title>
+    <title>Clean Reset Cursus - Eenmalig aanbod</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/header.css?v=20">
+    <link rel="stylesheet" href="/assets/css/fonts.css?v=6">
     <style>
-        :root {
-            --primary: #2954B3;
-            --primary-dark: #1e40af;
-            --accent: #10b981;
-            --accent-dark: #059669;
-            --text: #1f2937;
-            --text-light: #6b7280;
-            --bg: #f8fafc;
-            --bg-card: #ffffff;
-            --border: #e5e7eb;
-            --success: #10b981;
-            --warning: #f59e0b;
-            --danger: #ef4444;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -34,761 +21,259 @@
 
         body {
             font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
-            background: var(--bg);
-            color: var(--text);
+            background: #f8fafc;
+            color: #1f2937;
             line-height: 1.6;
         }
 
         .container {
-            max-width: 1600px;
+            max-width: 1350px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 40px 20px;
         }
 
-        /* Countdown Header */
-        .countdown-header {
-            background: #28A270 !important;
-            color: #ffffff !important;
-            padding: 12px 0;
-            text-align: center;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(40, 162, 112, 0.2);
-        }
-
-        .countdown-text {
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        #timer {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 6px 12px;
-            border-radius: 16px;
-            margin-left: 8px;
-            font-weight: 700;
-            font-size: 18px;
-        }
-
-        /* Main Layout */
-        .main-content {
-            padding: 120px 0 16px;
-        }
-        
-        .two-column-layout {
+        .checkout-layout {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-            align-items: start;
+            grid-template-columns: 1fr 600px;
+            gap: 40px;
+            align-items: stretch;
         }
-        
-        /* Desktop specific layout redesign */
-        @media (min-width: 769px) {
-            .main-content {
-                padding: 100px 0 40px;
-                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-                min-height: 100vh;
-            }
-            
-            .container {
-                max-width: 1400px;
-                padding: 0 40px;
-            }
-            
-            .two-column-layout {
-                display: grid;
-                grid-template-columns: 1.2fr 0.8fr;
-                gap: 60px;
-                align-items: start;
-                background: #ffffff;
-                border-radius: 24px;
-                padding: 60px;
-                box-shadow: 0 25px 80px rgba(0, 0, 0, 0.1);
-                margin: 0 auto;
-            }
+
+        /* Left Column - Product Info */
+        .product-info {
+            background: #E8F2FF;
+            padding: 40px;
+            border-radius: 16px;
+            text-align: center;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        
-        .hero-image img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
-        
-        .main-title {
-            font-size: 28px;
+
+        .product-title {
+            font-size: 36px;
             font-weight: 700;
-            color: var(--text);
+            color: #1f2937;
             margin-bottom: 20px;
-            line-height: 1.15;
+            line-height: 1.2;
         }
-        
-        /* Desktop specific main title styling */
-        @media (min-width: 769px) {
-            .main-title {
-                font-size: 40px;
-                font-weight: 800;
-                color: #1f2937;
-                margin-bottom: 32px;
-                line-height: 1.1;
-                letter-spacing: -1px;
-            }
+
+        /* Mobile-only line break helper inside .product-title */
+        .product-title .mobile-break { display: none; }
+        @media (max-width: 768px) { .product-title .mobile-break { display: block; } }
+
+        .product-description {
+            font-size: 18px;
+            color: #1f2937;
+            margin-bottom: 30px;
+            line-height: 1.6;
         }
-        
-        .title-with-image {
+
+        .benefits-list {
+            list-style: none;
+            margin: 30px 0;
+            padding: 0;
+        }
+
+        /* Mobile-only USP list (hidden by default) */
+        .usps-mobile { display: none; }
+
+        .benefits-list li {
             display: flex;
             align-items: flex-start;
-            gap: 20px;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 16px;
+            color: #374151;
+            line-height: 1.5;
         }
-        
-        /* Trust Elements Styling */
-        .trust-elements {
-            display: flex;
-            gap: 24px;
-            margin: 20px 0;
-            flex-wrap: wrap;
-        }
-        
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .trust-icon {
-            background: #2954B4;
-            color: #ffffff !important;
-            border-radius: 50%;
+
+        .benefits-list li::before {
+            content: "✓";
+            background: #3A9AEA;
+            color: white;
             width: 20px;
             height: 20px;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 12px;
-            font-weight: 900;
-            flex-shrink: 0;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-        
-        .trust-text {
-            font-size: 14px;
-            color: #374151;
-            font-weight: 500;
-        }
-        
-        /* Hide trust elements on mobile */
-        @media (max-width: 768px) {
-            .trust-elements {
-                display: none;
-            }
-            
-            /* Keep original title visible on mobile with proper styling */
-            .main-title {
-                font-size: 28px;
-                font-weight: 700;
-                color: var(--text);
-                line-height: 1.15;
-            }
-        }
-        
-        /* Desktop specific trust elements styling */
-        @media (min-width: 769px) {
-            .trust-elements {
-                gap: 32px;
-                margin: 24px 0;
-            }
-            
-            .trust-text {
-                font-size: 15px;
-            }
-        }
-        
-        /* Desktop specific title with image layout */
-        @media (min-width: 769px) {
-            .title-with-image {
-                display: flex;
-                align-items: flex-start;
-                gap: 40px;
-                margin-bottom: 24px;
-            }
-        }
-
-        /* Hide badge on desktop */
-        .success-badge {
-            display: none !important;
-        }
-        
-        /* Ensure badge is hidden on all desktop sizes */
-        @media (min-width: 481px) {
-            .success-badge {
-                display: none !important;
-            }
-        }
-        .main-title.mobile-only { display: none; }
-        .mobile-title-image { display: none; }
-        .mobile-image-placeholder { display: none; width: 350px; height: 350px; margin: 0 auto 12px; border-radius: 12px; background: #e5e7eb; }
-        
-        .title-image .title-image-real {
-            width: 240px;
-            height: 240px;
-            border-radius: 12px;
-            object-fit: cover;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        }
-        
-        /* Desktop specific product image styling */
-        @media (min-width: 769px) {
-            .title-image .title-image-real {
-                width: 240px;
-                height: 240px;
-                border-radius: 20px;
-                object-fit: cover;
-                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-                transition: transform 0.3s ease;
-            }
-            
-            .title-image .title-image-real:hover {
-                transform: scale(1.02);
-            }
-        }
-        
-        .section p {
-            color: #333333;
-            margin-bottom: 12px;
-            line-height: 1.45;
-        }
-        
-        /* Desktop specific section text styling */
-        @media (min-width: 769px) {
-            .section p {
-                color: #4b5563;
-                margin-bottom: 20px;
-                line-height: 1.6;
-                font-size: 16px;
-            }
-        }
-        
-        .usp-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #333333;
-            font-size: 13.5px;
-            line-height: 1.5;
-        }
-        
-        /* Desktop specific USP styling */
-        @media (min-width: 769px) {
-            .title-image {
-                display: flex;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-            .usps {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 8px;
-                width: 100%;
-                max-width: 340px;
-                margin: 10px 0 0 0;
-            }
-            
-            .usp-item {
-                display: flex;
-                align-items: center;
-                gap: 8px;
-                color: #374151;
-                font-size: 14px;
-                line-height: 1.5;
-                margin: 0;
-                padding: 0;
-            }
-
-            .usp-text strong { color: #111111; }
-        }
-        
-        .usp-checkmark {
-            width: 14px;
-            height: 14px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 9px;
-            font-weight: 700;
-            flex-shrink: 0;
-        }
-        
-        /* Desktop specific USP checkmark styling */
-        @media (min-width: 769px) {
-            .usp-checkmark {
-                width: 16px;
-                height: 16px;
-                background: #3A9AEA;
-                border-radius: 50%;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                color: white;
-                font-size: 10px;
-                font-weight: 700;
-                flex-shrink: 0;
-            }
-        }
-        
-        .story-intro {
-            font-size: 16px !important;
-            color: #333333 !important;
-            font-weight: 600;
-            margin-top: 0 !important;
-        }
-        
-        .story-question {
-            font-size: 13.5px !important;
-        }
-        
-        .story-stat {
-            background: linear-gradient(135deg, #2954B3, #1e40af);
-            color: white !important;
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 13.5px !important;
-            text-align: left;
-            margin: 16px 0;
-        }
-        
-        .story-experience {
-            font-size: 16px !important;
-        }
-        
-        .benefits-inline {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 20px;
-            row-gap: 4px;
-            margin: 12px 0;
-            padding: 0;
-            background: transparent;
-            border-radius: 0;
-            border-left: none;
-            justify-content: flex-start;
-            max-width: 500px;
-        }
-        
-        .benefit-item {
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            border: none;
-            font-size: 13.5px;
-            color: #333333;
-            font-weight: 500;
-            box-shadow: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .benefit-item::before {
-            content: "✓";
-            color: #10B981;
             font-weight: bold;
-            font-size: 13.5px;
+            flex-shrink: 0;
+            margin-top: 2px;
         }
-        
-        .toxin-list {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 24px;
-            list-style: none;
-            padding: 0;
-            margin: 14px 0;
+
+        .benefits-list strong {
+            color: #1f2937;
+            font-weight: 600;
         }
-        .toxin-list li {
-            color: #333333;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 4px;
-            padding-left: 16px;
-            position: relative;
-            font-size: 13.5px;
-        }
-        
-        .order-form {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
+
+        /* Right Column - Checkout Form */
+        .checkout-form {
+            background: white;
+            padding: 40px;
             border-radius: 16px;
-            padding: 24px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+            border: 1px solid #e5e7eb;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
-        
-        /* Desktop specific styling - Complete redesign */
-        @media (min-width: 769px) {
-            .order-form {
-                max-width: 420px;
-                margin: 0 auto;
-                padding: 28px;
-                background: var(--bg-card);
-                border-radius: 20px;
-                box-shadow: 0 16px 48px rgba(0, 0, 0, 0.08);
-                border: 1px solid var(--border);
-            }
-        }
-        
-        .order-form h1 {
-            font-size: 22px;
+
+        .form-title {
+            font-size: 24px;
             font-weight: 700;
-            color: var(--text);
-            margin-bottom: 18px;
-            line-height: 1.3;
+            color: #1f2937;
+            margin-bottom: 30px;
         }
-        
-        /* Desktop specific title styling */
-        @media (min-width: 769px) {
-            .order-form h1 {
-                font-size: 28px;
-                font-weight: 800;
-                color: #1f2937;
-                margin-bottom: 32px;
-                text-align: center;
-                letter-spacing: -0.5px;
-            }
-        }
-        
+
         .form-section {
-            margin-bottom: 16px;
-            background: transparent !important;
-            padding: 0 !important;
-            border: none !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
+            margin-bottom: 24px;
         }
-        
-        /* Desktop specific form spacing */
-        @media (min-width: 769px) {
-            .form-section {
-                margin-bottom: 28px;
-                background: transparent !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
-                border: none !important;
-                box-shadow: none !important;
-            }
-        }
-        
+
         .form-section h3 {
             font-size: 18px;
             font-weight: 600;
-            color: var(--text);
-            margin-bottom: 8px;
-        }
-        
-        /* Desktop specific section title styling */
-        @media (min-width: 769px) {
-            .form-section h3 {
-                font-size: 20px;
-                font-weight: 700;
-                color: #1f2937;
-                margin-bottom: 20px;
-                text-align: left;
-                letter-spacing: -0.3px;
-            }
-        }
-        
-        .form-group {
-            margin-bottom: 8px;
-        }
-        
-        /* Desktop specific form group spacing */
-        @media (min-width: 769px) {
-            .form-group {
-                margin-bottom: 20px;
-            }
-        }
-        
-        .form-group input {
-            width: 100%;
-            padding: 18px 20px;
-            border: 2px solid var(--border);
-            border-radius: 10px;
-            font-size: 13px;
-            font-family: inherit;
-            transition: all 0.2s ease;
-            background: white;
-        }
-        
-        /* Desktop specific input styling */
-        @media (min-width: 769px) {
-            .form-group input {
-                padding: 18px 24px;
-                font-size: 16px;
-                border: 2px solid #e2e8f0;
-                border-radius: 12px;
-                background: #ffffff;
-                transition: all 0.3s ease;
-                font-weight: 500;
-            }
-            
-            .form-group input:focus {
-                border-color: #3b82f6;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-                outline: none;
-            }
-            
-            .form-group input::placeholder {
-                color: #9ca3af;
-                font-weight: 400;
-            }
+            color: #1f2937;
+            margin-bottom: 12px;
         }
 
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group input,
         .form-group select {
             width: 100%;
-            padding: 18px 20px;
-            border: 2px solid var(--border);
+            padding: 16px 20px;
+            border: 2px solid #e5e7eb;
             border-radius: 10px;
-            font-size: 13px;
+            font-size: 16px;
             font-family: inherit;
             transition: all 0.2s ease;
             background: white;
         }
-        
-        /* Desktop specific select styling */
-        @media (min-width: 769px) {
-            .form-group select {
-                padding: 18px 24px;
-                font-size: 16px;
-                border: 2px solid #1BA070; /* green border on desktop */
-                border-radius: 12px;
-                background: #ffffff;
-                transition: all 0.3s ease;
-                font-weight: 500;
-            }
-            
-            .form-group select:focus {
-                border-color: #1BA070 !important;
-                box-shadow: 0 0 0 3px rgba(27, 160, 112, 0.10);
-                outline: none;
-            }
+
+        /* Make country dropdown show green border by default */
+        .form-group select {
+            border-color: #28A270;
         }
 
-        .form-group input:focus {
+        .form-group input:focus,
+        .form-group select:focus {
             outline: none;
-            border-color: var(--border);
-            box-shadow: none;
+            border-color: #28A270;
+            box-shadow: 0 0 0 3px rgba(40, 162, 112, 0.1);
         }
-        
+
+        /* Payment Methods */
         .payment-methods {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 6px;
+            gap: 8px;
         }
-        
-        /* Desktop specific payment methods styling */
-        @media (min-width: 769px) {
-            .payment-methods {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-        }
-        
+
         .payment-method {
             display: flex;
             align-items: center;
             gap: 8px;
-            padding: 8px;
-            border: 2px solid var(--border);
+            padding: 12px;
+            border: 2px solid #e5e7eb;
             border-radius: 10px;
             cursor: pointer;
             transition: all 0.2s ease;
             background: white;
         }
-        
-        /* Desktop specific payment method styling */
-        @media (min-width: 769px) {
-            .payment-method {
-                padding: 16px 20px;
-                border: 2px solid #e2e8f0;
-                border-radius: 12px;
-                background: #ffffff;
-                transition: all 0.3s ease;
-                font-weight: 500;
-                font-size: 15px;
-            }
-            
-            .payment-method:hover {
-                border-color: #3b82f6;
-                transform: translateY(-2px);
-                box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
-            }
-            
-            .payment-method.selected {
-                border-color: #3b82f6;
-                background: #eff6ff;
-                box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-            }
-        }
 
         .payment-method:hover {
-            border-color: #1BA070;
+            border-color: #28A270;
             transform: translateY(-1px);
         }
-        
+
+        .payment-method.selected {
+            border-color: #28A270;
+            background: rgba(40, 162, 112, 0.05);
+        }
+
         .payment-icon {
             width: 24px;
             height: 24px;
             object-fit: contain;
-            display: block;
         }
-        
+
+        /* Order Summary */
         .order-summary {
             background: transparent;
             border-radius: 0;
             padding: 0;
-            margin: 0;
+            margin: 24px 0;
             border: none;
         }
-        
-        /* Desktop specific order summary styling */
-        @media (min-width: 769px) {
-            .order-summary {
-                background: transparent;
-                border: none;
-                border-radius: 0;
-                padding: 0;
-                margin: 0;
-            }
-        }
-        
+
         .summary-title {
-            font-size: 13px;
+            font-size: 16px;
             font-weight: 600;
-            color: var(--text);
-            margin-bottom: 10px;
-        }
-        
-        .total-label {
-            font-weight: 700;
-        }
-        
-        /* Hide 'gaan' on desktop */
-        .mobile-gaan {
-            display: none;
-        }
-        
-        /* Show 'gaan' on mobile */
-        @media (max-width: 768px) {
-            .mobile-gaan {
-                display: inline;
-            }
+            color: #1f2937;
+            margin-bottom: 12px;
         }
 
-        /* Mobile warning badge styling */
-        .mobile-warning-badge {
-            display: none;
-            text-align: center;
-            margin-bottom: 16px;
-        }
-
-        @media (max-width: 768px) {
-            .mobile-warning-badge {
-                display: block;
-            }
-        }
-
-        .warning-text {
-            background: linear-gradient(135deg, #dc2626, #b91c1c);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 14px;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 3px 8px rgba(220, 38, 38, 0.25);
-            display: inline-block;
-        }
-        
-        /* Desktop specific summary title styling */
-        @media (min-width: 769px) {
-            .summary-title {
-                font-size: 18px;
-                font-weight: 700;
-                color: #1f2937;
-                margin-bottom: 20px;
-                text-align: center;
-            }
-        }
-        
         .summary-item {
-            color: var(--text-light);
-            margin-bottom: 10px;
-            font-size: 12px;
+            color: #6b7280;
+            margin-bottom: 8px;
+            font-size: 14px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
         }
-        
-        /* Desktop specific summary item styling */
-        @media (min-width: 769px) {
-            .summary-item {
-                font-size: 16px;
-                color: #4b5563;
-                margin-bottom: 16px;
-                font-weight: 500;
-            }
+
+        .summary-price {
+            font-weight: 600;
+            color: #1f2937;
         }
-        
+
+        .total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .total-label {
+            font-weight: 600;
+            color: #1f2937;
+        }
+
         .total-price {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: 4px;
         }
-        
+
         .original-price {
-            font-size: 13px;
-            font-weight: 500;
+            font-size: 14px;
             color: #ef4444;
             text-decoration: line-through;
         }
-        
+
         .discounted-price {
-            font-size: 36px;
-            font-weight: 800;
-            color: #059669;
+            font-size: 20px;
+            font-weight: 700;
+            color: #10b981;
         }
-        
-        /* Desktop specific price styling */
-        @media (min-width: 769px) {
-            .original-price {
-                font-size: 16px;
-                font-weight: 500;
-                color: #ef4444;
-                text-decoration: line-through;
-            }
-            
-            .discounted-price {
-                font-size: 36px;
-                font-weight: 800;
-                color: #059669;
-                text-shadow: none !important;
-            }
-        }
-        
+
+        /* CTA Button */
         .checkout-button {
             width: 100%;
-            background: #28A270 !important;
-            color: #ffffff !important;
+            background: #10b981;
+            color: white;
             border: none;
-            padding: 12px;
+            padding: 16px;
             border-radius: 12px;
-            font-family: 'Quicksand', system-ui, -apple-system, sans-serif;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 700;
             cursor: pointer;
             transition: all 0.2s ease;
@@ -796,122 +281,108 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            margin-bottom: 16px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.8);
         }
-        
-        /* Desktop specific checkout button styling */
-        @media (min-width: 769px) {
-            .checkout-button {
-                background: #28A270 !important;
-                padding: 16px 20px;
-                border-radius: 12px;
-                font-size: 16px;
-                font-weight: 700;
-                margin-top: 24px;
-                margin-bottom: 24px;
-                box-shadow: 0 2px 4px rgba(0,0,0,0.8);
-                transition: all 0.3s ease;
-                letter-spacing: 0.5px;
-            }
-            
-            .checkout-button:hover {
-                transform: translateY(-3px);
-                box-shadow: 0 4px 8px rgba(0,0,0,0.9);
-                background: #1e7a5a !important;
-            }
-            
-            .checkout-button:active {
-                transform: translateY(-1px);
-                box-shadow: 0 1px 2px rgba(0,0,0,0.8);
-            }
+
+        .checkout-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.9);
+            background: #059669;
         }
-        
+
+        /* Legal Section */
         .legal-section {
             margin-bottom: 20px;
         }
-        
+
         .checkbox-group {
             display: flex;
             align-items: flex-start;
             gap: 8px;
             margin-bottom: 12px;
         }
-        
+
         .checkbox-group input[type="checkbox"] {
             width: 16px;
             height: 16px;
             margin-top: 2px;
-            accent-color: #1BA070;
+            accent-color: #3A9AEA;
         }
-        
+
         .checkbox-group label {
-            color: var(--text-light);
-            font-size: 12px;
+            color: #6b7280;
+            font-size: 14px;
         }
-        
+
         .checkbox-group a {
-            color: var(--text-light);
+            color: #3A9AEA;
             text-decoration: none;
             font-weight: 500;
         }
-        
-        .trust-icons {
-            display: flex;
-            gap: 16px;
-        }
-        
-        .trust-item {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            color: var(--text-light);
-            font-size: 12px;
-        }
-        
-        .trust-icon {
-            color: var(--success);
-            font-size: 13px;
-        }
 
-        .payment-method.selected {
-            border-color: #1BA070;
-            background: rgba(27, 160, 112, 0.05);
-        }
-
-
-
-        /* Responsive Design */
-        @media (max-width: 1024px) {
-            .two-column-layout {
-                gap: 40px;
-            }
-            
-            .order-form {
-                padding: 32px;
-            }
-        }
-
+        /* Mobile Responsive */
         @media (max-width: 768px) {
-            .two-column-layout {
+            .checkout-layout {
                 grid-template-columns: 1fr;
                 gap: 20px;
             }
-            
-            .usps { 
-                grid-template-columns: 1fr; 
-                gap: 8px;
+
+            /* On mobile: show concise description instead of USP list */
+            .product-description { display: block !important; text-align: left !important; }
+            .benefits-list { display: none !important; }
+            .usps-mobile { display: none !important; }
+            .usps-mobile li {
+                display: flex;
+                align-items: flex-start;
+                gap: 10px;
+                font-size: 13px;
+                line-height: 1.45;
+                color: #333333;
+            }
+            .usps-mobile li::before {
+                content: "✓";
+                width: 16px;
+                height: 16px;
+                border-radius: 50%;
+                background: #28A270;
+                color: #ffffff;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+                font-weight: 700;
+                flex-shrink: 0;
+                margin-top: 2px;
             }
 
-            .benefit-item {
-                font-size: 13.5px;
+            .benefits-list li {
+                font-size: 13px;
+                text-align: left;
+                margin-bottom: 10px;
             }
 
-            .right-column {
-                position: static;
+            /* Equalize field heights for inputs and country select on mobile */
+            .checkout-form .form-group input,
+            .checkout-form .form-group select {
+                height: 56px !important;
+                min-height: 56px !important;
+                max-height: 56px !important;
+                padding: 18px 20px !important;
+                line-height: 1.2 !important;
+                box-sizing: border-box !important;
+            }
+            .checkout-form .form-group select {
+                appearance: none !important;
+                -webkit-appearance: none !important;
+                -moz-appearance: none !important;
+                border-color: #28A270 !important;
+                background-color: #ffffff !important;
             }
 
-            .order-form {
-                padding: 20px;
+            .product-info,
+            .checkout-form {
+                padding: 24px;
             }
 
             .payment-methods {
@@ -919,1031 +390,171 @@
                 gap: 8px;
             }
 
-            .section {
-                padding: 20px;
+            .product-title {
+                font-size: 28px;
             }
 
-            .hero-image img {
-                height: 200px;
-            }
-
-            .question {
-                font-size: 22px;
-            }
-
-            .order-form h1 {
-                font-size: 22px;
-            }
-            
-            .main-title {
-                font-size: 24px;
-                line-height: 1.2;
-            }
-            
-            .main-content { padding-top: 84px; }
-            
-            .title-image .title-image-real {
-                width: 200px;
-                height: 200px;
-                margin: 0 auto 20px;
-                display: block;
-            }
-            
-            .title-with-image {
-                flex-direction: column;
-                text-align: center;
-                gap: 20px;
-            }
-            
-            .main-title {
-                text-align: center;
-                margin-bottom: 16px;
-            }
-            
-            .usps {
-                justify-content: center;
-                margin-top: 16px;
-            }
-            
-            .benefits-inline {
-                max-width: 100%;
-                column-gap: 16px;
-            }
-            
-            .toxin-list {
-                flex-wrap: wrap;
-                gap: 12px 20px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .container {
-                padding: 0 12px;
-            }
-
-            .benefits-inline { 
-                grid-template-columns: 1fr; 
-                row-gap: 6px; 
-                column-gap: 0;
-            }
-            .toxin-list { 
-                flex-wrap: wrap; 
-                gap: 8px 12px; 
-            }
-            /* Reset explicit placement on mobile */
-            .benefits-inline .benefit-item { 
-                grid-column: auto; 
-                grid-row: auto; 
-            }
-
-            .order-form { 
-                padding: 20px 12px !important; 
-                margin-left: -12px !important;
-                margin-right: -12px !important;
-                border-radius: 0 !important;
-                width: calc(100% + 24px) !important;
-                max-width: none !important;
-            }
-
-            .right-column { margin-left: -12px !important; margin-right: -12px !important; }
-
-            .section { padding: 16px; }
-
-            .countdown-text { font-size: 14px; }
-
-            #timer { font-size: 16px; padding: 4px 10px; }
-            
-            .success-badge {
-                display: none !important;
-            }
-
-            .badge-checkmark {
-                background: rgba(255, 255, 255, 0.2);
-                border-radius: 50%;
-                width: 14px;
-                height: 14px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                font-weight: bold;
-                font-size: 9px;
-            }
-
-            .badge-text {
-                font-size: 12px;
-            }
-
-            .main-title { font-size: 26px; line-height: 1.25; margin-bottom: 8px; }
-            
-            .title-image .title-image-real { width: 350px; height: 350px; margin: 0 auto 12px; display: block; }
-            
-            .title-with-image { flex-direction: column; text-align: center; gap: 16px; }
-
-            .main-title {
-                text-align: center !important;
-            }
-            
-            .main-title { text-align: center; margin-bottom: 8px; }
-            .title-with-image .title-content { order: -1; }
-            .success-badge { display: none; }
-            .success-badge-mobile-top { display: flex !important; margin: 0 auto 8px; }
-            .title-image { display: none; }
-            .mobile-image-placeholder { display: block !important; width: min(92vw, 360px); height: min(92vw, 360px); margin: 0 auto 12px; object-fit: cover; border-radius: 12px; }
-            
-            .usps { display: none !important; }
-
-            .usp-item {
-                font-size: 12.5px;
-            }
-
-            .usp-text {
-                font-size: 12.5px;
-            }
-
-            .mobile-story-intro {
-                display: block !important;
-                margin-top: 16px;
-            }
-
-            .mobile-story-intro .story-question {
-                font-size: 18px !important;
-                margin-bottom: 12px;
-                line-height: 1.4;
-                text-align: left !important;
-            }
-            
-            .story-subtext {
-                font-size: 13.5px !important;
-            }
-
-            .mobile-story-intro .story-experience {
-                font-size: 18px !important;
-                margin-top: 8px;
-                margin-bottom: 16px;
-                line-height: 1.4;
-                text-align: left !important;
-            }
-
-            .mobile-benefits {
-                margin-top: 16px;
-            }
-
-            .mobile-benefit-item {
-                font-size: 13.5px !important;
-                margin-bottom: 8px;
-                line-height: 1.4;
-                text-align: left;
-                color: #333333;
-            }
-
-            .mobile-benefit-item::before {
-                content: "✓";
-                color: #10B981;
-                margin-right: 8px;
-                font-weight: bold;
-            }
-
-            .mobile-toxins {
-                margin-top: 20px;
-            }
-
-            .toxins-title {
-                font-size: 18px !important;
-                margin-bottom: 12px;
-                text-align: left;
-                color: #333333;
-            }
-
-            .toxins-list {
-                margin-bottom: 16px;
-            }
-
-            .toxin-item {
-                font-size: 13.5px !important;
-                margin-bottom: 6px;
-                line-height: 1.4;
-                text-align: left;
-                color: #333333;
-            }
-
-            .toxin-item::before {
-                content: "✓";
-                color: #3A9AEA;
-                margin-right: 8px;
-                font-weight: bold;
-            }
-
-            .pfas-stat {
-                font-size: 14px !important;
-                line-height: 1.4;
-                text-align: left;
-                color: #333333;
-                margin-top: 20px;
-            }
-
-            .mobile-hidden {
-                display: none !important;
-            }
-            
-            .form-group input,
-            .form-group select { padding: 14px 16px; font-size: 13px; }
-            
-            .payment-methods { gap: 6px; grid-template-columns: repeat(2, 1fr); }
-            
-            .payment-method { padding: 6px; font-size: 12px; }
-            .payment-icon { width: 20px; height: 20px; }
-
-            .order-form h1 { display: block; }
-            .form-section { margin-bottom: 32px; }
-            .form-section h3 { font-size: 16px; margin-bottom: 12px; }
-            .form-group { margin-bottom: 5px; }
-
-            .order-summary { padding: 0; margin: 0; }
-            .summary-title { font-size: 16px; margin-bottom: 6px; }
-            .summary-item { font-size: 12px; margin-bottom: 6px; }
-            .total { padding-top: 6px; }
-            .discounted-price { text-shadow: none !important; filter: none !important; }
-            .total-price { margin-bottom: 16px !important; }
-            .total-label { font-size: 16px; font-weight: 700; }
-            .original-price { font-size: 11px; }
-            .discounted-price { font-size: 28px; color: #10B981; }
-            .checkout-button { padding: 14px; font-size: 16.5px; margin-bottom: 20px; width: 85%; margin-left: auto; margin-right: auto; display: block; background: #10B981 !important; box-shadow: 0 4px 4px rgba(0, 0, 0, 0.5); transform: translateY(-2px); border-radius: 12px !important; }
-            /* Force stronger specificity for mobile button color */
-            .order-form-mobile .checkout-button,
-            body .order-form-mobile .checkout-button {
-                background: #10B981 !important;
-                color: #fff !important;
-                width: 85% !important;
-                padding: 14px !important;
-                font-size: 16.5px !important;
-                border-radius: 12px !important;
-                display: block !important;
-                margin: 0 auto 20px !important;
-                box-shadow: 0 4px 4px rgba(0,0,0,0.5) !important;
-                transform: translateY(-2px) !important;
-            }
-            .checkout-button:hover { background: #10B981 !important; }
-            .checkout-button:hover { box-shadow: 0 4px 8px rgba(0,0,0,0.9); }
-            .checkout-button:active { box-shadow: 0 1px 2px rgba(0,0,0,0.8); }
-
-            .story-text p { font-size: 12.5px; margin-bottom: 8px; line-height: 1.45; }
-            .story-question { font-size: 18px !important; margin-bottom: 6px !important; }
-            .story-stat { font-size: 12.5px !important; margin: 10px 0; padding: 8px 0; }
-            .story-experience { font-size: 12.5px !important; margin-bottom: 6px !important; }
-            .story-toxins { display: block; }
-            .benefit-item { font-size: 12.5px; }
-            .benefit-item::before { font-size: 12.5px; }
-            .toxin-list li { font-size: 12.5px; }
-
-            .two-column-layout { display: flex; flex-direction: column; gap: 12px; }
-            .right-column { order: 1; }
-            .main-content { padding-top: 56px; padding-bottom: 10px; }
-            .left-column .section:nth-of-type(n+2) { display: none; }
-            
-            .checkbox-group label { font-size: 12px; }
-            .checkbox-group input[type="checkbox"] { width: 14px; height: 14px; }
-
-            /* Mobile: Show title above image */
-            .title-with-image .title-content {
-                order: -1;
-            }
-        }
-
-        /* Loading Animation */
-        .loading {
-            position: relative;
-            color: transparent;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 20px;
-            height: 20px;
-            border: 2px solid transparent;
-            border-top: 2px solid white;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            0% { transform: translate(-50%, -50%) rotate(0deg); }
-            100% { transform: translate(-50%, -50%) rotate(360deg); }
-        }
-
-        .story-text {
-            line-height: 1.8;
-        }
-
-        .story-text p {
-            margin-bottom: 16px;
-            color: #333333;
-            font-size: 15px;
-        }
-        
-        /* Desktop specific story text styling */
-        @media (min-width: 769px) {
-            .story-text {
-                line-height: 1.8;
-                background: #f8fafc;
-                padding: 32px;
-                border-radius: 20px;
-                border: 1px solid #e2e8f0;
-                margin-top: 40px;
-            }
-
-            .story-text p {
-                margin-bottom: 24px;
-                color: #4b5563;
-                font-size: 17px;
-                line-height: 1.7;
-            }
-            
-            /* Hide specific story paragraphs on desktop */
-            .story-text p:first-child {
-                display: none;
-            }
-            
-            /* Hide the second paragraph but keep the story-experience paragraph */
-            .story-text p:nth-child(2) {
-                display: none;
-            }
-            
-            /* Show the story-experience paragraph (the one we want to keep) */
-            .story-text p.story-experience {
-                display: block !important;
-            }
-            
-            /* Hide mobile-hidden elements on desktop */
-            .mobile-hidden {
-                display: none !important;
-            }
-        }
-
-        .story-intro {
-            font-size: 18px !important;
-            color: #333333 !important;
-            font-weight: 600;
-            margin-top: 0 !important;
-        }
-        
-        /* Desktop specific story intro styling */
-        @media (min-width: 769px) {
-            .story-intro {
-                font-size: 24px !important;
-                color: #1f2937 !important;
-                font-weight: 700;
-                margin-top: 0 !important;
-                margin-bottom: 24px !important;
-            }
-        }
-
-        .story-question {
-            font-size: 13.5px !important;
-        }
-        
-        /* Desktop specific story question styling */
-        @media (min-width: 769px) {
-            .story-question {
-                font-size: 19px !important;
-                color: #374151 !important;
-                font-weight: 600;
-                line-height: 1.6;
-            }
-        }
-
-        .highlight-text {
-            color: #2497F5;
-            font-weight: 600;
-        }
-        
-        /* Desktop specific highlight text styling */
-        @media (min-width: 769px) {
-            .highlight-text {
-                color: #3b82f6;
-                font-weight: 700;
-            }
-        }
-
-        .story-stat {
-            padding: 14px 0;
-            border-radius: 12px;
-            font-size: 13.5px !important;
-            text-align: left !important;
-            margin: 20px 0;
-        }
-        
-        /* Desktop specific story stat styling */
-        @media (min-width: 769px) {
-            .story-stat {
-                background: #2954B4;
-                color: white !important;
-                padding: 20px 24px;
-                border-radius: 16px;
-                font-size: 11px !important;
-                text-align: center !important;
-                margin: 32px 0;
-            }
-        }
-
-        .story-experience {
-            font-size: 13.5px !important;
-        }
-        
-        /* Desktop specific story experience styling */
-        @media (min-width: 769px) {
-            .story-experience {
-                font-size: 18px !important;
-                color: #374151 !important;
-                font-weight: 600;
-                line-height: 1.6;
-                margin-top: -20px;
-            }
-        }
-
-        .benefits-inline {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            column-gap: 20px;
-            row-gap: 4px;
-            margin: 16px 0;
-            padding: 0;
-            background: transparent;
-            border-radius: 0;
-            border-left: none;
-            justify-content: flex-start;
-            max-width: 500px;
-        }
-        
-        /* Desktop specific benefits inline styling */
-        @media (min-width: 769px) {
-            .benefits-inline {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                column-gap: 32px;
-                row-gap: 16px;
-                margin: 32px 0;
-                padding: 0;
-                background: transparent;
-                border-radius: 0;
-                border-left: none;
-                justify-content: flex-start;
-                max-width: 100%;
-            }
-        }
-
-        .benefit-item {
-            background: transparent;
-            padding: 0;
-            border-radius: 0;
-            border: none;
-            font-size: 13.5px;
-            color: #333333;
-            font-weight: 500;
-            box-shadow: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* Desktop specific benefit item styling */
-        @media (min-width: 769px) {
-            .benefit-item {
-                background: transparent;
-                padding: 0;
-                border-radius: 0;
-                border: none;
-                font-size: 16px;
-                color: #374151;
-                font-weight: 500;
-                box-shadow: none;
-                display: flex;
-                align-items: center;
-                gap: 16px;
-            }
-        }
-
-        .benefit-item::before {
-            content: "✓";
-            color: #10B981;
-            font-weight: bold;
-            font-size: 16px;
-        }
-        
-        /* Desktop specific benefit item checkmark styling */
-        @media (min-width: 769px) {
-            .benefit-item::before {
-                content: "✓";
-                color: #3b82f6;
-                font-weight: bold;
-                font-size: 18px;
-            }
-        }
-        /* Two columns x three rows */
-
-        .story-conclusion {
-            font-size: 17px !important;
-            color: #2497F5 !important;
-        }
-        
-        /* Desktop specific story conclusion styling */
-        @media (min-width: 769px) {
-            .story-conclusion {
-                font-size: 20px !important;
-                color: #3b82f6 !important;
-                font-weight: 700;
-            }
-        }
-
-        .story-toxins {
-            font-size: 13.5px !important;
-        }
-        
-        /* Desktop specific story toxins styling */
-        @media (min-width: 769px) {
-            .story-toxins {
-                font-size: 18px !important;
-                color: #374151 !important;
-                font-weight: 600;
-            }
-        }
-
-        .toxin-list {
-            list-style: none;
-            padding: 0;
-            margin: 16px 0;
-        }
-        .toxin-list {
-            display: flex;
-            flex-wrap: nowrap;
-            align-items: center;
-            justify-content: flex-start;
-            gap: 16px;
-            list-style: none;
-            padding: 0;
-            margin: 14px 0;
-        }
-        
-        /* Desktop specific toxin list styling */
-        @media (min-width: 769px) {
-            .toxin-list {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-                justify-content: flex-start;
-                gap: 24px;
-                list-style: none;
-                padding: 0;
-                margin: 24px 0;
-            }
-        }
-        .toxin-list li {
-            color: #333333;
-            font-weight: normal;
-            letter-spacing: 0.5px;
-            margin-bottom: 6px;
-            padding-left: 18px;
-            position: relative;
-            font-size: 13.5px;
-        }
-        
-        /* Desktop specific toxin list item styling */
-        @media (min-width: 769px) {
-            .toxin-list li {
-                color: #374151;
-                font-weight: 500;
-                letter-spacing: 0.5px;
-                margin-bottom: 8px;
-                padding-left: 24px;
-                position: relative;
+            .product-description {
                 font-size: 16px;
             }
         }
-        .toxin-list li::before {
-            content: "✓";
-            color: #10B981;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-        }
-        
-        /* Desktop specific toxin list checkmark styling */
-        @media (min-width: 769px) {
-            .toxin-list li::before {
-                content: "✓";
-                color: #3b82f6;
-                font-weight: bold;
-                position: absolute;
-                left: 0;
-                font-size: 16px;
-            }
-        }
-
-        .title-content {
-            flex: 1;
-        }
-        
-        /* Desktop specific title content styling */
-        @media (min-width: 769px) {
-            .title-content {
-                flex: 1;
-            }
-        }
-
-        /* Hide mobile story intro on desktop */
-        .mobile-story-intro {
-            display: none;
-        }
-
-        .success-badge {
-            display: none !important;
-        }
-
-        .badge-checkmark {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 9px;
-        }
-
-        .badge-text {
-            font-size: 13px;
-            font-weight: 700;
-        }
-
-        .badge-checkmark {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            width: 14px;
-            height: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            font-size: 9px;
-        }
-
-        .badge-text {
-            font-size: 10px;
-        }
-
-        .order-form-mobile { display: none; }
-        .order-form-mobile .payment-mobile { display: none; }
-        @media (max-width: 480px) {
-            .order-form-mobile { display: block; background: var(--bg-card); border: 1px solid var(--border); box-shadow: 0 8px 32px rgba(0,0,0,0.12); border-radius: 12px; padding: 16px; margin: 0 -12px; width: calc(100% + 24px); max-width: none; }
-            .order-form-mobile .form-group select { 
-                padding: 18px 20px !important; 
-                border: 2px solid #1BA070 !important; 
-                border-radius: 10px !important; 
-                font-size: 16px !important; 
-                width: 100% !important;
-                height: 56px !important;
-                min-height: 56px !important;
-                background: white !important;
-                color: var(--text) !important;
-                box-sizing: border-box !important;
-            }
-            /* Make input fields taller on mobile */
-            .order-form-mobile .form-group input {
-                padding: 18px 20px !important;
-                height: 56px !important;
-                min-height: 56px !important;
-                font-size: 16px !important;
-                border-radius: 10px !important;
-            }
-            /* Show all payment methods stacked; hide dropdown */
-            .order-form-mobile .payment-methods-desktop { display: grid !important; grid-template-columns: 1fr !important; gap: 10px !important; }
-            .order-form-mobile .payment-methods-desktop .payment-method { padding: 14px 16px !important; font-size: 14px !important; border-radius: 12px !important; }
-            .order-form-mobile .payment-mobile { display: none !important; }
-            .order-form-mobile .order-summary { 
-                background: transparent !important; 
-                border: none !important; 
-                padding: 0 !important; 
-                margin: 16px 0 !important; 
-                box-shadow: none !important; 
-            }
-            .right-column .order-form { display: none !important; }
-            .right-column { display: none !important; }
-        }
-
-
     </style>
-    <link rel="stylesheet" href="/assets/css/wacht-even-calm.css?v=1">
 </head>
 <body>
-    <!-- Countdown Header -->
-    <header class="countdown-header">
-        <div class="container">
-            <a class="calm-logo" href="/">Vitalora.nl</a>
+    <header class="site-header" role="banner">
+      <div class="header-inner">
+        <a class="logo" href="/">
+          <span class="logo-text">Vitalora.nl</span>
+        </a>
+        <div class="header-buttons">
+          <a class="btn login-btn" href="/login">Inloggen</a>
         </div>
+      </div>
     </header>
+    <div class="container">
+        <div class="checkout-layout">
+            <!-- Left Column - Product Info -->
+            <div class="product-info">
+                <h1 class="product-title">Clean Reset:<span class="mobile-break"></span> Detox & Gifstoffen</h1>
 
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="two-column-layout">
-                <!-- Left Column -->
-                <div class="left-column">
-                    <section class="calm-product" aria-labelledby="calm-product-title">
-                        <div class="calm-offer-label">Eenmalig vervolgaanbod</div>
-                        <h1 id="calm-product-title">Maak je reset compleet</h1>
-                        <p class="calm-product-lead">Pak naast microplastics ook BPA, PFAS, parabenen en andere alledaagse gifstoffen aan.</p>
-
-                        <div class="calm-product-image">
-                            <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox en Gifstoffen">
-                        </div>
-
-                        <div class="calm-product-copy">
-                            <h2>Clean Reset: Detox &amp; Gifstoffen</h2>
-                            <p>Een helder, praktisch programma waarmee je stap voor stap bewuster omgaat met de stoffen die dagelijks je lichaam binnenkomen.</p>
-                        </div>
-
-                        <ul class="calm-benefits">
-                            <li><strong>Complete aanpak</strong><span>Microplastics, BPA, PFAS en parabenen</span></li>
-                            <li><strong>Praktisch toepasbaar</strong><span>Duidelijke stappen voor thuis</span></li>
-                            <li><strong>30 dagen garantie</strong><span>Rustig en zonder risico starten</span></li>
-                            <li><strong>Direct toegang</strong><span>Begin meteen na het afrekenen</span></li>
-                        </ul>
-
-                        <div class="calm-price-note">
-                            <span>Normaal €47</span>
-                            <strong>Nu eenmalig €27</strong>
-                        </div>
-                    </section>
-                    <!-- Main Title -->
-                    <section class="section">
-                        
-                        <div class="title-with-image">
-                            <div class="title-image">
-                                <div class="success-badge">
-                                    <span class="badge-checkmark">✓</span>
-                                    <span class="badge-text">Eenmalig aanbod: <span id="badge-timer">04:57</span></span>
-                        </div>
-                                <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox" class="title-image-real">
-                                
-                        </div>
-                            <div class="title-content">
-                                <!-- Mobile warning badge -->
-                                <div class="mobile-warning-badge">
-                                    <span class="warning-text">Eenmalig aanbod: <span id="badge-timer">05:00</span></span>
-                                </div>
-                                <h1 class="main-title">Wil je óók <span class="highlight" style="color: #2954B4;">BPA</span>, <span class="highlight" style="color: #2954B4;">PFAS</span> en <span class="highlight" style="color: #2954B4;">Parabenen</span> uit je lichaam <span class="mobile-gaan">gaan </span>detoxen?</h1>
-                                
-                                <!-- Trust Elements -->
-                                <div class="trust-elements">
-                                    <div class="trust-item">
-                                        <div class="trust-icon">✓</div>
-                                        <div class="trust-text">1000+ tevreden klanten</div>
-                                    </div>
-                                    <div class="trust-item">
-                                        <div class="trust-icon">✓</div>
-                                        <div class="trust-text">30 dagen garantie</div>
-                                    </div>
-                                </div>
-                                
-                                <img src="/assets/images/Clean-reset%202025.png" alt="Clean Reset Detox" class="mobile-image-placeholder">
-                                
-                                <!-- Mobile Story Intro -->
-                                <div class="mobile-story-intro">
-                                    <p class="story-question"><strong>Even eerlijk... 💭</strong><br><span class="story-subtext">Weet je nog hoe het voelde toen je je <strong>écht goed in je vel</strong> zat? Toen je vol energie wakker werd, je hoofd helder was en je geen last had van die vage klachten waar je nu misschien mee rondloopt. Geen opgeblazen gevoel, geen dipjes midden op de dag, maar gewoon die frisse drive om dingen aan te pakken.<br><br>Veel van ons zijn bijna vergeten dat dat gevoel ooit <strong>normaal</strong> was. We denken dat moe zijn, een warrig hoofd of onverklaarbare pijntjes er gewoon bij horen. Maar diep vanbinnen weet je dat dit niet hoeft. Je lichaam kán zoveel <strong>beter functioneren</strong> – als je het weer schoon en vrij maakt van alle rommel die er niet in thuis hoort.</span></p>
-                                    
-                                    <p class="story-experience"><strong class="mobile-hidden">Ik voelde me ook altijd wazig, moe en allesbehalve helder.</strong><br><strong>Ik besloot alle gifstoffen uit m'n lijf te detoxen, dit is wat ik ervaarde👇</strong></p>
-                                    
-                                    <div class="mobile-benefits">
-                                        <div class="mobile-benefit-item">Meer energie en mentale scherpte</div>
-                                        <div class="mobile-benefit-item">Diepe herstellende slaap</div>
-                                        <div class="mobile-benefit-item">Heldere focus en rust in m'n hoofd</div>
-                                        <div class="mobile-benefit-item">Geen opgeblazen gevoel meer</div>
-                                        <div class="mobile-benefit-item">Minder stemmingswisselingen</div>
-                                        <div class="mobile-benefit-item">Sterkere weerstand</div>
-                                    </div>
-
-                                    <div class="mobile-toxins">
-                                        <p class="toxins-title"><strong>Mijn detox werkt voor deze gifstoffen:</strong></p>
-                                        <div class="toxins-list">
-                                            <div class="toxin-item">Parabenen</div>
-                                            <div class="toxin-item">PFAS</div>
-                                            <div class="toxin-item">BPA</div>
-                                            <div class="toxin-item">Ftalaten</div>
-                                            <div class="toxin-item">Pesticiden</div>
-                                        </div>
-                                        <p class="pfas-stat"><strong>📊 In 2010 werd PFAS aangetroffen bij 2% van de bevolking, inmiddels is dat opgelopen tot 98%!</strong></p>
-                                    </div>
-                                </div>
-                        </div>
-                        </div>
-                    </section>
-
-                    <!-- Story Text -->
-                    <section class="section">
-                        <div class="story-text">
-
-                            
-                            <p class="story-question"><strong>Even eerlijk... 💭</strong><br><span class="story-subtext">Meer energie, een helder brein, minder vage klachten?</span></p>
-                            
-                            <p class="story-experience"><strong class="mobile-hidden">Ik voelde me ook altijd wazig, moe en allesbehalve helder.</strong><br><strong>Ik besloot alle gifstoffen uit m'n lijf te detoxen, dit is wat ik ervaarde👇</strong></p>
-                            
-                            <div class="benefits-inline">
-                                <div class="benefit-item">Meer energie en mentale scherpte</div>
-                                <div class="benefit-item">Diepe herstellende slaap</div>
-                                <div class="benefit-item">Heldere focus en rust in m'n hoofd</div>
-                                <div class="benefit-item">Geen opgeblazen gevoel meer</div>
-                                <div class="benefit-item">Minder stemmingswisselingen</div>
-                                <div class="benefit-item">Sterkere weerstand</div>
-                            </div>
-                            
-
-                            
-                            <p class="story-toxins"><strong>Mijn detox werkt voor deze gifstoffen:</strong></p>
-                            <ul class="toxin-list">
-                                <li>Parabenen</li>
-                                <li>PFAS</li>
-                                <li>BPA</li>
-                                <li>Ftalaten</li>
-                                <li>Pesticiden</li>
-                        </ul>
-                        
-                        <p class="story-stat">📊 <strong>In 2010 werd PFAS aangetroffen bij 2% van de bevolking, inmiddels is dat opgelopen tot 98%!</strong></p>
-                        </div>
-                    </section>
+                <div class="product-image">
+                    <img src="/assets/images/Clean-reset 2025.png" alt="Clean Reset Detox Cursus" style="width: 100%; max-width: 400px; height: auto; border-radius: 12px; margin: 20px 0;">
                 </div>
 
-                <!-- Mobile Order Form (outside right-column) -->
-                <div class="order-form-mobile">
-                        <div class="form-section">
-                            <h3>Jouw gegevens</h3>
-                            <div class="form-group">
-                                <input type="text" placeholder="Voornaam" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Achternaam">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="E-mailadres" required>
-                            </div>
-                            <div class="form-group">
-                                <select>
-                                    <option>Nederland</option>
-                                    <option>België</option>
-                                    <option>Duitsland</option>
-                                </select>
-                            </div>
-                        </div>
+                <!-- Mobile-only USP section under the image -->
+                <ul class="usps-mobile">
+                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
+                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
+                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
+                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
+                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
+                </ul>
 
-                        <div class="form-section">
-                            <h3>Hoe wil je betalen?</h3>
-                        <div class="payment-methods-desktop">
-                                <div class="payment-method selected">
-                                <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
-                                    <span>iDEAL</span>
-                                </div>
-                                <div class="payment-method">
-                                <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
-                                    <span>Creditcard</span>
-                                </div>
-                                <div class="payment-method">
-                                <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
-                                    <span>Klarna</span>
-                                </div>
-                                <div class="payment-method">
-                                <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
-                                    <span>Bancontact</span>
-                                </div>
-                            </div>
-                        <div class="form-group payment-mobile">
-                            <select id="payment-method-mobile">
-                                <option value="ideal">iDEAL</option>
-                                <option value="creditcard">Creditcard</option>
-                                <option value="klarna">Klarna</option>
-                                <option value="bancontact">Bancontact</option>
-                            </select>
-                            </div>
-                        </div>
+                <div class="product-description">
+                    <p>Je lichaam stapelt elke dag ongemerkt gifstoffen op.</p>
+                    <p>Deze complete detox cursus laat je zien hoe je die verwijdert.</p>
+                    <p>Zodat jij meer energie, scherpte en balans ervaart.</p>
+                </div>
 
-                        <div class="order-summary">
-                            <div class="summary-title">Besteloverzicht</div>
-                            <div class="summary-item">
-                                <span>1x Clean Reset Detox en Gifstoffen</span>
-                            </div>
-                            <div class="total">
-                            <div class="total-label">Totaal:</div>
-                            <div class="total-price">
-                                <span class="original-price">€ 47,00</span>
-                                <span class="discounted-price">€ 27,00</span>
-                            </div>
-                            </div>
-                        </div>
+                <ul class="benefits-list">
+                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
+                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
+                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
+                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
+                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
+                </ul>
+            </div>
 
-                    <div class="cta-section">
-                        <button class="checkout-button">Afrekenen <span>→</span></button>
+            <!-- Right Column - Checkout Form -->
+            <div class="checkout-form">
+                <h2 class="form-title">Afrekenen</h2>
+
+                <!-- Personal Details -->
+                <div class="form-section">
+                    <h3>Jouw gegevens</h3>
+                    <div class="form-group">
+                        <input type="text" placeholder="Voornaam" required>
                     </div>
-
-                        <div class="legal-section">
-                            <div class="checkbox-group">
-                            <input type="checkbox" id="terms-mobile" required checked>
-                            <label for="terms-mobile">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
-                            </div>
-                                </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Achternaam" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="E-mailadres" required>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Nederland</option>
+                            <option>België</option>
+                            <option>Duitsland</option>
+                        </select>
+                    </div>
                 </div>
 
-                <!-- Right Column - Order Form -->
-                <div class="right-column">
-                    <div class="order-form">
-                        <!-- Personal Details -->
-                        <div class="form-section">
-                            <h3>Jouw gegevens</h3>
-                            <div class="form-group">
-                                <input type="text" placeholder="Voornaam" required>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" placeholder="Achternaam">
-                            </div>
-                            <div class="form-group">
-                                <input type="email" placeholder="E-mailadres" required>
-                            </div>
-                            <div class="form-group">
-                                <select>
-                                    <option>Nederland</option>
-                                    <option>België</option>
-                                    <option>Duitsland</option>
-                                </select>
-                            </div>
+                <!-- Payment Methods -->
+                <div class="form-section">
+                    <h3>Hoe wil je betalen?</h3>
+                    <div class="payment-methods">
+                        <div class="payment-method selected">
+                            <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
+                            <span>iDEAL</span>
                         </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
+                            <span>Creditcard</span>
+                        </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
+                            <span>Klarna</span>
+                        </div>
+                        <div class="payment-method">
+                            <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
+                            <span>Bancontact</span>
+                        </div>
+                    </div>
+                </div>
 
-                        <!-- Payment Methods -->
-                        <div class="form-section">
-                            <h3>Hoe wil je betalen?</h3>
-                            <div class="payment-methods">
-                                <div class="payment-method selected">
-                                    <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
-                                    <span>iDEAL</span>
-                                </div>
-                                <div class="payment-method">
-                                    <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
-                                    <span>Creditcard</span>
-                                </div>
-                                <div class="payment-method">
-                                    <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
-                                    <span>Klarna</span>
-                                </div>
-                                <div class="payment-method">
-                                    <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
-                                    <span>Bancontact</span>
-                                </div>
-                            </div>
+                <!-- Order Summary -->
+                <div class="order-summary">
+                    <div class="summary-title">Besteloverzicht</div>
+                    <div class="summary-item">
+                        <span>1x Clean Reset Detox Cursus</span>
+                    </div>
+                    <div class="total">
+                        <div class="total-label">Totaal:</div>
+                        <div class="total-price">
+                            <span class="discounted-price">€ 27,00</span>
                         </div>
+                    </div>
+                </div>
 
-                        <!-- Order Summary -->
-                        <div class="order-summary">
-                            <div class="summary-title">Besteloverzicht</div>
-                            <div class="summary-item">
-                                <span>1x Clean Reset Detox en Gifstoffen</span>
-                            </div>
-                            <div class="total">
-                                <div class="total-label">Totaal:</div>
-                                <div class="total-price">
-                                    <span class="original-price">€ 47,00</span>
-                                    <span class="discounted-price">€ 27,00</span>
-                                </div>
-                            </div>
-                        </div>
+                <button class="checkout-button">Afrekenen <span>→</span></button>
 
-                        <div class="cta-section">
-                            <button class="checkout-button">Afrekenen <span>→</span></button>
-                        </div>
-
-                        <!-- Legal and Trust -->
-                        <div class="legal-section">
-                            <div class="checkbox-group">
-                                <input type="checkbox" id="terms" required checked>
-                                <label for="terms">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
-                        </div>
-
-                        </div>
+                <!-- Legal and Trust -->
+                <div class="legal-section">
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="terms" required checked>
+                        <label for="terms">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
 
-    <script src="checkout-script.js?v=5"></script>
-    
     <script>
-        // Clean URL display by removing tracking parameters and .html extension
-        if (window.location.search.includes('vgo_ee=') || window.location.pathname.includes('.html')) {
-            const cleanPath = window.location.pathname.replace('.html', '');
-            const cleanUrl = window.location.origin + cleanPath;
-            // Only update the browser URL display, don't interfere with MailBlue tracking
-            window.history.replaceState({}, document.title, cleanUrl);
-        }
+        // Pre-fill form with lead data from ebook download
+        document.addEventListener('DOMContentLoaded', function() {
+            const leadData = localStorage.getItem('lead_data');
+            if (leadData) {
+                try {
+                    const data = JSON.parse(leadData);
+                    const nameInputs = document.querySelectorAll('input[placeholder="Voornaam"], input[placeholder="Achternaam"]');
+                    const emailInput = document.querySelector('input[placeholder="E-mailadres"]');
+
+                    if (data.name && nameInputs.length > 0) {
+                        nameInputs[0].value = data.name;
+                    }
+                    if (data.email && emailInput) {
+                        emailInput.value = data.email;
+                    }
+
+                    // Clear the lead data after using it
+                    localStorage.removeItem('lead_data');
+                } catch (e) {
+                    console.log('Error parsing lead data:', e);
+                }
+            }
+        });
+
+        // Payment method selection
+        document.querySelectorAll('.payment-method').forEach(method => {
+            method.addEventListener('click', function() {
+                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                this.classList.add('selected');
+            });
+        });
+
+        // Remove legacy redirect handler; real submission handled by checkout-script.js
     </script>
+    <script src="/checkout-script.js?v=5"></script>
 </body>
 </html>
