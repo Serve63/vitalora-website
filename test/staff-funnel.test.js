@@ -40,17 +40,13 @@ test('Funnel-API weigert een niet-ingelogde aanvraag voordat databronnen worden 
   assert.equal(result.headers['Cache-Control'], 'private, no-store');
 });
 
-test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-bestellingen', async () => {
+test('Funnel-API vraagt geen betaalde MailBlue-API aan en toont alleen betaalde Clean Reset-bestellingen', async () => {
   const previousEnv = {
     SESSION_SECRET: process.env.SESSION_SECRET,
-    MAILBLUE_API_URL: process.env.MAILBLUE_API_URL,
-    MAILBLUE_API_KEY: process.env.MAILBLUE_API_KEY,
     MOLLIE_API_KEY: process.env.MOLLIE_API_KEY,
   };
   const originalFetch = global.fetch;
   process.env.SESSION_SECRET = 'test-session-secret';
-  process.env.MAILBLUE_API_URL = 'https://mailblue.test/api/3';
-  process.env.MAILBLUE_API_KEY = 'test-mailblue-key';
   process.env.MOLLIE_API_KEY = 'test-mollie-key';
 
   try {
@@ -67,12 +63,6 @@ test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-
     assert.match(cookie, /^vitalora_staff=/);
 
     global.fetch = async (url) => {
-      if (String(url).startsWith('https://mailblue.test/api/3/contacts?')) {
-        assert.match(String(url), /formid=3/);
-        return new Response(JSON.stringify({
-          contacts: [{ id: '9', firstName: 'Eva', lastName: 'Jansen', email: 'Eva@example.nl', cdate: '2026-08-23T10:15:00Z' }],
-        }), { status: 200, headers: { 'Content-Type': 'application/json' } });
-      }
       if (String(url).startsWith('https://api.mollie.com/v2/payments')) {
         return new Response(JSON.stringify({
           _embedded: { payments: [
@@ -98,7 +88,9 @@ test('Funnel-API combineert e-bookinschrijvingen en alleen betaalde Clean Reset-
     );
 
     assert.equal(result.status, 200);
-    assert.deepEqual(result.body.mailingList.contacts.map((item) => item.email), ['eva@example.nl']);
+    assert.equal(result.body.mailingList.available, false);
+    assert.match(result.body.mailingList.message, /Exporteer die lijst één keer/);
+    assert.deepEqual(result.body.mailingList.contacts, []);
     assert.deepEqual(result.body.cleanReset.customers.map((item) => item.email), ['sam@example.nl']);
     assert.equal(result.body.cleanReset.customers[0].total, 47);
     assert.equal(result.body.academy.available, false);
