@@ -1,17 +1,17 @@
 const { Pool } = require('pg');
 
-let pool = null;
+const pools = new Map();
+let activeConnectionString = null;
 let connectionMeta = null;
 
-function resolveConnectionString() {
-  return (
-    process.env.DATABASE_URL ||
-    process.env.POSTGRES_URL ||
-    process.env.SUPABASE_DB_URL ||
-    process.env.POSTGRES_PRISMA_URL ||
-    process.env.SUPABASE_POSTGRES_URL ||
-    ''
-  ).trim();
+function resolveConnectionStrings(env = process.env) {
+  return Array.from(new Set([
+    env.DATABASE_URL,
+    env.POSTGRES_URL,
+    env.SUPABASE_DB_URL,
+    env.POSTGRES_PRISMA_URL,
+    env.SUPABASE_POSTGRES_URL,
+  ].map((value) => String(value || '').trim()).filter(Boolean)));
 }
 
 function normalizeConnectionString(rawConnectionString) {
@@ -28,45 +28,87 @@ function normalizeConnectionString(rawConnectionString) {
   }
 }
 
-function getPool() {
-  if (pool) return pool;
-  const rawConnectionString = resolveConnectionString();
-  if (!rawConnectionString) {
-    throw new Error('DATABASE_URL ontbreekt voor blogdatabase.');
-  }
-  const connectionString = normalizeConnectionString(rawConnectionString);
-  const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
+function describeConnection(connectionString) {
   try {
     const parsed = new URL(connectionString);
-    connectionMeta = {
-      host: parsed.hostname,
-      database: parsed.pathname || '',
-    };
+    return { host: parsed.hostname, database: parsed.pathname || '' };
   } catch (_) {
-    connectionMeta = { host: 'onbekend', database: '' };
+    return { host: 'onbekend', database: '' };
   }
+}
 
-  pool = new Pool({
+function poolFor(rawConnectionString) {
+  if (pools.has(rawConnectionString)) return pools.get(rawConnectionString);
+  const connectionString = normalizeConnectionString(rawConnectionString);
+  const meta = describeConnection(connectionString);
+  const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
+  const pool = new Pool({
     connectionString,
     ssl: isLocal ? false : { rejectUnauthorized: false },
     max: 5,
   });
   pool.on('error', (err) => {
-    console.error('Postgres pool error', {
-      message: err?.message,
-      host: connectionMeta?.host,
-    });
+    console.error('Postgres pool error', { message: err?.message, host: meta.host });
   });
+  pools.set(rawConnectionString, pool);
   return pool;
 }
 
-async function query(text, params = []) {
-  const client = await getPool().connect();
-  try {
-    return await client.query(text, params);
-  } finally {
-    client.release();
+function getPool() {
+  const candidates = resolveConnectionStrings();
+  if (!candidates.length) {
+    throw new Error('DATABASE_URL ontbreekt voor blogdatabase.');
   }
+  const selected = activeConnectionString || candidates[0];
+  return poolFor(selected);
 }
 
-module.exports = { getPool, query, connectionMeta: () => connectionMeta, normalizeConnectionString };
+function isConnectionFailure(error) {
+  const message = String(error?.message || '');
+  return [
+    'ENOTFOUND',
+    'ECONNREFUSED',
+    'ETIMEDOUT',
+    'self-signed certificate',
+    'certificate in certificate chain',
+    'password authentication failed',
+    'tenant/user',
+    'connection terminated',
+  ].some((needle) => message.toLowerCase().includes(needle.toLowerCase()));
+}
+
+async function query(text, params = []) {
+  const candidates = resolveConnectionStrings();
+  if (!candidates.length) throw new Error('DATABASE_URL ontbreekt voor blogdatabase.');
+  const ordered = activeConnectionString
+    ? [activeConnectionString, ...candidates.filter((value) => value !== activeConnectionString)]
+    : candidates;
+  let lastError = null;
+
+  for (let index = 0; index < ordered.length; index += 1) {
+    const candidate = ordered[index];
+    let client = null;
+    try {
+      client = await poolFor(candidate).connect();
+      const result = await client.query(text, params);
+      activeConnectionString = candidate;
+      connectionMeta = describeConnection(normalizeConnectionString(candidate));
+      return result;
+    } catch (error) {
+      lastError = error;
+      if (!isConnectionFailure(error) || index === ordered.length - 1) throw error;
+    } finally {
+      if (client) client.release();
+    }
+  }
+  throw lastError || new Error('Databaseverbinding mislukt.');
+}
+
+module.exports = {
+  getPool,
+  query,
+  connectionMeta: () => connectionMeta,
+  normalizeConnectionString,
+  resolveConnectionStrings,
+  isConnectionFailure,
+};

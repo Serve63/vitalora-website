@@ -32,11 +32,13 @@ test('e-bookleads blijven server-side en de tabel heeft RLS zonder publieke gran
 });
 
 test('database-URL laat de expliciete TLS-config gelden zonder verify-full te verzwakken', () => {
-  const { normalizeConnectionString } = require('../api/_lib/db');
+  const { normalizeConnectionString, resolveConnectionStrings, isConnectionFailure } = require('../api/_lib/db');
   const relaxed = new URL(normalizeConnectionString('postgres://user:pass@example.com/db?sslmode=require'));
   const verified = new URL(normalizeConnectionString('postgres://user:pass@example.com/db?sslmode=verify-full'));
   assert.equal(relaxed.searchParams.has('sslmode'), false);
   assert.equal(verified.searchParams.get('sslmode'), 'verify-full');
+  assert.deepEqual(resolveConnectionStrings({ DATABASE_URL: 'postgres://first', POSTGRES_URL: 'postgres://second' }), ['postgres://first', 'postgres://second']);
+  assert.equal(isConnectionFailure(new Error('(ENOTFOUND) tenant/user not found')), true);
 });
 
 test('Funnel-API weigert een niet-ingelogde aanvraag voordat databronnen worden benaderd', async () => {
