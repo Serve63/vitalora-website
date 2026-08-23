@@ -14,12 +14,27 @@ function resolveConnectionString() {
   ).trim();
 }
 
+function normalizeConnectionString(rawConnectionString) {
+  try {
+    const parsed = new URL(rawConnectionString);
+    const sslMode = String(parsed.searchParams.get('sslmode') || '').toLowerCase();
+    if (['require', 'prefer', 'no-verify'].includes(sslMode)) {
+      parsed.searchParams.delete('sslmode');
+      parsed.searchParams.delete('uselibpqcompat');
+    }
+    return parsed.toString();
+  } catch (_) {
+    return rawConnectionString;
+  }
+}
+
 function getPool() {
   if (pool) return pool;
-  const connectionString = resolveConnectionString();
-  if (!connectionString) {
+  const rawConnectionString = resolveConnectionString();
+  if (!rawConnectionString) {
     throw new Error('DATABASE_URL ontbreekt voor blogdatabase.');
   }
+  const connectionString = normalizeConnectionString(rawConnectionString);
   const isLocal = /localhost|127\.0\.0\.1/.test(connectionString);
   try {
     const parsed = new URL(connectionString);
@@ -54,4 +69,4 @@ async function query(text, params = []) {
   }
 }
 
-module.exports = { getPool, query, connectionMeta: () => connectionMeta };
+module.exports = { getPool, query, connectionMeta: () => connectionMeta, normalizeConnectionString };

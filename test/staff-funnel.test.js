@@ -31,6 +31,14 @@ test('e-bookleads blijven server-side en de tabel heeft RLS zonder publieke gran
   assert.match(store, /REVOKE ALL ON TABLE ebook_leads FROM authenticated/);
 });
 
+test('database-URL laat de expliciete TLS-config gelden zonder verify-full te verzwakken', () => {
+  const { normalizeConnectionString } = require('../api/_lib/db');
+  const relaxed = new URL(normalizeConnectionString('postgres://user:pass@example.com/db?sslmode=require'));
+  const verified = new URL(normalizeConnectionString('postgres://user:pass@example.com/db?sslmode=verify-full'));
+  assert.equal(relaxed.searchParams.has('sslmode'), false);
+  assert.equal(verified.searchParams.get('sslmode'), 'verify-full');
+});
+
 test('Funnel-API weigert een niet-ingelogde aanvraag voordat databronnen worden benaderd', async () => {
   const handler = require('../api/funnel.js');
   const req = { method: 'GET', headers: {} };
