@@ -16,10 +16,21 @@ test('alleen de Academy-pagina laadt de warme Academy-assets', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=3/);
-  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=3/);
+  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=4/);
+  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=4/);
   assert.doesNotMatch(academy, /dashboard-styles\.css|dashboard-script\.js/);
   assert.doesNotMatch(otherHtml, /academy-winter\.css|academy-overview\.js/);
+});
+
+test('Academy houdt de hero-titel op desktop bewust op twee regels', () => {
+  const academy = read('academy.html');
+  const css = read('assets/css/academy-winter.css');
+
+  assert.match(academy, /<h1><span>Een rustige plek om te leren,<\/span><em>op jouw tempo\.<\/em><\/h1>/);
+  assert.match(css, /\.academy-hero h1 > span\s*\{\s*white-space:\s*nowrap;/);
+  assert.match(css, /font-size:\s*clamp\(38px, 3\.65vw, 50px\)/);
+  assert.match(css, /font-size:\s*clamp\(34px, 3\.7vw, 46px\)/);
+  assert.match(css, /@media \(max-width: 680px\)[\s\S]*?\.academy-hero h1 > span\s*\{\s*white-space:\s*normal;/);
 });
 
 test('Academy gebruikt de warme Clean Reset-kleuren en geen koningsblauwe dashboardhero', () => {
@@ -88,6 +99,7 @@ test('Academy zet de websitelink links en verwijdert het Vitalora-merk uit de na
 });
 
 test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
+  const academy = read('academy.html');
   const script = read('assets/js/academy-overview.js');
 
   assert.match(script, /progress:\$\{COURSE_SLUG\}:v\$\{contentVersion\}:\$\{lesson\.id\}:done/);
@@ -98,4 +110,6 @@ test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
   assert.match(script, /next-lesson-title/);
   assert.match(script, /resume-summary/);
   assert.match(script, /Les \$\{lesson\.index\} van \$\{total\}/);
+  assert.match(script, /heroText\.textContent = 'Ga verder'/);
+  assert.match(academy, />Je voortgang wordt automatisch bewaard</);
 });

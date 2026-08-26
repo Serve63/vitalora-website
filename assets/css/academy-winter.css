@@ -212,14 +212,22 @@ html {
   max-width: 690px;
   margin: 12px 0 16px;
   color: #fffaf3;
-  font-size: clamp(38px, 3.65vw, 54px);
+  font-size: clamp(38px, 3.65vw, 50px);
   font-weight: 650;
   letter-spacing: -0.045em;
   line-height: 1.02;
 }
 
+.academy-hero h1 > span,
 .academy-hero h1 em {
   display: block;
+}
+
+.academy-hero h1 > span {
+  white-space: nowrap;
+}
+
+.academy-hero h1 em {
   color: #e4b693;
   font-style: normal;
   font-weight: 500;
@@ -752,7 +760,7 @@ html {
   }
 
   .academy-hero h1 {
-    font-size: clamp(38px, 4.6vw, 50px);
+    font-size: clamp(34px, 3.7vw, 46px);
   }
 
   .academy-featured-course {
@@ -851,6 +859,10 @@ html {
     margin: 10px 0 13px;
     font-size: clamp(34px, 10.5vw, 42px);
     line-height: 1.04;
+  }
+
+  .academy-hero h1 > span {
+    white-space: normal;
   }
 
   .academy-hero-intro {

@@ -30,12 +30,17 @@
     const libraryLink = document.getElementById('clean-reset-library-link');
     const featuredCard = document.querySelector('.academy-featured-course[data-course="clean-reset"]');
 
-    [heroLink, courseLink].forEach((link) => {
-      if (!link) return;
-      link.href = href;
-      const text = link.querySelector('span');
-      if (text) text.textContent = label;
-    });
+    if (heroLink) {
+      heroLink.href = href;
+      const heroText = heroLink.querySelector('span');
+      if (heroText) heroText.textContent = 'Ga verder';
+    }
+
+    if (courseLink) {
+      courseLink.href = href;
+      const courseText = courseLink.querySelector('span');
+      if (courseText) courseText.textContent = label;
+    }
 
     if (featuredCard) {
       featuredCard.dataset.href = href;

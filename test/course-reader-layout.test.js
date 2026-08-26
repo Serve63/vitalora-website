@@ -45,9 +45,24 @@ test('leesvoortgang luistert naar het scrollende cursusdeel', () => {
 test('de cursuspagina gebruikt de nieuwe cacheversies van readerstijl en gedrag', () => {
   const html = read('course-view.html');
   const script = read('assets/js/course-view.js');
-  assert.match(html, /course-reader\.css\?v=20/);
-  assert.match(html, /course-view\.js\?v=15/);
+  assert.match(html, /course-reader\.css\?v=21/);
+  assert.match(html, /course-view\.js\?v=16/);
   assert.match(script, /clean-reset[^\n]*\.json\?v=6|courses\/\$\{encodeURIComponent\(state\.slug\)\}\.json\?v=6/);
+});
+
+test('Clean Reset heeft een toegankelijke en blijvende sfeerlamp', () => {
+  const html = read('course-view.html');
+  const css = read('assets/css/course-reader.css');
+  const script = read('assets/js/course-view.js');
+
+  assert.match(html, /id="ambienceToggle"[\s\S]*aria-label="Zet sfeerlamp aan"[\s\S]*aria-pressed="false"/);
+  assert.match(css, /\.ambience-toggle\s*\{\s*display:\s*none/);
+  assert.match(css, /html\.clean-reset-reader \.ambience-toggle\s*\{[\s\S]*display:\s*grid/);
+  assert.match(css, /html\.clean-reset-reader\.ambience-on \.main::before\s*\{\s*opacity:\s*1/);
+  assert.match(script, /vitalora:clean-reset:ambience/);
+  assert.match(script, /localStorage\.setItem\(storageKey, isOn \? 'on' : 'off'\)/);
+  assert.match(script, /button\.setAttribute\('aria-pressed', String\(isOn\)\)/);
+  assert.match(script, /setupAmbienceToggle\(\);/);
 });
 
 test('alleen Clean Reset krijgt de warme winterse readerlayout', () => {

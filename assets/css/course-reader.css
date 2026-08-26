@@ -94,6 +94,10 @@ button {
   border-bottom: 1px solid var(--sidebar-border);
 }
 
+.ambience-toggle {
+  display: none;
+}
+
 .s-logo {
   display: inline-flex;
   align-items: center;
@@ -876,8 +880,101 @@ html.clean-reset-reader .sidebar {
 }
 
 html.clean-reset-reader .s-brand {
+  position: relative;
   padding: 25px 24px 20px;
   background: rgba(255, 250, 242, 0.018);
+}
+
+html.clean-reset-reader .ambience-toggle {
+  position: absolute;
+  top: 17px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  color: #d8c9b8;
+  background: rgba(255, 250, 242, 0.045);
+  border: 1px solid rgba(255, 248, 236, 0.15);
+  border-radius: 12px;
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
+  cursor: pointer;
+  transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 240ms ease, transform 180ms ease;
+}
+
+html.clean-reset-reader .ambience-toggle:hover {
+  color: #f6dfca;
+  background: rgba(255, 250, 242, 0.09);
+  transform: translateY(-1px);
+}
+
+html.clean-reset-reader .ambience-toggle:focus-visible {
+  outline: 2px solid #f0c7a5;
+  outline-offset: 3px;
+}
+
+html.clean-reset-reader .ambience-lamp {
+  position: relative;
+  display: block;
+  width: 24px;
+  height: 25px;
+}
+
+html.clean-reset-reader .ambience-lamp-shade {
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  width: 20px;
+  height: 11px;
+  background: #c9baa8;
+  clip-path: polygon(24% 0, 76% 0, 100% 100%, 0 100%);
+  transition: background 220ms ease, filter 220ms ease;
+}
+
+html.clean-reset-reader .ambience-lamp-shade::after {
+  content: '';
+  position: absolute;
+  right: 4px;
+  bottom: 0;
+  left: 4px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+html.clean-reset-reader .ambience-lamp-stem {
+  position: absolute;
+  top: 12px;
+  left: 11px;
+  width: 2px;
+  height: 8px;
+  background: currentColor;
+  border-radius: 2px;
+}
+
+html.clean-reset-reader .ambience-lamp-base {
+  position: absolute;
+  bottom: 2px;
+  left: 5px;
+  width: 14px;
+  height: 3px;
+  background: currentColor;
+  border-radius: 50% 50% 2px 2px;
+}
+
+html.clean-reset-reader.ambience-on .ambience-toggle {
+  color: #f5d6a5;
+  background: rgba(223, 157, 91, 0.16);
+  border-color: rgba(239, 194, 141, 0.44);
+  box-shadow:
+    0 0 0 5px rgba(223, 157, 91, 0.07),
+    0 8px 28px rgba(237, 172, 99, 0.26),
+    inset 0 1px rgba(255, 255, 255, 0.12);
+}
+
+html.clean-reset-reader.ambience-on .ambience-lamp-shade {
+  background: #f2bd78;
+  filter: drop-shadow(0 0 5px rgba(255, 193, 107, 0.76));
 }
 
 html.clean-reset-reader .s-logo {
@@ -963,11 +1060,39 @@ html.clean-reset-reader .s-lesson.active .s-dot {
 }
 
 html.clean-reset-reader .main {
+  position: relative;
+  isolation: isolate;
   scrollbar-color: #c8baaa transparent;
   background:
     radial-gradient(circle at 82% 2%, rgba(218, 177, 137, 0.15), transparent 29%),
     linear-gradient(180deg, #f8f3ec 0%, #f3ece3 100%);
   box-shadow: none;
+}
+
+html.clean-reset-reader .main::before {
+  content: '';
+  position: fixed;
+  inset: 0 0 0 var(--sidebar-w);
+  z-index: 15;
+  background:
+    radial-gradient(circle at 4% 10%, rgba(255, 198, 118, 0.28) 0, rgba(243, 171, 94, 0.13) 23%, transparent 52%),
+    linear-gradient(110deg, rgba(255, 226, 184, 0.07), transparent 48%);
+  opacity: 0;
+  pointer-events: none;
+  mix-blend-mode: soft-light;
+  transition: opacity 420ms ease;
+}
+
+html.clean-reset-reader.ambience-on .main::before {
+  opacity: 1;
+}
+
+html.clean-reset-reader.ambience-on .lesson-hero .course-figure img,
+html.clean-reset-reader.ambience-on .course-figure img {
+  box-shadow:
+    0 0 0 5px rgba(255, 250, 243, 0.92),
+    0 25px 60px -26px rgba(143, 78, 37, 0.48),
+    0 0 48px rgba(231, 162, 92, 0.09);
 }
 
 html.clean-reset-reader .main::-webkit-scrollbar {
@@ -1263,6 +1388,13 @@ html.clean-reset-reader .lesson-sources a {
     min-height: 100dvh;
     height: 100vh;
     height: 100dvh;
+  }
+
+  html.clean-reset-reader .main::before {
+    left: 0;
+    background:
+      radial-gradient(circle at 5% 7%, rgba(255, 198, 118, 0.23) 0, rgba(243, 171, 94, 0.1) 25%, transparent 56%),
+      linear-gradient(110deg, rgba(255, 226, 184, 0.05), transparent 52%);
   }
 
   html.clean-reset-reader .main {

@@ -1,0 +1,248 @@
+/* Shared Vitalora winter palette for the explicitly restyled public pages. */
+.page-blog,
+.page-login,
+.page-clean-reset {
+  --warm-moss: #253129;
+  --warm-moss-deep: #1d2722;
+  --warm-moss-soft: #34433a;
+  --warm-ivory: #f4eee6;
+  --warm-paper: #fffaf5;
+  --warm-paper-soft: #f8efe5;
+  --warm-clay: #bf7654;
+  --warm-clay-dark: #8c523d;
+  --warm-clay-light: #e2b596;
+  --warm-ink: #292a25;
+  --warm-body: #625f57;
+  --warm-line: #ddd2c4;
+}
+
+/* Blog: retain the grid and dimensions; change only atmosphere and material. */
+body.page-blog {
+  color: var(--warm-ink);
+  background:
+    radial-gradient(circle at 90% 5%, rgba(191, 118, 84, 0.12), transparent 28%),
+    linear-gradient(145deg, var(--warm-paper-soft), var(--warm-ivory)) !important;
+}
+
+.page-blog .site-header {
+  background: linear-gradient(110deg, var(--warm-moss-deep), var(--warm-moss) 62%, #4a3b2f) !important;
+  box-shadow: 0 10px 30px rgba(29, 39, 34, 0.16);
+}
+
+.page-blog .logo-text,
+.page-blog .header-buttons .login-btn {
+  color: var(--warm-paper) !important;
+}
+
+.page-blog .header-buttons .login-btn {
+  background: rgba(255, 250, 245, 0.04) !important;
+  border-color: rgba(226, 181, 150, 0.72) !important;
+}
+
+.page-blog .blog-header h1 {
+  color: var(--warm-ink);
+}
+
+.page-blog .post-card {
+  background: rgba(255, 250, 245, 0.94);
+  border-color: rgba(140, 82, 61, 0.14);
+  box-shadow: 0 16px 34px -20px rgba(56, 41, 28, 0.38);
+}
+
+.page-blog .post-card:hover {
+  border-color: rgba(191, 118, 84, 0.42);
+  box-shadow: 0 22px 42px -20px rgba(56, 41, 28, 0.48);
+}
+
+.page-blog .post-cover {
+  background: #e9dfd3;
+}
+
+.page-blog .post-cover::after {
+  background: linear-gradient(to bottom, transparent, rgba(37, 49, 41, 0.16));
+}
+
+.page-blog .post-title,
+.page-blog .post-date,
+.page-blog .post-read-time {
+  color: var(--warm-ink);
+}
+
+.page-blog .post-meta {
+  color: var(--warm-body);
+}
+
+.page-blog footer {
+  color: #e7ddd1 !important;
+  background: linear-gradient(135deg, var(--warm-moss-deep), var(--warm-moss)) !important;
+  box-shadow: inset 0 1px rgba(226, 181, 150, 0.14);
+}
+
+.page-blog footer a,
+.page-blog .footer-logo,
+.page-blog footer .brand-email {
+  color: var(--warm-paper) !important;
+}
+
+/* Login: same centered form, now in the Academy atmosphere. */
+body.page-login {
+  color: var(--warm-ink);
+  background:
+    radial-gradient(circle at 20% 12%, rgba(226, 181, 150, 0.24), transparent 24%),
+    radial-gradient(circle at 84% 88%, rgba(191, 118, 84, 0.16), transparent 30%),
+    linear-gradient(145deg, var(--warm-moss-soft), var(--warm-moss-deep)) !important;
+}
+
+.page-login .login-container {
+  background: rgba(255, 250, 245, 0.96);
+  border: 1px solid rgba(226, 181, 150, 0.52);
+  box-shadow:
+    0 0 0 8px rgba(255, 250, 245, 0.05),
+    0 26px 70px rgba(9, 16, 12, 0.38);
+}
+
+.page-login .logo-text {
+  color: var(--warm-moss);
+}
+
+.page-login h1,
+.page-login label {
+  color: var(--warm-ink);
+}
+
+.page-login .subtitle,
+.page-login .back-link {
+  color: var(--warm-body);
+}
+
+.page-login .pin-input {
+  color: var(--warm-ink);
+  background: var(--warm-paper);
+  border-color: var(--warm-line);
+}
+
+.page-login .pin-input:focus,
+.page-login .pin-input.filled {
+  background: #fff8f1;
+  border-color: var(--warm-clay);
+  box-shadow: 0 0 0 3px rgba(191, 118, 84, 0.14);
+}
+
+.page-login .login-btn {
+  color: var(--warm-paper);
+  background: linear-gradient(135deg, #c77d59, var(--warm-clay)) !important;
+  box-shadow: 0 12px 28px rgba(140, 82, 61, 0.24);
+}
+
+.page-login .login-btn:hover {
+  box-shadow: 0 16px 34px rgba(140, 82, 61, 0.32);
+}
+
+.page-login .back-link:hover {
+  color: var(--warm-clay-dark);
+}
+
+/* Clean Reset sales page: preserve every block, switch the visual language. */
+body.page-clean-reset {
+  color: var(--warm-ink);
+  background:
+    radial-gradient(circle at 86% 5%, rgba(191, 118, 84, 0.12), transparent 27%),
+    linear-gradient(145deg, var(--warm-paper-soft), var(--warm-ivory)) !important;
+}
+
+.page-clean-reset .site-header {
+  background: linear-gradient(110deg, var(--warm-moss-deep), var(--warm-moss) 62%, #4a3b2f) !important;
+  box-shadow: 0 10px 30px rgba(29, 39, 34, 0.16);
+}
+
+.page-clean-reset .logo-text {
+  color: var(--warm-paper) !important;
+}
+
+.page-clean-reset .hero-text h1,
+.page-clean-reset .final-cta h2 {
+  color: var(--warm-ink);
+}
+
+.page-clean-reset .highlight,
+.page-clean-reset .rating-display {
+  color: var(--warm-clay-dark);
+}
+
+.page-clean-reset .hero-description,
+.page-clean-reset .feature-item,
+.page-clean-reset .final-cta p,
+.page-clean-reset .profession {
+  color: var(--warm-body);
+}
+
+.page-clean-reset .direct-access {
+  color: var(--warm-paper);
+  background: var(--warm-moss);
+  box-shadow: 0 8px 20px rgba(37, 49, 41, 0.2);
+}
+
+.page-clean-reset .direct-access:hover {
+  background: var(--warm-moss-soft);
+}
+
+.page-clean-reset .checkmark.icon-checkmark {
+  background: var(--warm-clay);
+}
+
+.page-clean-reset .cta-button,
+.page-clean-reset .modal-cta {
+  color: var(--warm-paper) !important;
+  background: linear-gradient(135deg, #c77d59, var(--warm-clay)) !important;
+  box-shadow: 0 12px 28px rgba(140, 82, 61, 0.26) !important;
+}
+
+.page-clean-reset .cta-button:hover,
+.page-clean-reset .modal-cta:hover {
+  background: linear-gradient(135deg, var(--warm-clay), #a86146) !important;
+  box-shadow: 0 16px 34px rgba(140, 82, 61, 0.32) !important;
+}
+
+.page-clean-reset .ebook-cover,
+.page-clean-reset .mobile-book-image img {
+  border-radius: 22px;
+  box-shadow:
+    0 0 0 8px #e3d4c2,
+    0 28px 64px -24px rgba(56, 41, 28, 0.42);
+}
+
+.page-clean-reset .testimonials,
+.page-clean-reset .final-cta {
+  background: transparent;
+}
+
+.page-clean-reset .testimonial-card {
+  background: rgba(255, 250, 245, 0.92);
+  border-color: rgba(140, 82, 61, 0.14);
+  box-shadow: 0 16px 34px -20px rgba(56, 41, 28, 0.36);
+}
+
+.page-clean-reset .quote,
+.page-clean-reset .name {
+  color: var(--warm-ink);
+}
+
+.page-clean-reset .modal-card,
+.page-clean-reset .modal-copy,
+.page-clean-reset .modal-illustration {
+  background: var(--warm-paper-soft);
+}
+
+.page-clean-reset .modal-hero {
+  background: var(--warm-moss-deep);
+}
+
+.page-clean-reset .modal-close {
+  color: var(--warm-clay-dark);
+  background: var(--warm-paper);
+}
+
+.page-clean-reset .modal-form input {
+  background: var(--warm-paper);
+  border-color: var(--warm-line);
+}
