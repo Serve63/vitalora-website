@@ -45,7 +45,7 @@ test('leesvoortgang luistert naar het scrollende cursusdeel', () => {
 test('de cursuspagina gebruikt de nieuwe cacheversies van readerstijl en gedrag', () => {
   const html = read('course-view.html');
   const script = read('assets/js/course-view.js');
-  assert.match(html, /course-reader\.css\?v=19/);
+  assert.match(html, /course-reader\.css\?v=20/);
   assert.match(html, /course-view\.js\?v=15/);
   assert.match(script, /clean-reset[^\n]*\.json\?v=6|courses\/\$\{encodeURIComponent\(state\.slug\)\}\.json\?v=6/);
 });
@@ -61,6 +61,9 @@ test('alleen Clean Reset krijgt de warme winterse readerlayout', () => {
   assert.match(css, /html\.clean-reset-reader \.lesson-head\s*\{[\s\S]*grid-template-columns:/);
   assert.match(css, /html\.clean-reset-reader \.content\s*\{[\s\S]*max-width:\s*740px/);
   assert.match(css, /html\.clean-reset-reader \.lesson-arrival\s*\{[\s\S]*border-radius:\s*18px/);
+  assert.match(css, /@media \(min-width: 761px\)[\s\S]*html\.clean-reset-reader body\s*\{[\s\S]*padding:\s*0/);
+  assert.match(css, /@media \(min-width: 761px\)[\s\S]*html\.clean-reset-reader \.main\s*\{[\s\S]*height:\s*100dvh;[\s\S]*border-radius:\s*0/);
+  assert.match(css, /html\.clean-reset-reader \.main\s*\{[\s\S]*box-shadow:\s*none/);
   assert.match(css, /html\.clean-reset-reader \.sidebar\s*\{[\s\S]*position:\s*fixed[\s\S]*transform:\s*translateX\(-105%\)/);
   assert.match(css, /html\.clean-reset-reader body\.sidebar-open \.sidebar\s*\{[\s\S]*translateX\(0\)/);
   assert.match(css, /html\.clean-reset-reader \.mobile-menu\s*\{[\s\S]*display:\s*grid/);
