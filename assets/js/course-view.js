@@ -242,6 +242,18 @@
       </figure>`;
   }
 
+  function getLessonImages(lesson) {
+    if (Array.isArray(lesson.images)) return lesson.images;
+    return lesson.image ? [lesson.image] : [];
+  }
+
+  function renderLessonImagesAfter(lesson, sectionIndex) {
+    return getLessonImages(lesson)
+      .filter((image) => Number(image?.after_section || 0) === sectionIndex)
+      .map(renderLessonImage)
+      .join('');
+  }
+
   function renderCallout(kind, text) {
     if (!text) return '';
     const labels = { note: 'Praktisch', warning: 'Let op' };
@@ -253,7 +265,6 @@
   }
 
   function renderStructuredLesson(lesson) {
-    const imageAfterSection = Number(lesson.image?.after_section || 0);
     const sections = (lesson.sections || []).map((section, index) => `
       <section class="sec">
         <div class="sec-eyebrow">Stap ${String(index + 1).padStart(2, '0')}</div>
@@ -263,7 +274,7 @@
         ${renderCallout('note', section.note)}
         ${renderCallout('warning', section.warning)}
       </section>
-      ${lesson.image && imageAfterSection === index + 1 ? renderLessonImage(lesson.image) : ''}
+      ${renderLessonImagesAfter(lesson, index + 1)}
     `).join('');
 
     const assignment = lesson.assignment ? `
@@ -301,10 +312,15 @@
       </section>` : '';
 
     return `
+      ${lesson.arrival ? `
+        <aside class="lesson-arrival">
+          <span>Even landen</span>
+          <p>${escapeHTML(lesson.arrival)}</p>
+        </aside>` : ''}
       <div class="lesson-opening">
         ${renderParagraphs(lesson.opening)}
       </div>
-      ${lesson.image && imageAfterSection === 0 ? renderLessonImage(lesson.image) : ''}
+      ${renderLessonImagesAfter(lesson, 0)}
       ${sections}
       ${assignment}
       ${remember}
@@ -472,7 +488,7 @@
     applyTheme(themes[state.slug], state.slug);
 
     try {
-      const response = await fetch(`/data/courses/${encodeURIComponent(state.slug)}.json?v=5`, { credentials: 'same-origin' });
+      const response = await fetch(`/data/courses/${encodeURIComponent(state.slug)}.json?v=6`, { credentials: 'same-origin' });
       if (!response.ok) throw new Error('course-not-found');
       state.course = await response.json();
       state.lessons = (state.course.lessons || []).filter((lesson) => !lesson.draft);

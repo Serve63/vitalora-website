@@ -1,8 +1,8 @@
 {
   "slug": "clean-reset",
-  "content_version": 2,
+  "content_version": 3,
   "title": "Clean Reset — Minder toxische belasting, meer regie",
-  "subtitle": "Een warme, nuchtere 28-daagse leerreis door PFAS, microplastics, bisfenolen en slimme dagelijkse keuzes.",
+  "subtitle": "Een warme, nuchtere winterreis van 28 dagen: kruip lekker weg, ontdek wat echt telt en maak je huis stap voor stap lichter.",
   "level": "Praktisch programma",
   "duration_days": 28,
   "theme": {
@@ -19,10 +19,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Je hoeft niet perfect te leven om verschil te maken. Deze reis helpt je rustig kiezen waar minder blootstelling haalbaar én zinvol is.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-01.jpg",
-        "alt": "Vrouw begint rustig aan haar Clean Reset met een leeg notitieboek aan de keukentafel"
-      },
+      "arrival": "Trek een deken over je heen, zet iets warms binnen handbereik en adem uit. Dit is geen cursus die je opjaagt; dit is jouw rustige plek om nieuwsgierig te worden en opnieuw regie te voelen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-01-a.jpg",
+          "alt": "Vrouw kruipt op een winterse dag met een deken en laptop op de bank om aan haar Clean Reset te beginnen",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-01-b.jpg",
+          "alt": "Stel opent samen de cursus op de bank met warme dranken, een notitieboek en een dikke deken",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Misschien begon je aan deze cursus met een onrustig gevoel. Je leest over PFAS in water, microplastics in bloed en stoffen in verpakkingen waarvan je de naam nauwelijks kunt uitspreken. Dan lijkt het al snel alsof alles fout is. Dat gevoel nemen we serieus, maar we laten het niet de leiding nemen.",
         "Clean Reset is geen sapkuur en geen belofte dat één product je lichaam ‘schoonmaakt’. Je lever, nieren, darmen, longen en huid werken iedere dag voor je. Onze opdracht is eenvoudiger en eerlijker: vermijdbare blootstelling stap voor stap verkleinen, gezonde basisgewoonten ondersteunen en leren omgaan met wat je niet volledig kunt controleren."
@@ -84,10 +93,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Niet een algemene lijst op internet, maar jouw gewone dinsdag vertelt waar de slimste winst te vinden is.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-02.jpg",
-        "alt": "Vrouw brengt dagelijkse blootstellingsmomenten rond eten, drinken en verzorging in kaart"
-      },
+      "arrival": "Zet je mok naast je neer en wandel in gedachten door een gewone dag. Je hoeft vandaag nog niets te veranderen: we gaan alleen ontdekken waar jouw echte kansen verstopt zitten.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-02-a.jpg",
+          "alt": "Stel brengt dagelijkse blootstellingsmomenten met blanco kaartjes in kaart aan de keukentafel",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-02-b.jpg",
+          "alt": "Twee mensen groeperen alledaagse keuzes rond eten, verzorging en huishouden",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Blootstelling klinkt technisch, maar begint met een eenvoudige vraag: wanneer komt een stof bij jou in de buurt? Dat kan via eten en drinken, via de lucht en huisstof, via huidcontact of door werk en hobby’s. De ene route is relevanter dan de andere, afhankelijk van de stof en jouw gewoonten.",
         "Vandaag ga je nog niets oplossen. Je brengt alleen je dag in kaart. Dat voorkomt dat je straks geld en energie steekt in een zeldzaam product terwijl een dagelijkse gewoonte onbesproken blijft."
@@ -148,10 +166,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "‘Aanwezig’ en ‘gevaarlijk’ betekenen niet hetzelfde. Met vijf eenvoudige vragen lees je nieuws en claims veel scherper.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-03.jpg",
-        "alt": "Vrouw beoordeelt gezondheidsinformatie kritisch met een laptop en notitieboek"
-      },
+      "arrival": "Laat de alarmerende koppen even buiten in de kou staan. Binnen bouwen we aan iets veel krachtigers: een helder denkkader waarmee jij rust houdt wanneer anderen paniek verkopen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-03-a.jpg",
+          "alt": "Vrouw beoordeelt gezondheidsinformatie rustig met een laptop en notitieboek in een warme woonkamer",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-03-b.jpg",
+          "alt": "Twee vrouwen bespreken ontspannen gezondheidsinformatie aan de keukentafel",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Wanneer een onderzoek een stof in bloed, moedermelk of drinkwater vindt, is dat belangrijke informatie. Maar het vertelt nog niet automatisch hoeveel gezondheidsschade een individu ondervindt. Daarvoor moeten we weten om welke stof het gaat, hoeveel ervan aanwezig is, hoe die binnenkomt en hoe lang de blootstelling duurt.",
         "Dit onderscheid is geen reden om zorgen weg te wuiven. Het helpt juist om serieuze risico’s serieus te nemen en spectaculaire marketing te herkennen."
@@ -213,10 +240,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Je hoeft niet alles tegelijk aan te pakken. Met een simpele impactladder bouw je een reset die ook na vier weken blijft staan.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-04.jpg",
-        "alt": "Vrouw vergelijkt praktische keukenkeuzes voor haar persoonlijke impactladder"
-      },
+      "arrival": "Vanavond hoef je je huis niet leeg te halen of een perfecte lijst af te werken. Je kiest een paar kleine schakelaars die vaak genoeg terugkomen om echt verschil te maken.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-04-a.jpg",
+          "alt": "Gezin kiest samen enkele praktische herbruikbare oplossingen in een gezellige keuken",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-04-b.jpg",
+          "alt": "Twee mensen bepalen met blanco kaartjes welke kleine veranderingen voorrang krijgen",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "De markt rondom ‘toxinevrij’ verdient aan urgentie. Alles moet nu vervangen, gefilterd of geslikt worden. In werkelijkheid ontstaat duurzame winst meestal uit saaie, herhaalbare keuzes: eten niet onnodig in plastic verhitten, goed ventileren, stof verminderen en verzorging eenvoudig houden.",
         "Vandaag vertaal je je blootstellingskaart naar drie niveaus. Daardoor weet je straks bij ieder nieuw inzicht wat je ermee moet doen."
@@ -276,10 +312,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "PFAS zijn hardnekkig en verdienen beleid én aandacht, maar geen lijst met wondermiddelen die beloven ze thuis even op te ruimen.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-05.jpg",
-        "alt": "Rustige keukenkeuze rond pannen en voedselverpakkingen bij de les over PFAS"
-      },
+      "arrival": "Pak je warme plek erbij; dit is een onderwerp dat groot kan voelen. We maken het klein genoeg om te begrijpen, zonder de ernst weg te poetsen en zonder jou met onmogelijke verantwoordelijkheid op te zadelen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-05-a.jpg",
+          "alt": "Vrouw kookt ontspannen met een roestvrijstalen pan in een warme keuken",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-05-b.jpg",
+          "alt": "Twee volwassenen bekijken samen jassen en textiel bij de les over PFAS-coatings",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "PFAS is de verzamelnaam voor duizenden door mensen gemaakte stoffen met water-, vet- of vuilafstotende eigenschappen. Ze zijn toegepast in onder meer industriële processen, coatings, textiel, blusschuim en sommige voedselcontactmaterialen. De chemische binding die ze nuttig maakt, zorgt er ook voor dat veel PFAS nauwelijks afbreken.",
         "Sommige PFAS kunnen zich ophopen in mens en milieu. Onderzoek koppelt blootstelling aan effecten op onder andere het immuunsysteem en de voortplanting, maar stoffen verschillen en risico hangt af van de daadwerkelijke blootstelling."
@@ -345,10 +390,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Microplastics zijn wijdverspreid. Wat ze op lange termijn precies voor onze gezondheid betekenen, wordt nog volop onderzocht.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-06.jpg",
-        "alt": "Praktische dagelijkse keuzes om onnodig contact met microplastics te verminderen"
-      },
+      "arrival": "Je hoeft vanavond niet ieder stukje plastic in huis te zien als vijand. We volgen rustig waar slijtage ontstaat en kiezen daarna alleen de stappen die in jouw leven logisch voelen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-06-a.jpg",
+          "alt": "Moeder en dochter sorteren samen wasgoed en textiel in een zonnige wasruimte",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-06-b.jpg",
+          "alt": "Vrouw vult een herbruikbare waterfles en maakt een lunch klaar met glazen bakjes",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Microplastics zijn plasticdeeltjes kleiner dan vijf millimeter; nog kleinere deeltjes worden vaak nanoplastics genoemd. Ze ontstaan bewust klein, bijvoorbeeld als grondstof, of door slijtage en afbraak van grotere plastics. Mensen kunnen deeltjes binnenkrijgen via voedsel, water en ingeademde lucht.",
         "Onderzoekers hebben plasticdeeltjes in menselijke monsters aangetoond. Dat maakt goede wetenschap urgent, maar de betekenis voor gezondheid is nog niet volledig duidelijk. Meetmethoden, grootte, vorm en samenstelling verschillen, waardoor spectaculaire cijfers niet altijd rechtstreeks vergelijkbaar zijn."
@@ -413,10 +467,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "BPA is bekend, maar ‘BPA-vrij’ vertelt niet automatisch welk alternatief is gebruikt of hoe je het product moet behandelen.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-07.jpg",
-        "alt": "Consument vergelijkt zorgvuldig herbruikbare producten bij de les over bisfenolen"
-      },
+      "arrival": "Kijk straks eens met frisse ogen naar de spullen die je elke dag gebruikt. Niet om ze te wantrouwen, maar om te zien hoe een paar slimme gewoonten warmte, tijd en materiaal beter laten samenwerken.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-07-a.jpg",
+          "alt": "Gezin verdeelt samen afgekoelde maaltijdrestjes over glazen bewaarbakjes",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-07-b.jpg",
+          "alt": "Vrouw pakt boodschappen uit naast glazen voorraadpotten in haar warme keuken",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Bisfenol A, beter bekend als BPA, is gebruikt bij de productie van bepaalde harde kunststoffen en harslagen in voedselcontactmaterialen. Kleine hoeveelheden kunnen vanuit materiaal naar eten of drinken migreren. Warmte, beschadiging, tijd en het soort voedsel kunnen daarbij relevant zijn.",
         "Vanwege zorgen over gezondheid heeft de Europese Unie het gebruik van BPA in voedselcontactmaterialen verder beperkt en in december 2024 een verbod aangenomen met overgangstermijnen en specifieke uitzonderingen. Dat is geruststellende systeemactie, maar bestaande en geïmporteerde producten vragen nog steeds verstandig gebruik."
@@ -480,10 +543,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "Deze groepen worden vaak in één alarmerende zin genoemd, terwijl hun functies, routes en regels duidelijk van elkaar verschillen.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-08.jpg",
-        "alt": "Eenvoudige verzorgingskeuzes bij de les over ftalaten en parabenen"
-      },
+      "arrival": "Maak het jezelf gemakkelijk en leg de zwarte lijsten even weg. Vandaag leer je etiketten lezen als een rustig mens met een doel, niet als iemand die in ieder woord gevaar moet vinden.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-08-a.jpg",
+          "alt": "Moeder en tienerdochter selecteren samen eenvoudige verzorgingsproducten in de badkamer",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-08-b.jpg",
+          "alt": "Vrouw gebruikt rustig een eenvoudige crème tijdens haar ochtendroutine",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Ftalaten zijn weekmakers: ze maken sommige kunststoffen soepel en kunnen ook in andere toepassingen voorkomen. Parabenen zijn conserveermiddelen die onder meer cosmetica beschermen tegen groei van bacteriën en schimmels. Ze delen dus geen functie, ook al verschijnen ze vaak samen op ‘vrij van’-labels.",
         "Binnen iedere groep bestaan verschillende stoffen. Sommige toepassingen zijn verboden of beperkt; andere zijn onder voorwaarden toegestaan. Een familienaam is daarom geen volledige risicoanalyse."
@@ -544,10 +616,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "De gezondheidswinst van groente en fruit blijft groter dan het geschatte risico van resten. Slim kiezen betekent dus: blijven eten én praktisch verminderen.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-09.jpg",
-        "alt": "Verse groente en fruit worden praktisch voorbereid zonder angst voor pesticiden"
-      },
+      "arrival": "Deze les mag naar een keuken ruiken waar iets lekkers op het vuur staat. We houden plezier en voeding op één, en voegen daar een paar nuchtere gewoonten aan toe.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-09-a.jpg",
+          "alt": "Vader en zoon wassen samen verse groente en fruit onder de kraan",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-09-b.jpg",
+          "alt": "Vrienden bereiden lachend een kleurrijke maaltijd met seizoensgroenten",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Gewasbeschermingsmiddelen helpen ziekten en plagen beheersen. Resten kunnen op of in voedsel achterblijven en daarvoor gelden wettelijke limieten en controles. Dat systeem is niet hetzelfde als nul blootstelling, maar een aangetroffen meetwaarde betekent ook niet automatisch dat een product onveilig is.",
         "Het belangrijkste anker: stop niet met groente en fruit uit angst voor resten. Voedingscentrum benadrukt dat de gezondheidsvoordelen zwaarder wegen dan de huidige ingeschatte risico’s."
@@ -611,10 +692,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "De meest bruikbare keukenregel is niet ‘nooit plastic’, maar: voorkom onnodige hitte, schade en lang contact.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-10.jpg",
-        "alt": "Veilig bewaren en opwarmen met glazen bakjes in een gewone keuken"
-      },
+      "arrival": "Stel je een drukke winteravond voor waarop restjes snel de koelkast in moeten. Juist voor zulke gewone momenten maken we vandaag een systeem dat bijna vanzelf goed gaat.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-10-a.jpg",
+          "alt": "Stel verdeelt een zelfgemaakte maaltijd over glazen bewaarbakjes in de keuken",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-10-b.jpg",
+          "alt": "Vrouw serveert een maaltijd uit een glazen schaal in plaats van verhit plastic",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "In de keuken komen materiaal, warmte, vet, zuur en tijd samen. Daardoor is gebruik vaak belangrijker dan het logo op een bakje. Een intact voedselgeschikt product dat koud wordt gebruikt is een andere situatie dan een verkleurde verpakking waarin dagelijks olieachtig eten wordt opgewarmd.",
         "Je gaat vandaag geen kast leeggooien. Je maakt een heldere scheiding tussen koud bewaren, heet verwerken en versleten materiaal."
@@ -675,10 +765,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Een filter is geen automatisch bewijs van schoner of gezonder water. Begin met lokale feiten, een concreet doel en goed onderhoud.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-11.jpg",
-        "alt": "Bewuste keuze rond kraanwater en een goed onderhouden waterfilter"
-      },
+      "arrival": "Schenk een glas water of thee in en begin bij wat er echt uit jouw kraan komt. Geen glanzende filterbelofte, maar een besluit waar je daarna rustig mee verder kunt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-11-a.jpg",
+          "alt": "Oudere vrouw vult een glazen karaf met kraanwater terwijl haar partner het ontbijt klaarmaakt",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-11-b.jpg",
+          "alt": "Familie en vrienden delen water en thee tijdens een ontspannen brunch",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Nederlands kraanwater wordt streng gecontroleerd. Tegelijk zijn PFAS en andere stoffen onderwerp van normen, monitoring en verbetering. Dat kan twee waarheden tegelijk opleveren: kraanwater is een betrouwbare basis én bronaanpak blijft nodig om ongewenste stoffen verder terug te dringen.",
         "Wie vanuit onrust direct een willekeurig filter koopt, kan geld verspillen of door slecht onderhoud juist de waterkwaliteit verslechteren."
@@ -743,10 +842,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Je winkelwagen hoeft geen laboratorium te worden. Een paar vaste beslisregels geven meer rust dan elk etiket eindeloos uitpluizen.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-12.jpg",
-        "alt": "Rustig en praktisch boodschappen kiezen met verse producten en eenvoudige verpakkingen"
-      },
+      "arrival": "Boodschappen doen mag gewoon onderdeel van een fijn leven blijven. We bouwen een paar warme, praktische standaardkeuzes die ook werken wanneer het buiten donker is en je weinig tijd hebt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-12-a.jpg",
+          "alt": "Vrouw kiest ontspannen verse groente bij een warme buurtwinkel",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-12-b.jpg",
+          "alt": "Stel pakt samen verse boodschappen uit met herbruikbare tassen en glazen voorraadpotten",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "In de supermarkt komen voeding, verpakking, budget en tijd samen. Als je iedere aankoop als veiligheidsproef behandelt, houd je het niet vol. Daarom werk je met defaults: keuzes die meestal goed genoeg zijn en alleen bij een bijzondere situatie extra onderzoek vragen.",
         "Voedingskwaliteit blijft de basis. Een minimaal verpakte snack is niet ineens voedzaam en een verpakte volkorenmaaltijd is niet automatisch een slechte keuze."
@@ -808,10 +916,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Vandaag voeg je alles samen tot een keuken die de verstandige keuze makkelijk maakt, zonder perfecte voorraadkast of koopwoede.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-13.jpg",
-        "alt": "Praktische keukenreset met overzichtelijke voorraad en herbruikbare materialen"
-      },
+      "arrival": "Vandaag kom je uit je leeshoek en geef je één klein deel van je keuken aandacht. Niet voor een perfecte foto, maar voor dat tevreden gevoel wanneer een drukke avond nét soepeler loopt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-13-a.jpg",
+          "alt": "Stel ordent samen een warme voorraadkast met glazen potten en dagelijkse boodschappen",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-13-b.jpg",
+          "alt": "Gezin ruimt spelenderwijs een keukenlade en een deel van het aanrecht op",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Een keukenreset is geen fotoshoot. Het doel is dat jij op een drukke avond automatisch het juiste bakje pakt, tijdens koken ventileert en restjes veilig bewaart. Inrichting wint van wilskracht.",
         "Werk in vier zones: bereiden, verhitten, bewaren en drinken. Per zone maak je één standaard en één vervanglijst."
@@ -872,10 +989,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "Binnenlucht is geen detail: koken, douchen, schoonmaken, kaarsen, sprays en slijtage komen samen in de ruimte waar je veel uren doorbrengt.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-14.jpg",
-        "alt": "Bewoner ventileert de woning en vermindert huisstof met eenvoudige gewoonten"
-      },
+      "arrival": "Juist wanneer ramen vaker dicht blijven en je veel binnen bent, verdient je huis een zacht ademritme. Een paar minuten frisse lucht en een rustig stofritueel doen meer dan een huis dat steriel moet voelen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-14-a.jpg",
+          "alt": "Oudere man opent het raam en neemt een houten oppervlak af met een vochtige doek",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-14-b.jpg",
+          "alt": "Gezin lucht samen beddengoed in een warme slaapkamer met open ramen",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Huisstof is een mengsel van vezels, huidcellen, aarde van buiten, verbrandingsdeeltjes en materiaalresten. Sommige chemische stoffen hechten zich eraan. Vooral jonge kinderen krijgen relatief makkelijk stof binnen via handen en vloercontact.",
         "De oplossing is niet steriel wonen. Het is bronbeperking, ventilatie en een schoonmaakritme dat stof verwijdert in plaats van verplaatst."
@@ -936,10 +1062,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Coatings hebben een functie. De kunst is herkennen wanneer je die functie nodig hebt, hoe je veilig gebruikt en wanneer schade een grens bereikt.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-15.jpg",
-        "alt": "Zorgvuldige keuze en controle van pannen, textiel en coatings in huis"
-      },
+      "arrival": "Denk aan de pan waarin straks eten pruttelt en de jas die bij de deur hangt. We bekijken ze met aandacht, niet met argwaan, zodat je weet wat mag blijven en wat ooit een logische opvolger krijgt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-15-a.jpg",
+          "alt": "Stel kookt samen met een roestvrijstalen pan en gietijzeren pot in een gezellige keuken",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-15-b.jpg",
+          "alt": "Twee volwassenen vergelijken rustig een duurzame pan, natuurlijk textiel en een regenjas",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Anti-aanbakpannen, waterafstotende jassen en vlekwerend textiel maken het leven makkelijker. Sommige toepassingen hebben PFAS gebruikt of gebruiken andere coatings. Een productcategorie vertelt niet altijd welke chemie in jouw specifieke artikel zit.",
         "Daarom beoordeel je functie, informatie, staat en gebruik. Je vervangt niet blind; je stopt ook niet met nadenken omdat een product ooit was toegestaan."
@@ -1000,10 +1135,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Schoon hoeft niet scherp te ruiken. Met weinig, gericht gebruikte middelen bescherm je binnenlucht, huid en materiaal.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-16.jpg",
-        "alt": "Eenvoudig schoonmaken met weinig middelen en een goede ventilatie"
-      },
+      "arrival": "Een schoon huis mag warm blijven ruiken naar hout, thee en avondeten. Vandaag halen we de overdaad uit schoonmaken en houden we alleen over wat echt werkt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-16-a.jpg",
+          "alt": "Lachend stel maakt samen de keuken schoon met herbruikbare doeken en weinig middelen",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-16-b.jpg",
+          "alt": "Bewoner ordent een kleine schoonmaakkast met doeken, borstel en eenvoudige flessen",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Schoonmaakmiddelen hebben een nuttige functie, maar meer product, meer schuim of meer parfum betekent niet automatisch meer hygiëne. Verkeerd mengen kan zelfs gevaarlijke gassen veroorzaken.",
         "Je doel is het juiste middel voor de juiste vervuiling, in de juiste hoeveelheid, met ventilatie en veilige opslag."
@@ -1064,10 +1208,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "Je badkamer wordt overzichtelijker wanneer je begint bij functie, huidreactie en gebruiksoppervlak — niet bij een eindeloze zwarte lijst.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-17.jpg",
-        "alt": "Vrouw vergelijkt twee eenvoudige verzorgingsproducten in een rustige badkamer"
-      },
+      "arrival": "Maak van je badkamer geen chemische speurtocht. We bouwen een rustige routine die prettig voelt op een donkere ochtend en overzicht geeft zonder eindeloos vergelijken.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-17-a.jpg",
+          "alt": "Stel vergelijkt samen enkele eenvoudige verzorgingsproducten in een warme badkamer",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-17-b.jpg",
+          "alt": "Vrouw volgt een rustige ochtendroutine met twee eenvoudige verzorgingsproducten",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Cosmetica in de EU moeten aan regels voldoen en ingrediënten vermelden. Dat betekent niet dat ieder product voor iedere persoon prettig is. Irritatie, allergie, inhalatie van sprays en de hoeveelheid producten die je gebruikt blijven praktisch relevant.",
         "De snelste winst is vaak minder stapelen: minder verschillende geuren, serums, sprays en producten met bijna dezelfde functie."
@@ -1128,10 +1281,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Je lichaam heeft geen ‘detoxknop’, maar een netwerk van organen dat stoffen verwerkt, uitscheidt, opslaat of soms maar langzaam kwijt raakt.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-18.jpg",
-        "alt": "Man schenkt water in bij een normaal ontbijt als beeld van dagelijkse lichaamsbalans"
-      },
+      "arrival": "Ga comfortabel zitten en voel even dat je lichaam al de hele dag voor je werkt. Deze les vervangt strijd en haast door respect voor wat je lijf werkelijk kan — en eerlijkheid over wat niet maakbaar is.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-18-a.jpg",
+          "alt": "Familie deelt lachend een kleurrijk ontbijt met water, fruit en gewone volwaardige voeding",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-18-b.jpg",
+          "alt": "Vrouw wandelt ontspannen met een warme jas en sjaal door een rustige Nederlandse straat in de winter",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Het woord detox doet alsof alle ongewenste stoffen één soort afval zijn. In werkelijkheid gedragen stoffen zich verschillend. Wateroplosbare afbraakproducten kunnen via urine verdwijnen, andere via gal en ontlasting, vluchtige stoffen via uitademing. Sommige persistente stoffen blijven lang aanwezig.",
         "Dat maakt de rol van lever en nieren belangrijk, maar niet magisch. Meer ‘stimuleren’ is niet automatisch beter en een pijnlijke of extreme reactie is geen bewijs dat ontgifting werkt."
@@ -1193,10 +1355,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "Geen detoxmenu, maar een voedingsbasis die energie, darmen en normale orgaanfuncties ondersteunt zonder verbodenlijst.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-19.jpg",
-        "alt": "Volwassene en tiener bereiden samen een gevarieerde maaltijd met groente en peulvruchten"
-      },
+      "arrival": "Denk aan een dampende kom, een volle tafel en eten waar je echt naar uitkijkt. Voeden is hier geen strafprotocol, maar een van de warmste manieren om voor jezelf te zorgen.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-19-a.jpg",
+          "alt": "Meerdere generaties koken samen een kleurrijke maaltijd met groente, peulvruchten en kruiden",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-19-b.jpg",
+          "alt": "Vrienden en familie genieten samen van een warme maaltijd met veel groente",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Je lichaam heeft eiwitten, koolhydraten, vetten, vitaminen, mineralen en vocht nodig voor talloze processen. Een sapkuur levert vaak weinig eiwit, vezels en energie en kan duizeligheid, honger of verlies van spiermassa geven. Dat is geen teken dat ‘gifstoffen loskomen’.",
         "We bouwen daarom met gewone voeding: gevarieerd, voldoende en passend bij jouw medische situatie, cultuur en budget."
@@ -1257,10 +1428,19 @@
       "duration_min": 8,
       "draft": false,
       "lead": "Slaap en beweging zijn krachtige gezondheidsgewoonten. Ze hoeven niet als ‘detoxhack’ vermomd te worden om belangrijk te zijn.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-20.jpg",
-        "alt": "Twee volwassenen maken samen een ontspannen avondwandeling door de wijk"
-      },
+      "arrival": "Buiten wordt het vroeg donker; binnen mag je dag zacht afbouwen. Vandaag kiezen we beweging die energie geeft en een avondritueel waar je lichaam werkelijk iets aan heeft.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-20-a.jpg",
+          "alt": "Stel maakt pratend een ontspannen winterwandeling langs warm verlichte huizen in een Nederlandse wijk",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-20-b.jpg",
+          "alt": "Volwassene leest rustig bij een zachte lamp als onderdeel van een warme avondroutine",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Regelmatig bewegen ondersteunt hart, spieren, stofwisseling, stemming en slaap. Slaap ondersteunt herstel, geheugen en immuunfunctie. Dat zijn grote voordelen — maar niet hetzelfde als bewezen versnelde verwijdering van iedere chemische stof.",
         "Zweten is vooral temperatuurregeling. Sauna of sport kan prettig zijn voor geschikte mensen, maar zweetvolume is geen score voor hoeveel ‘toxines’ je kwijt bent."
@@ -1321,10 +1501,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Een supplement kan een vastgesteld tekort of specifieke behoefte behandelen. Dat is iets anders dan een potje dat een onmeetbare ‘detox’ belooft.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-21.jpg",
-        "alt": "Vrouw overweegt zorgvuldig een supplement naast voeding en betrouwbare informatie"
-      },
+      "arrival": "Zet de potjes en grote beloften even in het volle licht. Je hoeft niets te kopen om goed bezig te zijn; je leert precies wanneer een supplement een reden heeft en wanneer vooral de marketing profiteert.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-21-a.jpg",
+          "alt": "Oudere volwassene beoordeelt rustig een supplement naast normale voeding en een notitieboek",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-21-b.jpg",
+          "alt": "Volwassene voert een warm en nuchter gesprek met een deskundige aan een houten tafel",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Supplementen worden vaak verkocht met woorden als liver support, binder, cleanse of heavy metal detox. De claim klinkt biologisch plausibel, maar zonder onderzoek bij mensen weten we niet of het gewenste effect optreedt, welke dosis werkt en welke schade mogelijk is.",
         "Ook ‘natuurlijk’ werkzame stoffen kunnen bijwerkingen geven, met medicatie botsen of lever en nieren belasten. De productkwaliteit en werkelijke inhoud kunnen bovendien variëren."
@@ -1387,10 +1576,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Kennis wordt pas waardevol als ze zichtbaar wordt in je agenda, keuken en boodschappenlijst. Dit is jouw korte uitvoerfase.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-22.jpg",
-        "alt": "Man zet haalbare acties voor zijn veertiendaagse reset in een papieren agenda"
-      },
+      "arrival": "Je hebt genoeg gelezen; nu begint het deel dat van jou wordt. Pak je notitieboek, kies wat haalbaar voelt en maak van de komende veertien dagen een vriendelijk experiment.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-22-a.jpg",
+          "alt": "Volwassene plant rustig een veertiendaagse reset met een blanco kalender en kaartjes",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-22-b.jpg",
+          "alt": "Bewoner legt wandelschoenen, waterfles, boodschappen en notitieboek klaar voor de ochtend",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Je hebt nu genoeg geleerd om te handelen zonder alles tegelijk te veranderen. De komende veertien dagen test je een persoonlijke set van maximaal zes gewoonten. Niet om perfect te scoren, maar om te ontdekken wat in jouw leven blijft werken.",
         "Kies gedrag dat herhaalbaar en observeerbaar is. ‘Minder toxisch leven’ kun je niet afvinken; ‘eten voor opwarmen op een bord leggen’ wel."
@@ -1452,10 +1650,19 @@
       "duration_min": 9,
       "draft": false,
       "lead": "Een huishouden verandert niet door gelijk krijgen, maar door keuzes makkelijker, betaalbaar en gezamenlijk te maken.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-23.jpg",
-        "alt": "Gezin ruimt samen de maaltijd op in herbruikbare glazen bewaarbakjes"
-      },
+      "arrival": "Een warm huis bouw je samen, ook als niet iedereen dezelfde cursus volgt. Vandaag vertaal je jouw inzichten naar kleine afspraken waar niemand moedeloos of defensief van wordt.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-23-a.jpg",
+          "alt": "Gezin bereidt samen maaltijden en verdeelt porties over glazen bewaarbakjes",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-23-b.jpg",
+          "alt": "Stel verdeelt lachend eenvoudige huishoudelijke acties met blanco kaartjes",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Misschien woon je met iemand die deze cursus niet volgt, kinderen die hun eigen voorkeuren hebben of huisgenoten die verandering overdreven vinden. Dan is méér informatie geven zelden de eerste oplossing. Begin met een concreet probleem en een simpele routine die niemand veel kost.",
         "Je hoeft niet namens iedereen angst te dragen. Je kunt wel de omgeving zo inrichten dat een goede keuze weinig uitleg nodig heeft."
@@ -1516,10 +1723,19 @@
       "duration_min": 10,
       "draft": false,
       "lead": "Je eindigt niet met een schoner imago, maar met een scherper kompas: weten wat telt, wat onzeker is en welke keuzes bij jou blijven.",
-      "image": {
-        "src": "/assets/images/courses/clean-reset/lesson-24.jpg",
-        "alt": "Vrouw hangt drie eenvoudige gewoontes aan een prikbord als haar nieuwe standaard"
-      },
+      "arrival": "Maak het nog één keer echt comfortabel en kijk terug op de weg die je hebt afgelegd. Je hoeft niets groots te bewijzen: je gaat weg met een helder kompas en een thuis dat beter bij jouw waarden past.",
+      "images": [
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-24-a.jpg",
+          "alt": "Vrienden en familie vieren nieuwe dagelijkse gewoonten met een gezellige gezamenlijke maaltijd",
+          "after_section": 0
+        },
+        {
+          "src": "/assets/images/courses/clean-reset-v2/lesson-24-b.jpg",
+          "alt": "Vrouw opent op een winterochtend de gordijnen naast een warme ontbijttafel",
+          "after_section": 2
+        }
+      ],
       "opening": [
         "Vier weken geleden voelde het onderwerp misschien groot en ongrijpbaar. Nu kun je onderscheid maken tussen aanwezigheid en risico, tussen bronaanpak en marketing, tussen nuttige voorzorg en dure schijnzekerheid. Dat is echte winst: je bent minder makkelijk bang te maken én minder makkelijk iets wijs te maken.",
         "Je huis hoeft niet toxinevrij te zijn — die belofte kan niemand eerlijk doen. Je kunt wel een omgeving bouwen met minder onnodige blootstelling en meer rust."

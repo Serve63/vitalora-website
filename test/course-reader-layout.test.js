@@ -44,6 +44,8 @@ test('leesvoortgang luistert naar het scrollende cursusdeel', () => {
 
 test('de cursuspagina gebruikt de nieuwe cacheversies van readerstijl en gedrag', () => {
   const html = read('course-view.html');
-  assert.match(html, /course-reader\.css\?v=15/);
-  assert.match(html, /course-view\.js\?v=11/);
+  const script = read('assets/js/course-view.js');
+  assert.match(html, /course-reader\.css\?v=17/);
+  assert.match(html, /course-view\.js\?v=13/);
+  assert.match(script, /clean-reset[^\n]*\.json\?v=6|courses\/\$\{encodeURIComponent\(state\.slug\)\}\.json\?v=6/);
 });
