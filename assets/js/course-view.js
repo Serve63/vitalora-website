@@ -404,6 +404,20 @@
     updateSidebarActive();
     updateDocumentTitle();
     renderLesson();
+    if (window.matchMedia('(min-width: 761px)').matches) $('#main').scrollTop = 0;
+    else window.scrollTo(0, 0);
+    updateReadingProgress();
+  }
+
+  function updateReadingProgress() {
+    const reader = $('#main');
+    const desktop = window.matchMedia('(min-width: 761px)').matches;
+    const scrollTop = desktop ? reader.scrollTop : window.scrollY;
+    const scrollHeight = desktop ? reader.scrollHeight : document.documentElement.scrollHeight;
+    const viewportHeight = desktop ? reader.clientHeight : window.innerHeight;
+    const max = scrollHeight - viewportHeight;
+    const percentage = max > 0 ? Math.min(100, (scrollTop / max) * 100) : 0;
+    $('#rFill').style.width = `${percentage}%`;
   }
 
   function showError(message) {
@@ -438,11 +452,9 @@
       }
     });
 
-    window.addEventListener('scroll', () => {
-      const max = document.documentElement.scrollHeight - window.innerHeight;
-      const percentage = max > 0 ? Math.min(100, (window.scrollY / max) * 100) : 0;
-      $('#rFill').style.width = `${percentage}%`;
-    }, { passive: true });
+    $('#main').addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('scroll', updateReadingProgress, { passive: true });
+    window.addEventListener('resize', updateReadingProgress, { passive: true });
     window.addEventListener('popstate', () => {
       const locationState = getLocationState();
       if (locationState.slug !== state.slug) {
@@ -472,6 +484,7 @@
       normalizeUrl(state.slug, state.current);
       applyTheme(state.course.theme, state.slug);
       renderPage();
+      updateReadingProgress();
     } catch (error) {
       showError('Controleer de URL of probeer het later opnieuw.');
     }

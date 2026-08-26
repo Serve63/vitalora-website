@@ -42,8 +42,10 @@ body {
   display: flex;
   min-width: 320px;
   min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   margin: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   color: var(--ink);
   background: var(--content-bg);
   font-family: "Vitalora Quicksand", "Quicksand", system-ui, sans-serif;
@@ -70,11 +72,20 @@ button {
   flex-direction: column;
   width: var(--sidebar-w);
   min-height: 100vh;
-  height: auto;
-  overflow: visible;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
   color: var(--sidebar-text);
   background: var(--sidebar-bg);
   border-right: 1px solid var(--sidebar-border);
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 .s-brand {
@@ -238,7 +249,12 @@ button {
   flex: 1;
   flex-direction: column;
   min-width: 0;
-  min-height: 100vh;
+  min-height: 0;
+  height: 100vh;
+  height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
   background: var(--content-bg);
 }
 
@@ -782,12 +798,26 @@ h1.title {
 @media (max-width: 760px) {
   body {
     display: block;
+    height: auto;
+    overflow: visible;
   }
 
   .sidebar {
+    position: relative;
+    top: auto;
     width: 100%;
     min-height: 0;
+    height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
     box-shadow: none;
+  }
+
+  .main {
+    min-height: 100vh;
+    height: auto;
+    overflow: visible;
+    overscroll-behavior: auto;
   }
 
   .mobile-menu {
