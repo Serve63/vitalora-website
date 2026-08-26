@@ -34,11 +34,17 @@ test('elke Clean Reset-les heeft twee unieke warme cursusbeelden', () => {
 
 test('de cursusrenderer ondersteunt meerdere beelden en behoudt het oude formaat', () => {
   const script = fs.readFileSync(path.join(root, 'assets/js/course-view.js'), 'utf8');
+  const html = fs.readFileSync(path.join(root, 'course-view.html'), 'utf8');
 
   assert.match(script, /Array\.isArray\(lesson\.images\)/);
   assert.match(script, /return lesson\.image \? \[lesson\.image\] : \[\]/);
+  assert.match(script, /function getLessonHeroImage\(lesson\)/);
+  assert.match(script, /state\.slug !== 'clean-reset'/);
+  assert.match(script, /renderLessonImage\(heroImage, \{ eager: true \}\)/);
+  assert.match(script, /fetchpriority="high"/);
   assert.match(script, /renderLessonImagesAfter\(lesson, index \+ 1\)/);
   assert.match(script, /renderLessonImagesAfter\(lesson, 0\)/);
   assert.match(script, /lesson\.arrival/);
   assert.match(script, /lesson-arrival/);
+  assert.match(html, /id="lessonHero"/);
 });

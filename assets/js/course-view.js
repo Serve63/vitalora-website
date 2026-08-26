@@ -16,7 +16,7 @@
   );
 
   const themes = {
-    'clean-reset': { a: '#3a9aea', b: '#2563eb', brand: '#3a9aea' },
+    'clean-reset': { a: '#bf7654', b: '#7a4b3a', brand: '#bf7654' },
     'powerfoods-superfood-specerij': { a: '#ef4444', b: '#dc2626', brand: '#ef4444' },
     'de-juiste-balans': { a: '#f59e0b', b: '#d97706', brand: '#f59e0b' },
     '30-dagen-challenge': { a: '#f59e0b', b: '#d97706', brand: '#f59e0b' },
@@ -233,11 +233,11 @@
     return `<${tag} class="${ordered ? 'step-list' : 'flist'}">${items.map((item) => `<li>${escapeHTML(item)}</li>`).join('')}</${tag}>`;
   }
 
-  function renderLessonImage(image) {
+  function renderLessonImage(image, { eager = false } = {}) {
     if (!image || !String(image.src || '').startsWith('/assets/')) return '';
     return `
       <figure class="course-figure">
-        <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt || '')}" loading="lazy" decoding="async">
+        <img src="${escapeHTML(image.src)}" alt="${escapeHTML(image.alt || '')}" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''} decoding="async">
         ${image.caption ? `<figcaption>${escapeHTML(image.caption)}</figcaption>` : ''}
       </figure>`;
   }
@@ -247,9 +247,15 @@
     return lesson.image ? [lesson.image] : [];
   }
 
+  function getLessonHeroImage(lesson) {
+    if (state.slug !== 'clean-reset') return null;
+    return getLessonImages(lesson).find((image) => Number(image?.after_section || 0) === 0) || null;
+  }
+
   function renderLessonImagesAfter(lesson, sectionIndex) {
+    const heroImage = getLessonHeroImage(lesson);
     return getLessonImages(lesson)
-      .filter((image) => Number(image?.after_section || 0) === sectionIndex)
+      .filter((image) => image !== heroImage && Number(image?.after_section || 0) === sectionIndex)
       .map(renderLessonImage)
       .join('');
   }
@@ -383,6 +389,8 @@
     $('#lessonDuration').innerHTML = `${clockIcon()} ${view.duration_min || 10} minuten`;
     $('#lessonTitle').textContent = shortTitle(view.title);
     $('#lessonLead').textContent = content.lead;
+    const heroImage = getLessonHeroImage(view);
+    $('#lessonHero').innerHTML = heroImage ? renderLessonImage(heroImage, { eager: true }) : '';
     $('#lessonTags').innerHTML = `
       <span class="tag tag-o">${escapeHTML(view.type || state.course.level || 'Theorie')}</span>
       <span class="tag tag-o">Hoofdstuk ${chapter}</span>`;
@@ -452,6 +460,10 @@
       if (!requested) return;
       event.preventDefault();
       if (requested.index !== state.current.index) showLesson(requested, { push: true });
+      if (window.matchMedia('(max-width: 760px)').matches) {
+        document.body.classList.remove('sidebar-open');
+        menu?.setAttribute('aria-expanded', 'false');
+      }
     });
     menu?.addEventListener('click', () => {
       const open = document.body.classList.toggle('sidebar-open');
