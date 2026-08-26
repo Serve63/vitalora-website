@@ -19,9 +19,15 @@
     return `/detox-cursus?lesson=${encodeURIComponent(lessonIndex)}`;
   }
 
+  function setText(id, value) {
+    const element = document.getElementById(id);
+    if (element) element.textContent = value;
+  }
+
   function setCourseLinks(href, label) {
     const heroLink = document.getElementById('hero-course-link');
     const courseLink = document.getElementById('clean-reset-course-link');
+    const libraryLink = document.getElementById('clean-reset-library-link');
     const featuredCard = document.querySelector('.academy-featured-course[data-course="clean-reset"]');
 
     [heroLink, courseLink].forEach((link) => {
@@ -33,6 +39,38 @@
 
     if (featuredCard) {
       featuredCard.dataset.href = href;
+    }
+
+    if (libraryLink) {
+      libraryLink.href = href;
+    }
+  }
+
+  function updateResumeCard(lesson, completedCount, total) {
+    const courseComplete = completedCount === total;
+
+    if (courseComplete) {
+      setText('next-lesson-status', 'Cursus afgerond');
+      setText('next-lesson-title', 'Je hebt Clean Reset afgerond');
+      setText('next-lesson-description', 'Mooi werk. Je kunt nu rustig terugkijken, een favoriete les herhalen of je persoonlijke resetplan erbij pakken.');
+      setText('next-lesson-position', `${total} van ${total} lessen`);
+      setText('next-lesson-duration', 'Kies je favoriet');
+      setText('resume-summary', 'Je hebt de hele reis afgerond. Alles blijft voor je open om opnieuw te bekijken.');
+      return;
+    }
+
+    if (!lesson) return;
+
+    setText('next-lesson-status', 'Volgende les');
+    setText('next-lesson-title', `Les ${lesson.index} · ${lesson.title}`);
+    setText('next-lesson-description', lesson.lead || 'Je volgende les staat rustig voor je klaar.');
+    setText('next-lesson-position', `Les ${lesson.index} van ${total}`);
+    setText('next-lesson-duration', `${lesson.duration_min || 10} minuten`);
+
+    if (completedCount === 0) {
+      setText('resume-summary', 'Je staat aan het begin. Les 1 ligt warm voor je klaar wanneer jij wilt starten.');
+    } else {
+      setText('resume-summary', `Je hebt ${completedCount} van ${total} lessen afgerond. Les ${lesson.index} ligt als volgende voor je klaar.`);
     }
   }
 
@@ -82,8 +120,10 @@
       } else if (completedCount > 0 && nextLesson) {
         setCourseLinks(lessonHref(nextLesson.index), `Ga verder met les ${nextLesson.index}`);
       } else {
-        setCourseLinks(lessonHref(1), 'Begin met Clean Reset');
+        setCourseLinks(lessonHref(1), 'Begin met les 1');
       }
+
+      updateResumeCard(nextLesson, completedCount, total);
     } catch (error) {
       // De Academy blijft bruikbaar als opslag of cursusdata tijdelijk niet beschikbaar is.
     }

@@ -16,8 +16,8 @@ test('alleen de Academy-pagina laadt de warme Academy-assets', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=2/);
-  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=2/);
+  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=3/);
+  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=3/);
   assert.doesNotMatch(academy, /dashboard-styles\.css|dashboard-script\.js/);
   assert.doesNotMatch(otherHtml, /academy-winter\.css|academy-overview\.js/);
 });
@@ -32,6 +32,8 @@ test('Academy gebruikt de warme Clean Reset-kleuren en geen koningsblauwe dashbo
   assert.doesNotMatch(css, /#2954b4|#2954b3|#3a9aea/i);
   assert.match(css, /@media \(max-width: 680px\)/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
+  assert.match(css, /height:\s*clamp\(360px, 32vw, 450px\)/);
+  assert.doesNotMatch(css, /height:\s*min\(80vh, 900px\)/);
 });
 
 test('alle zeven Image 2-beelden zijn gekoppeld, geoptimaliseerd en uniek', () => {
@@ -40,10 +42,10 @@ test('alle zeven Image 2-beelden zijn gekoppeld, geoptimaliseerd en uniek', () =
     'hero-winter.jpg',
     'course-clean-reset.jpg',
     'course-powerfoods.jpg',
-    'course-balance.jpg',
-    'course-30-days.jpg',
+    'course-balance-v2.jpg',
+    'course-30-days-v2.jpg',
     'course-nutrition.jpg',
-    'course-mindful.jpg',
+    'course-mindful-v2.jpg',
   ];
   const hashes = new Set();
 
@@ -62,16 +64,27 @@ test('alle zeven Image 2-beelden zijn gekoppeld, geoptimaliseerd en uniek', () =
   assert.equal(hashes.size, imageNames.length, 'Ieder Academy-beeld moet uniek zijn');
 });
 
-test('Academy bewaart de toegangspoort en toont afgesloten cursussen eerlijk', () => {
+test('Academy bewaart de toegangspoort en toont zes beschikbare cursussen', () => {
   const academy = read('academy.html');
 
   assert.match(academy, /location\.hostname === '127\.0\.0\.1'/);
   assert.match(academy, /!isLocalPreview && sessionStorage\.getItem/);
   assert.match(academy, /sessionStorage\.getItem\('academySession'\) !== 'ok'/);
   assert.match(academy, /window\.location\.replace\('\/login'\)/);
-  assert.equal((academy.match(/aria-disabled="true"/g) || []).length, 5);
-  assert.equal((academy.match(/Binnenkort/g) || []).length, 5);
+  assert.equal((academy.match(/aria-disabled="true"/g) || []).length, 0);
+  assert.equal((academy.match(/Binnenkort/g) || []).length, 0);
+  assert.equal((academy.match(/>Beschikbaar</g) || []).length, 6);
+  assert.equal((academy.match(/<(?:a|article) class="academy-course-card/g) || []).length, 6);
   assert.match(academy, /href="\/detox-cursus\?lesson=1"/);
+});
+
+test('Academy zet de websitelink links en verwijdert het Vitalora-merk uit de navigatie', () => {
+  const academy = read('academy.html');
+  const nav = academy.match(/<nav class="academy-nav"[\s\S]*?<\/nav>/)?.[0] || '';
+
+  assert.match(nav, /class="academy-home-link"[\s\S]*Terug naar website/);
+  assert.doesNotMatch(nav, /academy-brand|>Vitalora</);
+  assert.ok(nav.indexOf('academy-home-link') < nav.indexOf('academy-nav-label'));
 });
 
 test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
@@ -82,4 +95,7 @@ test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
   assert.match(script, /lessons\.find\(\(lesson\) => !isLessonComplete/);
   assert.match(script, /progressTrack\.setAttribute\('aria-valuenow'/);
   assert.match(script, /Ga verder met les \$\{nextLesson\.index\}/);
+  assert.match(script, /next-lesson-title/);
+  assert.match(script, /resume-summary/);
+  assert.match(script, /Les \$\{lesson\.index\} van \$\{total\}/);
 });
