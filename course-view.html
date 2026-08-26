@@ -30,8 +30,12 @@
       };
       if (!slug) slug = pathSlug[window.location.pathname.replace(/^\/+|\/+$/g, '').split('/')[0]];
 
+      if (slug === 'clean-reset') {
+        document.documentElement.classList.add('clean-reset-reader');
+      }
+
       var themes = {
-        'clean-reset': ['#3a9aea', '#2563eb'],
+        'clean-reset': ['#bf7654', '#7a4b3a'],
         'powerfoods-superfood-specerij': ['#ef4444', '#dc2626'],
         'de-juiste-balans': ['#f59e0b', '#d97706'],
         '30-dagen-challenge': ['#f59e0b', '#d97706'],
@@ -47,7 +51,7 @@
   </script>
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
-  <link rel="stylesheet" href="/assets/css/course-reader.css?v=17">
+  <link rel="stylesheet" href="/assets/css/course-reader.css?v=19">
 </head>
 <body>
   <aside class="sidebar" aria-label="Cursusnavigatie">
@@ -92,13 +96,16 @@
 
     <div class="wrap">
       <div class="lesson-head">
-        <div class="lesson-meta">
-          <div class="lesson-num-label" id="lessonNumber">Les 01 van 0</div>
-          <span class="tag tag-o lesson-duration" id="lessonDuration" aria-label="Leestijd"></span>
-          <div class="tags" id="lessonTags"></div>
+        <div class="lesson-head-copy">
+          <div class="lesson-meta">
+            <div class="lesson-num-label" id="lessonNumber">Les 01 van 0</div>
+            <span class="tag tag-o lesson-duration" id="lessonDuration" aria-label="Leestijd"></span>
+            <div class="tags" id="lessonTags"></div>
+          </div>
+          <h1 class="title" id="lessonTitle">Les laden...</h1>
+          <p class="lesson-lead" id="lessonLead">Even geduld, de les wordt geladen.</p>
         </div>
-        <h1 class="title" id="lessonTitle">Les laden...</h1>
-        <p class="lesson-lead" id="lessonLead">Even geduld, de les wordt geladen.</p>
+        <div class="lesson-hero" id="lessonHero"></div>
       </div>
 
       <article class="content" id="lessonContent" aria-live="polite">
@@ -107,6 +114,6 @@
     </div>
   </main>
 
-  <script src="/assets/js/course-view.js?v=13" defer></script>
+  <script src="/assets/js/course-view.js?v=15" defer></script>
 </body>
 </html>
