@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Jouw persoonlijke Vitalora Academy: warme, praktische cursussen die je in je eigen tempo volgt.">
   <title>Mijn Academy | Vitalora</title>
-  <link rel="stylesheet" href="/assets/css/academy-winter.css?v=2">
+  <link rel="stylesheet" href="/assets/css/academy-winter.css?v=3">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <script>
@@ -20,7 +20,7 @@
       }
     }());
   </script>
-  <script defer src="/assets/js/academy-overview.js?v=2"></script>
+  <script defer src="/assets/js/academy-overview.js?v=3"></script>
 </head>
 <body class="page-academy">
   <a class="academy-skip-link" href="#academy-courses">Ga naar de cursussen</a>
@@ -29,19 +29,14 @@
     <header class="academy-hero">
       <div class="academy-container">
         <nav class="academy-nav" aria-label="Academy navigatie">
-          <a class="academy-brand" href="/" aria-label="Terug naar Vitalora">
+          <a class="academy-home-link" href="/">
             <svg aria-hidden="true" viewBox="0 0 24 24">
               <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <span>Vitalora</span>
+            <span>Terug naar website</span>
           </a>
           <span class="academy-nav-label">Mijn Academy</span>
-          <a class="academy-home-link" href="/">
-            <span>Terug naar website</span>
-            <svg aria-hidden="true" viewBox="0 0 24 24">
-              <path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </a>
+          <span class="academy-nav-spacer" aria-hidden="true"></span>
         </nav>
 
         <div class="academy-hero-grid">
@@ -91,25 +86,25 @@
         <div class="academy-container">
           <div class="academy-section-heading">
             <div>
-              <p class="academy-eyebrow">Jouw cursus</p>
-              <h2 id="current-course-title">Waar wil je vandaag in duiken?</h2>
+              <p class="academy-eyebrow">Jouw voortgang</p>
+              <h2 id="current-course-title">Ga verder waar je gebleven was</h2>
             </div>
-            <p>Clean Reset staat voor je open. Pak de draad op waar het voor jou goed voelt.</p>
+            <p id="resume-summary">Je voortgang wordt voor je bewaard. Open de volgende les of kijk rustig terug.</p>
           </div>
 
           <article class="academy-featured-course" data-course="clean-reset" data-href="/detox-cursus?lesson=1">
             <div class="academy-featured-media">
               <img src="/assets/images/academy/course-clean-reset.jpg" alt="Vrouw maakt in een warme winterkeuken een praktische keuze voor glazen voorraadpotten" width="1200" height="750">
-              <span class="academy-status academy-status--available">Nu beschikbaar</span>
+              <span class="academy-status academy-status--available" id="next-lesson-status">Volgende les</span>
             </div>
             <div class="academy-featured-content">
-              <p class="academy-course-kicker">Clean Reset</p>
-              <h3>Minder blootstelling, meer rustige regie</h3>
-              <p>Een warme, nuchtere reis langs PFAS, microplastics, BPA en andere stoffen. Je ontdekt wat ertoe doet, wat je gerust kunt loslaten en welke kleine keuzes thuis echt haalbaar zijn.</p>
+              <p class="academy-course-kicker">Clean Reset · jouw volgende stap</p>
+              <h3 id="next-lesson-title">Les 1 · Welkom: jouw reset begint hier</h3>
+              <p id="next-lesson-description">Je hoeft niet perfect te leven om verschil te maken. Deze reis helpt je rustig kiezen waar minder blootstelling haalbaar én zinvol is.</p>
 
               <div class="academy-course-meta" aria-label="Cursusdetails">
-                <span>24 lessen</span>
-                <span>8–12 min per les</span>
+                <span id="next-lesson-position">Les 1 van 24</span>
+                <span id="next-lesson-duration">8 minuten</span>
                 <span>In je eigen tempo</span>
               </div>
 
@@ -134,24 +129,33 @@
         </div>
       </section>
 
-      <section class="academy-section academy-section--upcoming" aria-labelledby="upcoming-courses-title">
+      <section class="academy-section academy-section--library" aria-labelledby="academy-library-title">
         <div class="academy-container">
-          <div class="academy-section-heading academy-section-heading--upcoming">
+          <div class="academy-section-heading academy-section-heading--library">
             <div>
-              <p class="academy-eyebrow">In ontwikkeling</p>
-              <h2 id="upcoming-courses-title">Later ook in jouw Academy</h2>
+              <p class="academy-eyebrow">Jouw Academy</p>
+              <h2 id="academy-library-title">Zes cursussen om uit te kiezen</h2>
             </div>
-            <p>Geen half werk: iedere cursus opent pas als hij net zo rijk, warm en bruikbaar voelt als Clean Reset.</p>
+            <p>Van voeding en hormonen tot gewoontes en innerlijke rust: kies de cursus die vandaag bij jou past.</p>
           </div>
 
           <div class="academy-course-grid">
-            <article class="academy-course-card" aria-disabled="true">
+            <a class="academy-course-card academy-course-card--active" id="clean-reset-library-link" href="/detox-cursus?lesson=1">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-clean-reset.jpg" alt="Vrouw maakt in een warme winterkeuken een praktische keuze voor glazen voorraadpotten" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--included">Beschikbaar</span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Detox & gifstoffen</p>
+                <h3>Clean Reset</h3>
+                <p>Minder blootstelling, meer rustige regie rond PFAS, microplastics, BPA en andere stoffen.</p>
+              </div>
+            </a>
+
+            <article class="academy-course-card">
               <div class="academy-card-media">
                 <img src="/assets/images/academy/course-powerfoods.jpg" alt="Warme kruidenthee met vlierbessen, citrus, kaneel en gember" width="1200" height="750" loading="lazy">
-                <span class="academy-status academy-status--soon">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Binnenkort
-                </span>
+                <span class="academy-status academy-status--included">Beschikbaar</span>
               </div>
               <div class="academy-card-content">
                 <p class="academy-course-kicker">Voeding & specerijen</p>
@@ -160,13 +164,10 @@
               </div>
             </article>
 
-            <article class="academy-course-card" aria-disabled="true">
+            <article class="academy-course-card">
               <div class="academy-card-media">
-                <img src="/assets/images/academy/course-balance.jpg" alt="Vrouw neemt met een notitieboek en warme mok rustig een moment voor zichzelf" width="1200" height="750" loading="lazy">
-                <span class="academy-status academy-status--soon">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Binnenkort
-                </span>
+                <img src="/assets/images/academy/course-balance-v2.jpg" alt="Vrouw brengt haar maandelijkse cyclus en energieritme in kaart aan een warme wintertafel" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--included">Beschikbaar</span>
               </div>
               <div class="academy-card-content">
                 <p class="academy-course-kicker">Energie & hormonen</p>
@@ -175,13 +176,10 @@
               </div>
             </article>
 
-            <article class="academy-course-card" aria-disabled="true">
+            <article class="academy-course-card">
               <div class="academy-card-media">
-                <img src="/assets/images/academy/course-30-days.jpg" alt="Vrouw trekt in een warme hal haar wandelschoenen aan voor een winterse wandeling" width="1200" height="750" loading="lazy">
-                <span class="academy-status academy-status--soon">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Binnenkort
-                </span>
+                <img src="/assets/images/academy/course-30-days-v2.jpg" alt="Vrouw zet een nieuw vinkje op haar dertig dagen gewoontetracker" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--included">Beschikbaar</span>
               </div>
               <div class="academy-card-content">
                 <p class="academy-course-kicker">Kleine gewoontes</p>
@@ -190,13 +188,10 @@
               </div>
             </article>
 
-            <article class="academy-course-card" aria-disabled="true">
+            <article class="academy-course-card">
               <div class="academy-card-media">
                 <img src="/assets/images/academy/course-nutrition.jpg" alt="Een eenvoudige dampende groentesoep wordt geserveerd in een sfeervolle winterkeuken" width="1200" height="750" loading="lazy">
-                <span class="academy-status academy-status--soon">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Binnenkort
-                </span>
+                <span class="academy-status academy-status--included">Beschikbaar</span>
               </div>
               <div class="academy-card-content">
                 <p class="academy-course-kicker">Praktisch & voedend</p>
@@ -205,13 +200,10 @@
               </div>
             </article>
 
-            <article class="academy-course-card" aria-disabled="true">
+            <article class="academy-course-card">
               <div class="academy-card-media">
-                <img src="/assets/images/academy/course-mindful.jpg" alt="Vrouw neemt onder een deken in een warme leeshoek een rustig wintermoment" width="1200" height="750" loading="lazy">
-                <span class="academy-status academy-status--soon">
-                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                  Binnenkort
-                </span>
+                <img src="/assets/images/academy/course-mindful-v2.jpg" alt="Vrouw doet met één hand op haar hart en één op haar buik een rustige ademoefening" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--included">Beschikbaar</span>
               </div>
               <div class="academy-card-content">
                 <p class="academy-course-kicker">Innerlijke rust</p>
