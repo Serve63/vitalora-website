@@ -1,284 +1,244 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitalora Academy - Jouw Wellness Journey | Live</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="dashboard-styles.css?v=5">
-    <link rel="stylesheet" href="icons.css">
-    <link rel="stylesheet" href="/assets/css/header.css?v=15">
-    <link rel="stylesheet" href="/assets/css/fonts.css?v=1">
-    <link rel="stylesheet" href="/assets/css/footer.css?v=1">
-<link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-<link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jouw persoonlijke Vitalora Academy: warme, praktische cursussen die je in je eigen tempo volgt.">
+  <title>Mijn Academy | Vitalora</title>
+  <link rel="stylesheet" href="/assets/css/academy-winter.css?v=2">
+  <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <script>
+    (function () {
+      try {
+        var isLocalPreview = location.hostname === '127.0.0.1' || location.hostname === 'localhost';
+        if (!isLocalPreview && sessionStorage.getItem('academySession') !== 'ok') {
+          window.location.replace('/login');
+        }
+      } catch (error) {
+        window.location.replace('/login');
+      }
+    }());
+  </script>
+  <script defer src="/assets/js/academy-overview.js?v=2"></script>
 </head>
 <body class="page-academy">
-    <!-- BEGIN SCOPE: academy-html -->
-    
-    <!-- Access Gate removed - free access -->
-    <!-- Header -->
-    <header class="site-header" role="banner">
-      <div class="header-inner">
-        <a class="logo" href="/">
-          <span class="logo-text">Vitalora.nl</span>
-        </a>
-        
-        <div class="header-buttons">
-          <a class="btn login-btn" href="/login">Inloggen</a>
+  <a class="academy-skip-link" href="#academy-courses">Ga naar de cursussen</a>
+
+  <div class="academy-page">
+    <header class="academy-hero">
+      <div class="academy-container">
+        <nav class="academy-nav" aria-label="Academy navigatie">
+          <a class="academy-brand" href="/" aria-label="Terug naar Vitalora">
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>Vitalora</span>
+          </a>
+          <span class="academy-nav-label">Mijn Academy</span>
+          <a class="academy-home-link" href="/">
+            <span>Terug naar website</span>
+            <svg aria-hidden="true" viewBox="0 0 24 24">
+              <path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </nav>
+
+        <div class="academy-hero-grid">
+          <div class="academy-hero-copy">
+            <p class="academy-eyebrow">Vitalora Academy</p>
+            <h1>Een rustige plek om te leren, <em>op jouw tempo.</em></h1>
+            <p class="academy-hero-intro">Zet iets warms binnen handbereik, kruip lekker op de bank en duik verder waar je gebleven was. Geen haast en geen perfectie—wel kennis waar je morgen iets aan hebt.</p>
+            <div class="academy-hero-actions">
+              <a class="academy-primary-button" id="hero-course-link" href="/detox-cursus?lesson=1">
+                <span>Ga verder met Clean Reset</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
+              <span class="academy-hero-note">24 lessen · in je eigen ritme</span>
+            </div>
+          </div>
+
+          <figure class="academy-hero-visual">
+            <img src="/assets/images/academy/hero-winter.jpg" alt="Vrouw volgt op een regenachtige winterdag ontspannen een cursus op de bank" width="1600" height="900" fetchpriority="high">
+            <figcaption>
+              <span class="academy-caption-dot" aria-hidden="true"></span>
+              Jouw moment, jouw plek
+            </figcaption>
+          </figure>
         </div>
+
+        <ul class="academy-values" aria-label="Wat je van Vitalora Academy kunt verwachten">
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v18M3 12h18" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>
+            Warm en helder uitgelegd
+          </li>
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M4 13l5 5L20 7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Praktisch voor thuis
+          </li>
+          <li>
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v4l2.7 1.7" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Zonder haast of bangmakerij
+          </li>
+        </ul>
       </div>
     </header>
-    
-    <script defer src="/assets/js/route-scope.js?v=1"></script>
 
-    <!-- BEGIN SCOPE: academy-hero -->
-    <header class="dashboard-header">
-        <div class="container">
-            <div class="header-nav">
-                <a href="/" class="back-to-home">
-                    <span class="icon">←</span>
-                    Terug naar homepage
-                </a>
+    <main id="academy-courses">
+      <section class="academy-section academy-section--current" aria-labelledby="current-course-title">
+        <div class="academy-container">
+          <div class="academy-section-heading">
+            <div>
+              <p class="academy-eyebrow">Jouw cursus</p>
+              <h2 id="current-course-title">Waar wil je vandaag in duiken?</h2>
             </div>
-            <div class="header-content">
-                <h1 class="hero-title">Jouw Persoonlijke Wellness Journey</h1>
-                <p class="header-description">Welkom in jouw gepersonaliseerde leeromgeving voor optimale gezondheid en welzijn</p>
-                
-                <div class="header-features">
-                    <div class="feature">
-                        <span class="icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2l3.09 6.26 6.91.99-5 4.86 1.18 6.89L12 17.77 5.82 21l1.18-6.89-5-4.86 6.91-.99z"/></svg>
-                        </span>
-                        <span>Expertcontent</span>
-                    </div>
-                    <div class="feature">
-                        <span class="icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2l3.09 6.26 6.91.99-5 4.86 1.18 6.89L12 17.77 5.82 21l1.18-6.89-5-4.86 6.91-.99z"/></svg>
-                        </span>
-                        <span>Persoonlijke Begeleiding</span>
-                    </div>
-                    <div class="feature">
-                        <span class="icon" aria-hidden="true">
-                            <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M12 2l3.09 6.26 6.91.99-5 4.86 1.18 6.89L12 17.77 5.82 21l1.18-6.89-5-4.86 6.91-.99z"/></svg>
-                        </span>
-                        <span>Community Support</span>
-                    </div>
+            <p>Clean Reset staat voor je open. Pak de draad op waar het voor jou goed voelt.</p>
+          </div>
+
+          <article class="academy-featured-course" data-course="clean-reset" data-href="/detox-cursus?lesson=1">
+            <div class="academy-featured-media">
+              <img src="/assets/images/academy/course-clean-reset.jpg" alt="Vrouw maakt in een warme winterkeuken een praktische keuze voor glazen voorraadpotten" width="1200" height="750">
+              <span class="academy-status academy-status--available">Nu beschikbaar</span>
+            </div>
+            <div class="academy-featured-content">
+              <p class="academy-course-kicker">Clean Reset</p>
+              <h3>Minder blootstelling, meer rustige regie</h3>
+              <p>Een warme, nuchtere reis langs PFAS, microplastics, BPA en andere stoffen. Je ontdekt wat ertoe doet, wat je gerust kunt loslaten en welke kleine keuzes thuis echt haalbaar zijn.</p>
+
+              <div class="academy-course-meta" aria-label="Cursusdetails">
+                <span>24 lessen</span>
+                <span>8–12 min per les</span>
+                <span>In je eigen tempo</span>
+              </div>
+
+              <div class="academy-progress" aria-live="polite">
+                <div class="academy-progress-copy">
+                  <span>Jouw voortgang</span>
+                  <strong id="clean-reset-progress-text">Klaar voor je eerste les</strong>
                 </div>
-            </div>
-        </div>
-    </header>
-    <!-- END SCOPE: academy-hero -->
-
-    <!-- Main Content -->
-    <main class="main-content">
-        <div class="container">
-            <div class="courses-section">
-                <!-- removed per request -->
-                
-                <!-- BEGIN SCOPE: academy-cards -->
-                <div class="courses-grid">
-                    <!-- Course 1: Clean Reset -->
-                    <div class="course-card" data-course="clean-reset" data-image="/assets/images/clean reset course.png" data-href="course-view.html?course=clean-reset">
-                        <div class="card-media">
-                            <img src="/assets/images/clean reset course.png" alt="Clean Reset cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="course-content">
-                            <h3>Clean Reset</h3>
-                            <p class="course-subtitle">Detox en gifstoffen</p>
-                            <p class="course-description">Leer hoe je je lichaam effectief kunt ontgiften van schadelijke stoffen en je energie kunt herstellen.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=clean-reset" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course 2: PowerFoods -->
-                    <div class="course-card locked" data-course="powerfoods-superfood-specerij" data-image="/assets/images/vlierbessensap course.png">
-                        <div class="card-media">
-                            <img src="/assets/images/vlierbessensap course.png" alt="PowerFoods cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                        <div class="course-content">
-                            <h3>PowerFoods</h3>
-                            <p class="course-subtitle">Superfood & Specerij</p>
-                            <p class="course-description">Ontdek de kracht van superfoods en specerijen voor optimale voeding en gezondheid.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=powerfoods-superfood-specerij" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course 3: De Juiste Balans -->
-                    <div class="course-card locked" data-course="de-juiste-balans" data-image="/assets/images/juiste balans course.png">
-                        <div class="card-media">
-                            <img src="/assets/images/juiste balans course.png" alt="De Juiste Balans cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                        <div class="course-content">
-                            <h3>De Juiste Balans</h3>
-                            <p class="course-subtitle">Energie & Hormonen</p>
-                            <p class="course-description">Leer hoe je je hormonen in balans kunt brengen voor meer energie en welzijn.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=de-juiste-balans" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course 4: 30 Dagen Challenge -->
-                    <div class="course-card locked" data-course="30-dagen-challenge" data-image="/assets/images/30 dagen cheallnege course.png">
-                        <div class="card-media">
-                            <img src="/assets/images/30 dagen cheallnege course.png" alt="30 Dagen Challenge cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                        <div class="course-content">
-                            <h3>30 Dagen Challenge</h3>
-                            <p class="course-subtitle">Dagelijkse mini-steps voor blijvend resultaat</p>
-                            <p class="course-description">Een complete 30-daagse reis naar een gezondere levensstijl en meer vitaliteit.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=30-dagen-challenge" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course 5: Everyday Nutrition -->
-                    <div class="course-card locked" data-course="everyday-nutrition-praktisch-gezond" data-image="/assets/images/everydaynuttrition course.png">
-                        <div class="card-media">
-                            <img src="/assets/images/everydaynuttrition course.png" alt="Everyday Nutrition cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                        <div class="course-content">
-                            <h3>Everyday Nutrition</h3>
-                            <p class="course-subtitle">Praktisch en Gezond</p>
-                            <p class="course-description">Praktische tips en recepten voor gezonde voeding in het dagelijks leven.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=everyday-nutrition-praktisch-gezond" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Course 6: Mindful Energy -->
-                    <div class="course-card locked" data-course="mindful-energy-innerlijke-rust" data-image="/assets/images/innerlijke rust course.png">
-                        <div class="card-media">
-                            <img src="/assets/images/innerlijke rust course.png" alt="Mindful Energy cursus afbeelding" loading="lazy" />
-                            <!-- header bar removed -->
-                        </div>
-                        <div class="lock-icon">🔒</div>
-                        <div class="course-content">
-                            <h3>Mindful Energy</h3>
-                            <p class="course-subtitle">Innerlijke Rust</p>
-                            <p class="course-description">Ontdek mindfulness technieken voor innerlijke rust en mentale helderheid.</p>
-                            <div class="course-footer">
-                                <div class="progress-dots">
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                    <span class="dot"></span>
-                                </div>
-                                <a href="course-view.html?course=mindful-energy-innerlijke-rust" class="start-course">Start cursus <span class="icon-arrow-right"></span></a>
-                            </div>
-                        </div>
-                    </div>
+                <div class="academy-progress-track" role="progressbar" aria-label="Voortgang Clean Reset" aria-valuemin="0" aria-valuemax="24" aria-valuenow="0">
+                  <span id="clean-reset-progress-bar"></span>
                 </div>
-                <!-- END SCOPE: academy-cards -->
+              </div>
+
+              <a class="academy-course-button" id="clean-reset-course-link" href="/detox-cursus?lesson=1">
+                <span>Open de cursus</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24">
+                  <path d="M5 12h14M14 7l5 5-5 5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </a>
             </div>
+          </article>
         </div>
+      </section>
+
+      <section class="academy-section academy-section--upcoming" aria-labelledby="upcoming-courses-title">
+        <div class="academy-container">
+          <div class="academy-section-heading academy-section-heading--upcoming">
+            <div>
+              <p class="academy-eyebrow">In ontwikkeling</p>
+              <h2 id="upcoming-courses-title">Later ook in jouw Academy</h2>
+            </div>
+            <p>Geen half werk: iedere cursus opent pas als hij net zo rijk, warm en bruikbaar voelt als Clean Reset.</p>
+          </div>
+
+          <div class="academy-course-grid">
+            <article class="academy-course-card" aria-disabled="true">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-powerfoods.jpg" alt="Warme kruidenthee met vlierbessen, citrus, kaneel en gember" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--soon">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Binnenkort
+                </span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Voeding & specerijen</p>
+                <h3>PowerFoods</h3>
+                <p>Ontdek gewone ingrediënten met een bijzonder verhaal, zonder wonderclaims of ingewikkelde regels.</p>
+              </div>
+            </article>
+
+            <article class="academy-course-card" aria-disabled="true">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-balance.jpg" alt="Vrouw neemt met een notitieboek en warme mok rustig een moment voor zichzelf" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--soon">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Binnenkort
+                </span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Energie & hormonen</p>
+                <h3>De Juiste Balans</h3>
+                <p>Leer je lichaam beter verstaan en bouw aan een ritme dat rust geeft in plaats van druk.</p>
+              </div>
+            </article>
+
+            <article class="academy-course-card" aria-disabled="true">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-30-days.jpg" alt="Vrouw trekt in een warme hal haar wandelschoenen aan voor een winterse wandeling" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--soon">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Binnenkort
+                </span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Kleine gewoontes</p>
+                <h3>30 Dagen Challenge</h3>
+                <p>Dertig haalbare dagen waarin kleine stappen rustig uitgroeien tot iets dat bij je blijft.</p>
+              </div>
+            </article>
+
+            <article class="academy-course-card" aria-disabled="true">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-nutrition.jpg" alt="Een eenvoudige dampende groentesoep wordt geserveerd in een sfeervolle winterkeuken" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--soon">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Binnenkort
+                </span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Praktisch & voedend</p>
+                <h3>Everyday Nutrition</h3>
+                <p>Gezond eten voor echte dagen: warm, eenvoudig en zonder dat iedere maaltijd perfect hoeft.</p>
+              </div>
+            </article>
+
+            <article class="academy-course-card" aria-disabled="true">
+              <div class="academy-card-media">
+                <img src="/assets/images/academy/course-mindful.jpg" alt="Vrouw neemt onder een deken in een warme leeshoek een rustig wintermoment" width="1200" height="750" loading="lazy">
+                <span class="academy-status academy-status--soon">
+                  <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M7 11V8a5 5 0 0 1 10 0v3M6 11h12v9H6z" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  Binnenkort
+                </span>
+              </div>
+              <div class="academy-card-content">
+                <p class="academy-course-kicker">Innerlijke rust</p>
+                <h3>Mindful Energy</h3>
+                <p>Maak ruimte in een vol hoofd met korte oefeningen die ook op drukke dagen bij je passen.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="academy-closing" aria-label="Jouw tempo">
+        <div class="academy-container">
+          <div class="academy-closing-card">
+            <p class="academy-eyebrow">Onthoud dit vooral</p>
+            <p>Je hoeft hier niets voor iemand anders af te vinken. Kom terug wanneer het jou uitkomt—jouw rustige plek blijft gewoon op je wachten.</p>
+          </div>
+        </div>
+      </section>
     </main>
 
-    <!-- BEGIN SCOPE: academy-features -->
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-            </div>
-        </div>
+    <footer class="academy-footer">
+      <div class="academy-container">
+        <span>Vitalora</span>
+        <span>Rustige kennis voor het echte leven.</span>
+      </div>
     </footer>
-    <!-- END SCOPE: academy-features -->
-
-    <script src="dashboard-script.js"></script>
-    
-    <!-- Session access control: require fresh login per session -->
-    <script>
-      (function(){
-        try {
-          if (sessionStorage.getItem('academySession') !== 'ok') {
-            window.location.href = '/login';
-          }
-        } catch (e) {
-          window.location.href = '/login';
-        }
-      })();
-    </script>
-    
-    <!-- Theme script voor per-cursus kleuren -->
-    <script>
-    document.addEventListener('DOMContentLoaded', ()=>{
-      document.querySelectorAll('.course-card[data-course]').forEach(async card=>{
-        const slug = card.dataset.course;
-        try{
-          const res = await fetch(`/data/courses/${slug}.json?v=1`);
-          if(!res.ok) return;
-          const { theme } = await res.json();
-          if(theme?.brand){
-            card.querySelectorAll('.start-course,.btn-start').forEach(btn=>{
-              btn.style.background = theme.brand;
-            });
-          }
-        }catch(e){}
-      });
-    });
-    </script>
-
-    <!-- Health-check script -->
-    <script>
-    (async ()=>{
-      const slugs = [
-        "clean-reset",
-        "de-juiste-balans",
-        "energie-hormonen-balans",
-        "mindful-energy-innerlijke-rust",
-        "everyday-nutrition-praktisch-gezond",
-        "powerfoods-superfood-specerij",
-        "30-dagen-challenge"
-      ];
-      for(const s of slugs){
-        try{
-          const r = await fetch(`/data/courses/${s}.json?v=1`);
-          console.log(s, r.ok ? "OK" : "MIST");
-        }catch(e){ console.log(s, "ERROR"); }
-      }
-    })();
-    </script>
-    <!-- END SCOPE: academy-html -->
+  </div>
 </body>
 </html>
