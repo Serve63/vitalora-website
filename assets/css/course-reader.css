@@ -889,6 +889,7 @@ html.clean-reset-reader .ambience-toggle {
   position: absolute;
   top: 17px;
   right: 18px;
+  isolation: isolate;
   display: grid;
   place-items: center;
   width: 42px;
@@ -901,6 +902,23 @@ html.clean-reset-reader .ambience-toggle {
   box-shadow: inset 0 1px rgba(255, 255, 255, 0.05);
   cursor: pointer;
   transition: color 180ms ease, background 180ms ease, border-color 180ms ease, box-shadow 240ms ease, transform 180ms ease;
+}
+
+html.clean-reset-reader .ambience-toggle::after {
+  content: '';
+  position: absolute;
+  top: 29px;
+  left: 50%;
+  z-index: -1;
+  width: 118px;
+  height: 88px;
+  background: radial-gradient(ellipse at 50% 0%, rgba(255, 215, 139, 0.9), rgba(246, 169, 73, 0.42) 38%, transparent 72%);
+  filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) scale(0.72);
+  transform-origin: 50% 0;
+  transition: opacity 300ms ease, transform 380ms ease;
 }
 
 html.clean-reset-reader .ambience-toggle:hover {
@@ -963,18 +981,23 @@ html.clean-reset-reader .ambience-lamp-base {
 }
 
 html.clean-reset-reader.ambience-on .ambience-toggle {
-  color: #f5d6a5;
-  background: rgba(223, 157, 91, 0.16);
-  border-color: rgba(239, 194, 141, 0.44);
+  color: #ffe1a6;
+  background: rgba(224, 147, 56, 0.28);
+  border-color: rgba(255, 207, 127, 0.72);
   box-shadow:
-    0 0 0 5px rgba(223, 157, 91, 0.07),
-    0 8px 28px rgba(237, 172, 99, 0.26),
+    0 0 0 6px rgba(235, 164, 75, 0.12),
+    0 8px 32px rgba(255, 185, 86, 0.5),
     inset 0 1px rgba(255, 255, 255, 0.12);
 }
 
+html.clean-reset-reader.ambience-on .ambience-toggle::after {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+
 html.clean-reset-reader.ambience-on .ambience-lamp-shade {
-  background: #f2bd78;
-  filter: drop-shadow(0 0 5px rgba(255, 193, 107, 0.76));
+  background: #ffc873;
+  filter: drop-shadow(0 0 8px rgba(255, 193, 94, 0.98));
 }
 
 html.clean-reset-reader .s-logo {
@@ -1075,24 +1098,67 @@ html.clean-reset-reader .main::before {
   inset: 0 0 0 var(--sidebar-w);
   z-index: 15;
   background:
-    radial-gradient(circle at 4% 10%, rgba(255, 198, 118, 0.28) 0, rgba(243, 171, 94, 0.13) 23%, transparent 52%),
-    linear-gradient(110deg, rgba(255, 226, 184, 0.07), transparent 48%);
+    radial-gradient(ellipse 116% 88% at 0% 3%, rgba(255, 220, 139, 0.68) 0, rgba(250, 191, 92, 0.42) 27%, rgba(239, 155, 65, 0.17) 51%, rgba(236, 145, 55, 0.04) 66%, transparent 79%),
+    linear-gradient(115deg, rgba(255, 239, 202, 0.36) 0%, rgba(255, 222, 158, 0.18) 47%, transparent 74%);
   opacity: 0;
   pointer-events: none;
-  mix-blend-mode: soft-light;
+  mix-blend-mode: normal;
   transition: opacity 420ms ease;
 }
 
-html.clean-reset-reader.ambience-on .main::before {
+html.clean-reset-reader .main::after {
+  content: '';
+  position: fixed;
+  inset: 0 0 0 var(--sidebar-w);
+  z-index: 16;
+  background:
+    radial-gradient(ellipse 92% 82% at 12% 11%, transparent 0%, transparent 51%, rgba(75, 47, 22, 0.075) 100%),
+    linear-gradient(90deg, transparent 0%, transparent 70%, rgba(70, 43, 21, 0.055) 100%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 420ms ease;
+}
+
+html.clean-reset-reader.ambience-on .main::before,
+html.clean-reset-reader.ambience-on .main::after {
   opacity: 1;
+}
+
+html.clean-reset-reader.ambience-on .sidebar {
+  box-shadow:
+    inset -1px 0 rgba(255, 224, 172, 0.16),
+    16px 0 46px rgba(218, 140, 48, 0.12);
+}
+
+html.clean-reset-reader.ambience-on .topbar {
+  background: rgba(250, 227, 189, 0.95);
+  border-bottom-color: rgba(181, 112, 48, 0.24);
+  box-shadow: 0 10px 34px rgba(150, 91, 36, 0.12);
+}
+
+html.clean-reset-reader.ambience-on .tag-o {
+  background: rgba(255, 241, 211, 0.92);
+  border-color: rgba(196, 125, 58, 0.28);
+  box-shadow: 0 5px 15px rgba(140, 82, 38, 0.08);
+}
+
+html.clean-reset-reader.ambience-on .lesson-arrival {
+  background:
+    radial-gradient(circle at 94% 88%, rgba(213, 140, 65, 0.17), transparent 28%),
+    linear-gradient(135deg, #fff8e9 0%, #fae3bd 100%);
+  border-color: rgba(197, 126, 60, 0.34);
+  box-shadow:
+    0 18px 46px rgba(137, 78, 31, 0.16),
+    0 0 42px rgba(238, 166, 77, 0.12);
 }
 
 html.clean-reset-reader.ambience-on .lesson-hero .course-figure img,
 html.clean-reset-reader.ambience-on .course-figure img {
+  filter: saturate(1.06) sepia(0.08) brightness(1.035);
   box-shadow:
     0 0 0 5px rgba(255, 250, 243, 0.92),
-    0 25px 60px -26px rgba(143, 78, 37, 0.48),
-    0 0 48px rgba(231, 162, 92, 0.09);
+    0 25px 60px -24px rgba(143, 78, 37, 0.55),
+    0 0 58px rgba(231, 162, 92, 0.2);
 }
 
 html.clean-reset-reader .main::-webkit-scrollbar {
@@ -1140,6 +1206,8 @@ html.clean-reset-reader .rt-badge {
 }
 
 html.clean-reset-reader .wrap {
+  position: relative;
+  z-index: 17;
   max-width: 1000px;
   padding: 0 54px 92px;
 }
@@ -1390,13 +1458,6 @@ html.clean-reset-reader .lesson-sources a {
     height: 100dvh;
   }
 
-  html.clean-reset-reader .main::before {
-    left: 0;
-    background:
-      radial-gradient(circle at 5% 7%, rgba(255, 198, 118, 0.23) 0, rgba(243, 171, 94, 0.1) 25%, transparent 56%),
-      linear-gradient(110deg, rgba(255, 226, 184, 0.05), transparent 52%);
-  }
-
   html.clean-reset-reader .main {
     height: 100vh;
     height: 100dvh;
@@ -1531,6 +1592,17 @@ html.clean-reset-reader .lesson-sources a {
   html.clean-reset-reader .main,
   html.clean-reset-reader .topbar {
     border-radius: 0;
+  }
+
+  html.clean-reset-reader .main::before,
+  html.clean-reset-reader .main::after {
+    left: 0;
+  }
+
+  html.clean-reset-reader .main::before {
+    background:
+      radial-gradient(ellipse 122% 72% at 4% 2%, rgba(255, 220, 139, 0.62) 0, rgba(250, 191, 92, 0.36) 27%, rgba(239, 155, 65, 0.14) 51%, transparent 77%),
+      linear-gradient(118deg, rgba(255, 239, 202, 0.31) 0%, rgba(255, 222, 158, 0.14) 48%, transparent 76%);
   }
 
   html.clean-reset-reader .sidebar {

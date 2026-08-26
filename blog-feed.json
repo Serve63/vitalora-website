@@ -1,1 +1,32 @@
-[]
+[
+  {
+    "id": "vitalora-editorial-pfas-thuis",
+    "slug": "pfas-zonder-paniek-thuis",
+    "title": "PFAS zonder paniek: 6 nuchtere keuzes voor thuis",
+    "excerpt": "Wat PFAS zijn, wat je wél kunt beïnvloeden en welke zes rustige keuzes thuis echt zinvol zijn.",
+    "publishedDate": "27 augustus 2026",
+    "readTime": 7,
+    "featuredImage": "/assets/images/courses/clean-reset-v2/lesson-15-a.jpg",
+    "status": "published"
+  },
+  {
+    "id": "vitalora-editorial-microplastics-thuis",
+    "slug": "microplastics-thuis-zonder-obsessie",
+    "title": "Microplastics thuis: minder blootstelling zonder obsessie",
+    "excerpt": "De wetenschap is nog volop in beweging. Dit is wat we al weten en wat je rustig kunt doen.",
+    "publishedDate": "25 augustus 2026",
+    "readTime": 8,
+    "featuredImage": "/assets/images/courses/clean-reset-v2/lesson-06-a.jpg",
+    "status": "published"
+  },
+  {
+    "id": "vitalora-editorial-keukenreset",
+    "slug": "rustige-keukenreset",
+    "title": "Een rustige keukenreset: klein beginnen, lang volhouden",
+    "excerpt": "Geen volle vuilniszak en geen perfect plaatje, maar een haalbare keuken die elke dag prettiger werkt.",
+    "publishedDate": "22 augustus 2026",
+    "readTime": 6,
+    "featuredImage": "/assets/images/courses/clean-reset-v2/lesson-13-a.jpg",
+    "status": "published"
+  }
+]
