@@ -1093,10 +1093,16 @@ body.home .stat-number {
   color: var(--home-clay-dark);
 }
 
-body.home .hero-image img,
+body.home .hero-image img {
+  box-shadow:
+    0 0 0 7px #e3d4c2,
+    0 28px 64px -24px rgba(56, 41, 28, 0.42);
+  filter: saturate(0.9) contrast(1.02) sepia(0.035);
+}
+
 body.home .why-image img {
   box-shadow:
-    0 0 0 7px rgba(255, 250, 245, 0.82),
+    0 0 0 7px rgba(226, 181, 150, 0.5),
     0 28px 64px -24px rgba(56, 41, 28, 0.42);
   filter: saturate(0.9) contrast(1.02) sepia(0.035);
 }

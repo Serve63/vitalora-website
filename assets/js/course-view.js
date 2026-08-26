@@ -450,6 +450,39 @@
     $('#lessonContent').innerHTML = `<div class="reader-error">${escapeHTML(message)}</div>`;
   }
 
+  function setupAmbienceToggle() {
+    const button = $('#ambienceToggle');
+    if (!button || !document.documentElement.classList.contains('clean-reset-reader')) return;
+
+    const storageKey = 'vitalora:clean-reset:ambience';
+    let isOn = false;
+
+    try {
+      isOn = localStorage.getItem(storageKey) === 'on';
+    } catch (error) {
+      isOn = false;
+    }
+
+    const applyState = () => {
+      document.documentElement.classList.toggle('ambience-on', isOn);
+      button.setAttribute('aria-pressed', String(isOn));
+      button.setAttribute('aria-label', isOn ? 'Zet sfeerlamp uit' : 'Zet sfeerlamp aan');
+      button.title = isOn ? 'Sfeerlamp uitzetten' : 'Sfeerlamp aanzetten';
+    };
+
+    button.addEventListener('click', () => {
+      isOn = !isOn;
+      applyState();
+      try {
+        localStorage.setItem(storageKey, isOn ? 'on' : 'off');
+      } catch (error) {
+        // De sfeerstand blijft tijdens deze sessie werken als opslag niet beschikbaar is.
+      }
+    });
+
+    applyState();
+  }
+
   function setupReaderInteractions() {
     const menu = $('#mobileMenu');
     const nav = $('#sNav');
@@ -518,6 +551,7 @@
     }
   }
 
+  setupAmbienceToggle();
   setupReaderInteractions();
   loadReader();
 })();
