@@ -45,7 +45,7 @@ test('leesvoortgang luistert naar het scrollende cursusdeel', () => {
 test('de cursuspagina gebruikt de nieuwe cacheversies van readerstijl en gedrag', () => {
   const html = read('course-view.html');
   const script = read('assets/js/course-view.js');
-  assert.match(html, /course-reader\.css\?v=21/);
+  assert.match(html, /course-reader\.css\?v=22/);
   assert.match(html, /course-view\.js\?v=16/);
   assert.match(script, /clean-reset[^\n]*\.json\?v=6|courses\/\$\{encodeURIComponent\(state\.slug\)\}\.json\?v=6/);
 });
@@ -58,7 +58,12 @@ test('Clean Reset heeft een toegankelijke en blijvende sfeerlamp', () => {
   assert.match(html, /id="ambienceToggle"[\s\S]*aria-label="Zet sfeerlamp aan"[\s\S]*aria-pressed="false"/);
   assert.match(css, /\.ambience-toggle\s*\{\s*display:\s*none/);
   assert.match(css, /html\.clean-reset-reader \.ambience-toggle\s*\{[\s\S]*display:\s*grid/);
-  assert.match(css, /html\.clean-reset-reader\.ambience-on \.main::before\s*\{\s*opacity:\s*1/);
+  assert.match(css, /html\.clean-reset-reader\.ambience-on \.main::before,[\s\S]*html\.clean-reset-reader\.ambience-on \.main::after\s*\{\s*opacity:\s*1/);
+  assert.match(css, /rgba\(255, 220, 139, 0\.68\)/);
+  assert.match(css, /mix-blend-mode:\s*normal/);
+  assert.match(css, /html\.clean-reset-reader\.ambience-on \.topbar\s*\{[\s\S]*rgba\(250, 227, 189, 0\.95\)/);
+  assert.match(css, /html\.clean-reset-reader\.ambience-on \.lesson-arrival\s*\{[\s\S]*#fae3bd/);
+  assert.match(css, /html\.clean-reset-reader \.wrap\s*\{[\s\S]*z-index:\s*17/);
   assert.match(script, /vitalora:clean-reset:ambience/);
   assert.match(script, /localStorage\.setItem\(storageKey, isOn \? 'on' : 'off'\)/);
   assert.match(script, /button\.setAttribute\('aria-pressed', String\(isOn\)\)/);

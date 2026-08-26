@@ -1,5 +1,6 @@
 /* Shared Vitalora winter palette for the explicitly restyled public pages. */
 .page-blog,
+.page-blog-post,
 .page-login,
 .page-clean-reset {
   --warm-moss: #253129;
@@ -18,10 +19,32 @@
 
 /* Blog: retain the grid and dimensions; change only atmosphere and material. */
 body.page-blog {
+  display: block !important;
+  min-height: 100vh;
+  margin: 0;
   color: var(--warm-ink);
   background:
     radial-gradient(circle at 90% 5%, rgba(191, 118, 84, 0.12), transparent 28%),
     linear-gradient(145deg, var(--warm-paper-soft), var(--warm-ivory)) !important;
+}
+
+.page-blog .main-content {
+  width: min(calc(100% - 40px), 1200px);
+  max-width: 1200px;
+  margin: 52px auto 78px;
+  padding: 20px;
+}
+
+.page-blog .main-content > .container {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+.page-blog .blog-grid {
+  grid-template-columns: repeat(3, 320px) !important;
+  justify-content: center;
 }
 
 .page-blog .site-header {
@@ -82,6 +105,190 @@ body.page-blog {
 .page-blog .footer-logo,
 .page-blog footer .brand-email {
   color: var(--warm-paper) !important;
+}
+
+@media (max-width: 1100px) {
+  .page-blog .blog-grid {
+    grid-template-columns: repeat(2, 320px) !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-blog .main-content {
+    width: 100%;
+    margin: 20px auto 46px;
+  }
+
+  .page-blog .blog-grid {
+    grid-template-columns: minmax(0, 320px) !important;
+  }
+}
+
+/* Blog detail: a quiet editorial page with the same winter warmth. */
+body.page-blog-post {
+  min-height: 100vh;
+  color: var(--warm-ink);
+  background:
+    radial-gradient(circle at 88% 4%, rgba(191, 118, 84, 0.14), transparent 27%),
+    linear-gradient(145deg, var(--warm-paper-soft), var(--warm-ivory)) !important;
+}
+
+.page-blog-post .site-header {
+  background: linear-gradient(110deg, var(--warm-moss-deep), var(--warm-moss) 62%, #4a3b2f) !important;
+  box-shadow: 0 10px 30px rgba(29, 39, 34, 0.16);
+}
+
+.page-blog-post .logo-text,
+.page-blog-post .header-buttons .login-btn {
+  color: var(--warm-paper) !important;
+}
+
+.page-blog-post .header-buttons .login-btn {
+  background: rgba(255, 250, 245, 0.04) !important;
+  border-color: rgba(226, 181, 150, 0.72) !important;
+}
+
+.page-blog-post .blog-post-container {
+  max-width: 900px;
+  margin: 54px auto 82px;
+  padding: clamp(28px, 5vw, 58px);
+  background: rgba(255, 250, 245, 0.94);
+  border: 1px solid rgba(140, 82, 61, 0.14);
+  border-radius: 26px;
+  box-shadow: 0 28px 70px -38px rgba(56, 41, 28, 0.46);
+}
+
+.page-blog-post .blog-post-title,
+.page-blog-post .blog-post-content h1,
+.page-blog-post .blog-post-content h2,
+.page-blog-post .blog-post-content h3,
+.page-blog-post .blog-post-content h4 {
+  color: var(--warm-ink);
+}
+
+.page-blog-post .blog-post-title {
+  max-width: 820px;
+  font-size: clamp(34px, 5vw, 52px);
+  letter-spacing: -0.035em;
+}
+
+.page-blog-post .blog-post-meta {
+  color: #81796f;
+}
+
+.page-blog-post .blog-post-featured-image {
+  height: clamp(240px, 46vw, 480px);
+  margin: 28px 0 42px;
+  background: #e8dacb;
+  border: 7px solid #e3d4c2;
+  border-radius: 22px;
+  box-shadow: 0 24px 54px -28px rgba(56, 41, 28, 0.5);
+}
+
+.page-blog-post .blog-post-featured-image img {
+  border-radius: 15px;
+}
+
+.page-blog-post .blog-post-content,
+.page-blog-post .blog-post-content p,
+.page-blog-post .blog-post-content li {
+  color: var(--warm-body);
+}
+
+.page-blog-post .blog-post-content {
+  font-size: 18px;
+  line-height: 1.82;
+}
+
+.page-blog-post .blog-post-content h2 {
+  margin-top: 50px;
+  font-size: clamp(26px, 3.5vw, 34px);
+  letter-spacing: -0.025em;
+}
+
+.page-blog-post .blog-post-content h3 {
+  margin-top: 34px;
+  font-size: 22px;
+}
+
+.page-blog-post .blog-post-content a {
+  color: var(--warm-clay-dark);
+  text-decoration-color: rgba(140, 82, 61, 0.35);
+  text-underline-offset: 3px;
+}
+
+.page-blog-post .blog-post-content .article-lead {
+  color: #46463f;
+  font-size: 21px;
+  line-height: 1.7;
+}
+
+.page-blog-post .blog-post-content blockquote,
+.page-blog-post .blog-post-content .course-note {
+  position: relative;
+  margin: 32px 0;
+  padding: 24px 27px;
+  color: #f8efe5;
+  background: linear-gradient(135deg, var(--warm-moss), var(--warm-moss-deep));
+  border: 1px solid rgba(226, 181, 150, 0.26);
+  border-radius: 16px;
+  box-shadow: 0 16px 34px -24px rgba(29, 39, 34, 0.7);
+}
+
+.page-blog-post .blog-post-content blockquote *,
+.page-blog-post .blog-post-content .course-note *,
+.page-blog-post .blog-post-content .course-note a {
+  color: #f8efe5;
+}
+
+.page-blog-post .blog-post-content .practical-list {
+  margin: 26px 0;
+  padding: 24px 28px 24px 48px;
+  background: #f7ecdf;
+  border: 1px solid rgba(191, 118, 84, 0.2);
+  border-radius: 16px;
+}
+
+.page-blog-post .blog-post-content .practical-list li {
+  margin: 10px 0;
+  padding-left: 5px;
+}
+
+.page-blog-post .blog-post-content .source-note {
+  margin-top: 52px;
+  padding-top: 25px;
+  font-size: 15px;
+  line-height: 1.7;
+  border-top: 1px solid var(--warm-line);
+}
+
+.page-blog-post .blog-post-content .source-note h2 {
+  margin-top: 0;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+  .page-blog-post .blog-post-container {
+    margin: 20px 14px 48px;
+    padding: 25px 20px 34px;
+    border-radius: 20px;
+  }
+
+  .page-blog-post .blog-post-featured-image {
+    height: 230px;
+    border-width: 5px;
+    border-radius: 17px;
+  }
+
+  .page-blog-post .blog-post-content,
+  .page-blog-post .blog-post-content p,
+  .page-blog-post .blog-post-content li {
+    font-size: 16px;
+  }
+
+  .page-blog-post .blog-post-content .article-lead {
+    font-size: 18px;
+  }
 }
 
 /* Login: same centered form, now in the Academy atmosphere. */
