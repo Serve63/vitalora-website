@@ -967,7 +967,7 @@ html.clean-reset-reader .main {
   background:
     radial-gradient(circle at 82% 2%, rgba(218, 177, 137, 0.15), transparent 29%),
     linear-gradient(180deg, #f8f3ec 0%, #f3ece3 100%);
-  box-shadow: -16px 0 60px rgba(14, 24, 19, 0.14);
+  box-shadow: none;
 }
 
 html.clean-reset-reader .main::-webkit-scrollbar {
@@ -1255,24 +1255,24 @@ html.clean-reset-reader .lesson-sources a {
 @media (min-width: 761px) {
   html.clean-reset-reader body {
     gap: 0;
-    padding: 10px 10px 10px 0;
+    padding: 0;
   }
 
   html.clean-reset-reader .sidebar {
-    min-height: calc(100vh - 20px);
-    min-height: calc(100dvh - 20px);
-    height: calc(100vh - 20px);
-    height: calc(100dvh - 20px);
+    min-height: 100vh;
+    min-height: 100dvh;
+    height: 100vh;
+    height: 100dvh;
   }
 
   html.clean-reset-reader .main {
-    height: calc(100vh - 20px);
-    height: calc(100dvh - 20px);
-    border-radius: 20px;
+    height: 100vh;
+    height: 100dvh;
+    border-radius: 0;
   }
 
   html.clean-reset-reader .topbar {
-    border-radius: 18px 18px 0 0;
+    border-radius: 0;
   }
 }
 
