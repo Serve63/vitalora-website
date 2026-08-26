@@ -11,17 +11,21 @@ function read(file) {
 
 test('blog, login en Clean Reset laden uitsluitend hun gedeelde warme kleurlaag', () => {
   const blog = read('blog.html');
+  const liveBlogRoute = read('blog/index.html');
   const login = read('login/index.html');
   const cleanReset = read('clean-reset.html');
   const warmCss = read('assets/css/warm-pages.css');
 
   assert.match(blog, /<body class="page-blog">/);
+  assert.match(liveBlogRoute, /<body class="page-blog">/);
   assert.match(login, /<body class="page-login">/);
   assert.match(cleanReset, /<body class="page-clean-reset">/);
   [blog, login, cleanReset].forEach((html) => {
     assert.match(html, /\/assets\/css\/warm-pages\.css\?v=1/);
     assert.match(html, /meta name="theme-color" content="#253129"/);
   });
+  assert.match(liveBlogRoute, /\/assets\/css\/warm-pages\.css\?v=1/);
+  assert.match(liveBlogRoute, /meta name="theme-color" content="#253129"/);
   assert.match(warmCss, /\.page-blog/);
   assert.match(warmCss, /\.page-login/);
   assert.match(warmCss, /\.page-clean-reset/);
