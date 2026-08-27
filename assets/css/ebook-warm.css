@@ -5,7 +5,7 @@
   --ebook-clay-dark: #9e5d41;
   --ebook-ivory: #f4eee6;
   --ebook-paper: #fffaf5;
-  --ebook-sand: #e6d6c3;
+  --ebook-sand: #c6a57e;
   --ebook-line: #dfd1c2;
   --ebook-ink: #262720;
   --ebook-copy: #625d55;
@@ -135,6 +135,23 @@ body.ebook-page--warm {
 
 .ebook-page--warm .cta-button:hover { transform: translateY(-2px); background: var(--ebook-clay-dark) !important; box-shadow: 0 18px 34px rgba(158,93,65,.27) !important; }
 
+.ebook-page--warm #ebook-claim {
+  background: var(--ebook-clay) !important;
+  outline: 0 !important;
+}
+
+.ebook-page--warm #ebook-claim:hover,
+.ebook-page--warm #ebook-claim:active {
+  background: var(--ebook-clay-dark) !important;
+}
+
+.ebook-page--warm #ebook-claim:focus,
+.ebook-page--warm #ebook-claim:focus-visible {
+  border-color: transparent !important;
+  outline: 0 !important;
+  box-shadow: 0 15px 30px rgba(189,118,84,.24) !important;
+}
+
 .ebook-page--warm .hero-image {
   position: relative;
   display: grid;
@@ -158,7 +175,7 @@ body.ebook-page--warm {
   display: block;
   margin: 0;
   object-fit: contain;
-  filter: none;
+  filter: drop-shadow(0 28px 22px rgba(45,34,26,.3));
 }
 
 .ebook-page--warm .mobile-book-image { display: none; }
@@ -255,7 +272,7 @@ body.ebook-page--warm {
   .ebook-page--warm .hero-text h1 { font-size: 43px !important; hyphens: none !important; }
   .ebook-page--warm .hero-description { display: block !important; font-size: 15px; }
   .ebook-page--warm .mobile-book-image { display: block !important; order: 0; margin: 22px 0 20px !important; overflow: visible; border: 0; background: transparent; box-shadow: none; }
-  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: 380px !important; height: auto !important; margin: 0 auto !important; object-fit: contain; filter: none; }
+  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: 380px !important; height: auto !important; margin: 0 auto !important; object-fit: contain; filter: drop-shadow(0 18px 15px rgba(45,34,26,.28)); }
   .ebook-page--warm .hero-image { display: none !important; }
   .ebook-page--warm .features-list { margin: 20px 0 24px !important; }
   .ebook-page--warm .testimonials { padding: 66px 0; }

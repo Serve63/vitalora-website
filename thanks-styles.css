@@ -55,7 +55,7 @@ body.page-thanks-warm {
   .hero,
   .steps { grid-template-columns: 1fr; }
   .hero .photo { max-width: 620px; }
-  .hero .photo img { height: auto; aspect-ratio: 4 / 3; }
+  .hero .photo img { height: auto; aspect-ratio: 4 / 5; object-position: center; }
 }
 
 @media (max-width: 560px) {
