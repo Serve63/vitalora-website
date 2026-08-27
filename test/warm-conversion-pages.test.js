@@ -43,6 +43,23 @@ test('checkout gebruikt de warme Vitalora-laag en behoudt het betaalcontract', (
   assert.doesNotMatch(css, /#2954B4|#3A9AEA|#10b981/i);
 });
 
+test('eenmalig aanbod gebruikt dezelfde warme checkout zonder systeemdropdown', () => {
+  const html = read('wacht-even.html');
+  const script = read('checkout-script.js');
+
+  assert.match(html, /<body class="page-checkout-warm">/);
+  assert.match(html, /meta name="theme-color" content="#253129"/);
+  assert.match(html, /assets\/css\/checkout-warm\.css\?v=2/);
+  assert.match(html, /assets\/images\/clean-reset-course-v2\.jpg/);
+  assert.match(html, /class="discounted-price">€ 27,00/);
+  assert.match(html, /data-country-picker/);
+  assert.match(html, /class="country-trigger"[^>]*aria-haspopup="listbox"/);
+  assert.doesNotMatch(html, /<select\b|id="terms"[^>]*checked/);
+  assert.match(html, /checkout-script\.js\?v=7/);
+  assert.match(script, /isWachtEven \? '€ 27,00'/);
+  assert.match(script, /amountValue = '27\.00'/);
+});
+
 test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', () => {
   const html = read('ebook.html');
   const css = read('assets/css/ebook-warm.css');
