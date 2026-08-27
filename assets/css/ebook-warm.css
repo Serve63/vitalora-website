@@ -54,8 +54,8 @@ body.ebook-page--warm {
   position: relative;
   z-index: 1;
   display: grid;
-  grid-template-columns: minmax(0, .92fr) minmax(480px, 1.08fr);
-  gap: 70px;
+  grid-template-columns: minmax(0, 1.12fr) minmax(430px, .88fr);
+  gap: 56px;
   align-items: center;
   margin: 0;
 }
@@ -77,12 +77,19 @@ body.ebook-page--warm {
 }
 
 .ebook-page--warm .hero-text h1 {
-  max-width: 650px;
+  max-width: 700px;
   margin: 0;
   color: var(--ebook-ink);
-  font-size: clamp(46px, 5.5vw, 70px);
-  line-height: 1.02;
+  font-size: clamp(42px, 3.7vw, 48px);
+  line-height: 1.05;
   letter-spacing: -.055em;
+}
+
+@media (min-width: 901px) {
+  .ebook-page--warm .hero-title-line {
+    display: block;
+    white-space: nowrap;
+  }
 }
 
 .ebook-page--warm .hero-text .highlight { color: var(--ebook-clay); }
@@ -131,42 +138,29 @@ body.ebook-page--warm {
 
 .ebook-page--warm .hero-image {
   position: relative;
-  display: block;
-  min-height: 555px;
+  display: grid;
+  min-height: 520px;
+  place-items: center;
   padding: 0;
-  overflow: hidden;
-  border: 8px solid var(--ebook-paper);
-  border-radius: 30px;
-  background: var(--ebook-paper);
-  box-shadow: 0 30px 70px rgba(66,49,37,.18);
+  overflow: visible;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
 }
 
 .ebook-page--warm .hero-image::after {
-  position: absolute;
-  left: 24px;
-  bottom: 24px;
-  max-width: 280px;
-  padding: 18px 20px;
-  border-left: 5px solid var(--ebook-clay);
-  border-radius: 4px 16px 16px 4px;
-  background: rgba(37,49,41,.92);
-  color: var(--ebook-paper);
-  font-size: 20px;
-  font-weight: 700;
-  line-height: 1.25;
-  content: "Microplastics thuis\A 7 rustige plekken om te beginnen";
-  white-space: pre-line;
-  backdrop-filter: blur(8px);
+  content: none;
 }
 
 .ebook-page--warm .ebook-cover {
   width: 100%;
-  max-width: none;
-  height: 555px;
+  max-width: 520px;
+  height: auto;
   display: block;
   margin: 0;
-  object-fit: cover;
-  filter: none;
+  object-fit: contain;
+  filter: drop-shadow(0 28px 30px rgba(66,49,37,.2));
+  mix-blend-mode: multiply;
 }
 
 .ebook-page--warm .mobile-book-image { display: none; }
@@ -227,8 +221,8 @@ body.ebook-page--warm {
 .ebook-page--warm #ebook-modal .modal-hero h2 { margin: 0; color: var(--ebook-ink); font-size: 31px; line-height: 1.12; letter-spacing: -.035em; }
 .ebook-page--warm #ebook-modal .modal-subtitle { margin: 7px 0 0; color: var(--ebook-clay-dark); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
 .ebook-page--warm #ebook-modal .modal-body { display: grid; grid-template-columns: .82fr 1.18fr; gap: 0; padding: 25px 38px 34px; }
-.ebook-page--warm #ebook-modal .modal-illustration { display: block; min-height: 310px; overflow: hidden; border-radius: 18px; }
-.ebook-page--warm #ebook-modal .modal-illustration img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.ebook-page--warm #ebook-modal .modal-illustration { display: grid; min-height: 310px; overflow: hidden; border-radius: 18px; background: var(--ebook-ivory); place-items: center; }
+.ebook-page--warm #ebook-modal .modal-illustration img { width: 100%; height: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
 .ebook-page--warm #ebook-modal .modal-copy { padding: 0 0 0 26px; }
 .ebook-page--warm #ebook-modal .modal-lead { margin: 0 0 16px; color: var(--ebook-copy); font-size: 13px; line-height: 1.6; }
 .ebook-page--warm #ebook-modal .modal-form input { width: 100%; min-height: 50px; margin: 0 0 10px; padding: 13px 15px; border: 1px solid #d9cbbb; border-radius: 12px; outline: none; background: #fffdf9; color: var(--ebook-ink); font-size: 14px; }
@@ -245,8 +239,8 @@ body.ebook-page--warm {
 @media (max-width: 900px) {
   .ebook-page--warm .hero-content { grid-template-columns: 1fr; gap: 43px; }
   .ebook-page--warm .hero-text { max-width: 680px; }
-  .ebook-page--warm .hero-image { min-height: 500px; }
-  .ebook-page--warm .ebook-cover { height: 500px; }
+  .ebook-page--warm .hero-image { min-height: 470px; }
+  .ebook-page--warm .ebook-cover { max-width: 470px; height: auto; }
 }
 
 @media (max-width: 768px) {
@@ -257,8 +251,8 @@ body.ebook-page--warm {
   .ebook-page--warm .hero-content { grid-template-columns: 1fr !important; gap: 25px !important; margin: 0 !important; }
   .ebook-page--warm .hero-text h1 { font-size: 43px !important; hyphens: none !important; }
   .ebook-page--warm .hero-description { display: block !important; font-size: 15px; }
-  .ebook-page--warm .mobile-book-image { display: block !important; order: 0; margin: 22px 0 20px !important; overflow: hidden; border: 6px solid var(--ebook-paper); border-radius: 22px; box-shadow: 0 20px 45px rgba(66,49,37,.16); }
-  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: none !important; height: 320px !important; margin: 0 !important; object-fit: cover; }
+  .ebook-page--warm .mobile-book-image { display: block !important; order: 0; margin: 22px 0 20px !important; overflow: visible; border: 0; background: transparent; box-shadow: none; }
+  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: 380px !important; height: auto !important; margin: 0 auto !important; object-fit: contain; filter: drop-shadow(0 20px 24px rgba(66,49,37,.18)); mix-blend-mode: multiply; }
   .ebook-page--warm .hero-image { display: none !important; }
   .ebook-page--warm .features-list { margin: 20px 0 24px !important; }
   .ebook-page--warm .testimonials { padding: 66px 0; }
