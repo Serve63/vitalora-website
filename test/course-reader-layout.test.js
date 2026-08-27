@@ -45,8 +45,8 @@ test('leesvoortgang luistert naar het scrollende cursusdeel', () => {
 test('de cursuspagina gebruikt de nieuwe cacheversies van readerstijl en gedrag', () => {
   const html = read('course-view.html');
   const script = read('assets/js/course-view.js');
-  assert.match(html, /course-reader\.css\?v=22/);
-  assert.match(html, /course-view\.js\?v=16/);
+  assert.match(html, /course-reader\.css\?v=23/);
+  assert.match(html, /course-view\.js\?v=17/);
   assert.match(script, /clean-reset[^\n]*\.json\?v=6|courses\/\$\{encodeURIComponent\(state\.slug\)\}\.json\?v=6/);
 });
 
@@ -61,13 +61,23 @@ test('Clean Reset heeft een toegankelijke en blijvende sfeerlamp', () => {
   assert.match(css, /html\.clean-reset-reader\.ambience-on \.main::before,[\s\S]*html\.clean-reset-reader\.ambience-on \.main::after\s*\{\s*opacity:\s*1/);
   assert.match(css, /rgba\(255, 220, 139, 0\.68\)/);
   assert.match(css, /mix-blend-mode:\s*normal/);
-  assert.match(css, /html\.clean-reset-reader\.ambience-on \.topbar\s*\{[\s\S]*rgba\(250, 227, 189, 0\.95\)/);
   assert.match(css, /html\.clean-reset-reader\.ambience-on \.lesson-arrival\s*\{[\s\S]*#fae3bd/);
   assert.match(css, /html\.clean-reset-reader \.wrap\s*\{[\s\S]*z-index:\s*17/);
   assert.match(script, /vitalora:clean-reset:ambience/);
   assert.match(script, /localStorage\.setItem\(storageKey, isOn \? 'on' : 'off'\)/);
   assert.match(script, /button\.setAttribute\('aria-pressed', String\(isOn\)\)/);
   assert.match(script, /setupAmbienceToggle\(\);/);
+});
+
+test('de overbodige lesbalk is overal weg maar mobiel houdt de cursusknop', () => {
+  const html = read('course-view.html');
+  const css = read('assets/css/course-reader.css');
+  const script = read('assets/js/course-view.js');
+
+  assert.doesNotMatch(html, /class="topbar"|tbLabel|tbTitle|rtBadge/);
+  assert.doesNotMatch(script, /tbLabel|tbTitle|rtBadge/);
+  assert.match(html, /class="mobile-menu reader-menu-button" id="mobileMenu"/);
+  assert.match(css, /html\.clean-reset-reader \.mobile-menu\s*\{[\s\S]*position:\s*fixed;[\s\S]*top:\s*14px;[\s\S]*display:\s*grid;/);
 });
 
 test('alleen Clean Reset krijgt de warme winterse readerlayout', () => {

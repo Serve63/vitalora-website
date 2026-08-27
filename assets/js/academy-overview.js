@@ -25,16 +25,9 @@
   }
 
   function setCourseLinks(href, label) {
-    const heroLink = document.getElementById('hero-course-link');
     const courseLink = document.getElementById('clean-reset-course-link');
     const libraryLink = document.getElementById('clean-reset-library-link');
     const featuredCard = document.querySelector('.academy-featured-course[data-course="clean-reset"]');
-
-    if (heroLink) {
-      heroLink.href = href;
-      const heroText = heroLink.querySelector('span');
-      if (heroText) heroText.textContent = 'Ga verder';
-    }
 
     if (courseLink) {
       courseLink.href = href;
@@ -53,6 +46,13 @@
 
   function updateResumeCard(lesson, completedCount, total) {
     const courseComplete = completedCount === total;
+    const resumeSummary = document.getElementById('resume-summary');
+
+    const updateResumeSummary = (message) => {
+      if (!resumeSummary) return;
+      resumeSummary.textContent = message;
+      resumeSummary.hidden = !message;
+    };
 
     if (courseComplete) {
       setText('next-lesson-status', 'Cursus afgerond');
@@ -60,7 +60,7 @@
       setText('next-lesson-description', 'Mooi werk. Je kunt nu rustig terugkijken, een favoriete les herhalen of je persoonlijke resetplan erbij pakken.');
       setText('next-lesson-position', `${total} van ${total} lessen`);
       setText('next-lesson-duration', 'Kies je favoriet');
-      setText('resume-summary', 'Je hebt de hele reis afgerond. Alles blijft voor je open om opnieuw te bekijken.');
+      updateResumeSummary('Je hebt de hele reis afgerond. Alles blijft voor je open om opnieuw te bekijken.');
       return;
     }
 
@@ -73,9 +73,9 @@
     setText('next-lesson-duration', `${lesson.duration_min || 10} minuten`);
 
     if (completedCount === 0) {
-      setText('resume-summary', 'Je staat aan het begin. Les 1 ligt warm voor je klaar wanneer jij wilt starten.');
+      updateResumeSummary('');
     } else {
-      setText('resume-summary', `Je hebt ${completedCount} van ${total} lessen afgerond. Les ${lesson.index} ligt als volgende voor je klaar.`);
+      updateResumeSummary(`Je hebt ${completedCount} van ${total} lessen afgerond. Les ${lesson.index} ligt als volgende voor je klaar.`);
     }
   }
 

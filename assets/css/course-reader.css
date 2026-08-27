@@ -1632,12 +1632,20 @@ html.clean-reset-reader .lesson-sources a {
   }
 
   html.clean-reset-reader .mobile-menu {
+    position: fixed;
+    top: 14px;
+    left: 14px;
+    z-index: 60;
     display: grid;
+    width: 44px;
+    height: 44px;
+    padding: 0;
     place-items: center;
-    color: #634c3f;
-    background: #fffaf3;
-    border-color: #ddcdbd;
-    box-shadow: 0 4px 12px rgba(79, 58, 43, 0.06);
+    color: #fffaf3;
+    background: rgba(37, 49, 41, 0.96);
+    border-color: rgba(255, 248, 238, 0.22);
+    border-radius: 13px;
+    box-shadow: 0 12px 28px rgba(20, 28, 23, 0.24);
     cursor: pointer;
   }
 

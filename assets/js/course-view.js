@@ -382,9 +382,6 @@
     const chapter = getChapterNumber(state.current);
 
     $('#sCourse').textContent = (displayTitles[state.slug] || state.course.title || 'Cursus').split(':')[0];
-    $('#tbLabel').textContent = `Les ${String(state.current.index).padStart(2, '0')}`;
-    $('#tbTitle').textContent = shortTitle(view.title);
-    $('#rtBadge').textContent = `${view.duration_min || 10} min leestijd`;
     $('#lessonNumber').textContent = `Les ${String(state.current.index).padStart(2, '0')} van ${state.lessons.length}`;
     $('#lessonDuration').innerHTML = `${clockIcon()} ${view.duration_min || 10} minuten`;
     $('#lessonTitle').textContent = shortTitle(view.title);

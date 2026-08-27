@@ -17,7 +17,7 @@ test('alleen de homepage laadt de warme home-laag', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(home, /\/assets\/css\/home\.css\?v=194/);
+  assert.match(home, /\/assets\/css\/home\.css\?v=195/);
   assert.match(home, /meta name="theme-color" content="#253129"/);
   assert.doesNotMatch(otherHtml, /\/assets\/css\/home\.css/);
 });
