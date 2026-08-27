@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', function() {
         return document.querySelector('.order-form') || document.querySelector('.checkout-form');
     })();
     const checkoutButton = activeForm?.querySelector('.checkout-button');
+    const isWarmCheckout = document.body.classList.contains('page-checkout-warm');
     
     if (checkoutButton) {
         checkoutButton.addEventListener('click', async function(e) {
@@ -150,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const terms = !!termsEl && termsEl.checked;
             
             // Basic validation
-            if (!firstName || !email || !terms) {
+            if (!firstName || !lastName || !email || !terms) {
                 alert('Vul alle verplichte velden in en ga akkoord met de voorwaarden.');
                 return;
             }
@@ -208,7 +209,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = data.checkoutUrl;
             } catch (err) {
                 alert('Er ging iets mis met starten van de betaling. Probeer opnieuw.');
-                this.textContent = 'Afrekenen →';
+                this.textContent = isWarmCheckout ? 'Veilig afrekenen →' : 'Afrekenen →';
                 this.disabled = false;
             }
         });
@@ -224,6 +225,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const formInputs = document.querySelectorAll('.form-group input, .form-group select');
     
     formInputs.forEach(input => {
+        if (isWarmCheckout) return;
         input.addEventListener('focus', function() {
             this.parentElement.style.transform = 'scale(1.02)';
         });
@@ -234,7 +236,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Checkout button hover effects
-    if (checkoutButton) {
+    if (checkoutButton && !isWarmCheckout) {
         checkoutButton.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-2px)';
             this.style.boxShadow = '0 10px 25px rgba(16, 185, 129, 0.3)';

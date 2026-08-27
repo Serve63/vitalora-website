@@ -1,0 +1,284 @@
+:root {
+  --ebook-moss: #253129;
+  --ebook-moss-deep: #19231e;
+  --ebook-clay: #bd7654;
+  --ebook-clay-dark: #9e5d41;
+  --ebook-ivory: #f4eee6;
+  --ebook-paper: #fffaf5;
+  --ebook-line: #dfd1c2;
+  --ebook-ink: #262720;
+  --ebook-copy: #625d55;
+}
+
+html { background: var(--ebook-ivory); }
+
+body.ebook-page--warm {
+  overflow-x: hidden;
+  background: var(--ebook-ivory);
+  color: var(--ebook-ink);
+  font-family: "Quicksand", system-ui, -apple-system, sans-serif;
+}
+
+.ebook-page--warm .site-header {
+  height: 72px;
+  background: var(--ebook-moss);
+  border: 0;
+}
+
+.ebook-page--warm .site-header .header-inner { max-width: 1180px; }
+.ebook-page--warm .site-header .logo-text { color: var(--ebook-paper); font-weight: 700; }
+
+.ebook-page--warm .hero {
+  position: relative;
+  overflow: hidden;
+  padding: 74px 0 84px;
+  background:
+    radial-gradient(circle at 8% 5%, rgba(189,118,84,.16), transparent 30rem),
+    linear-gradient(180deg, #f7f0e8, var(--ebook-ivory));
+}
+
+.ebook-page--warm .hero::after {
+  position: absolute;
+  right: -220px;
+  bottom: -260px;
+  width: 470px;
+  height: 470px;
+  border: 1px solid rgba(189,118,84,.2);
+  border-radius: 50%;
+  content: "";
+}
+
+.ebook-page--warm .container { width: min(1180px, calc(100% - 40px)); max-width: none; margin: 0 auto; padding: 0; }
+
+.ebook-page--warm .hero-content {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, .92fr) minmax(480px, 1.08fr);
+  gap: 70px;
+  align-items: center;
+  margin: 0;
+}
+
+.ebook-page--warm .hero-text { padding: 0; }
+
+.ebook-page--warm .direct-access {
+  display: inline-flex;
+  margin: 0 0 13px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--ebook-clay-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  cursor: default;
+}
+
+.ebook-page--warm .hero-text h1 {
+  max-width: 650px;
+  margin: 0;
+  color: var(--ebook-ink);
+  font-size: clamp(46px, 5.5vw, 70px);
+  line-height: 1.02;
+  letter-spacing: -.055em;
+}
+
+.ebook-page--warm .hero-text .highlight { color: var(--ebook-clay); }
+
+.ebook-page--warm .hero-description {
+  display: block;
+  max-width: 610px;
+  margin: 24px 0 0;
+  color: var(--ebook-copy);
+  font-size: 17px;
+  line-height: 1.72;
+}
+
+.ebook-page--warm .features-list { display: grid; gap: 9px; margin: 25px 0 29px; }
+.ebook-page--warm .feature-item { gap: 10px; color: #4e4e48; font-size: 13px; font-weight: 600; }
+
+.ebook-page--warm .feature-item .checkmark {
+  width: 21px;
+  height: 21px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border-radius: 50%;
+  background: #e2e8e2;
+  color: var(--ebook-moss);
+}
+
+.ebook-page--warm .cta-button {
+  min-height: 55px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 15px 22px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--ebook-clay) !important;
+  box-shadow: 0 15px 30px rgba(189,118,84,.24) !important;
+  color: #fff !important;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+}
+
+.ebook-page--warm .cta-button:hover { transform: translateY(-2px); background: var(--ebook-clay-dark) !important; box-shadow: 0 18px 34px rgba(158,93,65,.27) !important; }
+
+.ebook-page--warm .hero-image {
+  position: relative;
+  display: block;
+  min-height: 555px;
+  padding: 0;
+  overflow: hidden;
+  border: 8px solid var(--ebook-paper);
+  border-radius: 30px;
+  background: var(--ebook-paper);
+  box-shadow: 0 30px 70px rgba(66,49,37,.18);
+}
+
+.ebook-page--warm .hero-image::after {
+  position: absolute;
+  left: 24px;
+  bottom: 24px;
+  max-width: 280px;
+  padding: 18px 20px;
+  border-left: 5px solid var(--ebook-clay);
+  border-radius: 4px 16px 16px 4px;
+  background: rgba(37,49,41,.92);
+  color: var(--ebook-paper);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+  content: "Microplastics thuis\A 7 rustige plekken om te beginnen";
+  white-space: pre-line;
+  backdrop-filter: blur(8px);
+}
+
+.ebook-page--warm .ebook-cover {
+  width: 100%;
+  max-width: none;
+  height: 555px;
+  display: block;
+  margin: 0;
+  object-fit: cover;
+  filter: none;
+}
+
+.ebook-page--warm .mobile-book-image { display: none; }
+
+.ebook-page--warm .testimonials {
+  padding: 88px 0 96px;
+  background: var(--ebook-paper);
+}
+
+.ebook-page--warm .rating-display {
+  margin: 0 0 34px;
+  color: var(--ebook-clay-dark);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.ebook-page--warm .testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.ebook-page--warm .testimonial-card { min-height: 330px; display: flex; flex-direction: column; padding: 26px; border: 1px solid var(--ebook-line); border-radius: 22px; background: #f8f2ea; box-shadow: none; }
+.ebook-page--warm .testimonial-card:nth-child(n+4) { display: none; }
+.ebook-page--warm .testimonial-card .quote { margin: 17px 0 24px; color: var(--ebook-copy); font-size: 13px; line-height: 1.7; }
+.ebook-page--warm .testimonial-card .profile { margin-top: auto; }
+.ebook-page--warm .testimonial-card .name { color: var(--ebook-ink); }
+.ebook-page--warm .testimonial-card .profession { color: #817a71; }
+
+.ebook-page--warm .final-cta {
+  padding: 82px 0;
+  background: var(--ebook-moss);
+  color: var(--ebook-paper);
+}
+
+.ebook-page--warm .final-cta h2 { max-width: 720px; margin: 0 auto; color: var(--ebook-paper); font-size: clamp(38px, 4.6vw, 58px); line-height: 1.08; letter-spacing: -.045em; }
+.ebook-page--warm .final-cta p { max-width: 620px; margin: 17px auto 26px; color: rgba(255,250,245,.7); font-size: 16px; line-height: 1.7; }
+.ebook-page--warm .final-cta .cta-button { background: var(--ebook-paper) !important; color: var(--ebook-moss) !important; box-shadow: none !important; }
+.ebook-page--warm .final-cta .cta-button:hover { background: #f0e1d2 !important; }
+
+.ebook-page--warm .modal { position: fixed; z-index: 999; inset: 0; display: grid; place-items: center; padding: 22px; }
+.ebook-page--warm .modal.hidden { display: none; }
+.ebook-page--warm .modal-backdrop { position: absolute; inset: 0; background: rgba(19,28,23,.72); backdrop-filter: blur(7px); }
+
+.ebook-page--warm #ebook-modal .modal-card {
+  position: relative;
+  z-index: 1;
+  width: min(790px, 100%);
+  max-width: 790px;
+  max-height: none;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.35);
+  border-radius: 26px;
+  background: var(--ebook-paper);
+  box-shadow: 0 34px 90px rgba(0,0,0,.32);
+}
+
+.ebook-page--warm #ebook-modal .modal-hero { padding: 29px 38px 0; background: transparent; text-align: left; }
+.ebook-page--warm #ebook-modal .modal-hero h2 { margin: 0; color: var(--ebook-ink); font-size: 31px; line-height: 1.12; letter-spacing: -.035em; }
+.ebook-page--warm #ebook-modal .modal-subtitle { margin: 7px 0 0; color: var(--ebook-clay-dark); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
+.ebook-page--warm #ebook-modal .modal-body { display: grid; grid-template-columns: .82fr 1.18fr; gap: 0; padding: 25px 38px 34px; }
+.ebook-page--warm #ebook-modal .modal-illustration { display: block; min-height: 310px; overflow: hidden; border-radius: 18px; }
+.ebook-page--warm #ebook-modal .modal-illustration img { width: 100%; height: 100%; display: block; object-fit: cover; }
+.ebook-page--warm #ebook-modal .modal-copy { padding: 0 0 0 26px; }
+.ebook-page--warm #ebook-modal .modal-lead { margin: 0 0 16px; color: var(--ebook-copy); font-size: 13px; line-height: 1.6; }
+.ebook-page--warm #ebook-modal .modal-form input { width: 100%; min-height: 50px; margin: 0 0 10px; padding: 13px 15px; border: 1px solid #d9cbbb; border-radius: 12px; outline: none; background: #fffdf9; color: var(--ebook-ink); font-size: 14px; }
+.ebook-page--warm #ebook-modal .modal-form input:focus { border-color: var(--ebook-clay); box-shadow: 0 0 0 3px rgba(189,118,84,.12); }
+.ebook-page--warm #ebook-modal .modal-cta { width: 100%; margin-top: 2px; }
+.ebook-page--warm #ebook-modal .modal-trust { color: #8b837a; font-size: 10px; }
+.ebook-page--warm #ebook-modal .modal-close { top: 13px; right: 14px; width: 36px; height: 36px; border: 1px solid var(--ebook-line); border-radius: 50%; background: rgba(255,250,245,.92); color: var(--ebook-ink); }
+
+.ebook-page--warm .modal-feedback { display: none; margin-top: 12px; padding: 11px; border-radius: 10px; color: var(--ebook-copy); font-size: 12px; }
+.ebook-page--warm .modal-feedback.is-visible { display: block; }
+.ebook-page--warm .modal-feedback--error { background: #fff0ec; color: #8e3e30; }
+.ebook-page--warm .modal-feedback--success { background: #edf3ed; color: var(--ebook-moss); }
+
+@media (max-width: 900px) {
+  .ebook-page--warm .hero-content { grid-template-columns: 1fr; gap: 43px; }
+  .ebook-page--warm .hero-text { max-width: 680px; }
+  .ebook-page--warm .hero-image { min-height: 500px; }
+  .ebook-page--warm .ebook-cover { height: 500px; }
+}
+
+@media (max-width: 768px) {
+  .ebook-page--warm .site-header { display: block !important; visibility: visible !important; opacity: 1 !important; height: 64px !important; overflow: visible !important; }
+  .ebook-page--warm .site-header .header-inner { padding: 0 16px; }
+  .ebook-page--warm .container { width: min(100% - 30px, 620px); }
+  .ebook-page--warm .hero { padding: 46px 0 54px !important; }
+  .ebook-page--warm .hero-content { grid-template-columns: 1fr !important; gap: 25px !important; margin: 0 !important; }
+  .ebook-page--warm .hero-text h1 { font-size: 43px !important; hyphens: none !important; }
+  .ebook-page--warm .hero-description { display: block !important; font-size: 15px; }
+  .ebook-page--warm .mobile-book-image { display: block !important; order: 0; margin: 22px 0 20px !important; overflow: hidden; border: 6px solid var(--ebook-paper); border-radius: 22px; box-shadow: 0 20px 45px rgba(66,49,37,.16); }
+  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: none !important; height: 320px !important; margin: 0 !important; object-fit: cover; }
+  .ebook-page--warm .hero-image { display: none !important; }
+  .ebook-page--warm .features-list { margin: 20px 0 24px !important; }
+  .ebook-page--warm .testimonials { padding: 66px 0; }
+  .ebook-page--warm .testimonials-grid { grid-template-columns: 1fr; }
+  .ebook-page--warm .testimonial-card { min-height: 0; }
+  .ebook-page--warm .final-cta { padding: 64px 0; }
+  .ebook-page--warm #ebook-modal .modal-card { max-height: calc(100vh - 30px); overflow-y: auto; }
+  .ebook-page--warm #ebook-modal .modal-hero { padding: 27px 22px 0; }
+  .ebook-page--warm #ebook-modal .modal-body { grid-template-columns: 1fr; padding: 20px 22px 24px; }
+  .ebook-page--warm #ebook-modal .modal-illustration { display: none; }
+  .ebook-page--warm #ebook-modal .modal-copy { padding: 0; }
+}
+
+@media (max-width: 420px) {
+  .ebook-page--warm .hero-text h1 { font-size: 38px !important; }
+  .ebook-page--warm .cta-button { width: 100%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ebook-page--warm *,
+  .ebook-page--warm *::before,
+  .ebook-page--warm *::after { transition: none !important; }
+}

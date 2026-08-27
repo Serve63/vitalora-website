@@ -3,15 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#2954B4">
+    <meta name="theme-color" content="#253129">
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Rond je bestelling voor de Vitalora Clean Reset veilig af.">
     <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
     <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-    <title>Clean Reset Cursus - Checkout</title>
+    <title>Clean Reset afrekenen | Vitalora</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/header.css?v=20">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=6">
+    <link rel="stylesheet" href="/assets/css/checkout-warm.css?v=1">
     <style>
         * {
             margin: 0;
@@ -400,69 +403,73 @@
         }
     </style>
 </head>
-<body>
+<body class="page-checkout-warm">
     <header class="site-header" role="banner">
       <div class="header-inner">
         <a class="logo" href="/">
-          <span class="logo-text">Vitalora.nl</span>
+          <span class="logo-text">Vitalora</span>
         </a>
         <div class="header-buttons">
-          <a class="btn login-btn" href="/login">Inloggen</a>
+          <a class="checkout-back" href="/clean-reset">← Terug naar Clean Reset</a>
         </div>
       </div>
     </header>
     <div class="container">
+        <div class="checkout-intro">
+            <span>Laatste stap</span>
+            <h1>Rustig afronden, daarna kun je direct beginnen.</h1>
+            <p>Controleer je gegevens en kies hoe je wilt betalen.</p>
+        </div>
         <div class="checkout-layout">
             <!-- Left Column - Product Info -->
             <div class="product-info">
-                <h1 class="product-title">Clean Reset:<span class="mobile-break"></span> Detox & Gifstoffen</h1>
+                <p class="product-kicker">Clean Reset · digitale cursus</p>
+                <h2 class="product-title">Minder blootstelling, meer rustige regie</h2>
 
                 <div class="product-image">
-                    <img src="/assets/images/Clean-reset 2025.png" alt="Clean Reset Detox Cursus" style="width: 100%; max-width: 400px; height: auto; border-radius: 12px; margin: 20px 0;">
+                    <img src="/assets/images/clean-reset-course-v2.jpg" alt="Warme Clean Reset-cursusomgeving met laptop, werkboek en een kop thee">
                 </div>
                 
                 <!-- Mobile-only USP section under the image -->
                 <ul class="usps-mobile">
-                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
-                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
-                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
-                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
-                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
+                    <li><strong>24 heldere lessen</strong> – steeds 8–12 minuten</li>
+                    <li><strong>Praktisch voor thuis</strong> – kleine keuzes die haalbaar blijven</li>
+                    <li><strong>In je eigen tempo</strong> – zonder druk of onhaalbare regels</li>
+                    <li><strong>Direct toegang</strong> – na een geslaagde betaling</li>
                 </ul>
                 
                 <div class="product-description">
-                    <p>Je lichaam stapelt elke dag ongemerkt gifstoffen op.</p>
-                    <p>Deze complete detox cursus laat je zien hoe je die verwijdert.</p>
-                    <p>Zodat jij meer energie, scherpte en balans ervaart.</p>
+                    <p>Een warme, nuchtere cursus over PFAS, microplastics, BPA en andere stoffen.</p>
+                    <p>Je ontdekt wat ertoe doet, wat je kunt loslaten en welke kleine keuzes thuis haalbaar zijn.</p>
                 </div>
 
                 <ul class="benefits-list">
-                    <li><strong>Volledige detox</strong> – pakt meerdere toxines tegelijk aan</li>
-                    <li><strong>Onderbouwd</strong> – gebaseerd op de nieuwste inzichten</li>
-                    <li><strong>Praktisch toepasbaar</strong> – direct, duidelijk starten</li>
-                    <li><strong>Voelbaar resultaat</strong> – meer energie, betere focus</li>
-                    <li><strong>Alles-in-één cursus</strong> – inclusief begeleiding</li>
+                    <li><strong>24 heldere lessen</strong> – steeds 8–12 minuten</li>
+                    <li><strong>Praktisch voor thuis</strong> – keuken, verzorging en dagelijks leven</li>
+                    <li><strong>In je eigen tempo</strong> – zonder druk of onhaalbare regels</li>
+                    <li><strong>Direct toegang</strong> – na een geslaagde betaling</li>
                 </ul>
             </div>
 
             <!-- Right Column - Checkout Form -->
             <div class="checkout-form">
-                <h2 class="form-title">Afrekenen</h2>
+                <p class="form-kicker">Veilig afrekenen</p>
+                <h2 class="form-title">Jouw bestelling</h2>
                 
                 <!-- Personal Details -->
                 <div class="form-section">
                     <h3>Jouw gegevens</h3>
                     <div class="form-group">
-                        <input type="text" placeholder="Voornaam" required>
+                        <input type="text" placeholder="Voornaam" aria-label="Voornaam" autocomplete="given-name" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Achternaam" required>
+                        <input type="text" placeholder="Achternaam" aria-label="Achternaam" autocomplete="family-name" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="E-mailadres" required>
+                        <input type="email" placeholder="E-mailadres" aria-label="E-mailadres" autocomplete="email" inputmode="email" required>
                     </div>
                     <div class="form-group">
-                        <select>
+                        <select aria-label="Land" autocomplete="country-name">
                             <option>Nederland</option>
                             <option>België</option>
                             <option>Duitsland</option>
@@ -474,22 +481,22 @@
                 <div class="form-section">
                     <h3>Hoe wil je betalen?</h3>
                     <div class="payment-methods">
-                        <div class="payment-method selected">
+                        <button type="button" class="payment-method selected" aria-pressed="true">
                             <img src="/assets/images/ideal (1).svg" alt="iDEAL" class="payment-icon">
                             <span>iDEAL</span>
-                        </div>
-                        <div class="payment-method">
+                        </button>
+                        <button type="button" class="payment-method" aria-pressed="false">
                             <img src="/assets/images/creditcard (1).svg" alt="Creditcard" class="payment-icon">
                             <span>Creditcard</span>
-                        </div>
-                        <div class="payment-method">
+                        </button>
+                        <button type="button" class="payment-method" aria-pressed="false">
                             <img src="/assets/images/Klarna.svg" alt="Klarna" class="payment-icon">
                             <span>Klarna</span>
-                        </div>
-                        <div class="payment-method">
+                        </button>
+                        <button type="button" class="payment-method" aria-pressed="false">
                             <img src="/assets/images/bancontact (1).svg" alt="Bancontact" class="payment-icon">
                             <span>Bancontact</span>
-                        </div>
+                        </button>
                     </div>
                 </div>
 
@@ -497,7 +504,7 @@
                 <div class="order-summary">
                     <div class="summary-title">Besteloverzicht</div>
                     <div class="summary-item">
-                        <span>1x Clean Reset Detox Cursus</span>
+                        <span>Clean Reset · 24 lessen</span>
                     </div>
                     <div class="total">
                         <div class="total-label">Totaal:</div>
@@ -507,12 +514,13 @@
                     </div>
                 </div>
 
-                <button class="checkout-button">Afrekenen <span>→</span></button>
+                <button class="checkout-button">Veilig afrekenen <span>→</span></button>
+                <p class="payment-trust">Beveiligde betaling via Mollie · direct toegang na een geslaagde betaling</p>
 
                 <!-- Legal and Trust -->
                 <div class="legal-section">
                     <div class="checkbox-group">
-                        <input type="checkbox" id="terms" required checked>
+                        <input type="checkbox" id="terms" required>
                         <label for="terms">Ik ga akkoord met de <a href="/algemene-voorwaarden">algemene voorwaarden</a>.</label>
                     </div>
                 </div>
@@ -548,13 +556,17 @@
         // Payment method selection
         document.querySelectorAll('.payment-method').forEach(method => {
             method.addEventListener('click', function() {
-                document.querySelectorAll('.payment-method').forEach(m => m.classList.remove('selected'));
+                document.querySelectorAll('.payment-method').forEach(m => {
+                    m.classList.remove('selected');
+                    m.setAttribute('aria-pressed', 'false');
+                });
                 this.classList.add('selected');
+                this.setAttribute('aria-pressed', 'true');
             });
         });
 
         // Remove legacy redirect handler; real submission handled by checkout-script.js
     </script>
-    <script src="/checkout-script.js?v=5"></script>
+    <script src="/checkout-script.js?v=6"></script>
 </body>
 </html>
