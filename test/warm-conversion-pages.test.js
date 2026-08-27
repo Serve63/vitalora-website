@@ -38,7 +38,7 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
 
   assert.match(html, /<body class="ebook-page ebook-page--warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
-  assert.match(html, /assets\/css\/ebook-warm\.css\?v=3/);
+  assert.match(html, /assets\/css\/ebook-warm\.css\?v=4/);
   assert.equal((html.match(/assets\/images\/microplastics-ebook-warm-v3\.png/g) || []).length, 3);
   assert.equal((html.match(/class="hero-title-line"/g) || []).length, 3);
   assert.match(html, /De éérste methode/);
@@ -61,6 +61,11 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
   assert.match(css, /\.hero-image::after[\s\S]*content: none;/);
   assert.match(css, /\.ebook-cover[\s\S]*object-fit: contain;/);
   assert.match(css, /\.ebook-cover[\s\S]*filter: none;/);
+  assert.match(css, /#ebook-modal \.modal-copy[\s\S]*background: transparent !important;/);
+  assert.match(css, /#ebook-modal \.modal-cta[\s\S]*transform: none !important;/);
+  assert.match(css, /#ebook-modal \.modal-trust[\s\S]*background: transparent !important;/);
+  assert.match(css, /#ebook-modal \.modal-trust::before[\s\S]*content: none !important;/);
+  assert.doesNotMatch(css, /#eff5ff|#12c993|translateX/i);
   assert.match(css, /@media \(max-width: 768px\)/);
   assert.doesNotMatch(css, /#2954B3|#3A9AEA/i);
 });
