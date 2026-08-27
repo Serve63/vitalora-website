@@ -16,8 +16,8 @@ test('alleen de Academy-pagina laadt de warme Academy-assets', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=4/);
-  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=4/);
+  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=5/);
+  assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=5/);
   assert.doesNotMatch(academy, /dashboard-styles\.css|dashboard-script\.js/);
   assert.doesNotMatch(otherHtml, /academy-winter\.css|academy-overview\.js/);
 });
@@ -94,8 +94,8 @@ test('Academy zet de websitelink links en verwijdert het Vitalora-merk uit de na
   const nav = academy.match(/<nav class="academy-nav"[\s\S]*?<\/nav>/)?.[0] || '';
 
   assert.match(nav, /class="academy-home-link"[\s\S]*Terug naar website/);
-  assert.doesNotMatch(nav, /academy-brand|>Vitalora</);
-  assert.ok(nav.indexOf('academy-home-link') < nav.indexOf('academy-nav-label'));
+  assert.doesNotMatch(nav, /academy-brand|academy-nav-label|Mijn Academy|>Vitalora</);
+  assert.match(read('assets/css/academy-winter.css'), /\.academy-nav\s*\{[\s\S]*grid-template-columns:\s*1fr;/);
 });
 
 test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
@@ -110,6 +110,10 @@ test('Academy hervat Clean Reset op basis van echte lesvoortgang', () => {
   assert.match(script, /next-lesson-title/);
   assert.match(script, /resume-summary/);
   assert.match(script, /Les \$\{lesson\.index\} van \$\{total\}/);
-  assert.match(script, /heroText\.textContent = 'Ga verder'/);
-  assert.match(academy, />Je voortgang wordt automatisch bewaard</);
+  assert.match(script, /resumeSummary\.hidden = !message/);
+  assert.match(academy, /id="resume-summary" hidden><\/p>/);
+  assert.doesNotMatch(academy, /academy-hero-actions|hero-course-link|Je voortgang wordt automatisch bewaard|Je staat aan het begin/);
+  assert.doesNotMatch(script, /hero-course-link|heroText/);
+  assert.match(academy, /<span>Vitalora\.nl<\/span>/);
+  assert.match(read('assets/css/academy-winter.css'), /\.page-academy \.academy-course-button\s*\{[\s\S]*color:\s*#fffaf3;/);
 });

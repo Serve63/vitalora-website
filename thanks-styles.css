@@ -1,36 +1,70 @@
-*{box-sizing:border-box;margin:0;padding:0}
-@font-face{font-family:'Blender';src:local('Blender'),url('assets/fonts/Blender-Regular.woff2') format('woff2');font-display:swap}
-@font-face{font-family:'Blender Strong';src:local('Blender Strong'),url('assets/fonts/Blender-Strong.woff2') format('woff2');font-display:swap}
-body{font-family:'Blender','Rubik','Barlow',sans-serif;background:#eef3fb;color:#0f172a}
-.title{font-family:'Blender Strong','Blender','Rubik','Barlow',sans-serif;letter-spacing:.03em}
-.container{max-width:1000px;margin:0 auto;padding:40px 20px}
+:root {
+  --thanks-moss: #253129;
+  --thanks-moss-deep: #19231e;
+  --thanks-clay: #bd7654;
+  --thanks-clay-dark: #925339;
+  --thanks-ivory: #f4eee6;
+  --thanks-paper: #fffaf5;
+  --thanks-sand: #e6d6c3;
+  --thanks-ink: #292a25;
+  --thanks-copy: #625e56;
+}
 
-.hero{display:grid;grid-template-columns:420px 1fr;gap:40px;align-items:center;margin-top:20px}
-.hero .photo{background:#fff;border-radius:18px;box-shadow:0 18px 40px rgba(15,23,42,.12);overflow:hidden;display:flex}
-.hero .photo img{width:100%;height:420px;object-fit:cover;display:block}
+* { box-sizing: border-box; }
 
-.pill{display:inline-block;background:#dbeafe;color:#3A9AEA;padding:6px 12px;border-radius:999px;font-weight:700;font-size:13px;margin-bottom:12px}
-.title{font-size:42px;line-height:1.2;margin-bottom:14px}
-.copy{color:#475569;line-height:1.8}
-.signature{margin-top:16px;font-weight:700}
+body.page-thanks-warm {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--thanks-ink);
+  background:
+    radial-gradient(circle at 92% 2%, rgba(189, 118, 84, 0.16), transparent 30rem),
+    linear-gradient(145deg, #f9f2ea, var(--thanks-ivory));
+  font-family: "Quicksand", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
 
-.section-title{text-align:center;margin:44px 0 24px;font-size:24px}
-.steps{display:grid;grid-template-columns:1fr 380px;gap:28px}
-.step{display:grid;grid-template-columns:26px 1fr;gap:14px;margin-bottom:18px}
-.bullet{width:26px;height:26px;border-radius:999px;background:#dbeafe;color:#1d4ed8;display:flex;align-items:center;justify-content:center;font-weight:700}
-.step h4{font-size:15px;margin-bottom:6px}
-.step p{color:#475569;line-height:1.7}
+.container { width: min(1060px, calc(100% - 40px)); margin: 0 auto; padding: clamp(38px, 6vw, 72px) 0 76px; }
+.hero { display: grid; grid-template-columns: minmax(330px, 0.9fr) minmax(0, 1.1fr); align-items: center; gap: clamp(38px, 6vw, 72px); }
+.hero .photo { overflow: hidden; padding: 7px; background: var(--thanks-sand); border-radius: 28px; box-shadow: 0 30px 70px -38px rgba(56, 41, 28, 0.7); }
+.hero .photo img { width: 100%; height: 500px; display: block; object-fit: cover; object-position: center top; border-radius: 21px; filter: saturate(0.86) sepia(0.04); }
 
-.help{background:#fff;border:1px solid #e5e7eb;border-radius:16px;padding:18px 20px;box-shadow:0 12px 26px rgba(15,23,42,.06)}
-.help h4{font-weight:800;margin-bottom:10px}
-.help p{font-size:14px;color:#475569;margin-bottom:10px}
-.help .contact{margin-top:14px;background:#2563eb;color:#fff;border:0;border-radius:10px;padding:12px 18px;font-weight:700;cursor:pointer}
+.pill { display: inline-block; margin-bottom: 14px; color: var(--thanks-clay-dark); font-size: 12px; font-weight: 800; letter-spacing: 0.15em; text-transform: uppercase; }
+.title { margin: 0 0 22px; color: var(--thanks-ink); font-size: clamp(46px, 6vw, 68px); font-weight: 700; letter-spacing: -0.055em; line-height: 0.98; }
+.copy { color: var(--thanks-copy); font-size: 16px; line-height: 1.75; }
+.copy p { margin: 0 0 15px; }
+.copy .signature { margin-top: 22px; color: var(--thanks-clay-dark); font-weight: 750; }
 
-@media (max-width:900px){
-  .hero{grid-template-columns:1fr}
-  /* Match homepage mobile hero image sizing */
-  .hero .photo{background:transparent;box-shadow:none;border-radius:16px;margin:-8px 0 20px 0;aspect-ratio:4/3}
-  .hero .photo img{width:100%;height:100%;object-fit:cover;border-radius:16px;display:block;object-position:center top}
-  .title{font-size:32px}
-  .steps{grid-template-columns:1fr}
+.section-title { margin: 78px 0 28px; color: var(--thanks-ink); font-size: 34px; letter-spacing: -0.035em; text-align: center; }
+.steps { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 24px; }
+.steps > div:first-child { padding: 28px; background: rgba(255, 250, 245, 0.72); border: 1px solid rgba(146, 83, 57, 0.14); border-radius: 24px; }
+.step { display: grid; grid-template-columns: 34px 1fr; gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--thanks-sand); }
+.step:first-child { padding-top: 0; }
+.step:last-child { padding-bottom: 0; border-bottom: 0; }
+.bullet { display: grid; width: 34px; height: 34px; place-items: center; color: var(--thanks-paper); background: var(--thanks-clay); border-radius: 50%; font-weight: 800; }
+.step h4 { margin: 2px 0 6px; color: var(--thanks-moss); font-size: 16px; }
+.step p { margin: 0; color: var(--thanks-copy); font-size: 14px; line-height: 1.7; }
+
+.help { padding: 28px; color: #dcd6cb; background: linear-gradient(145deg, var(--thanks-moss), var(--thanks-moss-deep)); border: 1px solid rgba(230, 214, 195, 0.15); border-radius: 24px; box-shadow: 0 24px 55px -34px rgba(24, 34, 28, 0.72); }
+.help h4 { margin: 0 0 17px; color: var(--thanks-paper); font-size: 22px; }
+.help p { margin: 0 0 14px; font-size: 13px; line-height: 1.68; }
+.help strong { color: var(--thanks-paper); }
+.help a { color: #edbf9d; }
+.help .contact { width: 100%; min-height: 48px; margin-top: 8px; color: var(--thanks-paper); background: var(--thanks-clay); border: 0; border-radius: 13px; font: inherit; font-weight: 750; cursor: pointer; }
+.help .contact:hover { background: #ca8060; }
+
+@media (max-width: 860px) {
+  .hero,
+  .steps { grid-template-columns: 1fr; }
+  .hero .photo { max-width: 620px; }
+  .hero .photo img { height: auto; aspect-ratio: 4 / 3; }
+}
+
+@media (max-width: 560px) {
+  .container { width: min(100% - 28px, 1060px); padding-top: 28px; }
+  .hero { gap: 30px; }
+  .hero .photo { padding: 5px; border-radius: 20px; }
+  .hero .photo img { border-radius: 15px; }
+  .title { font-size: 46px; }
+  .section-title { margin-top: 58px; }
+  .steps > div:first-child,
+  .help { padding: 22px; border-radius: 20px; }
 }

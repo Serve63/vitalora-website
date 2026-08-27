@@ -5,6 +5,7 @@
   --ebook-clay-dark: #9e5d41;
   --ebook-ivory: #f4eee6;
   --ebook-paper: #fffaf5;
+  --ebook-sand: #e6d6c3;
   --ebook-line: #dfd1c2;
   --ebook-ink: #262720;
   --ebook-copy: #625d55;
@@ -111,8 +112,8 @@ body.ebook-page--warm {
   place-items: center;
   flex: 0 0 auto;
   border-radius: 50%;
-  background: var(--ebook-moss);
-  color: var(--ebook-paper);
+  background: var(--ebook-sand);
+  color: var(--ebook-moss);
 }
 
 .ebook-page--warm .cta-button {

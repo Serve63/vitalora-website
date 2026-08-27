@@ -3,56 +3,51 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gefeliciteerd! - Vitalora</title>
-  <link rel="stylesheet" href="success-styles.css" />
-  <link rel="stylesheet" href="icons.css">
-  <link rel="stylesheet" href="/assets/css/header.css?v=1">
+  <meta name="theme-color" content="#253129">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Je Clean Reset staat klaar | Vitalora</title>
+  <link rel="stylesheet" href="success-styles.css?v=2" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="/assets/css/fonts.css?v=1">
-	<link rel="stylesheet" href="/assets/css/footer.css?v=1">	<link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+	<link rel="stylesheet" href="/assets/css/fonts.css?v=12">
+	<link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 	<link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
-<body>
-  <!-- Header hidden on upsell page -->
-
+<body class="page-success-warm">
   <main>
-    <div class="container">
-      <div class="badge">Toegang bevestigd 🎉</div>
-      <h1 class="title">Gefeliciteerd!</h1>
-      <p class="subtitle">Je hebt zojuist toegang gekregen tot de<br>‘Clean Reset Detox & Gifstoffen’</p>
+    <div class="success-shell">
+      <div class="success-intro">
+        <div class="badge">Toegang bevestigd</div>
+        <h1 class="title">Je Clean Reset<br>staat voor je klaar.</h1>
+        <p class="subtitle">Mooi dat je bent begonnen. Je kunt meteen naar de Academy, of eerst vier aanvullende cursussen aan je leeromgeving toevoegen.</p>
+      </div>
 
       <div class="success-grid">
-        <div class="visual">
-          <img src="/assets/images/OCU.png" alt="Programma devices" />
+        <div class="visual" aria-label="Vier aanvullende Vitalora-cursussen">
+          <figure><img src="/assets/images/academy/course-powerfoods.jpg" alt="Warme kruiden en gewone ingrediënten voor de cursus PowerFoods"><figcaption>PowerFoods</figcaption></figure>
+          <figure><img src="/assets/images/academy/course-balance-v2.jpg" alt="Vrouw brengt haar energie en cyclusritme in kaart"><figcaption>De Juiste Balans</figcaption></figure>
+          <figure><img src="/assets/images/academy/course-mindful-v2.jpg" alt="Vrouw doet een rustige ademoefening"><figcaption>Mindful Energy</figcaption></figure>
+          <figure><img src="/assets/images/academy/course-nutrition.jpg" alt="Warme eenvoudige maaltijd voor de cursus Everyday Nutrition"><figcaption>Everyday Nutrition</figcaption></figure>
         </div>
         <div class="content">
-          <div class="discount-badge">70% korting</div>
-          <h2 class="selling-title"><span class="accent">1.200+ </span>mensen voegden deze <a class="accent-link" href="#">bundel</a> toe aan hun detoxtraject!</h2>
-          <p class="section-label">Je krijgt direct toegang tot:</p>
+          <p class="section-label">Eenmalige aanvulling</p>
+          <h2 class="selling-title">Vier warme cursussen naast je Clean Reset.</h2>
+          <p class="offer-copy">Voor één klein bedrag voeg je vier andere thema’s toe. Zo kies je later zelf waar je verder in wilt duiken.</p>
           <ul class="tick-list">
-            <li><span class="benefit-icon icon-cap-green" aria-hidden="true"></span>PowerFoods: Superfood & Specerij</li>
-            <li><span class="benefit-icon icon-cap-orange" aria-hidden="true"></span>De Juiste Balans: Energie & Hormonen</li>
-            <li><span class="benefit-icon icon-cap-purple" aria-hidden="true"></span>Mindful Energy: Innerlijke Rust</li>
-            <li><span class="benefit-icon icon-cap-gold" aria-hidden="true"></span>Everyday Nutrition: Praktisch en Gezond</li>
+            <li><span aria-hidden="true">✓</span><span><strong>PowerFoods</strong> · voeding en specerijen</span></li>
+            <li><span aria-hidden="true">✓</span><span><strong>De Juiste Balans</strong> · energie en hormonen</span></li>
+            <li><span aria-hidden="true">✓</span><span><strong>Mindful Energy</strong> · innerlijke rust</span></li>
+            <li><span aria-hidden="true">✓</span><span><strong>Everyday Nutrition</strong> · praktisch en voedend</span></li>
           </ul>
-          <p class="section-label">Inclusief:</p>
-          <ul class="dash-list">
-            <li>Video- en audiomateriaal</li>
-            <li>Cheatsheets & praktische overzichten</li>
-          </ul>
+          <p class="symbolic"><span>Eenmalig</span><strong class="price">€ 10,00</strong></p>
+          <div class="cta-row upsell">
+            <button id="upsell-buy" class="cta">Voeg de vier cursussen toe</button>
+            <button id="skip-upsell" class="link-btn" type="button">Nee bedankt, ga verder zonder aanvulling</button>
+          </div>
+          <p id="upsell-feedback" class="upsell-feedback" role="status"></p>
         </div>
       </div>
-
-      <p class="symbolic"><strong class="label">Symbolisch bedrag:</strong> <strong class="price">€10,00</strong></p>
-
-      <div class="cta-row upsell">
-        <button id="upsell-buy" class="cta">Voeg bundel toe</button>
-        <button id="skip-upsell" class="link-btn" type="button">Nee bedankt, ik sla deze deal over.</button>
-      </div>
-      <p id="upsell-feedback" class="upsell-feedback" role="status"></p>
     </div>
   </main>
   <script>
