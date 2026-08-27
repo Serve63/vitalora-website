@@ -1,404 +1,162 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Vitalora</title>
-	<meta name="theme-color" content="#253129">
-	<link rel="stylesheet" href="styles.css?v=2">
-	<link rel="stylesheet" href="/assets/css/header.css">
-	<link rel="stylesheet" href="/assets/css/fonts.css?v=12">
-	<link rel="stylesheet" href="/assets/css/footer.css?v=13">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
-	<style>
-        body {
-            font-family: 'Quicksand', sans-serif;
-            margin: 0;
-            background: #f3f6fb;
-            color: #333333;
-        }
-        
-        .main-content {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 20px;
-        }
-        
-        .blog-header {
-			text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .blog-header h1 {
-            font-size: 48px;
-            color: #1f2937;
-			margin-bottom: 16px;
-        }
-        
-		.blog-grid { 
-			display: grid; 
-            grid-template-columns: repeat(auto-fill, 320px) !important;
-            grid-auto-rows: 320px !important;
-            gap: 28px;
-            margin-top: 48px;
-            justify-content: start;
-            justify-items: start;
-        }
-        
-		.post-card { 
-            background: #ffffff;
-            border-radius: 16px;
-			overflow: hidden; 
-            border: 1px solid #e6edf7;
-            box-shadow: 0 10px 28px rgba(15,23,42,.10);
-            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
-            width: 320px !important;
-            height: 320px !important;
-			display: flex;
-			flex-direction: column;
-            cursor: pointer;
-		}
-        
-		.post-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 16px 36px rgba(15,23,42,.14);
-            border-color: #d8e6fb;
-		}
-        
-		.post-cover { 
-            height: 62%;
-            background: #f3f6fb;
-			position: relative;
-		}
-
-		.post-cover::after {
-            content: "";
-			position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom, rgba(41,84,179,0.00), rgba(41,84,179,0.10));
-        }
-        
-		.post-cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-        }
-        
-		.post-body { 
-            padding: 16px;
-			flex: 1;
-			display: flex;
-			flex-direction: column;
-			justify-content: space-between;
-		}
-        
-		.post-title { 
-            font-size: 20px;
-			font-weight: 600; 
-            color: #1f2937;
-			margin-bottom: 8px;
-			line-height: 1.35;
-			display: -webkit-box;
-            -webkit-line-clamp: 2;
-			-webkit-box-orient: vertical;
-			overflow: hidden;
-		}
-        
-		.post-meta {
-			display: flex;
-            flex-direction: column;
-            gap: 4px;
-			margin-bottom: 10px;
-            font-size: 13px;
-            color: #6b7280;
-        }
-
-		.post-date {
-            color: #333333;
-            font-weight: 600;
-			display: flex;
-			align-items: center;
-            gap: 6px;
-		}
-
-		.post-read-time {
-			color: #333333;
-            font-weight: 600;
-			display: flex;
-			align-items: center;
-            gap: 6px;
-        }
-
-		.post-date::before {
-            content: "";
-            width: 14px;
-            height: 14px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23333333'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-
-		.post-read-time::before {
-            content: "";
-            width: 14px;
-            height: 14px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23333333'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z'/%3E%3C/svg%3E");
-            background-size: contain;
-            background-repeat: no-repeat;
-        }
-        
-/* Link button removed; whole card is clickable */
-        
-        @media (max-width: 768px) {
-            .main-content {
-                margin: 20px;
-                padding: 15px;
-            }
-            
-            .blog-header h1 {
-                font-size: 36px;
-            }
-            
-            .blog-grid {
-                grid-template-columns: 1fr !important;
-                grid-auto-rows: auto !important;
-                gap: 20px;
-                justify-content: center !important;
-                justify-items: center !important;
-            }
-
-            .post-card {
-                width: 100% !important;
-                max-width: 320px !important;
-                height: auto !important;
-                min-height: 280px !important;
-            }
-            
-            .post-title { 
-                font-size: 18px; 
-            }
-            
-            .post-meta { 
-                font-size: 12px; 
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .main-content {
-                margin: 16px;
-                padding: 12px;
-            }
-            
-            .blog-header h1 {
-                font-size: 28px;
-            }
-            
-            .blog-grid {
-                gap: 16px;
-            }
-            
-            .post-card {
-                max-width: 100% !important;
-                min-height: 260px !important;
-            }
-        }
-	</style>
-	<link rel="stylesheet" href="/assets/css/warm-pages.css?v=2">
-<link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-<link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gezondheid zonder ruis | Vitalora Blog</title>
+  <meta name="description" content="Nuchtere, warme en praktisch gecontroleerde artikelen over voeding, blootstelling en gezonde keuzes thuis.">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <link rel="canonical" href="https://www.vitalora.nl/blog">
+  <meta property="og:title" content="Gezondheid zonder ruis | Vitalora Blog">
+  <meta property="og:description" content="Nuchtere, warme en praktisch gecontroleerde artikelen over voeding, blootstelling en gezonde keuzes thuis.">
+  <meta property="og:url" content="https://www.vitalora.nl/blog">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#253129">
+  <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
+  <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=1">
+  <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
-<body class="page-blog">
-	<header class="site-header" role="banner">
-	  <div class="header-inner">
-		<a class="logo" href="/">
-		  <span class="logo-text">Vitalora.nl</span>
-		</a>
-		
-		<div class="header-buttons">
-		  <a class="btn login-btn" href="/academy">Inloggen</a>
-		</div>
-	  </div>
-	</header>
-
-	<main class="main-content">
-		<div class="container">
-            <div class="blog-header">
-                <h1>Lees hier alle artikelen</h1>
-            </div>
-            
-            <div class="blog-grid" id="posts">
-                <!-- Posts will be loaded here -->
-                <div class="post-card" style="display: none;" id="test-post">
-                    <div class="post-cover">
-                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60" alt="Test" />
-                    </div>
-                    <div class="post-body">
-                        <div class="post-title">Test Artikel</div>
-                        <div class="post-meta">
-                            <div class="post-date">1 september 2025</div>
-                            <div class="post-read-time">3 min leestijd</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-		</div>
-	</main>
-	
-        <footer>
-            <div class="container">
-                <div class="footer-content">
-                    <div class="footer-brand">
-                        <div class="footer-logo">Vitalora.nl</div>
-                        <p>Vitalora helpt je stap voor stap naar een gezonder lichaam met praktische detox programma's die eenvoudig toe te passen zijn in het dagelijks leven.</p>
-                        <span class="brand-email"><span class="label">Contact:</span> info@vitalora.nl</span>
-                    </div>
-                    <div class="footer-links">
-                        <div class="footer-column">
-                            <a href="privacy">Privacy Policy</a>
-                            <a href="personeel" class="no-bold">Personeel</a>
-                        </div>
-                        <div class="footer-column">
-                            <a href="blog">Blogs</a>
-                            <a href="voorwaarden" class="nowrap">Algemene&nbsp;Voorwaarden</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="footer-bottom">
-                    <p>© 2025 Vitalora. All rights reserved.</p>
-                </div>
-            </div>
-        </footer>
-
-                <script>
-        console.log('=== BLOG PAGE SCRIPT START ===');
-        
-	        // Show dashboard posts plus the editorial starter collection.
-        var postsContainer = document.getElementById('posts');
-        console.log('Posts container found:', postsContainer);
-        
-        if (postsContainer) {
-            var publishedPosts = [];
-            
-            // Try to load published posts from localStorage
-            try {
-                var stored = localStorage.getItem('vitalora_blog_posts');
-                console.log('localStorage data:', stored);
-                
-                if (stored) {
-                    var allPosts = JSON.parse(stored);
-                    console.log('All posts from localStorage:', allPosts);
-                    
-                    for (var i = 0; i < allPosts.length; i++) {
-                        var post = allPosts[i];
-                        console.log('Checking post:', post);
-                        
-                        if ((post.status || 'published') === 'published') {
-                            publishedPosts.push(post);
-                            console.log('Added published post:', post.title);
-                        }
-                    }
-                } else {
-                    console.log('No localStorage data found');
-                }
-            } catch (e) {
-                console.log('Error loading posts:', e);
-            }
-            
-            console.log('Total published posts:', publishedPosts.length);
-            
-            // Add published posts
-            for (var j = 0; j < publishedPosts.length; j++) {
-                var post = publishedPosts[j];
-                console.log('Creating card for post:', post.title);
-                
-                var card = document.createElement('div');
-                card.className = 'post-card';
-                
-                card.onclick = (function(id, slug){ return function(){
-                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
-                  window.location.href = url;
-                }; })(post.id, post.slug);
-                
-                // Use featured image if available, otherwise fallback to Unsplash
-                var imgSrc;
-                if (post.featuredImage) {
-                    imgSrc = post.featuredImage;
-                } else {
-                    var keywords = (post.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                    var fallbackImg = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                    imgSrc = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords + ',health,wellness');
-                }
-                
-                card.innerHTML = '<div class="post-cover"><img src="' + imgSrc + '" alt="" onerror="this.src=\'' + (post.featuredImage ? post.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
-                                 '<div class="post-body">' +
-                                   '<div class="post-title">' + (post.title || 'Artikel') + '</div>' +
-                                   '<div class="post-meta"><div class="post-date">' + (post.publishedDate || '') + '</div><div class="post-read-time">' + (post.readTime || 5) + ' min leestijd</div></div>' +
-                                 '</div>';
-                
-                postsContainer.appendChild(card);
-                console.log('Card added to DOM');
-            }
-            
-	            // Always add the editorial starter collection; keep dashboard posts too.
-	            {
-	                console.log('Loading editorial starter collection from /blog-feed.json');
-	                fetch('/blog-feed.json?v=' + Date.now())
-                    .then(function(res){
-                        if (!res.ok) throw new Error('HTTP ' + res.status);
-                        return res.json();
-                    })
-                    .then(function(data){
-	                        console.log('Fallback feed data:', data);
-	                        if (Array.isArray(data) && data.length) {
-	                            var knownSlugs = new Set(publishedPosts.map(function(item){ return item.slug; }).filter(Boolean));
-	                            if (publishedPosts.length === 0) postsContainer.innerHTML = '';
-	                            for (var j2 = 0; j2 < data.length; j2++) {
-	                                var post2 = data[j2];
-	                                if (post2.slug && knownSlugs.has(post2.slug)) continue;
-	                                if (post2.slug) knownSlugs.add(post2.slug);
-	                                var card2 = document.createElement('div');
-                                card2.className = 'post-card';
-                                card2.onclick = (function(id, slug){ return function(){
-                                  const url = slug ? ('/' + encodeURIComponent(slug)) : ('/post.html?slug=' + (post2.title || 'artikel-' + id).toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, ''));
-                                  window.location.href = url;
-                                }; })(post2.id, post2.slug);
-                                // Use featured image if available, otherwise fallback to Unsplash
-                                var imgSrc2;
-                                if (post2.featuredImage) {
-                                    imgSrc2 = post2.featuredImage;
-                                } else {
-                                    var keywords2 = (post2.title || '').toLowerCase().split(' ').slice(0, 2).join(',');
-                                    var fallbackImg2 = 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60';
-                                    imgSrc2 = 'https://source.unsplash.com/800x450/?' + encodeURIComponent(keywords2 + ',health,wellness');
-                                }
-	                                card2.innerHTML = '<div class="post-cover"><img src="' + imgSrc2 + '" alt="' + (post2.title || 'Vitalora artikel') + '" onerror="this.src=\'' + (post2.featuredImage ? post2.featuredImage : 'https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=800&q=60') + '\'" /></div>' +
-                                                 '<div class="post-body">' +
-                                                   '<div class="post-title">' + (post2.title || 'Artikel') + '</div>' +
-                                                   '<div class="post-meta"><div class="post-date">' + (post2.publishedDate || '') + '</div><div class="post-read-time">' + (post2.readTime || 5) + ' min leestijd</div></div>' +
-                                                 '</div>';
-                                postsContainer.appendChild(card2);
-                            }
-                            return;
-                        }
-	                        if (publishedPosts.length === 0) {
-	                            postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
-	                        }
-	                    })
-	                    .catch(function(err){
-	                        console.log('Fallback feed failed:', err);
-	                        if (publishedPosts.length === 0) {
-	                            postsContainer.innerHTML = '<div style="text-align: center; padding: 40px; color: #6b7280;"><p>Geen artikelen gevonden.</p><p>Kom later terug.</p></div>';
-	                        }
-	                    });
-            }
-        } else {
-            console.log('Posts container not found!');
-        }
-        
-        console.log('=== BLOG PAGE SCRIPT END ===');
-        </script>
+<body class="editorial-index page-blog">
+  <header class="editorial-header">
+    <div class="editorial-shell editorial-header__inner">
+      <a class="editorial-brand" href="/">Vitalora.nl</a>
+      <nav class="editorial-nav" aria-label="Hoofdnavigatie">
+        <a href="/blog">Alle artikelen</a>
+        <a href="/academy">Mijn Academy</a>
+      </nav>
+    </div>
+  </header>
+  <main class="editorial-shell">
+    <section class="index-hero">
+      <p class="index-eyebrow">Vitalora Redactie</p>
+      <h1>Gezondheid zonder ruis.</h1>
+      <p>Heldere antwoorden, eerlijke grenzen en kleine keuzes waar je thuis echt iets aan hebt—met bronnen die je zelf kunt controleren.</p>
+    </section>
+    <section class="blog-grid" aria-label="Alle artikelen">
+      <a class="post-card" href="/afvallen-met-eiwitpoeder">
+        <img src="/assets/images/blog/afvallen-eiwitpoeder.webp" width="640" height="360" alt="Neutrale pot eiwitpoeder met maatschepje naast yoghurt, bessen en havermout in een warme keuken" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Eiwit &amp; gewicht</p>
+          <h2>Afvallen met eiwitpoeder: wanneer helpt het echt?</h2>
+          <p class="post-card__excerpt">Eiwitpoeder is geen afslankmiddel, maar kan in sommige situaties helpen voldoende eiwit te eten binnen een haalbaar energietekort.</p>
+          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/broccolikiemen">
+        <img src="/assets/images/blog/broccolikiemen.webp" width="640" height="360" alt="Verse broccolikiemen in een keramieken schaaltje met brood en groente op een warme houten keukentafel" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Groente &amp; veiligheid</p>
+          <h2>Broccolikiemen: gezond, maar let op voedselveiligheid</h2>
+          <p class="post-card__excerpt">Waarom broccolikiemen interessant zijn, welke claims te ver gaan en hoe je deze kwetsbare kiemgroente veilig eet.</p>
+          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/chlorella-en-spirulina">
+        <img src="/assets/images/blog/chlorella-spirulina.webp" width="640" height="360" alt="Twee neutrale schaaltjes met groen chlorella- en blauwgroen spirulinapoeder naast een glas smoothie op een warme tafel" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Supplementen</p>
+          <h2>Chlorella en spirulina: verschil, nut en risico’s</h2>
+          <p class="post-card__excerpt">Twee populaire algenproducten zonder marketingmist: wat erin zit, wat niet bewezen is en waar kwaliteit echt telt.</p>
+          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/is-oligofructose-slecht">
+        <img src="/assets/images/blog/oligofructose.webp" width="640" height="360" alt="Warme ontbijtkom met cichorei, ui, banaan en volkoren granen als natuurlijke bronnen van fermenteerbare vezels" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Darmen &amp; vezels</p>
+          <h2>Is oligofructose slecht? Dit doet het met je darmen</h2>
+          <p class="post-card__excerpt">Een prebiotische vezel kan nuttig zijn én klachten geven: zo beoordeel je oligofructose zonder zwart-witdenken.</p>
+          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/vlierbessensap-gezond">
+        <img src="/assets/images/blog/vlierbessensap-gezond.webp" width="640" height="360" alt="Warme glazen fles met donker vlierbessensap naast rijpe vlierbessen op een houten keukentafel" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Voeding &amp; veiligheid</p>
+          <h2>Is vlierbessensap gezond? Dit weten we echt</h2>
+          <p class="post-card__excerpt">Wat vlierbessensap wel en niet voor je doet, hoe je het veilig gebruikt en waarom “natuurlijk” niet hetzelfde is als risicoloos.</p>
+          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/is-waterkers-gezond">
+        <img src="/assets/images/blog/waterkers-gezond.webp" width="640" height="360" alt="Verse waterkers in een keramieken schaal met citroen en brood in zacht ochtendlicht" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Groente &amp; voeding</p>
+          <h2>Is waterkers gezond? Voedingswaarde en veilig gebruik</h2>
+          <p class="post-card__excerpt">Wat waterkers bijdraagt, waarom nitraat geen reden tot paniek is en hoe je deze pittige bladgroente veilig gebruikt.</p>
+          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/is-zuiveringszout-hetzelfde-als-baking-soda">
+        <img src="/assets/images/blog/zuiveringszout-baking-soda.webp" width="640" height="360" alt="Open potje baking soda met houten maatschepje, citroen en keukendoek op een warme houten tafel" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Keuken &amp; veiligheid</p>
+          <h2>Is zuiveringszout hetzelfde als baking soda?</h2>
+          <p class="post-card__excerpt">Het korte antwoord, het verschil met bakpoeder en schoonmaaksoda, plus de veilige toepassingen in keuken en huis.</p>
+          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/lichaam-ontzuren-onzin">
+        <img src="/assets/images/blog/lichaam-ontzuren.webp" width="640" height="360" alt="Glas water met citroen naast groente, peulvruchten en noten in een rustige warme keuken zonder detoxproducten" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Gezondheidsclaims</p>
+          <h2>Je lichaam ontzuren: gezonde aanpak of onzin?</h2>
+          <p class="post-card__excerpt">Je bloed-pH is geen wellnessknop: zo regelt je lichaam zuur en base, en dit blijft er wél over van een alkalisch eetpatroon.</p>
+          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/kruisbloemige-groenten">
+        <img src="/assets/images/blog/kruisbloemige-groenten.webp" width="640" height="360" alt="Kleurrijke schaal met broccoli, bloemkool, spruitjes, boerenkool, radijs en paksoi in een warme keuken" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Groente &amp; voeding</p>
+          <h2>Kruisbloemige groenten: soorten, voordelen en bereiding</h2>
+          <p class="post-card__excerpt">Van broccoli tot paksoi: waarom deze groentefamilie waardevol is en hoe je zonder gezondheidsclaims meer varieert.</p>
+          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/olijven-met-knoflook">
+        <img src="/assets/images/blog/olijven-knoflook.webp" width="640" height="360" alt="Schaal groene en donkere olijven met geroosterde knoflook, citroen en kruiden op een gezellige houten tafel" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Recept &amp; voeding</p>
+          <h2>Olijven met knoflook: gezond én makkelijk zelf maken</h2>
+          <p class="post-card__excerpt">Een eenvoudig warm borrelrecept, met eerlijke uitleg over gezonde vetten, zout en veilig bewaren.</p>
+          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/pfas-zonder-paniek-thuis">
+        <img src="/assets/images/courses/clean-reset-v2/lesson-15-a.jpg" width="640" height="360" alt="Twee mensen koken samen met verschillende pannen in een warme keuken" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">PFAS &amp; thuis</p>
+          <h2>PFAS zonder paniek: 6 nuchtere keuzes voor thuis</h2>
+          <p class="post-card__excerpt">Wat PFAS zijn, wat je wél kunt beïnvloeden en welke zes rustige keuzes thuis echt zinvol zijn.</p>
+          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/microplastics-thuis-zonder-obsessie">
+        <img src="/assets/images/courses/clean-reset-v2/lesson-06-a.jpg" width="640" height="360" alt="Warme huishoudelijke omgeving met alledaagse plastic producten" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Microplastics</p>
+          <h2>Microplastics thuis: minder blootstelling zonder obsessie</h2>
+          <p class="post-card__excerpt">De wetenschap is nog volop in beweging. Dit is wat we al weten en wat je rustig kunt doen.</p>
+          <span class="post-card__meta">8 min leestijd · 25 augustus 2026</span>
+        </div>
+      </a>
+      <a class="post-card" href="/rustige-keukenreset">
+        <img src="/assets/images/courses/clean-reset-v2/lesson-13-a.jpg" width="640" height="360" alt="Persoon ruimt in rustig tempo een warme keuken op" loading="lazy">
+        <div class="post-card__body">
+          <p class="post-card__category">Praktisch thuis</p>
+          <h2>Een rustige keukenreset: klein beginnen, lang volhouden</h2>
+          <p class="post-card__excerpt">Geen volle vuilniszak en geen perfect plaatje, maar een haalbare keuken die elke dag prettiger werkt.</p>
+          <span class="post-card__meta">6 min leestijd · 22 augustus 2026</span>
+        </div>
+      </a>
+    </section>
+  </main>
+  <footer class="editorial-footer">
+    <div class="editorial-shell editorial-footer__inner">
+      <span>© 2026 Vitalora · Nuchtere informatie voor haalbare gezondheid.</span>
+      <span><a href="/privacy">Privacy</a> · <a href="/voorwaarden">Voorwaarden</a> · info@vitalora.nl</span>
+    </div>
+  </footer>
 </body>
 </html>

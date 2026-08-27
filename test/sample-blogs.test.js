@@ -1,4 +1,5 @@
 const assert = require('node:assert/strict');
+const crypto = require('node:crypto');
 const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
@@ -9,18 +10,18 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), 'utf8');
 }
 
-test('de openbare blogfeed bevat drie volledige redactionele starterblogs', () => {
+test('de openbare blogfeed bevat dertien unieke, direct leesbare redactionele artikelen', () => {
   const feed = JSON.parse(read('blog-feed.json'));
 
-  assert.equal(feed.length, 3);
-  assert.equal(new Set(feed.map((post) => post.slug)).size, 3);
+  assert.equal(feed.length, 13);
+  assert.equal(new Set(feed.map((post) => post.slug)).size, 13);
 
   for (const post of feed) {
     assert.equal(post.status, 'published');
     assert.ok(post.title.length >= 30);
     assert.ok(post.excerpt.length >= 60);
+    assert.ok(post.imageAlt.length >= 25);
     assert.ok(Number.isInteger(post.readTime) && post.readTime >= 5);
-    assert.match(post.featuredImage, /^\/assets\/images\/courses\/clean-reset-v2\//);
     assert.ok(fs.existsSync(path.join(root, post.featuredImage.slice(1))));
 
     const articlePath = `${post.slug}.html`;
@@ -30,25 +31,44 @@ test('de openbare blogfeed bevat drie volledige redactionele starterblogs', () =
     assert.match(article, /class="blog-content"/);
     assert.match(article, /<h2>/);
     assert.match(article, /class="source-note"/);
-    assert.match(article, /https:\/\/(www\.)?(rivm\.nl|voedingscentrum\.nl|efsa\.europa\.eu)/);
-    assert.ok(article.length > 3500, `${articlePath} moet echte inhoud bevatten`);
+    assert.match(article, /rel="canonical" href="https:\/\/www\.vitalora\.nl\//);
+    assert.match(article, /application\/ld\+json/);
+    assert.match(article, /Vitalora Redactie/);
+    assert.doesNotMatch(article, /Servé Creusen, Gezondheidsexpert/);
+    assert.ok(article.length > 6000, `${articlePath} moet echte inhoud bevatten`);
   }
 });
+test('de tien vernieuwde SEO-artikelen hebben unieke Image 2-beelden en uitgebreide inhoud', () => {
+  const feed = JSON.parse(read('blog-feed.json'));
+  const refreshed = feed.filter((post) => post.featuredImage.startsWith('/assets/images/blog/'));
+  const hashes = new Set();
 
-test('de blogdetailrenderer neemt beeld en leestijd uit de statische artikelen over', () => {
-  const post = read('post.html');
-  const liveBlog = read('blog/index.html');
-  const warmCss = read('assets/css/warm-pages.css');
+  assert.equal(refreshed.length, 10);
+  for (const post of refreshed) {
+    const imagePath = path.join(root, post.featuredImage.slice(1));
+    const stat = fs.statSync(imagePath);
+    assert.ok(stat.size < 200_000, `${post.featuredImage} moet web-geoptimaliseerd zijn`);
+    hashes.add(crypto.createHash('sha256').update(fs.readFileSync(imagePath)).digest('hex'));
 
-  assert.match(post, /doc\.querySelector\('\.blog-read-time'\)/);
-  assert.match(post, /doc\.querySelector\('\.blog-featured-image'\)/);
-  assert.match(post, /featuredImage:\s*featuredImageEl/);
-  assert.match(post, /slug:\s*sl/);
-  assert.match(post, /status:\s*'published'/);
-  assert.ok(post.indexOf('await fetchStatic(slug)') < post.indexOf('await fetchPublicApi(slug)'));
-  assert.match(post, /post && !isStaticPost/);
-  assert.match(liveBlog, /Always add the editorial starter collection/);
-  assert.match(liveBlog, /new Set\(publishedPosts\.map/);
-  assert.match(warmCss, /body\.page-blog\s*\{[\s\S]*display:\s*block !important/);
-  assert.match(warmCss, /\.page-blog \.blog-grid\s*\{[\s\S]*repeat\(3, 320px\)/);
+    const article = read(`${post.slug}.html`);
+    assert.match(article, /class="answer-box"/);
+    assert.match(article, /class="key-points"/);
+    assert.match(article, /class="faq-block"/);
+    assert.match(article, /Goed om te weten:/);
+  }
+  assert.equal(hashes.size, 10);
+});
+
+test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback', () => {
+  const blog = read('blog.html');
+  const nestedBlog = read('blog/index.html');
+  const css = read('assets/css/editorial-blog.css');
+
+  assert.equal(blog, nestedBlog);
+  assert.equal((blog.match(/class="post-card"/g) || []).length, 13);
+  assert.match(blog, /<h1>Gezondheid zonder ruis\.<\/h1>/);
+  assert.match(blog, /rel="canonical" href="https:\/\/www\.vitalora\.nl\/blog"/);
+  assert.doesNotMatch(blog, /source\.unsplash|images\.unsplash|fetch\('/);
+  assert.match(css, /--editorial-moss:\s*#253129/);
+  assert.match(css, /grid-template-columns:\s*repeat\(3/);
 });

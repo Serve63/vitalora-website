@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /personeel
+Disallow: /personeel-dashboard
+
+Sitemap: https://www.vitalora.nl/sitemap.xml

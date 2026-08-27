@@ -1,22 +1,34 @@
 # Blog post redirects
 /clean-reset        /clean-reset.html                      200
 /microplastics-een-diepgaande-uitleg    /microplastics-een-diepgaande-uitleg.html   200
-/vlierbessensap-gezond                  /post.html?slug=vlierbessensap-gezond      200
+/vlierbessensap-gezond                  /vlierbessensap-gezond.html                 200
 /login                                   /login/index.html                           200
 /login                                    /login/index.html                           200
 /login.html                               /login/index.html                           301
-/:slug                                   /post.html?slug=:slug                      200
 /kruisbloemige-groenten                 /kruisbloemige-groenten.html               200
-/zuiveringszout-baking-soda             /zuiveringszout-baking-soda.html           200
+/zuiveringszout-baking-soda             /is-zuiveringszout-hetzelfde-als-baking-soda 301
+/zuiveringszout-baking-soda.html        /is-zuiveringszout-hetzelfde-als-baking-soda 301
+/is-zuiveringszout-hetzelfde-als-baking-soda /is-zuiveringszout-hetzelfde-als-baking-soda.html 200
 /broccolikiemen                          /broccolikiemen.html                       200
-/eiwitpoeders                            /eiwitpoeders.html                         200
+/eiwitpoeders                            /afvallen-met-eiwitpoeder                  301
+/eiwitpoeders.html                       /afvallen-met-eiwitpoeder                  301
+/afvallen-met-eiwitpoeder               /afvallen-met-eiwitpoeder.html             200
 /peren-gezond                            /post.html?slug=peren-gezond               200
 /olijven-met-knoflook                    /olijven-met-knoflook.html                 200
 /mango-gezond                            /post.html?slug=mango-gezond               200
 /dopamine-voeding                        /dopamine-voeding.html                     200
 /suiker                                   /suiker.html                               200
-/oligofructose                           /oligofructose.html                        200
-/waterkers                               /waterkers.html                            200
+/oligofructose                           /is-oligofructose-slecht                   301
+/oligofructose.html                      /is-oligofructose-slecht                   301
+/is-oligofructose-slecht                 /is-oligofructose-slecht.html              200
+/waterkers                               /is-waterkers-gezond                       301
+/waterkers.html                          /is-waterkers-gezond                       301
+/is-waterkers-gezond                     /is-waterkers-gezond.html                   200
+/chlorella-en-spirulina                  /chlorella-en-spirulina.html               200
+/lichaam-ontzuren-onzin                  /lichaam-ontzuren-onzin.html               200
+/pfas-zonder-paniek-thuis                /pfas-zonder-paniek-thuis.html             200
+/microplastics-thuis-zonder-obsessie     /microplastics-thuis-zonder-obsessie.html  200
+/rustige-keukenreset                     /rustige-keukenreset.html                  200
 # Pretty URLs & redirects
 /blog                                    /blog.html                                 200
 /academy                                 /academy.html                              200
@@ -38,9 +50,6 @@
 /30-dagen-challenge-les:id               /lesson-view.html?course=30-dagen-challenge&lesson=:id                  200
 /everyday-nutrition-les:id               /lesson-view.html?course=everyday-nutrition-praktisch-gezond&lesson=:id 200
 /mindful-energy-les:id                   /lesson-view.html?course=mindful-energy-innerlijke-rust&lesson=:id      200
-
-# Catch-all for blog posts
-/*                                       /post.html?slug=:splat                     200
 
 # Legacy paths
 /dashboard                               /academy                                   301
