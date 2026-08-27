@@ -4,6 +4,7 @@
   "description": "Vitalora website with contact form functionality",
   "main": "index.js",
   "scripts": {
+    "build:blog": "node scripts/build-blog.js",
     "test": "node --test test/*.test.js"
   },
   "dependencies": {

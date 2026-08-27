@@ -1,0 +1,535 @@
+{
+  "source": {
+    "title": "Blogonderwerpen",
+    "spreadsheetId": "1rURMGKAGCRiH2LmTVZOL5IgZf7QNmJYwMqqRsxHBiqk",
+    "sheet": "2025",
+    "range": "K1:O1000",
+    "readAt": "2026-08-27",
+    "caveat": "Zoekvolumes zijn circa twee jaar oud en dienen alleen als historische prioritering; actuele Search Console-data blijft leidend."
+  },
+  "rows": [
+    {
+      "keyword": "Vlierbessensap gezond",
+      "historicalSearchVolume": 480,
+      "internalLinkTopics": "Gember Ontzuren Bottenbouillon Spirulina Edelgistvlokken Avocado",
+      "historicalUrl": "https://vitalora.nl/vlierbessensap-gezond/",
+      "canonicalPath": "/vlierbessensap-gezond",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "is zuiveringszout hetzelfde als baking soda",
+      "historicalSearchVolume": 880,
+      "internalLinkTopics": "Knoflookolijven Gember Tuinkers Appelazijn Hennepzaad Gierst Camu",
+      "historicalUrl": "https://vitalora.nl/is-zuiveringszout-hetzelfde-als-baking-soda/",
+      "canonicalPath": "/is-zuiveringszout-hetzelfde-als-baking-soda",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Kruisbloemige groenten",
+      "historicalSearchVolume": 480,
+      "internalLinkTopics": "Vlierbessensap Hennepzaad Knoflookolijven Edelgistvlokken Waterkers Chiazaad Gember Mango Avocado",
+      "historicalUrl": "https://vitalora.nl/kruisbloemige-groenten/",
+      "canonicalPath": "/kruisbloemige-groenten",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "broccoli kiemen",
+      "historicalSearchVolume": 590,
+      "internalLinkTopics": "Kruisbloemige groenten Avocado Edelgistvlokken Chiazaad Waterkers Bottenbouillon Ontstekingsremmend",
+      "historicalUrl": "https://vitalora.nl/broccolikiemen/",
+      "canonicalPath": "/broccolikiemen",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Afvallen met eiwitpoeder",
+      "historicalSearchVolume": 260,
+      "internalLinkTopics": "Banaan Chiazaad Appelazijn Koolhydraten Shiitakes Gember Havermout Magnesium",
+      "historicalUrl": "https://vitalora.nl/afvallen-met-eiwitpoeder/",
+      "canonicalPath": "/afvallen-met-eiwitpoeder",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Olijven met knoflook",
+      "historicalSearchVolume": 170,
+      "internalLinkTopics": "Maitake Granaatappel Abrikozen Curcumin Spirulina Peren Avocado Broccolikiemen Tuinkers Gember",
+      "historicalUrl": "https://vitalora.nl/olijven-met-knoflook/",
+      "canonicalPath": "/olijven-met-knoflook",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Behoefte aan suiker",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Vlierbessensap Eiwitpoeder Edelgistvlokken Spirulina Havermout Appelazijn Bosbessen Groene thee",
+      "historicalUrl": "https://vitalora.nl/behoefte-aan-suiker/",
+      "canonicalPath": "/behoefte-aan-suiker",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Dopamine voeding",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "vlierbessensap, hennepzaad, shiitakes, camu, chiazaad, avocado, groene thee, omega",
+      "historicalUrl": "https://vitalora.nl/dopamine-voeding/",
+      "canonicalPath": "/dopamine-voeding",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "oligofructose slecht",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Havermout Komkommer Gember Bramen Bosbessen Abrikozen Knoflookolijven Rijstwafels Magnesium",
+      "historicalUrl": "https://vitalora.nl/is-oligofructose-slecht/",
+      "canonicalPath": "/is-oligofructose-slecht",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Waterkers gezond",
+      "historicalSearchVolume": 880,
+      "internalLinkTopics": "fruit, dipsaus, koolhydraten, honing, chiazaad, avocado, knoflookolijven, ontstekingsremmend, druiven, gember.",
+      "historicalUrl": "https://vitalora.nl/is-waterkers-gezond/",
+      "canonicalPath": "/is-waterkers-gezond",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "teunisbloemolie bij pms",
+      "historicalSearchVolume": 110,
+      "internalLinkTopics": "Chiazaad Darmen Groene thee Omega Micronutriënten Gember Appelazijn",
+      "historicalUrl": "https://vitalora.nl/teunisbloemolie-bij-pms/",
+      "canonicalPath": "/teunisbloemolie-bij-pms",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Nachtschade groenten darmen",
+      "historicalSearchVolume": 170,
+      "internalLinkTopics": "Gember Vlierbessensap Chlorella Edelgistvlokken Oligofructose Waterkers Avocado Bottenbouillon Shiitakes",
+      "historicalUrl": "https://vitalora.nl/nachtschade-groenten-darmen/",
+      "canonicalPath": "/nachtschade-groenten-darmen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Edelgistvlokken darmen",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Chiazaden Kaneel Groene thee Mango Peren Micronutriënten Spirulina Havermout Bramen Avocado",
+      "historicalUrl": "https://vitalora.nl/edelgistvlokken-en-darmen/",
+      "canonicalPath": "/edelgistvlokken-en-darmen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "chlorella spirulina",
+      "historicalSearchVolume": 1000,
+      "internalLinkTopics": "Chiazaad Honing Glyfosaat Lever Darm Calcium Omega Spijsvertering Darmflora",
+      "historicalUrl": "https://vitalora.nl/chlorella-en-spirulina/",
+      "canonicalPath": "/chlorella-en-spirulina",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Lichaam ontzuren onzin",
+      "historicalSearchVolume": 590,
+      "internalLinkTopics": "Micronutriënten Chiazaad Bramen Groene thee Brood Honing Havermout Fruit",
+      "historicalUrl": "https://vitalora.nl/lichaam-ontzuren-onzin/",
+      "canonicalPath": "/lichaam-ontzuren-onzin",
+      "status": "refreshed-2026-08-27",
+      "note": "Volledig herschreven met nieuwe canonical, bronnen en uniek Image 2-beeld."
+    },
+    {
+      "keyword": "Zilverkaars overgang",
+      "historicalSearchVolume": 480,
+      "internalLinkTopics": "oestrogeen, Salie, lijnzaad, Suiker, Gember, Ontstekingsremmend, Hennepzaad, Bottenbouillon, Spirulina",
+      "historicalUrl": "https://vitalora.nl/zilverkaars-en-de-overgang/",
+      "canonicalPath": "/zilverkaars-en-de-overgang",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Waarom eet ik zoveel",
+      "historicalSearchVolume": 70,
+      "internalLinkTopics": "Vlierbessensap Broccolikiemen Dopamine Ontzuren Chiazaad Tomaat Kokosyoghurt Gember Bottenbouillon Hennepzaad",
+      "historicalUrl": "https://vitalora.nl/waarom-eet-ik-zoveel/",
+      "canonicalPath": "/waarom-eet-ik-zoveel",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Warme tomaat gezond",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Chiazaad Ontstekingsremmend Spirulina Bloeddruk Metabolisme Gember Hennepzaad Darmen Avocado",
+      "historicalUrl": "https://vitalora.nl/warme-tomaat-gezond/",
+      "canonicalPath": "/warme-tomaat-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Voorjaarsgroenten",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Vlierbessensap Broccolikiemen Waterkers Appelazijn Hennepzaad edelgistvlokken Chiazaden Gember Abrikozen",
+      "historicalUrl": "https://vitalora.nl/voorjaarsgroenten/",
+      "canonicalPath": "/voorjaarsgroenten",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Hennepzaad eiwitten",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Gember Omega Havermout Komkommer Mango Darmen Chiazaad",
+      "historicalUrl": "https://vitalora.nl/hennepzaad-eiwitten/",
+      "canonicalPath": "/hennepzaad-eiwitten",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Wat is salie",
+      "historicalSearchVolume": 260,
+      "internalLinkTopics": "Granaatappel Avocado Gember Peterselie Broccolikiemen Spirulina Druiven Tuinkers",
+      "historicalUrl": "https://vitalora.nl/wat-is-salie/",
+      "canonicalPath": "/wat-is-salie",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Maca werking vrouw",
+      "historicalSearchVolume": 390,
+      "internalLinkTopics": "Spirulina Curcumin Broccolikiemen Gember Omega Avocado Havermout",
+      "historicalUrl": "https://vitalora.nl/maca-werking-vrouw/",
+      "canonicalPath": "/maca-werking-vrouw",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Casomorfine",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Turmeric Spirulina Broccolikiemen Eiwitpoeder Guarana Gember Avocado Omega Peterselie",
+      "historicalUrl": "https://vitalora.nl/casomorfine/",
+      "canonicalPath": "/casomorfine",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Wennen aan minder eten",
+      "historicalSearchVolume": 110,
+      "internalLinkTopics": "Spirulina Maitake Groene thee Chaga Chiazaad Avocado Fruit Olijfolie Citroen Komkommer",
+      "historicalUrl": "https://vitalora.nl/wennen-aan-minder-eten/",
+      "canonicalPath": "/wennen-aan-minder-eten",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "shiitakes gezond",
+      "historicalSearchVolume": 260,
+      "internalLinkTopics": "Avocado Lijnzaad Suiker Gember Turmeric Waterkers Dip",
+      "historicalUrl": "https://vitalora.nl/shiitakes-gezond/",
+      "canonicalPath": "/shiitakes-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Wilde bosbessen",
+      "historicalSearchVolume": 390,
+      "internalLinkTopics": "Kurkuma Vlierbessensap Ashwagandha Groene thee Gember Hennepzaadvezel Reishi Spirulina",
+      "historicalUrl": "https://vitalora.nl/wilde-bosbessen/",
+      "canonicalPath": "/wilde-bosbessen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Kokosyoghurt gezond",
+      "historicalSearchVolume": 110,
+      "internalLinkTopics": "Turmeric Granaatappel Spirulina Broccolikiemen Gember Darmen Mango cacao smoothies",
+      "historicalUrl": "https://vitalora.nl/kokosyoghurt-gezond/",
+      "canonicalPath": "/kokosyoghurt-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Darmen borrelen na eten",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Maitake Gember Broccolikiemen Chiazaden Vlierbessensap Turmeric Tuinkers Salie Reishi",
+      "historicalUrl": "https://vitalora.nl/darmen-borrelen-na-eten/",
+      "canonicalPath": "/darmen-borrelen-na-eten",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Koffie slecht voor buikvet",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Havermout Peren Groene thee Lijnzaad Druiven Broccolikiemen Gember",
+      "historicalUrl": "https://vitalora.nl/koffie-slecht-voor-buikvet/",
+      "canonicalPath": "/koffie-slecht-voor-buikvet",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Wat doen gluten met je darmen",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Maitake Granaatappel Abrikozen Spirulina Broccolikiemen Chiazaad Curcumin Omega Pruikzwam Avocado",
+      "historicalUrl": "https://vitalora.nl/wat-doen-gluten-met-je-darmen/",
+      "canonicalPath": "/wat-doen-gluten-met-je-darmen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Insuline afvallen",
+      "historicalSearchVolume": 590,
+      "internalLinkTopics": "Avocado Lijnzaad Spirulina Maca Gember Kaneel Broccolikiemen Vlierbessensap Chaga Dadels",
+      "historicalUrl": "https://vitalora.nl/insuline-en-afvallen/",
+      "canonicalPath": "/insuline-en-afvallen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Tuinkers gezond",
+      "historicalSearchVolume": 480,
+      "internalLinkTopics": "Avocado Broccolikiemen Spirulina Chiazaad Vlierbessensap Gember Perilla-olie Curcumin Reishi Salie",
+      "historicalUrl": "https://vitalora.nl/tuinkers-gezond/",
+      "canonicalPath": "/tuinkers-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Ontstekingsremmend kruid",
+      "historicalSearchVolume": 320,
+      "internalLinkTopics": "maitake, spirulina, groene thee, krillolie, avocado, pruikzwam, salie, chiazaden, vlierbessensap, omega.",
+      "historicalUrl": "https://vitalora.nl/ontstekingsremmend-kruid/",
+      "canonicalPath": "/ontstekingsremmend-kruid",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "s nachts honger diabetes",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Perilla Spirulina Broccolikiemen Gember Salie Vlierbessensap Kruisbloemige groenten Avocado Noten Linzensoep",
+      "historicalUrl": "https://vitalora.nl/s-nachts-honger-diabetes/",
+      "canonicalPath": "/s-nachts-honger-diabetes",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "bottenbouillon gezond",
+      "historicalSearchVolume": 320,
+      "internalLinkTopics": "Spirulina Kurkuma Zink Vlierbessensap Pruikzwam Schisandra Camu Goji-bessen Oligofructose Maca",
+      "historicalUrl": "https://vitalora.nl/bottenbouillon-gezond/",
+      "canonicalPath": "/bottenbouillon-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Waar is gember goed voor?",
+      "historicalSearchVolume": 720,
+      "internalLinkTopics": "Turmeric Vlierbessensap Broccolikiemen Oligofructose Goji-bessen Spirulina Avocado Kaneel Histamine Kruisbloemige groenten",
+      "historicalUrl": "https://vitalora.nl/waar-zit-glyfosaat-in/",
+      "canonicalPath": "/waar-zit-glyfosaat-in",
+      "status": "mapping-conflict",
+      "note": "Historische spreadsheet koppelt dit zoekwoord aan een inhoudelijk verkeerde URL; handmatig oplossen na GSC-controle."
+    },
+    {
+      "keyword": "Waar zit glyfosaat in?",
+      "historicalSearchVolume": 210,
+      "internalLinkTopics": "Perilla Spirulina Fulvinezuur Broccolikiemen Rijstwafels Ontzuren Kaneel Salie Brandnetel Pruikzwam",
+      "historicalUrl": "https://vitalora.nl/waar-zit-glyfosaat-in/",
+      "canonicalPath": "/waar-zit-glyfosaat-in",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Gezonde suikervarvanger",
+      "historicalSearchVolume": 170,
+      "internalLinkTopics": "Broccolikiemen Gember Kurkuma Vlierbessensap Chiazaad Lijnzaad Omega Spijsvertering Stofwisseling vetzuren",
+      "historicalUrl": "https://vitalora.nl/gezonde-suikervervangers/",
+      "canonicalPath": "/gezonde-suikervervangers",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Bijwerkingen gelatine",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Granaatappel Spirulina Turmeric Pruikzwam Lijnzaad Maca Guarana Chlorella Ashwagandha",
+      "historicalUrl": "https://vitalora.nl/bijwerkingen-gelatine/",
+      "canonicalPath": "/bijwerkingen-gelatine",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Spierpijn griep magnesium",
+      "historicalSearchVolume": 210,
+      "internalLinkTopics": "Salie Kurkuma Avocado Pruikzwam Spirulina Gember Peren Abrikozen Maitake",
+      "historicalUrl": "https://vitalora.nl/spierpijn-griep-magnesium/",
+      "canonicalPath": "/spierpijn-griep-magnesium",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Wat doet 2 eieren per dag met je lichaam",
+      "historicalSearchVolume": 70,
+      "internalLinkTopics": "Spirulina Broccolikiemen Chiazaden Maca Vlierbessensap Avocado Fulvinezuur Granaatappel Lijnzaad Gember",
+      "historicalUrl": "https://vitalora.nl/wat-doet-2-eieren-per-dag-met-je-lichaam/",
+      "canonicalPath": "/wat-doet-2-eieren-per-dag-met-je-lichaam",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Banaan en galstenen",
+      "historicalSearchVolume": 240,
+      "internalLinkTopics": "Perilla Gember Lijnzaad Avocado Spirulina Maca Granaatappel Pruikzwam Curcumin",
+      "historicalUrl": "https://vitalora.nl/banaan-en-galstenen/",
+      "canonicalPath": "/banaan-en-galstenen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "ziekte van wegener en voeding",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Maitake Avocado Lijnzaad Broccolikiemen Bottenbouillon Pruikzwam Vlierbessensap Nachtschade Tomaat Paprika",
+      "historicalUrl": "https://vitalora.nl/ziekte-van-wegener-en-voeding/",
+      "canonicalPath": "/ziekte-van-wegener-en-voeding",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Camu Camu gevaarlijk",
+      "historicalSearchVolume": 110,
+      "internalLinkTopics": "Spirulina Oligofructose Broccolikiemen Pruikzwam Kruisbloemige groenten Goji-bessen Vlierbessensap Maitake Granaatappel",
+      "historicalUrl": "https://vitalora.nl/camu-camu-gevaarlijk/",
+      "canonicalPath": "/camu-camu-gevaarlijk",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Waar zit omega 3 in behalve vis",
+      "historicalSearchVolume": 170,
+      "internalLinkTopics": "Chiazaden Kurkuma Granaatappel Pruikzwam Moringa Broccolikiemen Perilla Peren lijnzaad",
+      "historicalUrl": "https://vitalora.nl/waar-zit-omega-3-in-behalve-vis/",
+      "canonicalPath": "/waar-zit-omega-3-in-behalve-vis",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Voeding lage bloeddruk",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Abrikozen Granaatappel Waterkefir Krillolie Bosbessen Dadel Schisandra Himalayazout Zoethout",
+      "historicalUrl": "https://vitalora.nl/voeding-lage-bloeddruk/?previd=a316004",
+      "canonicalPath": "/voeding-lage-bloeddruk",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Lever en afvallen",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Oligofructose Spirulina Gember Groene thee Broccolikiemen Avocado Suiker Vlierbessensap Maitake",
+      "historicalUrl": "https://vitalora.nl/lever-en-afvallen/?previd=a316007",
+      "canonicalPath": "/lever-en-afvallen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "histamine betekenis",
+      "historicalSearchVolume": 210,
+      "internalLinkTopics": "Avocado Perilla Granaatappel Camu Spirulina Maca Gember",
+      "historicalUrl": "https://vitalora.nl/histamine-betekenis/?previd=a316006",
+      "canonicalPath": "/histamine-betekenis",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "Ghee gezond",
+      "historicalSearchVolume": 260,
+      "internalLinkTopics": "Gember Perilla Ontzuren Histamine Avocado Rijstwafels",
+      "historicalUrl": "https://vitalora.nl/histamine-betekenis/?previd=a316006",
+      "canonicalPath": "/histamine-betekenis",
+      "status": "mapping-conflict",
+      "note": "Historische spreadsheet koppelt dit zoekwoord aan een inhoudelijk verkeerde URL; handmatig oplossen na GSC-controle."
+    },
+    {
+      "keyword": "pregnenolone gevaren",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "maca, ashwagandha, schisandra, perilla, gember, broccolikiemen, pruikzwam, vlierbessensap, reishi, micronutriënten",
+      "historicalUrl": "https://vitalora.nl/pregnenolone-gevaren/?previd=a316003",
+      "canonicalPath": "/pregnenolone-gevaren",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "griekse yoghurt en artrose",
+      "historicalSearchVolume": 320,
+      "internalLinkTopics": "Turmeric Broccolikiemen Lijnzaad Spirulina Salie Vijgen Avocado Vlierbessensap Rijstwafels Perilla",
+      "historicalUrl": "https://vitalora.nl/griekse-yoghurt-en-artrose/?previd=a316225",
+      "canonicalPath": "/griekse-yoghurt-en-artrose",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "sterkste natuurlijke antibiotica",
+      "historicalSearchVolume": 260,
+      "internalLinkTopics": "maitake, schisandra, fulvinezuur, spirulina, granaatappel, camu camu, pruikzwam, muira puama, curcumin",
+      "historicalUrl": "https://vitalora.nl/sterkste-natuurlijke-antibiotica/",
+      "canonicalPath": "/sterkste-natuurlijke-antibiotica",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "chiazaad vezels",
+      "historicalSearchVolume": 170,
+      "internalLinkTopics": "peren, abrikozen, oligofructose, broccolikiemen, krill olie, salie, camu camu, vlierbessensap, turmeric",
+      "historicalUrl": "https://vitalora.nl/chiazaad-vezels/",
+      "canonicalPath": "/chiazaad-vezels",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "verschil lijnzaad en gebroken lijnzaad",
+      "historicalSearchVolume": 70,
+      "internalLinkTopics": "Spirulina Maca Pruikzwam Vlierbessensap Avocado Havermout Chiazaad Granaatappel Casomorfine",
+      "historicalUrl": "https://vitalora.nl/verschil-tussen-lijnzaad-en-gebroken-lijnzaad/",
+      "canonicalPath": "/verschil-tussen-lijnzaad-en-gebroken-lijnzaad",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "mct olie gezond",
+      "historicalSearchVolume": 90,
+      "internalLinkTopics": "Vlierbessensap Oligofructose Spirulina Waterkefir Kruisbloemige groenten Gember Chiazaad Havermout",
+      "historicalUrl": "https://vitalora.nl/mct-olie-gezond/",
+      "canonicalPath": "/mct-olie-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "is vis gezond",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Voorjaarsgroenten Avocado Kruisbloemige groenten Pruikzwam Spirulina Tuinkers Krill olie Gember Olijfolie Makreel",
+      "historicalUrl": "https://vitalora.nl/is-vis-gezond/",
+      "canonicalPath": "/is-vis-gezond",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "endometriose en voeding",
+      "historicalSearchVolume": 140,
+      "internalLinkTopics": "Maitake Pruikzwam Broccolikiemen Perilla Vlierbessensap Chiazaden Avocado Granaatappel Spirulina Fulvinezuur",
+      "historicalUrl": "https://vitalora.nl/endometriose-en-voeding/?previd=a316384",
+      "canonicalPath": "/endometriose-en-voeding",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    },
+    {
+      "keyword": "xeno oestrogeen",
+      "historicalSearchVolume": 210,
+      "internalLinkTopics": "Broccolikiemen Avocado Schisandra Salie Turmeric Spirulina Pruikzwam Groene thee Kurkum Granaatappel",
+      "historicalUrl": "https://vitalora.nl/xeno-oestrogenen/",
+      "canonicalPath": "/xeno-oestrogenen",
+      "status": "awaiting-gsc-audit",
+      "note": "Behouden tot Search Console-prestaties, backlinks en inhoudskwaliteit zijn beoordeeld."
+    }
+  ]
+}
+

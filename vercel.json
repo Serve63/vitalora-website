@@ -9,6 +9,14 @@
     { "source": "/checkout.html", "destination": "/checkout", "permanent": true },
     { "source": "/loading", "destination": "/loading.html", "permanent": false },
     { "source": "/artikelen", "destination": "/blog", "permanent": true },
+    { "source": "/zuiveringszout-baking-soda", "destination": "/is-zuiveringszout-hetzelfde-als-baking-soda", "permanent": true },
+    { "source": "/zuiveringszout-baking-soda.html", "destination": "/is-zuiveringszout-hetzelfde-als-baking-soda", "permanent": true },
+    { "source": "/waterkers", "destination": "/is-waterkers-gezond", "permanent": true },
+    { "source": "/waterkers.html", "destination": "/is-waterkers-gezond", "permanent": true },
+    { "source": "/eiwitpoeders", "destination": "/afvallen-met-eiwitpoeder", "permanent": true },
+    { "source": "/eiwitpoeders.html", "destination": "/afvallen-met-eiwitpoeder", "permanent": true },
+    { "source": "/oligofructose", "destination": "/is-oligofructose-slecht", "permanent": true },
+    { "source": "/oligofructose.html", "destination": "/is-oligofructose-slecht", "permanent": true },
     { "source": "/academy/de-juiste-balans", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true },
     { "source": "/academy/de-juiste-balans/", "destination": "/course-view.html?course=de-juiste-balans", "permanent": true }
   ],
@@ -25,6 +33,15 @@
     { "source": "/checkout", "destination": "/checkout-new.html" },
     { "source": "/wacht-even", "destination": "/wacht-even.html" },
     { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/vlierbessensap-gezond", "destination": "/vlierbessensap-gezond.html" },
+    { "source": "/is-zuiveringszout-hetzelfde-als-baking-soda", "destination": "/is-zuiveringszout-hetzelfde-als-baking-soda.html" },
+    { "source": "/is-waterkers-gezond", "destination": "/is-waterkers-gezond.html" },
+    { "source": "/afvallen-met-eiwitpoeder", "destination": "/afvallen-met-eiwitpoeder.html" },
+    { "source": "/is-oligofructose-slecht", "destination": "/is-oligofructose-slecht.html" },
+    { "source": "/olijven-met-knoflook", "destination": "/olijven-met-knoflook.html" },
+    { "source": "/pfas-zonder-paniek-thuis", "destination": "/pfas-zonder-paniek-thuis.html" },
+    { "source": "/microplastics-thuis-zonder-obsessie", "destination": "/microplastics-thuis-zonder-obsessie.html" },
+    { "source": "/rustige-keukenreset", "destination": "/rustige-keukenreset.html" },
     { "source": "/gefeliciteerd", "destination": "/gefeliciteerd.html" },
     { "source": "/bedankt", "destination": "/bedankt.html" },
     { "source": "/personeel", "destination": "/personeel.html" },
@@ -85,11 +102,10 @@
     ,{ "source": "/lever-en-afvallen", "destination": "/post.html?slug=lever-en-afvallen" }
     ,{ "source": "/is-vis-gezond", "destination": "/post.html?slug=is-vis-gezond" }
     ,{ "source": "/waar-zit-omega-3-in-behalve-vis", "destination": "/post.html?slug=waar-zit-omega-3-in-behalve-vis" }
-    ,{ "source": "/kruisbloemige-groenten", "destination": "/post.html?slug=kruisbloemige-groenten" }
-    ,{ "source": "/vlierbessensap-gezond", "destination": "/post.html?slug=vlierbessensap-gezond" }
+    ,{ "source": "/kruisbloemige-groenten", "destination": "/kruisbloemige-groenten.html" }
     ,{ "source": "/tuinkers-gezond", "destination": "/post.html?slug=tuinkers-gezond" }
-    ,{ "source": "/chlorella-en-spirulina", "destination": "/post.html?slug=chlorella-en-spirulina" }
-    ,{ "source": "/broccolikiemen", "destination": "/post.html?slug=broccolikiemen" }
+    ,{ "source": "/chlorella-en-spirulina", "destination": "/chlorella-en-spirulina.html" }
+    ,{ "source": "/broccolikiemen", "destination": "/broccolikiemen.html" }
     ,{ "source": "/spierpijn-griep-magnesium", "destination": "/post.html?slug=spierpijn-griep-magnesium" }
     ,{ "source": "/voorjaarsgroenten", "destination": "/post.html?slug=voorjaarsgroenten" }
     ,{ "source": "/meibomklierdysfunctie-voeding", "destination": "/post.html?slug=meibomklierdysfunctie-voeding" }
@@ -100,14 +116,13 @@
     ,{ "source": "/warme-tomaat-gezond", "destination": "/post.html?slug=warme-tomaat-gezond" }
     ,{ "source": "/waarom-eet-ik-zoveel", "destination": "/post.html?slug=waarom-eet-ik-zoveel" }
     ,{ "source": "/zilverkaars-en-de-overgang", "destination": "/post.html?slug=zilverkaars-en-de-overgang" }
-    ,{ "source": "/lichaam-ontzuren-onzin", "destination": "/post.html?slug=lichaam-ontzuren-onzin" }
+    ,{ "source": "/lichaam-ontzuren-onzin", "destination": "/lichaam-ontzuren-onzin.html" }
     ,{ "source": "/edelgistvlokken-en-darmen", "destination": "/post.html?slug=edelgistvlokken-en-darmen" }
     ,{ "source": "/nachtschade-groenten-darmen", "destination": "/post.html?slug=nachtschade-groenten-darmen" }
     ,{ "source": "/teunisbloemolie-bij-pms", "destination": "/post.html?slug=teunisbloemolie-bij-pms" }
     ,{ "source": "/vacramal-ervaring", "destination": "/post.html?slug=vacramal-ervaring" }
     ,{ "source": "/griekse-yoghurt-en-artrose", "destination": "/post.html?slug=griekse-yoghurt-en-artrose" }
     ,{ "source": "/hennepzaad-eiwitten", "destination": "/post.html?slug=hennepzaad-eiwitten" }
-    ,{ "source": "/:slug", "destination": "/post.html?slug=:slug" }
   ],
   "headers": [
     {

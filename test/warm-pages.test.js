@@ -9,7 +9,7 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), 'utf8');
 }
 
-test('blog, login en Clean Reset laden uitsluitend hun gedeelde warme kleurlaag', () => {
+test('blog gebruikt de redactionele warme laag en login en Clean Reset behouden hun eigen warme laag', () => {
   const blog = read('blog.html');
   const liveBlogRoute = read('blog/index.html');
   const post = read('post.html');
@@ -17,22 +17,28 @@ test('blog, login en Clean Reset laden uitsluitend hun gedeelde warme kleurlaag'
   const cleanReset = read('clean-reset.html');
   const warmCss = read('assets/css/warm-pages.css');
 
-  assert.match(blog, /<body class="page-blog">/);
-  assert.match(liveBlogRoute, /<body class="page-blog">/);
+  const editorialCss = read('assets/css/editorial-blog.css');
+
+  assert.match(blog, /<body class="editorial-index page-blog">/);
+  assert.match(liveBlogRoute, /<body class="editorial-index page-blog">/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=1/);
+  assert.match(liveBlogRoute, /\/assets\/css\/editorial-blog\.css\?v=1/);
   assert.match(post, /<body class="page-blog-post">/);
   assert.match(login, /<body class="page-login">/);
   assert.match(cleanReset, /<body class="page-clean-reset">/);
-  [blog, post, login, cleanReset].forEach((html) => {
+  [post, login, cleanReset].forEach((html) => {
     assert.match(html, /\/assets\/css\/warm-pages\.css\?v=2/);
     assert.match(html, /meta name="theme-color" content="#253129"/);
   });
-  assert.match(liveBlogRoute, /\/assets\/css\/warm-pages\.css\?v=2/);
+  assert.match(blog, /meta name="theme-color" content="#253129"/);
   assert.match(liveBlogRoute, /meta name="theme-color" content="#253129"/);
   assert.match(warmCss, /\.page-blog/);
   assert.match(warmCss, /\.page-blog-post/);
   assert.match(warmCss, /\.page-login/);
   assert.match(warmCss, /\.page-clean-reset/);
   assert.doesNotMatch(warmCss, /(^|\n)(body|\.site-header|\.login-container|\.hero-text)\s*\{/);
+  assert.match(editorialCss, /body\.editorial-page/);
+  assert.match(editorialCss, /body\.editorial-index/);
 });
 
 test('Clean Reset gebruikt het warme Image 2-cursusbeeld op desktop en mobiel', () => {
