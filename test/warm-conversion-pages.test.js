@@ -38,14 +38,14 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
 
   assert.match(html, /<body class="ebook-page ebook-page--warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
-  assert.match(html, /assets\/css\/ebook-warm\.css\?v=2/);
-  assert.equal((html.match(/assets\/images\/microplastics-ebook-warm-v2\.jpg/g) || []).length, 3);
+  assert.match(html, /assets\/css\/ebook-warm\.css\?v=3/);
+  assert.equal((html.match(/assets\/images\/microplastics-ebook-warm-v3\.png/g) || []).length, 3);
   assert.equal((html.match(/class="hero-title-line"/g) || []).length, 3);
   assert.match(html, /De éérste methode/);
   assert.match(html, /in Nederland om <span class="highlight">Microplastics<\/span>/);
   assert.match(html, /uit je lichaam te Detoxen!/);
   assert.doesNotMatch(html, /lesson-06-b\.jpg/);
-  assert.ok(fs.statSync(path.join(root, 'assets/images/microplastics-ebook-warm-v2.jpg')).size < 400_000);
+  assert.ok(fs.statSync(path.join(root, 'assets/images/microplastics-ebook-warm-v3.png')).size < 1_700_000);
   assert.match(html, /Geen paniek en geen wonderclaims/);
   assert.match(html, /id="ebook-claim"/);
   assert.match(html, /id="ebook-claim-bottom"/);
@@ -60,6 +60,7 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
   assert.match(css, /\.hero-title-line[\s\S]*display: block;[\s\S]*white-space: nowrap;/);
   assert.match(css, /\.hero-image::after[\s\S]*content: none;/);
   assert.match(css, /\.ebook-cover[\s\S]*object-fit: contain;/);
+  assert.match(css, /\.ebook-cover[\s\S]*filter: none;/);
   assert.match(css, /@media \(max-width: 768px\)/);
   assert.doesNotMatch(css, /#2954B3|#3A9AEA/i);
 });
