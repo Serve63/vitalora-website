@@ -32,9 +32,7 @@ body.ebook-page--warm {
   position: relative;
   overflow: hidden;
   padding: 74px 0 84px;
-  background:
-    radial-gradient(circle at 8% 5%, rgba(189,118,84,.16), transparent 30rem),
-    linear-gradient(180deg, #f7f0e8, var(--ebook-ivory));
+  background: var(--ebook-ivory);
 }
 
 .ebook-page--warm .hero::after {
@@ -159,8 +157,7 @@ body.ebook-page--warm {
   display: block;
   margin: 0;
   object-fit: contain;
-  filter: drop-shadow(0 28px 30px rgba(66,49,37,.2));
-  mix-blend-mode: multiply;
+  filter: none;
 }
 
 .ebook-page--warm .mobile-book-image { display: none; }
@@ -222,7 +219,7 @@ body.ebook-page--warm {
 .ebook-page--warm #ebook-modal .modal-subtitle { margin: 7px 0 0; color: var(--ebook-clay-dark); font-size: 12px; font-weight: 700; letter-spacing: .08em; }
 .ebook-page--warm #ebook-modal .modal-body { display: grid; grid-template-columns: .82fr 1.18fr; gap: 0; padding: 25px 38px 34px; }
 .ebook-page--warm #ebook-modal .modal-illustration { display: grid; min-height: 310px; overflow: hidden; border-radius: 18px; background: var(--ebook-ivory); place-items: center; }
-.ebook-page--warm #ebook-modal .modal-illustration img { width: 100%; height: auto; display: block; object-fit: contain; mix-blend-mode: multiply; }
+.ebook-page--warm #ebook-modal .modal-illustration img { width: 100%; height: auto; display: block; object-fit: contain; }
 .ebook-page--warm #ebook-modal .modal-copy { padding: 0 0 0 26px; }
 .ebook-page--warm #ebook-modal .modal-lead { margin: 0 0 16px; color: var(--ebook-copy); font-size: 13px; line-height: 1.6; }
 .ebook-page--warm #ebook-modal .modal-form input { width: 100%; min-height: 50px; margin: 0 0 10px; padding: 13px 15px; border: 1px solid #d9cbbb; border-radius: 12px; outline: none; background: #fffdf9; color: var(--ebook-ink); font-size: 14px; }
@@ -252,7 +249,7 @@ body.ebook-page--warm {
   .ebook-page--warm .hero-text h1 { font-size: 43px !important; hyphens: none !important; }
   .ebook-page--warm .hero-description { display: block !important; font-size: 15px; }
   .ebook-page--warm .mobile-book-image { display: block !important; order: 0; margin: 22px 0 20px !important; overflow: visible; border: 0; background: transparent; box-shadow: none; }
-  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: 380px !important; height: auto !important; margin: 0 auto !important; object-fit: contain; filter: drop-shadow(0 20px 24px rgba(66,49,37,.18)); mix-blend-mode: multiply; }
+  .ebook-page--warm .mobile-book-image img { width: 100% !important; max-width: 380px !important; height: auto !important; margin: 0 auto !important; object-fit: contain; filter: none; }
   .ebook-page--warm .hero-image { display: none !important; }
   .ebook-page--warm .features-list { margin: 20px 0 24px !important; }
   .ebook-page--warm .testimonials { padding: 66px 0; }
