@@ -13,7 +13,7 @@ test('checkout gebruikt de warme Vitalora-laag en behoudt het betaalcontract', (
 
   assert.match(html, /<body class="page-checkout-warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
-  assert.match(html, /assets\/css\/checkout-warm\.css\?v=1/);
+  assert.match(html, /assets\/css\/checkout-warm\.css\?v=2/);
   assert.match(html, /assets\/images\/clean-reset-course-v2\.jpg/);
   assert.match(html, /24 heldere lessen/);
   assert.match(html, /class="discounted-price">€ 47,00/);
@@ -22,12 +22,24 @@ test('checkout gebruikt de warme Vitalora-laag en behoudt het betaalcontract', (
   assert.match(html, /placeholder="E-mailadres"/);
   assert.match(html, /id="terms" required>/);
   assert.doesNotMatch(html, /id="terms"[^>]*checked/);
-  assert.match(html, /checkout-script\.js\?v=6/);
+  assert.match(html, /checkout-script\.js\?v=7/);
+  assert.doesNotMatch(html, /checkout-back|<select\b/);
+  assert.match(html, /data-country-picker/);
+  assert.match(html, /id="country" name="country" value="Nederland"/);
+  assert.match(html, /class="country-trigger"[^>]*aria-haspopup="listbox"/);
+  assert.match(html, /id="country-list" role="listbox"/);
   assert.match(script, /fetch\('\/api\/create-payment'/);
   assert.match(script, /amountValue = '47\.00'/);
   assert.match(script, /!firstName \|\| !lastName \|\| !email \|\| !terms/);
   assert.match(css, /--checkout-moss: #253129/);
   assert.match(css, /--checkout-clay: #bd7654/);
+  assert.match(css, /\.checkout-layout[\s\S]*align-items: stretch;/);
+  assert.match(css, /\.product-info,[\s\S]*\.checkout-form[\s\S]*height: 100%;/);
+  assert.match(css, /\.country-trigger[\s\S]*border-color: var\(--checkout-clay\);/);
+  assert.match(css, /\.country-options[\s\S]*position: absolute;/);
+  assert.match(script, /closeCountryPicker/);
+  assert.match(script, /\['ArrowDown', 'ArrowUp', 'Enter', ' '\]/);
+  assert.match(script, /hiddenInput\.dispatchEvent/);
   assert.doesNotMatch(css, /#2954B4|#3A9AEA|#10b981/i);
 });
 
@@ -38,14 +50,16 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
 
   assert.match(html, /<body class="ebook-page ebook-page--warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
-  assert.match(html, /assets\/css\/ebook-warm\.css\?v=4/);
-  assert.equal((html.match(/assets\/images\/microplastics-ebook-warm-v3\.png/g) || []).length, 3);
+  assert.match(html, /assets\/css\/ebook-warm\.css\?v=5/);
+  assert.equal((html.match(/assets\/images\/microplastics-ebook-warm-v4\.png/g) || []).length, 3);
   assert.equal((html.match(/class="hero-title-line"/g) || []).length, 3);
   assert.match(html, /De éérste methode/);
   assert.match(html, /in Nederland om <span class="highlight">Microplastics<\/span>/);
   assert.match(html, /uit je lichaam te Detoxen!/);
   assert.doesNotMatch(html, /lesson-06-b\.jpg/);
-  assert.ok(fs.statSync(path.join(root, 'assets/images/microplastics-ebook-warm-v3.png')).size < 1_700_000);
+  const coverPath = path.join(root, 'assets/images/microplastics-ebook-warm-v4.png');
+  assert.ok(fs.statSync(coverPath).size < 1_700_000);
+  assert.equal(fs.readFileSync(coverPath).readUInt8(25), 6, 'PNG must contain RGBA transparency');
   assert.match(html, /Geen paniek en geen wonderclaims/);
   assert.match(html, /id="ebook-claim"/);
   assert.match(html, /id="ebook-claim-bottom"/);
@@ -65,6 +79,7 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
   assert.match(css, /#ebook-modal \.modal-cta[\s\S]*transform: none !important;/);
   assert.match(css, /#ebook-modal \.modal-trust[\s\S]*background: transparent !important;/);
   assert.match(css, /#ebook-modal \.modal-trust::before[\s\S]*content: none !important;/);
+  assert.match(css, /\.feature-item \.checkmark[\s\S]*background: var\(--ebook-moss\);[\s\S]*color: var\(--ebook-paper\);/);
   assert.doesNotMatch(css, /#eff5ff|#12c993|translateX/i);
   assert.match(css, /@media \(max-width: 768px\)/);
   assert.doesNotMatch(css, /#2954B3|#3A9AEA/i);

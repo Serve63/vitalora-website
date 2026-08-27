@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/header.css?v=20">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=6">
-    <link rel="stylesheet" href="/assets/css/checkout-warm.css?v=1">
+    <link rel="stylesheet" href="/assets/css/checkout-warm.css?v=2">
     <style>
         * {
             margin: 0;
@@ -365,22 +365,15 @@
                 margin-bottom: 10px;
             }
 
-            /* Equalize field heights for inputs and country select on mobile */
+            /* Equalize field heights on mobile */
             .checkout-form .form-group input,
-            .checkout-form .form-group select {
+            .checkout-form .country-trigger {
                 height: 56px !important;
                 min-height: 56px !important;
                 max-height: 56px !important;
                 padding: 18px 20px !important;
                 line-height: 1.2 !important;
                 box-sizing: border-box !important;
-            }
-            .checkout-form .form-group select {
-                appearance: none !important;
-                -webkit-appearance: none !important;
-                -moz-appearance: none !important;
-                border-color: #28A270 !important;
-                background-color: #ffffff !important;
             }
             
             .product-info,
@@ -409,9 +402,6 @@
         <a class="logo" href="/">
           <span class="logo-text">Vitalora</span>
         </a>
-        <div class="header-buttons">
-          <a class="checkout-back" href="/clean-reset">← Terug naar Clean Reset</a>
-        </div>
       </div>
     </header>
     <div class="container">
@@ -468,12 +458,25 @@
                     <div class="form-group">
                         <input type="email" placeholder="E-mailadres" aria-label="E-mailadres" autocomplete="email" inputmode="email" required>
                     </div>
-                    <div class="form-group">
-                        <select aria-label="Land" autocomplete="country-name">
-                            <option>Nederland</option>
-                            <option>België</option>
-                            <option>Duitsland</option>
-                        </select>
+                    <div class="form-group country-field">
+                        <div class="country-picker" data-country-picker>
+                            <input type="hidden" id="country" name="country" value="Nederland" autocomplete="country-name">
+                            <button class="country-trigger" type="button" aria-haspopup="listbox" aria-expanded="false" aria-controls="country-list">
+                                <span data-country-label>Nederland</span>
+                                <span class="country-chevron" aria-hidden="true"></span>
+                            </button>
+                            <ul class="country-options" id="country-list" role="listbox" aria-label="Kies je land" hidden>
+                                <li class="country-option is-selected" role="option" aria-selected="true" data-value="Nederland" tabindex="-1">
+                                    <span>Nederland</span><span class="country-option-check" aria-hidden="true">✓</span>
+                                </li>
+                                <li class="country-option" role="option" aria-selected="false" data-value="België" tabindex="-1">
+                                    <span>België</span><span class="country-option-check" aria-hidden="true">✓</span>
+                                </li>
+                                <li class="country-option" role="option" aria-selected="false" data-value="Duitsland" tabindex="-1">
+                                    <span>Duitsland</span><span class="country-option-check" aria-hidden="true">✓</span>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
@@ -567,6 +570,6 @@
 
         // Remove legacy redirect handler; real submission handled by checkout-script.js
     </script>
-    <script src="/checkout-script.js?v=6"></script>
+    <script src="/checkout-script.js?v=7"></script>
 </body>
 </html>

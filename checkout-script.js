@@ -221,6 +221,79 @@ document.addEventListener('DOMContentLoaded', function() {
         return emailRegex.test(email);
     }
 
+    // Warm Vitalora country picker (avoids the browser/OS-native dropdown UI)
+    const countryPicker = document.querySelector('[data-country-picker]');
+    if (countryPicker) {
+        const trigger = countryPicker.querySelector('.country-trigger');
+        const listbox = countryPicker.querySelector('[role="listbox"]');
+        const hiddenInput = countryPicker.querySelector('input[name="country"]');
+        const label = countryPicker.querySelector('[data-country-label]');
+        const options = Array.from(countryPicker.querySelectorAll('[role="option"]'));
+        let activeIndex = Math.max(0, options.findIndex(option => option.getAttribute('aria-selected') === 'true'));
+
+        const focusOption = index => {
+            activeIndex = (index + options.length) % options.length;
+            options[activeIndex].focus();
+        };
+
+        const closeCountryPicker = (returnFocus = false) => {
+            countryPicker.classList.remove('is-open');
+            listbox.hidden = true;
+            trigger.setAttribute('aria-expanded', 'false');
+            if (returnFocus) trigger.focus();
+        };
+
+        const openCountryPicker = () => {
+            countryPicker.classList.add('is-open');
+            listbox.hidden = false;
+            trigger.setAttribute('aria-expanded', 'true');
+            activeIndex = Math.max(0, options.findIndex(option => option.getAttribute('aria-selected') === 'true'));
+            focusOption(activeIndex);
+        };
+
+        const selectCountry = option => {
+            options.forEach(candidate => {
+                const selected = candidate === option;
+                candidate.classList.toggle('is-selected', selected);
+                candidate.setAttribute('aria-selected', String(selected));
+            });
+            hiddenInput.value = option.dataset.value;
+            label.textContent = option.dataset.value;
+            hiddenInput.dispatchEvent(new Event('change', { bubbles: true }));
+            closeCountryPicker(true);
+        };
+
+        trigger.addEventListener('click', () => {
+            if (trigger.getAttribute('aria-expanded') === 'true') closeCountryPicker();
+            else openCountryPicker();
+        });
+
+        trigger.addEventListener('keydown', event => {
+            if (['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(event.key)) {
+                event.preventDefault();
+                openCountryPicker();
+                if (event.key === 'ArrowUp') focusOption(options.length - 1);
+            }
+        });
+
+        options.forEach((option, index) => {
+            option.addEventListener('click', () => selectCountry(option));
+            option.addEventListener('keydown', event => {
+                if (event.key === 'ArrowDown') { event.preventDefault(); focusOption(index + 1); }
+                if (event.key === 'ArrowUp') { event.preventDefault(); focusOption(index - 1); }
+                if (event.key === 'Home') { event.preventDefault(); focusOption(0); }
+                if (event.key === 'End') { event.preventDefault(); focusOption(options.length - 1); }
+                if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); selectCountry(option); }
+                if (event.key === 'Escape') { event.preventDefault(); closeCountryPicker(true); }
+                if (event.key === 'Tab') closeCountryPicker();
+            });
+        });
+
+        document.addEventListener('click', event => {
+            if (!countryPicker.contains(event.target)) closeCountryPicker();
+        });
+    }
+
     // Input focus effects
     const formInputs = document.querySelectorAll('.form-group input, .form-group select');
     
@@ -274,13 +347,6 @@ document.addEventListener('DOMContentLoaded', function() {
     sections.forEach((section, index) => {
         observer.observe(section);
     });
-
-    // Auto-fill country based on user's location (demo)
-    const countrySelect = document.querySelector('select');
-    if (countrySelect) {
-        // For demo purposes, set to Netherlands
-        countrySelect.value = 'Nederland';
-    }
 
     // Add subtle animations to checkmarks
     const checkmarks = document.querySelectorAll('.checkmark');

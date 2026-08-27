@@ -111,8 +111,8 @@ body.ebook-page--warm {
   place-items: center;
   flex: 0 0 auto;
   border-radius: 50%;
-  background: #e2e8e2;
-  color: var(--ebook-moss);
+  background: var(--ebook-moss);
+  color: var(--ebook-paper);
 }
 
 .ebook-page--warm .cta-button {
