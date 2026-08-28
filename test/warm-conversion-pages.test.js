@@ -50,6 +50,7 @@ test('eenmalig aanbod gebruikt dezelfde warme checkout zonder systeemdropdown', 
   assert.match(html, /<body class="page-checkout-warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
   assert.match(html, /html\s*\{\s*background:\s*#253129;/);
+  assert.match(html, /@supports \(-webkit-touch-callout: none\)[\s\S]*\.page-checkout-warm \.site-header\s*\{[\s\S]*position:\s*sticky;[\s\S]*top:\s*0;/);
   assert.match(html, /assets\/css\/checkout-warm\.css\?v=2/);
   assert.match(html, /assets\/images\/clean-reset-course-v2\.jpg/);
   assert.match(html, /class="discounted-price">€ 27,00/);
