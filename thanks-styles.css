@@ -20,7 +20,7 @@ html { background: #f9f2ea; }
   top: 0;
   right: 0;
   left: 0;
-  height: 1px;
+  height: 16px;
   background: #f9f2ea;
   pointer-events: none;
 }

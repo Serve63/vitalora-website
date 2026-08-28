@@ -116,7 +116,7 @@ test('succes- en bedankpagina blijven functioneel in de warme Vitalora-stijl', (
 
   assert.match(success, /<body class="page-success-warm">/);
   assert.match(success, /meta name="theme-color" content="#f9f2ea"/);
-  assert.match(success, /success-styles\.css\?v=4/);
+  assert.match(success, /success-styles\.css\?v=5/);
   assert.match(success, /class="ios-status-bar-surface" aria-hidden="true"/);
   assert.equal((success.match(/assets\/images\/academy\/course-/g) || []).length, 4);
   assert.doesNotMatch(success, /1\.200\+|70% korting|OCU\.png/);
@@ -127,18 +127,18 @@ test('succes- en bedankpagina blijven functioneel in de warme Vitalora-stijl', (
   assert.match(successCss, /--success-moss:\s*#253129/);
   assert.match(successCss, /--success-clay:\s*#bd7654/);
   assert.match(successCss, /html\s*\{\s*background:\s*#f9f2ea;/);
-  assert.match(successCss, /\.ios-status-bar-surface\s*\{[\s\S]*position:\s*fixed;[\s\S]*top:\s*0;[\s\S]*height:\s*1px;[\s\S]*background:\s*#f9f2ea;/);
+  assert.match(successCss, /\.ios-status-bar-surface\s*\{[\s\S]*position:\s*fixed;[\s\S]*top:\s*0;[\s\S]*height:\s*16px;[\s\S]*background:\s*#f9f2ea;/);
 
   assert.match(thanks, /<body class="page-thanks-warm">/);
   assert.match(thanks, /meta name="theme-color" content="#f9f2ea"/);
-  assert.match(thanks, /thanks-styles\.css\?v=5/);
+  assert.match(thanks, /thanks-styles\.css\?v=6/);
   assert.match(thanks, /class="ios-status-bar-surface" aria-hidden="true"/);
   assert.match(thanks, /clean-reset-welcome-warm-v2\.jpg/);
   assert.match(thanks, /Welkom bij<br>Clean Reset/);
   assert.match(thanks, /mailto:info@vitalora\.nl/);
   assert.match(thanksCss, /--thanks-moss:\s*#253129/);
   assert.match(thanksCss, /html\s*\{\s*background:\s*#f9f2ea;/);
-  assert.match(thanksCss, /\.ios-status-bar-surface\s*\{[\s\S]*position:\s*fixed;[\s\S]*top:\s*0;[\s\S]*height:\s*1px;[\s\S]*background:\s*#f9f2ea;/);
+  assert.match(thanksCss, /\.ios-status-bar-surface\s*\{[\s\S]*position:\s*fixed;[\s\S]*top:\s*0;[\s\S]*height:\s*16px;[\s\S]*background:\s*#f9f2ea;/);
   assert.doesNotMatch(thanksCss, /#2954B4|#2954B3|#3A9AEA/i);
 });
 
