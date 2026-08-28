@@ -4,34 +4,33 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bedankt – Vitalora</title>
-  <meta name="theme-color" content="#f9f2ea">
+  <meta name="theme-color" content="#f1e3d8">
   <meta name="robots" content="noindex,nofollow">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-  <link rel="stylesheet" href="thanks-styles.css?v=7" />
+  <link rel="stylesheet" href="thanks-styles.css?v=8" />
   <style>
-    body.page-thanks-warm { background-color: #f9f2ea; }
+    body.page-thanks-warm { background-color: #f1e3d8; }
     .ios-status-bar-surface { display: none; }
     @media (max-width: 768px) {
       @supports (-webkit-touch-callout: none) {
         .ios-status-bar-surface {
           display: block;
-          position: -webkit-sticky;
-          position: sticky;
+          position: fixed;
           z-index: 10;
           top: 0;
+          left: 0;
           width: 100%;
           height: 32px;
-          flex: 0 0 32px;
-          background-color: #f9f2ea;
+          background-color: #f1e3d8;
+          background-image: linear-gradient(90deg, #f6ece3 0%, #f1e3d8 50%, #eeded1 100%);
           pointer-events: none;
         }
-        .page-thanks-warm .container { padding-top: calc(clamp(38px, 6vw, 72px) - 32px); }
       }
     }
     @media (max-width: 560px) {
       @supports (-webkit-touch-callout: none) {
-        .page-thanks-warm .container { padding-top: 0; }
+        .page-thanks-warm .container { padding-top: 32px; }
       }
     }
   </style>
