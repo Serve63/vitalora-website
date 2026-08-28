@@ -49,6 +49,7 @@ test('eenmalig aanbod gebruikt dezelfde warme checkout zonder systeemdropdown', 
 
   assert.match(html, /<body class="page-checkout-warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
+  assert.match(html, /html\s*\{\s*background:\s*#253129;/);
   assert.match(html, /assets\/css\/checkout-warm\.css\?v=2/);
   assert.match(html, /assets\/images\/clean-reset-course-v2\.jpg/);
   assert.match(html, /class="discounted-price">€ 27,00/);
@@ -113,7 +114,8 @@ test('succes- en bedankpagina blijven functioneel in de warme Vitalora-stijl', (
   const thanksCss = read('thanks-styles.css');
 
   assert.match(success, /<body class="page-success-warm">/);
-  assert.match(success, /success-styles\.css\?v=2/);
+  assert.match(success, /meta name="theme-color" content="#f9f2ea"/);
+  assert.match(success, /success-styles\.css\?v=3/);
   assert.equal((success.match(/assets\/images\/academy\/course-/g) || []).length, 4);
   assert.doesNotMatch(success, /1\.200\+|70% korting|OCU\.png/);
   assert.match(success, /id="upsell-buy"/);
@@ -122,13 +124,16 @@ test('succes- en bedankpagina blijven functioneel in de warme Vitalora-stijl', (
   assert.match(success, /fetch\('\/api\/create-payment'/);
   assert.match(successCss, /--success-moss:\s*#253129/);
   assert.match(successCss, /--success-clay:\s*#bd7654/);
+  assert.match(successCss, /html\s*\{\s*background:\s*#f9f2ea;/);
 
   assert.match(thanks, /<body class="page-thanks-warm">/);
-  assert.match(thanks, /thanks-styles\.css\?v=3/);
+  assert.match(thanks, /meta name="theme-color" content="#f9f2ea"/);
+  assert.match(thanks, /thanks-styles\.css\?v=4/);
   assert.match(thanks, /clean-reset-welcome-warm-v2\.jpg/);
   assert.match(thanks, /Welkom bij<br>Clean Reset/);
   assert.match(thanks, /mailto:info@vitalora\.nl/);
   assert.match(thanksCss, /--thanks-moss:\s*#253129/);
+  assert.match(thanksCss, /html\s*\{\s*background:\s*#f9f2ea;/);
   assert.doesNotMatch(thanksCss, /#2954B4|#2954B3|#3A9AEA/i);
 });
 
