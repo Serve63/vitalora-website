@@ -329,6 +329,13 @@
 
         /* Mobile Responsive */
         @media (max-width: 768px) {
+            @supports (-webkit-touch-callout: none) {
+                .page-checkout-warm .site-header {
+                    position: sticky;
+                    top: 0;
+                }
+            }
+
             .checkout-layout {
                 grid-template-columns: 1fr;
                 gap: 20px;
