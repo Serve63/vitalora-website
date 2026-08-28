@@ -1,0 +1,158 @@
+:root {
+  --staff-moss: #253129;
+  --staff-moss-deep: #19231e;
+  --staff-moss-soft: #34443a;
+  --staff-clay: #bd7654;
+  --staff-clay-dark: #925339;
+  --staff-ivory: #f4eee6;
+  --staff-paper: #fffaf5;
+  --staff-paper-soft: #f9f2ea;
+  --staff-sand: #e6d6c3;
+  --staff-ink: #292a25;
+  --staff-copy: #625e56;
+}
+
+body.page-staff-dashboard-warm {
+  min-height: 100vh;
+  margin: 0;
+  color: var(--staff-ink);
+  background:
+    radial-gradient(circle at 88% 3%, rgba(189, 118, 84, 0.15), transparent 28rem),
+    linear-gradient(145deg, var(--staff-paper-soft), var(--staff-ivory));
+}
+
+.page-staff-dashboard-warm .site-header {
+  color: var(--staff-paper);
+  background: linear-gradient(110deg, var(--staff-moss-deep), var(--staff-moss) 68%, #493b2f);
+  border-bottom-color: rgba(230, 214, 195, 0.18);
+  box-shadow: 0 10px 30px rgba(25, 35, 30, 0.13);
+}
+
+.page-staff-dashboard-warm .site-header .logo,
+.page-staff-dashboard-warm .site-header .logo-text {
+  color: var(--staff-paper) !important;
+}
+
+.page-staff-dashboard-warm .app {
+  display: grid;
+  grid-template-columns: 240px minmax(0, 1fr);
+  min-height: calc(100vh - 64px);
+}
+
+.page-staff-dashboard-warm .sidenav {
+  padding: 24px 16px;
+  background: rgba(255, 250, 245, 0.84);
+  border-right: 1px solid var(--staff-sand);
+}
+
+.page-staff-dashboard-warm .sidenav h4 {
+  margin: 0 0 10px;
+  color: var(--staff-clay-dark);
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.page-staff-dashboard-warm .navlist {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.page-staff-dashboard-warm .navlist a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  color: var(--staff-copy);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: color 160ms ease, background 160ms ease, box-shadow 160ms ease;
+}
+
+.page-staff-dashboard-warm .navlist a.active,
+.page-staff-dashboard-warm .navlist a:hover {
+  color: var(--staff-moss);
+  background: rgba(189, 118, 84, 0.14) !important;
+  box-shadow: inset 3px 0 0 var(--staff-clay) !important;
+}
+
+.page-staff-dashboard-warm .content {
+  min-width: 0;
+  padding: clamp(24px, 4vw, 42px);
+}
+
+.page-staff-dashboard-warm .heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.page-staff-dashboard-warm .heading h1 {
+  margin: 0;
+  color: var(--staff-ink);
+  font-size: clamp(30px, 4vw, 42px);
+  letter-spacing: -0.035em;
+}
+
+.page-staff-dashboard-warm .kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  gap: 16px;
+  margin: 22px 0 24px;
+}
+
+.page-staff-dashboard-warm .kpi {
+  grid-column: span 3;
+  padding: 20px;
+  background: rgba(255, 250, 245, 0.96);
+  border: 1px solid rgba(146, 83, 57, 0.16);
+  border-radius: 20px;
+  box-shadow: 0 22px 48px -32px rgba(56, 41, 28, 0.52);
+}
+
+.page-staff-dashboard-warm #kpi-today {
+  border-color: rgba(189, 118, 84, 0.52);
+  box-shadow:
+    inset 0 4px 0 var(--staff-clay),
+    0 22px 48px -32px rgba(56, 41, 28, 0.52);
+}
+
+.page-staff-dashboard-warm .kpi h3 {
+  margin: 0 0 9px;
+  color: var(--staff-moss);
+  font-weight: 700;
+}
+
+.page-staff-dashboard-warm .kpi .val {
+  color: var(--staff-ink);
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.page-staff-dashboard-warm .kpi .sub {
+  margin-top: 4px;
+  color: var(--staff-copy);
+  font-size: 12px;
+}
+
+@media (max-width: 1024px) {
+  .page-staff-dashboard-warm .kpi { grid-column: span 6; }
+}
+
+@media (max-width: 768px) {
+  .page-staff-dashboard-warm .app { grid-template-columns: minmax(0, 1fr); }
+  .page-staff-dashboard-warm .sidenav {
+    display: block;
+    padding: 10px 14px;
+    border-right: 0;
+    border-bottom: 1px solid var(--staff-sand);
+  }
+  .page-staff-dashboard-warm .sidenav h4 { display: none; }
+  .page-staff-dashboard-warm .navlist { flex-direction: row; overflow-x: auto; }
+  .page-staff-dashboard-warm .navlist a { white-space: nowrap; }
+  .page-staff-dashboard-warm .content { padding: 24px 16px; }
+  .page-staff-dashboard-warm .kpi { grid-column: span 12; }
+}

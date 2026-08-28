@@ -3,5 +3,6 @@ Allow: /
 Disallow: /api/
 Disallow: /personeel
 Disallow: /personeel-dashboard
+Disallow: /marketingmachine
 
 Sitemap: https://www.vitalora.nl/sitemap.xml
