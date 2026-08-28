@@ -365,6 +365,6 @@ fs.writeFileSync(path.join(root, 'blog.html'), index);
 fs.mkdirSync(path.join(root, 'blog'), { recursive: true });
 fs.writeFileSync(path.join(root, 'blog/index.html'), index);
 fs.writeFileSync(path.join(root, 'sitemap.xml'), sitemap(feed));
-fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /personeel\nDisallow: /personeel-dashboard\n\nSitemap: ${baseUrl}/sitemap.xml\n`);
+fs.writeFileSync(path.join(root, 'robots.txt'), `User-agent: *\nAllow: /\nDisallow: /api/\nDisallow: /personeel\nDisallow: /personeel-dashboard\nDisallow: /marketingmachine\n\nSitemap: ${baseUrl}/sitemap.xml\n`);
 
 console.log(`Built ${articles.length} SEO articles, ${feed.length} feed entries, sitemap.xml and robots.txt.`);

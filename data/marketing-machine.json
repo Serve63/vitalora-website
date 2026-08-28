@@ -1,0 +1,69 @@
+{
+  "measurement": {
+    "status": "not_configured",
+    "message": "Er is nog geen betrouwbare experiment- en conversiemeting gekoppeld. De huidige controleversies staan klaar; bezoekers, conversies en winnaars blijven leeg totdat echte metingen beschikbaar zijn."
+  },
+  "pages": [
+    {
+      "key": "ebook",
+      "name": "E-book",
+      "stage": "Opt-in pagina",
+      "route": "/ebook",
+      "objective": "Gratis e-bookaanvragen per unieke bezoeker",
+      "variants": [
+        {
+          "id": "ebook-control-a",
+          "name": "Controle A",
+          "description": "Huidige warme Vitalora-pagina",
+          "status": "control",
+          "visitors": null,
+          "conversions": null,
+          "decision": "insufficient_data"
+        }
+      ]
+    },
+    {
+      "key": "checkout",
+      "name": "Aankoop",
+      "stage": "Buy page",
+      "route": "/checkout",
+      "objective": "Betaalde Clean Reset-bestellingen per unieke bezoeker",
+      "variants": [
+        {
+          "id": "checkout-control-a",
+          "name": "Controle A",
+          "description": "Huidige warme Vitalora-checkout",
+          "status": "control",
+          "visitors": null,
+          "conversions": null,
+          "decision": "insufficient_data"
+        }
+      ]
+    },
+    {
+      "key": "upsell",
+      "name": "Upsell",
+      "stage": "Upsell page",
+      "route": "/gefeliciteerd",
+      "objective": "Betaalde upsells per unieke koper",
+      "variants": [
+        {
+          "id": "upsell-control-a",
+          "name": "Controle A",
+          "description": "Huidige warme Vitalora-upsell",
+          "status": "control",
+          "visitors": null,
+          "conversions": null,
+          "decision": "insufficient_data"
+        }
+      ]
+    }
+  ],
+  "mailing": {
+    "provider": "MailBlue",
+    "status": "not_available",
+    "entryPoint": "E-bookdownload",
+    "message": "De huidige MailBlue-flow en eventhistorie zijn niet beschikbaar via de API in het huidige abonnement. Daarom worden er nog geen mails, open rates of winnaars ingevuld.",
+    "steps": []
+  }
+}
