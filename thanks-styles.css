@@ -12,6 +12,8 @@
 
 * { box-sizing: border-box; }
 
+html { background: #f9f2ea; }
+
 body.page-thanks-warm {
   min-height: 100vh;
   margin: 0;
