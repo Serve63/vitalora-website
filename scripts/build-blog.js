@@ -91,14 +91,14 @@ function jsonLd(article) {
   ]).replaceAll('<', '\\u003c');
 }
 
-function header() {
+function header({ navigation = true } = {}) {
   return `<header class="editorial-header">
     <div class="editorial-shell editorial-header__inner">
       <a class="editorial-brand" href="/">Vitalora.nl</a>
-      <nav class="editorial-nav" aria-label="Hoofdnavigatie">
+${navigation ? `      <nav class="editorial-nav" aria-label="Hoofdnavigatie">
         <a href="/blog">Alle artikelen</a>
         <a href="/academy">Mijn Academy</a>
-      </nav>
+      </nav>` : ''}
     </div>
   </header>`;
 }
@@ -127,7 +127,7 @@ function articleHtml(article) {
   const relatedHtml = article.related.map(([name, href]) => `<li><a href="${escapeHtml(href)}">${escapeHtml(name)}</a></li>`).join('');
 
   return `<!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" style="--ios-statusbar-color: #253129">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -148,12 +148,14 @@ function articleHtml(article) {
   <meta name="twitter:description" content="${escapeHtml(article.description)}">
   <meta name="twitter:image" content="${baseUrl}${article.image}">
   <meta name="theme-color" content="#253129">
+  <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=1">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <script type="application/ld+json">${jsonLd(article)}</script>
 </head>
 <body class="editorial-page page-blog-post">
+  <div class="ios-status-bar-surface" aria-hidden="true"></div>
   ${header()}
   <main class="article-wrap">
     <nav class="breadcrumb" aria-label="Broodkruimel"><a href="/blog">Blog</a> <span aria-hidden="true">›</span> ${escapeHtml(article.category)}</nav>
@@ -209,7 +211,7 @@ function existingArticleHtml(article, bodyContent) {
     displayDate: article.publishedDate
   };
   return `<!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" style="--ios-statusbar-color: #253129">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -227,12 +229,14 @@ function existingArticleHtml(article, bodyContent) {
   <meta property="og:image:alt" content="${escapeHtml(normalized.imageAlt)}">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="theme-color" content="#253129">
+  <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=1">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <script type="application/ld+json">${jsonLd(normalized)}</script>
 </head>
 <body class="editorial-page page-blog-post">
+  <div class="ios-status-bar-surface" aria-hidden="true"></div>
   ${header()}
   <main class="article-wrap">
     <nav class="breadcrumb" aria-label="Broodkruimel"><a href="/blog">Blog</a> <span aria-hidden="true">›</span> ${escapeHtml(normalized.category)}</nav>
@@ -284,7 +288,7 @@ function blogIndex(feed) {
       </a>`).join('');
 
   return `<!DOCTYPE html>
-<html lang="nl">
+<html lang="nl" style="--ios-statusbar-color: #253129">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -297,12 +301,14 @@ function blogIndex(feed) {
   <meta property="og:url" content="${baseUrl}/blog">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#253129">
+  <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=1">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
 <body class="editorial-index page-blog">
-  ${header()}
+  <div class="ios-status-bar-surface" aria-hidden="true"></div>
+  ${header({ navigation: false })}
   <main class="editorial-shell">
     <section class="index-hero">
       <p class="index-eyebrow">Vitalora Redactie</p>

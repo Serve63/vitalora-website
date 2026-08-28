@@ -1,0 +1,21 @@
+.ios-status-bar-surface {
+  display: none;
+}
+
+@supports (-webkit-touch-callout: none) {
+  html {
+    background-color: var(--ios-statusbar-color, #253129);
+  }
+
+  .ios-status-bar-surface {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    width: 100%;
+    height: 32px;
+    background-color: var(--ios-statusbar-color, #253129);
+    pointer-events: none;
+  }
+}
