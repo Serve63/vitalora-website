@@ -14,6 +14,17 @@
 
 html { background: #f9f2ea; }
 
+.ios-status-bar-surface {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 1px;
+  background: #f9f2ea;
+  pointer-events: none;
+}
+
 body.page-thanks-warm {
   min-height: 100vh;
   margin: 0;
