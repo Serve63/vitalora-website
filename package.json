@@ -4,8 +4,9 @@
   "description": "Vitalora website with contact form functionality",
   "main": "index.js",
   "scripts": {
+    "check:ios-statusbar": "node scripts/apply-global-ios-statusbar.js --check",
     "build:blog": "node scripts/build-blog.js",
-    "test": "node --test test/*.test.js"
+    "test": "npm run check:ios-statusbar && node --test test/*.test.js"
   },
   "dependencies": {
     "@sendgrid/mail": "^8.1.0",
