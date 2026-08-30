@@ -64,7 +64,7 @@ test('de historische adapter behoudt alle laadpaden en renderer-contracten', () 
   assert.match(post, /class="blog-content legacy-blog-content"/);
   assert.doesNotMatch(post, /class="blog-content legacy-blog-content"[^>]*aria-live/);
   assert.doesNotMatch(post, /<span>Vitalora Redactie<\/span>/);
-  assert.match(post, /\/assets\/css\/editorial-blog\.css\?v=2/);
+  assert.match(post, /\/assets\/css\/editorial-blog\.css\?v=3/);
   assert.doesNotMatch(post, /fonts\.googleapis\.com|#2954B4|data-include="site-header"/i);
 
   const staticCall = post.indexOf('let post = await fetchStatic(slug)');

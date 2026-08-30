@@ -73,13 +73,18 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   const blog = read('blog.html');
   const nestedBlog = read('blog/index.html');
   const css = read('assets/css/editorial-blog.css');
+  const builder = read('scripts/build-blog.js');
+  const feed = JSON.parse(read('blog-feed.json'));
 
   assert.equal(blog, nestedBlog);
   assert.equal((blog.match(/<a class="post-card(?:\s[^"}]*)?"/g) || []).length, 13);
-  assert.equal((blog.match(/class="post-card post-card--featured"/g) || []).length, 1);
+  assert.doesNotMatch(blog, /featured-story|post-card--featured|Uitgelicht artikel/);
+  for (const post of feed) {
+    assert.equal((blog.match(new RegExp(`<a class="post-card" href="/${post.slug}">`, 'g')) || []).length, 1, post.slug);
+  }
   assert.match(blog, /<h1>Gezondheid zonder ruis\.<\/h1>/);
   assert.match(blog, /rel="canonical" href="https:\/\/www\.vitalora\.nl\/blog"/);
-  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=2/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=3/);
   assert.match(blog, /id="nieuwste-artikelen"/);
   assert.match(blog, /13 artikelen · met bronnen gecontroleerd/);
   assert.doesNotMatch(blog, /onafhankelijk gecontroleerd/);
@@ -87,8 +92,15 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   assert.match(css, /--editorial-moss:\s*#253129/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
   assert.match(css, /grid-template-columns:\s*232px minmax\(0, 720px\)/);
-  assert.match(css, /a\.post-card\.post-card--featured/);
-  assert.match(css, /background:\s*var\(--editorial-moss\) !important/);
+  assert.doesNotMatch(css, /post-card--featured|featured-story/);
+  assert.match(css, /\.blog-grid \{[\s\S]*align-items: start;[\s\S]*gap: 22px;/);
+  assert.match(css, /\.post-card img \{[\s\S]*height: auto;[\s\S]*aspect-ratio: 16 \/ 9;/);
+  const cardBody = css.match(/\.post-card__body \{([^}]*)\}/);
+  assert.ok(cardBody);
+  assert.doesNotMatch(cardBody[1], /height:\s*100%/);
+  assert.match(cardBody[1], /padding:\s*20px 22px 19px/);
+  assert.doesNotMatch(builder, /featuredPost|featuredCard|featured-story|post-card--featured/);
+  assert.match(builder, /const cards = feed\.map/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
 
   const font = fs.readFileSync(path.join(root, 'assets/fonts/Quicksand-400.woff2'));

@@ -4,7 +4,7 @@ const articles = require('../content/blog/articles');
 
 const root = path.resolve(__dirname, '..');
 const baseUrl = 'https://www.vitalora.nl';
-const editorialStylesheetVersion = 2;
+const editorialStylesheetVersion = 3;
 
 const existingEditorial = [
   {
@@ -387,23 +387,7 @@ function toFeed(article) {
 }
 
 function blogIndex(feed) {
-  const [featuredPost, ...remainingPosts] = feed;
-  const featuredCard = `
-      <a class="post-card post-card--featured" href="/${featuredPost.slug}">
-        <div class="post-card__media">
-          <img src="${featuredPost.featuredImage}" width="960" height="540" alt="${escapeHtml(featuredPost.imageAlt || '')}">
-        </div>
-        <div class="post-card__body">
-          <p class="post-card__category">Uitgelicht · ${escapeHtml(featuredPost.category || 'Vitalora Redactie')}</p>
-          <h2>${escapeHtml(featuredPost.title)}</h2>
-          <p class="post-card__excerpt">${escapeHtml(featuredPost.excerpt)}</p>
-          <div class="post-card__footer">
-            <span class="post-card__meta">${featuredPost.readTime} min leestijd · ${escapeHtml(featuredPost.publishedDate)}</span>
-            <span class="post-card__cta">Lees artikel <span aria-hidden="true">→</span></span>
-          </div>
-        </div>
-      </a>`;
-  const cards = remainingPosts.map((post) => `
+  const cards = feed.map((post) => `
       <a class="post-card" href="/${post.slug}">
         <div class="post-card__media">
           <img src="${post.featuredImage}" width="640" height="360" alt="${escapeHtml(post.imageAlt || '')}" loading="lazy">
@@ -452,8 +436,6 @@ function blogIndex(feed) {
         <p>Heldere antwoorden, eerlijke grenzen en kleine keuzes waar je thuis echt iets aan hebt—met bronnen die je zelf kunt controleren.</p>
         <a href="#nieuwste-artikelen">Ontdek de nieuwste artikelen <span aria-hidden="true">↓</span></a>
       </div>
-    </section>
-    <section class="featured-story" aria-label="Uitgelicht artikel">${featuredCard}
     </section>
     <div class="index-section-heading" id="nieuwste-artikelen">
       <div>
