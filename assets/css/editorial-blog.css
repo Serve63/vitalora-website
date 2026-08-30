@@ -838,7 +838,7 @@ a.post-card:focus-visible {
 .post-card h2 {
   margin: 0 0 10px;
   color: var(--editorial-ink);
-  font-family: var(--editorial-display);
+  font-family: var(--editorial-sans);
   font-size: 24px;
   font-weight: 600;
   line-height: 1.12;
@@ -849,7 +849,7 @@ a.post-card:focus-visible {
 .post-card__excerpt {
   margin: 0 0 16px;
   color: var(--editorial-body);
-  font-family: var(--editorial-copy);
+  font-family: var(--editorial-sans);
   font-size: 14px;
   line-height: 1.52;
 }
@@ -890,7 +890,7 @@ a.post-card:focus-visible {
 .index-section-heading h1,
 .index-section-heading h2 {
   margin: 0;
-  font-family: var(--editorial-display);
+  font-family: var(--editorial-sans);
   font-size: clamp(38px, 5vw, 54px);
   font-weight: 600;
   line-height: 1;

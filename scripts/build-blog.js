@@ -4,7 +4,7 @@ const articles = require('../content/blog/articles');
 
 const root = path.resolve(__dirname, '..');
 const baseUrl = 'https://www.vitalora.nl';
-const editorialStylesheetVersion = 4;
+const editorialStylesheetVersion = 5;
 
 const existingEditorial = [
   {
