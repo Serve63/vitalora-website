@@ -128,19 +128,21 @@ test('alle publieke blogoppervlakken bevatten exact één toegankelijke ebookmod
   assert.equal(feed.length, 13);
   for (const file of files) {
     const html = read(file);
-    assert.equal(count(html, /<aside class="blog-ebook-promo" data-blog-ebook-promo hidden/g), 1, file);
-    assert.equal(count(html, /assets\/css\/blog-ebook-promo\.css\?v=3/g), 1, file);
-    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=3/g), 1, file);
+    assert.equal(count(html, /<aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden/g), 1, file);
+    assert.equal(count(html, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1, file);
+    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=5/g), 1, file);
     assert.match(html, /role="dialog" aria-modal="true"/);
     assert.match(html, /aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy"/);
     assert.match(html, /data-blog-ebook-promo-form[^>]*method="post" action="\/api\/lead-optin"/);
     assert.match(html, /name="firstname"[^>]*autocomplete="given-name"/);
     assert.match(html, /name="email"[^>]*autocomplete="email"/);
     assert.match(html, /data-blog-ebook-promo-cta type="submit">Claim jouw exemplaar</);
-    assert.match(html, /Gratis ebook/);
-    const promo = html.match(/<aside class="blog-ebook-promo"[\s\S]*?<\/aside>/);
+    assert.match(html, /Gratis download/);
+    assert.match(html, /Elimineer Microplastics/);
+    assert.match(html, /class="ebook-optin-modal__image" src="\/assets\/images\/microplastics-ebook-warm-v5\.png"/);
+    const promo = html.match(/<aside class="blog-ebook-promo ebook-optin-modal"[\s\S]*?<\/aside>/);
     assert.ok(promo, file);
-    assert.doesNotMatch(promo[0], /Gratis Vitalora-gids|ELIMINEER|uit je lichaam|Detoxen/i);
+    assert.doesNotMatch(promo[0], /Gratis Vitalora-gids|ebook-product-mockup/i);
   }
 
   for (const file of ['404.html', 'ebook.html']) {
@@ -175,7 +177,7 @@ test('modal toont, vergrendelt focus en onthoudt sluiten fouttolerant', () => {
   assert.ok(first.promoClasses.contains('is-visible'));
   assert.ok(first.htmlClasses.contains('blog-ebook-promo-open'));
   assert.ok(first.bodyClasses.contains('blog-ebook-promo-open'));
-  assert.equal(first.close.focused, true);
+  assert.equal(first.nameInput.focused, true);
   assert.equal(sessionStorage.getItem(SESSION_KEY), '1');
 
   first.doc.activeElement = first.submit;
@@ -278,15 +280,20 @@ test('een hangende aanvraag kan altijd worden gesloten en laat de pagina niet ve
 });
 
 test('modal volgt het voorbeeld, de Vitalora-kleuren en ieder viewport', () => {
-  const css = read('assets/css/blog-ebook-promo.css');
+  const css = read('assets/css/ebook-optin-modal.css');
+  assert.match(css, /@font-face[\s\S]*font-family: "Vitalora Popup";[\s\S]*Quicksand-400\.woff2/);
+  assert.match(css, /\.ebook-optin-modal button,[\s\S]*\.ebook-optin-modal input[\s\S]*font-family: "Vitalora Popup"/);
+  assert.match(css, /\.ebook-optin-modal \{[\s\S]*font-family: "Vitalora Popup"[\s\S]*line-height: normal;/);
   assert.match(css, /position: fixed !important;[\s\S]*inset: 0;/);
-  assert.match(css, /background: rgba\(20, 28, 24, \.76\);/);
-  assert.match(css, /\.blog-ebook-promo__panel[\s\S]*width: min\(940px, 100%\);[\s\S]*max-height:/);
-  assert.match(css, /\.blog-ebook-promo__body[\s\S]*grid-template-columns: minmax\(230px, \.82fr\) minmax\(0, 1\.18fr\);/);
-  assert.match(css, /\.blog-ebook-promo__close[\s\S]*width: 48px;[\s\S]*height: 48px;/);
-  assert.match(css, /outline: 3px solid var\(--promo-moss-deep\) !important;/);
-  assert.match(css, /@media \(max-width: 720px\)[\s\S]*width: 44px;[\s\S]*height: 44px;/);
-  assert.match(css, /@media \(max-width: 440px\)[\s\S]*grid-template-columns: 1fr;/);
+  assert.match(css, /background: rgba\(20, 28, 24, \.8\);/);
+  assert.match(css, /\.ebook-optin-modal__panel[\s\S]*width: min\(580px, 100%\);[\s\S]*max-height:/);
+  assert.match(css, /\.ebook-optin-modal__header[\s\S]*min-height: 122px;[\s\S]*background: var\(--ebook-modal-moss-deep\);/);
+  assert.match(css, /\.ebook-optin-modal__body[\s\S]*grid-template-columns: 195px minmax\(0, 1fr\);/);
+  assert.match(css, /\.ebook-optin-modal__close[\s\S]*top: -13px;[\s\S]*right: -13px;[\s\S]*width: 34px;[\s\S]*height: 34px;/);
+  assert.match(css, /\.ebook-optin-modal__close[\s\S]*letter-spacing: 0;[\s\S]*text-transform: none;/);
+  assert.match(css, /\.ebook-optin-modal__cta[\s\S]*letter-spacing: 0;[\s\S]*text-transform: none;/);
+  assert.match(css, /outline: 3px solid var\(--ebook-modal-paper\) !important;/);
+  assert.match(css, /@media \(max-width: 620px\)[\s\S]*grid-template-columns: 1fr;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
 
   const script = read('assets/js/blog-ebook-promo.js');
@@ -299,8 +306,51 @@ test('modal volgt het voorbeeld, de Vitalora-kleuren en ieder viewport', () => {
   assert.match(script, /win\.location\.assign\('\/checkout'\)/);
   assert.doesNotMatch(script, /IntersectionObserver|updateContextVisibility/);
 
-  assert.match(css, /--promo-line: #947d68/);
-  assert.match(css, /input::placeholder[\s\S]*color: #6f6a62/);
-  assert.match(css, /__cta[\s\S]*background: var\(--promo-clay-dark\) !important/);
+  assert.match(css, /--ebook-modal-line: #b6a18e/);
+  assert.match(css, /input::placeholder[\s\S]*color: #77736c/);
+  assert.match(css, /__cta[\s\S]*background: var\(--ebook-modal-clay\) !important/);
+  const feedbackBlock = css.match(/\.ebook-optin-modal__feedback \{([^}]*)\}/);
+  assert.ok(feedbackBlock);
+  assert.doesNotMatch(feedbackBlock[1], /display:\s*none/);
+  assert.match(css, /\.ebook-optin-modal__feedback\[hidden\][\s\S]*display: none !important;/);
   assert.doesNotMatch(css, /font:\s*(?:600|750)[^;]*inherit/);
+});
+
+test('ebookpagina en blogs gebruiken exact hetzelfde visuele popupcontract', () => {
+  const landing = read('ebook.html');
+  const blog = read(`${feed[0].slug}.html`);
+  const sharedTokens = [
+    'ebook-optin-modal__panel',
+    'ebook-optin-modal__close',
+    'ebook-optin-modal__header',
+    'ebook-optin-modal__eyebrow',
+    'ebook-optin-modal__title',
+    'ebook-optin-modal__body',
+    'ebook-optin-modal__visual',
+    'ebook-optin-modal__image',
+    'ebook-optin-modal__content',
+    'ebook-optin-modal__copy',
+    'ebook-optin-modal__form',
+    'ebook-optin-modal__cta',
+    'ebook-optin-modal__trust'
+  ];
+
+  for (const token of sharedTokens) {
+    assert.match(landing, new RegExp(`class="[^"]*${token}`), token);
+    assert.match(blog, new RegExp(`class="[^"]*${token}`), token);
+  }
+
+  for (const text of [
+    'Gratis download',
+    'Elimineer Microplastics',
+    'Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.',
+    'Claim jouw exemplaar',
+    'Je gegevens blijven privé ·'
+  ]) {
+    assert.ok(landing.includes(text), text);
+    assert.ok(blog.includes(text), text);
+  }
+
+  assert.equal(count(landing, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1);
+  assert.equal(count(blog, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1);
 });
