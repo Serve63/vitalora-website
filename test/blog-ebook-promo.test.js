@@ -6,6 +6,21 @@ const path = require('node:path');
 const root = path.resolve(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(root, file), 'utf8');
 const feed = JSON.parse(read('blog-feed.json'));
+const config = JSON.parse(read('vercel.json'));
+const legacySourceFiles = config.rewrites
+  .filter(({ destination }) => destination.startsWith('/post.html?slug='))
+  .map(({ source }) => `${source.slice(1)}.html`)
+  .filter((file) => fs.existsSync(path.join(root, file)));
+const publicBlogFiles = [...new Set([
+  ...feed.map((post) => `${post.slug}.html`),
+  ...legacySourceFiles,
+  'aardbeien-gezond.html',
+  'dopamine-voeding.html',
+  'suiker.html',
+  'blog.html',
+  'blog/index.html',
+  'post.html'
+])];
 
 function count(value, pattern) {
   return (value.match(pattern) || []).length;
@@ -48,11 +63,19 @@ function fixture(storage, sessionStorage, request) {
     addEventListener(type, fn) { listeners[`close:${type}`] = fn; },
     focus() { this.focused = true; doc.activeElement = this; }
   };
+  const open = {
+    hidden: false,
+    attributes: { 'aria-expanded': 'false' },
+    addEventListener(type, fn) { listeners[`open:${type}`] = fn; },
+    setAttribute(name, value) { this.attributes[name] = String(value); }
+  };
   const nameInput = { hidden: false, value: '', focused: false, focus() { this.focused = true; doc.activeElement = this; } };
   const emailInput = { hidden: false, value: '', focused: false, focus() { this.focused = true; doc.activeElement = this; } };
-  const submit = { hidden: false, disabled: false, textContent: 'Claim jouw exemplaar' };
+  const submit = { hidden: false, disabled: false, textContent: 'Stuur mij het ebook' };
   const feedback = { hidden: true, textContent: '' };
+  const announcement = { textContent: '' };
   const form = {
+    hidden: true,
     action: '/api/lead-optin',
     querySelector(selector) { return selector.includes('firstname') ? nameInput : emailInput; },
     addEventListener(type, fn) { listeners[`form:${type}`] = fn; }
@@ -64,13 +87,14 @@ function fixture(storage, sessionStorage, request) {
     classList: promoClasses,
     querySelector(selector) {
       if (selector.includes('close')) return close;
+      if (selector.includes('open')) return open;
       if (selector.includes('form')) return form;
       if (selector.includes('cta')) return submit;
       if (selector.includes('feedback')) return feedback;
       return null;
     },
-    querySelectorAll() { return [close, nameInput, emailInput, submit]; },
-    contains(element) { return [close, nameInput, emailInput, submit, feedback].includes(element); },
+    querySelectorAll() { return [close, open, nameInput, emailInput, submit]; },
+    contains(element) { return [close, open, nameInput, emailInput, submit, feedback].includes(element); },
     addEventListener(type, fn) { listeners[`promo:${type}`] = fn; },
     remove() { this.isConnected = false; }
   };
@@ -78,7 +102,11 @@ function fixture(storage, sessionStorage, request) {
     activeElement: previousFocus,
     documentElement: { scrollHeight: 2000, classList: htmlClasses },
     body: { classList: bodyClasses },
-    querySelector(selector) { return selector === '[data-blog-ebook-promo]' ? promo : null; },
+    querySelector(selector) {
+      if (selector === '[data-blog-ebook-promo]') return promo;
+      if (selector === '[data-blog-ebook-promo-announcement]') return announcement;
+      return null;
+    },
     addEventListener(type, fn) { listeners[`doc:${type}`] = fn; }
   };
   const location = { assigned: null, assign(value) { this.assigned = value; } };
@@ -104,10 +132,12 @@ function fixture(storage, sessionStorage, request) {
     bodyClasses,
     previousFocus,
     close,
+    open,
     nameInput,
     emailInput,
     submit,
     feedback,
+    announcement,
     form,
     promo,
     promoClasses,
@@ -116,28 +146,24 @@ function fixture(storage, sessionStorage, request) {
   };
 }
 
-test('alle publieke blogoppervlakken bevatten exact één toegankelijke ebookmodal', () => {
-  const files = [
-    ...feed.map((post) => `${post.slug}.html`),
-    'aardbeien-gezond.html',
-    'blog.html',
-    'blog/index.html',
-    'post.html'
-  ];
-
+test('alle publieke blogoppervlakken bevatten exact één toegankelijke ebookkaart', () => {
   assert.equal(feed.length, 13);
-  for (const file of files) {
+  assert.equal(legacySourceFiles.length, 17);
+  for (const file of publicBlogFiles) {
     const html = read(file);
     assert.equal(count(html, /<aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden/g), 1, file);
-    assert.equal(count(html, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1, file);
-    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=5/g), 1, file);
-    assert.match(html, /role="dialog" aria-modal="true"/);
+    assert.equal(count(html, /assets\/css\/ebook-optin-modal\.css\?v=7/g), 1, file);
+    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=6/g), 1, file);
+    assert.match(html, /data-blog-ebook-promo-announcement aria-live="polite" aria-atomic="true"/);
+    assert.match(html, /role="region" aria-labelledby="blog-ebook-promo-title"/);
+    assert.doesNotMatch(html, /aria-modal=/);
     assert.match(html, /aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy"/);
-    assert.match(html, /data-blog-ebook-promo-form[^>]*method="post" action="\/api\/lead-optin"/);
+    assert.match(html, /data-blog-ebook-promo-open[^>]*type="button"[^>]*aria-expanded="false"[^>]*aria-controls="blog-ebook-promo-form"[^>]*>Gratis downloaden</);
+    assert.match(html, /id="blog-ebook-promo-form"[^>]*data-blog-ebook-promo-form[^>]*method="post" action="\/api\/lead-optin"[^>]*hidden/);
     assert.match(html, /name="firstname"[^>]*autocomplete="given-name"/);
     assert.match(html, /name="email"[^>]*autocomplete="email"/);
-    assert.match(html, /data-blog-ebook-promo-cta type="submit">Claim jouw exemplaar</);
-    assert.match(html, /Gratis download/);
+    assert.match(html, /data-blog-ebook-promo-cta type="submit">Stuur mij het ebook</);
+    assert.match(html, /Download gratis/);
     assert.match(html, /Elimineer Microplastics/);
     assert.match(html, /class="ebook-optin-modal__image" src="\/assets\/images\/microplastics-ebook-warm-v5\.png"/);
     const promo = html.match(/<aside class="blog-ebook-promo ebook-optin-modal"[\s\S]*?<\/aside>/);
@@ -150,15 +176,24 @@ test('alle publieke blogoppervlakken bevatten exact één toegankelijke ebookmod
   }
 });
 
+test('publieke canonical blogoppervlakken bevatten nergens een cursusverwijzing', () => {
+  const forbidden = /course-bridge|course-note|Mijn Academy|Vitalora Academy|Bekijk de Academy|Clean Reset|detox programma|href=["']\/?academy(?:["'?#/])|href=["']\/?(?:detox-cursus|clean-reset)(?:["'?#/])/i;
+
+  for (const file of publicBlogFiles) {
+    assert.doesNotMatch(read(file), forbidden, file);
+  }
+});
+
 test('de generator is de bron voor alle drie blogtemplates', () => {
   const builder = read('scripts/build-blog.js');
   assert.equal(count(builder, /\$\{ebookPromoAssets\(\)\}/g), 3);
   assert.equal(count(builder, /\$\{ebookPromo\(\)\}/g), 3);
   assert.match(builder, /function ebookPromoAssets\(\)/);
   assert.match(builder, /function ebookPromo\(\)/);
+  assert.doesNotMatch(builder, /course-bridge|Mijn Academy|Vitalora Academy|Bekijk de Academy|In Clean Reset/);
 });
 
-test('modal toont, vergrendelt focus en onthoudt sluiten fouttolerant', () => {
+test('kaart toont niet-blokkerend, opent het formulier na klik en onthoudt sluiten fouttolerant', () => {
   const { setupBlogEbookPromo, STORAGE_KEY, SESSION_KEY } = require('../assets/js/blog-ebook-promo.js');
   const storage = memoryStorage();
   const sessionStorage = memoryStorage();
@@ -175,20 +210,29 @@ test('modal toont, vergrendelt focus en onthoudt sluiten fouttolerant', () => {
   controller.reveal();
   assert.equal(first.promo.hidden, false);
   assert.ok(first.promoClasses.contains('is-visible'));
-  assert.ok(first.htmlClasses.contains('blog-ebook-promo-open'));
-  assert.ok(first.bodyClasses.contains('blog-ebook-promo-open'));
-  assert.equal(first.nameInput.focused, true);
+  assert.equal(first.htmlClasses.contains('blog-ebook-promo-open'), false);
+  assert.equal(first.bodyClasses.contains('blog-ebook-promo-open'), false);
+  assert.equal(first.nameInput.focused, false);
+  assert.equal(first.announcement.textContent, 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat aan het einde van de pagina.');
+  assert.equal(first.open.hidden, false);
+  assert.equal(first.form.hidden, true);
   assert.equal(sessionStorage.getItem(SESSION_KEY), '1');
 
-  first.doc.activeElement = first.submit;
+  first.listeners['open:click']();
+  assert.ok(first.promoClasses.contains('is-form-open'));
+  assert.equal(first.open.hidden, true);
+  assert.equal(first.open.attributes['aria-expanded'], 'true');
+  assert.equal(first.form.hidden, false);
+  assert.equal(first.nameInput.focused, true);
+
   let trapped = false;
-  first.listeners['doc:keydown']({ key: 'Tab', shiftKey: false, preventDefault() { trapped = true; } });
-  assert.equal(trapped, true);
-  assert.equal(first.close.focused, true);
+  first.listeners['doc:keydown']({ key: 'Tab', preventDefault() { trapped = true; } });
+  assert.equal(trapped, false);
 
   first.listeners['close:click']();
   first.timers.at(-1)();
   assert.equal(first.promo.isConnected, false);
+  assert.equal(first.announcement.textContent, '');
   assert.equal(first.htmlClasses.contains('blog-ebook-promo-open'), false);
   assert.equal(first.previousFocus.focused, true);
   assert.ok(JSON.parse(storage.getItem(STORAGE_KEY)).suppressedUntil > Date.now());
@@ -223,6 +267,9 @@ test('formulier valideert, verstuurt via de bestaande opt-in en onderdrukt na su
     fetch: request
   });
   controller.reveal();
+  assert.equal(current.form.hidden, true);
+  current.listeners['open:click']();
+  assert.equal(current.form.hidden, false);
 
   current.nameInput.value = 'S';
   current.emailInput.value = 'geen-mail';
@@ -263,6 +310,7 @@ test('een hangende aanvraag kan altijd worden gesloten en laat de pagina niet ve
     fetch: request
   });
   controller.reveal();
+  current.listeners['open:click']();
   current.nameInput.value = 'Servé';
   current.emailInput.value = 'serve@example.com';
 
@@ -279,7 +327,7 @@ test('een hangende aanvraag kan altijd worden gesloten en laat de pagina niet ve
   assert.equal(current.bodyClasses.contains('blog-ebook-promo-open'), false);
 });
 
-test('modal volgt het voorbeeld, de Vitalora-kleuren en ieder viewport', () => {
+test('de ebookmodal blijft gecentreerd en de blogkaart staat niet-blokkerend rechtsonder', () => {
   const css = read('assets/css/ebook-optin-modal.css');
   assert.match(css, /@font-face[\s\S]*font-family: "Vitalora Popup";[\s\S]*Quicksand-400\.woff2/);
   assert.match(css, /\.ebook-optin-modal button,[\s\S]*\.ebook-optin-modal input[\s\S]*font-family: "Vitalora Popup"/);
@@ -296,14 +344,23 @@ test('modal volgt het voorbeeld, de Vitalora-kleuren en ieder viewport', () => {
   assert.match(css, /@media \(max-width: 620px\)[\s\S]*grid-template-columns: 1fr;/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
 
+  assert.match(css, /\.blog-ebook-promo\.ebook-optin-modal \{[\s\S]*inset: auto max\(22px, env\(safe-area-inset-right\)\) max\(22px, env\(safe-area-inset-bottom\)\) auto;[\s\S]*width: min\(430px, calc\(100vw - 44px\)\);[\s\S]*height: auto;[\s\S]*background: transparent;[\s\S]*pointer-events: none;/);
+  assert.match(css, /\.blog-ebook-promo\.ebook-optin-modal\.is-visible \{[\s\S]*pointer-events: auto;[\s\S]*transform: translateY\(0\);/);
+  assert.match(css, /\.blog-ebook-promo \.ebook-optin-modal__panel \{[\s\S]*max-height: calc\(100dvh - 44px - env\(safe-area-inset-bottom\)\);[\s\S]*overflow-y: auto;[\s\S]*border-radius: 18px;/);
+  assert.match(css, /\.blog-ebook-promo \.ebook-optin-modal__body \{[\s\S]*grid-template-columns: 1fr;/);
+  assert.match(css, /\.blog-ebook-promo \.ebook-optin-modal__primary-action\[hidden\],[\s\S]*\.blog-ebook-promo \.ebook-optin-modal__form\[hidden\] \{[\s\S]*display: none !important;/);
+  assert.match(css, /@media \(max-width: 620px\) \{[\s\S]*\.blog-ebook-promo\.ebook-optin-modal \{[\s\S]*width: min\(366px, calc\(100vw - 24px\)\);/);
+
   const script = read('assets/js/blog-ebook-promo.js');
   assert.match(script, /SHOW_DELAY_MS = 3500/);
   assert.match(script, /REQUEST_TIMEOUT_MS = 12000/);
   assert.match(script, /Promise\.race/);
   assert.match(script, /cancelPendingRequest/);
   assert.match(script, /source: 'blog_ebook_popup'/);
-  assert.match(script, /event\.key !== 'Tab'/);
+  assert.match(script, /function openForm\(\)/);
+  assert.match(script, /openButton\.addEventListener\('click', openForm\)/);
   assert.match(script, /win\.location\.assign\('\/checkout'\)/);
+  assert.doesNotMatch(script, /setPageLocked|focusableElements|classList\.(?:add|toggle)\(['"]blog-ebook-promo-open|event\.key !== 'Tab'/);
   assert.doesNotMatch(script, /IntersectionObserver|updateContextVisibility/);
 
   assert.match(css, /--ebook-modal-line: #b6a18e/);
@@ -316,7 +373,7 @@ test('modal volgt het voorbeeld, de Vitalora-kleuren en ieder viewport', () => {
   assert.doesNotMatch(css, /font:\s*(?:600|750)[^;]*inherit/);
 });
 
-test('ebookpagina en blogs gebruiken exact hetzelfde visuele popupcontract', () => {
+test('ebookpagina en blogkaart delen componenttokens maar houden hun eigen plaatsing en flow', () => {
   const landing = read('ebook.html');
   const blog = read(`${feed[0].slug}.html`);
   const sharedTokens = [
@@ -341,16 +398,22 @@ test('ebookpagina en blogs gebruiken exact hetzelfde visuele popupcontract', () 
   }
 
   for (const text of [
-    'Gratis download',
     'Elimineer Microplastics',
     'Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.',
-    'Claim jouw exemplaar',
     'Je gegevens blijven privé ·'
   ]) {
     assert.ok(landing.includes(text), text);
     assert.ok(blog.includes(text), text);
   }
 
-  assert.equal(count(landing, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1);
-  assert.equal(count(blog, /assets\/css\/ebook-optin-modal\.css\?v=6/g), 1);
+  assert.match(landing, /role="dialog" aria-modal="true"/);
+  assert.match(landing, /Gratis download/);
+  assert.match(landing, /Claim jouw exemplaar/);
+  assert.match(blog, /role="region" aria-labelledby="blog-ebook-promo-title"/);
+  assert.doesNotMatch(blog, /aria-modal=/);
+  assert.match(blog, /Download gratis/);
+  assert.match(blog, /data-blog-ebook-promo-open[^>]*>Gratis downloaden</);
+  assert.match(blog, /data-blog-ebook-promo-cta type="submit">Stuur mij het ebook</);
+  assert.equal(count(landing, /assets\/css\/ebook-optin-modal\.css\?v=7/g), 1);
+  assert.equal(count(blog, /assets\/css\/ebook-optin-modal\.css\?v=7/g), 1);
 });
