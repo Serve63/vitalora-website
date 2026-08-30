@@ -46,7 +46,7 @@ body.page-thanks-warm {
 .step { display: grid; grid-template-columns: 34px 1fr; gap: 15px; padding: 18px 0; border-bottom: 1px solid var(--thanks-sand); }
 .step:first-child { padding-top: 0; }
 .step:last-child { padding-bottom: 0; border-bottom: 0; }
-.bullet { display: grid; width: 34px; height: 34px; place-items: center; color: var(--thanks-paper); background: var(--thanks-clay); border-radius: 50%; font-weight: 800; }
+.bullet { display: grid; width: 34px; height: 34px; place-items: center; color: var(--thanks-paper); background: var(--thanks-clay-dark); border-radius: 50%; font-weight: 800; }
 .step h4 { margin: 2px 0 6px; color: var(--thanks-moss); font-size: 16px; }
 .step p { margin: 0; color: var(--thanks-copy); font-size: 14px; line-height: 1.7; }
 
@@ -55,8 +55,110 @@ body.page-thanks-warm {
 .help p { margin: 0 0 14px; font-size: 13px; line-height: 1.68; }
 .help strong { color: var(--thanks-paper); }
 .help a { color: #edbf9d; }
-.help .contact { width: 100%; min-height: 48px; margin-top: 8px; color: var(--thanks-paper); background: var(--thanks-clay); border: 0; border-radius: 13px; font: inherit; font-weight: 750; cursor: pointer; }
-.help .contact:hover { background: #ca8060; }
+.help .contact { width: 100%; min-height: 48px; margin-top: 8px; color: var(--thanks-paper); background: var(--thanks-clay-dark); border: 0; border-radius: 13px; font: inherit; font-weight: 750; cursor: pointer; }
+.help .contact:hover { background: #7c4632; }
+
+@media (min-width: 1000px) and (min-height: 760px) {
+  .page-thanks-warm .container {
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: clamp(20px, 2.8vh, 30px) 0;
+  }
+
+  .page-thanks-warm .hero {
+    gap: clamp(34px, 4.2vw, 58px);
+  }
+
+  .page-thanks-warm .hero .photo {
+    justify-self: end;
+    width: min(100%, 390px);
+    padding: 6px;
+    border-radius: 24px;
+  }
+
+  .page-thanks-warm .hero .photo img {
+    height: clamp(300px, 42vh, 400px);
+    border-radius: 18px;
+  }
+
+  .page-thanks-warm .pill {
+    margin-bottom: 9px;
+    font-size: 10px;
+  }
+
+  .page-thanks-warm .title {
+    margin-bottom: 13px;
+    font-size: clamp(43px, 4.5vw, 58px);
+    line-height: .98;
+  }
+
+  .page-thanks-warm .copy {
+    max-width: 540px;
+    font-size: 13px;
+    line-height: 1.52;
+  }
+
+  .page-thanks-warm .copy p { margin-bottom: 8px; }
+  .page-thanks-warm .copy .signature { margin-top: 11px; }
+
+  .page-thanks-warm .section-title {
+    margin: clamp(15px, 2.2vh, 22px) 0 clamp(10px, 1.5vh, 15px);
+    font-size: 26px;
+  }
+
+  .page-thanks-warm .steps {
+    grid-template-columns: minmax(0, 1fr) 330px;
+    gap: 17px;
+  }
+
+  .page-thanks-warm .steps > div:first-child,
+  .page-thanks-warm .help {
+    padding: 17px 20px;
+    border-radius: 18px;
+  }
+
+  .page-thanks-warm .step {
+    grid-template-columns: 29px 1fr;
+    gap: 12px;
+    padding: 8px 0;
+  }
+
+  .page-thanks-warm .bullet {
+    width: 29px;
+    height: 29px;
+    font-size: 12px;
+  }
+
+  .page-thanks-warm .step h4 {
+    margin: 0 0 2px;
+    font-size: 13px;
+  }
+
+  .page-thanks-warm .step p {
+    font-size: 11px;
+    line-height: 1.42;
+  }
+
+  .page-thanks-warm .help h4 {
+    margin-bottom: 9px;
+    font-size: 17px;
+  }
+
+  .page-thanks-warm .help p {
+    margin-bottom: 7px;
+    font-size: 10px;
+    line-height: 1.4;
+  }
+
+  .page-thanks-warm .help .contact {
+    min-height: 37px;
+    margin-top: 1px;
+    border-radius: 10px;
+    font-size: 11px;
+  }
+}
 
 @media (max-width: 860px) {
   .hero,

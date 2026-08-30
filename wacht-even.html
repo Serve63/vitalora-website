@@ -8,13 +8,13 @@
     <meta name="robots" content="noindex, nofollow">
     <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
     <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
-    <title>Clean Reset Cursus - Eenmalig aanbod</title>
+    <title>Clean Reset Cursus - Rustig afronden</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/assets/css/header.css?v=20">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=6">
-    <link rel="stylesheet" href="/assets/css/checkout-warm.css?v=2">
+    <link rel="stylesheet" href="/assets/css/checkout-warm.css?v=4">
     <style>
         * {
             margin: 0;
@@ -331,7 +331,7 @@
         /* Mobile Responsive */
         @media (max-width: 768px) {
             @supports (-webkit-touch-callout: none) {
-                .page-checkout-warm .site-header {
+                .page-checkout-warm .offer-countdown-bar {
                     position: sticky;
                     top: 0;
                 }
@@ -416,18 +416,18 @@
 </head>
 <body class="page-checkout-warm">
   <div class="ios-status-bar-surface" aria-hidden="true"></div>
-    <header class="site-header" role="banner">
-      <div class="header-inner">
-        <a class="logo" href="/">
-          <span class="logo-text">Vitalora</span>
-        </a>
+    <header class="offer-countdown-bar" data-offer-countdown data-duration-minutes="30" role="region" aria-label="30 minuten rustige controletijd">
+      <div class="offer-countdown-bar__inner">
+        <span class="offer-countdown-bar__label">30 min check</span>
+        <span class="offer-countdown-bar__status" data-offer-countdown-status>Controleer je gegevens rustig</span>
+        <time class="offer-countdown-bar__timer" data-offer-countdown-timer datetime="PT30M" role="timer">30:00</time>
       </div>
     </header>
     <div class="container">
         <div class="checkout-intro">
-            <span>Eenmalig aanbod</span>
-            <h1>Clean Reset voor €&nbsp;27.</h1>
-            <p>Vul je gegevens in en je kunt daarna direct rustig beginnen.</p>
+            <span>Clean Reset · eenmalige betaling van €&nbsp;27</span>
+            <h1>Verminder je blootstelling aan PFAS, BPA en microplastics — zonder paniek.</h1>
+            <p>24 korte lessen met haalbare keuzes voor keuken, verzorging en dagelijks leven.</p>
         </div>
         <div class="checkout-layout">
             <!-- Left Column - Product Info -->
@@ -587,6 +587,7 @@
 
         // Remove legacy redirect handler; real submission handled by checkout-script.js
     </script>
+    <script src="/assets/js/wacht-even-countdown.js?v=2"></script>
     <script src="/checkout-script.js?v=7"></script>
 </body>
 </html>
