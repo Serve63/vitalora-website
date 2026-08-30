@@ -193,7 +193,7 @@ test('homepage en favicon gebruiken de nieuwe Image 2-assets', () => {
   const imagePath = path.join(root, 'assets/images/vitalora-home-hero-warm-v2.jpg');
   const faviconPath = path.join(root, 'assets/images/vitalora logo.webp');
 
-  assert.match(home, /home\.css\?v=195/);
+  assert.match(home, /home\.css\?v=196/);
   assert.match(home, /assets\/images\/vitalora-home-hero-warm-v2\.jpg/);
   assert.doesNotMatch(home, /vitalora-founder-portrait\.jpg/);
   assert.ok(fs.statSync(imagePath).size < 500 * 1024);
