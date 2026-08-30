@@ -90,7 +90,7 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   assert.match(blog, /<h1>Nieuwste artikelen<\/h1>/);
   assert.match(blog, /<title>Nieuwste artikelen \| Vitalora<\/title>/);
   assert.match(blog, /rel="canonical" href="https:\/\/www\.vitalora\.nl\/blog"/);
-  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=4/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=5/);
   assert.match(blog, /id="nieuwste-artikelen"/);
   assert.match(blog, /13 artikelen · met bronnen gecontroleerd/);
   assert.doesNotMatch(blog, /class="index-hero"|Vitalora Journal|Gezondheid zonder ruis|Nieuw in het journal|Ontdek de nieuwste artikelen|<h2>Lees verder<\/h2>/);
@@ -102,6 +102,14 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   assert.doesNotMatch(css, /post-card--featured|featured-story/);
   assert.doesNotMatch(css, /\.index-hero(?:__intro)?|\.editorial-nav|\.article-back|\.editorial-disclaimer/);
   assert.match(css, /\.index-section-heading--primary \{[\s\S]*padding-top:/);
+  const indexHeading = css.match(/\.index-section-heading h1,\s*\.index-section-heading h2 \{([^}]*)\}/);
+  const cardHeading = css.match(/\.post-card h2 \{([^}]*)\}/);
+  const cardExcerpt = css.match(/\.post-card__excerpt \{([^}]*)\}/);
+  assert.ok(indexHeading && cardHeading && cardExcerpt);
+  [indexHeading[1], cardHeading[1], cardExcerpt[1]].forEach((block) => {
+    assert.match(block, /font-family:\s*var\(--editorial-sans\)/);
+    assert.doesNotMatch(block, /var\(--editorial-(?:display|copy)\)/);
+  });
   assert.match(css, /\.blog-grid \{[\s\S]*align-items: start;[\s\S]*gap: 22px;/);
   assert.match(css, /\.post-card img \{[\s\S]*height: auto;[\s\S]*aspect-ratio: 16 \/ 9;/);
   const cardBody = css.match(/\.post-card__body \{([^}]*)\}/);
