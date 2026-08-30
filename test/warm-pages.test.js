@@ -21,10 +21,11 @@ test('nieuwe en historische blogs gebruiken de redactionele laag en login en Cle
 
   assert.match(blog, /<body class="editorial-index page-blog">/);
   assert.match(liveBlogRoute, /<body class="editorial-index page-blog">/);
-  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=3/);
-  assert.match(liveBlogRoute, /\/assets\/css\/editorial-blog\.css\?v=3/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=4/);
+  assert.match(liveBlogRoute, /\/assets\/css\/editorial-blog\.css\?v=4/);
   assert.match(post, /<body class="editorial-page page-blog-post legacy-blog-post">/);
-  assert.match(post, /\/assets\/css\/editorial-blog\.css\?v=3/);
+  assert.doesNotMatch(post, /Alle artikelen|article-back|editorial-nav/);
+  assert.match(post, /\/assets\/css\/editorial-blog\.css\?v=4/);
   assert.doesNotMatch(post, /\/assets\/css\/warm-pages\.css/);
   assert.match(login, /<body class="page-login">/);
   assert.match(cleanReset, /<body class="page-clean-reset">/);

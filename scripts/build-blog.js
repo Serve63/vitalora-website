@@ -4,7 +4,7 @@ const articles = require('../content/blog/articles');
 
 const root = path.resolve(__dirname, '..');
 const baseUrl = 'https://www.vitalora.nl';
-const editorialStylesheetVersion = 3;
+const editorialStylesheetVersion = 4;
 
 const existingEditorial = [
   {
@@ -79,7 +79,6 @@ function headingId(value) {
 
 function articleRail(items, readTime) {
   return `<aside class="article-rail" aria-label="Artikelnavigatie">
-        <a class="article-back" href="/blog"><span aria-hidden="true">←</span> Alle artikelen</a>
         <div class="article-rail__card">
           <p class="article-rail__eyebrow">In dit artikel</p>
           <ol>
@@ -135,13 +134,10 @@ function jsonLd(article) {
   ]).replaceAll('<', '\\u003c');
 }
 
-function header({ navigation = true } = {}) {
+function header() {
   return `<header class="editorial-header">
     <div class="editorial-shell editorial-header__inner">
       <a class="editorial-brand" href="/">Vitalora.nl</a>
-${navigation ? `      <nav class="editorial-nav" aria-label="Hoofdnavigatie">
-        <a href="/blog">Alle artikelen</a>
-      </nav>` : ''}
     </div>
   </header>`;
 }
@@ -284,9 +280,8 @@ ${sectionHtml}
           <section class="source-note">
             <p class="section-kicker">Transparant</p>
             <h2 id="bronnen-en-controle">Bronnen en controle</h2>
-            <p>De Vitalora Redactie heeft dit artikel op 27 augustus 2026 opnieuw opgebouwd en claims gecontroleerd aan de hand van onderstaande bronnen.</p>
+            <p>De Vitalora Redactie heeft dit artikel op 27 augustus 2026 opnieuw opgebouwd en claims gecontroleerd aan de hand van onderstaande bronnen. Deze uitleg is algemeen en vervangt geen diagnose of persoonlijk advies van een arts, apotheker of diëtist; neem bij ernstige, nieuwe of aanhoudende klachten contact op met een zorgverlener.</p>
             <ul>${sourceHtml}</ul>
-            <p class="editorial-disclaimer"><strong>Goed om te weten:</strong> deze uitleg is algemeen en vervangt geen diagnose of persoonlijk advies van arts, apotheker of diëtist. Neem bij ernstige, nieuwe of aanhoudende klachten contact op met een zorgverlener.</p>
           </section>
           <section class="related-links">
             <p class="section-kicker">Volgende stap</p>
@@ -408,11 +403,11 @@ function blogIndex(feed) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gezondheid zonder ruis | Vitalora Blog</title>
+  <title>Nieuwste artikelen | Vitalora</title>
   <meta name="description" content="Nuchtere, warme en praktisch gecontroleerde artikelen over voeding, blootstelling en gezonde keuzes thuis.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <link rel="canonical" href="${baseUrl}/blog">
-  <meta property="og:title" content="Gezondheid zonder ruis | Vitalora Blog">
+  <meta property="og:title" content="Nieuwste artikelen | Vitalora">
   <meta property="og:description" content="Nuchtere, warme en praktisch gecontroleerde artikelen over voeding, blootstelling en gezonde keuzes thuis.">
   <meta property="og:url" content="${baseUrl}/blog">
   <meta property="og:type" content="website">
@@ -425,22 +420,11 @@ function blogIndex(feed) {
 </head>
 <body class="editorial-index page-blog">
   <div class="ios-status-bar-surface" aria-hidden="true"></div>
-  ${header({ navigation: false })}
+  ${header()}
   <main class="editorial-shell">
-    <section class="index-hero">
+    <div class="index-section-heading index-section-heading--primary" id="nieuwste-artikelen">
       <div>
-        <p class="index-eyebrow">Vitalora Journal</p>
-        <h1>Gezondheid zonder ruis.</h1>
-      </div>
-      <div class="index-hero__intro">
-        <p>Heldere antwoorden, eerlijke grenzen en kleine keuzes waar je thuis echt iets aan hebt—met bronnen die je zelf kunt controleren.</p>
-        <a href="#nieuwste-artikelen">Ontdek de nieuwste artikelen <span aria-hidden="true">↓</span></a>
-      </div>
-    </section>
-    <div class="index-section-heading" id="nieuwste-artikelen">
-      <div>
-        <p class="index-eyebrow">Nieuw in het journal</p>
-        <h2>Lees verder</h2>
+        <h1>Nieuwste artikelen</h1>
       </div>
       <span>${feed.length} artikelen · met bronnen gecontroleerd</span>
     </div>
