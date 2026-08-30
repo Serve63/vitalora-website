@@ -14,7 +14,7 @@
   <meta name="theme-color" content="#253129">
   <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
-  <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=1">
+  <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=2">
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
 <body class="editorial-index page-blog">
@@ -27,126 +27,205 @@
   </header>
   <main class="editorial-shell">
     <section class="index-hero">
-      <p class="index-eyebrow">Vitalora Redactie</p>
-      <h1>Gezondheid zonder ruis.</h1>
-      <p>Heldere antwoorden, eerlijke grenzen en kleine keuzes waar je thuis echt iets aan hebt—met bronnen die je zelf kunt controleren.</p>
+      <div>
+        <p class="index-eyebrow">Vitalora Journal</p>
+        <h1>Gezondheid zonder ruis.</h1>
+      </div>
+      <div class="index-hero__intro">
+        <p>Heldere antwoorden, eerlijke grenzen en kleine keuzes waar je thuis echt iets aan hebt—met bronnen die je zelf kunt controleren.</p>
+        <a href="#nieuwste-artikelen">Ontdek de nieuwste artikelen <span aria-hidden="true">↓</span></a>
+      </div>
     </section>
-    <section class="blog-grid" aria-label="Alle artikelen">
-      <a class="post-card" href="/afvallen-met-eiwitpoeder">
-        <img src="/assets/images/blog/afvallen-eiwitpoeder.webp" width="640" height="360" alt="Neutrale pot eiwitpoeder met maatschepje naast yoghurt, bessen en havermout in een warme keuken" loading="lazy">
+    <section class="featured-story" aria-label="Uitgelicht artikel">
+      <a class="post-card post-card--featured" href="/afvallen-met-eiwitpoeder">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/afvallen-eiwitpoeder.webp" width="960" height="540" alt="Neutrale pot eiwitpoeder met maatschepje naast yoghurt, bessen en havermout in een warme keuken">
+        </div>
         <div class="post-card__body">
-          <p class="post-card__category">Eiwit &amp; gewicht</p>
+          <p class="post-card__category">Uitgelicht · Eiwit &amp; gewicht</p>
           <h2>Afvallen met eiwitpoeder: wanneer helpt het echt?</h2>
           <p class="post-card__excerpt">Eiwitpoeder is geen afslankmiddel, maar kan in sommige situaties helpen voldoende eiwit te eten binnen een haalbaar energietekort.</p>
-          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__cta">Lees artikel <span aria-hidden="true">→</span></span>
+          </div>
         </div>
       </a>
+    </section>
+    <div class="index-section-heading" id="nieuwste-artikelen">
+      <div>
+        <p class="index-eyebrow">Nieuw in het journal</p>
+        <h2>Lees verder</h2>
+      </div>
+      <span>13 artikelen · met bronnen gecontroleerd</span>
+    </div>
+    <section class="blog-grid" aria-label="Nieuwste artikelen">
       <a class="post-card" href="/broccolikiemen">
-        <img src="/assets/images/blog/broccolikiemen.webp" width="640" height="360" alt="Verse broccolikiemen in een keramieken schaaltje met brood en groente op een warme houten keukentafel" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/broccolikiemen.webp" width="640" height="360" alt="Verse broccolikiemen in een keramieken schaaltje met brood en groente op een warme houten keukentafel" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Groente &amp; veiligheid</p>
           <h2>Broccolikiemen: gezond, maar let op voedselveiligheid</h2>
           <p class="post-card__excerpt">Waarom broccolikiemen interessant zijn, welke claims te ver gaan en hoe je deze kwetsbare kiemgroente veilig eet.</p>
-          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/chlorella-en-spirulina">
-        <img src="/assets/images/blog/chlorella-spirulina.webp" width="640" height="360" alt="Twee neutrale schaaltjes met groen chlorella- en blauwgroen spirulinapoeder naast een glas smoothie op een warme tafel" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/chlorella-spirulina.webp" width="640" height="360" alt="Twee neutrale schaaltjes met groen chlorella- en blauwgroen spirulinapoeder naast een glas smoothie op een warme tafel" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Supplementen</p>
           <h2>Chlorella en spirulina: verschil, nut en risico’s</h2>
           <p class="post-card__excerpt">Twee populaire algenproducten zonder marketingmist: wat erin zit, wat niet bewezen is en waar kwaliteit echt telt.</p>
-          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/is-oligofructose-slecht">
-        <img src="/assets/images/blog/oligofructose.webp" width="640" height="360" alt="Warme ontbijtkom met cichorei, ui, banaan en volkoren granen als natuurlijke bronnen van fermenteerbare vezels" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/oligofructose.webp" width="640" height="360" alt="Warme ontbijtkom met cichorei, ui, banaan en volkoren granen als natuurlijke bronnen van fermenteerbare vezels" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Darmen &amp; vezels</p>
           <h2>Is oligofructose slecht? Dit doet het met je darmen</h2>
           <p class="post-card__excerpt">Een prebiotische vezel kan nuttig zijn én klachten geven: zo beoordeel je oligofructose zonder zwart-witdenken.</p>
-          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/vlierbessensap-gezond">
-        <img src="/assets/images/blog/vlierbessensap-gezond.webp" width="640" height="360" alt="Warme glazen fles met donker vlierbessensap naast rijpe vlierbessen op een houten keukentafel" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/vlierbessensap-gezond.webp" width="640" height="360" alt="Warme glazen fles met donker vlierbessensap naast rijpe vlierbessen op een houten keukentafel" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Voeding &amp; veiligheid</p>
           <h2>Is vlierbessensap gezond? Dit weten we echt</h2>
           <p class="post-card__excerpt">Wat vlierbessensap wel en niet voor je doet, hoe je het veilig gebruikt en waarom “natuurlijk” niet hetzelfde is als risicoloos.</p>
-          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/is-waterkers-gezond">
-        <img src="/assets/images/blog/waterkers-gezond.webp" width="640" height="360" alt="Verse waterkers in een keramieken schaal met citroen en brood in zacht ochtendlicht" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/waterkers-gezond.webp" width="640" height="360" alt="Verse waterkers in een keramieken schaal met citroen en brood in zacht ochtendlicht" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Groente &amp; voeding</p>
           <h2>Is waterkers gezond? Voedingswaarde en veilig gebruik</h2>
           <p class="post-card__excerpt">Wat waterkers bijdraagt, waarom nitraat geen reden tot paniek is en hoe je deze pittige bladgroente veilig gebruikt.</p>
-          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/is-zuiveringszout-hetzelfde-als-baking-soda">
-        <img src="/assets/images/blog/zuiveringszout-baking-soda.webp" width="640" height="360" alt="Open potje baking soda met houten maatschepje, citroen en keukendoek op een warme houten tafel" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/zuiveringszout-baking-soda.webp" width="640" height="360" alt="Open potje baking soda met houten maatschepje, citroen en keukendoek op een warme houten tafel" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Keuken &amp; veiligheid</p>
           <h2>Is zuiveringszout hetzelfde als baking soda?</h2>
           <p class="post-card__excerpt">Het korte antwoord, het verschil met bakpoeder en schoonmaaksoda, plus de veilige toepassingen in keuken en huis.</p>
-          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/lichaam-ontzuren-onzin">
-        <img src="/assets/images/blog/lichaam-ontzuren.webp" width="640" height="360" alt="Glas water met citroen naast groente, peulvruchten en noten in een rustige warme keuken zonder detoxproducten" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/lichaam-ontzuren.webp" width="640" height="360" alt="Glas water met citroen naast groente, peulvruchten en noten in een rustige warme keuken zonder detoxproducten" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Gezondheidsclaims</p>
           <h2>Je lichaam ontzuren: gezonde aanpak of onzin?</h2>
           <p class="post-card__excerpt">Je bloed-pH is geen wellnessknop: zo regelt je lichaam zuur en base, en dit blijft er wél over van een alkalisch eetpatroon.</p>
-          <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">8 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/kruisbloemige-groenten">
-        <img src="/assets/images/blog/kruisbloemige-groenten.webp" width="640" height="360" alt="Kleurrijke schaal met broccoli, bloemkool, spruitjes, boerenkool, radijs en paksoi in een warme keuken" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/kruisbloemige-groenten.webp" width="640" height="360" alt="Kleurrijke schaal met broccoli, bloemkool, spruitjes, boerenkool, radijs en paksoi in een warme keuken" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Groente &amp; voeding</p>
           <h2>Kruisbloemige groenten: soorten, voordelen en bereiding</h2>
           <p class="post-card__excerpt">Van broccoli tot paksoi: waarom deze groentefamilie waardevol is en hoe je zonder gezondheidsclaims meer varieert.</p>
-          <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">9 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/olijven-met-knoflook">
-        <img src="/assets/images/blog/olijven-knoflook.webp" width="640" height="360" alt="Schaal groene en donkere olijven met geroosterde knoflook, citroen en kruiden op een gezellige houten tafel" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/blog/olijven-knoflook.webp" width="640" height="360" alt="Schaal groene en donkere olijven met geroosterde knoflook, citroen en kruiden op een gezellige houten tafel" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Recept &amp; voeding</p>
           <h2>Olijven met knoflook: gezond én makkelijk zelf maken</h2>
           <p class="post-card__excerpt">Een eenvoudig warm borrelrecept, met eerlijke uitleg over gezonde vetten, zout en veilig bewaren.</p>
-          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/pfas-zonder-paniek-thuis">
-        <img src="/assets/images/courses/clean-reset-v2/lesson-15-a.jpg" width="640" height="360" alt="Twee mensen koken samen met verschillende pannen in een warme keuken" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/courses/clean-reset-v2/lesson-15-a.jpg" width="640" height="360" alt="Twee mensen koken samen met verschillende pannen in een warme keuken" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">PFAS &amp; thuis</p>
           <h2>PFAS zonder paniek: 6 nuchtere keuzes voor thuis</h2>
           <p class="post-card__excerpt">Wat PFAS zijn, wat je wél kunt beïnvloeden en welke zes rustige keuzes thuis echt zinvol zijn.</p>
-          <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">7 min leestijd · 27 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/microplastics-thuis-zonder-obsessie">
-        <img src="/assets/images/courses/clean-reset-v2/lesson-06-a.jpg" width="640" height="360" alt="Warme huishoudelijke omgeving met alledaagse plastic producten" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/courses/clean-reset-v2/lesson-06-a.jpg" width="640" height="360" alt="Warme huishoudelijke omgeving met alledaagse plastic producten" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Microplastics</p>
           <h2>Microplastics thuis: minder blootstelling zonder obsessie</h2>
           <p class="post-card__excerpt">De wetenschap is nog volop in beweging. Dit is wat we al weten en wat je rustig kunt doen.</p>
-          <span class="post-card__meta">8 min leestijd · 25 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">8 min leestijd · 25 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
       <a class="post-card" href="/rustige-keukenreset">
-        <img src="/assets/images/courses/clean-reset-v2/lesson-13-a.jpg" width="640" height="360" alt="Persoon ruimt in rustig tempo een warme keuken op" loading="lazy">
+        <div class="post-card__media">
+          <img src="/assets/images/courses/clean-reset-v2/lesson-13-a.jpg" width="640" height="360" alt="Persoon ruimt in rustig tempo een warme keuken op" loading="lazy">
+        </div>
         <div class="post-card__body">
           <p class="post-card__category">Praktisch thuis</p>
           <h2>Een rustige keukenreset: klein beginnen, lang volhouden</h2>
           <p class="post-card__excerpt">Geen volle vuilniszak en geen perfect plaatje, maar een haalbare keuken die elke dag prettiger werkt.</p>
-          <span class="post-card__meta">6 min leestijd · 22 augustus 2026</span>
+          <div class="post-card__footer">
+            <span class="post-card__meta">6 min leestijd · 22 augustus 2026</span>
+            <span class="post-card__arrow" aria-hidden="true">→</span>
+          </div>
         </div>
       </a>
     </section>
