@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=2">
+  <link rel="stylesheet" href="/assets/css/blog-ebook-promo.css?v=3">
+  <script defer src="/assets/js/blog-ebook-promo.js?v=3"></script>
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
   <script type="application/ld+json">[{"@context":"https://schema.org","@type":"BlogPosting","headline":"Kruisbloemige groenten: soorten, voordelen en bereiding","description":"Welke groenten zijn kruisbloemig? Bekijk de lijst, voedingswaarde, glucosinolaten, schildkliervragen en praktische bereidingstips.","image":"https://www.vitalora.nl/assets/images/blog/kruisbloemige-groenten.webp","datePublished":"2026-08-27","dateModified":"2026-08-27","mainEntityOfPage":"https://www.vitalora.nl/kruisbloemige-groenten","author":{"@type":"Organization","name":"Vitalora Redactie","url":"https://www.vitalora.nl"},"publisher":{"@type":"Organization","name":"Vitalora","url":"https://www.vitalora.nl"}},{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.vitalora.nl"},{"@type":"ListItem","position":2,"name":"Blog","item":"https://www.vitalora.nl/blog"},{"@type":"ListItem","position":3,"name":"Kruisbloemige groenten: soorten, voordelen en bereiding","item":"https://www.vitalora.nl/kruisbloemige-groenten"}]}]</script>
 </head>
@@ -159,6 +161,30 @@
       </div>
     </div>
   </main>
+  <aside class="blog-ebook-promo" data-blog-ebook-promo hidden role="dialog" aria-modal="true" aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy">
+    <div class="blog-ebook-promo__panel" role="document">
+      <button class="blog-ebook-promo__close" type="button" data-blog-ebook-promo-close aria-label="Sluit deze aanbieding">×</button>
+      <div class="blog-ebook-promo__hero">
+        <p class="blog-ebook-promo__eyebrow">Gratis ebook</p>
+        <h2 class="blog-ebook-promo__title" id="blog-ebook-promo-title">Minder microplastics thuis</h2>
+      </div>
+      <div class="blog-ebook-promo__body">
+        <div class="blog-ebook-promo__visual" aria-hidden="true">
+          <div class="blog-ebook-promo__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
+        </div>
+        <div class="blog-ebook-promo__content">
+          <p class="blog-ebook-promo__copy" id="blog-ebook-promo-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
+          <form class="blog-ebook-promo__form" data-blog-ebook-promo-form method="post" action="/api/lead-optin" novalidate>
+            <label><span class="blog-ebook-promo__sr-only">Voornaam</span><input name="firstname" type="text" placeholder="Voornaam" autocomplete="given-name" required></label>
+            <label><span class="blog-ebook-promo__sr-only">E-mailadres</span><input name="email" type="email" placeholder="E-mailadres" autocomplete="email" inputmode="email" required></label>
+            <button class="blog-ebook-promo__cta" data-blog-ebook-promo-cta type="submit">Claim jouw exemplaar</button>
+            <p class="blog-ebook-promo__feedback" data-blog-ebook-promo-feedback role="alert" hidden></p>
+          </form>
+          <p class="blog-ebook-promo__trust"><span aria-hidden="true">●</span> Je gegevens blijven privé · <a href="/privacy">privacy</a> · uitschrijven kan altijd</p>
+        </div>
+      </div>
+    </div>
+  </aside>
   <footer class="editorial-footer">
     <div class="editorial-shell editorial-footer__inner">
       <span>© 2026 Vitalora · Nuchtere informatie voor haalbare gezondheid.</span>

@@ -27,7 +27,7 @@
         .ebook-page .hero-text h1 { font-size: 28px !important; line-height: 1.2 !important; word-break: break-word !important; hyphens: auto !important; }
       }
     </style>
-        <link rel="stylesheet" href="/assets/css/ebook-warm.css?v=7">
+    <link rel="stylesheet" href="/assets/css/ebook-warm.css?v=9">
 <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
@@ -55,18 +55,20 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <button class="direct-access" type="button">Gratis Vitalora-gids</button>
+                    <p class="direct-access"><span aria-hidden="true">●</span> Praktische gids · 12 min</p>
                     <h1 class="ebook-hero-title">
-                        <span class="hero-title-line">De éérste methode</span>
-                        <span class="hero-title-line">in Nederland om <span class="highlight">Microplastics</span></span>
-                        <span class="hero-title-line">uit je lichaam te Detoxen!</span>
+                        <span class="hero-title-line">Minder microplastics</span>
+                        <span class="hero-title-line">in je dagelijks leven,</span>
+                        <span class="hero-title-line"><span class="highlight">zonder paniek</span></span>
                     </h1>
                     
                     <p class="hero-description">Een warme, nuchtere gids die laat zien waar blootstelling vaak ontstaat, welke keuzes thuis echt verschil maken en wat je gerust kunt loslaten.</p>
                     
                     <!-- Mobiele ebook afbeelding - simpele aanpak zoals homepage -->
                     <div class="mobile-book-image">
-                        <img src="/assets/images/microplastics-ebook-warm-v5.png" alt="Drie volledig vormgegeven donkergroene Vitalora e-books over microplastics" />
+                        <div class="ebook-product-mockup" role="img" aria-label="Donkergroene Vitalora-gids Minder microplastics thuis">
+                            <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
+                        </div>
                     </div>
                     
                     <div class="features-list">
@@ -88,32 +90,36 @@
                         </div>
                         <div class="feature-item">
                             <span class="checkmark icon-checkmark"></span>
-                            <span>Gratis in je mailbox</span>
+                            <span>Gratis aan te vragen</span>
                         </div>
                     </div>
                     
-                    <button class="cta-button" id="ebook-claim">Download de gratis gids →</button>
+                    <button class="cta-button" id="ebook-claim">Claim jouw exemplaar →</button>
                 </div>
                 
                 <div class="hero-image">
-                    <img class="ebook-cover" src="/assets/images/microplastics-ebook-warm-v5.png" alt="Drie volledig vormgegeven donkergroene Vitalora e-books over microplastics" />
+                    <div class="ebook-product-mockup ebook-product-mockup--hero" role="img" aria-label="Donkergroene Vitalora-gids Minder microplastics thuis">
+                        <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Lead Capture Modal -->
-    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-labelledby="modal-title">
+    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-backdrop"></div>
         <div class="modal-card modal-ebook">
-            <button class="modal-close" aria-label="Sluiten">×</button>
+            <button class="modal-close" type="button" aria-label="Sluiten">×</button>
             <div class="modal-hero">
                 <h2 id="modal-title">Waar mogen we de gids naartoe sturen?</h2>
                 <p class="modal-subtitle">Microplastics thuis · rustig uitgelegd</p>
             </div>
             <div class="modal-body two-col">
                 <div class="modal-illustration" aria-hidden="true">
-                    <img src="/assets/images/microplastics-ebook-warm-v5.png" alt="Drie volledig vormgegeven donkergroene Vitalora e-books over microplastics" />
+                    <div class="ebook-product-mockup ebook-product-mockup--modal">
+                        <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
+                    </div>
                 </div>
                 <div class="modal-copy">
                     <p class="modal-lead">Vul je voornaam en e-mailadres in. Daarna staat je volgende rustige stap klaar.</p>
@@ -263,12 +269,12 @@
     <!-- Final CTA Section -->
     <section class="final-cta">
         <div class="container">
-            <h2>Begin klein. Kies wat vandaag bij je past.</h2>
-            <p>Download de gids en ontdek waar jij thuis rustig het meeste verschil kunt maken.</p>
-            <button class="cta-button" id="ebook-claim-bottom">Stuur mij de gids →</button>
+            <h2>Maak microplastics thuis eindelijk concreet.</h2>
+            <p>Zie in 12 minuten waar je ze tegenkomt en welke haalbare keuzes je direct kunt maken — in je keuken, kleding en verzorging.</p>
+            <button class="cta-button" id="ebook-claim-bottom">Claim jouw exemplaar →</button>
         </div>
     </section>
 
-    <script src="/landing-script.js?v=4"></script>
+    <script src="/landing-script.js?v=5"></script>
 </body>
 </html>

@@ -46,6 +46,11 @@ document.addEventListener('DOMContentLoaded', function() {
         if (target) target.focus({ preventScroll: true });
     }
 
+    function modalFocusableElements() {
+        return Array.from(modal.querySelectorAll('button:not([disabled]), input:not([type="hidden"]):not([disabled]), a[href]'))
+            .filter(element => !element.hidden);
+    }
+
     function openModal() {
         lastFocusedElement = document.activeElement;
         modal.classList.remove('hidden');
@@ -87,9 +92,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && modal.classList.contains('is-active')) {
+        if (!modal.classList.contains('is-active')) return;
+        if (event.key === 'Escape') {
             event.preventDefault();
             closeModal();
+            return;
+        }
+        if (event.key !== 'Tab') return;
+        const focusable = modalFocusableElements();
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault();
+            last.focus();
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault();
+            first.focus();
         }
     });
 
