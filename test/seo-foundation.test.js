@@ -16,7 +16,10 @@ test('onbekende paden vallen niet langer terug op een blog-shell met status 200'
   assert.equal(vercel.rewrites.some((rewrite) => rewrite.source === '/:slug'), false);
   assert.doesNotMatch(redirects, /^\/\*\s+\/post\.html/m);
   assert.doesNotMatch(redirects, /^\/:slug\s+\/post\.html/m);
-  assert.match(read('404.html'), /meta name="robots" content="noindex,follow"/);
+  const notFound = read('404.html');
+  assert.match(notFound, /meta name="robots" content="noindex,follow"/);
+  assert.match(notFound, /class="article-wrap not-found-page"/);
+  assert.match(notFound, /\/assets\/css\/editorial-blog\.css\?v=2/);
 });
 test('robots en sitemap zijn echte crawlbare bestanden met alleen canonieke blog-URL’s', () => {
   const robots = read('robots.txt');

@@ -9,7 +9,7 @@ function read(file) {
   return fs.readFileSync(path.join(root, file), 'utf8');
 }
 
-test('blog gebruikt de redactionele warme laag en login en Clean Reset behouden hun eigen warme laag', () => {
+test('nieuwe en historische blogs gebruiken de redactionele laag en login en Clean Reset behouden hun warme laag', () => {
   const blog = read('blog.html');
   const liveBlogRoute = read('blog/index.html');
   const post = read('post.html');
@@ -21,15 +21,18 @@ test('blog gebruikt de redactionele warme laag en login en Clean Reset behouden 
 
   assert.match(blog, /<body class="editorial-index page-blog">/);
   assert.match(liveBlogRoute, /<body class="editorial-index page-blog">/);
-  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=1/);
-  assert.match(liveBlogRoute, /\/assets\/css\/editorial-blog\.css\?v=1/);
-  assert.match(post, /<body class="page-blog-post">/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=2/);
+  assert.match(liveBlogRoute, /\/assets\/css\/editorial-blog\.css\?v=2/);
+  assert.match(post, /<body class="editorial-page page-blog-post legacy-blog-post">/);
+  assert.match(post, /\/assets\/css\/editorial-blog\.css\?v=2/);
+  assert.doesNotMatch(post, /\/assets\/css\/warm-pages\.css/);
   assert.match(login, /<body class="page-login">/);
   assert.match(cleanReset, /<body class="page-clean-reset">/);
-  [post, login, cleanReset].forEach((html) => {
+  [login, cleanReset].forEach((html) => {
     assert.match(html, /\/assets\/css\/warm-pages\.css\?v=2/);
     assert.match(html, /meta name="theme-color" content="#253129"/);
   });
+  assert.match(post, /meta name="theme-color" content="#253129"/);
   assert.match(blog, /meta name="theme-color" content="#253129"/);
   assert.match(liveBlogRoute, /meta name="theme-color" content="#253129"/);
   assert.match(warmCss, /\.page-blog/);
