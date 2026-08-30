@@ -81,12 +81,14 @@
     if (!promo || readSuppressedUntil(storage) > Date.now() || hasBeenSeen(sessionStorage)) return null;
 
     const closeButton = promo.querySelector('[data-blog-ebook-promo-close]');
+    const openButton = promo.querySelector('[data-blog-ebook-promo-open]');
+    const announcement = doc.querySelector('[data-blog-ebook-promo-announcement]');
     const form = promo.querySelector('[data-blog-ebook-promo-form]');
     const submitButton = promo.querySelector('[data-blog-ebook-promo-cta]');
     const feedback = promo.querySelector('[data-blog-ebook-promo-feedback]');
     const nameInput = form && form.querySelector('input[name="firstname"]');
     const emailInput = form && form.querySelector('input[name="email"]');
-    if (!closeButton || !form || !submitButton || !nameInput || !emailInput) return null;
+    if (!closeButton || !openButton || !form || !submitButton || !nameInput || !emailInput) return null;
 
     let showTimer = null;
     let visible = false;
@@ -96,6 +98,7 @@
     let activeAbortController = null;
     let requestTimeoutId = null;
     let rejectPendingRequest = null;
+    const submitButtonLabel = submitButton.textContent;
 
     function clearPendingRequest() {
       if (requestTimeoutId !== null) win.clearTimeout(requestTimeoutId);
@@ -114,21 +117,6 @@
       if (reject) reject(new Error('Aanvraag geannuleerd.'));
     }
 
-    function setPageLocked(locked) {
-      if (doc.documentElement && doc.documentElement.classList) {
-        doc.documentElement.classList.toggle('blog-ebook-promo-open', locked);
-      }
-      if (doc.body && doc.body.classList) {
-        doc.body.classList.toggle('blog-ebook-promo-open', locked);
-      }
-    }
-
-    function focusableElements() {
-      if (typeof promo.querySelectorAll !== 'function') return [closeButton, nameInput, emailInput, submitButton];
-      return Array.from(promo.querySelectorAll('button:not([disabled]), input:not([disabled]), a[href]'))
-        .filter(function (element) { return !element.hidden; });
-    }
-
     function showFeedback(message) {
       if (!feedback) return;
       feedback.textContent = message;
@@ -141,13 +129,21 @@
       previousFocus = doc.activeElement && !promo.contains(doc.activeElement) ? doc.activeElement : null;
       rememberSeen(sessionStorage);
       promo.hidden = false;
-      setPageLocked(true);
       win.removeEventListener('scroll', handleScroll);
       if (showTimer) win.clearTimeout(showTimer);
       (win.requestAnimationFrame || win.setTimeout).call(win, function () {
         promo.classList.add('is-visible');
-        if (typeof nameInput.focus === 'function') nameInput.focus();
+        if (announcement) announcement.textContent = 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat aan het einde van de pagina.';
       });
+    }
+
+    function openForm() {
+      if (!visible || closing || !promo.isConnected) return;
+      promo.classList.add('is-form-open');
+      openButton.hidden = true;
+      if (typeof openButton.setAttribute === 'function') openButton.setAttribute('aria-expanded', 'true');
+      form.hidden = false;
+      if (typeof nameInput.focus === 'function') nameInput.focus();
     }
 
     function dismiss(duration) {
@@ -160,9 +156,9 @@
       win.removeEventListener('scroll', handleScroll);
       if (typeof doc.removeEventListener === 'function') doc.removeEventListener('keydown', handleKeydown);
       if (showTimer) win.clearTimeout(showTimer);
+      if (announcement) announcement.textContent = '';
       promo.classList.remove('is-visible');
       promo.classList.add('is-closing');
-      setPageLocked(false);
       win.setTimeout(function () {
         promo.remove();
         if (previousFocus && typeof previousFocus.focus === 'function') previousFocus.focus();
@@ -179,19 +175,6 @@
       if (event.key === 'Escape') {
         event.preventDefault();
         dismiss(CLOSE_SUPPRESSION_MS);
-        return;
-      }
-      if (event.key !== 'Tab') return;
-      const elements = focusableElements();
-      if (!elements.length) return;
-      const first = elements[0];
-      const last = elements[elements.length - 1];
-      if (event.shiftKey && doc.activeElement === first) {
-        event.preventDefault();
-        last.focus();
-      } else if (!event.shiftKey && doc.activeElement === last) {
-        event.preventDefault();
-        first.focus();
       }
     }
 
@@ -264,15 +247,13 @@
         if (!completed && visible && !closing && promo.isConnected) {
           submitting = false;
           submitButton.disabled = false;
-          submitButton.textContent = 'Claim jouw exemplaar';
+          submitButton.textContent = submitButtonLabel;
         }
       }
     }
 
     closeButton.addEventListener('click', function () { dismiss(CLOSE_SUPPRESSION_MS); });
-    promo.addEventListener('click', function (event) {
-      if (event.target === promo) dismiss(CLOSE_SUPPRESSION_MS);
-    });
+    openButton.addEventListener('click', openForm);
     form.addEventListener('submit', handleSubmit);
     doc.addEventListener('keydown', handleKeydown);
     win.addEventListener('scroll', handleScroll, { passive: true });
@@ -281,6 +262,7 @@
 
     return {
       reveal: reveal,
+      openForm: openForm,
       dismiss: dismiss,
       submit: handleSubmit,
       element: promo

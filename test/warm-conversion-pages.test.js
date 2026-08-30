@@ -71,7 +71,7 @@ test('ebook herstelt de oorspronkelijke hero en behoudt de opt-in naar checkout'
   assert.match(html, /<body class="ebook-page ebook-page--warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
   assert.match(html, /assets\/css\/ebook-warm\.css\?v=10/);
-  assert.match(html, /assets\/css\/ebook-optin-modal\.css\?v=6/);
+  assert.match(html, /assets\/css\/ebook-optin-modal\.css\?v=7/);
   assert.match(html, /assets\/js\/ebook-optin-modal\.js\?v=1/);
   assert.equal((html.match(/microplastics-ebook-warm-v5\.png/g) || []).length, 3);
   assert.doesNotMatch(html, /ebook-product-mockup/);

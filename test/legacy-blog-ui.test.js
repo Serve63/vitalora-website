@@ -23,6 +23,38 @@ test('alle historische blogroutes blijven op hun eigen slug via de gedeelde adap
   }
 });
 
+test('rechtstreeks bereikbare historische html-bestanden zijn zelf cursusvrij en hebben de ebookkaart', () => {
+  const config = JSON.parse(read('vercel.json'));
+  const legacySlugs = config.rewrites
+    .filter(({ destination }) => destination.startsWith('/post.html?slug='))
+    .map(({ source }) => source.slice(1));
+  const localSources = legacySlugs.filter((slug) => fs.existsSync(path.join(root, `${slug}.html`)));
+  const directFiles = [...localSources.map((slug) => `${slug}.html`), 'dopamine-voeding.html', 'suiker.html'];
+  const forbidden = /Mijn Academy|Vitalora Academy|Clean Reset|detox-cursus|href=["']\/?academy|detox programma/i;
+
+  assert.equal(localSources.length, 17);
+  for (const file of directFiles) {
+    const html = read(file);
+    assert.doesNotMatch(html, forbidden, file);
+    assert.match(html, /assets\/css\/ebook-optin-modal\.css\?v=7/, file);
+    assert.match(html, /assets\/js\/blog-ebook-promo\.js\?v=6/, file);
+    assert.equal((html.match(/data-blog-ebook-promo hidden/g) || []).length, 1, file);
+  }
+
+  assert.deepEqual(
+    config.redirects.find(({ source }) => source === '/blog-post.html'),
+    { source: '/blog-post.html', destination: '/blog', permanent: true }
+  );
+  assert.deepEqual(
+    config.rewrites.find(({ source }) => source === '/dopamine-voeding'),
+    { source: '/dopamine-voeding', destination: '/dopamine-voeding.html' }
+  );
+  assert.deepEqual(
+    config.rewrites.find(({ source }) => source === '/behoefte-aan-suiker'),
+    { source: '/behoefte-aan-suiker', destination: '/suiker.html' }
+  );
+});
+
 test('de historische adapter behoudt alle laadpaden en renderer-contracten', () => {
   const post = read('post.html');
   const requiredIds = ['post-title', 'post-date', 'post-read-time', 'featured-image', 'post-content'];

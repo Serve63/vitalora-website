@@ -15,8 +15,8 @@
   <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
   <link rel="stylesheet" href="/assets/css/fonts.css?v=12">
   <link rel="stylesheet" href="/assets/css/editorial-blog.css?v=2">
-  <link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=6">
-  <script defer src="/assets/js/blog-ebook-promo.js?v=5"></script>
+  <link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=7">
+  <script defer src="/assets/js/blog-ebook-promo.js?v=6"></script>
   <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
 <body class="editorial-index page-blog">
@@ -232,23 +232,25 @@
       </a>
     </section>
   </main>
-  <aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden role="dialog" aria-modal="true" aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy">
+  <p class="ebook-optin-modal__sr-only" data-blog-ebook-promo-announcement aria-live="polite" aria-atomic="true"></p>
+  <aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden role="region" aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy">
     <div class="ebook-optin-modal__panel" role="document">
       <button class="ebook-optin-modal__close" type="button" data-blog-ebook-promo-close aria-label="Sluit deze aanbieding">×</button>
       <div class="ebook-optin-modal__header">
-        <p class="ebook-optin-modal__eyebrow">Gratis download</p>
+        <p class="ebook-optin-modal__eyebrow">Download gratis</p>
         <h2 class="ebook-optin-modal__title" id="blog-ebook-promo-title">Elimineer Microplastics</h2>
       </div>
       <div class="ebook-optin-modal__body">
+        <p class="ebook-optin-modal__copy" id="blog-ebook-promo-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
         <div class="ebook-optin-modal__visual" aria-hidden="true">
           <img class="ebook-optin-modal__image" src="/assets/images/microplastics-ebook-warm-v5.png" alt="">
         </div>
         <div class="ebook-optin-modal__content">
-          <p class="ebook-optin-modal__copy" id="blog-ebook-promo-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
-          <form class="ebook-optin-modal__form" data-blog-ebook-promo-form method="post" action="/api/lead-optin" novalidate>
+          <button class="ebook-optin-modal__cta ebook-optin-modal__primary-action" data-blog-ebook-promo-open type="button" aria-expanded="false" aria-controls="blog-ebook-promo-form">Gratis downloaden</button>
+          <form class="ebook-optin-modal__form" id="blog-ebook-promo-form" data-blog-ebook-promo-form method="post" action="/api/lead-optin" novalidate hidden>
             <label><span class="ebook-optin-modal__sr-only">Voornaam</span><input name="firstname" type="text" placeholder="Voornaam" autocomplete="given-name" required></label>
             <label><span class="ebook-optin-modal__sr-only">E-mailadres</span><input name="email" type="email" placeholder="E-mailadres" autocomplete="email" inputmode="email" required></label>
-            <button class="ebook-optin-modal__cta" data-blog-ebook-promo-cta type="submit">Claim jouw exemplaar</button>
+            <button class="ebook-optin-modal__cta" data-blog-ebook-promo-cta type="submit">Stuur mij het ebook</button>
             <p class="ebook-optin-modal__feedback" data-blog-ebook-promo-feedback role="alert" hidden></p>
           </form>
           <p class="ebook-optin-modal__trust"><span class="ebook-optin-modal__lock" aria-hidden="true">🔒</span>Je gegevens blijven privé · <a href="/privacy">privacy</a> · uitschrijven kan altijd</p>

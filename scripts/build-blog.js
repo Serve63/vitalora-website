@@ -141,7 +141,6 @@ function header({ navigation = true } = {}) {
       <a class="editorial-brand" href="/">Vitalora.nl</a>
 ${navigation ? `      <nav class="editorial-nav" aria-label="Hoofdnavigatie">
         <a href="/blog">Alle artikelen</a>
-        <a href="/academy">Mijn Academy</a>
       </nav>` : ''}
     </div>
   </header>`;
@@ -157,28 +156,30 @@ function footer() {
 }
 
 function ebookPromoAssets() {
-  return `<link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=6">
-  <script defer src="/assets/js/blog-ebook-promo.js?v=5"></script>`;
+  return `<link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=7">
+  <script defer src="/assets/js/blog-ebook-promo.js?v=6"></script>`;
 }
 
 function ebookPromo() {
-  return `<aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden role="dialog" aria-modal="true" aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy">
+  return `<p class="ebook-optin-modal__sr-only" data-blog-ebook-promo-announcement aria-live="polite" aria-atomic="true"></p>
+  <aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden role="region" aria-labelledby="blog-ebook-promo-title" aria-describedby="blog-ebook-promo-copy">
     <div class="ebook-optin-modal__panel" role="document">
       <button class="ebook-optin-modal__close" type="button" data-blog-ebook-promo-close aria-label="Sluit deze aanbieding">×</button>
       <div class="ebook-optin-modal__header">
-        <p class="ebook-optin-modal__eyebrow">Gratis download</p>
+        <p class="ebook-optin-modal__eyebrow">Download gratis</p>
         <h2 class="ebook-optin-modal__title" id="blog-ebook-promo-title">Elimineer Microplastics</h2>
       </div>
       <div class="ebook-optin-modal__body">
+        <p class="ebook-optin-modal__copy" id="blog-ebook-promo-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
         <div class="ebook-optin-modal__visual" aria-hidden="true">
           <img class="ebook-optin-modal__image" src="/assets/images/microplastics-ebook-warm-v5.png" alt="">
         </div>
         <div class="ebook-optin-modal__content">
-          <p class="ebook-optin-modal__copy" id="blog-ebook-promo-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
-          <form class="ebook-optin-modal__form" data-blog-ebook-promo-form method="post" action="/api/lead-optin" novalidate>
+          <button class="ebook-optin-modal__cta ebook-optin-modal__primary-action" data-blog-ebook-promo-open type="button" aria-expanded="false" aria-controls="blog-ebook-promo-form">Gratis downloaden</button>
+          <form class="ebook-optin-modal__form" id="blog-ebook-promo-form" data-blog-ebook-promo-form method="post" action="/api/lead-optin" novalidate hidden>
             <label><span class="ebook-optin-modal__sr-only">Voornaam</span><input name="firstname" type="text" placeholder="Voornaam" autocomplete="given-name" required></label>
             <label><span class="ebook-optin-modal__sr-only">E-mailadres</span><input name="email" type="email" placeholder="E-mailadres" autocomplete="email" inputmode="email" required></label>
-            <button class="ebook-optin-modal__cta" data-blog-ebook-promo-cta type="submit">Claim jouw exemplaar</button>
+            <button class="ebook-optin-modal__cta" data-blog-ebook-promo-cta type="submit">Stuur mij het ebook</button>
             <p class="ebook-optin-modal__feedback" data-blog-ebook-promo-feedback role="alert" hidden></p>
           </form>
           <p class="ebook-optin-modal__trust"><span class="ebook-optin-modal__lock" aria-hidden="true">🔒</span>Je gegevens blijven privé · <a href="/privacy">privacy</a> · uitschrijven kan altijd</p>
@@ -292,14 +293,6 @@ ${sectionHtml}
             <h2>Lees rustig verder</h2>
             <ul>${relatedHtml}</ul>
           </section>
-          <aside class="course-bridge">
-            <div>
-              <p class="course-bridge__eyebrow">Vitalora Academy</p>
-              <h2>Minder ruis, meer rustige regie</h2>
-              <p>In Clean Reset leer je gezondheidsclaims, blootstelling en haalbare keuzes stap voor stap beoordelen zonder dat je huis of voeding een angstproject wordt.</p>
-            </div>
-            <a href="/academy">Bekijk de Academy <span aria-hidden="true">→</span></a>
-          </aside>
         </article>
       </div>
     </div>
