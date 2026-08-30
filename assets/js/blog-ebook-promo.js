@@ -146,7 +146,7 @@
       if (showTimer) win.clearTimeout(showTimer);
       (win.requestAnimationFrame || win.setTimeout).call(win, function () {
         promo.classList.add('is-visible');
-        if (typeof closeButton.focus === 'function') closeButton.focus();
+        if (typeof nameInput.focus === 'function') nameInput.focus();
       });
     }
 

@@ -27,7 +27,8 @@
         .ebook-page .hero-text h1 { font-size: 28px !important; line-height: 1.2 !important; word-break: break-word !important; hyphens: auto !important; }
       }
     </style>
-    <link rel="stylesheet" href="/assets/css/ebook-warm.css?v=9">
+    <link rel="stylesheet" href="/assets/css/ebook-warm.css?v=10">
+    <link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=6">
 <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 <link rel="shortcut icon" type="image/webp" href="/assets/images/vitalora logo.webp">
 </head>
@@ -55,20 +56,18 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <p class="direct-access"><span aria-hidden="true">●</span> Praktische gids · 12 min</p>
+                    <p class="direct-access">ebook</p>
                     <h1 class="ebook-hero-title">
-                        <span class="hero-title-line">Minder microplastics</span>
-                        <span class="hero-title-line">in je dagelijks leven,</span>
-                        <span class="hero-title-line"><span class="highlight">zonder paniek</span></span>
+                        <span class="hero-title-line">De éérste methode</span>
+                        <span class="hero-title-line">in Nederland om <span class="highlight">Microplastics</span></span>
+                        <span class="hero-title-line">uit je lichaam te Detoxen!</span>
                     </h1>
                     
                     <p class="hero-description">Een warme, nuchtere gids die laat zien waar blootstelling vaak ontstaat, welke keuzes thuis echt verschil maken en wat je gerust kunt loslaten.</p>
                     
                     <!-- Mobiele ebook afbeelding - simpele aanpak zoals homepage -->
                     <div class="mobile-book-image">
-                        <div class="ebook-product-mockup" role="img" aria-label="Donkergroene Vitalora-gids Minder microplastics thuis">
-                            <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
-                        </div>
+                        <img src="/assets/images/microplastics-ebook-warm-v5.png" alt="Drie e-books Elimineer Microplastics van Daniëlle Schepers" />
                     </div>
                     
                     <div class="features-list">
@@ -98,49 +97,33 @@
                 </div>
                 
                 <div class="hero-image">
-                    <div class="ebook-product-mockup ebook-product-mockup--hero" role="img" aria-label="Donkergroene Vitalora-gids Minder microplastics thuis">
-                        <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
-                    </div>
+                    <img class="ebook-cover" src="/assets/images/microplastics-ebook-warm-v5.png" alt="Drie e-books Elimineer Microplastics van Daniëlle Schepers" />
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Lead Capture Modal -->
-    <div id="ebook-modal" class="modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-backdrop"></div>
-        <div class="modal-card modal-ebook">
-            <button class="modal-close" type="button" aria-label="Sluiten">×</button>
-            <div class="modal-hero">
-                <h2 id="modal-title">Waar mogen we de gids naartoe sturen?</h2>
-                <p class="modal-subtitle">Microplastics thuis · rustig uitgelegd</p>
+    <div id="ebook-modal" class="modal ebook-optin-modal hidden" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="ebook-modal-copy">
+        <div class="ebook-optin-modal__panel" role="document">
+            <button class="ebook-optin-modal__close" type="button" data-ebook-optin-close aria-label="Sluit deze aanbieding">×</button>
+            <div class="ebook-optin-modal__header">
+                <p class="ebook-optin-modal__eyebrow">Gratis download</p>
+                <h2 class="ebook-optin-modal__title" id="modal-title">Elimineer Microplastics</h2>
             </div>
-            <div class="modal-body two-col">
-                <div class="modal-illustration" aria-hidden="true">
-                    <div class="ebook-product-mockup ebook-product-mockup--modal">
-                        <div class="ebook-product-mockup__book"><span>Vitalora</span><strong>Minder microplastics thuis</strong><i>Praktische gids</i></div>
-                    </div>
+            <div class="ebook-optin-modal__body">
+                <div class="ebook-optin-modal__visual" aria-hidden="true">
+                    <img class="ebook-optin-modal__image" src="/assets/images/microplastics-ebook-warm-v5.png" alt="">
                 </div>
-                <div class="modal-copy">
-                    <p class="modal-lead">Vul je voornaam en e-mailadres in. Daarna staat je volgende rustige stap klaar.</p>
-                    <form id="ebook-form" class="modal-form" method="post" action="/api/lead-optin" novalidate>
-                        <input type="hidden" name="u"   value="3">
-                        <input type="hidden" name="f"   value="3">
-                        <input type="hidden" name="s"   value="">
-                        <input type="hidden" name="c"   value="0">
-                        <input type="hidden" name="m"   value="0">
-                        <input type="hidden" name="act" value="sub">
-                        <input type="hidden" name="v"   value="2">
-                        <input type="hidden" name="or"  value="912ee886-aab4-4e79-bb30-28b2ab9fb4a3">
-
-                        <input type="text" id="lead-name" name="firstname" placeholder="Voornaam" aria-label="Voornaam" autocomplete="given-name" required />
-                        <input type="email" id="lead-email" name="email" placeholder="E-mailadres" aria-label="E-mailadres" autocomplete="email" inputmode="email" required />
-                        <button type="submit" class="cta-button modal-cta">Stuur mij de gids</button>
-                        <p class="modal-trust"><span class="modal-trust-icon" aria-hidden="true">🔒</span>Veilig en privé · uitschrijven kan altijd</p>
+                <div class="ebook-optin-modal__content">
+                    <p class="ebook-optin-modal__copy" id="ebook-modal-copy">Ontdek in 12 minuten waar je microplastics tegenkomt en welke kleine keuzes je vandaag kunt maken.</p>
+                    <form id="ebook-form" class="ebook-optin-modal__form" method="post" action="/api/lead-optin" novalidate>
+                        <label><span class="ebook-optin-modal__sr-only">Voornaam</span><input type="text" id="lead-name" name="firstname" placeholder="Voornaam" autocomplete="given-name" required /></label>
+                        <label><span class="ebook-optin-modal__sr-only">E-mailadres</span><input type="email" id="lead-email" name="email" placeholder="E-mailadres" autocomplete="email" inputmode="email" required /></label>
+                        <button type="submit" class="ebook-optin-modal__cta">Claim jouw exemplaar</button>
+                        <p id="ebook-feedback" class="ebook-optin-modal__feedback" role="alert" hidden></p>
                     </form>
-                    <div id="modal-loading" class="modal-feedback" aria-hidden="true">Even geduld, we zetten je gids klaar…</div>
-                    <div id="ebook-error" class="modal-feedback modal-feedback--error" role="alert"></div>
-                    <div id="ebook-success" class="modal-feedback modal-feedback--success" role="status"></div>
+                    <p class="ebook-optin-modal__trust"><span class="ebook-optin-modal__lock" aria-hidden="true">🔒</span>Je gegevens blijven privé · <a href="/privacy">privacy</a> · uitschrijven kan altijd</p>
                 </div>
             </div>
         </div>
@@ -275,6 +258,6 @@
         </div>
     </section>
 
-    <script src="/landing-script.js?v=5"></script>
+    <script src="/assets/js/ebook-optin-modal.js?v=1"></script>
 </body>
 </html>

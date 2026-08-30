@@ -62,21 +62,24 @@ test('eenmalig aanbod gebruikt dezelfde warme checkout zonder systeemdropdown', 
   assert.match(script, /amountValue = '27\.00'/);
 });
 
-test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', () => {
+test('ebook herstelt de oorspronkelijke hero en behoudt de opt-in naar checkout', () => {
   const html = read('ebook.html');
   const css = read('assets/css/ebook-warm.css');
-  const script = read('landing-script.js');
+  const modalCss = read('assets/css/ebook-optin-modal.css');
+  const script = read('assets/js/ebook-optin-modal.js');
 
   assert.match(html, /<body class="ebook-page ebook-page--warm">/);
   assert.match(html, /meta name="theme-color" content="#253129"/);
-  assert.match(html, /assets\/css\/ebook-warm\.css\?v=9/);
-  assert.equal((html.match(/class="ebook-product-mockup(?: |")/g) || []).length, 3);
-  assert.equal((html.match(/class="ebook-product-mockup__book"/g) || []).length, 3);
+  assert.match(html, /assets\/css\/ebook-warm\.css\?v=10/);
+  assert.match(html, /assets\/css\/ebook-optin-modal\.css\?v=6/);
+  assert.match(html, /assets\/js\/ebook-optin-modal\.js\?v=1/);
+  assert.equal((html.match(/microplastics-ebook-warm-v5\.png/g) || []).length, 3);
+  assert.doesNotMatch(html, /ebook-product-mockup/);
   assert.equal((html.match(/class="hero-title-line"/g) || []).length, 3);
-  assert.match(html, /Minder microplastics/);
-  assert.match(html, /in je dagelijks leven,/);
-  assert.match(html, /<span class="highlight">zonder paniek<\/span>/);
-  assert.doesNotMatch(html, /De éérste methode|uit je lichaam te Detoxen/i);
+  assert.match(html, /De éérste methode/);
+  assert.match(html, /in Nederland om <span class="highlight">Microplastics<\/span>/);
+  assert.match(html, /uit je lichaam te Detoxen!/);
+  assert.doesNotMatch(html, /in je dagelijks leven,|zonder paniek/i);
   assert.doesNotMatch(html, /lesson-06-b\.jpg/);
   const coverPath = path.join(root, 'assets/images/microplastics-ebook-warm-v5.png');
   assert.ok(fs.statSync(coverPath).size < 700_000);
@@ -85,38 +88,70 @@ test('ebook gebruikt eerlijke warme copy en behoudt de opt-in naar checkout', ()
   assert.ok(colorType === 6 || (colorType === 3 && coverBuffer.includes(Buffer.from('tRNS'))), 'PNG must contain transparency');
   assert.match(html, /Geen paniek en geen wonderclaims/);
   assert.match(html, /Gratis aan te vragen/);
-  assert.match(html, /Praktische gids · 12 min/);
+  assert.match(html, /<p class="direct-access">ebook<\/p>/);
   assert.equal((html.match(/Claim jouw exemplaar →/g) || []).length, 2);
   assert.match(html, /Maak microplastics thuis eindelijk concreet\./);
   assert.doesNotMatch(html, /Gratis Vitalora-gids|Begin klein\. Kies wat vandaag bij je past\./);
   assert.match(html, /id="ebook-claim"/);
   assert.match(html, /id="ebook-claim-bottom"/);
   assert.match(html, /id="ebook-modal"[^>]*aria-modal="true"/);
+  assert.match(html, /class="modal ebook-optin-modal hidden"/);
+  assert.match(html, /Gratis download/);
+  assert.match(html, /Elimineer Microplastics/);
+  assert.match(html, /data-ebook-optin-close/);
   assert.match(html, /id="ebook-form"[^>]*action="\/api\/lead-optin"/);
-  assert.match(html, /id="ebook-error"/);
-  assert.match(html, /id="ebook-success"/);
+  assert.match(html, /id="ebook-feedback"[^>]*role="alert" hidden/);
   assert.match(script, /source: 'ebook_download'/);
   assert.match(script, /window\.location\.assign\('\/checkout'\)/);
-  assert.match(script, /modalFocusableElements/);
+  assert.match(script, /focusableElements/);
   assert.match(script, /event\.key !== 'Tab'/);
+  assert.match(script, /event\.target === modal/);
+  assert.match(script, /document\.documentElement\.classList\.toggle\('ebook-optin-modal-open'/);
   assert.doesNotMatch(html, /via\.placeholder\.com|Winstgevende Website Formule|revolutionaire|8\.000\+/i);
   assert.match(css, /--ebook-moss: #253129/);
   assert.match(css, /--ebook-sand: #c6a57e/);
   assert.match(css, /\.hero-title-line[\s\S]*display: block;[\s\S]*white-space: nowrap;/);
   assert.match(css, /\.hero-image::after[\s\S]*content: none;/);
-  assert.match(css, /\.ebook-product-mockup__book[\s\S]*linear-gradient\(145deg, #314238, var\(--ebook-moss-deep\)\)/);
+  assert.match(css, /\.ebook-cover[\s\S]*max-width: 520px;/);
   assert.match(css, /#ebook-claim:focus-visible[\s\S]*outline: 3px solid var\(--ebook-moss-deep\) !important;/);
-  assert.match(css, /#ebook-modal \.modal-copy[\s\S]*background: transparent !important;/);
-  assert.match(css, /#ebook-modal \.modal-cta[\s\S]*transform: none !important;/);
-  assert.match(css, /#ebook-modal \.modal-trust[\s\S]*background: transparent !important;/);
-  assert.match(css, /#ebook-modal \.modal-trust[\s\S]*color: #6f6a62/);
-  assert.match(css, /#ebook-modal \.modal-trust::before[\s\S]*content: none !important;/);
-  assert.match(css, /\.direct-access[\s\S]*color: #925339/);
+  assert.match(css, /\.direct-access[\s\S]*background: #8b694b;[\s\S]*color: #fffaf5;/);
+  assert.match(css, /\.ebook-page--warm \.direct-access[\s\S]*cursor: default;[\s\S]*transition: none;/);
+  assert.match(css, /@media \(max-width: 768px\)[\s\S]*\.ebook-page--warm \.direct-access[\s\S]*width: fit-content;[\s\S]*display: inline-flex !important;/);
+  assert.doesNotMatch(script, /directAccessButton/);
+  assert.match(script, /const REQUEST_TIMEOUT_MS = 12000;/);
+  assert.match(script, /activeSubmissionId \+= 1;/);
+  assert.match(script, /submissionId !== activeSubmissionId/);
+  assert.match(script, /nameInput\.focus\(\)/);
+  assert.match(script, /emailInput\.focus\(\)/);
+  assert.doesNotMatch(script, /addEventListener\('input'/);
+  assert.match(modalCss, /\.ebook-optin-modal__panel[\s\S]*width: min\(580px, 100%\)/);
+  assert.match(modalCss, /\.ebook-optin-modal__image[\s\S]*width: 170px/);
+  assert.match(modalCss, /\.ebook-optin-modal__cta[\s\S]*background: var\(--ebook-modal-clay\) !important/);
   assert.match(css, /\.testimonial-card \.profession \{ color: #6f6a62; \}/);
   assert.match(css, /\.feature-item \.checkmark[\s\S]*background: var\(--ebook-sand\);[\s\S]*color: var\(--ebook-moss\);/);
   assert.doesNotMatch(css, /#eff5ff|#12c993|translateX/i);
   assert.match(css, /@media \(max-width: 768px\)/);
   assert.doesNotMatch(css, /#2954B3|#3A9AEA/i);
+});
+
+test('legacy landings behouden hun eigen modalcontroller zonder ebookregressie', () => {
+  const legacyScript = read('landing-script.js');
+  const ebookScript = read('assets/js/ebook-optin-modal.js');
+
+  for (const file of ['landing.html', 'detox.html', 'detox/index.html']) {
+    const html = read(file);
+    assert.match(html, /landing-script\.js\?v=2/);
+    assert.match(html, /class="modal-close"/);
+    assert.match(html, /class="modal-backdrop"/);
+    assert.match(html, /id="ebook-error"/);
+  }
+
+  assert.match(legacyScript, /modal\.querySelector\('\.modal-close'\)/);
+  assert.match(legacyScript, /modal\.querySelector\('\.modal-backdrop'\)/);
+  assert.match(legacyScript, /document\.getElementById\('ebook-error'\)/);
+  assert.doesNotMatch(legacyScript, /data-ebook-optin-close|ebook-optin-modal-open/);
+  assert.match(ebookScript, /data-ebook-optin-close/);
+  assert.match(ebookScript, /ebook-optin-modal-open/);
 });
 
 test('succes- en bedankpagina blijven functioneel in de warme Vitalora-stijl', () => {
