@@ -157,7 +157,7 @@ function footer() {
 
 function ebookPromoAssets() {
   return `<link rel="stylesheet" href="/assets/css/ebook-optin-modal.css?v=7">
-  <script defer src="/assets/js/blog-ebook-promo.js?v=6"></script>`;
+  <script defer src="/assets/js/blog-ebook-promo.js?v=7"></script>`;
 }
 
 function ebookPromo() {

@@ -37,7 +37,7 @@ test('rechtstreeks bereikbare historische html-bestanden zijn zelf cursusvrij en
     const html = read(file);
     assert.doesNotMatch(html, forbidden, file);
     assert.match(html, /assets\/css\/ebook-optin-modal\.css\?v=7/, file);
-    assert.match(html, /assets\/js\/blog-ebook-promo\.js\?v=6/, file);
+    assert.match(html, /assets\/js\/blog-ebook-promo\.js\?v=7/, file);
     assert.equal((html.match(/data-blog-ebook-promo hidden/g) || []).length, 1, file);
   }
 

@@ -1,11 +1,11 @@
 (function () {
   'use strict';
 
-  const STORAGE_KEY = 'vitalora_blog_ebook_promo_v2';
-  const SESSION_KEY = 'vitalora_blog_ebook_promo_seen_v2';
+  const STORAGE_KEY = 'vitalora_blog_ebook_promo_v3';
+  const SESSION_KEY = 'vitalora_blog_ebook_promo_seen_v3';
   const CLOSE_SUPPRESSION_MS = 30 * 24 * 60 * 60 * 1000;
   const SUCCESS_SUPPRESSION_MS = 90 * 24 * 60 * 60 * 1000;
-  const SHOW_DELAY_MS = 3500;
+  const SHOW_DELAY_MS = 1200;
   const REQUEST_TIMEOUT_MS = 12000;
   const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -133,7 +133,7 @@
       if (showTimer) win.clearTimeout(showTimer);
       (win.requestAnimationFrame || win.setTimeout).call(win, function () {
         promo.classList.add('is-visible');
-        if (announcement) announcement.textContent = 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat aan het einde van de pagina.';
+        if (announcement) announcement.textContent = 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat rechtsonder in beeld.';
       });
     }
 

@@ -153,7 +153,7 @@ test('alle publieke blogoppervlakken bevatten exact één toegankelijke ebookkaa
     const html = read(file);
     assert.equal(count(html, /<aside class="blog-ebook-promo ebook-optin-modal" data-blog-ebook-promo hidden/g), 1, file);
     assert.equal(count(html, /assets\/css\/ebook-optin-modal\.css\?v=7/g), 1, file);
-    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=6/g), 1, file);
+    assert.equal(count(html, /assets\/js\/blog-ebook-promo\.js\?v=7/g), 1, file);
     assert.match(html, /data-blog-ebook-promo-announcement aria-live="polite" aria-atomic="true"/);
     assert.match(html, /role="region" aria-labelledby="blog-ebook-promo-title"/);
     assert.doesNotMatch(html, /aria-modal=/);
@@ -207,13 +207,15 @@ test('kaart toont niet-blokkerend, opent het formulier na klik en onthoudt sluit
   });
 
   assert.ok(controller);
+  assert.equal(STORAGE_KEY, 'vitalora_blog_ebook_promo_v3');
+  assert.equal(SESSION_KEY, 'vitalora_blog_ebook_promo_seen_v3');
   controller.reveal();
   assert.equal(first.promo.hidden, false);
   assert.ok(first.promoClasses.contains('is-visible'));
   assert.equal(first.htmlClasses.contains('blog-ebook-promo-open'), false);
   assert.equal(first.bodyClasses.contains('blog-ebook-promo-open'), false);
   assert.equal(first.nameInput.focused, false);
-  assert.equal(first.announcement.textContent, 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat aan het einde van de pagina.');
+  assert.equal(first.announcement.textContent, 'Gratis ebook Elimineer Microplastics beschikbaar. De downloadkaart staat rechtsonder in beeld.');
   assert.equal(first.open.hidden, false);
   assert.equal(first.form.hidden, true);
   assert.equal(sessionStorage.getItem(SESSION_KEY), '1');
@@ -246,6 +248,38 @@ test('kaart toont niet-blokkerend, opent het formulier na klik en onthoudt sluit
   assert.ok(fallbackController);
   assert.doesNotThrow(() => fallbackController.reveal());
   assert.doesNotThrow(() => fallback.listeners['close:click']());
+});
+
+test('oude popup-opslag onderdrukt de nieuwe rechtsonderkaart niet', () => {
+  const { setupBlogEbookPromo } = require('../assets/js/blog-ebook-promo.js');
+  const future = Date.now() + 30 * 24 * 60 * 60 * 1000;
+  const storage = memoryStorage({
+    vitalora_blog_ebook_promo_v2: JSON.stringify({ suppressedUntil: future })
+  });
+  const sessionStorage = memoryStorage({
+    vitalora_blog_ebook_promo_seen_v2: '1'
+  });
+  const current = fixture(storage, sessionStorage);
+
+  const controller = setupBlogEbookPromo({
+    document: current.doc,
+    window: current.win,
+    storage,
+    sessionStorage
+  });
+
+  assert.ok(controller);
+  current.timers[0]();
+  assert.equal(current.promo.hidden, false);
+  assert.ok(current.promoClasses.contains('is-visible'));
+
+  const sameSession = fixture(storage, sessionStorage);
+  assert.equal(setupBlogEbookPromo({
+    document: sameSession.doc,
+    window: sameSession.win,
+    storage,
+    sessionStorage
+  }), null);
 });
 
 test('formulier valideert, verstuurt via de bestaande opt-in en onderdrukt na succes 90 dagen', async () => {
@@ -352,7 +386,7 @@ test('de ebookmodal blijft gecentreerd en de blogkaart staat niet-blokkerend rec
   assert.match(css, /@media \(max-width: 620px\) \{[\s\S]*\.blog-ebook-promo\.ebook-optin-modal \{[\s\S]*width: min\(366px, calc\(100vw - 24px\)\);/);
 
   const script = read('assets/js/blog-ebook-promo.js');
-  assert.match(script, /SHOW_DELAY_MS = 3500/);
+  assert.match(script, /SHOW_DELAY_MS = 1200/);
   assert.match(script, /REQUEST_TIMEOUT_MS = 12000/);
   assert.match(script, /Promise\.race/);
   assert.match(script, /cancelPendingRequest/);
