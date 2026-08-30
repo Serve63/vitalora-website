@@ -618,7 +618,7 @@ html {
 .academy-card-media::after {
   position: absolute;
   inset: 0;
-  background: linear-gradient(180deg, rgba(30, 38, 33, 0.02), rgba(30, 38, 33, 0.2));
+  background: linear-gradient(180deg, rgba(30, 38, 33, 0), rgba(30, 38, 33, 0.1));
   content: "";
   pointer-events: none;
 }
@@ -627,12 +627,12 @@ html {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  filter: saturate(0.88) contrast(0.98);
+  filter: saturate(1.03) contrast(1.01);
   transition: filter 280ms ease, transform 500ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .academy-course-card:hover .academy-card-media img {
-  filter: saturate(1) contrast(1);
+  filter: saturate(1.08) contrast(1.02);
   transform: scale(1.025);
 }
 

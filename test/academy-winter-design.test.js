@@ -16,7 +16,7 @@ test('alleen de Academy-pagina laadt de warme Academy-assets', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=5/);
+  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=6/);
   assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=5/);
   assert.doesNotMatch(academy, /dashboard-styles\.css|dashboard-script\.js/);
   assert.doesNotMatch(otherHtml, /academy-winter\.css|academy-overview\.js/);
@@ -47,16 +47,16 @@ test('Academy gebruikt de warme Clean Reset-kleuren en geen koningsblauwe dashbo
   assert.doesNotMatch(css, /height:\s*min\(80vh, 900px\)/);
 });
 
-test('alle zeven Image 2-beelden zijn gekoppeld, geoptimaliseerd en uniek', () => {
+test('de hero en zes onderscheidende cursusbeelden zijn gekoppeld, geoptimaliseerd en uniek', () => {
   const academy = read('academy.html');
   const imageNames = [
     'hero-winter.jpg',
-    'course-clean-reset.jpg',
-    'course-powerfoods.jpg',
-    'course-balance-v2.jpg',
-    'course-30-days-v2.jpg',
-    'course-nutrition.jpg',
-    'course-mindful-v2.jpg',
+    'course-clean-reset-v3.jpg',
+    'course-powerfoods-v3.jpg',
+    'course-balance-v3.jpg',
+    'course-30-days-v3.jpg',
+    'course-nutrition-v3.jpg',
+    'course-mindful-v3.jpg',
   ];
   const hashes = new Set();
 
@@ -73,6 +73,24 @@ test('alle zeven Image 2-beelden zijn gekoppeld, geoptimaliseerd en uniek', () =
   });
 
   assert.equal(hashes.size, imageNames.length, 'Ieder Academy-beeld moet uniek zijn');
+  assert.match(read('assets/css/academy-winter.css'), /filter:\s*saturate\(1\.03\) contrast\(1\.01\)/);
+  assert.doesNotMatch(academy, /course-(?:clean-reset|powerfoods|nutrition)\.jpg|course-(?:balance|30-days|mindful)-v2\.jpg/);
+});
+
+test('iedere cursus heeft een eigen herkenbaar beeldconcept en passende alttekst', () => {
+  const academy = read('academy.html');
+  const expectedCovers = [
+    ['course-clean-reset-v3.jpg', 'glazen voorraadbakjes'],
+    ['course-powerfoods-v3.jpg', 'Bovenaanzicht van kleurrijke bessen'],
+    ['course-balance-v3.jpg', 'duinpad langs zee'],
+    ['course-30-days-v3.jpg', 'dertigste houten schijfje'],
+    ['course-nutrition-v3.jpg', 'Drie mensen van verschillende leeftijden'],
+    ['course-mindful-v3.jpg', 'mistig bosmeer'],
+  ];
+
+  expectedCovers.forEach(([name, altFragment]) => {
+    assert.match(academy, new RegExp(`src="/assets/images/academy/${name}"[^>]+alt="[^"]*${altFragment}`));
+  });
 });
 
 test('Academy bewaart de toegangspoort en toont zes beschikbare cursussen', () => {
