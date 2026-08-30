@@ -12,7 +12,7 @@
 	<link rel="stylesheet" href="/assets/css/header.css?v=19">
     <link rel="stylesheet" href="/assets/css/fonts.css?v=5">
     <link rel="stylesheet" href="/assets/css/footer.css?v=5">
-    <link rel="stylesheet" href="/assets/css/home.css?v=195">
+    <link rel="stylesheet" href="/assets/css/home.css?v=196">
     <meta name="theme-color" content="#253129">
   <link rel="stylesheet" href="/assets/css/ios-statusbar.css?v=1">
     <link rel="icon" type="image/webp" href="/assets/images/vitalora logo.webp">
@@ -227,8 +227,8 @@
     <!-- Results Section -->
     <section class="results">
         <div class="container">
-            <h2>Welke <span class="highlight">resultaten</span> kun je verwachten?</h2>
-            <p class="results-intro">Dit zijn wat je kunt verwachten na onze detox. Elke persoon is uniek, daarom kunnen de resultaten variëren.</p>
+            <h2>welke <span class="highlight">resultaten</span> hopen we te bereiken?</h2>
+            <p class="results-intro">Dit zijn de resultaten waar we samen naartoe werken. Ieder lichaam reageert anders, waardoor de uitkomst en het tempo per persoon kunnen verschillen.</p>
             <div class="results-list">
                 <div class="result-item">
                     <div class="result-icon icon-energy"></div>
@@ -396,37 +396,36 @@
 <script id="results-animation">
   (function () {
     function animateProgressBars() {
-      if (window.innerWidth > 768) return; // Only on mobile
-      
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const progressFills = entry.target.querySelectorAll('.progress-fill');
-            progressFills.forEach((fill, index) => {
-              setTimeout(() => {
-                fill.style.transform = 'scaleX(1)';
-                fill.style.transformOrigin = 'left';
-              }, index * 100);
-            });
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.3 });
-
       const resultsSection = document.querySelector('.results');
-      if (resultsSection) {
-        // Initially hide progress bars
-        const progressFills = resultsSection.querySelectorAll('.progress-fill');
-        progressFills.forEach(fill => {
-          fill.style.transform = 'scaleX(0)';
-          fill.style.transformOrigin = 'left';
-        });
-        
-        observer.observe(resultsSection);
+      if (!resultsSection) return;
+
+      const revealProgressBars = () => {
+        resultsSection.classList.add('results-visible');
+      };
+
+      if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        revealProgressBars();
+        return;
       }
+
+      const observer = new IntersectionObserver((entries) => {
+        if (entries.some((entry) => entry.isIntersecting)) {
+          window.requestAnimationFrame(revealProgressBars);
+          observer.disconnect();
+        }
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -10% 0px'
+      });
+
+      observer.observe(resultsSection);
     }
 
-    document.addEventListener('DOMContentLoaded', animateProgressBars);
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', animateProgressBars, { once: true });
+    } else {
+      animateProgressBars();
+    }
   })();
 </script>
 
