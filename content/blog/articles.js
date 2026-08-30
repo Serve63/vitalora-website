@@ -385,7 +385,7 @@ module.exports = [
     excerpt: 'Eiwitpoeder is geen afslankmiddel, maar kan in sommige situaties helpen voldoende eiwit te eten binnen een haalbaar energietekort.',
     category: 'Eiwit & gewicht',
     published: '2026-08-27',
-    modified: '2026-08-27',
+    modified: '2026-08-30',
     displayDate: '27 augustus 2026',
     readTime: 9,
     image: '/assets/images/blog/afvallen-eiwitpoeder.webp',
@@ -444,7 +444,8 @@ module.exports = [
     faq: [
       ['Welke eiwitshake is het beste om af te vallen?', 'Er bestaat geen speciale afslankshake. Kies een product dat past bij je voeding en gebruik het alleen als het praktisch iets vervangt of aanvult.'],
       ['Kun je een maaltijd vervangen door eiwitpoeder?', 'Alleen poeder levert geen complete maaltijd. Voeg zo nodig fruit, vezels en andere voedingsmiddelen toe, of kies een normale maaltijd.'],
-      ['Is eiwitpoeder slecht voor je nieren?', 'Bij gezonde mensen passen normale hoeveelheden doorgaans, maar bij nierziekte of medisch advies is persoonlijke begeleiding nodig.']
+      ['Is eiwitpoeder slecht voor je nieren?', 'Bij gezonde mensen passen normale hoeveelheden doorgaans, maar bij nierziekte of medisch advies is persoonlijke begeleiding nodig.'],
+      ['Wanneer kun je een eiwitshake het beste nemen?', 'Het precieze tijdstip is minder belangrijk dan je totale voeding. Een shake kan praktisch zijn na training, bij een eiwitarm ontbijt of wanneer een normale maaltijd nog uren weg is.']
     ],
     sources: [
       ['Voedingscentrum – Extra eiwit na sport', 'https://www.voedingscentrum.nl/nl/service/vraag-en-antwoord/afvallen-en-gewicht/heb-je-extra-eiwit-proteine-nodig-voor-spierherstel-en-spiergroei-na-krachttraining-of-duursport.aspx'],

@@ -64,9 +64,14 @@ test('de tien vernieuwde SEO-artikelen hebben unieke Image 2-beelden en uitgebre
     assert.match(article, /class="answer-box"/);
     assert.match(article, /class="key-points"/);
     assert.match(article, /class="faq-block"/);
-    assert.match(article, /Goed om te weten:/);
+    assert.match(article, /Deze uitleg is algemeen en vervangt geen diagnose of persoonlijk advies van een arts, apotheker of diëtist;/);
+    assert.doesNotMatch(article, /Goed om te weten:|editorial-disclaimer|Alle artikelen|article-back|editorial-nav/);
   }
   assert.equal(hashes.size, 10);
+
+  const proteinArticle = read('afvallen-met-eiwitpoeder.html');
+  assert.equal((proteinArticle.match(/class="faq-item"/g) || []).length, 4);
+  assert.match(proteinArticle, /Wanneer kun je een eiwitshake het beste nemen\?/);
 });
 
 test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback', () => {
@@ -82,17 +87,21 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   for (const post of feed) {
     assert.equal((blog.match(new RegExp(`<a class="post-card" href="/${post.slug}">`, 'g')) || []).length, 1, post.slug);
   }
-  assert.match(blog, /<h1>Gezondheid zonder ruis\.<\/h1>/);
+  assert.match(blog, /<h1>Nieuwste artikelen<\/h1>/);
+  assert.match(blog, /<title>Nieuwste artikelen \| Vitalora<\/title>/);
   assert.match(blog, /rel="canonical" href="https:\/\/www\.vitalora\.nl\/blog"/);
-  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=3/);
+  assert.match(blog, /\/assets\/css\/editorial-blog\.css\?v=4/);
   assert.match(blog, /id="nieuwste-artikelen"/);
   assert.match(blog, /13 artikelen · met bronnen gecontroleerd/);
+  assert.doesNotMatch(blog, /class="index-hero"|Vitalora Journal|Gezondheid zonder ruis|Nieuw in het journal|Ontdek de nieuwste artikelen|<h2>Lees verder<\/h2>/);
   assert.doesNotMatch(blog, /onafhankelijk gecontroleerd/);
   assert.doesNotMatch(blog, /source\.unsplash|images\.unsplash|fetch\('/);
   assert.match(css, /--editorial-moss:\s*#253129/);
   assert.match(css, /grid-template-columns:\s*repeat\(3/);
   assert.match(css, /grid-template-columns:\s*232px minmax\(0, 720px\)/);
   assert.doesNotMatch(css, /post-card--featured|featured-story/);
+  assert.doesNotMatch(css, /\.index-hero(?:__intro)?|\.editorial-nav|\.article-back|\.editorial-disclaimer/);
+  assert.match(css, /\.index-section-heading--primary \{[\s\S]*padding-top:/);
   assert.match(css, /\.blog-grid \{[\s\S]*align-items: start;[\s\S]*gap: 22px;/);
   assert.match(css, /\.post-card img \{[\s\S]*height: auto;[\s\S]*aspect-ratio: 16 \/ 9;/);
   const cardBody = css.match(/\.post-card__body \{([^}]*)\}/);
@@ -100,6 +109,8 @@ test('de blogindex is serverleesbaar en gebruikt geen externe stockfoto-fallback
   assert.doesNotMatch(cardBody[1], /height:\s*100%/);
   assert.match(cardBody[1], /padding:\s*20px 22px 19px/);
   assert.doesNotMatch(builder, /featuredPost|featuredCard|featured-story|post-card--featured/);
+  assert.doesNotMatch(builder, /class="index-hero"|Vitalora Journal|Nieuw in het journal|Ontdek de nieuwste artikelen|<h2>Lees verder<\/h2>/);
+  assert.doesNotMatch(builder, /Alle artikelen|article-back|editorial-nav/);
   assert.match(builder, /const cards = feed\.map/);
   assert.match(css, /@media \(prefers-reduced-motion: reduce\)/);
 

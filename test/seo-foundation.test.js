@@ -19,7 +19,8 @@ test('onbekende paden vallen niet langer terug op een blog-shell met status 200'
   const notFound = read('404.html');
   assert.match(notFound, /meta name="robots" content="noindex,follow"/);
   assert.match(notFound, /class="article-wrap not-found-page"/);
-  assert.match(notFound, /\/assets\/css\/editorial-blog\.css\?v=3/);
+  assert.match(notFound, /\/assets\/css\/editorial-blog\.css\?v=4/);
+  assert.doesNotMatch(notFound, /Alle artikelen|article-back|editorial-nav/);
 });
 test('robots en sitemap zijn echte crawlbare bestanden met alleen canonieke blog-URL’s', () => {
   const robots = read('robots.txt');
