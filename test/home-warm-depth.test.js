@@ -73,3 +73,11 @@ test('de bestaande homepage-onderdelen blijven op hun plek in de bron', () => {
   assert.equal((home.match(/class="process-card"/g) || []).length, 3);
   assert.equal((home.match(/class="result-item"/g) || []).length, 6);
 });
+
+test('de homepage-footer vermeldt Softora als websitebouwer', () => {
+  const home = read('index.html');
+  const footer = home.match(/<footer class="site-footer">[\s\S]*?<\/footer>/)?.[0] || '';
+
+  assert.match(footer, /<a class="copy" href="https:\/\/www\.softora\.nl\/">Website gebouwd door Softora\.nl<\/a>/);
+  assert.equal((home.match(/Website gebouwd door Softora\.nl/g) || []).length, 1);
+});
