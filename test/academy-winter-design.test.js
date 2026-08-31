@@ -16,7 +16,7 @@ test('alleen de Academy-pagina laadt de warme Academy-assets', () => {
     .map((file) => read(file))
     .join('\n');
 
-  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=6/);
+  assert.match(academy, /\/assets\/css\/academy-winter\.css\?v=7/);
   assert.match(academy, /\/assets\/js\/academy-overview\.js\?v=5/);
   assert.doesNotMatch(academy, /dashboard-styles\.css|dashboard-script\.js/);
   assert.doesNotMatch(otherHtml, /academy-winter\.css|academy-overview\.js/);
